@@ -1,0 +1,10 @@
+* text eol=lf
+*.dbf binary
+*.idx binary
+*.jpg binary
+*.odt binary
+*.pdf binary
+*.png binary
+*.ppt binary
+*.shp binary
+*.shx binary
