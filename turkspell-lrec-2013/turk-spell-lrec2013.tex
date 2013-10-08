@@ -1,0 +1,103 @@
+\documentclass[a5paper]{article}
+
+\usepackage{amssymb}
+\usepackage{polyglossia}
+\usepackage[shortcuts]{extdash}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[obeyDraft]{todonotes}
+
+\usepackage{graphicx}
+\usepackage{geometry}
+
+\setmainfont[Mapping=tex-text]{Liberation Serif}
+
+\title{Finite-State Spell-Checking for Turkic Minority Languages}
+\author{Francis M. Tyers \and Jonathan North Washington \and Ilnar Salimzyanov \and Tommi A. Pirinen}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    In this article there's spell-chekcers and Turkic languages
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Spell-checking is one of the most commonly used and most basic pieces of
+software for language support. It is used by all platforms from regular
+computers to tablets and mobile phones, and majority of software from office
+suites to web browsers. Furthermore, the role of spell-checking softwares has
+been increasing in modern platforms, as limited input systems require more
+assistance from spell-checker to predict users input than traditional keyboard
+inputs. The contemporary systems for spell-checking are mostly based on
+word-form lists and statistics, and some basic form of suffix stripping and
+word-form compounding. For language modeling in general there are well known
+and more established models for use in morphologically complex languages. In
+this article we use well-established finite-state spell-checking
+technology~\cite{pirinen2012compiling} in conjunction with Turkic minority
+languages and compare the results against traditional word-form list
+approaches.
+
+\section{Methods}
+
+Finite-state spell-checking~\cite{agata2002typographical} is well-established
+method for handling spell-checking of morphologically complexer languages.
+Specifically weighted finite-state spell-checking has been studied and extended
+in last years~\cite{pirinen2010finitestate}. In this article we use those
+methods to build finite-state spell-checkers for Türkich languages. The
+extension of finite-state spell-checkers by hunspell error models is done
+as described iñ~\cite{pirinen2010building}.
+
+\section{Data}
+
+For the language models we have selected freely available open source dictionaries
+from Apertium project\footnote{\url{}}, and translated them to finite-state
+spell-checking systems as described in~\cite{pirinen2012compiling}. The
+errors have been discovered from Wikipedia using methods described 
+in~\cite{max2010mining}. The hunspell data has been acquired from the internet.
+
+
+\section{Evaluation}
+
+To evaluate our finite-state spell-checkers we have applied them and hunspell
+to our hand-picked error corpus and measured the positions of correct
+corrections as shown in table~\ref{table:precision}
+
+We have also briefly measured speed and memory usage of the spell-checkers when
+applied to large sections of running text containing both correctly written
+strings and mistakes. The results are in table~\ref{table:efficiency}
+
+\section{Discussion}
+
+We have shown that spell-checking works nicely.
+
+\subsection{Error Analysis}
+
+It is interesting that... because edit distance of 2 does not work very well
+for Turkic languages.
+
+\subsection{Future Work}
+
+More betterer error models should be built.
+
+\section{Conclusion}
+
+In this article we studied the use of finite-state spell-checking as an
+alternative to other contemporary spell-checking methods for turkic langauges.
+we have shown that it works better and is faster. 
+
+\bibliographystyle{unsrt}
+\bibliography{turkspell}
+
+\end{document}
+% vim: set spell:
