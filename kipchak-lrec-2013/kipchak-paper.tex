@@ -5,12 +5,18 @@
 \usepackage{xltxtra}
 \usepackage{natbib}
 \usepackage{multirow}
+\usepackage{fullpage}
+\usepackage{multirow}
+
+\usepackage{booktabs}
+
+\setromanfont{DejaVu Serif}
 
 
 \bibdata{kipchak-paper}
 
 
-\title{Finite-state morphological transducers for three Kipchak languages}
+\title{Finite-state morphological transducers for three Kypchak languages}
 
 \author{Jonathan North Washington \\
 Departments of Linguistics and Central Eurasian Studies\\
@@ -38,6 +44,8 @@ Hargle, bargle.
 \end{abstract}
 
 \section{Introduction}
+
+The Northwestern branch of Turkic is often referred to as the Kypchak branch, and can be divided into three subbranches.  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the south Kypchak group \citep[82-83]{histofturkic}.  The geographic distribution of the languages is shown in map \ref{}.
 
 \cite{washington2012}
 \cite{salimzyanov2013}
@@ -112,6 +120,53 @@ Kumyk & - & - \\
 \end{center}
 \end{table}
 
+\begin{table}
+\begin{center}
+\begin{tabular}{lrr}
+\textbf{Corpus} & \textbf{Words} & \textbf{Coverage} \\
+\hline
+wikipedia & 850K &  - \\
+Äwezov & 155K & - \\
+RFERL 2010 & 3.2M & - \\
+bible & 577K & - \\
+quran & 107K & - \\
+\hline
+\end{tabular}
+ \caption{Corpora used for coverage of Kazakh}
+ \label{table:corpora-kaz}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{llrr}
+\toprule
+\textbf{Language} & \textbf{Corpus} & \textbf{Words} & \textbf{Coverage} \\
+\midrule
+\multirow{6}{*}{Kazakh} & wikipedia 2011& 850K &  - \\
+	& Äwezov & 155K & - \\
+	& RFERL 2010 & 3.2M & - \\
+	& bible & 577K & - \\
+	& quran & 107K & - \\\cline{2-4}
+	& average & - & 90.5\% \\
+\midrule
+\multirow{5}{*}{Tatar} & wikipedia 2013 & 128K &  - \\
+	& news 2005-2011 & 4.6M & - \\
+	& new testament & 137K & - \\
+	& quran & 165K & - \\
+	& Aytmatov & 5K & - \\\cline{2-4}
+	& average & - & 89.0\% \\
+\midrule
+\multirow{4}{*}{Kumyk} & yoldash & 287K &  - \\
+	& new testament & 154K & - \\
+	& book of Genesis & 28K & - \\\cline{2-4}
+	& average & - & 88.0\% \\
+\bottomrule
+\end{tabular}
+ \caption{Corpora used for coverage tests}
+ \label{table:corpora}
+\end{center}
+\end{table}
 
 
 
