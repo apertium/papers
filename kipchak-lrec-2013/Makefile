@@ -1,5 +1,5 @@
 all:
-	xelatex kipchak-paper.tex
+	xelatex --papersize a4 kipchak-paper.tex
 	bibtex kipchak-paper
-	xelatex kipchak-paper.tex
+	xelatex --papersize a4 kipchak-paper.tex
 
