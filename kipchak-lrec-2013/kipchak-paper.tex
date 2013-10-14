@@ -41,24 +41,23 @@ E-03071 Alacant (Spain)\\
 }
 
 
-\name{Jonathan North Washington, Ilnar Salimzyanov, Francis M. Tyers}
+\name{Jonathan North Washington$^\dagger$, Ilnar Salimzyanov$^\ddagger$, Francis M. Tyers$^\star$}
 
-\address{Departments of Linguistics and Central Eurasian Studies\\
+\address{$^\dagger$Departments of Linguistics and Central Eurasian Studies\\
 Indiana University\\
 Bloomington, IN 47405 (USA)\\
 \texttt{jonwashi@indiana.edu} \and
-Institut für Maschinelle Sprachverarbeitung \\
+$^\ddagger$Institut für Maschinelle Sprachverarbeitung \\
 Universität Stuttgart\\
 Stuttgart (Germany) \\
 \texttt{ilnar@ilnar} \and 
-Departament de Llenguatges i Sistemes Informàtics \\  
+$^\star$Departament de Llenguatges i Sistemes Informàtics \\  
 Universitat d'Alacant\\
 E-03071 Alacant (Spain)\\
 \texttt{ftyers@dlsi.ua.es} 
 }
 
 \abstract{Hargle, bargle.\\
-
 \Keywords{Kazakh, Tatar, Kumyk, morphology, transducer}}
 
 \begin{document}
@@ -82,6 +81,7 @@ The Northwestern branch of Turkic is often referred to as the Kypchak branch, an
 \subsection{Kumyk}
 
 \cite{bammatov1960}
+\cite{olmesov2000}
 
 \section{Methodology}
 
@@ -93,13 +93,17 @@ The Northwestern branch of Turkic is often referred to as the Kypchak branch, an
 
 % Handling numerals and acronyms.
 
-\section{Evaluation}
+\subsection{Development effort}
+% how long it took
+% make a graph for the kumyk one
+
+\subsection{Statistics}
 
 \begin{table}
 \begin{center}
-\begin{tabular}{lrrr}
+\begin{tabular}{|l|rrr|}
 		\hline
-\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{|c|}{\textbf{Number of stems}} \\
+\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{|c|}{\textbf{Number of stems}} \\ \cline{2-4}
                         & Kazakh & Tatar & Kumyk \\
 		\hline
 		Noun & - & - & - \\
@@ -116,9 +120,19 @@ The Northwestern branch of Turkic is often referred to as the Kypchak branch, an
 		Total: & - & - & - \\
 		\hline
 \end{tabular}
+ \caption{Number of stems in each of the categories}
+ \label{table:coverage}
 \end{center}
 
 \end{table}
+
+\section{Evaluation}
+
+We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage and mean ambiguity 
+on freely available corpora. The second was by performing an evaluation of precision and recall on some 
+smaller, hand-validated test sets.
+
+\subsection{Corpora}
 
 \begin{table}
 \begin{center}
@@ -185,11 +199,16 @@ Kumyk & - & - \\
 
 \section{Future work}
 
-%Code switching
+%Code switching - +example
 %More languages: Nogai, Bashkir, Karakalpak, Karachay-Balkar
 
 \section{Conclusions}
 
+\section*{Acknowledgements}
+
+We would like to thank the Google Code-in (2011) for supporting the development 
+of the Kazakh transducer and the Google Summer of Code (2012) for supporting the 
+development of both the Kazakh and the Tatar transducers. 
 
 \bibliographystyle{lrec2012}
 \bibliography{kipchak-paper}
