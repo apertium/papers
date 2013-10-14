@@ -128,26 +128,49 @@ The Northwestern branch of Turkic is often referred to as the Kypchak branch, an
 
 \section{Evaluation}
 
-We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage and mean ambiguity 
+We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage\footnote{Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer.} and mean ambiguity 
 on freely available corpora. The second was by performing an evaluation of precision and recall on some 
 smaller, hand-validated test sets.
 
 \subsection{Corpora}
 
+% For kazakh+tatar tested the coverage of the analysers over 3 separate domains: encyclopaedic text, news and religion, 
+% as there was no wikipedia for kumyk we just tested news and religion. The corpora were obtained from:
+% Wikipedia:
+% RFE/RL
+% Yoldaš: 
+% New testaments:
+
+% kaz: kkwiki-20131006-pages-articles.xml.bz2
+% tat:
+
 \begin{table}
 \begin{center}
-\begin{tabular}{lr}
-\textbf{Language} & - \\
-\hline
-Kazakh & - \\
-Tatar & - \\
-Kumyk & - \\
-\hline
+\begin{tabular}{llrr}
+\toprule
+\textbf{Language} & \textbf{Corpus} & \textbf{Words} & \textbf{Coverage} \\
+\midrule
+\multirow{4}{*}{Kazakh} & Wikipedia 2013 &  -  &  - \\
+	& RFE/RL 2010 & 3.2M & - \\
+	& Bible & 577K & - \\\cline{2-4}
+	& Average & - & 90.5\% \\
+\midrule
+\multirow{4}{*}{Tatar} & Wikipedia 2013 & 128K &  - \\
+	& RFE/RL 2005--2011 & 4.6M & - \\
+	& New Testament & 137K & - \\\cline{2-4}
+	& Average & - & 89.0\% \\
+\midrule
+\multirow{3}{*}{Kumyk} & Yoldaš & 287K &  - \\
+	& New Testament & 154K & - \\\cline{2-4}
+	& Average & - & 90.1\% \\
+\bottomrule
 \end{tabular}
- \caption{Naïve coverage}
- \label{table:coverage}
+ \caption{Corpora used for naïve coverage tests}
+ \label{table:corpora}
 \end{center}
 \end{table}
+
+
 
 \begin{table}
 \begin{center}
@@ -161,37 +184,6 @@ Kumyk & - & - \\
 \end{tabular}
  \caption{Precision and recall}
  \label{table:coverage}
-\end{center}
-\end{table}
-
-\begin{table}
-\begin{center}
-\begin{tabular}{llrr}
-\toprule
-\textbf{Language} & \textbf{Corpus} & \textbf{Words} & \textbf{Coverage} \\
-\midrule
-\multirow{6}{*}{Kazakh} & wikipedia 2011& 850K &  - \\
-	& Äwezov & 155K & - \\
-	& RFERL 2010 & 3.2M & - \\
-	& bible & 577K & - \\
-	& quran & 107K & - \\\cline{2-4}
-	& average & - & 90.5\% \\
-\midrule
-\multirow{5}{*}{Tatar} & wikipedia 2013 & 128K &  - \\
-	& news 2005-2011 & 4.6M & - \\
-	& new testament & 137K & - \\
-	& quran & 165K & - \\
-	& Aytmatov & 5K & - \\\cline{2-4}
-	& average & - & 89.0\% \\
-\midrule
-\multirow{4}{*}{Kumyk} & yoldash & 287K &  - \\
-	& new testament & 154K & - \\
-	& book of Genesis & 28K & - \\\cline{2-4}
-	& average & - & 88.0\% \\
-\bottomrule
-\end{tabular}
- \caption{Corpora used for coverage tests}
- \label{table:corpora}
 \end{center}
 \end{table}
 
