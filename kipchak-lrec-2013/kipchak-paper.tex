@@ -73,8 +73,6 @@ These languages belong to the Northwestern branch of Turkic, which is often refe
 
 In a linguistic sense, these languages have different amounts of influence from other Turkic branches (e.g., moderate Oghuz (SE) influence in the Western group, slight Oghuz influence in the Northern group) and from Mongolic languages (moderate influence on the Southern group, lighter in the other groups), and all have heavy influence from Persian.
 
-\cite{washington2012}
-\cite{salimzyanov2013}
 \cite{bekmanova2013}
 
 %FIXME: brief background on how, when, and with what support were developed?
@@ -93,6 +91,20 @@ Kumyk /qumuq/ is spoken in Dagestan, a Republic of the Russia Federation, where 
 
 \cite{bammatov1960}
 \cite{olmesov2000}
+
+\section{Background}
+\subsection{Morphological transducers}
+The objective of a morphological transducer is twofold. Firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms. 
+
+The transducers were designed based on the Helsinki Finite State Toolkit \citep{linden2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis. It implements both the \textbf{lexc} formalism for defining lexicons, and the \textbf{twol} and \textbf{xfst} formalisms for modeling morphophonological rules. It also supports other finite state transducer formalisms such as \textbf{sfst}. This toolkit has been chosen as it -- or the equivalent XFST -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
+
+The Tatar transducer was developed originally as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12} and was enhanced during a Google Summer of Code project.  The Kazakh transducer was originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010, and was expanded during Google Code-In 2010 and 2011.  The Kazakh-Tatar machine translation system was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
+
+
+%FIXME: update for the three languages
+\subsection{Description}
+The tagset consists of 127 separate tags, 19 covering the main parts of speech (noun, verb, adjective, adverb, postposition, etc.) and 108 covering morphological subcategorisation for e.g. case, number, person, possession, transitivity, tense-aspect-mood, etc. The tags are represented as multicharacter symbols, between less than `<' and greater than `>' symbols. The tagset is quite extensive and still not entirely stabilised, as such a full listing is not included here. However, the tags are listed in the source code of the transducer,\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/}} along with comments describing their usage.
+
 
 \section{Methodology}
 
