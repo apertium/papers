@@ -12,7 +12,7 @@
 \usepackage{multirow}
 %\usepackage{fullpage}
 \usepackage{multirow}
-\usepackage{url}
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 \usepackage{booktabs}
 
@@ -41,7 +41,7 @@ E-03071 Alacant (Spain)\\
 \texttt{ftyers@dlsi.ua.es} 
 }
 
-
+%FIXME: usually star comes first, then daggers
 \name{Jonathan North Washington$^\dagger$, Ilnar Salimzyanov$^\ddagger$, Francis M. Tyers$^\star$}
 
 \address{$^\dagger$Departments of Linguistics and Central Eurasian Studies\\
@@ -95,15 +95,24 @@ Kumyk /qumuq/ is spoken in Dagestan, a Republic of the Russia Federation, where 
 
 \section{Background}
 \subsection{Morphological transducers}
-The objective of a morphological transducer is twofold. Firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms. 
+%FIXME: need a source, maybe something by Tommi?
+The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms.  Since they are implemented as finite-state automata \citet{FSTs}, they are reversible by default.
 
-The transducers were designed based on the Helsinki Finite State Toolkit \citep{linden2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis. It implements both the \textbf{lexc} formalism for defining lexicons, and the \textbf{twol} and \textbf{xfst} formalisms for modeling morphophonological rules. It also supports other finite state transducer formalisms such as \textbf{sfst}. This toolkit has been chosen as it -- or the equivalent XFST -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
+The transducers were designed based on the Helsinki Finite State Toolkit \citep{linden2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis.  It implements both the \textbf{lexc} formalism for defining lexicons, and the \textbf{twol} and \textbf{xfst} formalisms for modeling morphophonological rules.  It also supports other finite state transducer formalisms such as \textbf{sfst}.  This toolkit has been chosen as it -- or the equivalent XFST -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
 
-The Tatar transducer was developed originally as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12} and was enhanced during a Google Summer of Code project.  The Kazakh transducer was originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010, and was expanded during Google Code-In 2010 and 2011.  The Kazakh-Tatar machine translation system was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
+Creating a morphological transducers in the above-mentioned formalisms simply involves encoding linguistic knowledge about the language in the formalisms.  The lexc and twol formalisms resemble linguistic formalisms, allowing the coders to work with abstractions resembling linguistic categories such lexemes, morphemes, phonemes, and even archiphonemes---as opposed to a raw FST, where input characters are translated to output characters along a graph.
 
+The three transducers discussed in this paper are for Kazakh, Tatar, and Kumyk.  The Kazakh and Tatar transducers were originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010.  The Kazakh transducer was expanded during Google Code-In 2010 and 2011, and the Tatar transducer was expanded as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12}.  The Kazakh-Tatar machine translation system, along with the two transducers, was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
+
+The Kumyk transducer was developed starting at the beginning of October, 2013 as experiment to see how difficult it would be to extend lessons learned from the development of the Tatar and Kazakh transducers to a related language.  This paper explores some of these lessons and how the development of the Kumyk transducer benefited from knowledge gained from the development of the Tatar and Kazakh transducers.
+
+
+\subsection{Description}
+
+%FIXME: keep revision number up to date
+The transducers are available / under development at \url{https://svn.code.sf.net/p/apertium/svn/languages/}, in the directories apertium-kaz, apertium-tat, and apertium-kum.  The revision of the entire subversion repository that the numbers (stem counts, evaluation, etc.) in this paper represent is \texttt{r48137}.
 
 %FIXME: update for the three languages
-\subsection{Description}
 The tagset consists of 127 separate tags, 19 covering the main parts of speech (noun, verb, adjective, adverb, postposition, etc.) and 108 covering morphological subcategorisation for e.g. case, number, person, possession, transitivity, tense-aspect-mood, etc. The tags are represented as multicharacter symbols, between less than `<' and greater than `>' symbols. The tagset is quite extensive and still not entirely stabilised, as such a full listing is not included here. However, the tags are listed in the source code of the transducer,\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/}} along with comments describing their usage.
 
 
