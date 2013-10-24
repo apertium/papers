@@ -112,10 +112,6 @@ The transducers were designed based on the Helsinki Finite State Toolkit \citep{
 
 Creating a morphological transducers in the above-mentioned formalisms simply involves encoding linguistic knowledge about the language in the formalisms.  The lexc and twol formalisms resemble linguistic formalisms, allowing the coders to work with abstractions resembling linguistic categories such lexemes, morphemes, phonemes, and even archiphonemes---as opposed to a raw FST, where input characters are translated to output characters along a graph.
 
-The three transducers discussed in this paper are for Kazakh, Tatar, and Kumyk.  The Kazakh and Tatar transducers were originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010.  The Kazakh transducer was expanded during Google Code-In 2010 and 2011, and the Tatar transducer was expanded as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12}.  The Kazakh-Tatar machine translation system, along with the two transducers, was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
-
-The Kumyk transducer was developed starting at the beginning of October, 2013 as experiment to see how difficult it would be to extend lessons learned from the development of the Tatar and Kazakh transducers to a related language.  This paper explores some of these lessons and how the development of the Kumyk transducer benefited from knowledge gained from the development of the Tatar and Kazakh transducers.
-
 
 \subsection{Description}
 
@@ -138,8 +134,20 @@ The tagset consists of 127 separate tags, 19 covering the main parts of speech (
 % Handling numerals and acronyms.
 
 \subsection{Development effort}
-% how long it took
-% make a graph for the kumyk one
+
+The three transducers discussed in this paper are for Kazakh, Tatar, and Kumyk.  The Kazakh and Tatar transducers were originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010.  The Kazakh transducer was expanded during Google Code-In 2010 and 2011, and the Tatar transducer was expanded as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12}.  The Kazakh-Tatar machine translation system, along with the two transducers, was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
+
+The Kumyk transducer was developed starting at the beginning of October, 2013 as experiment to see how difficult it would be to extend lessons learned from the development of the Tatar and Kazakh transducers to a related language.  This paper explores some of these lessons and how the development of the Kumyk transducer benefited from knowledge gained from the development of the Tatar and Kazakh transducers.
+
+The morphotactics of Turkic languages are complex enough that even a linguist who is fluent in the language and has a good linguistic understanding of it may not understand how exactly all morphemes combine.  Native speakers educated about the morphology of their languages also do not have an explicit knowledge of the complete morphotactics.  Hence it often becomes necessary to use fieldwork methodology to elicit the full extent of the morphotactics, be this a linguist with no to little knowledge of a Turkic language working with a native speaker, or a native speaker who understands the extent of what knowledge is necessary to encode in the transducer.  When there is no native speaker of a particular language available, the authors have found that information previously encoded about a closely related language or the intuitions of a speaker of a closely related language may be combined with the use of textual corpora to ``elicit'' information about the morphotactics of a language.  Depending on the contents of corpus and chance, this may not result in a completely accurate model, but it is possible to be thorough.
+
+The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was coauthored by a linguist who is fluent in and has a good linguistic knowledge of Kyrgyz together with a native speaker of Kyrgyz, and in consultation with another native speaker of Kyrgyz.  The initial developer of the Kazakh morphotactic was the same linguist, who is fluent in and has a good linguistic understanding Kazakh.  The morphotactics of Tatar were developed for the most part by a native Tatar speaker, who also worked to polish off the morphotactics of the Kazakh transducer.
+
+As the authors found it difficult to locate native speakers of Kumyk, the morphotactics of the Kumyk transducer were developed based on the existing encoded morphotactics of Kazakh and Tatar (and occasionally Kyrgyz), with consultation of corpora, as described above.
+
+% FIXME: how long it took
+% FIXME: make a graph for the kumyk one
+
 
 \subsection{Statistics}
 
@@ -172,21 +180,23 @@ The tagset consists of 127 separate tags, 19 covering the main parts of speech (
 
 \section{Evaluation}
 
-We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage\footnote{Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer.} and mean ambiguity 
-on freely available corpora. The second was by performing an evaluation of precision and recall on some 
-smaller, hand-validated test sets.
+We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage\footnote{Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer.} and mean ambiguity  on freely available corpora. The mean ambiguity measure was calculated by performing an evaluation of precision and recall on some smaller, hand-validated test sets.
 
 \subsection{Corpora}
 
-% For kazakh+tatar tested the coverage of the analysers over 3 separate domains: encyclopaedic text, news and religion, 
-% as there was no wikipedia for kumyk we just tested news and religion. The corpora were obtained from:
+%FIXME: sources
+We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following wikipedia dumps were used: kkwiki-20131006-pages-articles.xml.bz2, FIXME.} news,\footnote{All content from RFE/RL (\url{http://www.azattyq.org/}) for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and a Tatar translation of the New Testament available from \url{http://ibt.org.ru}}  As there is currently no wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk from \footnote{http://sh-tavisi.etnosmi.ru/}.}
+
+%The corpora were obtained from:
 % Wikipedia:
 % RFE/RL
 % Yoldaš: 
 % New testaments:
 
-% kaz: kkwiki-20131006-pages-articles.xml.bz2
+% kaz: 
 % tat:
+
+The coverage of each transducer over the various corpora is shown in table \ref{table:corpora}.
 
 \begin{table}
 \begin{center}
