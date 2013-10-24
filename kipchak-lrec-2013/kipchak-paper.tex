@@ -142,11 +142,11 @@ The tagset consists of 127 separate tags, 19 covering the main parts of speech (
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|l|rrr|}
-		\hline
-\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{|c|}{\textbf{Number of stems}} \\ \cline{2-4}
+\begin{tabular}{lrrr}
+		\toprule
+\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cline{2-4}
                         & Kazakh & Tatar & Kumyk \\
-		\hline
+		\midrule
 		Noun & - & - & - \\
 		Verb & - & - & - \\
 		Adjective & - & - & - \\
@@ -157,9 +157,9 @@ The tagset consists of 127 separate tags, 19 covering the main parts of speech (
 		Postposition & - & - & - \\
 		Pronoun & - & - & - \\
 		Determiner & - & - & - \\
-		\hline
+		\midrule
 		Total: & - & - & - \\
-		\hline
+		\bottomrule
 \end{tabular}
  \caption{Number of stems in each of the categories}
  \label{table:coverage}
@@ -216,16 +216,17 @@ smaller, hand-validated test sets.
 
 \begin{table}
 \begin{center}
-\begin{tabular}{lrr}
-\textbf{Language} & \textbf{Precision} & \textbf{Recall} \\
-\hline
-Kazakh & - &  - \\
-Tatar & - & - \\
-Kumyk & - & - \\
-\hline
-\end{tabular}
- \caption{Precision and recall}
- \label{table:coverage}
+	\begin{tabular}{lrr}
+	\toprule
+		\textbf{Language} & \textbf{Precision} & \textbf{Recall} \\
+	\midrule
+		Kazakh & - &  - \\
+		Tatar & - & - \\
+		Kumyk & - & - \\
+	\bottomrule
+	\end{tabular}
+	\caption{Precision and recall}
+	\label{table:coverage}
 \end{center}
 \end{table}
 
