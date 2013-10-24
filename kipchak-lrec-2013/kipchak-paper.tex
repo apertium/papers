@@ -61,7 +61,7 @@ E-03071 Alacant (Spain)\\
 \texttt{ftyers@dlsi.ua.es} 
 }
 
-\abstract{Hargle, bargle.\\
+\abstract{This paper describes the development of free/open-source finite-state morphological transducers for three Turkic languages---Kazakh, Tatar, and Kumyk---representing a language from each of the three subbranches of the Kypchak branch of Turkic.  The finite-state toolkit used for the work is the Helsinki Finite-State Toolkit (HFST).  This paper describes how the development of a transducer for each subsequent language took less time.  An evaluation is presented which shows that the transducers all have production-level coverage---around 90\%---on freely available corpora of the languages, and high precision and recall over a manually verified test set. \\
 	\Keywords{Kazakh, Tatar, Kumyk, morphology, transducer}
 }
 
@@ -114,9 +114,6 @@ Creating a morphological transducers in the above-mentioned formalisms simply in
 %FIXME: keep revision number up to date
 The transducers are available / under development in apertium's subversion repository,\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/}} in the directories apertium-kaz, apertium-tat, and apertium-kum.  The revision of the entire subversion repository that the numbers (stem counts, evaluation, etc.) in this paper represent is \texttt{r48137}.
 
-%FIXME: update for the three languages
-The tagset consists of 127 separate tags, 19 covering the main parts of speech (noun, verb, adjective, adverb, postposition, etc.) and 108 covering morphological subcategorisation for e.g. case, number, person, possession, transitivity, tense-aspect-mood, etc. The tags are represented as multicharacter symbols, between less than `<' and greater than `>' symbols. The tagset is quite extensive and still not entirely stabilised, as such a full listing is not included here. However, the tags are listed in the source code of the transducer,\footnote{no url needed?} along with comments describing their usage.
-
 
 \section{Methodology}
 % cite Hengeveld (1992) ?
@@ -133,7 +130,7 @@ The tagset consists of 127 separate tags, 19 covering the main parts of speech (
 
 The three transducers discussed in this paper are for Kazakh, Tatar, and Kumyk.  The Kazakh and Tatar transducers were originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010.  The Kazakh transducer was expanded during Google Code-In 2010 and 2011, and the Tatar transducer was expanded as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12}.  The Kazakh-Tatar machine translation system, along with the two transducers, was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
 
-The Kumyk transducer was developed starting at the beginning of October, 2013 as experiment to see how difficult it would be to extend lessons learned from the development of the Tatar and Kazakh transducers to a related language.  This paper explores some of these lessons and how the development of the Kumyk transducer benefited from knowledge gained from the development of the Tatar and Kazakh transducers.
+The Kumyk transducer was developed starting at the beginning of October, 2013 as experiment to see how difficult it would be to extend lessons learned from the development of the Tatar and Kazakh transducers to a related language.  While the Kazakh and Tatar transducers took years to reach their current production-quality (around 90\%) coverage of corpora, the Kumyk transducer only took a couple weeks to reach this level of quality.  This paper explores how the development of the Kumyk transducer benefited from knowledge gained from the development of the Tatar and Kazakh transducers.
 
 The morphotactics of Turkic languages are complex enough that even a linguist who is fluent in the language and has a good linguistic understanding of it may not understand how exactly all morphemes combine.  Native speakers educated about the morphology of their languages also do not have an explicit knowledge of the complete morphotactics.  Hence it often becomes necessary to use fieldwork methodology to elicit the full extent of the morphotactics, be this a linguist with no to little knowledge of a Turkic language working with a native speaker, or a native speaker who understands the extent of what knowledge is necessary to encode in the transducer.  When there is no native speaker of a particular language available, the authors have found that information previously encoded about a closely related language or the intuitions of a speaker of a closely related language may be combined with the use of textual corpora to ``elicit'' information about the morphotactics of a language.  Depending on the contents of corpus and chance, this may not result in a completely accurate model, but it is possible to be thorough.
 
@@ -142,12 +139,19 @@ The Kazakh morphotactics were originally developed based on the Kyrgyz transduce
 As the authors found it difficult to locate native speakers of Kumyk, the morphotactics of the Kumyk transducer were developed based on the existing encoded morphotactics of Kazakh and Tatar (and occasionally Kyrgyz), with consultation of corpora, as described above.  A dictionary \citep{bammatov1960} and a grammar \citep{olmesov2000} of Kumyk were also consulted as needed.
 
 
-
 % FIXME: how long it took
 % FIXME: make a graph for the kumyk one
 
+\subsection{Transducer contents}
 
-\subsection{Statistics}
+Each transducer's lexc source consists of lists of stems, with each stem pointing at a complex continuation lexicon containing the appropriate morphology for the type of stem.  As the compiled transducer parses the stems and morphology, tags are returned.
+
+%FIXME: update for the three languages
+The tagset for each transducer is designed to be compatible with the others.  Each transducer consists of about 120 separate tags, of which close to 20 cover the main parts of speech (noun, verb, adjective, adverb, postposition, interjection, etc.).  The remaining tags cover morphological subcategorisation for e.g.\ case, number, person, possession, transitivity, tense-aspect-mood, etc.  The tags are represented as multicharacter symbols, between less-than `<' and greater-than `>' symbols.  The tagset is quite extensive and still not entirely stabilised, so a full listing is not included here.  However, the tags are listed in the source code of the transducers, along with comments describing their usage.
+
+%\subsection{Statistics}
+
+Table \ref{table:stems} lists the number of stems of the primary categories in each transducer.
 
 \begin{table}
 \begin{center}
@@ -156,18 +160,18 @@ As the authors found it difficult to locate native speakers of Kumyk, the morpho
 \multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cline{2-4}
                         & Kazakh & Tatar & Kumyk \\
 		\midrule
-		Noun & - & - & - \\
-		Verb & - & - & - \\
-		Adjective & - & - & - \\
-		Proper noun & - & - & - \\
-		Adverb & - & - & - \\
-		Numeral & - & - & - \\
-		Conjunction & - & - & - \\
-		Postposition & - & - & - \\
-		Pronoun & - & - & - \\
-		Determiner & - & - & - \\
+		Noun & 2463 & 2692 & 2588 \\
+		Verb & 1587 & 1333 & 262 \\
+		Adjective & 823 & 852 & 217 \\
+		Proper noun & 5412 & 3523 & 1444 \\
+		Adverb & 197 & 205 & 63 \\
+		Numeral & 63 & 67 & 45 \\
+		Conjunction & 52 & 50 & 15 \\
+		Postposition & 56 & 46 & 12 \\
+		Pronoun & 17 & 17 & 18 \\
+		Determiner & 42 & 37 & 9 \\
 		\midrule
-		Total: & - & - & - \\
+		Total: & 10942 & 9009 & 4687 \\
 		\bottomrule
 \end{tabular}
  \caption{Number of stems in each of the categories}
@@ -183,7 +187,7 @@ We have evaluated the morphological analysers in two ways. The first was by calc
 \subsection{Corpora}
 
 %FIXME: sources
-We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following wikipedia dumps were used: kkwiki-20131006-pages-articles.xml.bz2, FIXME.} news,\footnote{All content from RFE/RL (\url{http://www.azattyq.org/}) for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and a Tatar translation of the New Testament available from \url{http://ibt.org.ru}}  As there is currently no wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk from \footnote{http://sh-tavisi.etnosmi.ru/}.}
+We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following wikipedia dumps were used: kkwiki-20131006-pages-articles.xml.bz2, FIXME.} news,\footnote{All content from \url{http://www.azattyq.org/} for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and a Tatar translation of the New Testament available from \url{http://ibt.org.ru}}  As there is currently no wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk content from \url{http://sh-tavisi.etnosmi.ru/}.}
 
 %The corpora were obtained from:
 % Wikipedia:
@@ -223,6 +227,20 @@ The coverage of each transducer over the various corpora is shown in table \ref{
 \end{center}
 \end{table}
 
+\subsection{Precision and recall}
+
+Precision and recall are measures of the average accuracy of analyses provided by a morphological transducer.  Precision represents the number of the analyses given for a form that are correct.  Recall is the percentage of analyses that are deemed correct for a form (by comparing against a gold standard) that are provided by the transducer.
+
+To calculate precision and recall, it was necessary to create a hand-verified list of surface forms and their analyses.  We extracted 1,000 unique surface forms at random from a news corpus for each language, and checked that they were valid words in the languages and correctly spelt.  Where a word was incorrectly spelt or deemed not to be a form used in the language, it was discarded and a new random word selected.
+
+%FIXME: footnote with urls
+This list of surface forms was then analysed with the most recent version of the analyser, and each analysis was checked.  Where an analysis was erroneous, it was removed; where an analysis was missing, it was added.  This process gave us a `gold standard' morphologically analysed word list of 500 surface forms with their analyses.  The list is publically available for each language.%\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/eval/ref.1000.txt}}
+
+We then took the same list of surface forms and ran them through the morphological analyser once more.  Precision was calculated as the number of analyses which were found in both the output from the morphological analyser and the gold standard, divided by the total number of analyses output by the morphological analyser.
+
+Recall was calculated as the total number of analyses found in both the output from the morphological analyser and the gold standard, divided by the number of analyses found in the morphological analyser plus the number of analyses found in the gold standard but not in the morphological analyser.
+
+The results for precision and recall will be presented in table~\ref{table:precrecall}.
 
 
 \begin{table}
@@ -237,10 +255,9 @@ The coverage of each transducer over the various corpora is shown in table \ref{
 	\bottomrule
 	\end{tabular}
 	\caption{Precision and recall}
-	\label{table:coverage}
+	\label{table:precrecall}
 \end{center}
 \end{table}
-
 
 
 \section{Future work}
@@ -248,7 +265,11 @@ The coverage of each transducer over the various corpora is shown in table \ref{
 %Code switching - +example
 %More languages: Nogai, Bashkir, Karakalpak, Karachay-Balkar
 
+One direction for future work is to develop transducers for more languages.  We have already constructed usable prototype transducers for three other Kypchak languages: Bashkir (N), Nogay (S), and Karakalpak (S).  Since our ability to develop production-ready transducers is limited by availability of resources, including corpora in the languages and native speaker consultants, the Western Kypchak languages (aside from Kumyk) have been more neglected by our team.  However, these language communities would benefit from computational tools for the language, and work on them may be bootstrapped from the existing transducers, so working on morphological transducers for these languages is also a priority.
+
 \section{Conclusions}
+
+We have described morphological transducers for three Kypchak languages---one from each branch of Kypchak---including the development process and performance of the analysers.
 
 \section*{Acknowledgements}
 
