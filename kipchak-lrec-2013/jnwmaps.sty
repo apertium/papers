@@ -1,0 +1,21 @@
+\ProvidesPackage{jnwmaps}
+
+\usepackage{subfig}
+%\usepackage{rotfloat}
+\usepackage{float}
+\usepackage{caption}
+\newfloat{map}{tbph}{lom}
+\restylefloat*{map}
+\floatstyle{plain}
+\floatname{map}{Map}
+\captionsetup[map]{position=bottom}
+\newcommand{\listofmaps}{\listof{map}{List of Maps}}
+\newsubfloat[position=bottom,listofformat=subsimple]{map}
+
+
+
+\usepackage{newfloat}
+\usepackage{hvfloat}
+
+\DeclareFloatingEnvironment[name=Map,placement=htbp,fileext=lop]{rotmap}
+

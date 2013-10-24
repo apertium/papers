@@ -15,6 +15,7 @@
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 \usepackage{booktabs}
+\usepackage{jnwmaps}
 
 \setromanfont{Times New Roman}
 
@@ -70,7 +71,13 @@ E-03071 Alacant (Spain)\\
 
 This paper describes the development of morphological transducers for three closly related languages: Kazakh, Tatar, and Kumyk.
 
-These languages belong to the Northwestern branch of Turkic, which is often referred to as the Kypchak branch.  This branch can be divided into three subbranches.  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the Southern Kypchak group \citep[82-83]{histofturkic}.  As such, each of these three languages represents a different one of the three branches of Kypchak.  The geographic distribution of the languages is shown in map \ref{}.
+These languages belong to the Northwestern branch of Turkic, which is often referred to as the Kypchak branch.  This branch can be divided into three subbranches.  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the Southern Kypchak group \citep[82-83]{histofturkic}.  As such, each of these three languages represents a different one of the three branches of Kypchak.  The geographic distribution of the languages is shown in map \ref{map}.
+
+\begin{map*}
+	\label{map}
+	\includegraphics[width=\textwidth]{map/map}
+	\caption{The three branches of Kypchak (N, S, W), showing the distribution of the three languages for which transducers were developed (tat, kaz, kum).  Language codes are from ISO 639-3.}
+\end{map*}
 
 In a linguistic sense, these languages have different amounts of influence from other Turkic branches (e.g., moderate Oghuz (SE) influence in the Western group, slight Oghuz influence in the Northern group) and from Mongolic languages (moderate influence on the Southern group, lighter in the other groups), and all have heavy influence from Persian.
 
@@ -110,10 +117,10 @@ The Kumyk transducer was developed starting at the beginning of October, 2013 as
 \subsection{Description}
 
 %FIXME: keep revision number up to date
-The transducers are available / under development at \url{https://svn.code.sf.net/p/apertium/svn/languages/}, in the directories apertium-kaz, apertium-tat, and apertium-kum.  The revision of the entire subversion repository that the numbers (stem counts, evaluation, etc.) in this paper represent is \texttt{r48137}.
+The transducers are available / under development in apertium's subversion repository,\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/}} in the directories apertium-kaz, apertium-tat, and apertium-kum.  The revision of the entire subversion repository that the numbers (stem counts, evaluation, etc.) in this paper represent is \texttt{r48137}.
 
 %FIXME: update for the three languages
-The tagset consists of 127 separate tags, 19 covering the main parts of speech (noun, verb, adjective, adverb, postposition, etc.) and 108 covering morphological subcategorisation for e.g. case, number, person, possession, transitivity, tense-aspect-mood, etc. The tags are represented as multicharacter symbols, between less than `<' and greater than `>' symbols. The tagset is quite extensive and still not entirely stabilised, as such a full listing is not included here. However, the tags are listed in the source code of the transducer,\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/} testing} along with comments describing their usage.
+The tagset consists of 127 separate tags, 19 covering the main parts of speech (noun, verb, adjective, adverb, postposition, etc.) and 108 covering morphological subcategorisation for e.g. case, number, person, possession, transitivity, tense-aspect-mood, etc. The tags are represented as multicharacter symbols, between less than `<' and greater than `>' symbols. The tagset is quite extensive and still not entirely stabilised, as such a full listing is not included here. However, the tags are listed in the source code of the transducer,\footnote{no url needed?} along with comments describing their usage.
 
 
 \section{Methodology}
