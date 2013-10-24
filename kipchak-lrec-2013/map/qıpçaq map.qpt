@@ -1,0 +1,38 @@
+<Composer title="Composer 3" visible="1">
+ <ComposerLabel valign="128" labelText="S" id="" halign="4" margin="0">
+  <LabelFont description="Sans Serif,20,-1,5,75,0,0,0,0,0"/>
+  <FontColor red="0" blue="0" green="0"/>
+  <ComposerItem width="12.08843980877883" x="95.85600463566563" y="32.7512675648269" rotation="0" height="11.91539910183977" frame="false" outlineWidth="0" zValue="4" lastValidViewScaleFactor="3.492537313432836" positionLock="false">
+   <FrameColor alpha="255" red="0" blue="0" green="0"/>
+   <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
+  </ComposerItem>
+ </ComposerLabel>
+ <ComposerLabel valign="128" labelText="N" id="" halign="4" margin="0">
+  <LabelFont description="Sans Serif,20,-1,5,75,0,0,0,0,0"/>
+  <FontColor red="0" blue="0" green="0"/>
+  <ComposerItem width="11.59742141098079" x="90.62052730696796" y="4.011589164131541" rotation="0" height="11.44994929740692" frame="false" outlineWidth="0" zValue="3" lastValidViewScaleFactor="3.492537313432836" positionLock="false">
+   <FrameColor alpha="255" red="0" blue="0" green="0"/>
+   <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
+  </ComposerItem>
+ </ComposerLabel>
+ <ComposerLabel valign="128" labelText="W" id="" halign="4" margin="0">
+  <LabelFont description="Sans Serif,20,-1,5,75,0,0,0,0,0"/>
+  <FontColor red="0" blue="0" green="0"/>
+  <ComposerItem width="11.59495871360279" x="30.20846008981602" y="24.18528176155295" rotation="0" height="11.89164131537013" frame="false" outlineWidth="0" zValue="2" lastValidViewScaleFactor="3.492537313432836" positionLock="false">
+   <FrameColor alpha="255" red="0" blue="0" green="0"/>
+   <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
+  </ComposerItem>
+ </ComposerLabel>
+ <ComposerMap keepLayerSet="false" id="0" previewMode="Cache" drawCanvasItems="true">
+  <Extent ymin="41.80001170417298" xmin="23.50003892366" ymax="56.92499224234299" xmax="83.99996107634"/>
+  <LayerSet/>
+  <Grid gridStyle="0" crossLength="3" penColorRed="0" penColorBlue="0" intervalX="0" offsetX="0" intervalY="0" offsetY="0" show="0" penWidth="0" penColorGreen="0">
+   <Annotation direction="0" precision="3" position="1" frameDistance="1" show="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+  </Grid>
+  <ComposerItem width="200" x="0" y="0" rotation="0" height="50" frame="false" outlineWidth="0" zValue="1" lastValidViewScaleFactor="3.492537313432836" positionLock="false">
+   <FrameColor alpha="255" red="0" blue="0" green="0"/>
+   <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+  </ComposerItem>
+ </ComposerMap>
+ <Composition printResolution="100" paperWidth="200" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" snapping="0" paperHeight="50" printAsRaster="0"/>
+</Composer>
