@@ -73,9 +73,6 @@ E-03071 Alacant (Spain)\\
 
 This paper describes the development of morphological transducers for three closly related languages: Kazakh, Tatar, and Kumyk.
 
-
-\cite{bekmanova2013}
-
 %FIXME: brief background on how, when, and with what support were developed?
 The transducers for these languages 
 
@@ -85,14 +82,14 @@ The three languages for which transducers were developed belong to the Northwest
 
 \begin{map*}[htbp]
 	\includegraphics[width=\textwidth]{map/map}
-	\caption{The three branches of Kypchak (N, S, W), showing the distribution of the three languages for which transducers were developed (tat, kaz, kum).  Language codes are from ISO 639-3.}
+	\caption{The three subbranches of Kypchak (N, S, W), roughly divided with black lines, showing the geographic distribution of the three languages for which transducers were developed (tat, kaz, kum).  Language codes are from ISO 639-3.}
 	\label{map1}
 \end{map*}
 
 These languages have different amounts of linguistic influence from other Turkic branches (e.g., moderate Oghuz (SE) influence in the Western group, slight Oghuz influence in the Northern group) and from Mongolic languages (moderate influence on the Southern group, lighter in the other groups), and all have heavy influence from Persian.
 
 \subsection{Kazakh}
-Kazakh /q{\symbl ɑ}z{\symbl ɑ}q/ is spoken primarily in Kazakhstan, where it is the national language, sharing official status with Russian as an official language.  Large communities of native speakers also exist in China, neighbouring Central-Eurasian republics, and Mongolia.  Estimates of the total number of speakers range from 8 million \citep{ethnologue} to 11 million \citep{encyclopedin} people.
+Kazakh /q{\symbl ɑ}z{\symbl ɑ}q/ is spoken primarily in Kazakhstan, where it is the national language, sharing official status with Russian as an official language.  Large communities of native speakers also exist in China, neighbouring Central-Eurasian republics, and Mongolia.  Estimates of the total number of speakers range from 8 million \citep{ethnologue} to 11 million \citep{nationalencyklopedin} people.
 
 \subsection{Tatar}
 Tatar /t{\symbl ɒ}t{\symbl ɑ}r/ is spoken in and around Tatarstan by approximately 5.4 million people \citep{ethnologue}.  It is co-official with Russian in Tatarstan --- a republic within Russia.  A majority of native speakers of both languages are bilingual in Russian. %, and the standard varieties our system FIXMEs are written in Cyrillic.
@@ -100,15 +97,14 @@ Tatar /t{\symbl ɒ}t{\symbl ɑ}r/ is spoken in and around Tatarstan by approxima
 \subsection{Kumyk}
 Kumyk /qumuq/ is spoken in Dagestan, a Republic of the Russia Federation, where it is co-official with a number of other languages of Dagestan \citep{ethnologue}.  There are approximately 430 thousand speakers \citep{ethnologue}.
 
-\cite{bammatov1960}
-\cite{olmesov2000}
-
 \section{Background}
-\subsection{Morphological transducers}
+\subsection{Morphological transducers, previous work}
 %FIXME: need a source, maybe something by Tommi?
-The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms.  Since they are implemented as finite-state automata \citet{FSTs}, they are reversible by default.
+The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms.  Since they are implemented as finite-state automata, they are reversible by default.
 
-The transducers were designed based on the Helsinki Finite State Toolkit \citep{linden2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis.  It implements both the \textbf{lexc} formalism for defining lexicons, and the \textbf{twol} and \textbf{xfst} formalisms for modeling morphophonological rules.  It also supports other finite state transducer formalisms such as \textbf{sfst}.  This toolkit has been chosen as it -- or the equivalent XFST -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
+The transducers were designed based on the Helsinki Finite State Toolkit \citep{hfst/2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis.  It implements both the \textbf{lexc} formalism for defining lexicons, and the \textbf{twol} and \textbf{xfst} formalisms for modeling morphophonological rules.  It also supports other finite state transducer formalisms such as \textbf{sfst}.  This toolkit has been chosen as it -- or the equivalent XFST -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
+
+The authors learned of another Kazakh morphological transducer in existence \citep{bekmanova2013} only after production-ready version of our transducer was released.  We have not yet been able to evaluate this system or compare it to ours.
 
 Creating a morphological transducers in the above-mentioned formalisms simply involves encoding linguistic knowledge about the language in the formalisms.  The lexc and twol formalisms resemble linguistic formalisms, allowing the coders to work with abstractions resembling linguistic categories such lexemes, morphemes, phonemes, and even archiphonemes---as opposed to a raw FST, where input characters are translated to output characters along a graph.
 
@@ -143,7 +139,9 @@ The morphotactics of Turkic languages are complex enough that even a linguist wh
 
 The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was coauthored by a linguist who is fluent in and has a good linguistic knowledge of Kyrgyz together with a native speaker of Kyrgyz, and in consultation with another native speaker of Kyrgyz.  The initial developer of the Kazakh morphotactic was the same linguist, who is fluent in and has a good linguistic understanding Kazakh.  The morphotactics of Tatar were developed for the most part by a native Tatar speaker, who also worked to polish off the morphotactics of the Kazakh transducer.
 
-As the authors found it difficult to locate native speakers of Kumyk, the morphotactics of the Kumyk transducer were developed based on the existing encoded morphotactics of Kazakh and Tatar (and occasionally Kyrgyz), with consultation of corpora, as described above.
+As the authors found it difficult to locate native speakers of Kumyk, the morphotactics of the Kumyk transducer were developed based on the existing encoded morphotactics of Kazakh and Tatar (and occasionally Kyrgyz), with consultation of corpora, as described above.  A dictionary \citep{bammatov1960} and a grammar \citep{olmesov2000} of Kumyk were also consulted as needed.
+
+
 
 % FIXME: how long it took
 % FIXME: make a graph for the kumyk one
@@ -173,7 +171,7 @@ As the authors found it difficult to locate native speakers of Kumyk, the morpho
 		\bottomrule
 \end{tabular}
  \caption{Number of stems in each of the categories}
- \label{table:coverage}
+ \label{table:stems}
 \end{center}
 
 \end{table}
