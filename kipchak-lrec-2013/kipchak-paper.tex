@@ -189,14 +189,14 @@ We have evaluated the morphological analysers in two ways. The first was by calc
 %FIXME: sources
 We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following wikipedia dumps were used: kkwiki-20131006-pages-articles.xml.bz2, FIXME.} news,\footnote{All content from \url{http://www.azattyq.org/} for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and a Tatar translation of the New Testament available from \url{http://ibt.org.ru}}  As there is currently no wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk content from \url{http://sh-tavisi.etnosmi.ru/}.}
 
-%The corpora were obtained from:
-% Wikipedia:
-% RFE/RL
-% Yoldaš: 
-% New testaments:
-
-% kaz: 
-% tat:
+% Tatar, religion: tat.nt.ibt.txt, tat.quran.nughmani.txt.bz2
+% Tatar, wp: tat.wikipedia.2013-02-25.txt.bz2
+% Tatar, news: tat.news.2005-2011_300K-sentences.txt.bz2
+% Kazakh, religion: kaz.bible.kkitap.txt.bz2, kaz.quran.altay.txt.bz2
+% Kazakh, wp: kaz.wikipedia2.2013.txt.bz2
+% Kazakh, news: kaz.rferl.2010.xml.bz2, kaz.rferl2.2012.txt
+% Kumyk, religion: kum.nt.ibt.txt, (kum.genesis.ibt.txt)
+% Kumyk, news: kum.yoldash.2013.txt, kum.articles.kumukia.txt.bz2
 
 The coverage of each transducer over the various corpora is shown in table \ref{table:corpora}.
 
@@ -204,22 +204,25 @@ The coverage of each transducer over the various corpora is shown in table \ref{
 \begin{center}
 \begin{tabular}{llrr}
 \toprule
-\textbf{Language} & \textbf{Corpus} & \textbf{Words} & \textbf{Coverage} \\
+\textbf{Language} & \textbf{Corpus} & \textbf{Words} & \textbf{Coverage} (\%) \\
 \midrule
-\multirow{4}{*}{Kazakh} & Wikipedia 2013 &  -  &  - \\
-	& RFE/RL 2010 & 3.2M & - \\
-	& Bible & 577K & - \\\cline{2-4}
+\multirow{4}{*}{Kazakh} & Wikipedia &  -  &  - \\
+	& News & 3.2M & - \\
+	& Religion & 577K & - \\\cline{2-4}
 	& Average & - & 90.5\% \\
 \midrule
-\multirow{4}{*}{Tatar} & Wikipedia 2013 & 128K &  - \\
+\multirow{4}{*}{Tatar} & Wikipedia & 128K &  - \\
 	%FIXME: the News corpus isn't RFERL, pretty sure; maybe we should test just on RFERL content?
-	& News 2005--2011 & 4.6M & - \\
-	& New Testament & 137K & - \\\cline{2-4}
+	& News & 4.6M & - \\
+	& Religion & 137K & - \\\cline{2-4}
 	& Average & - & 89.0\% \\
 \midrule
-\multirow{3}{*}{Kumyk} & Yoldaš & 287K &  - \\
-	& New Testament & 154K & - \\\cline{2-4}
-	& Average & - & 90.1\% \\
+% news = kum.yoldash.2013.txt
+% religion = kum.genesis.ibt.txt, kum.nt.ibt.txt
+\multirow{4}{*}{Kumyk} & Wikipedia & -- & -- \\
+        & News & 287K &  91.4 $\pm$ 0.7 \\
+	& Religion & 227K & 92.0 $\pm$ 1.1 \\\cline{2-4}
+	& Average & - & 91.7 $\pm$ 0.7 \\
 \bottomrule
 \end{tabular}
  \caption{Corpora used for naïve coverage tests}
