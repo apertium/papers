@@ -21,6 +21,7 @@
 \setromanfont{Times New Roman}
 \newfontfamily\symbl[Scale=MatchLowercase]{FreeSerif}
 
+\newcommand{\tags}[1]{\texttt{#1}}
 
 \bibdata{kipchak-paper}
 
@@ -127,6 +128,9 @@ The transducers are available / under development in apertium's subversion repos
 
 % Handling numerals and acronyms.
 
+% Russian loans not obeying phonology N5, e.g. ё vs . самолёт
+
+
 \subsection{Development effort}
 
 The three transducers discussed in this paper are for Kazakh, Tatar, and Kumyk.  The Kazakh and Tatar transducers were originally created as part of an experimental Kazakh-Tatar machine translation system in December of 2010.  The Kazakh transducer was expanded during Google Code-In 2010 and 2011, and the Tatar transducer was expanded as part of a prototype Tatar and Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12}.  The Kazakh-Tatar machine translation system, along with the two transducers, was expanded to production-level quality as part of a Google Summer of Code project in 2012 \citep{salimzyanov2013}.
@@ -179,6 +183,45 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
 \end{center}
 
 \end{table}
+
+% FIXME: example output
+
+\begin{table*}
+
+% kaz: ^Құдай/Құдай<n><nom>/Құдай<n><attr>/Құдай<n><nom>+е<cop><p3><pl>/Құдай<n><nom>+е<cop><p3><sg>$ ^Өзінің/Өз<prn><ref><p3><sg><gen>$ ^жаратқандарының/жарат<v><tv><ger_past><pl><px3sp><gen>/жарат<v><tv><gpr_past><subst><pl><px3sp><gen>$ ^бәріне/бәрі<prn><qnt><px3sp><dat>$ ^қарап/қара<v><tv><prc_perf>/қара<v><tv><gna_perf>/қара<v><tv><prc_perf>$^,/,<cm>$ ^өте/өт<v><tv><prc_impf>/өте<adv>/өте<v><tv><imp><p2><sg>$ ^жақсы/жақсы<adj>/жақсы<adv>/жақсы<adj><advl>/жақсы<adj><subst><nom>/жақсы<adj>+е<cop><p3><pl>/жақсы<adj>+е<cop><p3><sg>/жақсы<adj><subst><nom>+е<cop><p3><pl>/жақсы<adj><subst><nom>+е<cop><p3><sg>$ ^екенін/е<cop><ger_past><px3sp><acc>$ ^көрді/көр<vaux><ifi><p3><pl>/көр<vaux><ifi><p3><sg>/көр<v><tv><ifi><p3><pl>/көр<v><tv><ifi><p3><sg>$^./.<sent>$ 
+% kum: ^Аллагь/аллагь<n><nom>/аллагь<n><attr>$ ^Оьзю/оьз<prn><ref><px3sp><nom>$ ^яратгъан/ярат<v><tv><gpr_past>/ярат<v><tv><gpr_past><subst><nom>/ярат<v><tv><ger_past><nom>/ярат<v><tv><past><p3><sg>$ ^затлагъа/зат<n><pl><dat>$ ^къарап/къара<v><tv><prc_perf>/къара<v><tv><gna_perf>$^,/,<cm>$ ^олар/о<prn><dem><pl><nom>/олар<prn><pers><p3><pl><nom>$ ^бек/бек<adv>$ ^яхшы/яхшы<adj>/яхшы<adj><subst><nom>$ ^экенин/э<cop><ger_past><px3sp><acc>$ ^гёрген/гёр<v><tv><gpr_past>/гёр<v><tv><gpr_past><subst><nom>/гёр<v><tv><ger_past><nom>/гёр<v><tv><past><p3><sg>$^../..<sent>$
+
+
+\centering
+
+Құдай Өзінің жаратқандарының бәріне қарап, өте жақсы екенін көрді. \\
+% ходай Үзенең яратканнарының *бəріне карап, бик яхшы икәнен күрде.
+Аллагь Оьзю яратгъан затлагъа къарап, олар бек яхшы экенин гёрген. \\
+
+~\\
+
+\begin{tabular}{lll}
+ \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+\hline
+ Құдай\tags{<n><nom>} &  & Аллагь\tags{<n><nom>}  \\
+ Өз\tags{<prn><ref><p3><sg><gen>} & & Оьз\tags{<prn><ref><px3sp><nom>} \\
+ жарат\tags{<v><tv><ger\_past><pl><px3sp><gen>} & & ярат\tags{<v><tv><gpr\_past>} \\
+ бәрі\tags{<prn><qnt><px3sp><dat>} & & зат\tags{<n><pl><dat>} \\
+ қара\tags{<v><tv><gna\_perf>} & & къара\tags{<v><tv><gna\_perf>} \\ 
+ ,\tags{<cm>} & & ,\tags{<cm>} \\
+ ---      & & олар\tags{<prn><pers><p3><pl><nom>} \\
+ өт\tags{<adv>} & & бек\tags{<adv>} \\
+ жақсы\tags{<adj>} & & яхшы\tags{<adj>} \\
+ е\tags{<cop><ger\_past><px3sp><acc>} & & э\tags{<cop><ger\_past><px3sp><acc>} \\
+ көр\tags{<v><tv><ifi><p3><sg>} & & гёр\tags{<v><tv><past><p3><sg>} \\  
+ .\tags{<sent>} & & .\tags{<sent>} \\
+\hline
+\end{tabular}
+
+\label{table:exoutput}
+\caption{An example of the output of each of the morphological transducers for the same sentence.}
+
+\end{table*}
 
 \section{Evaluation}
 
