@@ -4,10 +4,10 @@
     <mapcanvas>
         <units>degrees</units>
         <extent>
-            <xmin>9.140262</xmin>
-            <ymin>31.664784</ymin>
-            <xmax>87.038957</xmax>
-            <ymax>68.977031</ymax>
+            <xmin>22.682171</xmin>
+            <ymin>39.509774</ymin>
+            <xmax>66.504810</xmax>
+            <ymax>60.500127</ymax>
         </extent>
         <projections>1</projections>
         <destinationsrs>
@@ -24,9 +24,14 @@
         </destinationsrs>
     </mapcanvas>
     <legend>
-        <legendlayer open="true" checked="Qt::Checked" name="qıpçaq bölümleri" showFeatureCount="0">
+        <legendlayer open="true" checked="Qt::Checked" name="qıpçaq bölümleri smooth" showFeatureCount="0">
             <filegroup open="true" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="qıpçaq_bölümleri20131023232048613" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="qıpçaq_bölümleri_smooth20140218225600993" visible="1"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="true" checked="Qt::Unchecked" name="qıpçaq bölümleri" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="qıpçaq_bölümleri20131023232048613" visible="0"/>
             </filegroup>
         </legendlayer>
         <legendlayer open="true" checked="Qt::Checked" name="qıpçaq tiller" showFeatureCount="0">
@@ -134,19 +139,14 @@
                 <legendlayerfile isInOverview="0" layerid="MNG_adm020120807222534127" visible="1"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="10m-ocean" showFeatureCount="0">
-            <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="10m_ocean20100301224636524" visible="1"/>
-            </filegroup>
-        </legendlayer>
         <legendlayer open="false" checked="Qt::Unchecked" name="10m-admin-0-countries" showFeatureCount="0">
             <filegroup open="false" hidden="false">
                 <legendlayerfile isInOverview="0" layerid="10m_admin_0_countries20100301223348552" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="grey layer" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="grey layer" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="junk20100301191043608" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="junk20100301191043608" visible="0"/>
             </filegroup>
         </legendlayer>
         <legendlayer open="false" checked="Qt::Unchecked" name="ROU_adm1" showFeatureCount="0">
@@ -264,14 +264,24 @@
                 <legendlayerfile isInOverview="0" layerid="grey_layer20100301225746865" visible="1"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="10m-lakes" showFeatureCount="0">
-            <filegroup open="false" hidden="false">
+        <legendlayer open="true" checked="Qt::Checked" name="NE2_HR_LC_SR_W_DR" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="NE2_HR_LC_SR_W_DR20140218095032131" visible="1"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="true" checked="Qt::Checked" name="10m-lakes" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
                 <legendlayerfile isInOverview="0" layerid="10m_lakes20100301224840604" visible="1"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="10m-rivers-lake-centerlines" showFeatureCount="0">
+        <legendlayer open="true" checked="Qt::Unchecked" name="10m-ocean" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="10m_ocean20100301224636524" visible="0"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Unchecked" name="10m-rivers-lake-centerlines" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="10m_rivers_lake_centerlines20100301225015176" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="10m_rivers_lake_centerlines20100301225015176" visible="0"/>
             </filegroup>
         </legendlayer>
         <legendlayer open="false" checked="Qt::Unchecked" name="NE1_HR_LC" showFeatureCount="0">
@@ -279,13 +289,21 @@
                 <legendlayerfile isInOverview="0" layerid="NE1_HR_LC20100301163532828" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="SR_HR" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="SR_HR" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="SR_HR20100301162045062" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="SR_HR20100301162045062" visible="0"/>
             </filegroup>
         </legendlayer>
     </legend>
     <Composer title="Composer 1" visible="0">
+        <ComposerLabel valign="0" labelText="Mongolia" id="" halign="0" margin="1">
+            <LabelFont description="Junicode,20,-1,5,50,0,0,0,0,0"/>
+            <FontColor red="0" blue="0" green="0"/>
+            <ComposerItem width="30.65620526884716" x="92.97113117975097" y="61.46636268353458" rotation="0" height="11.29992307943691" frame="false" outlineWidth="0.3" zValue="3" lastValidViewScaleFactor="3.356862745098039" positionLock="false">
+                <FrameColor alpha="255" red="0" blue="0" green="0"/>
+                <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
+            </ComposerItem>
+        </ComposerLabel>
         <ComposerLabel valign="0" labelText="China" id="" halign="4" margin="1">
             <LabelFont description="Junicode,20,-1,5,50,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
@@ -298,14 +316,6 @@
             <LabelFont description="Junicode,20,-1,5,50,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
             <ComposerItem width="37.01875944834938" x="7.963717187164642" y="51.70903220173028" rotation="0" height="8.710770295623021" frame="false" outlineWidth="0.3" zValue="4" lastValidViewScaleFactor="3.356862745098039" positionLock="false">
-                <FrameColor alpha="255" red="0" blue="0" green="0"/>
-                <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
-            </ComposerItem>
-        </ComposerLabel>
-        <ComposerLabel valign="0" labelText="Mongolia" id="" halign="0" margin="1">
-            <LabelFont description="Junicode,20,-1,5,50,0,0,0,0,0"/>
-            <FontColor red="0" blue="0" green="0"/>
-            <ComposerItem width="30.65620526884716" x="92.97113117975097" y="61.46636268353458" rotation="0" height="11.29992307943691" frame="false" outlineWidth="0.3" zValue="3" lastValidViewScaleFactor="3.356862745098039" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
             </ComposerItem>
@@ -334,7 +344,7 @@
     <Composer title="Composer 2" visible="0">
         <Composition printResolution="300" paperWidth="297" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" snapping="0" paperHeight="210" printAsRaster="0"/>
     </Composer>
-    <Composer title="Composer 3" visible="0">
+    <Composer title="Composer 3" visible="1">
         <ComposerLabel valign="128" labelText="S" id="" halign="4" margin="0">
             <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
@@ -365,14 +375,14 @@
             <Grid gridStyle="0" crossLength="3" penColorRed="0" penColorBlue="0" intervalX="0" offsetX="0" intervalY="0" offsetY="0" show="0" penWidth="0" penColorGreen="0">
                 <Annotation direction="0" precision="3" position="1" frameDistance="1" show="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
             </Grid>
-            <ComposerItem width="291" x="0" y="0" rotation="0" height="87.54000000000001" frame="false" outlineWidth="0" zValue="1" lastValidViewScaleFactor="2.424657534246575" positionLock="false">
+            <ComposerItem width="291" x="0" y="0" rotation="0" height="87.54000000000001" frame="false" outlineWidth="0" zValue="1" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
             </ComposerItem>
         </ComposerMap>
-        <Composition printResolution="100" paperWidth="291" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" snapping="0" paperHeight="87.5" printAsRaster="0"/>
+        <Composition printResolution="150" paperWidth="291" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" snapping="0" paperHeight="87.5" printAsRaster="0"/>
     </Composer>
-    <projectlayers layercount="52">
+    <projectlayers layercount="55">
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>10m_admin_0_countries20100301223348552</id>
             <datasource>/data/GIS/natural earth vector/10m-admin-0-countries.shp|layerid=0</datasource>
@@ -632,12 +642,12 @@
                 <symbols>
                     <symbol outputUnit="MM" alpha="1" type="fill" name="0">
                         <layer pass="0" class="SimpleFill" locked="0">
-                            <prop k="color" v="255,255,255,255"/>
-                            <prop k="color_border" v="255,255,255,255"/>
+                            <prop k="color" v="0,170,255,255"/>
+                            <prop k="color_border" v="0,0,255,255"/>
                             <prop k="offset" v="0,0"/>
                             <prop k="style" v="solid"/>
                             <prop k="style_border" v="solid"/>
-                            <prop k="width_border" v="0.25"/>
+                            <prop k="width_border" v="0.26"/>
                         </layer>
                     </symbol>
                 </symbols>
@@ -3127,6 +3137,62 @@
                 </threeValuePixelList>
             </rasterproperties>
         </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+            <id>NE2_HR_LC_SR_W_DR20140218095032131</id>
+            <datasource>/data/GIS/natural earth vector/NE2_HR_LC_SR_W_DR.tif</datasource>
+            <layername>NE2_HR_LC_SR_W_DR</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</proj4>
+                    <srsid>3452</srsid>
+                    <srid>4326</srid>
+                    <authid>EPSG:4326</authid>
+                    <description>WGS 84</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>WGS84</ellipsoidacronym>
+                    <geographicflag>true</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <customproperties/>
+            <provider>gdal</provider>
+            <rasterproperties>
+                <mDrawingStyle>MultiBandColor</mDrawingStyle>
+                <mColorShadingAlgorithm>UndefinedShader</mColorShadingAlgorithm>
+                <mInvertColor boolean="false"/>
+                <mRedBandName>Band 1</mRedBandName>
+                <mGreenBandName>Band 2</mGreenBandName>
+                <mBlueBandName>Band 2</mBlueBandName>
+                <mGrayBandName>Not Set</mGrayBandName>
+                <mStandardDeviations>0</mStandardDeviations>
+                <mUserDefinedRGBMinimumMaximum boolean="false"/>
+                <mRGBMinimumMaximumEstimated boolean="true"/>
+                <mUserDefinedGrayMinimumMaximum boolean="false"/>
+                <mGrayMinimumMaximumEstimated boolean="true"/>
+                <mContrastEnhancementAlgorithm>NoEnhancement</mContrastEnhancementAlgorithm>
+                <contrastEnhancementMinMaxValues>
+                    <minMaxEntry>
+                        <min>0</min>
+                        <max>255</max>
+                    </minMaxEntry>
+                    <minMaxEntry>
+                        <min>0</min>
+                        <max>255</max>
+                    </minMaxEntry>
+                    <minMaxEntry>
+                        <min>0</min>
+                        <max>255</max>
+                    </minMaxEntry>
+                </contrastEnhancementMinMaxValues>
+                <mNoDataValue mValidNoDataValue="true">-32768.000000</mNoDataValue>
+                <singleValuePixelList>
+                    <pixelListEntry pixelValue="-32768.000000" percentTransparent="100"/>
+                </singleValuePixelList>
+                <threeValuePixelList>
+                    <pixelListEntry red="-32768.000000" blue="-32768.000000" green="-32768.000000" percentTransparent="100"/>
+                </threeValuePixelList>
+            </rasterproperties>
+        </maplayer>
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>POL_adm020131024020648570</id>
             <datasource>/data/GIS/Eastern Europe/POL_adm0.shp</datasource>
@@ -4229,7 +4295,7 @@
                 <symbols>
                     <symbol outputUnit="MM" alpha="0.4980392156862745" type="fill" name="0">
                         <layer pass="0" class="SimpleFill" locked="0">
-                            <prop k="color" v="123,118,121,127"/>
+                            <prop k="color" v="191,186,176,127"/>
                             <prop k="color_border" v="0,0,0,127"/>
                             <prop k="offset" v="0,0"/>
                             <prop k="style" v="solid"/>
@@ -4370,7 +4436,7 @@
                 <symbols>
                     <symbol outputUnit="MM" alpha="0.4980392156862745" type="fill" name="0">
                         <layer pass="0" class="SimpleFill" locked="0">
-                            <prop k="color" v="177,176,191,127"/>
+                            <prop k="color" v="191,189,183,127"/>
                             <prop k="color_border" v="255,255,255,127"/>
                             <prop k="offset" v="0,0"/>
                             <prop k="style" v="solid"/>
@@ -4417,6 +4483,142 @@
             <id>qıpçaq_bölümleri20131023232048613</id>
             <datasource>/home/jonathan/quick/apertium/svn/papers/kipchak-lrec-2013/map/qıpçaq bölümleri.shp</datasource>
             <layername>qıpçaq bölümleri</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</proj4>
+                    <srsid>3452</srsid>
+                    <srid>4326</srid>
+                    <authid>EPSG:4326</authid>
+                    <description>WGS 84</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>WGS84</ellipsoidacronym>
+                    <geographicflag>true</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="UTF-8">ogr</provider>
+            <vectorjoins/>
+            <renderer-v2 symbollevels="0" type="singleSymbol">
+                <symbols>
+                    <symbol outputUnit="MM" alpha="1" type="line" name="0">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.5"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+                <rotation field=""/>
+                <sizescale field=""/>
+            </renderer-v2>
+            <customproperties/>
+            <displayfield>id</displayfield>
+            <label>0</label>
+            <labelattributes>
+                <label fieldname="" text="Label"/>
+                <family fieldname="" name="Sans Serif"/>
+                <size fieldname="" units="pt" value="12"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on=""/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype type="0" name="id"/>
+            </edittypes>
+            <editform></editform>
+            <editforminit></editforminit>
+            <annotationform></annotationform>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" geometry="Line" type="vector" hasScaleBasedVisibilityFlag="0">
+            <id>qıpçaq_bölümleri_memory20140218132533446</id>
+            <datasource>LineString</datasource>
+            <layername>qıpçaq bölümleri_memory</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</proj4>
+                    <srsid>3452</srsid>
+                    <srid>4326</srid>
+                    <authid>EPSG:4326</authid>
+                    <description>WGS 84</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>WGS84</ellipsoidacronym>
+                    <geographicflag>true</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="UTF-8">memory</provider>
+            <vectorjoins/>
+            <renderer-v2 symbollevels="0" type="singleSymbol">
+                <symbols>
+                    <symbol outputUnit="MM" alpha="1" type="line" name="0">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.5"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+                <rotation field=""/>
+                <sizescale field=""/>
+            </renderer-v2>
+            <customproperties/>
+            <displayfield>id</displayfield>
+            <label>0</label>
+            <labelattributes>
+                <label fieldname="" text="Label"/>
+                <family fieldname="" name="Sans Serif"/>
+                <size fieldname="" units="pt" value="12"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on=""/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype type="0" name="id"/>
+            </edittypes>
+            <editform></editform>
+            <editforminit></editforminit>
+            <annotationform></annotationform>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" geometry="Line" type="vector" hasScaleBasedVisibilityFlag="0">
+            <id>qıpçaq_bölümleri_smooth20140218225600993</id>
+            <datasource>/data/Documents/projects/apertium/svn/papers/kipchak-lrec-2013/map/qıpçaq bölümleri smooth.shp</datasource>
+            <layername>qıpçaq bölümleri smooth</layername>
             <srs>
                 <spatialrefsys>
                     <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</proj4>
