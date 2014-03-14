@@ -227,7 +227,20 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
 
 \subsection{Categorisation and tagset}
 
-\subsection{Technolinguistic issues}
+% FIXME: we should change this title
+\subsection{Technolinguistic issues} % hidden phonology issues? ...?
+There is a class of phenomena encountered during the development of these transducers, united by the fact that the morphophonology needs information about the stem's phonological form that is not provided by the orthographical representation.  These phenomena were left by \citet{washington2012} as future work, but have been extensively implemented in the transducers described by the current paper.
+
+Types of these phenomena include acronyms, ``irregular'' vowel harmony, Russian loanwords, and numerals.  A brief overview of each follows, along with examples, followed by details of our solution.
+
+%FIXME: description of each one, with examples
+
+The best way we have found to handle these phenomena in a two-layer FST like those that we use is to add phonological information at the end of stems that need it in the form of special ``abstract letters'' at the morphotactic stage that trigger phonological processes at the morphophonological stage and are deleted.
+
+%FIXME: example of implementation
+
+Since \texttt{twol} performs all operations in parallel, rules triggered by these must make reference to abstract letters that exist on the input tape but are null on the output tape.  This complicates existing rules that have been designed to ignore null characters on the output tape.  The \texttt{twol} rules resulting from the combination of processes simultaneously triggered by and ignoring output-null characters are rather ... uh, \textit{intricate} ... but they seem to work okay?  Just don't poke them too hard.  %FIXME
+
 
 \section{Evaluation}
 
