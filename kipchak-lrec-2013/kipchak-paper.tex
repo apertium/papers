@@ -20,6 +20,8 @@
 \defaultfontfeatures{Mapping=tex-text}
 \setromanfont{Times New Roman}
 \newfontfamily\symbl[Scale=MatchLowercase]{FreeSerif}
+\newfontfeature{IPA}{+mgrk}
+\newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
 
 \newcommand{\tags}[1]{\texttt{#1}}
 
@@ -318,17 +320,15 @@ There is a class of phenomena encountered during the development of these transd
 Types of these phenomena include acronyms, ``irregular'' vowel harmony, Russian loanwords, and numerals.  A brief overview of each follows, along with examples, followed by details of our solution.
 
 %FIXME: description of each one, with examples
-\begin{itemize}
- \item \textbf{Ambiguous and `irregular' harmony}: In Tatar, certain characters in the alphabet which represent vowels can be 
-   ambiguous between a vowel and a `yoticised' vowel, such as е, which is front or back. For 
-   example: дәрес `lesson', дәресләр `lessons'; ел `year', еллар `years'. 
+\begin{description}
+ \item{\textbf{Ambiguous and `irregular' harmony}:} In Tatar, the `yoticised' vowel letters ‹е›, ‹я›, and ‹ю› each ambiguously represent a set of sounds.  For example, ‹е› can represent the sounds of /j/ followed the sound of ‹э› (as in ‹егетләр› `boys') or ‹ы› (as in ‹еллар› `years'), and is also the non-initial orthographic variant of ‹э› (as in ‹дәресләр› `lessons').  In Kumyk, ‹ё› and ‹ю› are used intervocalically to represent front rounded vowels (as in ‹гёзлер› `eyes' and ‹гюнлер› `days'), but word-initially can represent ‹й› followed by either a front (as in ‹юреклер› `hearts', ‹ёнкюлер› `darlings') or a back (as in ‹юлдузлар› `stars', ёллар `roads') vowel.  In Kazakh, the vowels /{\qipa ɘ}/ ‹і› and /ə/ ‹ы› followed by a glide /w/ ‹у› or /j/ ‹й› are written ‹у› and ‹и›, depending on the glide; for example.  The character ‹ю› is used in turn to represent ‹й› followed by either multi-phoneme value of ‹у›.  %FIXME: good Kazakh examples 
  \item \textbf{Loan words}: In Kumyk, the character ё in Russian words is pronounced as in Russian where in native words 
    it represents the sound /ø/. These two pronunciations will select for different suffixes, the Russian pronunciation taking
-   back vowel suffixes самолётлар `aeroplanes', and /ø/ taking front vowel suffixes сёзлер `words'.
+   back vowel suffixes самолётлар `aeroplanes', and /ø/ taking front vowel suffixes сёзлер `words'.  %FIXME: -ия in Tatar
  \item \textbf{Acronyms and numerals}: Acronyms and numerals are challenging as they will often be pronounced out loud
    in their non-abbreviated forms, for example in Kazakh, 30-дан `from thirty', 5-тен `from 5'. The ablative
    suffix -DAn alters for the phonology, but in the numeral string there is no indication of how they should alter.
-\end{itemize}
+\end{description}
 
 Dealing with these phenomena would not be necessary if we were setting out to develop a simple computational
 model of the phonology of the language. However, a wide-coverage morphological analyser and generator needs to be 
@@ -338,8 +338,8 @@ Regarding numerals, work has been done for Finnish in the finite-state framework
 on the transducer. 
 
 % FIXME: cyrillic in \texttt
-Our solution is to add phonological information at the end of morphemes that need it in the form of special ``abstract letters'' that trigger phonological processes at the morphophonological stage and are deleted. For example, the string \texttt{5<num><subst><abl>}\footnote{The resulting forms, 5-тен\super{\texttt{kaz}}, 5-тән\super{\texttt{tat}}, and 5-ден\super{\texttt{kum}} would be pronounced бестен\super{\texttt{kaz}}, биштән\super{\texttt{tat}}, and бешден\super{\texttt{kum}}.} would have
-the morphotactic representation 5-\{э\}\{с\}>\{D\}\{A\}н, where \{э\} and \{с\} stand for phonological triggers, and \{D\}\{A\}н is the representation of the ablative morpheme at the morphotactic level. The symbol \{э\} signals that the following vowel needs to harmonise to a front unrounded vowel, and \{с\} signals that there is a final voiceless consonant.  So, the rules that operate on \{D\} and \{A\} will be able to do the forward voicing assimilation \{D\} surfacing as т /t/ and the front harmony \{A\} surfacing as е /e/.
+Our solution is to add phonological information at the end of morphemes that need it in the form of special ``abstract letters'' that trigger phonological processes at the morphophonological stage and are deleted. For example, the string \texttt{5<num><subst><abl>}\footnote{The resulting forms, 5-тен\super{\texttt{kaz}}, 5-тән\super{\texttt{tat}}, and 5-ден\super{\texttt{kum}} would be pronounced бестен\super{\texttt{kaz}}, биштән\super{\texttt{tat}}, and бешден\super{\texttt{kum}}.} has
+the morphotactic representation 5\{э\}\{с\}>-\{D\}\{A\}н, where \{э\} and \{с\} stand for phonological triggers, > represents a morpheme boundary, and \{D\}\{A\}н is the representation of the ablative morpheme at the morphotactic level.  The symbol \{э\} signals that the following vowel needs to harmonise to a front unrounded vowel, and \{с\} signals that there is a final voiceless consonant.  So, with 5\{э\}\{с\} in the lexicon, and a consistent continuation lexicon specifying the underlying form of case affixes, the rules that operate on \{D\} and \{A\} are able to do produce the correct output form in each language, avoiding the incorrect default *5-дан.
 
 %FIXME: example of implementation
 
