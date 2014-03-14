@@ -244,7 +244,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
  қара\tags{<v><tv><gna\_perf>} & кара\tags{<v><tv><gna\_perf>} & къара\tags{<v><tv><gna\_perf>} \\ 
 ,\tags{<cm>} & & ,\tags{<cm>} \\
  ---      & алар\tags{<prn><pers><p3><pl><gen>} & олар\tags{<prn><pers><p3><pl><nom>} \\
- өт\tags{<adv>} & бик\tags{<adv>} & бек\tags{<adv>} \\
+ өте\tags{<adv>} & бик\tags{<adv>} & бек\tags{<adv>} \\
  жақсы\tags{<adj>} & яхшы\tags{<adj>} & яхшы\tags{<adj>} \\
  е\tags{<cop><ger\_past><px3sp><acc>} & и\tags{<cop><ger\_past><px3sp><acc>} & э\tags{<cop><ger\_past><px3sp><acc>} \\
  көр\tags{<v><tv><ifi><p3><sg>} & күр\tags{<v><tv><past><p3><sg>} & гёр\tags{<v><tv><past><p3><sg>} \\  
@@ -255,8 +255,8 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
 \label{table:exoutput}
 \caption{An example of the output of each of the morphological transducers for the same 
   sentence (``And God saw every thing that he had made, and, behold, it was 
-  very good.'', Genesis 1:31). The sentence may be very roughly glossed as ``God own created things to looking,
-  their good being saw''. The output has been 
+  very good.'', Genesis 1:31). The sentence may be very roughly glossed as ``God own-his created things/everything-at looking,
+  their very good being saw''. The output has been 
   abbreviated to only show the appropriate tag in context, 
   the actual output would be ambiguous.}
 
@@ -270,7 +270,7 @@ We define nouns as stems that can be subjects of a finite verb, adjectives as st
 nouns, and adverbs as stems that principally modify verbs.
 
 Most of the stems in the lexicon can be used, with no extra suffixes in any of these functions, for 
-example the adjective жақсы in Kazakh can be used as attributively, жақсы китап `good book', adverbially
+example the adjective жақсы in Kazakh can be used as attributively, жақсы кітап `good book', adverbially
 жақсы ойнадыңыз `(you) played well', and substantively (as a noun) `жақсы келетін еді' `(the) good (ones) would come'. This
 is a productive process and relevant to the morphotactics as an adjective used substantively may take the 
 full range of case and possessive suffixes, and adjectives used adverbially will take a different set of 
@@ -334,13 +334,12 @@ Dealing with these phenomena would not be necessary if we were setting out to de
 model of the phonology of the language. However, a wide-coverage morphological analyser and generator needs to be 
 able to deal with all phenomena that are found in corpora.
 
-Regarding numerals, work has been done for Finnish in the finite-state framework \cite{karttunen06}, however
-this relies on converting all numerals to their fully spelt out form, which would involve complex operations 
+Regarding numerals, work has been done for Finnish in the finite-state framework \citep{karttunen06}; however, this relies on converting all numerals to their fully spelt out form, which would involve complex operations 
 on the transducer. 
 
 % FIXME: cyrillic in \texttt
-Our solution is to add phonological information at the end of morphemes that need it in the form of special ``abstract letters'' that trigger phonological processes at the morphophonological stage and are deleted. For example, the string \texttt{5<num><subst><abl>} would have
-the morphotactic representation 5-\{э\}\{с\}>\{D\}\{A\}н, where \{э\} and \{с\} stand for phonological triggers, and \{D\}\{A\}н is the morphotactic representation of the ablative. The symbol \{э\} signals front harmony, and \{с\} signals final unvoiced consonant. So, the rules that operate on \{D\} and \{A\} will be able to do the forward voicing assimilation \{D\} surfacing as т /t/ and the front harmony \{A\} surfacing as е /e/.
+Our solution is to add phonological information at the end of morphemes that need it in the form of special ``abstract letters'' that trigger phonological processes at the morphophonological stage and are deleted. For example, the string \texttt{5<num><subst><abl>}\footnote{The resulting forms, 5-тен\super{\texttt{kaz}}, 5-тән\super{\texttt{tat}}, and 5-ден\super{\texttt{kum}} would be pronounced бестен\super{\texttt{kaz}}, биштән\super{\texttt{tat}}, and бешден\super{\texttt{kum}}.} would have
+the morphotactic representation 5-\{э\}\{с\}>\{D\}\{A\}н, where \{э\} and \{с\} stand for phonological triggers, and \{D\}\{A\}н is the representation of the ablative morpheme at the morphotactic level. The symbol \{э\} signals that the following vowel needs to harmonise to a front unrounded vowel, and \{с\} signals that there is a final voiceless consonant.  So, the rules that operate on \{D\} and \{A\} will be able to do the forward voicing assimilation \{D\} surfacing as т /t/ and the front harmony \{A\} surfacing as е /e/.
 
 %FIXME: example of implementation
 
