@@ -239,6 +239,7 @@ The best way we have found to handle these phenomena in a two-layer FST like tho
 
 %FIXME: example of implementation
 
+%FIXME: "performs all PHONOLOGY operations in parallel\footnote{the formalism is like SPE, but the rules are applied in parallel, somewhat like constraints in OT}" ← clarify
 Since \texttt{twol} performs all operations in parallel, rules triggered by these must make reference to abstract letters that exist on the input tape but are null on the output tape.  This complicates existing rules that have been designed to ignore null characters on the output tape.  The \texttt{twol} rules resulting from the combination of processes simultaneously triggered by and ignoring output-null characters are rather ... uh, \textit{intricate} ... but they seem to work okay?  Just don't poke them too hard.  %FIXME
 
 
