@@ -4,10 +4,10 @@
     <mapcanvas>
         <units>degrees</units>
         <extent>
-            <xmin>22.682171</xmin>
-            <ymin>39.509774</ymin>
-            <xmax>66.504810</xmax>
-            <ymax>60.500127</ymax>
+            <xmin>23.866962</xmin>
+            <ymin>33.096655</ymin>
+            <xmax>81.207757</xmax>
+            <ymax>64.679283</ymax>
         </extent>
         <projections>1</projections>
         <destinationsrs>
@@ -44,99 +44,104 @@
                 <legendlayerfile isInOverview="0" layerid="tkdata20091023052707208" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="MDA_adm0" showFeatureCount="0">
-            <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="MDA_adm020131024031142291" visible="1"/>
+        <legendlayer open="true" checked="Qt::Checked" name="ne_10m_admin_0_boundary_lines_land" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="ne_10m_admin_0_boundary_lines_land20140318143426140" visible="1"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="ROU_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="MDA_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="ROU_adm020131024031203022" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="MDA_adm020131024031142291" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="BGR_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="ROU_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="BGR_adm020131024031131932" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="ROU_adm020131024031203022" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="KGZ_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="BGR_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="KGZ_adm020131024022002155" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="BGR_adm020131024031131932" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="GEO_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="KGZ_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="GEO_adm020131024021703873" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="KGZ_adm020131024022002155" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="ARM_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="GEO_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="ARM_adm020131024021701235" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="GEO_adm020131024021703873" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="BLR_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="ARM_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="BLR_adm020131024021215226" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="ARM_adm020131024021701235" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="UKR_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="BLR_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="UKR_adm020131024020932113" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="BLR_adm020131024021215226" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="LTU_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="UKR_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="LTU_adm020131024020638177" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="UKR_adm020131024020932113" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="LVA_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="LTU_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="LVA_adm020131024020643351" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="LTU_adm020131024020638177" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="POL_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="LVA_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="POL_adm020131024020648570" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="LVA_adm020131024020643351" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="EST_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="POL_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="EST_adm020131024020633122" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="POL_adm020131024020648570" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="AZE_ADM0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="EST_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="AZE_ADM020131024020413066" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="EST_adm020131024020633122" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="TKM_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="AZE_ADM0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="TKM_adm020131024015415635" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="AZE_ADM020131024020413066" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="UZB_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="TKM_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="UZB_adm020131024012853291" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="TKM_adm020131024015415635" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="CHN_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="UZB_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="CHN_adm020120808224638586" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="UZB_adm020131024012853291" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="RUS_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="CHN_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="RUS_adm020120807224105610" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="CHN_adm020120808224638586" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="KAZ_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="RUS_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="KAZ_adm020120807223524294" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="RUS_adm020120807224105610" visible="0"/>
             </filegroup>
         </legendlayer>
-        <legendlayer open="false" checked="Qt::Checked" name="MNG_adm0" showFeatureCount="0">
+        <legendlayer open="false" checked="Qt::Unchecked" name="KAZ_adm0" showFeatureCount="0">
             <filegroup open="false" hidden="false">
-                <legendlayerfile isInOverview="0" layerid="MNG_adm020120807222534127" visible="1"/>
+                <legendlayerfile isInOverview="0" layerid="KAZ_adm020120807223524294" visible="0"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Unchecked" name="MNG_adm0" showFeatureCount="0">
+            <filegroup open="false" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="MNG_adm020120807222534127" visible="0"/>
             </filegroup>
         </legendlayer>
         <legendlayer open="false" checked="Qt::Unchecked" name="10m-admin-0-countries" showFeatureCount="0">
@@ -348,7 +353,7 @@
         <ComposerLabel valign="128" labelText="S" id="" halign="4" margin="0">
             <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
-            <ComposerItem width="26.80790960451979" x="136.5141242937853" y="63.10169491525424" rotation="0" height="13.39887005649718" frame="false" outlineWidth="0" zValue="4" lastValidViewScaleFactor="2.424657534246575" positionLock="false">
+            <ComposerItem width="26.80790960451979" x="133.6513791957461" y="54.5134596211366" rotation="0" height="13.39887005649718" frame="false" outlineWidth="0" zValue="4" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
             </ComposerItem>
@@ -356,7 +361,7 @@
         <ComposerLabel valign="128" labelText="N" id="" halign="4" margin="0">
             <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
-            <ComposerItem width="21.8587570621469" x="131.5649717514124" y="10.31073446327684" rotation="0" height="11.74915254237288" frame="false" outlineWidth="0" zValue="3" lastValidViewScaleFactor="2.424657534246575" positionLock="false">
+            <ComposerItem width="21.8587570621469" x="125.8394815553339" y="10.31073446327684" rotation="0" height="11.74915254237288" frame="false" outlineWidth="0" zValue="3" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
             </ComposerItem>
@@ -364,25 +369,25 @@
         <ComposerLabel valign="128" labelText="W" id="" halign="4" margin="0">
             <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
-            <ComposerItem width="19.38418079096045" x="62.27683615819209" y="65.98870056497177" rotation="0" height="16.08474576271187" frame="false" outlineWidth="0" zValue="2" lastValidViewScaleFactor="2.424657534246575" positionLock="false">
+            <ComposerItem width="19.38418079096045" x="37.22781655034895" y="32.92156862745098" rotation="0" height="15.51462279827187" frame="false" outlineWidth="0" zValue="2" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
             </ComposerItem>
         </ComposerLabel>
         <ComposerMap keepLayerSet="false" id="0" previewMode="Cache" drawCanvasItems="true">
-            <Extent ymin="41.80001167944584" xmin="23.50003882475142" ymax="59.99988522777065" xmax="83.99996117524859"/>
+            <Extent ymin="39" xmin="23.5" ymax="57" xmax="84"/>
             <LayerSet/>
             <Grid gridStyle="0" crossLength="3" penColorRed="0" penColorBlue="0" intervalX="0" offsetX="0" intervalY="0" offsetY="0" show="0" penWidth="0" penColorGreen="0">
                 <Annotation direction="0" precision="3" position="1" frameDistance="1" show="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
             </Grid>
-            <ComposerItem width="291" x="0" y="0" rotation="0" height="87.54000000000001" frame="false" outlineWidth="0" zValue="1" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
+            <ComposerItem width="291" x="0" y="0" rotation="0" height="86.57851239669421" frame="false" outlineWidth="0" zValue="1" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
             </ComposerItem>
         </ComposerMap>
         <Composition printResolution="150" paperWidth="291" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" snapping="0" paperHeight="87.5" printAsRaster="0"/>
     </Composer>
-    <projectlayers layercount="55">
+    <projectlayers layercount="56">
         <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
             <id>10m_admin_0_countries20100301223348552</id>
             <datasource>/data/GIS/natural earth vector/10m-admin-0-countries.shp|layerid=0</datasource>
@@ -4473,6 +4478,88 @@
             </labelattributes>
             <edittypes>
                 <edittype type="0" name=""/>
+            </edittypes>
+            <editform></editform>
+            <editforminit></editforminit>
+            <annotationform></annotationform>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" geometry="Line" type="vector" hasScaleBasedVisibilityFlag="0">
+            <id>ne_10m_admin_0_boundary_lines_land20140318143426140</id>
+            <datasource>/data/GIS/natural earth vector/ne_10m_admin_0_boundary_lines_land.shp</datasource>
+            <layername>ne_10m_admin_0_boundary_lines_land</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</proj4>
+                    <srsid>3452</srsid>
+                    <srid>4326</srid>
+                    <authid>EPSG:4326</authid>
+                    <description>WGS 84</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>WGS84</ellipsoidacronym>
+                    <geographicflag>true</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="UTF-8">ogr</provider>
+            <vectorjoins/>
+            <renderer-v2 symbollevels="0" type="singleSymbol">
+                <symbols>
+                    <symbol outputUnit="MM" alpha="1" type="line" name="0">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="255,255,255,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.5"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+                <rotation field=""/>
+                <sizescale field=""/>
+            </renderer-v2>
+            <customproperties/>
+            <displayfield>name</displayfield>
+            <label>0</label>
+            <labelattributes>
+                <label fieldname="" text="Label"/>
+                <family fieldname="" name="Sans Serif"/>
+                <size fieldname="" units="pt" value="12"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on=""/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype type="0" name="FID_ne_10m"/>
+                <edittype type="0" name="adm0_a3_l"/>
+                <edittype type="0" name="adm0_a3_r"/>
+                <edittype type="0" name="adm0_left"/>
+                <edittype type="0" name="adm0_right"/>
+                <edittype type="0" name="adm0_usa"/>
+                <edittype type="0" name="comment"/>
+                <edittype type="0" name="featurecla"/>
+                <edittype type="0" name="labelrank"/>
+                <edittype type="0" name="name"/>
+                <edittype type="0" name="note_"/>
+                <edittype type="0" name="scalerank"/>
+                <edittype type="0" name="sov_a3_l"/>
+                <edittype type="0" name="sov_a3_r"/>
+                <edittype type="0" name="type"/>
             </edittypes>
             <editform></editform>
             <editforminit></editforminit>

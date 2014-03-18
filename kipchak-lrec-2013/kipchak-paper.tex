@@ -1,6 +1,6 @@
 \documentclass[a4paper,11pt,twocolumn]{article}
 
-\usepackage{lrec2012}
+\usepackage{lrec2014}
 
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=australian]{english}
@@ -30,22 +30,22 @@
 
 \title{Finite-state morphological transducers for three Kypchak languages}
 
-\author{Jonathan North Washington \\
-Departments of Linguistics and Central Eurasian Studies\\
-Indiana University\\
-Bloomington, IN 47405 (USA)\\
-\texttt{jonwashi@indiana.edu} \and
-Ilnar Salimzyanov  \\
-Kazan Federal University \\
-Kazan, Republic of Tatarstan\\
-(Russian Federation) \\
-\texttt{ilnar.salimzyan@gmail.com} \and 
-Francis M. Tyers\\
-HSL-fakultehta, \\
-UiT Norgga árktalaš universitehta, \\
-9019 Romsa (Norway)\\
-\texttt{francis.tyers@uit.no} 
-}
+%\author{Jonathan North Washington \\
+%Departments of Linguistics and Central Eurasian Studies\\
+%Indiana University\\
+%Bloomington, IN 47405 (USA)\\
+%\texttt{jonwashi@indiana.edu} \and
+%Ilnar Salimzyanov  \\
+%Kazan Federal University \\
+%Kazan, Republic of Tatarstan\\
+%(Russian Federation) \\
+%\texttt{ilnar.salimzyan@gmail.com} \and 
+%Francis M. Tyers\\
+%5HSL-fakultehta, \\
+%UiT Norgga árktalaš universitehta, \\
+%9019 Romsa (Norway)\\
+%\texttt{francis.tyers@uit.no} 
+%}
 
 %FIXME: usually star comes first, then daggers
 \name{Jonathan North Washington$^\dagger$, Ilnar Salimzyanov$^\ddagger$, Francis M. Tyers$^\star$}
@@ -74,21 +74,26 @@ UiT Norgga árktalaš universitehta \\
 
 \section{Introduction}
 
-This paper describes the development of morphological transducers for three closly related languages: Kazakh, Tatar, and Kumyk.
+This paper describes the development of free/open-source morphological transducers for three closly related languages: Kazakh, Tatar, and Kumyk.  Morphological transducers are computational models of the languages' morphology, and are used to output morphological analyses from word forms and vice-versa.
+
+These transducers were all developed as part of the Apertium project, which is aimed at creating rule-based MT systems for lesser resourced languages.  As such, the transducers were developed with the intent that they be used as morphological analysers and generators in RBMT systems.  However, this sort of finite-state transducer has a wide variety of usages, including for creating proofing tools such as spellcheckers and grammarcheckers.
+
+%the potential uses of morphological transducers is much broader; for example, we have found that they are easily converted to spell checkers.
+
+All three transducers were designed as ``ports'' of Apertium's Kyrgyz morphological transducer \citep{washington2012}.  The Tatar and Kazakh transducers are used in a release-quality Kazakh-Tatar MT system \citep{salimzyanov2013}.
 
 %FIXME: brief background on how, when, and with what support were developed?
 % In Apertium project, Turkic transducers were developed either as part of Turkic-to-Turkic machine translators, or they started as a "port" (in particular of morphotactics) of already existing Turkic transducers.
 
-The transducers for these languages
+%The transducers for these languages
 
 % FIXME: what are transducers used for ?
 
-A finite-state transducer which models the morphology of a language has a wide variety of usages. For example,
-for creating proofing tools such as spellcheckers and grammarcheckers, and for machine translation.
+This paper overviews the languages (§\ref{sec:lgs}), provides background on these morphological transducers and related previous work (§\ref{sec:bg}), describes the development effort and contents of the transducers (§\ref{sec:methodology}), evaluates the effectiveness of these transducers (§\ref{sec:evaluation}), and summarises the findings (§\ref{sec:conclusions}).
 
-\section{Languages}
+\section{Languages}\label{sec:lgs}
 
-The three languages for which transducers were developed belong to the Northwestern branch of the Turkic family, which is often referred to as the Kypchak branch.  This branch can be divided into three subbranches.  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the Southern Kypchak group \citep[82-83]{histofturkic}.  As such, each of these three languages represents one of the three branches of Kypchak.  The geographic distribution of the languages is shown in map \ref{map1}.
+The three languages for which transducers were developed belong to the Northwestern branch of the Turkic family, which is often referred to as the Kypchak branch.  This branch can be divided into three subbranches.\footnote{It is the belief of the authors of this paper that Kyrgyz constitutes a fourth branch.}  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the Southern Kypchak group \citep[82-83]{histofturkic}.  As such, each of these three languages represents one of the three branches of Kypchak.  The geographic distribution of the languages is shown in map \ref{map1}.
 
 \begin{map*}[htbp]
 	\includegraphics[width=\textwidth]{map/map}
@@ -110,7 +115,7 @@ Tatar /t{\symbl ɒ}t{\symbl ɑ}r/ is spoken in and around Tatarstan, by approxim
 \subsection{Kumyk}
 Kumyk /qumuq/ is spoken in Dagestan, a republic of the Russian Federation, where it is co-official with a number of other national languages \citep{ethnologue}.  There are approximately 430 thousand speakers \citep{ethnologue}.
 
-\section{Background}
+\section{Background}\label{sec:bg}
 \subsection{Morphological transducers, previous work}
 %FIXME: need a source, maybe something by Tommi?
 The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms.  As they are implemented as finite-state transducers, they are reversible by default. For more information on usin finite-state transducers for morphological analysis and generation, the reader is referred to \cite{beesley2003}.
@@ -127,7 +132,7 @@ Creating morphological transducers in the above-mentioned formalisms involves en
 The transducers are available / under development in apertium's subversion repository,\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/}} in the directories apertium-kaz, apertium-tat, and apertium-kum.  The revision of the entire subversion repository that the numbers (stem counts, evaluation, etc.) in this paper represent is \texttt{r48137}.
 
 
-\section{Methodology}
+\section{Methodology}\label{sec:methodology}
 % cite Hengeveld (1992) ?
 
 % Noun morphotactics -- is basically equivalent in all three, except for archiphonemes
@@ -348,7 +353,7 @@ the morphotactic representation 5\{э\}\{с\}>-\{D\}\{A\}н, where \{э\} and \{
 %Since \texttt{twol} performs all operations in parallel, rules triggered by these must make reference to abstract letters that exist on the input tape but are null on the output tape.  This complicates existing rules that have been designed to ignore null characters on the output tape.  The \texttt{twol} rules resulting from the combination of processes simultaneously triggered by and ignoring output-null characters are rather ... uh, \textit{intricate} ... but they seem to work okay?  Just don't poke them too hard.  %FIXME
 
 
-\section{Evaluation}
+\section{Evaluation}\label{sec:evaluation}
 
 We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage\footnote{Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer.} and mean ambiguity  on freely available corpora. The mean ambiguity measure was calculated by performing an evaluation of precision and recall on some smaller, hand-validated test sets.
 
@@ -456,7 +461,7 @@ One direction for future work is to develop transducers for more languages.  We 
 
 The principle obstacle to increasing coverage of the lexicons is the categorisation of stems. Future work would be investigating ways of automatically categorising stems by subcategory. For example, verbs stems by transitivity; adjective stems by if they can be used adverbially or substantively; etc. 
 
-\section{Conclusions}
+\section{Conclusions}\label{sec:conclusions}
 
 We have described morphological transducers for three Kypchak languages---one from each branch of Kypchak---including the development process and performance of the analysers. The development of the third transducer (for a related language) was substantially quicker than the first two as a result of being able to reuse large portions of the morphotactic description from the first two transducers.
 
