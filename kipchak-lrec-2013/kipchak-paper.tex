@@ -64,7 +64,7 @@ UiT Norgga árktalaš universitehta \\
 \texttt{francis.tyers@uit.no} 
 }
 
-\abstract{This paper describes the development of free/open-source finite-state morphological transducers for three Turkic languages---Kazakh, Tatar, and Kumyk---representing one language from each of the three subbranches of the Kypchak branch of Turkic.  The finite-state toolkit used for the work is the Helsinki Finite-State Toolkit (HFST).  This paper describes how the development of a transducer for each subsequent language took less development time.  An evaluation is presented which shows that the transducers all have a reasonable coverage---around 90\%---on freely available corpora of the languages, and high precision over a manually verified test set. \\
+\abstract{This paper describes the development of free/open-source finite-state morphological transducers for three Turkic languages---Kazakh, Tatar, and Kumyk---representing one language from each of the three sub-branches of the Kypchak branch of Turkic.  The finite-state toolkit used for the work is the Helsinki Finite-State Toolkit (HFST).  This paper describes how the development of a transducer for each subsequent language took less development time.  An evaluation is presented which shows that the transducers all have a reasonable coverage---around 90\%---on freely available corpora of the languages, and high precision over a manually verified test set. \\
 	\Keywords{Kazakh, Tatar, Kumyk, morphology, transducer}
 }
 
@@ -118,7 +118,7 @@ Kumyk /qumuq/ is spoken in Dagestan, a republic of the Russian Federation, where
 \section{Background}\label{sec:bg}
 \subsection{Morphological transducers, previous work}
 %FIXME: need a source, maybe something by Tommi?
-The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}}, etc.) and generate one or more surface forms.  As they are implemented as finite-state transducers, they are reversible by default. For more information on usin finite-state transducers for morphological analysis and generation, the reader is referred to \cite{beesley2003}.
+The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}},\footnote{For a description of the tags used throughout this paper, please see Appendix~\ref{app:glossary}.} etc.) and generate one or more surface forms.  As they are implemented as finite-state transducers, they are reversible by default. For more information on usin finite-state transducers for morphological analysis and generation, the reader is referred to \cite{beesley2003}.
 
 The transducers were designed based on the Helsinki Finite State Toolkit \citep{hfst/2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis.  It implements both the \textbf{lexc} formalism for defining lexicons, and the \textbf{twol} and \textbf{xfst} formalisms for modeling morphophonological rules.  It also supports other finite state transducer formalisms such as \textbf{sfst}.  This toolkit has been chosen as it -- or the equivalent XFST -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
 
@@ -237,7 +237,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
 %
 \centering
 
-\scalebox{0.80}{
+\scalebox{0.81}{
 \begin{tabular}{lll}
  \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
 \hline
@@ -249,7 +249,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
  жарат\tags{<v><tv><ger\_past><pl><px3sp><gen>} & ярат\tags{<v><tv><gpr\_past>} & ярат\tags{<v><tv><gpr\_past>} \\
  бәрі\tags{<prn><qnt><px3sp><dat>} & нәрсә\tags{<prn><itg><pl><dat>} & зат\tags{<n><pl><dat>} \\
  қара\tags{<v><tv><gna\_perf>} & кара\tags{<v><tv><gna\_perf>} & къара\tags{<v><tv><gna\_perf>} \\ 
-,\tags{<cm>} & & ,\tags{<cm>} \\
+,\tags{<cm>} & ,\tags{<cm>} & ,\tags{<cm>} \\
  ---      & алар\tags{<prn><pers><p3><pl><gen>} & олар\tags{<prn><pers><p3><pl><nom>} \\
  өте\tags{<adv>} & бик\tags{<adv>} & бек\tags{<adv>} \\
  жақсы\tags{<adj>} & яхшы\tags{<adj>} & яхшы\tags{<adj>} \\
@@ -265,7 +265,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
   very good.'', Genesis 1:31). The sentence may be very roughly glossed as ``God own-his created things/everything-at looking,
   their very good being saw''. The output has been 
   abbreviated to only show the appropriate tag in context, 
-  the actual output would be ambiguous.}
+  the actual output would be ambiguous. Refer to Appendix~\ref{app:glossary} for tag descriptions.}
 
 \end{table*}
 
@@ -488,4 +488,44 @@ for assistance in evaluating precision and recall.
 \bibliographystyle{lrec2012}
 \bibliography{kipchak-paper}
 
+\appendix 
+
+\section{Glossary of symbols}
+\label{app:glossary}
+\centering
+\begin{tabular}{|c|l|}
+\hline
+ \textbf{Symbol} & \textbf{Description}\\
+\hline
+ \tags{n} & Noun  \\
+ \tags{v} & Verb  \\
+ \tags{adj} & Adjective  \\
+ \tags{adv} & Adverb  \\
+ \tags{prn} & Pronoun  \\
+ \tags{cm} &  Comma \\
+ \tags{cop} & Copula  \\
+ \tags{ifi} & Past definite  \\
+ \tags{past} & Past  \\
+ \tags{ger\_past} & Past gerund \\
+ \tags{gna\_past} & Past verbal adverb  \\
+ \tags{gpr\_past} & Past verbal adjective  \\
+ \tags{itg} & Interrogative  \\
+ \tags{nom} &  Nominative \\
+ \tags{gen} & Genitive  \\
+ \tags{dat} & Dative  \\
+ \tags{p1} & First person  \\
+ \tags{p3} & Third person  \\
+ \tags{px1sg} & First person, singular possessive  \\
+ \tags{px3sp} & Third person possessive  \\
+ \tags{pers} & Personal  \\
+ \tags{qnt} & Quantifier  \\
+ \tags{ref} & Reflexive  \\
+ \tags{sg} & Singular  \\
+ \tags{pl} &  Plural \\
+ \tags{tv} & Transitive  \\
+ \tags{sent} & End-of-sentence marker  \\
+
+\hline
+
+\end{tabular}
 \end{document}
