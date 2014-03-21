@@ -4,12 +4,12 @@
     <mapcanvas>
         <units>degrees</units>
         <extent>
-            <xmin>23.866962</xmin>
-            <ymin>33.096655</ymin>
-            <xmax>81.207757</xmax>
-            <ymax>64.679283</ymax>
+            <xmin>21.649927</xmin>
+            <ymin>32.461251</ymin>
+            <xmax>80.592514</xmax>
+            <ymax>64.926126</ymax>
         </extent>
-        <projections>1</projections>
+        <projections>0</projections>
         <destinationsrs>
             <spatialrefsys>
                 <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</proj4>
@@ -350,6 +350,14 @@
         <Composition printResolution="300" paperWidth="297" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" snapping="0" paperHeight="210" printAsRaster="0"/>
     </Composer>
     <Composer title="Composer 3" visible="1">
+        <ComposerLabel valign="128" labelText="W" id="" halign="4" margin="0">
+            <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
+            <FontColor red="0" blue="0" green="0"/>
+            <ComposerItem width="19.38418079096045" x="37.22781655034895" y="32.92156862745098" rotation="0" height="15.51462279827187" frame="false" outlineWidth="0" zValue="2" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
+                <FrameColor alpha="255" red="0" blue="0" green="0"/>
+                <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
+            </ComposerItem>
+        </ComposerLabel>
         <ComposerLabel valign="128" labelText="S" id="" halign="4" margin="0">
             <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
@@ -362,14 +370,6 @@
             <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
             <FontColor red="0" blue="0" green="0"/>
             <ComposerItem width="21.8587570621469" x="125.8394815553339" y="10.31073446327684" rotation="0" height="11.74915254237288" frame="false" outlineWidth="0" zValue="3" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
-                <FrameColor alpha="255" red="0" blue="0" green="0"/>
-                <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
-            </ComposerItem>
-        </ComposerLabel>
-        <ComposerLabel valign="128" labelText="W" id="" halign="4" margin="0">
-            <LabelFont description="Sans Serif,28,-1,5,75,0,0,0,0,0"/>
-            <FontColor red="0" blue="0" green="0"/>
-            <ComposerItem width="19.38418079096045" x="37.22781655034895" y="32.92156862745098" rotation="0" height="15.51462279827187" frame="false" outlineWidth="0" zValue="2" lastValidViewScaleFactor="1.397260273972603" positionLock="false">
                 <FrameColor alpha="255" red="0" blue="0" green="0"/>
                 <BackgroundColor alpha="0" red="255" blue="255" green="255"/>
             </ComposerItem>
@@ -4914,26 +4914,31 @@
         </maplayer>
     </projectlayers>
     <properties>
+        <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+        <WMSContactPerson type="QString"></WMSContactPerson>
         <Identify>
             <disabledLayers type="QStringList"/>
         </Identify>
+        <WMSContactPhone type="QString"></WMSContactPhone>
         <SpatialRefSys>
-            <ProjectCRSProj4String type="QString">+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</ProjectCRSProj4String>
+            <ProjectCRSProj4String type="QString">+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0</ProjectCRSProj4String>
             <ProjectCRSID type="int">3452</ProjectCRSID>
             <ProjectCrsId type="int">0</ProjectCrsId>
-            <ProjectionsEnabled type="int">1</ProjectionsEnabled>
+            <ProjectionsEnabled type="int">0</ProjectionsEnabled>
         </SpatialRefSys>
         <Gui>
             <SelectionColorBluePart type="int">0</SelectionColorBluePart>
             <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
             <CanvasColorRedPart type="int">255</CanvasColorRedPart>
             <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+            <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
             <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
             <CanvasColorBluePart type="int">255</CanvasColorBluePart>
         </Gui>
         <Paths>
             <Absolute type="bool">true</Absolute>
         </Paths>
+        <WMSContactMail type="QString"></WMSContactMail>
         <Digitizing>
             <AvoidIntersectionsList type="QStringList"/>
             <TopologicalEditing type="int">0</TopologicalEditing>
@@ -4942,5 +4947,9 @@
             <DecimalPlaces type="int">2</DecimalPlaces>
             <Automatic type="bool">true</Automatic>
         </PositionPrecision>
+        <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
+        <WMSContactOrganization type="QString"></WMSContactOrganization>
+        <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+        <WMSServiceTitle type="QString"></WMSServiceTitle>
     </properties>
 </qgis>

@@ -325,17 +325,22 @@ Types of these phenomena include acronyms, ``irregular'' vowel harmony, Russian 
 \subsubsection{Ambiguous characters}
 In Tatar, the `yoticised' vowel letters ‹е›, ‹я›, and ‹ю› each ambiguously represent a set of sounds.  For example, ‹е› is the non-initial orthographic variant of ‹э› (as in ‹дәресләр› `lessons'), but can also represent /j/ followed by the phoneme of ‹э› (as in ‹егетләр› `boys') or ‹ы› (as in ‹еллар› `years').
 
-In Kumyk, ‹ё› and ‹ю› are used intervocalically to represent front rounded vowels (as in ‹гёзлер› `eyes' and ‹гюнлер› `days'), but word-initially can represent ‹й› followed by either a front vowel (as in ‹юреклер› `hearts', ‹ёнкюлер› `darlings') or a back vowel (as in ‹юлдузлар› `stars', ‹ёллар› `roads').
+In Kumyk, ‹ё› and ‹ю› are used between consonants to represent front rounded vowels (as in ‹гёзлер› `eyes' and ‹гюнлер› `days'), but word-initially can represent ‹й› followed by either a front vowel (as in ‹юреклер› `hearts', ‹ёнкюлер› `darlings') or a back vowel (as in ‹юлдузлар› `stars', ‹ёллар› `roads').
 
 In Kazakh, the vowels /{\qipa ɘ}/ ‹і› and /ə/ ‹ы› followed by a glide /w/ ‹у› or /j/ ‹й› are written ‹у› and ‹и›, depending on the glide; for example.  The character ‹ю› is used in turn to represent ‹й› followed by either multi-phoneme value of ‹у›.  For example, ‹қиюда› /qəjəwd{\qipa ɑ}/ `in the process of chopping down' and ‹киюде› /k{\qipa ɘ}j{\qipa ɘ}wd{\qipa i̯ɘ}/ `in the process of getting dressed' have back- and front-harmonising values, respectively, for ‹и› and ‹ю›.
 
 These problems can often be solved by building the context into the morphophonological rules, though the addition of new contexts and exceptions to existing contexts results in rather complex \texttt{twol} rules.
 
 \subsubsection{Loan words}
-%FIXME!!! 
-In Kumyk, the character ё in Russian words is pronounced as in Russian where in native words 
-   it represents the sound /ø/. These two pronunciations will select for different suffixes, the Russian pronunciation taking
-   back vowel suffixes самолётлар `aeroplanes', and /ø/ taking front vowel suffixes сёзлер `words'.  %FIXME: -ия in Tatar
+In Kazakh, Tatar, and Kumyk, most Russian loanwords are spelled using Russian orthography, despite incompatibilities between Russian letter-to-phoneme mapping and that of the Turkic languages.
+
+In Kumyk, the character ‹ё› is used between consonants to represent a mid front rounded vowel (e.g., ‹сёзлер› `words'); however, in Russian words, ‹ё› is used after a consonant to represent the sound of ‹о› while indicating that the previous consonant is palatalised (e.g., ‹самолётлар› `aeroplanes').
+
+%FIXME: gloss `scientists' correct??
+In Tatar, the character ‹и› normally represents a high front vowel (e.g., ‹галимләр› `scientists'), but in Russian words it harmonises as a back vowel (e.g., ‹артистлар› `artists').
+
+In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `counter-\gmk{gen}'), but in Russian 
+% FIXME: -ев in Kazakh
 
 \subsubsection{Acronyms and numerals}
 %FIXME!!!
@@ -493,10 +498,10 @@ for assistance in evaluating precision and recall.
 \section{Glossary of symbols}
 \label{app:glossary}
 \centering
-\begin{tabular}{|c|l|}
-\hline
+\begin{tabular}{cl}
+\toprule
  \textbf{Symbol} & \textbf{Description}\\
-\hline
+\midrule
  \tags{n} & Noun  \\
  \tags{v} & Verb  \\
  \tags{adj} & Adjective  \\
@@ -525,7 +530,7 @@ for assistance in evaluating precision and recall.
  \tags{tv} & Transitive  \\
  \tags{sent} & End-of-sentence marker  \\
 
-\hline
+\bottomrule
 
 \end{tabular}
 \end{document}
