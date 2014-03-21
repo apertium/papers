@@ -22,7 +22,9 @@
 \newfontfamily\symbl[Scale=MatchLowercase]{FreeSerif}
 \newfontfeature{IPA}{+mgrk}
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
+\newfontfamily\qgmk[Scale=MatchLowercase,Letters=SmallCaps]{Linux Libertine O}
 
+\newcommand{\gmk}[1]{{\qgmk #1}}
 \newcommand{\tags}[1]{\texttt{#1}}
 
 \bibdata{kipchak-paper}
@@ -303,7 +305,7 @@ they will not take comparison, and cannot later substantivise). At the same time
 having to have two lexemes, one for each usage.
 
 There are certain lexemes that require more explicit categorisation, for example, the word 
-for `today'\footnote{Tatar: бүген; Kazakh: бүгін; Kumyk: бугюн. The word is a contraction of the words for `this' and `day'.} 
+for `today'\footnote{Tatar: бүген; Kazakh: бүгін; Kumyk: бугюн. The word is etymologically composed of the words for `this' and `day'.} 
 cannot be used attributively without the presence of an extra morpheme -KI. Compound nouns
 using possessive morphology, such as Kazakh ауа райы `weather' are not well-formed
 without a possessive suffix. %FIXME: Explain the compound 'weather'.
@@ -315,12 +317,12 @@ without a possessive suffix. %FIXME: Explain the compound 'weather'.
 %Adverb    &     ?        &   ?         &  X \\ 
 %\end{tabular}
 
-% FIXME: we should change this title
-\subsection{Technolinguistic and orthographical issues} % hidden phonology issues? ...?
+% FIXME: how's the title now?
+\subsection{Orthography-phonology mapping issues}
 
-There is a class of phenomena encountered during the development of these transducers, united by the fact that the morphophonology needs information about the stem's phonological form that is not provided by the orthographic representation.  These phenomena were left by \citet{washington2012} for future work, but have been extensively implemented in the transducers described in the current paper.
+There is a class of phenomena encountered during the development of these transducers, united by the fact that the morphophonology needs information about the stem's phonological form that is not provided by the orthographic representation.  These phenomena were left by \citet{washington2012} for future work, but many of them been implemented in the transducers described in the current paper.
 
-Types of these phenomena include acronyms, ``irregular'' vowel harmony, Russian loanwords, and numerals.  A brief overview of each follows, along with examples, followed by details of our solution.
+Types of these phenomena include characters used to represent multiple phonological forms, loanwords, and acronyms and numerals.  A brief overview of each follows, along with examples and details of our solution.
 
 \subsubsection{Ambiguous characters}
 In Tatar, the `yoticised' vowel letters ‹е›, ‹я›, and ‹ю› each ambiguously represent a set of sounds.  For example, ‹е› is the non-initial orthographic variant of ‹э› (as in ‹дәресләр› `lessons'), but can also represent /j/ followed by the phoneme of ‹э› (as in ‹егетләр› `boys') or ‹ы› (as in ‹еллар› `years').
@@ -331,16 +333,19 @@ In Kazakh, the vowels /{\qipa ɘ}/ ‹і› and /ə/ ‹ы› followed by a glid
 
 These problems can often be solved by building the context into the morphophonological rules, though the addition of new contexts and exceptions to existing contexts results in rather complex \texttt{twol} rules.
 
-\subsubsection{Loan words}
+\subsubsection{Loanwords}
 In Kazakh, Tatar, and Kumyk, most Russian loanwords are spelled using Russian orthography, despite incompatibilities between Russian letter-to-phoneme mapping and that of the Turkic languages.
 
 In Kumyk, the character ‹ё› is used between consonants to represent a mid front rounded vowel (e.g., ‹сёзлер› `words'); however, in Russian words, ‹ё› is used after a consonant to represent the sound of ‹о› while indicating that the previous consonant is palatalised (e.g., ‹самолётлар› `aeroplanes').
 
-%FIXME: gloss `scientists' correct??
-In Tatar, the character ‹и› normally represents a high front vowel (e.g., ‹галимләр› `scientists'), but in Russian words it harmonises as a back vowel (e.g., ‹артистлар› `artists').
+In Tatar, the character ‹и› normally represents a high front vowel (e.g., ‹галимнәр› `scientists'), but in Russian words it harmonises as a back vowel (e.g., ‹артистлар› `artists').
 
-In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `counter-\gmk{gen}'), but in Russian 
-% FIXME: -ев in Kazakh
+In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\gmk{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\gmk{gen}').
+
+Our solution for these consistent exceptions is to make a separate continuation lexicon for e.g., Russian nouns.  This continuation lexicon adds a character that the phonology deletes, but that triggers phonological rules.
+
+Since \texttt{twol} ``phonological'' rules can be understood to be applied all at one stage (as opposed to being ordered), rules triggered by these characters must make reference to abstract characters that exist on the input tape but are null on the output tape.  This complicates existing rules that have been designed to ignore null characters on the output tape.  Hence, the \texttt{twol} rules resulting from the combination of processes simultaneously triggered by and ignoring output-null characters can quickly become quite unwieldy.
+
 
 \subsubsection{Acronyms and numerals}
 %FIXME!!!
@@ -361,7 +366,7 @@ the morphotactic representation 5\{э\}\{с\}>-\{D\}\{A\}н, where \{э\} and \{
 
 %FIXME: example of implementation
 
-
+This solution has the same issue as loanwords above.
 %FIXME: "performs all PHONOLOGY operations in parallel\footnote{the formalism is like SPE, but the rules are applied in parallel, somewhat like constraints in OT}" ← clarify
 %Since \texttt{twol} performs all operations in parallel, rules triggered by these must make reference to abstract letters that exist on the input tape but are null on the output tape.  This complicates existing rules that have been designed to ignore null characters on the output tape.  The \texttt{twol} rules resulting from the combination of processes simultaneously triggered by and ignoring output-null characters are rather ... uh, \textit{intricate} ... but they seem to work okay?  Just don't poke them too hard.  %FIXME
 
