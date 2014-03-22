@@ -128,7 +128,7 @@ Creating morphological transducers in the above-mentioned formalisms involves en
 %\subsection{Description}
 
 %FIXME: keep revision number up to date
-The transducers are available / under development in apertium's subversion repository,\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/}} in the directories apertium-kaz, apertium-tat, and apertium-kum.  The revision of the entire subversion repository that the numbers (stem counts, evaluation, etc.) in this paper represent is \texttt{r48137}.
+The transducers are available / under development in apertium's subversion repository,\footnote{{\scriptsize \url{https://svn.code.sf.net/p/apertium/svn/languages/}}} in the directories apertium-kaz, apertium-tat, and apertium-kum, and compiled versions may be run at \url{http://turkic.apertium.org/}.  The revision of each module in the subversion repository that the numbers in this paper (stem counts, evaluation, etc.) represent is \texttt{r50547} for Kazakh, \texttt{r50260} for Tatar, and \texttt{r50300} for Kumyk.
 
 
 \section{Methodology}\label{sec:methodology}
@@ -171,8 +171,8 @@ continuation lexica\footnote{A continuation lexicon is a set of morphemes, for e
 \includegraphics[width=0.4\textwidth]{graphs/kumyk-yoldash-coverage}
 }
 
-\caption{Number of stems and coverage of corpus over time for the Kumyk transducer. Time is measured in days 
-starting from the 2nd October 2013. The graph shows that to reach 80\% coverage, took
+\caption{Number of stems and coverage of a corpus over time for the Kumyk transducer. Time is measured in days 
+starting from the 2nd October 2013. The graph shows that to reach 80\% coverage took
 around a week, and to reach 90\% took another week.}
 \label{fig:kumcov}
 \end{figure}
@@ -373,7 +373,7 @@ This solution has the same issue as loanwords above.
 \section{Evaluation}\label{sec:evaluation}
 
 %FIXME: revisions
-We have evaluated the morphological analysers\footnote{The versions of the analysers used were: r50547 for Kazakh, r50260 for Tatar, and r50300 for Kumyk.} in two ways. The first was by calculating the naïve coverage and mean ambiguity on freely available corpora. Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer. The mean ambiguity measure was calculated as the average number of analyses returned per token in the corpus.
+We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage and mean ambiguity on freely available corpora. Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer. The mean ambiguity measure was calculated as the average number of analyses returned per token in the corpus.
 
 %by performing an evaluation of precision and recall on some smaller, hand-validated test sets.
 
@@ -487,12 +487,13 @@ We have described morphological transducers for three Kypchak languages---one fr
 
 \section*{Acknowledgements}
 
-We would like to thank the Google Code-in (2011) for supporting the development 
+We would like to thank the Google Code-in (2011) for supporting the original development 
 of the Kazakh transducer, and in particular the effort by Nathan Maxson. We 
 would also like to thank the Google Summer of Code (2012) for supporting the 
 development of both the Kazakh and the Tatar transducers. 
 
-The authors would also like to express their gratitude to Aida Sundetova and Ağarhim Sultanmuradov
+The authors would also like to express their gratitude to Aida Sundetova 
+%and Ağarhim Sultanmuradov
 for assistance in evaluating precision and recall.
 
 \bibliographystyle{lrec2012}
