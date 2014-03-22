@@ -345,7 +345,7 @@ In Kumyk, the character ‹ё› is used between consonants to represent a mid f
 
 In Tatar, the character ‹и› normally represents a high front vowel (e.g., ‹галимнәр› `scientists'), but in Russian words it harmonises as a back vowel (e.g., ‹артистлар› `artists').
 
-In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\tags{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\gmk{gen}').
+In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\gmk{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\gmk{gen}').
 
 Our solution for these consistent exceptions is to make a separate continuation lexicon for e.g., Russian nouns.  This continuation lexicon adds a character that the phonology deletes, but that triggers phonological rules.
 
@@ -434,7 +434,7 @@ Precision and recall are measures of the average accuracy of analyses provided b
 To calculate precision and recall, it was necessary to create a hand-verified list of surface forms and their analyses.  We extracted 1,000 unique surface forms at random from a news corpus for each language, and checked that they were valid words in the languages and correctly spelt.  Where a word was incorrectly spelt or deemed not to be a form used in the language, it was discarded and a new random word selected.
 
 %FIXME: footnote with urls
-This list of surface forms was then analysed with the most recent version of the analyser, and each analysis was checked.  Where an analysis was erroneous, it was removed; where an analysis was missing, it was added.  This process gave us a `gold standard' morphologically analysed word list of 1,000 (Kazakh and Tatar) and 500 (Kumyk) surface forms with their analyses.  The list is publically available for each language.%\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/eval/ref.1000.txt}}
+This list of surface forms was then analysed with the most recent version of the analyser, and each analysis was checked.  Where an analysis was erroneous, it was removed; where an analysis was missing, it was added.  This process gave us a `gold standard' morphologically analysed word list of 1,000 forms for Kazakh and Tatar and 500 forms for Kumyk, along with their analyses.  The list is publically available for each language in Apertium's svn repository.%\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/eval/ref.1000.txt}}
 
 The lower number of forms for Kumyk was due to the limited access to native speakers of Kumyk. 
 The process for the Kumyk evaluation was also slightly different. They were first checked by a non-expert native speaker of Kumyk and then the result was proofread by the authors with the help of a dictionary.
