@@ -103,7 +103,7 @@ The three languages for which transducers were developed belong to the Northwest
 These languages display different amounts of linguistic influence from other Turkic branches (e.g., moderate Oghuz (SE) influence in the Western group, slight Oghuz influence in the Northern group) and from Mongolic languages (moderate influence on the Southern group, lighter in the other groups), and all display heavy influence from Persian.
 
 \subsection{Kazakh}
-Kazakh /q{\symbl ɑ}z{\symbl ɑ}q/ is spoken primarily in Kazakhstan, and it is the national language, where it is co-official with Russian.  Large communities of native speakers also exist in China, neighbouring Central-Eurasian republics, and Mongolia. Ethnologue estimates
+Kazakh /q{\symbl ɑ}z{\symbl ɑ}q/ is spoken primarily in Kazakhstan, where it is the national language and is co-official with Russian.  Large communities of native speakers also exist in China, neighbouring Central-Eurasian republics, and Mongolia. Ethnologue estimates
 the total number of speakers to be around 8 million \citep{ethnologue}.
 
 %Estimates of the total number of speakers range from 8 million \citep{ethnologue} to 11 million \citep{nationalencyklopedin} people.
@@ -119,7 +119,7 @@ Kumyk /qumuq/ is spoken in Dagestan, a republic of the Russian Federation, where
 %FIXME: need a source, maybe something by Tommi?
 The objective of a morphological transducer is twofold: firstly to take surface forms (e.g., алдым) and generate all possible lexical forms, and secondly to take lexical forms (e.g.,  ал{\tt {\small <v><tv><ifi><p1><sg>}}, алд{\tt {\small <n><px1sg><nom>}},\footnote{For a description of the tags used throughout this paper, please see Appendix~\ref{app:glossary}.} etc.) and generate one or more surface forms.  As they are implemented as finite-state transducers, they are reversible by default. For more information on using finite-state transducers for morphological analysis and generation, the reader is referred to \cite{beesley2003}.
 
-The transducers were designed based on the Helsinki Finite State Toolkit \citep{hfst/2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis.  It implements both the \texttt{lexc} formalism for defining lexicons, and the \texttt{twol} and \texttt{xfst} formalisms for modeling morphophonological rules.  It also supports other finite state transducer formalisms such as \texttt{sfst}.  This toolkit has been chosen as it -- or the equivalent XFST \cite{beesley2003} -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
+The transducers were designed based on the Helsinki Finite State Toolkit \citep{hfst/2011} which is a free/open-source reimplementation of the Xerox finite-state toolchain, popular in the field of morphological analysis.  It implements both the \texttt{lexc} formalism for defining lexicons, and the \texttt{twol} and \texttt{xfst} formalisms for modeling morphophonological rules.  It also supports other finite state transducer formalisms such as \texttt{sfst}.  This toolkit has been chosen as it -- or the equivalent XFST \citep{beesley2003} -- has been widely used for other Turkic languages, such as Turkish \citep{coltekin2010}, Crimean~Tatar~\citep{altintas2001}, Turkmen \citep{tantug2006}, and Kyrgyz \citep{washington2012}, and is available under a free/open-source licence.
 
 The authors learnt of another Kazakh morphological transducer in existence \citep{bekmanova2013} only after this paper was submitted and our transducer was released.  The system is unfortunately not freely available so we have not been able to evaluate this system or compare it to ours.
 
@@ -165,11 +165,14 @@ continuation lexica\footnote{A continuation lexicon is a set of morphemes, for e
 % FIXME: how long it took
 
 \begin{figure}
-\centering
+%\centering
 %\hspace{-35pt}
-    \rotatebox{-90}{
-\includegraphics[width=0.38\textwidth,bb=0 50 554 770]{graphs/kumyk-yoldash-coverage}
-}
+%\hspace{-1em}
+%    \rotatebox{-90}{
+%\hspace{-15pt}
+\hspace{-10pt}
+\includegraphics[width=0.37\textwidth,bb=50 50 554 770,angle=270]{graphs/kumyk-yoldash-coverage}
+%}
 %~\\
 %~\\
 
@@ -218,7 +221,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
     requires more in depth categorisation.}
  \label{table:stems}
 \end{center}
-
+\vspace{-2em}
 \end{table}
 
 % FIXME: example output
@@ -420,6 +423,7 @@ The coverage of each transducer over the various corpora is shown in table \ref{
  \caption{Corpora used for naïve coverage tests}
  \label{table:corpora}
 \end{center}
+\vspace{-1.5em}
 \end{table}
 
 \subsection{Precision and recall}
@@ -473,6 +477,7 @@ Recall is low for Kumyk due mostly to some systematic gaps in the morphotactics,
 	\caption{Precision and recall presented as percentages}
 	\label{table:precrecall}
 \end{center}
+\vspace{-1.5em}
 \end{table}
 
 
