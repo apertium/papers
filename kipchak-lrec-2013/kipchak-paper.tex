@@ -91,7 +91,7 @@ This paper overviews the languages (§\ref{sec:lgs}), provides background on the
 
 \section{Languages}\label{sec:lgs}
 
-The three languages for which transducers were developed belong to the Northwestern branch of the Turkic family, which is often referred to as the Kypchak branch.  This branch can be divided into three sub-branches.  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the Southern Kypchak group \citep[82-83]{histofturkic}.\footnote{It is the belief of the authors of this paper that Kyrgyz constitutes a fourth branch.}   The geographic distribution of the languages is shown in map~\ref{map1}.
+The three languages for which transducers were developed belong to the Northwestern branch of the Turkic family, which is often referred to as the Kypchak branch.  This branch can be divided into three sub-branches.  Kumyk is a member of the Western Kypchak group, Tatar is a member of the Northern Kypchak group, and Kazakh is a member of the Southern Kypchak group \citep[82-83]{histofturkic}.\footnote{It is the professional opinion of the authors of this paper that Kyrgyz constitutes a fourth branch.}   The geographic distribution of the languages is shown in map~\ref{map1}.
 %As such, each of these three languages represents one of the three branches of Kypchak.  
 
 \begin{map*}[htbp]
@@ -373,7 +373,8 @@ This solution has the same issue as loanwords above.
 
 \section{Evaluation}\label{sec:evaluation}
 
-We have evaluated the morphological analysers in two ways. The first was by calculating the naïve coverage and mean ambiguity on freely available corpora. Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer. The mean ambiguity measure was calculated as the average number of analyses returned per token in the corpus.
+%FIXME: revisions
+We have evaluated the morphological analysers\footnote{The versions of the analysers used were: r50547 for Kazakh, r××××× for Tatar, and r××××× for Kumyk.} in two ways. The first was by calculating the naïve coverage and mean ambiguity on freely available corpora. Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer. The mean ambiguity measure was calculated as the average number of analyses returned per token in the corpus.
 
 %by performing an evaluation of precision and recall on some smaller, hand-validated test sets.
 
@@ -381,7 +382,7 @@ We have evaluated the morphological analysers in two ways. The first was by calc
 
 %FIXME: sources
 We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following Wikipedia dumps were used: kkwiki-20131006-pages-articles.xml.bz2.} %FIXME
- news,\footnote{All content from \url{http://www.azattyq.org/} for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and a Tatar translation of the New Testament available from \url{http://ibt.org.ru}}  As there is currently no Wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk content from \url{http://sh-tavisi.etnosmi.ru/}.}
+ news,\footnote{All content from \url{http://www.azattyq.org/} for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and Quran translation available from \url{http://kuran.kz/}, as well as Tatar and Kumyk translations of the New Testament available from \url{http://ibt.org.ru}.}  As there is currently no Wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk content from \url{http://sh-tavisi.etnosmi.ru/}.}
 
 % Kazakh, religion: kaz.bible.kkitap.txt.bz2, kaz.quran.altay.txt.bz2
 % Kazakh, wp: kaz.wikipedia2.2013.txt.bz2
@@ -402,9 +403,9 @@ The coverage of each transducer over the various corpora is shown in table \ref{
 \toprule
 \textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) \\
 \midrule
-\multirow{4}{*}{Kazakh} & Wikipedia & 18.2M &  85.1 $\pm$ 1.33 \\
-	& News & 3.2M & - \\
-	& Religion & 849K & 92.7 $\pm$ 1.57 \\\cline{2-4}
+\multirow{4}{*}{Kazakh} & Wikipedia & 18.2M & 85.61 $\pm$ 1.37 \\
+	& News & 3.8M & 92.12 $\pm$ 2.72  \\
+	& Religion & 851K & 92.49 $\pm$ 1.66 \\\cline{2-4}
 	& Average & - &  \\
 \midrule
 \multirow{4}{*}{Tatar} & Wikipedia & 128K &  - \\
