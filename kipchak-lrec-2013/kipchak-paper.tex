@@ -22,9 +22,9 @@
 \newfontfamily\symbl[Scale=MatchLowercase]{FreeSerif}
 \newfontfeature{IPA}{+mgrk}
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
-\newfontfamily\qgmk[Scale=MatchLowercase,Letters=SmallCaps]{Linux Libertine O}
-
-\newcommand{\gmk}[1]{{\qgmk #1}}
+%\newfontfamily\qgmk[Scale=MatchLowercase,Letters=SmallCaps]{Linux Libertine O}
+%
+%\newcommand{\gmk}[1]{{\qgmk #1}}
 \newcommand{\tags}[1]{\texttt{#1}}
 
 \bibdata{kipchak-paper}
@@ -279,12 +279,12 @@ nouns, and adverbs as stems that principally modify verbs.
 Most of the stems in the lexicon can be used, with no extra suffixes in any of these functions, for 
 example the adjective жақсы in Kazakh can be used as attributively, жақсы кітап `good book', adverbially
 жақсы ойнадыңыз `(you) played well', and substantively (as a noun) `жақсы келетін еді' `(the) good (ones) would come'. This
-is a productive process and relevant to the morphotactics as an adjective used substantively may take the 
+is a productive process and relevant to the morphotactics, as an adjective used substantively may take the 
 full range of case and possessive suffixes, and adjectives used adverbially will take a different set of 
-clitics to adjectives used substantively and attributively. 
+clitics than adjectives used substantively and attributively. 
 
-However, this is not completely productive. A grammar which allows all adjectives to function
-as nouns and adverbs will overgenerate (and overanalyse). However, most grammars do not 
+However, this is not completely productive, as not all adjectives can be used substantively or adverbially. A grammar which allows all adjectives to function
+as nouns and adverbs will overgenerate (and overanalyse). However, most grammatical descriptions of these languages do not 
 mention that there are exceptions to this process.
 
 Other analysers for Turkic languages---such as \texttt{TRmorph} \citep{coltekin2010}---approach this 
@@ -294,21 +294,20 @@ an adverb, any adjective can be `derived' into a noun or adverb, etc.
 Our approach is to describe this rather in terms of function (not unlike \cite{hengeveld92}). We 
 posit that nominals can be used either substantively, attributively or adverbially. Each part of speech 
 has a `default' function: nouns are by default substantive, adjectives are by default attributive, 
-and adverbs, adverbial. When they are used outside this default use they receive a tag to mark 
-their function. Where these functions are ambiguous, then they may be disambiguated 
+and adverbs adverbial. When they are used outside this default use they receive a tag to mark 
+their function. Where these functions are ambiguous, they may be disambiguated 
 in context. 
 
 The advantage of this approach as opposed to simply allowing one part of speech to derive into
-another is that it allows us to be more principled, and decreases overgeneration,
+another is that it allows us to be more principled, and decreases overgeneration;
 for example, nouns used attributively will not take the whole adjective continuation (e.g.
 they will not take comparison, and cannot later substantivise). At the same time, it prevents 
 having to have two lexemes, one for each usage.
 
 There are certain lexemes that require more explicit categorisation, for example, the word 
 for `today'\footnote{Tatar: бүген; Kazakh: бүгін; Kumyk: бугюн. The word is etymologically composed of the words for `this' and `day'.} 
-cannot be used attributively without the presence of an extra morpheme -KI. Compound nouns
-using possessive morphology, such as Kazakh ауа райы `weather' are not well-formed
-without a possessive suffix. %FIXME: Explain the compound 'weather'.
+cannot be used attributively in Kypchak languages without the presence of an extra morpheme -KI. Compound nouns
+using possessive morphology, such as Kazakh ауа райы `weather', do not take additional morphology the same way other substantives in the language do, due to the presence of a final possessive morpheme (e.g., ‹ауа райынан› `weather-\tags{abl}', not *‹ауа райыдан›). %FIXME: Explain the compound 'weather'.
 
 %\begin{tabular}{lccc}
 %          &  Substantive & Attributive & Adverbial \\ 
@@ -340,7 +339,7 @@ In Kumyk, the character ‹ё› is used between consonants to represent a mid f
 
 In Tatar, the character ‹и› normally represents a high front vowel (e.g., ‹галимнәр› `scientists'), but in Russian words it harmonises as a back vowel (e.g., ‹артистлар› `artists').
 
-In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\gmk{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\gmk{gen}').
+In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\tags{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\tags{gen}').
 
 Our solution for these consistent exceptions is to make a separate continuation lexicon for e.g., Russian nouns.  This continuation lexicon adds a character that the phonology deletes, but that triggers phonological rules.
 
@@ -521,9 +520,10 @@ for assistance in evaluating precision and recall.
  \tags{gna\_past} & Past verbal adverb  \\
  \tags{gpr\_past} & Past verbal adjective  \\
  \tags{itg} & Interrogative  \\
- \tags{nom} &  Nominative \\
+ \tags{nom} & Nominative \\
  \tags{gen} & Genitive  \\
  \tags{dat} & Dative  \\
+ \tags{abl} & Ablative \\
  \tags{p1} & First person  \\
  \tags{p3} & Third person  \\
  \tags{px1sg} & First person, singular possessive  \\
