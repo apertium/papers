@@ -429,7 +429,10 @@ Precision and recall are measures of the average accuracy of analyses provided b
 To calculate precision and recall, it was necessary to create a hand-verified list of surface forms and their analyses.  We extracted 1,000 unique surface forms at random from a news corpus for each language, and checked that they were valid words in the languages and correctly spelt.  Where a word was incorrectly spelt or deemed not to be a form used in the language, it was discarded and a new random word selected.
 
 %FIXME: footnote with urls
-This list of surface forms was then analysed with the most recent version of the analyser, and each analysis was checked.  Where an analysis was erroneous, it was removed; where an analysis was missing, it was added.  This process gave us a `gold standard' morphologically analysed word list of 1,000 surface forms with their analyses.  The list is publically available for each language.%\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/eval/ref.1000.txt}}
+This list of surface forms was then analysed with the most recent version of the analyser, and each analysis was checked.  Where an analysis was erroneous, it was removed; where an analysis was missing, it was added.  This process gave us a `gold standard' morphologically analysed word list of 1,000 (Kazakh and Tatar) and 500 (Kumyk) surface forms with their analyses.  The list is publically available for each language.%\footnote{\url{https://apertium.svn.sourceforge.net/svnroot/apertium/branches/apertium-kir/eval/ref.1000.txt}}
+
+The lower number of forms for Kumyk was due to the limited access to native speakers of Kumyk. 
+The process for the Kumyk evaluation was also slightly different. They were first checked by a non-expert native speaker of Kumyk and then the result was proofread by the authors with the help of a dictionary.
 
 We then took the same list of surface forms and ran them through the morphological analyser once more.  Precision was calculated as the number of analyses which were found in both the output from the morphological analyser and the gold standard, divided by the total number of analyses output by the morphological analyser.
 
@@ -440,7 +443,11 @@ The results for precision and recall are presented in table~\ref{table:precrecal
 The low recall for Kazakh can be explained by the fact that the corpus is much bigger, giving 
 more hapax words and proper names. There were 403 out-of-vocabulary words out of 1,000 in the Kazakh list.
 Of these 403, 160 were proper nouns, and 148 were common nouns. The lower precision for the 
-Tatar transducer can be partly explained by the less transparent orthography of Tatar.  Due to limited access to native Kumyk speakers, the authors performed precision themselves based on their admittedly incomplete knowledge of the language.  Recall is low for Kumyk due mostly to some systematic gaps in the morphotactics, such as lack of attributive analyses in several continuation lexica.
+Tatar transducer can be partly explained by the less transparent orthography of Tatar.  
+
+
+%Due to limited access to native Kumyk speakers, the authors performed precision themselves based on their admittedly incomplete knowledge of the language.  
+Recall is low for Kumyk due mostly to some systematic gaps in the morphotactics, such as lack of attributive analyses in several continuation lexica. There are also a higher number of missing verb stems (over half of all missing analyses were verb forms) in the Kumyk results than in the Kazakh and Tatar, where missing verb stems accounted for 10\% and 8\% respectively. 
 
 % tat:
 %Precision: 95.0339558573854
@@ -490,7 +497,7 @@ would also like to thank the Google Summer of Code (2012) for supporting the
 development of both the Kazakh and the Tatar transducers. 
 
 The authors would also like to express their gratitude to Aida Sundetova 
-%and Ağarhim Sultanmuradov
+and Ağarhim Sultanmuradov
 for assistance in evaluating precision and recall.
 
 \bibliographystyle{lrec2012}
