@@ -50,17 +50,17 @@
 %}
 
 %FIXME: usually star comes first, then daggers
-\name{Jonathan North Washington$^\dagger$, Ilnar Salimzyanov$^\ddagger$, Francis M. Tyers$^\star$}
+\name{Jonathan North Washington$^\star$, Ilnar Salimzyanov$^\dagger$, Francis M. Tyers$^\ddagger$}
 
-\address{$^\dagger$Departments of Linguistics and Central Eurasian Studies\\
+\address{$^\star$Departments of Linguistics and Central Eurasian Studies\\
 Indiana University\\
 Bloomington, IN 47405 (USA)\\
 \texttt{jonwashi@indiana.edu} \and
-$^\ddagger$Institut für Maschinelle Sprachverarbeitung \\
-Universität Stuttgart\\
-Stuttgart (Germany) \\
-\texttt{ilnar@ilnar} \and 
-$^\star$HSL-fakultehta \\  
+$^\dagger$Kazan Federal University \\
+Kazan, Republic of Tatarstan\\
+(Russian Federation) \\
+\texttt{ilnar.salimzyan@gmail.com} \and 
+$^\ddagger$HSL-fakultehta \\  
 UiT Norgga árktalaš universitehta \\
 9019 Romsa (Norway)\\
 \texttt{francis.tyers@uit.no} 
@@ -374,15 +374,15 @@ This solution has the same issue as loanwords above.
 \section{Evaluation}\label{sec:evaluation}
 
 %FIXME: revisions
-We have evaluated the morphological analysers\footnote{The versions of the analysers used were: r50547 for Kazakh, r××××× for Tatar, and r××××× for Kumyk.} in two ways. The first was by calculating the naïve coverage and mean ambiguity on freely available corpora. Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer. The mean ambiguity measure was calculated as the average number of analyses returned per token in the corpus.
+We have evaluated the morphological analysers\footnote{The versions of the analysers used were: r50547 for Kazakh, r50260 for Tatar, and r××××× for Kumyk.} in two ways. The first was by calculating the naïve coverage and mean ambiguity on freely available corpora. Naïve coverage refers to the percentage of surface forms in a given corpora that receive at least one analysis.  Forms counted by this measure may have other analyses which are not delivered by the transducer. The mean ambiguity measure was calculated as the average number of analyses returned per token in the corpus.
 
 %by performing an evaluation of precision and recall on some smaller, hand-validated test sets.
 
 \subsection{Corpora}
 
 %FIXME: sources
-We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following Wikipedia dumps were used: kkwiki-20131006-pages-articles.xml.bz2.} %FIXME
- news,\footnote{All content from \url{http://www.azattyq.org/} for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and Quran translation available from \url{http://kuran.kz/}, as well as Tatar and Kumyk translations of the New Testament available from \url{http://ibt.org.ru}.}  As there is currently no Wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk content from \url{http://sh-tavisi.etnosmi.ru/}.}
+We tested the coverage of the Kazakh and Tatar analysers over three separate domains: encyclopaedic text,\footnote{The following Wikipedia dumps were used: \texttt{kkwiki-20131006-pages-articles.xml.bz2} and \texttt{ttwiki-20130225-pages-articles.xml.bz2}.}
+ news,\footnote{All content from \url{http://www.azattyq.org/} for 2010 was used for Kazakh, as well as all content from 2005 to 2011 on \url{http://tat.tatar-inform.ru} for Tatar.} and religion.\footnote{We used a Kazakh bible translation available from \url{https://kkitap.net/} and Quran translation available from \url{http://kuran.kz/}, and a Tatar translation of the New Testament available from \url{http://ibt.org.ru}.}  As there is currently no Wikipedia in Kumyk, we tested only news and religion.\footnote{The bible corpus is from \url{http://ibt.org.ru/} and the news corpus consists of all Kumyk content from \url{http://sh-tavisi.etnosmi.ru/}.}
 
 % Kazakh, religion: kaz.bible.kkitap.txt.bz2, kaz.quran.altay.txt.bz2
 % Kazakh, wp: kaz.wikipedia2.2013.txt.bz2
@@ -406,9 +406,9 @@ The coverage of each transducer over the various corpora is shown in table \ref{
 \multirow{4}{*}{Kazakh} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 \\
 	& News & 3.8M & 92.12 $\pm$ 2.72  \\
 	& Religion & 851K & 92.49 $\pm$ 1.66 \\\cline{2-4}
-	& Average & - &  \\
+	& Average & - & 90.07 $\pm$ 1.91 \\
 \midrule
-\multirow{4}{*}{Tatar} & Wikipedia & 128K &  - \\
+\multirow{4}{*}{Tatar} & Wikipedia & 159K & 86.35 $\pm$ 2.17 \\
 	& News & 4.6M & - \\
 	& Religion & 205K & 88.7 $\pm$ 0.5 \\\cline{2-4}
 	& Average & - &  \\
