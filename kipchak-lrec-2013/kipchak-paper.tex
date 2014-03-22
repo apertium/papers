@@ -22,9 +22,9 @@
 \newfontfamily\symbl[Scale=MatchLowercase]{FreeSerif}
 \newfontfeature{IPA}{+mgrk}
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
-%\newfontfamily\qgmk[Scale=MatchLowercase,Letters=SmallCaps]{Linux Libertine O}
+\newfontfamily\qgmk[Scale=MatchLowercase,Letters=SmallCaps]{Linux Libertine O}
 %
-%\newcommand{\gmk}[1]{{\qgmk #1}}
+\newcommand{\gmk}[1]{{\qgmk #1}}
 \newcommand{\tags}[1]{\texttt{#1}}
 
 \bibdata{kipchak-paper}
@@ -309,7 +309,7 @@ having to have two lexemes, one for each usage.
 There are certain lexemes that require more explicit categorisation, for example, the word 
 for `today'\footnote{Tatar: бүген; Kazakh: бүгін; Kumyk: бугюн. The word is etymologically composed of the words for `this' and `day'.} 
 cannot be used attributively in Kypchak languages without the presence of an extra morpheme -KI. Compound nouns
-using possessive morphology, such as Kazakh ауа райы `weather' (lit. `air condition'), do not take additional morphology the same way other substantives in the language do, due to the presence of a final possessive morpheme (e.g., ‹ауа райынан› `weather-{\sc abl}', not *‹ауа райыдан›). %FIXME: Explain the compound 'weather'.
+using possessive morphology, such as Kazakh ауа райы `weather' (lit. `air condition'), do not take additional morphology the same way other substantives in the language do, due to the presence of a final possessive morpheme (e.g., ‹ауа райынан› `weather-\gmk{abl}', not *‹ауа райыдан›). %FIXME: Explain the compound 'weather'.
 
 %\begin{tabular}{lccc}
 %          &  Substantive & Attributive & Adverbial \\ 
@@ -341,7 +341,7 @@ In Kumyk, the character ‹ё› is used between consonants to represent a mid f
 
 In Tatar, the character ‹и› normally represents a high front vowel (e.g., ‹галимнәр› `scientists'), but in Russian words it harmonises as a back vowel (e.g., ‹артистлар› `artists').
 
-In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\tags{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-{\sc gen}').
+In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\tags{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\gmk{gen}').
 
 Our solution for these consistent exceptions is to make a separate continuation lexicon for e.g., Russian nouns.  This continuation lexicon adds a character that the phonology deletes, but that triggers phonological rules.
 
