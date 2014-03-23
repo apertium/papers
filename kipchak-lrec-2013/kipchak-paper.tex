@@ -127,7 +127,6 @@ Creating morphological transducers in the above-mentioned formalisms involves en
 
 %\subsection{Description}
 
-%FIXME: keep revision number up to date
 The transducers are available / under development in apertium's subversion repository,\footnote{{\scriptsize \url{https://svn.code.sf.net/p/apertium/svn/languages/}}} in the directories \texttt{apertium-kaz}, \texttt{apertium-tat}, and \texttt{apertium-kum}, and compiled versions may be run at \url{http://turkic.apertium.org/}.  The revision of each module in the subversion repository that the numbers in this paper (stem counts, evaluation, etc.) represent is \texttt{r50547} for Kazakh, \texttt{r50260} for Tatar, and \texttt{r50300} for Kumyk.
 
 
@@ -155,18 +154,19 @@ The Kumyk transducer was developed starting at the beginning of October, 2013 as
 
 The morphotactics\footnote{The morphotactics of a language is the way in which morphemes can be combined to create words.} of Turkic languages are complex enough that even a linguist who is fluent in the language and has a good linguistic understanding of it may not understand how exactly all morphemes combine.  Native speakers educated about the morphology of their languages also do not have an explicit knowledge of the complete morphotactics.  Hence it often becomes necessary to use fieldwork methodology to elicit the full extent of the morphotactics, be this a linguist with little to no knowledge of a Turkic language working with a native speaker, or a native speaker who understands the extent of what knowledge is necessary to encode in the transducer.  When there is no native speaker of a particular language available, the authors have found that information previously encoded about a closely related language or the intuitions of a speaker of a closely related language may be combined with the use of textual corpora to ``elicit'' information about the morphotactics of a language.  Depending on the contents of corpus and chance, this may not result in a completely accurate model, but it is possible to be thorough.
 
-The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was co-authored by the first author, who is fluent in and has a good linguistic knowledge of Kyrgyz and two native speakers of Kyrgyz. The first author also developed the Kazakh morphotactics who is fluent in and has a good linguistic understanding Kazakh.  The morphotactics of Tatar were developed for the most part by the third author, a native speaker of Tatar, who also worked to polish off the morphotactics of the Kazakh transducer.
+The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was co-authored by the first author---who is fluent in and has a good linguistic knowledge of both Kyrgyz and Kazakh---and two native speakers of Kyrgyz.  The morphotactics of Tatar were developed for the most part by the second author, a native speaker of Tatar, who also worked to polish off the morphotactics of the Kazakh transducer
+%The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was co-authored by the first author, who is fluent in and has a good linguistic knowledge of Kyrgyz, along with two native speakers of Kyrgyz. The first author also developed the Kazakh morphotactics who is fluent in and has a good linguistic understanding Kazakh.  The morphotactics of Tatar were developed for the most part by the third author, a native speaker of Tatar, who also worked to polish off the morphotactics of the Kazakh transducer.
 
 %As the authors found it difficult to locate native speakers of Kumyk, the morphotactics of the Kumyk transducer were developed based on the existing encoded morphotactics of Kazakh and Tatar (and occasionally Kyrgyz), with consultation of corpora, as described above.  A dictionary \citep{bammatov1960} and a grammar \citep{olmesov2000} of Kumyk were also consulted as needed. 
 
 In order to create the Kumyk transducer, we approached one of the major parts of speech at a time. We started with the nouns, copying the 
-continuation lexica\footnote{A continuation lexicon is a set of morphemes, for example, in the Turkic languages there is a continuation lexicon for `case' which includes the possible case suffixes.} (nominal morphotactics) from the Kazakh transducer. The suffixes were then replaced with the Kumyk suffixes according to the grammar \citep{olmesov2000}. Where the grammar was not explicit regarding a suffix form, we looked the corpus for possible forms and at their contexts. The same process was undertaken for verbs. 
+continuation lexica\footnote{A continuation lexicon is a set of morphemes, for example, in the Turkic languages there is a continuation lexicon for `case' which includes the possible case suffixes.} (nominal morphotactics) from the Kazakh transducer. The suffixes were then replaced with the Kumyk suffixes according to the grammar \citep{olmesov2000}. Where the grammar was not explicit regarding a suffix form, we looked the corpus for possible forms and at their contexts. The same process was undertaken for verbs.  Phonological rules were developed as needed.
 
 % FIXME: how long it took
 
 \begin{figure}
 %\centering
-\hspace{-35pt}
+%\hspace{-35pt}
 %\hspace{-1em}
 %    \rotatebox{-90}{
 %\hspace{-15pt}
@@ -245,11 +245,12 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
 
 \scalebox{0.81}{
 \begin{tabular}{lll}
+\toprule
  \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
-\hline
+\midrule
  Құдай Өзінің жаратқандарының  &  Аллаһ Үзе яраткан нәрсәләргә карап, & Аллагь Оьзю яратгъан затлагъа\\
  бәріне қарап, өте жақсы екенін көрді. &  аларның бик яхшы икәнен күрде. & къарап, олар бек яхшы экенин гёрген. \\
-\hline
+\midrule
  Құдай\tags{<n><nom>} & Аллаһ\tags{<n><nom>} & Аллагь\tags{<n><nom>}  \\
  Өз\tags{<prn><ref><px3sp><gen>} & Үз\tags{<prn><ref><px3sp><nom>} & Оьз\tags{<prn><ref><px3sp><nom>} \\
  жарат\tags{<v><tv><ger\_past><pl><px3sp><gen>} & ярат\tags{<v><tv><gpr\_past>} & ярат\tags{<v><tv><gpr\_past>} \\
@@ -262,7 +263,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
  е\tags{<cop><ger\_past><px3sp><acc>} & и\tags{<cop><ger\_past><px3sp><acc>} & э\tags{<cop><ger\_past><px3sp><acc>} \\
  көр\tags{<v><tv><ifi><p3><sg>} & күр\tags{<v><tv><past><p3><sg>} & гёр\tags{<v><tv><past><p3><sg>} \\  
  .\tags{<sent>} & .\tags{<sent>} & .\tags{<sent>} \\
-\hline
+\bottomrule
 \end{tabular}
 }
 \label{table:exoutput}
@@ -272,7 +273,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
   their very good being saw''. The output has been 
   abbreviated to only show the appropriate tag sequence in context, the actual output would give multiple interpretations
   that would require further disambiguation. Refer to Appendix~\ref{app:glossary} for tag descriptions.}
-
+\vspace{-1.5em}
 \end{table*}
 
 \subsection{Categorisation and tagset}
@@ -327,7 +328,7 @@ using possessive morphology, such as Kazakh ауа райы `weather' (lit. `air
 
 There is a class of phenomena encountered during the development of these transducers, united by the fact that the morphophonology needs information about the stem's phonological form that is not provided by the orthographic representation.  These phenomena were left by \citet{washington2012} for future work, but many of them been implemented in the transducers described in the current paper.
 
-Types of these phenomena include single characters used to represent multiple phonological forms, loanwords, and acronyms and numerals.  A brief overview of each follows, along with examples and details of our solution.
+Types of these phenomena include single characters used to represent multiple phonological forms, loanwords, and acronyms and numerals.  A brief overview of each follows, along with examples and details of our solutions.
 
 \subsubsection{Ambiguous characters}
 In Tatar, the `yoticised' vowel letters ‹е›, ‹я›, and ‹ю› each ambiguously represent a set of sounds.  For example, ‹е› is the non-initial orthographic variant of ‹э› (as in ‹дәресләр› `lessons'), but can also represent /j/ followed by the phoneme of ‹э› (as in ‹егетләр› `boys') or ‹ы› (as in ‹еллар› `years').
@@ -424,7 +425,7 @@ The coverage of each transducer over the various corpora is shown in table \ref{
  \caption{Corpora used for naïve coverage tests}
  \label{table:corpora}
 \end{center}
-\vspace{-1.5em}
+\vspace{-2.5em}
 \end{table}
 
 \subsection{Precision and recall}
