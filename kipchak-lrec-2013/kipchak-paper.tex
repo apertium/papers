@@ -87,7 +87,7 @@ All three transducers were designed as ``ports'' of Apertium's Kyrgyz morphologi
 %FIXME: brief background on how, when, and with what support were developed?
 % In Apertium project, Turkic transducers were developed either as part of Turkic-to-Turkic machine translators, or they started as a "port" (in particular of morphotactics) of already existing Turkic transducers.
 
-This paper overviews the languages (§\ref{sec:lgs}), provides background on these morphological transducers and related previous work (§\ref{sec:bg}), describes the development effort and contents of the transducers (§\ref{sec:methodology}), evaluates the effectiveness of these transducers (§\ref{sec:evaluation}), and summarises the findings (§\ref{sec:conclusions}).
+This paper gives an overview of the languages (§\ref{sec:lgs}), provides background on these morphological transducers and related previous work (§\ref{sec:bg}), describes the development effort and contents of the transducers (§\ref{sec:methodology}), evaluates the effectiveness of these transducers (§\ref{sec:evaluation}), and summarises the findings (§\ref{sec:conclusions}).
 
 \section{Languages}\label{sec:lgs}
 
@@ -348,7 +348,7 @@ In Tatar, the character ‹и› normally represents a high front vowel (e.g., �
 
 In Kazakh, ‹е› is a front diphthong (e.g., ‹елдің› `country-\gmk{gen}'), but in e.g., family names with Russian morphology, it harmonises as a back vowel (e.g., ‹Назарбаевтың› `Nazarbayev-\gmk{gen}').
 
-Our solution for these consistent exceptions is to make a separate continuation lexicon for e.g., Russian nouns.  This continuation lexicon adds a character that the phonology deletes, but that triggers phonological rules.
+Our solution for these consistent exceptions is to make a separate continuation lexicon for e.g., Russian nouns, which adds a character which the phonology deletes, but which triggers various phonological rules.
 
 Since \texttt{twol} ``phonological'' rules can be understood to be applied all at one stage (as opposed to being ordered), rules triggered by these characters must make reference to abstract characters that exist on the input tape but are null on the output tape.  This complicates existing rules that have been designed to ignore null characters on the output tape.  Hence, the \texttt{twol} rules resulting from the combination of processes simultaneously triggered by and ignoring output-null characters can quickly become quite unwieldy.
 
