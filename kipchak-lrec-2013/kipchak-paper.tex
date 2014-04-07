@@ -96,7 +96,7 @@ The three languages for which transducers were developed belong to the Northwest
 
 \begin{map*}[htbp]
 	\includegraphics[width=\textwidth]{map/map}
-	\caption{The three sub-branches of Kypchak (North, South, West), roughly divided with black lines, showing the geographic distribution of the three languages for which transducers were developed.  The Kypchak languages shown on the map are Tatar (\texttt{tat}), Kazakh (\texttt{kaz}), and Kumyk (\texttt{kum}). The other codes represent Bashkir (\texttt{bak}), Kyrgyz (\texttt{kir}), Karakalpak (\texttt{kaa}), Nogay (\texttt{nog}), Karachay-Balkar (\texttt{krc}), Urum (\texttt{uum}), Crimean Tatar (\texttt{crh}), and Karaim (\texttt{kdr}).}
+	\caption{The three sub-branches of Kypchak (North, South, West), roughly divided with black lines, showing the geographic distribution of the three languages for which transducers were developed.  The Kypchak languages this paper describes are Tatar (\texttt{tat}), Kazakh (\texttt{kaz}), and Kumyk (\texttt{kum}). The other codes on the map represent Bashkir (\texttt{bak}), Kyrgyz (\texttt{kir}), Karakalpak (\texttt{kaa}), Nogay (\texttt{nog}), Karachay-Balkar (\texttt{krc}), Urum (\texttt{uum}), Crimean Tatar (\texttt{crh}), and Karaim (\texttt{kdr}).}
 	\label{map1}
 \end{map*}
 
@@ -109,7 +109,7 @@ the total number of speakers to be around 8 million \citep{ethnologue}.
 %Estimates of the total number of speakers range from 8 million \citep{ethnologue} to 11 million \citep{nationalencyklopedin} people.
 
 \subsection{Tatar}
-Tatar /t{\symbl ɒ}t{\symbl ɑ}r/ is spoken in and around Tatarstan, --- a republic of the Russian Federation, where it is co-official with Russian. The majority of native speakers are bilingual in Russian. Tatar is spoken by approximately 5.4 million people \citep{ethnologue}.   %, and the standard varieties our system FIXMEs are written in Cyrillic.
+Tatar /t{\symbl ɒ}t{\symbl ɑ}r/ is spoken in and around Tatarstan, a republic of the Russian Federation, where it is co-official with Russian. The majority of native speakers are bilingual in Russian. Tatar is spoken by approximately 5.4 million people \citep{ethnologue}.   %, and the standard varieties our system FIXMEs are written in Cyrillic.
 
 \subsection{Kumyk}
 Kumyk /qumuq/ is spoken in Dagestan, a republic of the Russian Federation, where it is co-official with a number of other national languages \citep{ethnologue}.  There are approximately 430 thousand speakers \citep{ethnologue}.
@@ -154,33 +154,34 @@ The Kumyk transducer was developed starting at the beginning of October, 2013 as
 
 The morphotactics\footnote{The morphotactics of a language is the way in which morphemes can be combined to create words.} of Turkic languages are complex enough that even a linguist who is fluent in the language and has a good linguistic understanding of it may not understand how exactly all morphemes combine.  Native speakers educated about the morphology of their languages also do not have an explicit knowledge of the complete morphotactics.  Hence it often becomes necessary to use fieldwork methodology to elicit the full extent of the morphotactics, be this a linguist with little to no knowledge of a Turkic language working with a native speaker, or a native speaker who understands the extent of what knowledge is necessary to encode in the transducer.  When there is no native speaker of a particular language available, the authors have found that information previously encoded about a closely related language or the intuitions of a speaker of a closely related language may be combined with the use of textual corpora to ``elicit'' information about the morphotactics of a language.  Depending on the contents of corpus and chance, this may not result in a completely accurate model, but it is possible to be thorough.
 
-The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was co-authored by the first author---who is fluent in and has a good linguistic knowledge of both Kyrgyz and Kazakh---and two native speakers of Kyrgyz.  The morphotactics of Tatar were developed for the most part by the second author, a native speaker of Tatar, who also worked to polish off the morphotactics of the Kazakh transducer
+The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was co-authored by the first author---who is fluent in and has a good linguistic knowledge of both Kyrgyz and Kazakh---and two native speakers of Kyrgyz.  The morphotactics of Tatar were developed for the most part by the second author, a native speaker of Tatar, who also worked to polish off the morphotactics of the Kazakh transducer.
 %The Kazakh morphotactics were originally developed based on the Kyrgyz transducer, which was co-authored by the first author, who is fluent in and has a good linguistic knowledge of Kyrgyz, along with two native speakers of Kyrgyz. The first author also developed the Kazakh morphotactics who is fluent in and has a good linguistic understanding Kazakh.  The morphotactics of Tatar were developed for the most part by the third author, a native speaker of Tatar, who also worked to polish off the morphotactics of the Kazakh transducer.
 
 %As the authors found it difficult to locate native speakers of Kumyk, the morphotactics of the Kumyk transducer were developed based on the existing encoded morphotactics of Kazakh and Tatar (and occasionally Kyrgyz), with consultation of corpora, as described above.  A dictionary \citep{bammatov1960} and a grammar \citep{olmesov2000} of Kumyk were also consulted as needed. 
 
 In order to create the Kumyk transducer, we approached one of the major parts of speech at a time. We started with the nouns, copying the 
-continuation lexica\footnote{A continuation lexicon is a set of morphemes, for example, in the Turkic languages there is a continuation lexicon for `case' which includes the possible case suffixes.} (nominal morphotactics) from the Kazakh transducer. The suffixes were then replaced with the Kumyk suffixes according to the grammar \citep{olmesov2000}. Where the grammar was not explicit regarding a suffix form, we looked the corpus for possible forms and at their contexts. The same process was undertaken for verbs.  Phonological rules were developed as needed.
+continuation lexica\footnote{A continuation lexicon is a set of morphemes; for example, in the Turkic languages there is a continuation lexicon for `case' which includes the possible case suffixes.} (nominal morphotactics) from the Kazakh transducer. The suffixes were then replaced with the Kumyk suffixes according to the grammar \citep{olmesov2000}. Where the grammar was not explicit regarding a suffix form, we looked the corpus for possible forms and at their contexts. The same process was undertaken for verbs.  Phonological rules were developed as needed.
 
 % FIXME: how long it took
 
 \begin{figure}
 %\centering
-%\hspace{-35pt}
+%\hspace{-30pt}
 %\hspace{-1em}
 %    \rotatebox{-90}{
-%\hspace{-15pt}
-\hspace{-10pt}
+\hspace{-30pt}
+%\hspace{-10pt}
 \includegraphics[width=0.37\textwidth,bb=50 50 554 770,angle=270]{graphs/kumyk-yoldash-coverage}
 %}
 %~\\
 %~\\
 
+\vspace{1.2em}
 \caption{Number of stems and coverage of a corpus over time for the Kumyk transducer. Time is measured in days 
 starting from the 2nd October 2013. The graph shows that to reach 80\% coverage took
 around a week, and to reach 90\% took another week.}
 \label{fig:kumcov}
-\vspace{-0.5em}
+\vspace{-1.8em}
 \end{figure}
 
 \subsection{Transducer contents}
@@ -219,7 +220,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
     to other parts of speech in the Kumyk transducer can be explained by the relative ease of 
     categorising nouns as opposed to adjectives, adverbs and verbs. Adding a noun essentially involves
     choosing between loan word and native word. Adding stems from the other main categories 
-    requires more in depth categorisation.}
+    requires more in-depth categorisation.}
  \label{table:stems}
 \end{center}
 \vspace{-2em}
@@ -271,7 +272,7 @@ Table \ref{table:stems} lists the number of stems of the primary categories in e
   sentence (``And God saw every thing that he had made, and, behold, it was 
   very good.'', Genesis 1:31). The sentence may be very roughly glossed as ``God own-his created things-to looking,
   their very good being saw''. The output has been 
-  abbreviated to only show the appropriate tag sequence in context, the actual output would give multiple interpretations
+  abbreviated to only show the appropriate tag sequence in context; the actual output would give multiple interpretations
   that would require further disambiguation. Refer to Appendix~\ref{app:glossary} for tag descriptions.}
 \vspace{-1.5em}
 \end{table*}
@@ -299,8 +300,8 @@ problem by allowing a zero-derivation by which any noun can be `derived' into an
 an adverb, any adjective can be `derived' into a noun or adverb, etc. 
 
 Our approach is to describe this rather in terms of function (not unlike \cite{hengeveld92}). We 
-posit that nominals can be used either substantively, attributively or adverbially. Each part of speech 
-has a `default' function: nouns are by default substantive, adjectives are by default attributive, 
+posit that e.g., nominals can be used either substantively, attributively or adverbially. Each part of speech 
+hence has a `default' function: nouns are by default substantive, adjectives are by default attributive, 
 and adverbs adverbial. When they are used outside this default use they receive a tag to mark 
 their function. Where these functions are ambiguous, they may be disambiguated 
 in context. 
@@ -335,7 +336,7 @@ In Tatar, the `yoticised' vowel letters ‹е›, ‹я›, and ‹ю› each am
 
 In Kumyk, ‹ё› and ‹ю› are used between consonants to represent front rounded vowels (as in ‹гёзлер› `eyes' and ‹гюнлер› `days'), but word-initially can represent ‹й› followed by either a front vowel (as in ‹юреклер› `hearts', ‹ёнкюлер› `darlings') or a back vowel (as in ‹юлдузлар› `stars', ‹ёллар› `roads').
 
-In Kazakh, the vowels /{\qipa ɘ}/ ‹і› and /ə/ ‹ы› followed by a glide /w/ ‹у› or /j/ ‹й› are written ‹у› and ‹и›, depending on the glide; for example.  The character ‹ю› is used in turn to represent ‹й› followed by either multi-phoneme value of ‹у›.  For example, ‹қиюда› /qəjəwd{\qipa ɑ}/ `in the process of chopping down' and ‹киюде› /k{\qipa ɘ}j{\qipa ɘ}wd{\qipa i̯ɘ}/ `in the process of getting dressed' have back- and front-harmonising values, respectively, for ‹и› and ‹ю›.
+In Kazakh, the vowels /{\qipa ɘ}/ ‹і› and /ə/ ‹ы› followed by a glide /w/ ‹у› or /j/ ‹й› are written ‹у› and ‹и›, depending on the glide; for example.  The character ‹ю› is used in turn to represent ‹й› followed by either multi-phoneme value of ‹у›.  For example, ‹қиюда› /qəjəwd{\qipa ɑ}/ `in the process of chopping down' and ‹киюде› /k{\qipa ɘ}j{\qipa ɘ}wd{\qipa i̯ɘ}/ `in the process of getting dressed' have back- and front-harmonising values, respectively, for ‹и› and ‹ю›.\footnote{Note also that the orthography suggests the presence of an additional /j/ in these words.}
 
 These problems can often be solved by building the context into the morphophonological rules, though the addition of new contexts and exceptions to existing contexts results in rather complex \texttt{twol} rules.
 
@@ -366,7 +367,7 @@ Regarding numerals, work has been done for Finnish in the finite-state framework
 on the transducer. 
 
 % FIXME: cyrillic in \texttt
-Our solution is to add phonological information at the end of morphemes that need it in the form of special ``abstract letters'' that trigger phonological processes at the morphophonological stage and are deleted. For example, the string \texttt{5<num><subst><abl>}\footnote{The resulting forms, 5-тен\super{\texttt{kaz}}, 5-тән\super{\texttt{tat}}, and 5-ден\super{\texttt{kum}} would be pronounced бестен\super{\texttt{kaz}}, биштән\super{\texttt{tat}}, and бешден\super{\texttt{kum}}.} has
+Our solution is to add phonological information at the end of morphemes that need it in the form of special ``abstract letters'' that trigger phonological processes at the morphophonological stage and are deleted. For example, the string \texttt{5<num><subst><abl>}\footnote{The resulting forms, 5-тен\super{\texttt{kaz}}, 5-тән\super{\texttt{tat}}, and 5-ден\super{\texttt{kum}} would be spelled out ‹бестен›\super{\texttt{kaz}}, ‹биштән›\super{\texttt{tat}}, and ‹бешден›\super{\texttt{kum}}.} has
 the morphotactic representation 5\{э\}\{с\}>-\{D\}\{A\}н, where \{э\} and \{с\} stand for phonological triggers, > represents a morpheme boundary, and \{D\}\{A\}н is the representation of the ablative morpheme at the morphotactic level.  The symbol \{э\} signals that the following vowel needs to harmonise to a front unrounded vowel, and \{с\} signals that there is a final voiceless consonant.  So, with 5\{э\}\{с\}\footnote{Note that there is not one extra symbol for every sound of the language, but a much reduced set.  E.g., \{с\} is used to represent all voiceless consonants.} in the lexicon, and a consistent continuation lexicon specifying the underlying form of case affixes, the rules that operate on \{D\} and \{A\} are able to do produce the correct output form in each language, avoiding the incorrect default *5-дан.
 
 %FIXME: example of implementation
@@ -504,7 +505,7 @@ would also like to thank the Google Summer of Code (2012) for supporting the
 development of both the Kazakh and the Tatar transducers. 
 
 The authors would also like to express their gratitude to Aida Sundetova 
-and Ağarhim Sultanmuradov
+and Ağarahim Sultanmuradov
 for assistance in evaluating precision and recall.
 
 \bibliographystyle{lrec2012}
