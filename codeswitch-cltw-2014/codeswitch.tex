@@ -3,18 +3,6 @@
 % File coling2014.tex
 %
 % Contact: jwagner@computing.dcu.ie
-%%
-%% Based on the style files for ACL-2014, which were, in turn,
-%% Based on the style files for ACL-2013, which were, in turn,
-%% Based on the style files for ACL-2012, which were, in turn,
-%% based on the style files for ACL-2011, which were, in turn, 
-%% based on the style files for ACL-2010, which were, in turn, 
-%% based on the style files for ACL-IJCNLP-2009, which were, in turn,
-%% based on the style files for EACL-2009 and IJCNLP-2008...
-
-%% Based on the style files for EACL 2006 by 
-%%e.agirre@ehu.es or Sergi.Balari@uab.es
-%% and that of ACL 08 by Joakim Nivre and Noah Smith
 
 \documentclass[11pt]{article}
 \usepackage{coling2014}
@@ -56,16 +44,44 @@
 
 \section{Introduction}
 \label{intro}
-With the increase in multilingualism and the adoption of ‘another’ acceptable language apart from the usual creates a change in the data. This change can be looked upon as bad when we are faced with the burden of upgrading systems to adapt to it, on the other hand such change is 
-unavoidable and has to be welcomed. The good part is that the user or the speaker feels more comfortable in expressing their opinions. Such change directly requires us to upgrade our current systems \cite{fung2008multilingual} so that the processing or the analysis of the data is in no way compromised.\\
-   Such code switching is more common in less formal ways of communication like on chats, forums and social media. Our motivation is to build a detection scheme which can sub-segment such sentences to the primary and secondary language tags and then prepare this to be processed further by modules which make use of this information to analyse useful information from this data. Specially in the case of languages like Irish, Breton and Welsh where the native speakers are very less, these people reach out to others and most of their posts are code-switched. Rather than promoting research based on monolingual technologies we would like to adopt to the trend and try to help other researchers in understanding this data in a better way.
 
-%   In Ireland, and the surrounding areas a significant number of speakers use Welsh, Breton, Irish, English and French. About 14.6\% of the population of Wales considers themselves to be fluent in Welsh(2011) \footnote{http://ons.gov.uk/ons/rel/census/2011-census/key-statistics-for-unitary-authorities-in-wales/stb-2011-census-key-statistics-for-wales.html#tab---Proficiency-in-Welsh}. In the Republic of Ireland 94,000 people use it as a primary language outside the education system \footnote{http://www.cso.ie/en/media/csoie/census/documents/census2011pdr/Pdf\%208\%20Tables.pdf}. It is noticed that the Irish and the Welsh people often use English with their respective languages while they code-switch while Bretons have a natural French influence. Hence, in our experiments we plan to analyse the results for code switching and detection of segments in the following bilingual pairs - Welsh-English, Irish-English and Breton-French,  thus identifying the primary and secondary languages in the data.
-\cite{lyu2006}
+Determining the language of a piece of text is one of the first steps that must be taken
+before proceeding with further computational processing. This task has received a substantial amount of
+attention in recent years (X,Y,Z). However, previous research has on the whole assumed
+that a given text will be in a single language. When dealing with text from formal domains,
+this may be the case --- although there are exceptions --- such as quotations embedded in
+the text in another language. But when dealing with informal text, particularly in languages
+where the speech community is predominantly bi- or multi-lingual, this assumption may not hold.
 
-\begin{figure}
+There are several ways in which an informal text may contain parts in different languages, such as
+code switching, quotations, named entities, interjections, translations, etc. Some of these are presented
+in Table~\ref{table:examples}
 
-\end{figure}
+\begin{table}
+\begin{tabular}{ll}
+ \textbf{Code switching}: & \\
+\textbf{Quotations}: & And then he said ` ' \\
+ \textbf{Named entities}: &``[Dr Jekyll] ha [Mr Hyde] embannet gant [Éditions Aber]'' \\
+ \textbf{Interjections}: & ``Hey, that's great, [diolch yn fawr!]'' \\
+ \textbf{Translations}: & ``Bloavezh mat d'an holl ! [Bonne année à tous !]'' \\
+\end{tabular}
+\label{table:examples}
+\caption{Some examples of text segments containing more than one language}
+\end{table}
+
+The work presented in this paper was motivated by the problems in normalising non-standard input
+for the Celtic languages as a precursor to machine translation. When applying a normalisation 
+strategy to a piece of text, it is necessary to first know the language of the piece of text you 
+are applying it to.
+
+The remainder of the paper is laid out as follows. In section~\ref{sec:method} we describe the problem
+in more detail and look at relevant prior work before proposing a novel method of sub-sentential
+language detection. Section~\ref{sec:eval} describes the evaluation methodology. Then in section~\ref{sec:results}
+we present the results of our method and compare it against several other possible methods. Finally, section~\ref{sec:conclusions}
+presents future work and conclusions.
+
+\section{Methodology}
+\label{sec:method}
 
 % issues:
 %% proper nouns
@@ -112,6 +128,7 @@ unavoidable and has to be welcomed. The good part is that the user or the speake
 }
 
 \section{Evaluation}
+\label{sec:eval}
 For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task: dividing text into syntactically related non-overlapping groups of words. This chunking mechanism \cite{tjong2003introduction} is very similar to ours, in terms of words which only belong to one category (here, language), and also evaluation based on the phrase structure present in the data. The chunks here are such that they belong to only one language. For example, the sentence below, shows the chunks as group of words in square brackets and their tagged language at the beginning in braces - \\
 
 \begin{figure}
@@ -137,22 +154,24 @@ The different techniques used for the sub-segmenting task are described as follo
 
 
 \section{Results}
-
+\label{sec:results}
 As described in the evaluation the techniques were used on a dataset collected over a period of time, for the three language pairs\footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}}. The statics of the same are described in the Table below. // 
 
 \begin{table}
 \begin{center}
 \begin{tabular}{|l|r|r|r|r}
 \hline
-\textbf{System} &  \multicolumn{3}{c|}{\textbf{Statistics} (\%)} \\
+\multirow{2}{*}{\textbf{Pair}} & \multirow{2}{*}{\textbf{Language}}  & \multicolumn{2}{c|}{\textbf{Statistics} (\%)} \\\cline{3-4}
+                &  &  Tokens & Segments \\
 \hline
-       &   lang(1) Tokens & lang(2) Tokens & Segments of lang(1) & Segments of lang(2) \\
+\multirow{2}{*}{Irish---English} & Irish & 332 & 40 \\
+                                 & English & 379 & 42 \\
 \hline
-\texttt{Irish(1)---English(2)} & 332 & 379 & 40 & 42 \\
+\multirow{2}{*}{Welsh---English} & Welsh & 419 & 64 \\
+                                 & English & 378 & 66  \\
 \hline
-\texttt{Welsh(1)---English(2)} & 419 & 378 & 64 & 66 \\
-\hline
-\texttt{Breton(1)---English(2)} & 388 & 379 & 54 & 53 \\
+\multirow{2}{*}{Breton---French} & Breton & 388 & 54 \\
+                                 & French & 379 & 53  \\
 \hline
 \end{tabular}
 \end{center}
@@ -225,7 +244,7 @@ The Results clearly show that the baseline has a negligible precision and recall
 
 
 \section{Conclusions}
-
+\label{sec:conclusions}
 
 \section*{Acknowledgements}
 
