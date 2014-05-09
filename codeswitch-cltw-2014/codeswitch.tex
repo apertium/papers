@@ -131,6 +131,8 @@ The different techniques used for the sub-segmenting task are described as follo
 
 1. Baseline - This is the most naive method of classification, we used the language identification tool langid.py \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single major classification. \\
 2. Langid character bigram and trigram prediction - After restricting the predicted languages to be amongst the two in the dataset, we used the character bi-gram and then tri-gram probabilities to predict the detected language for each token, some heuristics like in Methodology were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. \\
+3. Word based prediction - This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the word lists, it was associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not even in one, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
+
 
 
 \section{Results}
