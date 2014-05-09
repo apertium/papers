@@ -41,7 +41,7 @@
 
 Determining the language of a piece of text is one of the first steps that must be taken
 before proceeding with further computational processing. This task has received a substantial amount of
-attention in recent years (\cite{cavnar1994n},\cite{lui2012langid}). However, previous research has on the whole assumed
+attention in recent years \cite{cavnar1994n,lui2012langid}. However, previous research has on the whole assumed
 that a given text will be in a single language. When dealing with text from formal domains,
 this may be the case --- although there are exceptions --- such as quotations embedded in
 the text in another language. But when dealing with informal text, particularly in languages
@@ -49,19 +49,7 @@ where the speech community is predominantly bi- or multi-lingual, this assumptio
 
 There are several ways in which an informal text may contain parts in different languages, such as
 code switching, quotations, named entities, interjections, translations, etc. Some of these are presented
-in Table~\ref{table:examples}
-
-\begin{table}
-\begin{tabular}{ll}
- \textbf{Code switching}: & You're a [Meirice\'{a}nach, c\'{e}n f\'{a}th] are you [foghlaim Gaeilge?!] \\
-\textbf{Quotations}: & And then he said ` ' \\
- \textbf{Named entities}: & [Dr Jekyll] ha [Mr Hyde] embannet gant [\'{E}ditions Aber] \\
- \textbf{Interjections}: & Hey, that's great, [diolch yn fawr!] \\
- \textbf{Translations}: & Bloavezh mat d'an holl ! [Bonne ann\'{e} \`{a} tous !] \\
-\end{tabular}
-\label{table:examples}
-\caption{Some examples of text segments containing more than one language}
-\end{table}
+in Table~\ref{table:examples}.
 
 The work presented in this paper was motivated by the problems in normalising non-standard input
 for the Celtic languages as a precursor to machine translation. When applying a normalisation 
@@ -74,47 +62,85 @@ language detection. Section~\ref{sec:eval} describes the evaluation methodology.
 we present the results of our method and compare it against several other possible methods. Finally, section~\ref{sec:conclusions}
 presents future work and conclusions.
 
+\begin{table}[h]
+\begin{tabular}{ll}
+ \textbf{Code switching}: & You're a [Meirice\'{a}nach, c\'{e}n f\'{a}th] are you [foghlaim Gaeilge?!] \\
+\textbf{Quotations}: & And then he said ` ' \\
+ \textbf{Named entities}: & [Dr Jekyll] ha [Mr Hyde] embannet gant [\'{E}ditions Aber] \\
+ \textbf{Interjections}: & Hey, that's great, [diolch yn fawr!] \\
+ \textbf{Translations}: & Bloavezh mat d'an holl ! [Bonne ann\'{e} \`{a} tous !] \\
+\end{tabular}
+\caption{Some examples of text segments containing more than one language}
+\label{table:examples}
+\end{table}
+
+
 \section{Related Work}
 \label{sec:relwork}
 
-There has been significant research on code-switching and segment detection problems. The good thing about multilingual code switched data is that there are differences in the words of different languages - phonologically, morphologically, lexically and syntactically. At least that is the case with the pairs of languages we have chosen according to their usage in common day scenario. \\
+Code-switching and segment detection problems have been the subject of previous research. A good deal of work
+has been done on detecting code-switched segments in speech data \cite{chan2004detection,lyu2006language}.
+It is seen that language modelling techniques have shown promise earlier, such as in \cite{yu2013identification} 
+the experiment on Mandarin-Taiwanese code-switched sentences show a high accuracy in terms of detecting code-switched sentences. \\
 
-Before the Internet era, this study was focussed more on speech data. Initial research on this code switching was done for Marathi and English \cite{joshi1982processing} which included notable work about the formalisms and parsing. \\
+\newcite{chan2004detection} has made use of the bi-phone probabilities and calculated them to measure a confidence metric, 
+to \cite{lyu2006language} which has made use of a classification method, named syllable-based duration classification, 
+which uses the tonal syllable properties along with the speech signals to help predict the code switch points. \newcite{yeong2010language} 
+uses syllable structure information to identify words in code-switched text in Malay-English, however they did not 
+recognise segments in running text, only identifying individual words.
 
-It is seen that language modelling techniques have shown promise earlier, such as in \cite{yu2013identification} the experiment on Mandarin-Taiwanese code-switched sentences show a high accuracy in terms of detecting code-switched sentences. \\
-
-Our idea of going to character level inspection has been inspired both by the language modelling techniques used by the community as well as the acoustic modelling research. From \cite{chan2004detection} which has made use of the bi-phone probabilities and calculated them to measure a confidence metric, to \cite{lyu2006language} which has made use of a classification method, named syllable-based duration classification, which uses the tonal syllable properties along with the speech signals to help predict the code switch points. \cite{yeong2010language} uses syllable structure information, and increases our confidence is using the character n-gram approach for detection of the code switching points, their study was for the Malay-English, identifying the language of the words in the code switched data set.\\ 
+%Our idea of going to character level inspection has been inspired both by the language modelling techniques used by the community as well as the acoustic modelling research. 
 
 \section{Methodology}
 \label{sec:method}
-We use the character n-gram approach along with some heuristics to mainly define the first task at hand. We would like to both predict the code switched points but looking at the surrounding structure also decide the inclusion of them into the current or the next segment. \\
+We use the character n-gram approach along with some heuristics which are relevant to our problem domain of identifying
+segments for subsequent processing. We would like 
+to both predict the code switched points but looking at the surrounding structure also decide the inclusion of them 
+into the current or the next segment. \\
 
 \subsection{Alphabet n-gram approach}
 \label{alphan}
 
-To predict code switch points we needed some raw text to train our character language models on. For English and French, we used the help of the Europarl \cite{koehn2005europarl}, for Breton, Welsh and Irish, data from credible sources on web were fetched. The size of the dataset for all the language sources was about 1.5million words. \\
-Building the character language models was undertaken using IRSTLM \cite{federico08a}, the input characters are to be introduced in the format of token separated by space and blank spaces replaced by `\_'. For example, `sl\'{a}inte' would be broken down into a set which is \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e \_'\}.Then the probability for the alphabet sequence is calculated for each language pair, to be used in the experiment. Improved kneser-ney is used for smoothing, and this smoothing approach would be useful for higher-grams. \cite{kneser1995improved} \\
-Once we get the probabilities, our task at hand is to take in the data and process it such that the  sub-segments of code-switched data are detected in it. We collected data from twitter over a period of time \footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}} and this was filtered into three sets which had been identified to be Irish, Welsh and Breton. To be able to compare with the language model built above in the character n-gram approach, this data is to be processed like it aswell. \\
-Since, there were instances of non-standard input in the Twitter data, certain terminologies were escaped, such as mentions (starting with ‘@’), hashtags (\#xyz), Re-Tweet (RT) and hyperlinks.\\
-This processed data is then given as input to our module which uses heuristics to come up with sub-segment information. \\
+We first built character language models using IRSTLM \cite{federico08a} for the five languages in question. For English
+and French a model was trained using the EuroParl corpus \cite{koehn2005europarl}. 
+For Breton, Welsh and Irish we used corpora of text crawled from the web. For each of the languages we sampled 1.5 million words. \\
+In order to build a character language model as opposed to the standard word-ngram based model we replaced spaces with the underscore 
+symbol `\_', and then placed a space chracter between each character. For example, `sl\'{a}inte' would be broken down into a sequence 
+of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e \_'\}. Then the probability for the alphabet sequence is calculated 
+for each language to be used in the experiment. 
+%Improved Kneser-Ney is used for smoothing, and this smoothing approach would be useful 
+%for higher-grams. \cite{kneser1995improved} \\
 
-\subsection{Code-Switch Chunking}
+\subsection{Sequence chunking}
 \label{cschunking}
 
-This section describes the rules taken into account while performing the chunking of the input data according to the code-switch prediction. \\
+This section describes the heuristics taken into account while performing the chunking of the input data according to 
+the sequences of segments in different languages.
 
-A flag is set at the beginning, and this moves forward to the position in the text upto where confident chunking has been performed. For example, in case of a continuous prediction there would be no change and since the predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the same chunk. In case of a doubt, the flag is set at the same position, and no final decision on labelling the word is performed, to have more confidence on the code-switch, the process moves on to the next token, if it corresponds to that of the previous chunk, then both these undecided words are labelled and included in the chunk, otherwise a change is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments that we need, thus doing two tasks together and optimally, one is the prediction and second is the decision on chunking. \\
+A flag is set at the beginning of the input text, and this moves forward to the position in the text upto where confident 
+chunking has been performed. For example, in case of a continuous prediction there would be no change and since the 
+predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the 
+same chunk. In case of a doubt, the flag is set at the same position, and no final decision on labelling the word is 
+performed, to have more confidence on the code-switch, the process moves on to the next token, if it corresponds to 
+that of the previous chunk, then both these undecided words are labelled and included in the chunk, otherwise a change 
+is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
+that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
 
-\subsection{Word based prediction}
+\subsection{Word-based prediction}
 \label{wbased}
-\\
-This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the two word lists, it is associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not in either, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
 
-\subsection{Word based Prediction with Character backoff}
+This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages 
+which are in question. After checking each word against both of the word lists,\footnote{For the wordlists we used the \emph{aspell}
+wordlists widely available on Unix systems.} it is associated to one language or another. In 
+case of a conflict, for example, when the word exists in both wordlists, or in the case that it is unknown to both, the option 
+of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. 
+
+\subsection{Word-based prediction with character backoff}
 \label{wbasedbackoff}
-\\
-A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character based techniques as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, but in case of a confusion as described in ~/ref{wbasedbackoff}. above, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards baseline. \\
 
+A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character-based techniques 
+as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, 
+but in case of a conflict, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards the majority class. 
 
 
 % issues:
@@ -164,37 +190,47 @@ A better way to predict the spans of the sub-segments of the text is to include 
 \section{Evaluation}
 \label{sec:eval}
 
-For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task: dividing text into syntactically related non-overlapping groups of words. This chunking mechanism \cite{tjong2003introduction} is very similar to ours, in terms of words which only belong to one category (here, language), and also evaluation based on the phrase structure present in the data. The chunks here are such that they belong to only one language. For example, the sentence below, shows the chunks as group of words in square brackets and their tagged language at the beginning in braces - \\
+We hand-annotated a small evaluation set from a selection of posts to a popular microblogging site\footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}}. The posts `tweets' were filtered into three sets which had been identified as Irish, Welsh and Breton.  Certain tokens were escaped from the data, such as mentioned (which are preceded by an \texttt{@} symbol), subject tags `hashtags' which are preceded by a \texttt{\#} symbol), hyperlinks and the sequence \texttt{rt} which stands for `re-tweet'. An example of the content of our corpus after annotation is given in Figure~\ref{fig:tweets}. All of the tweets had at least one instance of code-switching.
+
+For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task on language-independent 
+named entity recognition: dividing text into syntactically related non-overlapping groups of words. This 
+chunking mechanism \cite{tjong2003introduction} is very similar to ours, in terms of words which only belong to 
+one category (here, language), and also evaluation based on the segment structure present in the data. The chunks 
+here are such that they belong to only one language. 
 
 \begin{figure}
 \begin{small}
 \begin{alltt}
-@steffdafydd [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init]
-[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!]
+[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!] 
+@steffdafydd [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init] 
+[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!] 
 \end{alltt}
 \end{small}
-\label{fig:tweets}
 \caption{Example of text from a microblogging site chunked}
+\label{fig:tweets}
 \end{figure}
 
-For our current task, each of the texts have been limited to two languages i.e. the primary and the secondary language. Hence the type of chunking tags are limited to these. The evaluation statics shown in the Table mention two values for each of the experiment conducted on the three bilingual language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the number of phrases in the data that were found by the chunker, which is the overall recall. \\
-Apart from the techniques discussed in ~/ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanism perform.
+For our current task, each of the texts have been limited to two languages i.e. the primary language (the Celtic language) and the 
+secondary language (the `majority' language). Hence the type of chunking tags are limited to these. The evaluation statistics shown 
+in Tables~\ref{table:precisionrecall}~and~\ref{table:accuracy} mention two values for each of the experiment conducted on the three bilingual 
+language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the 
+number of phrases in the data that were found by the chunker, which is the overall recall. \\
+
+Apart from the techniques discussed in section~\ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanism perform.
 
 \subsection{Baseline}
 \label{baseline}
 
- This is the most naive method of classification, we used the language identification tool langid.py \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single major classification. \\
+This is the most na\"{i}ve method of classification, we used the language identification tool \texttt{langid.py} \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single majority classification. As no chunking is performed we can expect that the precision and recall will be very low. However it does provide a reasonable baseline for the per-word accuracy.  \\
 
-\subsection{Langid character bigram and trigram prediction}
+\subsection{\texttt{langid} character bigram and trigram prediction}
 \label{langidstuff}
 
-After restricting the predicted languages to be amongst the two in the dataset, we used the character bi-gram and then tri-gram probabilities to predict the detected language for each token, some rules like in ~\ref{sec:method} were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. \\
-
-
+After restricting the predicted languages to be amongst the two in the dataset, we used the character bigram and then trigram probabilities to predict the detected language for each token, some rules like in section~\ref{sec:method} were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. 
 
 \section{Results}
 \label{sec:results}
-As described in ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statics of the same are described in ~\ref{table:accuracy}. // 
+As described in the ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statistics of the same are given in Table~\ref{table:datastats}. // 
 
 \begin{table}
 \begin{center}
@@ -214,8 +250,8 @@ As described in ~\ref{sec:method} the data collected from Twitter for the three 
 \hline
 \end{tabular}
 \end{center}
-\label{table:accuracy}
-\caption{Document Statistics of the annotated data used.}
+\caption{Document statistics of the annotated data used. }
+\label{table:datastats}
 \end{table}
 
 \begin{table}
@@ -245,8 +281,8 @@ As described in ~\ref{sec:method} the data collected from Twitter for the three 
 \hline
 \end{tabular}
 \end{center}
-\label{table:precisionrecall}
 \caption{Precision, $p$ and recall, $r$ for the systems by language.}
+\label{table:precisionrecall}
 
 \end{table}
 
@@ -272,18 +308,24 @@ As described in ~\ref{sec:method} the data collected from Twitter for the three 
 \hline
 \end{tabular}
 \end{center}
-\label{table:accuracy}
 \caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
   was assigned to the right language, independent of span.}
+\label{table:accuracy}
 \end{table}
 
-
-
-The Results clearly show that the baseline has a negligible precision and recall, this means that the task of detecting sub-segments is complex and there needs to be more improvement in the technique. You can see that langid.py is better suited for document classification and that when such varied content is introduced the result is an improvement but not promising. In case of the character bigram prediction technique and the word based chunking method, the results show a significant increase in precision and recall values from the rest. The last in the list is the word based prediction with character backoff, which performs collectively better than the others with a high accurracy margin. \\
-
+In terms of per-word accuracy, the baseline performs as expected, given that half of the words in the test set are from a given language. 
+The \texttt{langid.py} based methods allow for segmenting the text into chunks, but favour the majority language.\footnote{This could be because of the default models being used.} While the precision and recall are low for the remaining models, we see that we are able to improve 
+the performance by combining the wordlist based model with a character bigram model. And what is more, we are able to begin to not only 
+identify particular words in a language, but also segments.
 
 \section{Conclusions}
 \label{sec:conclusions}
+
+This paper has presented a very preliminary investigation into subsegment language identification in Celtic language texts. We have
+proposed a model that chunks input text into segments, and performs language identification on these segments at the same time. Precision and
+recall are low, leaving a lot of room for further work. Some of our plans are as follows. We would like to annotate more test data,
+at least 100 tweets in each language. We would also like to attempt our method using higher order character n-gram models for backoff, and
+n-gram word language models for detection. 
 
 % future work
 
@@ -297,7 +339,7 @@ The Results clearly show that the baseline has a negligible precision and recall
 
 \section*{Acknowledgements}
 
-We thank Kevin Scannell... 
+We thank Kevin Scannell for help with providing data from Twitter and for useful comments and suggestions.
 
 % include your own bib file like this:
 \bibliographystyle{acl}
