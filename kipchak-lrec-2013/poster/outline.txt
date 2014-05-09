@@ -1,0 +1,24 @@
+LEFT
+
+Introduction/background - top left
+The languages
+Morphological transducers - recycle from kir
+development effort
+
+
+MIDDLE
+
+transducer contents
+categorisation/tagset
+orthography-phonology mapping issues
+(contrastive example of each)
+- ambiguous characters
+- loanwords
+- acronyms/numerals
+
+
+RIGHT
+
+evaluation
+future work
+conclusion?
