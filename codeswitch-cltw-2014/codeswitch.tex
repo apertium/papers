@@ -106,6 +106,14 @@ This section describes the rules taken into account while performing the chunkin
 
 A flag is set at the beginning, and this moves forward to the position in the text upto where confident chunking has been performed. For example, in case of a continuous prediction there would be no change and since the predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the same chunk. In case of a doubt, the flag is set at the same position, and no final decision on labelling the word is performed, to have more confidence on the code-switch, the process moves on to the next token, if it corresponds to that of the previous chunk, then both these undecided words are labelled and included in the chunk, otherwise a change is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments that we need, thus doing two tasks together and optimally, one is the prediction and second is the decision on chunking. \\
 
+Word based prediction - 
+
+ This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the two word lists, it is associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not in either, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
+
+Word based Prediction with Character backoff - 
+
+  A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character based techniques as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, but in case of a confusion as described in Word based prediction. above, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards baseline. \\
+
 
 
 % issues:
@@ -170,12 +178,16 @@ For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared t
 
 For our current task, each of the texts have been limited to two languages i.e. the primary and the secondary language. Hence the type of chunking tags are limited to these. The evaluation statics shown in the Table mention two values for each of the experiment conducted on the three bilingual language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the number of phrases in the data that were found by the chunker, which is the overall recall. \\
 
-The different techniques used for the sub-segmenting task are described as follows - 
-1. Baseline - This is the most naive method of classification, we used the language identification tool langid.py \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single major classification. \\
-2. Langid character bigram and trigram prediction - After restricting the predicted languages to be amongst the two in the dataset, we used the character bi-gram and then tri-gram probabilities to predict the detected language for each token, some rules like in Methodology were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. \\
-3. Word based prediction - This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the word lists, it was associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not even in one, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
-4. Character bigram - This method is in line with what has been described in the Methodology section \\
-5. Word based Prediction with Character backoff - A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character based techniques as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, but in case of a confusion as described in 4. above, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards baseline. \\
+Apart from the techniques discussed in ~/ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanism perform.
+
+Baseline \\
+
+ This is the most naive method of classification, we used the language identification tool langid.py \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single major classification. \\
+
+Langid character bigram and trigram prediction - \\
+
+After restricting the predicted languages to be amongst the two in the dataset, we used the character bi-gram and then tri-gram probabilities to predict the detected language for each token, some rules like in ~\ref{sec:method} were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. \\
+
 
 
 \section{Results}
