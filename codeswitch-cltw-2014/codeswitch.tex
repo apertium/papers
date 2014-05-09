@@ -125,7 +125,11 @@ For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared t
 \caption{Example of text from a microblogging site chunked}
 \end{figure}
 
-For our current task, each of the texts have been limited to two languages i.e. the primary and the secondary language. Hence the type of chunking tags are limited to these. The evaluation statics shown in the Table mention two values for each of the experiment conducted on the three bilingual language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the number of phrases in the data that were found by the chunker, which is the overall recall.
+For our current task, each of the texts have been limited to two languages i.e. the primary and the secondary language. Hence the type of chunking tags are limited to these. The evaluation statics shown in the Table mention two values for each of the experiment conducted on the three bilingual language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the number of phrases in the data that were found by the chunker, which is the overall recall. \\
+
+The different techniques used for the sub-segmenting task are described as follows - 
+
+1. Baseline - This is the most naive method of classification, we used the language identification tool langid.py \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single major classification. \\
 
 \section{Results}
 
@@ -158,6 +162,10 @@ For our current task, each of the texts have been limited to two languages i.e. 
 \end{center}
 
 \end{table}
+
+(CHECKLATER-FORMATTING)
+1. Baseline - Negligible precision and recall show that the task of detecting sub-segments in complex and there needs to be more improvement in the methodology. 
+
 
 \section{Conclusions}
 
