@@ -186,11 +186,11 @@ As described in the evaluation the techniques were used on a dataset collected o
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|lc|rr|rr|rr|}
+\begin{tabular}{|lc|r|r|r|r|r|r|}
 \hline
-            & & \multicolumn{2}{c}{Irish---English} & \multicolumn{2}{c}{Welsh---English} & \multicolumn{2}{c}{Breton---French}  \\
-\hline
-                                          &      &  Irish &  English & Welsh  & English & Breton & French \\ 
+\multirow{2}{*}{\textbf{System}}            & & \multicolumn{2}{c}{\textbf{Irish---English}} & \multicolumn{2}{|c|}{\textbf{Welsh---English}} & \multicolumn{2}{c|}{\textbf{Breton---French}}  \\\cline{3-8}
+                                          &      &  Irish &  English & Welsh  & English & Breton & French \\
+\hline 
 \multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
                                           & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
 \hline
@@ -231,11 +231,11 @@ As described in the evaluation the techniques were used on a dataset collected o
 \hline
 \texttt{langid3} & 57.24 & 45.92 & 43.16 \\
 \hline
-\texttt{wordlist} & 79.75 & 74.28 & 83.96 \\
+\texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
 \hline
 \texttt{bigram} & 81.29 & 65.62 & 76.79 \\
 \hline
-\texttt{wordlist+bigram} & 85.79 & 72.40 & 88.79 \\
+\texttt{wordlist+bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
 \hline
 \end{tabular}
 \end{center}
