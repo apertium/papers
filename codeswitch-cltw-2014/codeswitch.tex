@@ -94,9 +94,7 @@ We use the character n-gram approach along with some heuristics to mainly define
 
 To predict code switch points we needed some raw text to train our character language models on. For English and French, we used the help of the Europarl \cite{koehn2005europarl}, for Breton, Welsh and Irish, data from credible sources on web were fetched. The size of the dataset for all the language sources was about 1.5million words. \\
 Building the character language models was undertaken using IRSTLM \cite{federico08a}, the input characters are to be introduced in the format of token separated by space and blank spaces replaced by `\_'. For example, `sl\'{a}inte' would be broken down into a set which is \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e \_'\}.Then the probability for the alphabet sequence is calculated for each language pair, to be used in the experiment. Improved kneser-ney is used for smoothing, and this smoothing approach would be useful for higher-grams. \cite{kneser1995improved} \\
-
 Once we get the probabilities, our task at hand is to take in the data and process it such that the  sub-segments of code-switched data are detected in it. We collected data from twitter over a period of time \footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}} and this was filtered into three sets which had been identified to be Irish, Welsh and Breton. To be able to compare with the language model built above in the character n-gram approach, this data is to be processed like it aswell. \\
-
 Since, there were instances of non-standard input in the Twitter data, certain terminologies were escaped, such as mentions (starting with ‘@’), hashtags (\#xyz), Re-Tweet (RT) and hyperlinks.\\
 This processed data is then given as input to our module which uses heuristics to come up with sub-segment information. \\
 
@@ -109,13 +107,13 @@ A flag is set at the beginning, and this moves forward to the position in the te
 
 \subsection{Word based prediction}
 \label{wbased}
-
- This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the two word lists, it is associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not in either, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
+\\
+This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the two word lists, it is associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not in either, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
 
 \subsection{Word based Prediction with Character backoff}
 \label{wbasedbackoff}
-
-  A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character based techniques as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, but in case of a confusion as described in ~/ref{wbasedbackoff}. above, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards baseline. \\
+\\
+A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character based techniques as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, but in case of a confusion as described in ~/ref{wbasedbackoff}. above, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards baseline. \\
 
 
 
@@ -180,7 +178,6 @@ For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared t
 \end{figure}
 
 For our current task, each of the texts have been limited to two languages i.e. the primary and the secondary language. Hence the type of chunking tags are limited to these. The evaluation statics shown in the Table mention two values for each of the experiment conducted on the three bilingual language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the number of phrases in the data that were found by the chunker, which is the overall recall. \\
-
 Apart from the techniques discussed in ~/ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanism perform.
 
 \subsection{Baseline}
@@ -197,7 +194,7 @@ After restricting the predicted languages to be amongst the two in the dataset, 
 
 \section{Results}
 \label{sec:results}
-As described in the ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statics of the same are described in ~\ref{table:accuracy}. // 
+As described in ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statics of the same are described in ~\ref{table:accuracy}. // 
 
 \begin{table}
 \begin{center}
