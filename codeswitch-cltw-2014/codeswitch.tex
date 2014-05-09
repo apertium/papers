@@ -74,6 +74,17 @@ language detection. Section~\ref{sec:eval} describes the evaluation methodology.
 we present the results of our method and compare it against several other possible methods. Finally, section~\ref{sec:conclusions}
 presents future work and conclusions.
 
+\section{Related Work}
+\label{sec:relwork}
+
+There has been significant research on code-switching and segment detection problems. The good thing about multilingual code switched data is that there are differences in the words of different languages - phonologically, morphologically, lexically and syntactically. At least that is the case with the pairs of languages we have chosen according to their usage in common day scenario. \\
+
+Before the Internet era, this study was focussed more on speech data. Initial research on this code switching was done for Marathi and English \cite{joshi1982processing} which included notable work about the formalisms and parsing. \\
+
+It is seen that language modelling techniques have shown promise earlier, such as in \cite{yu2013identification} the experiment on Mandarin-Taiwanese code-switched sentences show a high accuracy in terms of detecting code-switched sentences. \\
+
+Our idea of going to character level inspection has been inspired both by the language modelling techniques used by the community as well as the acoustic modelling research. From \cite{chan2004detection} which has made use of the bi-phone probabilities and calculated them to measure a confidence metric, to \cite{lyu2006language} which has made use of a classification method, named syllable-based duration classification, which uses the tonal syllable properties along with the speech signals to help predict the code switch points. \cite{yeong2010language} uses syllable structure information, and increases our confidence is using the character n-gram approach for detection of the code switching points, their study was for the Malay-English, identifying the language of the words in the code switched data set.\\ 
+
 \section{Methodology}
 \label{sec:method}
 
