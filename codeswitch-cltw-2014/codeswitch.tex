@@ -95,6 +95,15 @@ Alphabet n-gram approach -
 To predict code switch points we needed some raw text to train our character language models on. For English and French, we used the help of the Europarl \cite{koehn2005europarl}, for Breton, Welsh and Irish, data from credible sources on web were fetched. The size of the dataset for all the language sources was about 1.5million words. \\
 Building the character language models was undertaken using IRSTLM \cite{federico08a}, the input characters are to be introduced in the format of token separated by space and blank spaces replaced by ‘_’. For example, “sláinte” would be broken down into a set which is \{‘_ s’, ‘s l’, ‘l á’, ‘á i’, ‘i n’, ‘n t’, ‘t e’, ‘e _’\}.Then the probability for the alphabet sequence is calculated for each language pair, to be used in the experiment. Improved kneser-ney is used for smoothing, and this smoothing approach would be useful for higher-grams. \cite{kneser1995improved} \\
 
+Once we get the probabilities, our task at hand is to take in the data and process it such that the  sub-segments of code-switched data are detected in it. We collected data from twitter over a period of time and this was filtered into three sets which had been identified to be Irish, Welsh and Breton. To be able to compare with the language model built above in the character n-gram approach, this data is to be processed like it aswell. \\
+
+Since, there were instances of non-standard input in the Twitter data, certain terminologies were escaped, such as mentions (starting with ‘@’), hashtags (#xyz), Re-Tweet (RT) and hyperlinks.\\
+This processed data is then given as input to our module which uses heuristics to come up with sub-segment information. \\
+
+Code-Switch Chunking - \\
+
+
+
 % issues:
 %% proper nouns
 %% other language interjections (fáilte), diolch, diolch yn fawr
