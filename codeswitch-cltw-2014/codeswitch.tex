@@ -87,6 +87,13 @@ Our idea of going to character level inspection has been inspired both by the la
 
 \section{Methodology}
 \label{sec:method}
+We use the character n-gram approach along with some heuristics to mainly define the first task at hand. We would like to both predict the code switched points but looking at the surrounding structure also decide the inclusion of them into the current or the next segment. \\
+
+
+Alphabet n-gram approach - 
+
+To predict code switch points we needed some raw text to train our character language models on. For English and French, we used the help of the Europarl \cite{koehn2005europarl}, for Breton, Welsh and Irish, data from credible sources on web were fetched. The size of the dataset for all the language sources was about 1.5million words. \\
+Building the character language models was undertaken using IRSTLM \cite{federico08a}, the input characters are to be introduced in the format of token separated by space and blank spaces replaced by ‘_’. For example, “sláinte” would be broken down into a set which is \{‘_ s’, ‘s l’, ‘l á’, ‘á i’, ‘i n’, ‘n t’, ‘t e’, ‘e _’\}.Then the probability for the alphabet sequence is calculated for each language pair, to be used in the experiment. Improved kneser-ney is used for smoothing, and this smoothing approach would be useful for higher-grams. \cite{kneser1995improved} \\
 
 % issues:
 %% proper nouns
