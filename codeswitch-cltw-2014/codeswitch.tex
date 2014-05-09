@@ -123,6 +123,7 @@ presents future work and conclusions.
 
 \section{Evaluation}
 \label{sec:eval}
+
 For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task: dividing text into syntactically related non-overlapping groups of words. This chunking mechanism \cite{tjong2003introduction} is very similar to ours, in terms of words which only belong to one category (here, language), and also evaluation based on the phrase structure present in the data. The chunks here are such that they belong to only one language. For example, the sentence below, shows the chunks as group of words in square brackets and their tagged language at the beginning in braces - \\
 
 \begin{figure}
@@ -139,7 +140,6 @@ For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared t
 For our current task, each of the texts have been limited to two languages i.e. the primary and the secondary language. Hence the type of chunking tags are limited to these. The evaluation statics shown in the Table mention two values for each of the experiment conducted on the three bilingual language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the number of phrases in the data that were found by the chunker, which is the overall recall. \\
 
 The different techniques used for the sub-segmenting task are described as follows - 
-
 1. Baseline - This is the most naive method of classification, we used the language identification tool langid.py \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single major classification. \\
 2. Langid character bigram and trigram prediction - After restricting the predicted languages to be amongst the two in the dataset, we used the character bi-gram and then tri-gram probabilities to predict the detected language for each token, some rules like in Methodology were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. \\
 3. Word based prediction - This is a simple heuristic which was designed on the basis of the the most common words in the wordlists of the languages which are in question. After checking each word against one of the word lists, it was associated to that particular language. In case of a confusion, for example, when the word exists in both the word lists or not even in one, the option of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. \\
