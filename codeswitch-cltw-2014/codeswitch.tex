@@ -102,6 +102,10 @@ This processed data is then given as input to our module which uses heuristics t
 
 Code-Switch Chunking - \\
 
+This section describes the rules taken into account while performing the chunking of the input data according to the code-switch prediction. \\
+
+A flag is set at the beginning, and this moves forward to the position in the text upto where confident chunking has been performed. For example, in case of a continuous prediction there would be no change and since the predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the same chunk. In case of a doubt, the flag is set at the same position, and no final decision on labelling the word is performed, to have more confidence on the code-switch, the process moves on to the next token, if it corresponds to that of the previous chunk, then both these undecided words are labelled and included in the chunk, otherwise a change is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments that we need, thus doing two tasks together and optimally, one is the prediction and second is the decision on chunking. \\
+
 
 
 % issues:
