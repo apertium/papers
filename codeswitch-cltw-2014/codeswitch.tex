@@ -168,6 +168,33 @@ The different techniques used for the sub-segmenting task are described as follo
 
 \end{table}
 
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|r|r|r|}
+\hline
+System &  \multicolumn{3}{c}{Accuracy (\%)} \\
+\hline
+       &   Irish---English & Welsh---English & Breton---French \\ 
+\hline
+\texttt{baseline} & 42.76 & 42.16 & 94.65 \\
+\hline
+\texttt{langid2} & 50.35 & 42.28 & 45.11  \\
+\hline
+\texttt{langid3} & 57.24 & 45.92 & 43.16 \\
+\hline
+\texttt{wordlist} & 79.75 & 74.28 & 83.96 \\
+\hline
+\texttt{bigram} & 81.29 & 65.62 & 76.79 \\
+\hline
+\texttt{wordlist+bigram} & 85.79 & 72.40 & 88.79 \\
+\hline
+\end{tabular}
+\end{center}
+\label{table:accuracy}
+\caption{Accuracy of the systems over the three language pairs}
+\end{table}
+
+
 (CHECKLATER-FORMATTING)
 1. Baseline - Negligible precision and recall show that the task of detecting sub-segments in complex and there needs to be more improvement in the methodology. 
 
