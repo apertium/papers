@@ -1,4 +1,4 @@
-\documentclass[a0paper,dvipdfm,fontscale=0.3]{baposter}  % fontscale=0.285
+\documentclass[a0paper,fontscale=0.3]{baposter}  % fontscale=0.285, dvipdfm
 
 \usepackage{setspace}
 \usepackage{multicol}
@@ -211,8 +211,8 @@
 			\hspace{-2em}\includegraphics[angle=90,height=6.5em,bb=0 0 203 242]{apertium5a}
 			%Eye Catcher, empty if option eyecatcher=false - unused
 		}{
-			{\vspace{0pt}\hspace{-2ex}
-			{\titlefont \textsc{A finite-state morphological transducer for Kyrgyz}}}
+			{\vspace{0pt}\hspace{-2.2ex}
+			{\titlefont \textsc{Finite-state morphological transducers for 3 Kypchak lgs}}}
 		}{
 			%Jonathan North Washington {\small (Indiana University, \texttt{jonwashi@indiana.edu})}, Mirlan Ipasov {\small (International Ataturk Alatoo University, \texttt{mipasov@gmail.com})}, Francis M.\ Tyers {\small (Universitat d'Alacant, \texttt{ftyers@dlsi.ua.es})}
 
@@ -290,56 +290,54 @@
 %which issues are left to resolve. An evaluation is presented which shows that the transducer has medium-level coverage, between 82\% and 87\% on two freely available corpora of Kyrgyz, and high precision and recall over a manually verified test set.
 %			\end{spacing}\vspace{-0.25ex}
 %		}
-		\headerbox{Kypchak languages}{name=kyrgyz,column=0,row=0}{
-			\vspace{0.5ex}
-			\includegraphics[width=\textwidth]{../map/map}
-			\vspace{-1.1em}  % -1.25em
+
+	\headerbox{Kypchak languages}{name=kypchaklgs,column=0,row=0}{
+		\vspace{0.5ex}
+		\includegraphics[width=\textwidth]{../map/map}
+		\vspace{-1.1em}  % -1.25em
+		\begin{itemize}
+			\item Turkic language (SOV, agglutinative, vowel harmony)
 			\begin{itemize}
-				\item Turkic language (SOV, agglutinative, vowel harmony)
-				\begin{itemize}
-					\item Similar historically to Southern Altay
-					\item Similar by convergence to Kazakh, Uzbek
-				\end{itemize}
-				\item Spoken in
-				\begin{itemize}
-					\item Kyrgyzstan, as co-official language\\
-					\textit{high levels of bilingualism with Russian}
-					\item China, Tajikistan, Uzbekistan
-				\end{itemize}
-				\item Over 3 million native speakers\\(estimate based on data from Ethnologue) %\citep{lewis2009}
-				\item Our transducer based on written Kyrgyz of the former Soviet Union (literary and colloquial standards)
-
+				\item Similar historically to Southern Altay
+				\item Similar by convergence to Kazakh, Uzbek
 			\end{itemize}
-		}
-                \headerbox{Morphological transducers}{name=morphtrans,below=kyrgyz}{
-                        \htwo{Morphological transducers}
-                        \begin{itemize}
-                                \item Take a surface form, and produce all valid
-                                   lexical forms\\
-											  e.g. `алдым'
-                                \item Take a lexical form, and produce one or more
-                                   valid surface forms\\
-                                   e.g., \texttt{ал{\small <v><tv><ifi><p1><sg>}},
-                                         \texttt{алд{\small <n><px1sg><nom>}}
-                        \end{itemize}
+			\item Spoken in
+			\begin{itemize}
+				\item Kyrgyzstan, as co-official language\\
+				\textit{high levels of bilingualism with Russian}
+				\item China, Tajikistan, Uzbekistan
+			\end{itemize}
+			\item Over 3 million native speakers\\(estimate based on data from Ethnologue) %\citep{lewis2009}
+			\item Our transducer based on written Kyrgyz of the former Soviet Union (literary and colloquial standards)
+		\end{itemize}
+	}
+	
+	\headerbox{Morphological transducers}{name=morphtrans,below=kypchaklgs}{
+		\htwo{Morphological transducers}
+		\begin{itemize}
+			\item Take a surface form, and produce all valid lexical forms\\
+				e.g. `алдым'
+			\item Take a lexical form, and produce one or more valid surface forms\\
+				e.g., \texttt{ал{\small <v><tv><ifi><p1><sg>}}, \texttt{алд{\small <n><px1sg><nom>}}
+		\end{itemize}
 
-                        \htwo{Transducers for Turkic languages}
-                        \begin{itemize}
-                                \item Turkish (\hiliteone{Çöltekin, 2010}; \hilitetwo{Öflazer, 1994})
-                                \item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
-                                \item Turkmen (\hilitetwo{Tantuğ et al., 2006})
-                                \item \ldots this is the first transducer for Kyrgyz
-										  \item and it's \hiliteone{GPL (=free and open)}!
-                        \end{itemize}
+		\htwo{Transducers for Turkic languages}
+		\begin{itemize}
+			\item Turkish (\hiliteone{Çöltekin, 2010}; \hilitetwo{Öflazer, 1994})
+			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
+			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
+			\item \ldots this is the first transducer for Kyrgyz
+			\item and it's \hiliteone{GPL (=free and open)}!
+		\end{itemize}
 
-                        \htwo{Framework: HFST}
-                        \begin{itemize}
-                                \item Reimplementation of Xerox FST formalisms\\({\tt lexc} and {\tt twol})
-                                \item Also provides a wrapper around popular free/open-source FST
-                                  toolkits: SFST, OpenFST, and Foma
-                        \end{itemize}
+		\htwo{Framework: HFST}
+		\begin{itemize}
+			\item Reimplementation of Xerox FST formalisms\\({\tt lexc} and {\tt twol})
+			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
+		\end{itemize}
 
-                }
+		\htwo{Development effort}
+	}
 
 %		\headerbox{Available Turkic Transducers}{name=turkictrans,below=morphtrans}{
 %* Other Turkic morphological transducers\\
@@ -347,11 +345,6 @@
 %		\headerbox{Framework: HFST / Apertium}{name=framework,below=turkictrans}{
 %* HFST/Apertium
 %		}
-
-\headerbox{Development Effort}{name=lexc,}{
-
-}
-
 
 		\headerbox{Morphotactics}{name=lexc,below=morphtrans}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
