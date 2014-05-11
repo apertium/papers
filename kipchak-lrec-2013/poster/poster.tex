@@ -23,7 +23,7 @@
 \definecolor{boxcolor}{RGB}{186,215,230}
 \definecolor{headerfontcol}{RGB}{255,255,255}
 %\definecolor{boxcolor}{RGB}{186,215,230}
-\definecolor{boxcolor}{RGB}{226,200,200}
+%\definecolor{boxcolor}{RGB}{226,200,200}
 %\newcommand{\hilitetwo}[1]{{\addfontfeature{Color=FF000099}#1}}
 \newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
 \newcommand{\hiliteone}[1]{{\addfontfeature{Color=33993399}#1}}
@@ -187,8 +187,8 @@
 			%eyecatcher=false,
 			borderColor=bordercol,
 			headerColorOne=headercolone,
-			headerColorTwo=headercoltwo,
-			headerFontColor=headerfontcol,
+			%headerColorTwo=headercoltwo,
+			headerFontColor=black,
 			% Only simple background color used, no shading, so boxColorTwo isn't necessary
 			boxColorOne=boxcolor,
 			headershape=roundedright,
@@ -200,7 +200,8 @@
 			%headerfont=\Large\sf\bf,
 			textborder=rectangle,
 			%background=plain,
-			background=user,
+			%background=user,
+			background=none,
 			headerborder=open,
 			boxshade=plain,
 			textborder=roundedleft,
@@ -336,10 +337,10 @@
 	\headerbox{Morphological transducers}{name=morphtrans,below=kypchaklgs}{
 		\htwo{Morphological transducers}
 		\begin{itemize}
-			\item Take a surface form, and produce all valid lexical forms\\
-				e.g. `алдым'
-			\item Take a lexical form, and produce one or more valid surface forms\\
-				e.g., \texttt{ал{\small <v><tv><ifi><p1><sg>}}, \texttt{алд{\small <n><px1sg><nom>}}
+			\item Take a surface form, and produce valid lexical form(s)
+			\item Take a lexical form, and produce valid surface form(s)\\
+			%FIXME: make fit on one line
+				`алдым' \hilitetwo{↔} \texttt{ал{\small <v><tv><ifi><p1><sg>}}, \texttt{алд{\small <n><px1sg><nom>}}
 		\end{itemize}
 
 		\htwo{Transducers for Turkic languages}
@@ -347,8 +348,8 @@
 			\item Turkish (\hiliteone{Çöltekin, 2010}; \hilitetwo{Öflazer, 1994})
 			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
 			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
-			\item \ldots this is the first transducer for Kyrgyz
-			\item and it's \hiliteone{GPL (=free and open)}!
+			\item Kyrgyz (\hiliteone{Tyers et al., 2012})
+			\item \hiliteone{GPL (=free and open)}!
 		\end{itemize}
 
 		\htwo{Framework: HFST}
