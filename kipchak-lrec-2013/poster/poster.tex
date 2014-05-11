@@ -2,6 +2,7 @@
 
 \usepackage{setspace}
 \usepackage{multicol}
+\usepackage{multirow}
 
 %\usepackage{tikz}
 %\usepackage{pgfbaselayers}
@@ -525,27 +526,30 @@
 
 
 		\headerbox{Evaluation}{name=coverage,span=1,column=2,below=exout}{
-			\htwo{8,466 total stems}
 
+			\htwo{Number of stems}
 			\vspace{-1.5em}
-			\setlength{\columnsep}{-1em}
-			\setlength{\topsep}{-\parskip}
-			\begin{multicols}{2}
-			\begin{tabbing}
-				Noun \hspace{3.0em} \= 4,972\\[-0.5ex]
-				Verb \> 1,231 \\[-0.5ex]
-				Adjective \> 944\\[-0.5ex]
-				Proper noun \> 796\\[-0.5ex]
-				Adverb \> 295 \\[-0.5ex]
-				\\
-				Numeral \> 63 \\[-0.5ex]
-				Conjunction \> 58 \\[-0.5ex]
-				Postposition \> 51 \\[-0.5ex]
-				Pronoun \> 29\\[-0.5ex]
-				Determiner \> 27\\[-0.5ex]
-			\end{tabbing}
-			\end{multicols}
-			\vspace{-2em}
+			\begin{tabular}{lrrr}
+				\toprule
+				\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cline{2-4}
+				& Kazakh & Tatar & Kumyk \\
+				\midrule
+				Noun & 2640 & 2795 & 2568 \\
+				Verb & 1470 & 1143 & 386 \\
+				Adjective & 754 & 816 & 219 \\
+				Proper noun & 5701 & 5361 & 1443 \\
+				Adverb & 171 & 177 & 63 \\
+				Numeral & 63 & 63 & 44 \\
+				Conjunction & 46 & 45 & 13 \\
+				Postposition & 50 & 43 & 12 \\
+				Pronoun & 32 & 28 & 17 \\
+				Determiner & 39 & 34 & 9 \\
+				\midrule
+				Total: & 11224 & 10737 & 4845 \\
+				\bottomrule
+			\end{tabular}
+			\vspace{2em}
+
 
 			\htwo{Test corpora}
 			\begin{itemize}
