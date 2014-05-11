@@ -234,7 +234,7 @@
 					{\footnotesize Some University\\\texttt{ilnar.salimzyanov@gmail.com}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{8em}
+			\begin{minipage}[t]{8.2em}
 				\begin{spacing}{0.4}
 					{Francis M.\ Tyers}\\
 					{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
@@ -308,7 +308,8 @@
 			\midrule
 				& \multicolumn{3}{l}{population of speakers} \\
 			\midrule
-				number & >8M & 5.4M & 430K \\
+				number & 8M-12M & 5.4M & 430K \\
+				pronunc & /{\qipa qɑzɑq}/ & /{\qipa tɒtɑɾ}/ & /{\qipa qumuq}/ \\
 				primary & Kazakhstan & Tatarstan & Dagestan \\
 				secondary & China, Mongolia &  &  \\
 			\midrule
@@ -552,10 +553,23 @@
 
 
 			\htwo{Test corpora}
+			\begin{tabular}{llll}
+				\toprule
+				Encyclop & kaz & wpdump & 20131006 \\
+					& tat & wpdump & 20130225 \\
+					& kum & — & — \\
+				\midrule
+				News & kaz & RFE/RL & azattyq.org 2010 \\
+					& tat & Татар-информ & tat.tatar-inform.ru 2005-2011 \\
+					& kum & Ёлдаш & yoldash.etnosmi.ru \\
+				\midrule
+				Religion & kaz & quran + bible & kkitap.net, kuran.kz \\
+					& tat & quran + nt & ibt.org.ru, tanzil.net \\
+					& kum & genesis + nt & ibt.org.ru \\
+				\bottomrule
+			\end{tabular}
 			\begin{itemize}
-				\item \textbf{Kyrgyz Wikipedia} dump dated 2011-09-23 
-				\item All 2010 articles from \textbf{Radio Free Europe / Radio Liberty} (RFE/RL)'s Kyrgyz service ({\small \url{azattyk.org}})
-				\item both split into 10 equal parts; coverage calculated over each separately; standard deviation of mean calculated
+				\item split into 10 equal parts; coverage calculated over each separately; standard deviation of mean calculated
 			\end{itemize}
 			%both split into 10 equal parts; coverage calculated over each separately; standard deviation of the mean was calculated\\
 			\htwo{Coverage measures}
@@ -568,14 +582,26 @@
 %\vspace{1pt}\hspace{2em}
 			%%\begin{centering}
 			%{\large
-				\begin{tabular}{lrrrr}
-					\toprule
-					corpus           & tokens    & known       & cov. & amb.\\
-					\midrule  
-					Wikipedia & 329,524   & 270,668     & \hiliteone{\textbf{82.1\%}}       & \hiliteone{\textbf{2.35}}\\
- 					RFE/RL & 4,112,558 & 3,614,193   & \hiliteone{\textbf{87.9\%}}      & \hiliteone{\textbf{2.43}}\\
-					\bottomrule
-				\end{tabular}
+			\begin{tabular}{llrr}
+				\toprule
+				\textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) \\
+				\midrule
+				\multirow{4}{*}{Kazakh} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 \\
+					& News & 3.8M & 92.12 $\pm$ 2.72  \\
+					& Religion & 851K & 92.49 $\pm$ 1.66 \\\cline{2-4}
+					& Average & -- & 90.07 $\pm$ 1.91 \\
+				\midrule
+				\multirow{4}{*}{Tatar} & Wikipedia & 159K & 86.35 $\pm$ 2.17 \\
+					& News & 5.2M & 89.75 $\pm$ 0.07 \\
+					& Religion & 382K & 91.25 $\pm$ 2.55 \\\cline{2-4}
+					& Average & -- & 89.12 $\pm$ 1.60 \\
+				\midrule
+				\multirow{4}{*}{Kumyk} & Wikipedia & -- & -- \\
+					& News & 286K &  91.10 $\pm$ 0.86 \\
+					& Religion & 227K & 92.47 $\pm$ 1.03 \\\cline{2-4}
+					& Average & -- & 91.78 $\pm$ 0.94 \\
+				\bottomrule
+			\end{tabular}
 			%}
 			%%\end{centering}
 %		}
