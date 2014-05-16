@@ -63,6 +63,8 @@
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
 \newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
 
+\newcommand{\tags}[1]{\hiliteone{#1}}
+
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}
 %\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
 %\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
@@ -187,7 +189,9 @@
 			grid=false,
 			%eyecatcher=false,
 			borderColor=bordercol,
-			headerColorOne=headercolone,
+			headerColorOne=cyan,
+			headerColorTwo=blue,
+			%headerColorOne=headercolone,
 			%headerColorTwo=headercoltwo,
 			headerFontColor=black,
 			% Only simple background color used, no shading, so boxColorTwo isn't necessary
@@ -453,14 +457,37 @@
 %		}
 
 		\headerbox{Example output}{name=exout,span=2,column=1,row=0}{
+\scalebox{0.81}{
+\begin{tabular}{lll}
+\toprule
+ \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+\midrule
+\texttt{Құдай Өзінің жаратқандарының} & \texttt{Аллаһ Үзе яраткан нәрсәләргә карап,} & \texttt{Аллагь Оьзю яратгъан затлагъа} \\
+\texttt{бәріне қарап, өте жақсы екенін көрді.} & \texttt{аларның бик яхшы икәнен күрде.} & \texttt{къарап, олар бек яхшы экенин гёрген.} \\
+\midrule
+ \texttt{Құдай\tags{<n><nom>}} & \texttt{Аллаһ\tags{<n><nom>}} & \texttt{Аллагь\tags{<n><nom>}} \\
+ \texttt{Өз\tags{<prn><ref><px3sp><gen>}} & \texttt{Үз\tags{<prn><ref><px3sp><nom>}} & \texttt{Оьз\tags{<prn><ref><px3sp><nom>}} \\
+ \texttt{жарат\tags{<v><tv><ger\_past><pl><px3sp><gen>}} & \texttt{ярат\tags{<v><tv><gpr\_past>}} & \texttt{ярат\tags{<v><tv><gpr\_past>}} \\
+ \texttt{бәрі\tags{<prn><qnt><px3sp><dat>}} & \texttt{нәрсә\tags{<prn><itg><pl><dat>}} & \texttt{зат\tags{<n><pl><dat>}} \\
+ \texttt{қара\tags{<v><tv><gna\_perf>}} & \texttt{кара\tags{<v><tv><gna\_perf>}} & \texttt{къара\tags{<v><tv><gna\_perf>}} \\ 
+\texttt{,\tags{<cm>}} & \texttt{,\tags{<cm>}} & \texttt{,\tags{<cm>}} \\
+ ---      & \texttt{алар\tags{<prn><pers><p3><pl><gen>}} & \texttt{олар\tags{<prn><pers><p3><pl><nom>}} \\
+ \texttt{өте\tags{<adv>}} & \texttt{бик\tags{<adv>}} & \texttt{бек\tags{<adv>}} \\
+ \texttt{жақсы\tags{<adj>}} & \texttt{яхшы\tags{<adj>}} & \texttt{яхшы\tags{<adj>}} \\
+ \texttt{е\tags{<cop><ger\_past><px3sp><acc>}} & \texttt{и\tags{<cop><ger\_past><px3sp><acc>}} & \texttt{э\tags{<cop><ger\_past><px3sp><acc>}} \\
+ \texttt{көр\tags{<v><tv><ifi><p3><sg>}} & \texttt{күр\tags{<v><tv><past><p3><sg>}} & \texttt{гёр\tags{<v><tv><past><p3><sg>}} \\  
+ \texttt{.\tags{<sent>}} & \texttt{.\tags{<sent>}} & \texttt{.\tags{<sent>}} \\
+\bottomrule
+\end{tabular}
+}
 
 		\htwo{Gloss}
 
 		\pex[aboveexskip=0pt,belowexskip=3pt]\label{ex:sent}
 			\begingl
-				\gla[everygla={\qipa }]  Үстөл жана отургучтардын астын карап жатат, бирок Азамат аякта эмес. //
-				\glb table and chairs' underside looking is, but Azamat there not. //
-				\glft \vspace{-0.5em}\eng{[She's] looking under the tables and chairs, but Azamat isn't there.} //
+				\gla[everygla={\qipa }] Аллагь Оьзю яратгъан затларгъа къарап, олар бек яхшы экенин гёрген. //
+				\glb God own-his made thing-s-to look-having, they very good being saw. //
+				\glft \vspace{-0.5em}\eng{God looked at everything he had made and saw that it was very good.} //
 			\endgl
 		\xe
 		
