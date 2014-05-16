@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1186.1117"
-   height="657.24158"
+   width="1111.2977"
+   height="658.50305"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="flags.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,7 +25,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.792707"
      inkscape:cx="593.05585"
-     inkscape:cy="328.62079"
+     inkscape:cy="328.62165"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -39,15 +39,24 @@
      inkscape:window-height="714"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     units="px">
     <sodipodi:guide
        orientation="1,0"
-       position="19.85193,455.07538"
+       position="19.85193,455.07624"
        id="guide3720" />
     <sodipodi:guide
        orientation="1,0"
-       position="639.52839,412.46502"
+       position="639.52839,412.46588"
        id="guide3722" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="764.46909,638.31994"
+       id="guide3049" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="963.78612,21.446363"
+       id="guide3117" />
   </sodipodi:namedview>
   <defs
      id="defs4">
@@ -72,17 +81,17 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(356.29833,-112.94623)"
+     transform="translate(356.29833,-111.68473)"
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <g
-       transform="translate(-335.92542,132.94623)"
+       transform="translate(-335.92542,131.68473)"
        id="g3573">
       <rect
          style="fill:#008000"
@@ -552,7 +561,7 @@
          x="0" />
     </g>
     <g
-       transform="matrix(58.381,0,0,58.381,284.38442,266.42402)"
+       transform="matrix(50,0,0,50,284.99942,131.7925)"
        id="g3182">
       <rect
          style="fill:#d81e05"
@@ -575,6 +584,31 @@
          width="9"
          height="2"
          id="rect3174" />
+    </g>
+    <g
+       id="g3112"
+       transform="matrix(50,0,0,50,284.8993,449.76677)">
+      <rect
+         id="rect3100"
+         height="3"
+         width="9"
+         x="0"
+         y="0"
+         style="fill:#ffffff" />
+      <rect
+         id="rect3102"
+         height="3"
+         width="9"
+         y="3"
+         x="0"
+         style="fill:#d52b1e" />
+      <rect
+         id="rect3104"
+         height="2"
+         width="9"
+         y="2"
+         x="0"
+         style="fill:#0039a6" />
     </g>
   </g>
 </svg>
