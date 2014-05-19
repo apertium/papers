@@ -526,7 +526,7 @@
 			\vspace{-1.5em}
 			\begin{tabular}{lrrr}
 				\toprule
-				\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cline{2-4}
+				\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cmidrule{2-4}
 				& Kazakh & Tatar & Kumyk \\
 				\midrule
 				Noun & 2640 & 2795 & 2568 \\
@@ -547,59 +547,90 @@
 
 
 			\htwo{Test corpora}
-		\scalebox{0.8}{
-			\begin{tabular}{lll}
+
+%		\scalebox{0.8}{
+%			\begin{tabular}{lll}
+%				\toprule
+%				\textbf{type} & \textbf{lang} & \textbf{contents} \\ % & \textbf{origin} \\
+%				\midrule
+%				Encyclopædic & kaz & Wikipedia \\ % wpdump & 20131006 \\
+%					& tat & Wikipedia \\ % wpdump & 20130225 \\
+%					& kum & — \\ % — & — \\
+%				\midrule
+%				News & kaz & RFE/RL (azattyq.org) \\ % RFE/RL & azattyq.org 2010 \\
+%					& tat & tat.tatar-inform.ru \\ % Татар-информ & tat.tatar-inform.ru 2005-2011 \\
+%					& kum & Ёлдаш (yoldash.etnosmi.ru) \\ % Ёлдаш & yoldash.etnosmi.ru \\
+%				\midrule
+%				Religion & kaz & Quran + Bible \\ % quran + bible & kkitap.net, kuran.kz \\
+%					& tat & Quran + New Testament \\ % quran + nt & ibt.org.ru, tanzil.net \\
+%					& kum & Genesis + New Testament \\ % genesis + nt & ibt.org.ru \\
+%				\bottomrule
+%			\end{tabular}
+%		}
+		\scalebox{0.73}{
+			\begin{tabular}{llll}
 				\toprule
-				\textbf{type} & \textbf{lang} & \textbf{contents} \\ % & \textbf{origin} \\
+					& \textbf{Wikipedia} & \textbf{News} & \textbf{Religion} \\
 				\midrule
-				Encyclopædic & kaz & Wikipedia \\ % wpdump & 20131006 \\
-					& tat & Wikipedia \\ % wpdump & 20130225 \\
-					& kum & — \\ % — & — \\
-				\midrule
-				News & kaz & RFE/RL (azattyq.org) \\ % RFE/RL & azattyq.org 2010 \\
-					& tat & tat.tatar-inform.ru \\ % Татар-информ & tat.tatar-inform.ru 2005-2011 \\
-					& kum & Ёлдаш (yoldash.etnosmi.ru) \\ % Ёлдаш & yoldash.etnosmi.ru \\
-				\midrule
-				Religion & kaz & Quran + Bible \\ % quran + bible & kkitap.net, kuran.kz \\
-					& tat & Quran + New Testament \\ % quran + nt & ibt.org.ru, tanzil.net \\
-					& kum & Genesis + New Testament \\ % genesis + nt & ibt.org.ru \\
+					\textbf{Kazakh} & Wikipedia & azattyk.org & Quran + Bible \\
+					\textbf{Tatar} & Wikipedia & tat.tatar-inform.ru & Quran + New Testament \\
+					\textbf{Kumyk} & --- & yoldash.etnosmi.ru & Genesis + New Testament \\
 				\bottomrule
 			\end{tabular}
+
+%			\begin{tabular}{llll}
+%				\toprule
+%					& \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+%				\midrule
+%					Wikipedia & Wikipedia & Wikipedia & --- \\
+%					News & azattyq.org & tat.tatar-inform.ru & yoldash.etnosmi.ru \\
+%					Religion & Quran + Bible & Quran + New Testament & Genesis + New Testament \\
+%				\bottomrule
+%			\end{tabular}
 		}
-			\begin{itemize}
-				\item split into 10 equal parts; coverage calculated over each separately; standard deviation of mean calculated
-			\end{itemize}
+
+%			\begin{itemize}
+%				\item split into 10 equal parts; coverage calculated over each separately; standard deviation of mean calculated
+%			\end{itemize}
 			%both split into 10 equal parts; coverage calculated over each separately; standard deviation of the mean was calculated\\
-			\htwo{Coverage measures}
+			\htwo{Evaluation measures}
 			\begin{itemize}
 				\item \textbf{Naïve coverage} - percentage of surface forms in a given corpus receiving ≥ 1 analysis\\(surface forms may have missing analyses)
 				\item \textbf{Mean ambiguity} - average number of analyses for each surface form found in analysed corpus
+				\item \textbf{Precision} - of a form's analyses, \% correct
+				\item \textbf{Recall} - \% of analyses provided by transducer that are correct for a form, by comparing against a gold standard
 			\end{itemize}
-			\htwo{Coverage results (as of \texttt{r36739})}\\
+			%\htwo{Coverage results}\\
+			\htwo{Evaluation results}
 %\centering
 %\vspace{1pt}\hspace{2em}
 			%%\begin{centering}
 			%{\large
-			\begin{tabular}{llrr}
+			\begin{itemize}
+				\item each corpus split into 10 equal parts; coverage calculated over each separately; st.\ dev.\ of mean calculated
+			\end{itemize}
+
+		\scalebox{0.875}{
+			\begin{tabular}{llrrr}
 				\toprule
-				\textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) \\
+				\textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
 				\midrule
-				\multirow{4}{*}{Kazakh} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 \\
-					& News & 3.8M & 92.12 $\pm$ 2.72  \\
-					& Religion & 851K & 92.49 $\pm$ 1.66 \\\cline{2-4}
-					& Average & --- & 90.07 $\pm$ 1.91 \\
+				\multirow{4}{*}{Kazakh} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 0.00 \\
+					& News & 3.8M & 92.12 $\pm$ 2.72  & 0.00 \\
+					& Religion & 851K & 92.49 $\pm$ 1.66  & 0.00 \\\cmidrule{2-5}
+				 (r50547) & Average &  & 90.07 $\pm$ 1.91  & 0.00\\
 				\midrule
-				\multirow{4}{*}{Tatar} & Wikipedia & 159K & 86.35 $\pm$ 2.17 \\
-					& News & 5.2M & 89.75 $\pm$ 0.07 \\
-					& Religion & 382K & 91.25 $\pm$ 2.55 \\\cline{2-4}
-					& Average & --- & 89.12 $\pm$ 1.60 \\
+				\multirow{4}{*}{Tatar} & Wikipedia & 159K & 86.35 $\pm$ 2.17  & 0.00\\
+					& News & 5.2M & 89.75 $\pm$ 0.07  & 0.00 \\
+					& Religion & 382K & 91.25 $\pm$ 2.55 & 0.00 \\\cmidrule{2-5}
+				 (r50260) & Average &  & 89.12 $\pm$ 1.60 & 0.00 \\
 				\midrule
-				\multirow{4}{*}{Kumyk} & Wikipedia & --- & --- \\
-					& News & 286K &  91.10 $\pm$ 0.86 \\
-					& Religion & 227K & 92.47 $\pm$ 1.03 \\\cline{2-4}
-					& Average & --- & 91.78 $\pm$ 0.94 \\
+				\multirow{3}{*}{Kumyk} & News & 286K &  91.10 $\pm$ 0.86  & 0.00 \\
+					& Religion & 227K & 92.47 $\pm$ 1.03  & 0.00 \\\cmidrule{2-5}
+				 (r50300) & Average &  & 91.78 $\pm$ 0.94 & 0.00 \\
 				\bottomrule
-			\end{tabular}
+			\end{tabular}\\
+		}
 			%}
 			%%\end{centering}
 %		}
@@ -607,13 +638,27 @@
 %		\headerbox{Precision \& recall}{name=precrecall,column=1,below=coverage}{
 
 %			\htwo{Two measures}
-			\htwo{Precision \& recall}
+%			\htwo{Precision \& recall}
 			\begin{itemize}
-				\item selected 1000 surface forms at random from RFE/RL corpus,
-				proof read analyses
-				\item \textbf{Precision} (of a form's analyses \% correct): \hfill \hiliteone{\textbf{97.32\%}}
-				\item \textbf{Recall} (percentage of analyses provided by the transducer that are correct for a form, by comparing against a gold standard): \hfill \hiliteone{\textbf{94.56\%}}
+				\item {}{\footnotesize selected \& proofed unique random surface forms from news corpora}
 			\end{itemize}
+
+
+				\begin{tabular}{lrrr}
+				\toprule
+					\textbf{Language} & \textbf{Forms} & \textbf{Precision (\%)} & \textbf{Recall (\%)} \\
+				\midrule
+					Kazakh & 1000 & 98.61 &  57.98 \\
+					Tatar & 1000 & 95.03 & 85.65 \\
+					Kumyk & 500 & 96.57 & 69.11 \\
+				\bottomrule
+				\end{tabular}
+
+%			\begin{itemize}
+%				\item selected \& proofed unique random surface forms from news corpus
+%				\item \textbf{Precision} (of a form's analyses \% correct): \hfill \hiliteone{\textbf{97.32\%}}
+%				\item \textbf{Recall} (percentage of analyses provided by the transducer that are correct for a form, by comparing against a gold standard): \hfill \hiliteone{\textbf{94.56\%}}
+%			\end{itemize}
 
 %			\htwo{Results}
 %
