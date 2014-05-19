@@ -349,10 +349,11 @@
 		\htwo{Morphological transducers}
 		\begin{itemize}
 			\item Take a surface form, and produce valid lexical form(s)
-			\item Take a lexical form, and produce valid surface form(s)\\
-			%FIXME: make fit on one line
-				`алдым' \hilitetwo{↔} \texttt{ал{\small <v><tv><ifi><p1><sg>}}, \texttt{алд{\small <n><px1sg><nom>}}
+			\item Take a lexical form, and produce valid surface form(s)
 		\end{itemize}
+		\scalebox{0.96}{
+			`алдым' \hilitetwo{↔} \texttt{ал{\small <v><tv><ifi><p1><sg>}}, \texttt{алд{\small <n><px1sg><nom>}}
+		}
 
 		\htwo{Transducers for Turkic languages}
 		\begin{itemize}
@@ -465,14 +466,15 @@
 
 		\htwo{Gloss}
 
-		\pex[aboveexskip=0pt,belowexskip=3pt]\label{ex:sent}
+		\pex[aboveexskip=0pt,belowexskip=3pt,aboveglftskip=0pt]\label{ex:sent}
 			\begingl
-				\gla[everygla={\qipa }] Аллагь Оьзю яратгъан затларгъа къарап, олар бек яхшы экенин гёрген. //
-				\glb God own-his made thing-s-to look-having, they very good being saw. //
-				\glft \vspace{-0.5em}\eng{God looked at everything he had made and saw that it was very good.} //
+				\gla[everygla={\qipa }] Аллагь Оьзю яратгъан затлагъа къарап, олар бек яхшы экенин гёрген. //
+				\glb God own-his made thing-s-to look-having, they very good being saw. // 
+				\glft \eng{God looked at everything he had made and saw that it was very good.} //
 			\endgl
 		\xe
-		
+
+
 		\htwo{Output}
 \scalebox{0.81}{
 \begin{tabular}{lll}
@@ -497,7 +499,6 @@
 \bottomrule
 \end{tabular}
 }
-
 
 		\htwo{Tagset}
 
@@ -557,7 +558,6 @@
 
 		}
 
-
 		\headerbox{Evaluation}{name=coverage,span=1,column=2,below=exout}{
 
 			\htwo{Number of stems}
@@ -586,21 +586,21 @@
 
 			\htwo{Test corpora}
 		\scalebox{0.8}{
-			\begin{tabular}{llll}
+			\begin{tabular}{lll}
 				\toprule
-				\textbf{type} & \textbf{lang} & \textbf{contents} & \textbf{origin} \\
+				\textbf{type} & \textbf{lang} & \textbf{contents} \\ % & \textbf{origin} \\
 				\midrule
-				Encyclop & kaz & wpdump & 20131006 \\
-					& tat & wpdump & 20130225 \\
-					& kum & — & — \\
+				Encyclopædic & kaz & Wikipedia \\ % wpdump & 20131006 \\
+					& tat & Wikipedia \\ % wpdump & 20130225 \\
+					& kum & — \\ % — & — \\
 				\midrule
-				News & kaz & RFE/RL & azattyq.org 2010 \\
-					& tat & Татар-информ & tat.tatar-inform.ru 2005-2011 \\
-					& kum & Ёлдаш & yoldash.etnosmi.ru \\
+				News & kaz & RFE/RL (azattyq.org) \\ % RFE/RL & azattyq.org 2010 \\
+					& tat & tat.tatar-inform.ru \\ % Татар-информ & tat.tatar-inform.ru 2005-2011 \\
+					& kum & Ёлдаш (yoldash.etnosmi.ru) \\ % Ёлдаш & yoldash.etnosmi.ru \\
 				\midrule
-				Religion & kaz & quran + bible & kkitap.net, kuran.kz \\
-					& tat & quran + nt & ibt.org.ru, tanzil.net \\
-					& kum & genesis + nt & ibt.org.ru \\
+				Religion & kaz & Quran + Bible \\ % quran + bible & kkitap.net, kuran.kz \\
+					& tat & Quran + New Testament \\ % quran + nt & ibt.org.ru, tanzil.net \\
+					& kum & Genesis + New Testament \\ % genesis + nt & ibt.org.ru \\
 				\bottomrule
 			\end{tabular}
 		}
@@ -786,7 +786,7 @@
 				\item See our paper in the LREC 2014 proceedings
 				\item And feel free to contact the authors any time!
 			\end{itemize}
-			\vspace{2.8ex}
+			%\vspace{2.8ex}
 		}
 
 
