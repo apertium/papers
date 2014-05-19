@@ -31,7 +31,8 @@
 %\definecolor{boxcolor}{RGB}{226,200,200}
 %\newcommand{\hilitetwo}[1]{{\addfontfeature{Color=FF000099}#1}}
 \newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
-\newcommand{\hiliteone}[1]{{\addfontfeature{Color=33993399}#1}}
+%\newcommand{\hiliteone}[1]{{\addfontfeature{Color=33993399}#1}}
+\newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
 \newcommand{\hilitegrey}[1]{{\addfontfeature{Color=77777799}#1}}
 
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,8 +69,9 @@
 \newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
 
 \newcommand{\tags}[1]{\hiliteone{#1}}
+\newcommand{\tag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
 
-%\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}
+%\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
 %\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
 %\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
 \newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{CMU Sans Serif}
@@ -371,6 +373,11 @@
 		\end{itemize}
 
 		\htwo{Development effort}
+		\begin{itemize}
+			\item Kumyk transducer based on Kazakh \& Tatar transducers
+			\item ±1 week to reach 80\% coverage, +1 week to reach 90\%
+		\end{itemize}
+		\includegraphics[width=0.6\textwidth,bb=50 50 554 770,angle=270]{../graphs/kumyk-yoldash-coverage}
 	}
 
 %		\headerbox{Available Turkic Transducers}{name=turkictrans,below=morphtrans}{
@@ -380,7 +387,7 @@
 %* HFST/Apertium
 %		}
 
-		\headerbox{Morphotactics}{name=lexc,below=morphtrans}{
+		\headerbox{Categorisation and tagset}{name=lexc,below=morphtrans}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
 
 			\htwo{Morphological \& orthographical words}
@@ -392,47 +399,7 @@
 				\texttt{кел{\tt {\small <v><iv><prt\_impf>}}+жат{\small <vaux><gna\_cnd><p2><sg>}}
 			\end{itemize}
 
-			%\htwo{Irregular negatives of finite verb forms}
 
-			\htwo{Irregular [noun + possessive + case] forms}
-
-			\begin{itemize}
-				\item Some combinations of possessive and case morphemes are distinct (i.e., not formed simply by concatenation):
-
-			\begin{center}
-			\vspace{-0.5em}
-{\small
-{\qipa		
-	\begin{tabular}{llllll}
-		\toprule
-		case & form & 1SG & 2SG & 3SP  \\
-		\midrule
-		nom & — & -(I)м & -(I)ң & -(S)I  \\
-		acc & -NI & -(I)мдI & -(I)ңдI & -\textbf{(S)Iн}  \\
-		gen & -NIн & -(I)мдIн & -(I)ңдIн & -(S)IнIн  \\
-		loc & -DA & -(I)мдA & -(I)ңдA & -\textbf{(S)IндA}  \\
-		abl & -DAн & -(I)мдAн, & -(I)ндAн, & -\textbf{(S)IнAн}  \\
-		~   &     & -\textbf{(I)мAн} & -\textbf{(I)ңAн} \\
-		dat & -GA & -\textbf{(I)мA} & -\textbf{(I)ңA} & -\textbf{(S)IнA} \\
-		\bottomrule
-	\end{tabular}
-}}
-			\end{center}
-
-				\item Trade-off:
-				\begin{itemize}
-					\item morphophon.\ complicateder, morphotactics simpler
-					\item underlying form used: \texttt{\{S\}\{I\}\{n\}}
-					\item phonological rules delete \texttt{\{n\}}, \texttt{\{S\}} by context
-				\end{itemize}
-			\end{itemize}
-
-			\htwo{Noun-noun compounds}
-
-			\begin{itemize}
-				\item one type of N-N compunds: N2 has \texttt{<px3>} and related morphology
-			\end{itemize}
-			\vspace{0.6ex}
 			\codeex{
 			{\small
 			\texttt{LEXICON N-INFL-3PX-COMPOUND\\
@@ -443,24 +410,11 @@
 			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}COMPOUND ;\ !\ "invitation"}}
 			}
 				
-			\vspace{0.5ex}
-			%чакыруу кагазы
 		}
 
 					\renewcommand{\arraystretch}{0.65}
-%		\headerbox{The Transducer}{name=transducer,column=0,span=2,row=1}{
-%Tagset\\
-%* something witty\\
-%
-%Things we do well\\
-%* Morphophonology\\
-%** vowel harmony\\
-%** voicing assimilation\\
-%** desonorisation\\
-%* N-N compounds (чакыруу кагазы) ?
-%
-%
-%		}
+
+
 
 		\headerbox{Example output}{name=exout,span=2,column=1,row=0}{
 
@@ -469,8 +423,10 @@
 		\pex[aboveexskip=0pt,belowexskip=3pt,aboveglftskip=0pt]\label{ex:sent}
 			\begingl
 				\gla[everygla={\qipa }] Аллагь Оьзю яратгъан затлагъа къарап, олар бек яхшы экенин гёрген. //
-				\glb God own-his made thing-s-to look-having, they very good being saw. // 
-				\glft \eng{God looked at everything he had made and saw that it was very good.} //
+				\glb[everyglb={\qipa }] Аллаһ Үзе яраткан нәрсәләргә карап, аларның бик яхшы икәнен күрде. //
+				\glb[everyglb={\qipa }] Құдай Өзінің жаратқандарының бәріне қарап, {} өте жақсы екенін көрді. //
+				\glb God own-his created [everything/thing-s]-to looked.at, they/their very good being saw. // 
+				\glft \eng{God looked at everything he had created and saw that it was very good.} //
 			\endgl
 		\xe
 
@@ -479,23 +435,23 @@
 \scalebox{0.81}{
 \begin{tabular}{lll}
 \toprule
- \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+ \textbf{Kazakh} (\textbf{kaz}) & \textbf{Tatar} (\textbf{tat}) & \textbf{Kumyk} (\textbf{kum}) \\
 \midrule
 \texttt{Құдай Өзінің жаратқандарының} & \texttt{Аллаһ Үзе яраткан нәрсәләргә карап,} & \texttt{Аллагь Оьзю яратгъан затлагъа} \\
 \texttt{бәріне қарап, өте жақсы екенін көрді.} & \texttt{аларның бик яхшы икәнен күрде.} & \texttt{къарап, олар бек яхшы экенин гёрген.} \\
 \midrule
- \texttt{Құдай\tags{<n><nom>}} & \texttt{Аллаһ\tags{<n><nom>}} & \texttt{Аллагь\tags{<n><nom>}} \\
- \texttt{Өз\tags{<prn><ref><px3sp><gen>}} & \texttt{Үз\tags{<prn><ref><px3sp><nom>}} & \texttt{Оьз\tags{<prn><ref><px3sp><nom>}} \\
- \texttt{жарат\tags{<v><tv><ger\_past><pl><px3sp><gen>}} & \texttt{ярат\tags{<v><tv><gpr\_past>}} & \texttt{ярат\tags{<v><tv><gpr\_past>}} \\
- \texttt{бәрі\tags{<prn><qnt><px3sp><dat>}} & \texttt{нәрсә\tags{<prn><itg><pl><dat>}} & \texttt{зат\tags{<n><pl><dat>}} \\
- \texttt{қара\tags{<v><tv><gna\_perf>}} & \texttt{кара\tags{<v><tv><gna\_perf>}} & \texttt{къара\tags{<v><tv><gna\_perf>}} \\ 
-\texttt{,\tags{<cm>}} & \texttt{,\tags{<cm>}} & \texttt{,\tags{<cm>}} \\
- ---      & \texttt{алар\tags{<prn><pers><p3><pl><gen>}} & \texttt{олар\tags{<prn><pers><p3><pl><nom>}} \\
- \texttt{өте\tags{<adv>}} & \texttt{бик\tags{<adv>}} & \texttt{бек\tags{<adv>}} \\
- \texttt{жақсы\tags{<adj>}} & \texttt{яхшы\tags{<adj>}} & \texttt{яхшы\tags{<adj>}} \\
- \texttt{е\tags{<cop><ger\_past><px3sp><acc>}} & \texttt{и\tags{<cop><ger\_past><px3sp><acc>}} & \texttt{э\tags{<cop><ger\_past><px3sp><acc>}} \\
- \texttt{көр\tags{<v><tv><ifi><p3><sg>}} & \texttt{күр\tags{<v><tv><past><p3><sg>}} & \texttt{гёр\tags{<v><tv><past><p3><sg>}} \\  
- \texttt{.\tags{<sent>}} & \texttt{.\tags{<sent>}} & \texttt{.\tags{<sent>}} \\
+ \texttt{Құдай\tag{n}\tag{nom}} & \texttt{Аллаһ\tag{n}\tag{nom}} & \texttt{Аллагь\tag{n}\tag{nom}} \\
+ \texttt{Өз\tag{prn}\tag{ref}\tag{px3sp}\tag{gen}} & \texttt{Үз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} & \texttt{Оьз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} \\
+ \texttt{жарат\tag{v}\tag{tv}\tag{ger\_past}\tag{pl}\tag{px3sp}\tag{gen}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} \\
+ \texttt{бәрі\tag{prn}\tag{qnt}\tag{px3sp}\tag{dat}} & \texttt{нәрсә\tag{prn}\tag{itg}\tag{pl}\tag{dat}} & \texttt{зат\tag{n}\tag{pl}\tag{dat}} \\
+ \texttt{қара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{кара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{къара\tag{v}\tag{tv}\tag{gna\_perf}} \\ 
+\texttt{,\tag{cm}} & \texttt{,\tag{cm}} & \texttt{,\tag{cm}} \\
+ ---      & \texttt{алар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{gen}} & \texttt{олар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{nom}} \\
+ \texttt{өте\tag{adv}} & \texttt{бик\tag{adv}} & \texttt{бек\tag{adv}} \\
+ \texttt{жақсы\tag{adj}} & \texttt{яхшы\tag{adj}} & \texttt{яхшы\tag{adj}} \\
+ \texttt{е\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{и\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{э\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} \\
+ \texttt{көр\tag{v}\tag{tv}\tag{ifi}\tag{p3}\tag{sg}} & \texttt{күр\tag{v}\tag{tv}\tag{past}\tag{p3}\tag{sg}} & \texttt{гёр\tag{v}\tag{tv}\tag{past}\tag{p3}\tag{sg}} \\  
+ \texttt{.\tag{sent}} & \texttt{.\tag{sent}} & \texttt{.\tag{sent}} \\
 \bottomrule
 \end{tabular}
 }
@@ -506,53 +462,59 @@
 \setlength{\columnsep}{-1em}
 \setlength{\topsep}{-\parskip}
 %\spacing{0.8}
-\begin{multicols}{3}
+\begin{multicols}{4}
 \begin{tabbing}
-  \texttt{{\small <n>}}\hspace{3.1em} \=  Noun\\[-0.5ex]
+  \texttt{{\small \tag{n}}}\hspace{1.5em} \=  Noun\\[-0.5ex]
 %  \texttt{{\small <np>}} \> Proper noun\\[-0.5ex]
-  \texttt{{\small <v>}} \>  Verb\\[-0.5ex]
-  \texttt{{\small <det>}} \>  Determiner\\[-0.5ex]
+  \texttt{{\small \tag{v}}} \>  Verb\\[-0.5ex]
+  \texttt{{\small \tag{prn}}} \> Pronoun \\[-0.5ex]
+  \texttt{{\small \tag{det}}} \>  Determiner\\[-0.5ex]
 %  \texttt{{\small <cnjcoo>}} \> Coord. conjunct.\\[-0.5ex]
 %  \texttt{{\small <cnjadv>}} \> Adv. conjunct.\\[-0.5ex]
-  \texttt{{\small <adj>}} \> Adjective\\[-0.5ex]
-  \texttt{{\small <adv>}} \> Adverb\\[-0.5ex]
+  \texttt{{\small \tag{adj}}} \> Adjective\\[-0.5ex]
+  \texttt{{\small \tag{adv}}} \> Adverb\\[-0.5ex]
 %  \texttt{{\small <vaux>}} \> Auxiliary verb\\[-0.5ex]
 %  \texttt{{\small <cop>}} \> Copula\\[-0.5ex]
-  \texttt{{\small <iv>}} \> Intransitive\\[-0.5ex]
-  \texttt{{\small <tv>}} \> Transitive\\[-0.5ex]
+  \texttt{{\small \tag{iv}}} \> Intransitive\\[-0.5ex]
+  \texttt{{\small \tag{tv}}} \> Transitive\\[-0.5ex]
 %  \texttt{{\small <p2>}} \> Second person\\[-0.5ex]
-  \texttt{{\small <p3>}} \> Third person\\[-0.5ex]
+  \texttt{{\small \tag{p3}}} \> Third person\\[-0.5ex]
 %  \texttt{{\small <ant>}} \> Anthroponym\\[-0.5ex]
 %  \texttt{{\small <dem>}} \> Demonstrative\\[-0.5ex]
 %  \texttt{{\small <m>}} \> Masculine\\[-0.5ex]
 %  \texttt{{\small <sg>}} \> Singular\\[-0.5ex]
-  \texttt{{\small <pl>}} \> Plural\\[-0.5ex]
-  \texttt{{\small <nom>}} \> `Nominative'\\[-0.5ex]
-  \texttt{{\small <gen>}} \> Genitive\\[-0.5ex]
-  \texttt{{\small <acc>}} \> Accusative\\[-0.5ex]
+  \texttt{{\small \tag{pl}}} \> Plural\\[-0.5ex]
+  \texttt{{\small \tag{nom}}} \> `Nominative'\\[-0.5ex]
+  \texttt{{\small \tag{gen}}} \> Genitive\\[-0.5ex]
+  \texttt{{\small \tag{acc}}} \> Accusative\\[-0.5ex]
+  \texttt{{\small \tag{dat}}} \> Dative\\[-0.5ex]
+  \texttt{{\small \tag{qnt}}} \> \\[-0.5ex]
+  \texttt{{\small \tag{itg}}} \> Interrogative \\[-0.5ex]
+  \texttt{{\small \tag{ref}}} \> Reflexive \\[-0.5ex]
+  \texttt{{\small \tag{pers}}} \> \\[-0.5ex]
 %  \texttt{{\small <loc>}} \> Locative\\[-0.5ex]
 %  \texttt{{\small <px3sg>}} \> 3rd person poss. (Singular)\\[-0.5ex]
-  \texttt{{\small <px3sp>}} \> 3rd person poss.\\[-0.5ex]
-  	\> \hspace{2em}(Singular/Plural)\\[-0.5ex]
+  \texttt{{\small \tag{cm}}} \> Comma\\[-0.5ex]
+  \texttt{{\small \tag{sent}}} \> Sentence\\[-0.5ex]
 %  \texttt{{\small <px3pl>}} \> 3rd person poss. (Plural)\\[-0.5ex]
 %  \texttt{{\small <neg>}} \> Negative\\[-0.5ex]
 %  \texttt{{\small <aor>}} \> Aorist\\[-0.5ex]
-  \texttt{{\small <past>}} \> Past (General) \\[-0.5ex]
-  \texttt{{\small <ifi>}} \> Past (Eyewitness/Recent) \\[-0.5ex]
+  \texttt{{\small \tag{past}}} \> Past (General) \\[-0.5ex]
+  \texttt{{\small \tag{ifi}}} \> Past \\[-0.5ex]
+  	\> \hspace{0.5em}(Eyewitness/Recent) \\[-0.5ex]
+  \\[-0.5ex]
+  \texttt{{\small \tag{px3sp}}} \hspace{1.1em} \= 3rd person poss.\\[-0.5ex]
+  	\> \hspace{0.5em}(Singular/Plural)\\[-0.5ex]
 %  \texttt{{\small <imp>}} \> Imperative\\[-0.5ex]
-  \texttt{{\small <prn>}} \> Pronoun \\[-0.5ex]
-  \texttt{{\small <qnt>}} \> \\[-0.5ex]
-  \texttt{{\small <itg>}} \> Interrogative \\[-0.5ex]
-  \texttt{{\small <pers>}} \> \\[-0.5ex]
-  \texttt{{\small <ger\_past>}} \> Verbal noun (Past)\\[-0.5ex]
-  \texttt{{\small <gna\_perf>}} \> Verbal adverb (Perfect)\\[-0.5ex]
-  \texttt{{\small <gpr\_past>}} \> Verbal adjective (Past)\\[-0.5ex]
+  \texttt{{\small \tag{ger\_past}}} \> Verbal noun (Past)\\[-0.5ex]
+  \texttt{{\small \tag{gna\_perf}}} \> Verbal adverb \\[-0.5ex]
+  	\> \hspace{0.5em}(Perfect)\\[-0.5ex]
+  \texttt{{\small \tag{gpr\_past}}} \> Verbal adjective \\[-0.5ex]
+  	\> \hspace{0.5em}(Past)
 %  \texttt{{\small <prc\_impf>}} \> Participle (Imperfect)\\[-0.5ex]
 %  \texttt{{\small <prc\_irre>}} \> Participle (Irrealis)\\[-0.5ex]
 %  \texttt{{\small <prc\_real>}} \> Participle (Realis)\\[-0.5ex]
-  \texttt{{\small <cm>}} \> Comma\\[-0.5ex]
-  \texttt{{\small <sent>}} \> Sentence\\
-  
+ 
 \end{tabbing}
 \end{multicols}
 
