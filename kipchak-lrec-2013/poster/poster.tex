@@ -359,16 +359,15 @@
 
 		\htwo{Transducers for Turkic languages}
 		\begin{itemize}
-			\item Turkish (\hiliteone{Çöltekin, 2010}; \hilitetwo{Öflazer, 1994})
+			\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Öflazer, 1994})
 			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
 			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
-			\item Kyrgyz (\hiliteone{Tyers et al., 2012})
-			\item \hiliteone{GPL (=free and open)}!
+			\item Kyrgyz (\hiliteone{Tyers et al., 2012}) \hfill{} \hiliteone{GPL (=free and open)}!
 		\end{itemize}
 
 		\htwo{Framework: HFST}
 		\begin{itemize}
-			\item Reimplementation of Xerox FST formalisms\\({\tt lexc} and {\tt twol})
+			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
 			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
 		\end{itemize}
 
@@ -422,9 +421,9 @@
 
 		\pex[aboveexskip=0pt,belowexskip=3pt,aboveglftskip=0pt]\label{ex:sent}
 			\begingl
-				\gla[everygla={\qipa }] Аллагь Оьзю яратгъан затлагъа къарап, олар бек яхшы экенин гёрген. //
+				\gla[everygla={\qipa }] Құдай Өзінің жаратқандарының бәріне қарап, {} өте жақсы екенін көрді. //
 				\glb[everyglb={\qipa }] Аллаһ Үзе яраткан нәрсәләргә карап, аларның бик яхшы икәнен күрде. //
-				\glb[everyglb={\qipa }] Құдай Өзінің жаратқандарының бәріне қарап, {} өте жақсы екенін көрді. //
+				\glb[everyglb={\qipa }] Аллагь Оьзю яратгъан затлагъа къарап, олар бек яхшы экенин гёрген. //
 				\glb God own-his created [everything/thing-s]-to looked.at, they/their very good being saw. // 
 				\glft \eng{God looked at everything he had created and saw that it was very good.} //
 			\endgl
@@ -443,7 +442,7 @@
  \texttt{Құдай\tag{n}\tag{nom}} & \texttt{Аллаһ\tag{n}\tag{nom}} & \texttt{Аллагь\tag{n}\tag{nom}} \\
  \texttt{Өз\tag{prn}\tag{ref}\tag{px3sp}\tag{gen}} & \texttt{Үз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} & \texttt{Оьз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} \\
  \texttt{жарат\tag{v}\tag{tv}\tag{ger\_past}\tag{pl}\tag{px3sp}\tag{gen}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} \\
- \texttt{бәрі\tag{prn}\tag{qnt}\tag{px3sp}\tag{dat}} & \texttt{нәрсә\tag{prn}\tag{itg}\tag{pl}\tag{dat}} & \texttt{зат\tag{n}\tag{pl}\tag{dat}} \\
+ \texttt{бәрі\tag{prn}\tag{qnt}\tag{px3sp}\tag{dat}} & \texttt{нәрсә\tag{n}\tag{pl}\tag{dat}} & \texttt{зат\tag{n}\tag{pl}\tag{dat}} \\
  \texttt{қара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{кара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{къара\tag{v}\tag{tv}\tag{gna\_perf}} \\ 
 \texttt{,\tag{cm}} & \texttt{,\tag{cm}} & \texttt{,\tag{cm}} \\
  ---      & \texttt{алар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{gen}} & \texttt{олар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{nom}} \\
@@ -488,10 +487,10 @@
   \texttt{{\small \tag{gen}}} \> Genitive\\[-0.5ex]
   \texttt{{\small \tag{acc}}} \> Accusative\\[-0.5ex]
   \texttt{{\small \tag{dat}}} \> Dative\\[-0.5ex]
-  \texttt{{\small \tag{qnt}}} \> \\[-0.5ex]
-  \texttt{{\small \tag{itg}}} \> Interrogative \\[-0.5ex]
+  \texttt{{\small \tag{qnt}}} \> Quantifier \\[-0.5ex]
+%  \texttt{{\small \tag{itg}}} \> Interrogative \\[-0.5ex]
   \texttt{{\small \tag{ref}}} \> Reflexive \\[-0.5ex]
-  \texttt{{\small \tag{pers}}} \> \\[-0.5ex]
+  \texttt{{\small \tag{pers}}} \> Personal \\[-0.5ex]
 %  \texttt{{\small <loc>}} \> Locative\\[-0.5ex]
 %  \texttt{{\small <px3sg>}} \> 3rd person poss. (Singular)\\[-0.5ex]
   \texttt{{\small \tag{cm}}} \> Comma\\[-0.5ex]
@@ -502,7 +501,7 @@
   \texttt{{\small \tag{past}}} \> Past (General) \\[-0.5ex]
   \texttt{{\small \tag{ifi}}} \> Past \\[-0.5ex]
   	\> \hspace{0.5em}(Eyewitness/Recent) \\[-0.5ex]
-  \\[-0.5ex]
+  %\\[-0.5ex]
   \texttt{{\small \tag{px3sp}}} \hspace{1.1em} \= 3rd person poss.\\[-0.5ex]
   	\> \hspace{0.5em}(Singular/Plural)\\[-0.5ex]
 %  \texttt{{\small <imp>}} \> Imperative\\[-0.5ex]
@@ -595,7 +594,7 @@
 			%both split into 10 equal parts; coverage calculated over each separately; standard deviation of the mean was calculated\\
 			\htwo{Evaluation measures}
 			\begin{itemize}
-				\item \textbf{Naïve coverage} - percentage of surface forms in a given corpus receiving ≥ 1 analysis\\(surface forms may have missing analyses)
+				\item \textbf{Naïve coverage} - percentage of surface forms in a given corpus receiving ≥ 1 analysis\\%(surface forms may have missing analyses)
 				\item \textbf{Mean ambiguity} - average number of analyses for each surface form found in analysed corpus
 				\item \textbf{Precision} - of a form's analyses, \% correct
 				\item \textbf{Recall} - \% of analyses provided by transducer that are correct for a form, by comparing against a gold standard
@@ -606,9 +605,9 @@
 %\vspace{1pt}\hspace{2em}
 			%%\begin{centering}
 			%{\large
-			\begin{itemize}
-				\item each corpus split into 10 equal parts; coverage calculated over each separately; st.\ dev.\ of mean calculated
-			\end{itemize}
+			%\begin{itemize}
+			%	\item each corpus split into 10 equal parts; coverage calculated over each separately; st.\ dev.\ of mean calculated
+			%\end{itemize}
 
 		\scalebox{0.875}{
 			\begin{tabular}{llrrr}
@@ -646,7 +645,7 @@
 
 				\begin{tabular}{lrrr}
 				\toprule
-					\textbf{Language} & \textbf{Forms} & \textbf{Precision (\%)} & \textbf{Recall (\%)} \\
+					\textbf{Language} & \textbf{Forms} & \textbf{Precision} (\%) & \textbf{Recall} (\%) \\
 				\midrule
 					Kazakh & 1000 & 98.61 &  57.98 \\
 					Tatar & 1000 & 95.03 & 85.65 \\
