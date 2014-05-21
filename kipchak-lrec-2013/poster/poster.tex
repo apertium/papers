@@ -366,8 +366,9 @@
 			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
 			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
 			\item Kyrgyz (\hiliteone{Washington et al., 2012})%\\
+			\item Kazakh (\hilitetwo{Бекманова \& Махимов, 2013})
 			%\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
-			\item Kazakh, Tatar, Kumyk: all \hiliteone{GPL (=free and open)}!
+			\item our Kazakh, Tatar, Kumyk: all \hiliteone{GPL (=free and open)}!
 		\end{itemize}
 
 		\htwo{Framework: HFST}
@@ -381,7 +382,7 @@
 			\item Kumyk transducer based on Kazakh, Tatar transducers
 			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
 		\end{itemize}
-		\vspace*{-2em}
+		\vspace*{-2.5em}
 		\hspace*{-2em}\includegraphics[width=0.9\textwidth,angle=270]{../graphs/kumyk-yoldash-cov}
 		\vspace*{-2em}
 	}
@@ -403,7 +404,7 @@
 		\scalebox{0.63}{
 			\begin{tabular}{lllll}
 				\toprule
-				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}\tag{subst}(\tag{comp})}} & {\small \texttt{\tag{adj}\tag{advl}(\tag{comp})}} \\
+				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
 				\midrule
 				A1 & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
 				A2 & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
@@ -733,14 +734,19 @@
 						&	& {\qipa /jo, ju/} & {\qipa \hiliteone{ю}лдузл\hilitetwo{а}р} \eng{stars}, {\qipa \hiliteone{ё}лл\hilitetwo{а}р} \eng{roads} \\
 				\bottomrule
 			\end{tabular}
-		}
-			Tatar - е (non-initial orthographic variant of э, e.g. дәресләр)
-				- initial position /j/+э (егетләр) and /j/+ы (еллар)
-			Kumyk - ё ю (front round vowels between consonants гёзлер, гюнлер)
-				- word-initially /j/ followed by front (юреклер, ёнкюлер) or back vowel (юлдузлар, ёллар)
-			Kazakh - и у ю (front/back vowels, along with glides)
-				- қиюда/киюде
+		}\vspace{0.5em}
+			\begin{itemize}
+				\item solution:\ hairy twol rules for majority of cases
+				\item unaccounted-for words marked harmony-forcing char
+				\item adjust rules for harmony-forcing characters
+			\end{itemize}
+				\codeex{
+					ugly twol example goes here
+				}
 			\htwo{Loanwords}
+				\begin{itemize}
+					\item
+				\end{itemize}
 				Kazakh - елдің / Назарбаевтың
 				Tatar - галимнәр, артистлар
 				Kumyk - сёзлер, самолётлар
