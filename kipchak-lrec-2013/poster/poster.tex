@@ -68,6 +68,8 @@
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
 \newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
 
+\newcommand{\tilda}{{\qipa ∼}}
+
 \newcommand{\tags}[1]{\hiliteone{#1}}
 \newcommand{\tag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
 
@@ -375,7 +377,7 @@
 		\htwo{Development effort}
 		\begin{itemize}
 			\item Kumyk transducer based on Kazakh \& Tatar transducers
-			\item ±1 week to reach 80\% coverage, +1 week to reach 90\%
+			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
 		\end{itemize}
 		\vspace*{-2em}
 		\hspace*{-2em}\includegraphics[width=0.9\textwidth,angle=270]{../graphs/kumyk-yoldash-cov}
@@ -392,44 +394,45 @@
 		\headerbox{Categorisation and tagset}{name=lexc,below=morphtrans}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
 			\begin{itemize}
-				\item Other Turkic transducers: zero-derivation (overgenerates)
-				\item Our approach: categorization
+				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
+				\item Our approach:\ categorization (e.g., adjectives, below)
 			\end{itemize}
 
-		\scalebox{0.66}{
+		\scalebox{0.63}{
 			\begin{tabular}{lllll}
 				\toprule
-				\textbf{Type} & \textbf{Gloss} & {\footnotesize \texttt{\tag{adj}(\tag{comp})}} & {\footnotesize \texttt{\tag{adj}\tag{subst}(\tag{comp})}} & {\footnotesize \texttt{\tag{adj}\tag{advl}(\tag{comp})}} \\
+				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}\tag{subst}(\tag{comp})}} & {\small \texttt{\tag{adj}\tag{advl}(\tag{comp})}} \\
 				\midrule
-				A1 & \emph{`good'} & {\qipa яхшы (яшхырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
-				A2 & \emph{`old'} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} &  \\
-				A3 & \emph{`dead'} & {\qipa үле} & {\qipa үле } &  \\
-				A4 & \emph{`basic'} & {\qipa төп} &  &  \\
+				A1 & \emph{`good'} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
+				A2 & \emph{`old'} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
+				A3 & \emph{`dead'} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
+				A4 & \emph{`basic'} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
 				\bottomrule
 			\end{tabular}
 		}
+	}
 
-			\htwo{Morphological \& orthographical words}
-
-			\begin{itemize}
-				\item{} {\qipa өнүктүрөбүзбү ?} \eng{will we develop [it]?}\\
-				\texttt{ өнүк{\small <v><tv><caus><aor><p1><pl>+}бы{\small <qst>}}
-				\item{} {\qipa келатсаң} \eng{if you come}\\
-				\texttt{кел{\tt {\small <v><iv><prt\_impf>}}+жат{\small <vaux><gna\_cnd><p2><sg>}}
-			\end{itemize}
-
-
-			\codeex{
-			{\small
-			\texttt{LEXICON N-INFL-3PX-COMPOUND\\
-			\vspace{-0.5ex}\%<n\%>:\%>\%\{S\%\}\%\{I\%\}\%\{n\%\} GEN-POS ;}\\
-			
-			\texttt{LEXICON Nouns\\
-			\vspace{-0.5ex}аба\%\ ырайы:аба\%\ ырай\ N-INFL-3PX-COMPOUND ;\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}!\ "weather"\\
-			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}COMPOUND ;\ !\ "invitation"}}
-			}
-				
-		}
+%			\htwo{Morphological \& orthographical words}
+%
+%			\begin{itemize}
+%				\item{} {\qipa өнүктүрөбүзбү ?} \eng{will we develop [it]?}\\
+%				\texttt{ өнүк{\small <v><tv><caus><aor><p1><pl>+}бы{\small <qst>}}
+%				\item{} {\qipa келатсаң} \eng{if you come}\\
+%				\texttt{кел{\tt {\small <v><iv><prt\_impf>}}+жат{\small <vaux><gna\_cnd><p2><sg>}}
+%			\end{itemize}
+%
+%
+%			\codeex{
+%			{\small
+%			\texttt{LEXICON N-INFL-3PX-COMPOUND\\
+%			\vspace{-0.5ex}\%<n\%>:\%>\%\{S\%\}\%\{I\%\}\%\{n\%\} GEN-POS ;}\\
+%			
+%			\texttt{LEXICON Nouns\\
+%			\vspace{-0.5ex}аба\%\ ырайы:аба\%\ ырай\ N-INFL-3PX-COMPOUND ;\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}!\ "weather"\\
+%			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}COMPOUND ;\ !\ "invitation"}}
+%			}
+%				
+%		}
 
 					\renewcommand{\arraystretch}{0.65}
 
@@ -799,7 +802,7 @@
 			\end{itemize}
 		}
 
-		\headerbox{Further information}{name=getting,column=1,below=twol}{
+		\headerbox{Further information}{name=getting,column=0,below=lexc}{
 			\begin{itemize}
 				\item Part of Apertium Turkic project:\\
 				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
