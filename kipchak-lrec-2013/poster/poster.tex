@@ -365,8 +365,9 @@
 			\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Öflazer, 1994})
 			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
 			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
-			\item Kyrgyz (\hiliteone{Washington et al., 2012})\\
-			\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
+			\item Kyrgyz (\hiliteone{Washington et al., 2012})%\\
+			%\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
+			\item Kazakh, Tatar, Kumyk: all \hiliteone{GPL (=free and open)}!
 		\end{itemize}
 
 		\htwo{Framework: HFST}
@@ -547,11 +548,13 @@
 		\headerbox{Evaluation}{name=coverage,span=1,column=2,below=exout}{
 
 			\htwo{Number of stems}
-			\vspace{-1.5em}
+			%\vspace{-1.5em}
+			\vspace{-0.5em}
+			\begin{center}
 			\begin{tabular}{lrrr}
 				\toprule
 				\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cmidrule{2-4}
-				& Kazakh & Tatar & Kumyk \\
+				& \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
 				\midrule
 				Noun & 2640 & 2795 & 2568 \\
 				Verb & 1470 & 1143 & 386 \\
@@ -564,10 +567,12 @@
 				Pronoun & 32 & 28 & 17 \\
 				Determiner & 39 & 34 & 9 \\
 				\midrule
-				Total: & 11224 & 10737 & 4845 \\
+				Total: & \hiliteone{11224} & \hiliteone{10737} & \hiliteone{4845} \\
 				\bottomrule
 			\end{tabular}
-			\vspace{2em}
+			\end{center}
+			%\vspace{2em}
+			\vspace{-0.5em}
 
 
 			\htwo{Test corpora}
@@ -639,19 +644,19 @@
 				\toprule
 				\textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
 				\midrule
-				\multirow{4}{*}{Kazakh} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 0.00 \\
+				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 0.00 \\
 					& News & 3.8M & 92.12 $\pm$ 2.72  & 0.00 \\
 					& Religion & 851K & 92.49 $\pm$ 1.66  & 0.00 \\\cmidrule{2-5}
-				 (r50547) & Average &  & 90.07 $\pm$ 1.91  & 0.00\\
+				 (r50547) & Average &  & \hiliteone{90.07} $\pm$ 1.91  & 0.00\\
 				\midrule
-				\multirow{4}{*}{Tatar} & Wikipedia & 159K & 86.35 $\pm$ 2.17  & 0.00\\
+				\multirow{4}{*}{\textbf{Tatar}} & Wikipedia & 159K & 86.35 $\pm$ 2.17  & 0.00\\
 					& News & 5.2M & 89.75 $\pm$ 0.07  & 0.00 \\
 					& Religion & 382K & 91.25 $\pm$ 2.55 & 0.00 \\\cmidrule{2-5}
-				 (r50260) & Average &  & 89.12 $\pm$ 1.60 & 0.00 \\
+				 (r50260) & Average &  & \hiliteone{89.12} $\pm$ 1.60 & 0.00 \\
 				\midrule
-				\multirow{3}{*}{Kumyk} & News & 286K &  91.10 $\pm$ 0.86  & 0.00 \\
+				\multirow{3}{*}{\textbf{Kumyk}} & News & 286K &  91.10 $\pm$ 0.86  & 0.00 \\
 					& Religion & 227K & 92.47 $\pm$ 1.03  & 0.00 \\\cmidrule{2-5}
-				 (r50300) & Average &  & 91.78 $\pm$ 0.94 & 0.00 \\
+				 (r50300) & Average &  & \hiliteone{91.78} $\pm$ 0.94 & 0.00 \\
 				\bottomrule
 			\end{tabular}\\
 		}
@@ -663,12 +668,14 @@
 
 %			\htwo{Two measures}
 %			\htwo{Precision \& recall}
-			\vspace{0.5em}
+			\vspace{0.6em}
 			\begin{itemize}
 				\item {}{\footnotesize selected \& proofed unique random surface forms from news corpora}
 			\end{itemize}
 
 
+			\vspace{-1em}
+			\begin{center}
 				\begin{tabular}{lrrr}
 				\toprule
 					\textbf{Language} & \textbf{Forms} & \textbf{Precision} (\%) & \textbf{Recall} (\%) \\
@@ -678,8 +685,9 @@
 					Kumyk & 500 & 96.57 & 69.11 \\
 				\bottomrule
 				\end{tabular}
+			\end{center}
 
-			\vspace{0.49em}
+			%\vspace{0.49em}
 %			\begin{itemize}
 %				\item selected \& proofed unique random surface forms from news corpus
 %				\item \textbf{Precision} (of a form's analyses \% correct): \hfill \hiliteone{\textbf{97.32\%}}
