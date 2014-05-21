@@ -318,7 +318,7 @@
 			\toprule
 				 & \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
 				 & /{\qipa qɑzɑq}/ & /{\qipa tɒtɑɾ}/ & /{\qipa qumuq}/ \\
-				classific & S Kypchak & N Kypchak & W Kypchak \\
+				classif'tion & S Kypchak & N Kypchak & W Kypchak \\
 			\midrule
 				\multicolumn{4}{l}{population of speakers} \\
 			\midrule
@@ -365,7 +365,8 @@
 			\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Öflazer, 1994})
 			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
 			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
-			\item Kyrgyz (\hiliteone{Tyers et al., 2012}) \hfill{} \hiliteone{GPL (=free and open)}!
+			\item Kyrgyz (\hiliteone{Washington et al., 2012})\\
+			\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
 		\end{itemize}
 
 		\htwo{Framework: HFST}
@@ -376,7 +377,7 @@
 
 		\htwo{Development effort}
 		\begin{itemize}
-			\item Kumyk transducer based on Kazakh \& Tatar transducers
+			\item Kumyk transducer based on Kazakh, Tatar transducers
 			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
 		\end{itemize}
 		\vspace*{-2em}
@@ -391,7 +392,7 @@
 %* HFST/Apertium
 %		}
 
-		\headerbox{Categorisation and tagset}{name=lexc,below=morphtrans}{
+		\headerbox{Categorisation}{name=lexc,below=morphtrans}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
 			\begin{itemize}
 				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
@@ -697,7 +698,7 @@
 %			\end{center}
 		}
 
-		\headerbox{Morphophonology}{name=twol,column=1,below=exout}{
+		\headerbox{Orthography-phonology mapping issues}{name=twol,column=1,below=exout}{
 %			\htwo{Vowel harmony}
 %			\begin{itemize}
 %				\item two basic vowel archiphonemes:
@@ -784,23 +785,23 @@
 				}
 		}
 
-		\headerbox{Future Work}{name=nedostatki,column=2,below=coverage}{
-			\begin{itemize}
-				\item case changes for words with one root\\
-					\hiliteone{Ф}инландия \eng{Finland}, \hiliteone{ф}инландиялык \eng{Finnish}
-				\item phonol.\ (vowel harmony, desonorisation) with abbrevs.\\
-					АКШ [акышы] \eng{USA} → АКШ\hiliteone{н}ын / *АКШ\hiliteone{т}ын
-				\item vowel harmony with numbers\\
-					{\qipa 100 [жүз] → 100дүн [жүздүн] / *100нын}
-				\item compound verbs (esp.\ ones with changeable parts)
-				\item gerunds with mono-syllabic V-final verbs\\
-					{\qipa иште- \eng{work} → иштеш / иштөө \eng{working}}\\
-					{\qipa же- \eng{eat} → жеш / *жөө \eng{eating}}
-				\item Disambiguation
-				\item More stems!
-				\item Machine translation between Turkic languages
-			\end{itemize}
-		}
+%		\headerbox{Future Work}{name=nedostatki,column=2,below=coverage}{
+%			\begin{itemize}
+%				\item case changes for words with one root\\
+%					\hiliteone{Ф}инландия \eng{Finland}, \hiliteone{ф}инландиялык \eng{Finnish}
+%				\item phonol.\ (vowel harmony, desonorisation) with abbrevs.\\
+%					АКШ [акышы] \eng{USA} → АКШ\hiliteone{н}ын / *АКШ\hiliteone{т}ын
+%				\item vowel harmony with numbers\\
+%					{\qipa 100 [жүз] → 100дүн [жүздүн] / *100нын}
+%				\item compound verbs (esp.\ ones with changeable parts)
+%				\item gerunds with mono-syllabic V-final verbs\\
+%					{\qipa иште- \eng{work} → иштеш / иштөө \eng{working}}\\
+%					{\qipa же- \eng{eat} → жеш / *жөө \eng{eating}}
+%				\item Disambiguation
+%				\item More stems!
+%				\item Machine translation between Turkic languages
+%			\end{itemize}
+%		}
 
 		\headerbox{Further information}{name=getting,column=0,below=lexc}{
 			\begin{itemize}
