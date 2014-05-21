@@ -668,7 +668,7 @@
 
 %			\htwo{Two measures}
 %			\htwo{Precision \& recall}
-			\vspace{0.6em}
+			\vspace{0.65em}
 			\begin{itemize}
 				\item {}{\footnotesize selected \& proofed unique random surface forms from news corpora}
 			\end{itemize}
@@ -709,6 +709,23 @@
 		}
 
 		\headerbox{Orthography-phonology mapping issues}{name=twol,column=1,below=exout}{
+			\htwo{Ambiguous characters}
+			\begin{itemize}
+				\item
+			\end{itemize}
+			Tatar - е (non-initial orthographic variant of э, e.g. дәресләр)
+				- initial position /j/+э (егетләр) and /j/+ы (еллар)
+			Kumyk - ё ю (front round vowels between consonants гёзлер, гюнлер)
+				- word-initially /j/ followed by front (юреклер, ёнкюлер) or back vowel (юлдузлар, ёллар)
+			Kazakh - и у ю (front/back vowels, along with glides)
+				- қиюда/киюде
+			\htwo{Loanwords}
+			\htwo{Acronyms and numerals}
+				\codeex{
+					\texttt{5\{э\}\{с\}>-\{D\}\{A\}н}
+				}
+		}
+
 %			\htwo{Vowel harmony}
 %			\begin{itemize}
 %				\item two basic vowel archiphonemes:
@@ -744,56 +761,56 @@
 %
 %			\end{itemize}
 
-			\htwo{Desonorisation}
-\begin{itemize}
-	\item {\texttt \{N\}} desonorises to д after a consonant\\
-		алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
-		сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
-	\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
-		сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
-		кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
-\end{itemize}
-
-	\vspace{-0.5ex}
-\codeex{
-			\texttt{"L Desonorisation"\\
-			\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
-			
-			\texttt{"N Desonorisation"\\
-			\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
-}
-
-			\htwo{Lenition}
-\begin{itemize}
-	\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
-	мур\{у\}н → мурун \eng{nose}\\
-	мур\{у\}н+\{I\}м → мурдум \eng{my nose}\\
-\end{itemize}
-	\vspace{-0.5ex}
-\codeex{
-{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
-	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
-  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
-  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
-  \vspace{-0.5ex}\hspace{12ex}         matched ;}}
-}
-
-			%\htwo{Nouns ending in /рн/}
-
-			\htwo{й+vowel letters}
-			\begin{itemize}
-				\item{} [ а о у ] become [ я ё ю ] after й and й deletes
-				\item й incorporated into the context of many rules
-				\item + separate rules to change the characters
-				\item + a rule to delete the original й\\
-			\end{itemize}
-	\vspace{-1ex}
-
-				\codeex{
-					\texttt{"Deletion of й before yoticised vowels"\\
-					й:0 <=> \blank{1em} [ :YotVow ]/[ :0 | \%>:\ ]\ ;}
-				}
-		}
+%			\htwo{Desonorisation}
+%\begin{itemize}
+%	\item {\texttt \{N\}} desonorises to д after a consonant\\
+%		алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
+%		сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
+%	\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
+%		сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
+%		кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
+%\end{itemize}
+%
+%	\vspace{-0.5ex}
+%\codeex{
+%			\texttt{"L Desonorisation"\\
+%			\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
+%			
+%			\texttt{"N Desonorisation"\\
+%			\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
+%}
+%
+%			\htwo{Lenition}
+%\begin{itemize}
+%	\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
+%	мур\{у\}н → мурун \eng{nose}\\
+%	мур\{у\}н+\{I\}м → мурдум \eng{my nose}\\
+%\end{itemize}
+%	\vspace{-0.5ex}
+%\codeex{
+%{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
+%	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
+%  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
+%  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
+%  \vspace{-0.5ex}\hspace{12ex}         matched ;}}
+%}
+%
+%			%\htwo{Nouns ending in /рн/}
+%
+%			\htwo{й+vowel letters}
+%			\begin{itemize}
+%				\item{} [ а о у ] become [ я ё ю ] after й and й deletes
+%				\item й incorporated into the context of many rules
+%				\item + separate rules to change the characters
+%				\item + a rule to delete the original й\\
+%			\end{itemize}
+%	\vspace{-1ex}
+%
+%				\codeex{
+%					\texttt{"Deletion of й before yoticised vowels"\\
+%					й:0 <=> \blank{1em} [ :YotVow ]/[ :0 | \%>:\ ]\ ;}
+%				}
+%		}
 
 		\headerbox{Future Work}{name=nedostatki,column=2,below=coverage}{
 			\begin{itemize}
