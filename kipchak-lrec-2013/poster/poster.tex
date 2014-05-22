@@ -624,7 +624,7 @@
 %					Religion & Quran + Bible & Quran + New Testament & Genesis + New Testament \\
 %				\bottomrule
 %			\end{tabular}
-		}
+		}\vspace{0.5em}
 
 %			\begin{itemize}
 %				\item split into 10 equal parts; coverage calculated over each separately; standard deviation of mean calculated
@@ -650,7 +650,7 @@
 		\scalebox{0.875}{
 			\begin{tabular}{llrrr}
 				\toprule
-				\textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
+				 & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
 				\midrule
 				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 2.43 \\
 					& News & 3.8M & 92.12 $\pm$ 2.72  & 2.88 \\
@@ -758,7 +758,7 @@
 			\scalebox{0.86}{
 				\begin{tabular}{lll}
 					\toprule
-						 & native word & borrowed word \\
+						 & \textbf{native word example} & \textbf{Russian word example} \\
 					\midrule
 						\texttt{\textbf{kaz}} & {\qipa \hiliteone{е}лд\hilitetwo{і}ң} \eng{country's} & {\qipa Назарба\hiliteone{е}вт\hilitetwo{ы}ң} \eng{Nazarbayev's} \\
 						\texttt{\textbf{tat}} & {\qipa гал\hiliteone{и}мн\hilitetwo{ә}р} \eng{scientists} & {\qipa арт\hiliteone{и}стл\hilitetwo{а}р} \eng{artists} \\
@@ -769,16 +769,34 @@
 			\begin{itemize}
 				\item solution:\ separate continuation lexicon (messy rules)
 			\end{itemize}
+				\codeex{
+					\begin{spacing}{0.9}
+					\texttt{LEXICON N1-RUS\\
+					:\%\{☭\%\} N1 ;\\
+					\vspace*{-0.5em}\\
+					LEXICON Nouns\\
+					артист:артист N1-RUS ; ! "artist"\\
+					галим:галим N1 ; ! "scientist"}\end{spacing}
+					\vspace{0em}
+				}\\
+
 			\htwo{Acronyms and numerals}
 				\begin{itemize}
-					\item 
+					\item \texttt{twol} rules handle phonology for spelled-out words\\
+					{\qipa от\hiliteone{ыз}\hilitetwo{да}н} \eng{from thirty}, {\qipa б\hiliteone{ес}\hilitetwo{те}н} \eng{from five}
+					\item no phonological triggers available in numerals (etc.)\\
+					{\qipa 30-\hilitetwo{да}н} \eng{from 30}, {\qipa 5-\hilitetwo{те}н} \eng{from 5}
+					\item solution:\ phonology-triggering characters
 				\end{itemize}
-				отыздан, бестен handled by twol
-				30-дан, 5-тен not handled by twol
 				\codeex{
-					\texttt{5\{э\}\{с\}>-\{D\}\{A\}н}
-				}
-			\htwo{Resulting messy twol rules}
+					\begin{spacing}{0.9}
+					\texttt{4:4\%\{э\%\}\%\{с\%\}           NUM-DIGIT ; ! "төрт"\\
+					5:5\%\{э\%\}\%\{с\%\}           NUM-DIGIT ; ! "бес"\\
+					3\%0:3\%0\%\{а\%\}\%\{з\%\}       NUM-DIGIT ; ! "отыз"}\end{spacing}
+					\vspace{0em}
+				}\\
+	
+			\htwo{A resulting messy \texttt{twol} rule}
 				\codeex{
 					\begin{spacing}{0.4}
 					RdYotVow = ё ю Ё Ю ; \\
@@ -794,9 +812,10 @@
 \hspace*{0.1em}\hfill{}       [ :RdYotVow :Cns* \%\{☭\%\}:0 :Cns* ]/[ :0 - \%\{☭\%\}:0 ] \_ ; \\ % ! -ёрлар in Russian words \\
 \hspace*{0.1em}\hfill{}                          [ :Cns :р \%\{☭\%\}: \%>: :Cns* ]/:0 \_ ; \\% ! центр and тигр take back vowels \\
 \hspace*{0.1em}\hfill{}         [ [ :Vow - :RdYotVow ] :RdYotVow :Cns :Cns* ]/:0 \_ ; \\% ! for some reason the rule above doesn't exclude this condition  e.g., боюнгъа \\
-\hspace*{0.1em}\hfill{}                          [ :Vow ]/[ [ :0 - й:0 ] | \%>: ] \_ ;
+\hspace*{0.1em}\hfill{}                          [ :Vow ]/[ [ :0 - й:0 ] | \%>: ] \_ ;\\
+			\vspace{-1em}
 					\end{spacing}
-				}\\
+				}
 
 		}
 
