@@ -252,10 +252,16 @@
 				\end{spacing}
 			\end{minipage}}
 			\begin{minipage}[t]{5.5em}
+				\vspace{-0.25em}
 				\begin{spacing}{0.4}
 					{\footnotesize Special thanks to}\\
 					{\small Aida Sundetova}\\
-					{\footnotesize \texttt{sun27aida@gmail.com}}
+					%{\footnotesize \texttt{sun27aida@gmail.com}}
+					%{\small Ağarahim Sultanmuradov}\\
+					{\small A.\ Sultanmuradov}\\
+					%{\small Google Summer of Code}\\
+					%{\small Google Code-In}
+					%{\small GSoC, GCI}
 				\end{spacing}
 			\end{minipage}
 			\end{center}
@@ -646,15 +652,15 @@
 				\toprule
 				\textbf{Language} & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
 				\midrule
-				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 0.00 \\
+				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 2.43 \\
 					& News & 3.8M & 92.12 $\pm$ 2.72  & 2.88 \\
 					& Religion & 851K & 92.49 $\pm$ 1.66  & 2.63 \\\cmidrule{2-5}
-				 (r50547) & Average &  & \hiliteone{90.07} $\pm$ 1.91  & 0.00\\
+				 (r50547) & Average &  & \hiliteone{90.07} $\pm$ 1.91  & 2.64\\
 				\midrule
-				\multirow{4}{*}{\textbf{Tatar}} & Wikipedia & 159K & 86.35 $\pm$ 2.17  & 0.00\\
+				\multirow{4}{*}{\textbf{Tatar}} & Wikipedia & 159K & 86.35 $\pm$ 2.17  & 2.24\\
 					& News & 5.2M & 89.75 $\pm$ 0.07  & 2.30 \\
 					& Religion & 382K & 91.25 $\pm$ 2.55 & 2.24 \\\cmidrule{2-5}
-				 (r50260) & Average &  & \hiliteone{89.12} $\pm$ 1.60 & 0.00 \\
+				 (r50260) & Average &  & \hiliteone{89.12} $\pm$ 1.60 & 2.26 \\
 				\midrule
 				\multirow{3}{*}{\textbf{Kumyk}} & News & 286K &  91.10 $\pm$ 0.86  & 1.53 \\
 					& Religion & 227K & 92.47 $\pm$ 1.03  & 1.53 \\\cmidrule{2-5}
@@ -744,25 +750,10 @@
 				\item unaccounted-for words marked harmony-forcing char
 				\item adjust rules for harmony-forcing characters
 			\end{itemize}
-				\codeex{
-					\begin{spacing}{0.4}
-					"{A} front unrounded harmony" \\
-\%\{A\%\}:е <=> \hfill{} [ [ :FrontVow | [ :Vow :ь ] ] :Cns :Cns* ]/:0 \_ ; \\
-\hspace*{0.1em}\hfill{}                        [ [ :RdVow :ь ] :Cns :Cns* ]/:0 \_ ; \\
-\hspace*{0.1em}\hfill{}     [ [ [ \textbackslash{}[ .\#.\ | :Vow ] ] :RdYotVow ] :Cns :Cns* ]/:0 \_ ; \\
-\hspace*{0.1em}\hfill{}      [ :RdYotVow й:0 :RdYotVow :Cns :Cns* ]/[ :0 - й:0 ] \_ ; \\ % ! кююню \\
-\hspace*{0.1em}\hfill{} [[\%\{э\%\}:0|\%\{ү\%\}:0] :Cns* ]/[[ :0 - AbstractVow: ] | \%-: ]* \_ ; \\
-\hspace*{4em}        except \\
-\hspace*{0.1em}\hfill{}       [ :RdYotVow :Cns* \%\{☭\%\}:0 :Cns* ]/[ :0 - \%\{☭\%\}:0 ] \_ ; \\ % ! -ёрлар in Russian words \\
-\hspace*{0.1em}\hfill{}                          [ :Cns :р \%\{☭\%\}: \%>: :Cns* ]/:0 \_ ; \\% ! центр and тигр take back vowels \\
-\hspace*{0.1em}\hfill{}         [ [ :Vow - :RdYotVow ] :RdYotVow :Cns :Cns* ]/:0 \_ ; \\% ! for some reason the rule above doesn't exclude this condition  e.g., боюнгъа \\
-\hspace*{0.1em}\hfill{}                          [ :Vow ]/[ [ :0 - й:0 ] | \%>: ] \_ ;
-					\end{spacing}
-				}\\
 
 			\htwo{Loanwords}
 				\begin{itemize}
-					\item Russian `front' vowels harmonise as back vowels
+					\item Letters that represent front vowels in native words may represent back vowels in Russian words
 				\end{itemize}
 			\scalebox{0.86}{
 				\begin{tabular}{lll}
@@ -787,6 +778,26 @@
 				\codeex{
 					\texttt{5\{э\}\{с\}>-\{D\}\{A\}н}
 				}
+			\htwo{Resulting messy twol rules}
+				\codeex{
+					\begin{spacing}{0.4}
+					RdYotVow = ё ю Ё Ю ; \\
+					AbstractVow = \%\{а\%\} \%\{э\%\} \%\{ү\%\} \%\{о\%\} ; \\
+					\\
+					"{A} front unrounded harmony" \\
+\%\{A\%\}:е <=> \hfill{} [ [ :FrontVow | [ :Vow :ь ] ] :Cns :Cns* ]/:0 \_ ; \\
+\hspace*{0.1em}\hfill{}                        [ [ :RdVow :ь ] :Cns :Cns* ]/:0 \_ ; \\
+\hspace*{0.1em}\hfill{}     [ [ [ \textbackslash{}[ .\#.\ | :Vow ] ] :RdYotVow ] :Cns :Cns* ]/:0 \_ ; \\
+\hspace*{0.1em}\hfill{}      [ :RdYotVow й:0 :RdYotVow :Cns :Cns* ]/[ :0 - й:0 ] \_ ; \\ % ! кююню \\
+\hspace*{0.1em}\hfill{} [[\%\{э\%\}:0|\%\{ү\%\}:0] :Cns* ]/[[ :0 - AbstractVow: ] | \%-: ]* \_ ; \\
+\hspace*{4em}        except \\
+\hspace*{0.1em}\hfill{}       [ :RdYotVow :Cns* \%\{☭\%\}:0 :Cns* ]/[ :0 - \%\{☭\%\}:0 ] \_ ; \\ % ! -ёрлар in Russian words \\
+\hspace*{0.1em}\hfill{}                          [ :Cns :р \%\{☭\%\}: \%>: :Cns* ]/:0 \_ ; \\% ! центр and тигр take back vowels \\
+\hspace*{0.1em}\hfill{}         [ [ :Vow - :RdYotVow ] :RdYotVow :Cns :Cns* ]/:0 \_ ; \\% ! for some reason the rule above doesn't exclude this condition  e.g., боюнгъа \\
+\hspace*{0.1em}\hfill{}                          [ :Vow ]/[ [ :0 - й:0 ] | \%>: ] \_ ;
+					\end{spacing}
+				}\\
+
 		}
 
 %			\htwo{Vowel harmony}
