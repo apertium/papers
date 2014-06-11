@@ -105,4 +105,24 @@ needs to be revised to reflect the natural grouping of these approaches.
 - Better clarification of the placement of 3.1 and 3.2 .... 3.2 is being used as a sub part in many mechanisms and that has to be made clear.
 - Maybe split the sentence or put them down as pseudo-algorithmic/point wise steps to better show what is happening here. (Saves space)
 
+(7) In section 4, how were the tweets originally identified into the three
+languages? Automatically or manually? And how does this work if they actually
+contain English or French? Do you go by the majority language? How is that
+defined?
+
+
+- Since we are working with the hypothesis that the majority languages (ga-cy-br) use embedded languages (en-fr), we langid'd the tweets and got the sample data set, which was predicting the languages ( cy/br/ga )
+
+(8) In 4.2 when you say you restricted the predicted languages to be only the two
+in the dataset, firstly isn't this cheating? But second, what exactly are you
+restricting? I'm guessing from the subsection title that it is the prediction
+of the langid.py tool, but this is not clear.
+
+- This is not cheating, in fact we are helping the competitive tool(langid) to narrow its probabilities to subsegment only two languages.
+- We can use the probabilities of the languages being predicted by the tool, and say that if we don't restrict the set to just the known (2) languages it would not be good enough 
+- Mention about the langid.py module which helps in restricting the ranks of the languages to be predicted
+
+
+(9) 
+
 
