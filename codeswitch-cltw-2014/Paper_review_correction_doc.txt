@@ -123,6 +123,50 @@ of the langid.py tool, but this is not clear.
 - Mention about the langid.py module which helps in restricting the ranks of the languages to be predicted
 
 
-(9) 
+(9) 4.2 is very unclear. A 4 line sentence is just too long. "Some rules like in
+Section 3 were followed": does this mean that you applied the rules that you
+defined in Section 3 (if I understand correctly, there are three different
+types)? Why "like", are they not identical?
+
+- This problem will be solved if we address the point (6) in this review note and make changes accordingly here. Mention the exact changes, more specifically the ones related the the sentence chunking which are more closely imitated. 
+
+- Re-write the sentence in a shorter form
+
+(10) I am not sure how to interpret the labels in Tables 3 and 4 (which are never
+mentioned in the text). You should mention these labels at the points in the
+text where you are actually describing them. What is 'bigram'? Presumably it is
+word rather than character bigrams, but it is never described what exactly you
+do with bigrams. It is also not clear how you combine bigrams and the wordlist.
+In 3.4 you talked about word based prediction with character backoff, but then
+I don't know what the difference between langid2 and bigram is. And then where
+would trigram be? This is very unclear.
+
+- Add Legend description for the labels
+
+(11) Footnote 4 seems like it requires further explanation. If there is a notion of
+default models, does that also mean that one could train an alternative model?
+
+"This could be because of the default models used" 
+
+- More clarification after reading the usage of the toolkit and paper again
+- We can be more specific here
+- Also add that we can/cannot train on different models ( as far as i remember - we can )
+
+(12) In Table 4, you give the accuracy for token language identification. It seems
+that you already get pretty far using a wordlist, is this also knowing the
+possible two languages in advance and only consulting those two wordlists?
+
+- Talk more about the wordlist approach and how good it is doing 
+- Points above will clarify the usage and the pre-knowledge of the languages
 
 
+============================================================================
+                            REVIEWER #3
+============================================================================
+
+
+
+
+
+
+(10) The first sentence in Section 5 is incomplete.
