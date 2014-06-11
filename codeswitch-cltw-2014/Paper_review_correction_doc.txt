@@ -59,6 +59,7 @@ paper.
 
 - Read over the paper and improve the language
 - Repetition of a similar type of language in parts of my section ( ksnmi )
+- Reduce the length of the paper after all the corrections are made
 
 (2) The last paragraph of Section 2 contains incomplete text. "calculated them to
 measure a confidence metric, to (Lyu et al., 2006)" does not make sense.
@@ -70,7 +71,38 @@ English and French data to be the same size?
 
 - Limiting size of the Breton data
 - All the languages had to be of the same size to avoid bias
-- Another Possibility - Character model results on 100k to 2 million.. A Graph to show that above 1 million the results are fairly stable. So our size was well suited
+- Another Possibility - Character model results on 100k to 2 million.. A Graph to show that above 1 million the results are fairly stable. So our size was well suited    #suggestion needed (spectie)
 
-(4) 
+(4) It would have been helpful to outline your goal again at the beginning of
+Section 3.
+
+- Will hopefully be solved after we have improved on the language 
+
+
+(5) It seems that using standard wordlists might be restricting the upper bound of
+performance, given the genre of the text: informal online writing. People use
+all sorts of shorthand and acronyms that you will never find in a dictionary.
+Do you have any way to identify informal words (e.g. an8 -- anocht) for
+specific languages in advance (e.g. from tweets that contain only one of your
+target languages)?
+
+- Up for debate (spectie)
+- We can solve this by mentioning about the good approach that it is and how people have used it before and bury the topic
+- We can add abbreviations and other words we have into the wordlists and build another comparison test
+
+(6) The sentence in the middle of Section 3.2 needs to be split into several
+sentences. It is not at all clear in this section how you make the decisions
+about labelling each word. You talk about doubt and confidence, how is this
+measured? Are you using the character n-gram language models here? What
+information is taken into account for each decision? Is it only the current
+word? Or is it also the surrounding context, one one or both sides? It actually
+seems that you have three methods for making these decisions described in
+discontinuous subsections 3.1, 3.3 and 3.4. If this is the case, the structure
+needs to be revised to reflect the natural grouping of these approaches.
+
+
+
+- Better clarification of the placement of 3.1 and 3.2 .... 3.2 is being used as a sub part in many mechanisms and that has to be made clear.
+- Maybe split the sentence or put them down as pseudo-algorithmic/point wise steps to better show what is happening here. (Saves space)
+
 
