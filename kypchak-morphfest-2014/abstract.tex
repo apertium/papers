@@ -1,0 +1,50 @@
+\documentclass[letterpaper,11pt,onecolumn]{article}
+
+%\usepackage{lrec2012}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=australian]{english}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{natbib}
+\usepackage{multirow}
+%\usepackage{fullpage}
+\usepackage{multirow}
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
+
+\usepackage{booktabs}
+\usepackage[in]{fullpage}
+%\usepackage{jnwmaps}
+
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont{Times New Roman}
+\newfontfamily\symbl[Scale=MatchLowercase]{FreeSerif}
+
+\newcommand{\tags}[1]{\texttt{#1}}
+
+\bibdata{kipchak-paper}
+
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	\textbf{Designing finite-state morphological transducers for Kypchak languages}
+\end{center}
+
+This paper describes the development of free/open-source finite-state morphological transducers for several Northwestern Turkic (or Kypchak) languages.  The transducers function to provide morphological analyses of surface forms as well as produce surface forms from morphological information, and can be repurposed as spell-checkers for these under-resourced languages.  The finite-state toolkit used for the work is the Helsinki Finite-State Toolkit (HFST) \citep{hfst/2011}.\\
+
+Work is ongoing on morphological transducers for seven Kypchak languages: three Southern Kypchak languages (Kazakh, Karakalpak, and Nogay), two Northern Kypchak languages (Tatar and Bashqort), one Western Kypchak language (Kumyk), and Kyrgyz.  This paper describes how the development of a transducer for each subsequent language took less time than the previous one.\\
+
+An evaluation is presented for the transducer of one language from each of the four branches of Kypchak (Kazakh, Tatar, Kumyk, and Kyrgyz).  Each transducer has production-level coverage---around 90\%---on freely available corpora of the languages, and high precision (the number of the analyses given for a form that are correct) and recall (the percentage of possible correct analyses for a form that are provided by the transducer) over a manually verified test set.\\
+
+The computational implementation of the morphotactics and morphophonology of the languages is described.  Emphasis is placed on the types of differences that exist between the morphologies of these languages, as well as on previously undocumented morphological patterns in these languages that were discovered through the development of the transducers.
+
+
+\bibliographystyle{lrec2012}
+\bibliography{kipchak-paper}
+
+\end{document}
