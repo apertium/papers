@@ -1,0 +1,53 @@
+Paper Review correction Doc
+
+============================================================================
+                            REVIEWER #1
+============================================================================
+The first reviewer says that he is excited about the paper and the results in the paper are useful.. but the accept reject score that he gives to our paper is the least in the list
+
+(1) The paper cites some work on multilingual ID for speech, which isn't really
+relevant here.         There has been some good work on this question for text also,
+e.g. Baldwin, Lau and Lui "Automatic Detection and Language Identification of
+Multilingual Documents" and refs therein.
+
+
+- Automatic Detection and Language Identiﬁcation of Multilingual Documents
+--This paper talks about use of multiple languages in a document
+--We mentioned the speech papers because we wanted to show the significance of the character level data and its co-relation with the syllable/phoneme importance which is seen in the speech papers
+--Paper includes method of putting the whole text as a bag of words model, the text is in the form of unigram character model. 
+-- Find a sober way of saying that the approach in the paper is for DOCUMENTS, the features they use while predicting the languages are done by vector mapping, and thus alot of data is required to get proper probabilities. What the reviewer is suggesting that this approach can be used to predict code switching points.. What we have to show is that the twitter data or any other no standard data is small in size (140 char in case of tweets)
+
+(2) Does the character language model include punctuation?   Or when you say
+"space" do you mean "contiguous sequence of non-letter chars?"         What about
+hyphens/apostrophes?
+
+- More information to be provided in the section 3.1
+- space -> Blank space
+- punctuations and non letters are also part of the language model, we didn't mean to strip off any identity from the language being used in its original form
+
+(3) In 3.3 you say "both of the word lists".  I learn later, in the evaluation
+section, that the problem you've set for yourself assumes you know the two
+languages involved in code-switching - you should lay this out more clearly at
+the beginning of the paper, so section 3 can be read with that context in mind.
+
+- In Introduction add the 
+-cy - en 
+-ga - en 
+-br - fr 
+Relation, Add citation to sources which talk about the high english/french influence in these regions, and why due to globalisation code-switching has been more prevalent.
+
+
+(4) Fig 1 you have "a" chunked with cy following "black and tan"; is that the
+bigram character model at work?  Heuristic alone would say it goes with the
+preceding chunk, right?
+
+- clarification from spectie 
+- I think it was done from manual annotation, if it was manual, we can add the description in the figure
+
+
+
+============================================================================
+                            REVIEWER #2
+============================================================================
+
+
