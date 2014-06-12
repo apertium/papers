@@ -1,4 +1,4 @@
-\documentclass[a0paper,fontscale=0.3]{baposter}  % fontscale=0.285, dvipdfm
+\documentclass[fontscale=0.3,landscape,paperwidth=72in,paperheight=36in]{baposter}  % fontscale=0.285, dvipdfm
 
 \usepackage{setspace}
 \usepackage{multicol}
@@ -176,7 +176,8 @@
 \begin{document}
 	% To get it to be A0 consistently on all machines..
 	%\special{papersize=1189mm,841mm}
-	\special{papersize=841mm,1189mm}
+	%\special{papersize=841mm,1189mm}
+	\special{papersize=72in,36in}
 	\setlength{\pdfpageheight}{\paperheight}
 	\setlength{\pdfpagewidth}{\paperwidth}
 
@@ -205,7 +206,7 @@
 			boxColorOne=boxcolor,
 			headershape=roundedright,
   headerborder=open,
-  headerheight=0.08\textheight,
+  headerheight=0.1\textheight,
   %headershape=roundedright,
   %headershade=plain,
   %headerfont=\Large\textsf, %Sans Serif
@@ -217,48 +218,56 @@
 			headerborder=open,
 			boxshade=plain,
 			textborder=roundedleft,
+			columns=6,
 		}{
 			%\hspace{-2em}\includegraphics[height=6.5em,bb=0 0 242 203]{apertium}
 			%\hspace{-2em}\includegraphics[height=6.5em,bb=0 0 612 792]{apertium2}
 			%\hspace{-2em}\includegraphics[height=6.5em,bb=0 0 203 242]{apertium3}
 			%\hspace{-2em}\includegraphics[height=6.5em,bb=0 0 242 203]{apertium3a}
 			%\hspace{-2em}\includegraphics[height=6.5em,bb=0 0 242 203]{apertium4}
-			\hspace{-2em}\includegraphics[angle=90,height=7.5em]{apertium5a}
+			%\hspace{-2em}
+			\includegraphics[angle=90,height=8em]{apertium5a}%\hspace{-2em}
 			%Eye Catcher, empty if option eyecatcher=false - unused
+			%\begin{minipage}[t]{0.2\textwidth}
+				\hspace{1cm}\includegraphics[height=6.5em]{iu_tab}
+				\hspace{1cm}\includegraphics[height=6.5em]{kfu}
+				\hspace{1cm}\includegraphics[height=6.5em]{uitlogo}
+			%\end{minipage}
 		}{
-			{\vspace{0pt}\hspace{-2.2ex}
-			{\titlefont \textsc{Finite-state morphological transducers\\for three Kypchak languages}}}
+			{\vspace{0pt}\hspace{1cm}
+			{\titlefont \textsc{Designing finite-state morphological transducers\\for Kypchak languages}}}
 		}{
 			%Jonathan North Washington {\small (Indiana University, \texttt{jonwashi@indiana.edu})}, Mirlan Ipasov {\small (International Ataturk Alatoo University, \texttt{mipasov@gmail.com})}, Francis M.\ Tyers {\small (Universitat d'Alacant, \texttt{ftyers@dlsi.ua.es})}
 
 			\vspace{-0.5em}
 			\begin{center}
-			{\begin{minipage}[t]{11.2em}
+			{\begin{minipage}[t]{12em}
 				\begin{spacing}{0.4}
 					{Jonathan North Washington}\\
 					{\footnotesize Indiana University\\\texttt{jonwashi@indiana.edu}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{10.5em}
+			\begin{minipage}[t]{11em}
 				\begin{spacing}{0.4}
 					{Ilnar Salimzyanov}\\
 					{\footnotesize Казан (Идел буе) федераль университеты \\\texttt{ilnar.salimzyan@gmail.com}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{8.2em}
+			\begin{minipage}[t]{9em}
 				\begin{spacing}{0.4}
 					{Francis M.\ Tyers}\\
 					{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
 				\end{spacing}
 			\end{minipage}}
-			\begin{minipage}[t]{5.5em}
-				\vspace{-0.25em}
+			\begin{minipage}[t]{7em}
+				\vspace{-0.7em}
 				\begin{spacing}{0.4}
-					{\footnotesize Special thanks to}\\
+					{\footnotesize Special thanks to:}\\
+					{\small Tolgonay Kubatova}\\
 					{\small Aida Sundetova}\\
 					%{\footnotesize \texttt{sun27aida@gmail.com}}
 					%{\small Ağarahim Sultanmuradov}\\
-					{\small A.\ Sultanmuradov}\\
+					{\small Ağarahim Sultanmuradov}\\
 					%{\small Google Summer of Code}\\
 					%{\small Google Code-In}
 					%{\small GSoC, GCI}
@@ -299,7 +308,11 @@
 			%{\begin{minipage}{19em}
 				%\hfill
 				%\includegraphics[height=6.5em]{apertium}
-				\includegraphics[height=6.5em]{flags/flags}
+				%\includegraphics[height=6.5em]{flags/flags}
+				\includegraphics[height=6.5em]{Flag_of_Dagestan}
+				\hspace{1cm}\includegraphics[height=6.5em]{Flag_of_Tatarstan}
+				\hspace{1cm}\includegraphics[height=6.5em]{Flag_of_Kyrgyzstan}
+				\hspace{1cm}\includegraphics[height=6.5em]{Flag_of_Kazakhstan}
 			%\end{minipage}}
 		}
 
@@ -321,24 +334,24 @@
 		\end{itemize}
 
 	\scalebox{0.85}{
-		\begin{tabular}{llll}
+		\begin{tabular}{lllll}
 			\toprule
-				 & \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
-				 & /{\qipa qɑzɑq}/ & /{\qipa tɒtɑɾ}/ & /{\qipa qumuq}/ \\
-				classification & Southern & Northern & Western \\
+				 & \textbf{Kyrgyz} & \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+				 & /{\qipa qɯɾʁɯz}/ & /{\qipa qɑzɑq}/ & /{\qipa tɒtɑɾ}/ & /{\qipa qumuq}/ \\
+				classification & Eastern & Southern & Northern & Western \\
 			\midrule
 				\multicolumn{4}{l}{population of speakers} \\
 			\midrule
-				number & 8M-12M & 5.4M & 430K \\
-				primary & Kazakhstan & Tatarstan & Dagestan \\
-				secondary & China, Mongolia & Bashqortostan & --- \\
+				number & 3M & 8M-12M & 5.4M & 430K \\
+				primary & Kyrgyzstan & Kazakhstan & Tatarstan & Dagestan \\
+				secondary & China, etc. & China, Mongolia & Bashqortostan & --- \\
 			\midrule
 				\multicolumn{4}{l}{external influences} \\
 			\midrule
-				Mongolic & moderate & light & light \\
-				Oghuz & — & light & moderate \\
-				Persian & heavy & heavy & heavy \\
-				Russian & heavy & heavy & heavy \\
+				Mongolic & moderate & moderate & light & light \\
+				Oghuz & — & — & light & moderate \\
+				Persian & heavy & heavy & heavy & heavy \\
+				Russian & heavy & heavy & heavy & heavy \\
 			\bottomrule
 		\end{tabular}
 	}
@@ -369,7 +382,7 @@
 
 		\htwo{Transducers for Turkic languages}
 		\begin{itemize}
-			\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Öflazer, 1994})
+			\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Oflazer, 1994})
 			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
 			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
 			\item Kyrgyz (\hiliteone{Washington et al., 2012})%\\
@@ -383,14 +396,14 @@
 			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
 			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
 		\end{itemize}
-
-		\htwo{Development effort}
+	}
+	\headerbox{Development effort}{name=devel,below=morphtrans}{
 		\begin{itemize}
 			\item Kumyk transducer based on Kazakh, Tatar transducers
 			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
 		\end{itemize}
 		\vspace*{-2.5em}
-		\hspace*{-2em}\includegraphics[width=0.9\textwidth,angle=270]{../graphs/kumyk-yoldash-cov}
+		\hspace*{-2em}\includegraphics[width=0.9\textwidth,angle=270]{../kipchak-lrec-2013/graphs/kumyk-yoldash-cov}
 		\vspace*{-2em}
 	}
 
@@ -401,26 +414,6 @@
 %* HFST/Apertium
 %		}
 
-		\headerbox{Categorisation}{name=lexc,below=morphtrans}{
-		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
-			\begin{itemize}
-				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
-				\item Our approach:\ categorisation (e.g., adjectives, below)
-			\end{itemize}
-
-		\scalebox{0.63}{
-			\begin{tabular}{lllll}
-				\toprule
-				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
-				\midrule
-				\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
-				\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
-				\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
-				\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
-				\bottomrule
-			\end{tabular}
-		}
-	}
 
 %			\htwo{Morphological \& orthographical words}
 %
@@ -454,36 +447,37 @@
 
 		\pex[aboveexskip=0pt,belowexskip=3pt,aboveglftskip=0pt]\label{ex:sent}
 			\begingl
-				\gla[everygla={\qipa }] Құдай Өзінің жаратқандарының бәріне қарап, {} өте жақсы екенін көрді. //
+				\gla[everygla={\qipa }] Кудай Өзү жаратканынын баарына карап, {} өтө жакшы экенин көрдү. //
+				\glb[everyglb={\qipa }] Құдай Өзінің жаратқандарының бәріне қарап, {} өте жақсы екенін көрді. //
 				\glb[everyglb={\qipa }] Аллаһ Үзе яраткан нәрсәләргә карап, аларның бик яхшы икәнен күрде. //
 				\glb[everyglb={\qipa }] Аллагь Оьзю яратгъан затлагъа къарап, олар бек яхшы экенин гёрген. //
 				\glb God own-his created [everything/thing-s]-to looked.at, they/their very good being saw. // 
-				\glft \eng{God looked at everything he had created and saw that it was very good.} //
+				\glft \eng{God looked at everything he had created and saw that it was very good. (Bible, Genesis 1:31)} //
 			\endgl
 		\xe
 
 
 		\htwo{Output}
 \scalebox{0.81}{
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \toprule
- \textbf{Kazakh} (\textbf{kaz}) & \textbf{Tatar} (\textbf{tat}) & \textbf{Kumyk} (\textbf{kum}) \\
+ \textbf{Kyrgyz} (\textbf{kir}) & \textbf{Kazakh} (\textbf{kaz}) & \textbf{Tatar} (\textbf{tat}) & \textbf{Kumyk} (\textbf{kum}) \\
 \midrule
-\texttt{Құдай Өзінің жаратқандарының} & \texttt{Аллаһ Үзе яраткан нәрсәләргә карап,} & \texttt{Аллагь Оьзю яратгъан затлагъа} \\
-\texttt{бәріне қарап, өте жақсы екенін көрді.} & \texttt{аларның бик яхшы икәнен күрде.} & \texttt{къарап, олар бек яхшы экенин гёрген.} \\
+\texttt{Кудай Өзү жаратканынын баарына} & \texttt{Құдай Өзінің жаратқандарының бәріне} & \texttt{Аллаһ Үзе яраткан нәрсәләргә карап,} & \texttt{Аллагь Оьзю яратгъан затлагъа} \\
+\texttt{карап, өтө жакшы экенин көрдү.} & \texttt{қарап, өте жақсы екенін көрді.} & \texttt{аларның бик яхшы икәнен күрде.} & \texttt{къарап, олар бек яхшы экенин гёрген.} \\
 \midrule
- \texttt{Құдай\tag{n}\tag{nom}} & \texttt{Аллаһ\tag{n}\tag{nom}} & \texttt{Аллагь\tag{n}\tag{nom}} \\
- \texttt{Өз\tag{prn}\tag{ref}\tag{px3sp}\tag{gen}} & \texttt{Үз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} & \texttt{Оьз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} \\
- \texttt{жарат\tag{v}\tag{tv}\tag{ger\_past}\tag{pl}\tag{px3sp}\tag{gen}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} \\
- \texttt{бәрі\tag{prn}\tag{qnt}\tag{px3sp}\tag{dat}} & \texttt{нәрсә\tag{n}\tag{pl}\tag{dat}} & \texttt{зат\tag{n}\tag{pl}\tag{dat}} \\
- \texttt{қара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{кара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{къара\tag{v}\tag{tv}\tag{gna\_perf}} \\ 
-\texttt{,\tag{cm}} & \texttt{,\tag{cm}} & \texttt{,\tag{cm}} \\
- ---      & \texttt{алар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{gen}} & \texttt{олар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{nom}} \\
- \texttt{өте\tag{adv}} & \texttt{бик\tag{adv}} & \texttt{бек\tag{adv}} \\
- \texttt{жақсы\tag{adj}} & \texttt{яхшы\tag{adj}} & \texttt{яхшы\tag{adj}} \\
- \texttt{е\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{и\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{э\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} \\
- \texttt{көр\tag{v}\tag{tv}\tag{ifi}\tag{p3}\tag{sg}} & \texttt{күр\tag{v}\tag{tv}\tag{past}\tag{p3}\tag{sg}} & \texttt{гёр\tag{v}\tag{tv}\tag{past}\tag{p3}\tag{sg}} \\  
- \texttt{.\tag{sent}} & \texttt{.\tag{sent}} & \texttt{.\tag{sent}} \\
+	\texttt{Кудай\tag{n}\tag{nom}} & \texttt{Құдай\tag{n}\tag{nom}} & \texttt{Аллаһ\tag{n}\tag{nom}} & \texttt{Аллагь\tag{n}\tag{nom}} \\
+	\texttt{Өз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} & \texttt{Өз\tag{prn}\tag{ref}\tag{px3sp}\tag{gen}} & \texttt{Үз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} & \texttt{Оьз\tag{prn}\tag{ref}\tag{px3sp}\tag{nom}} \\
+	\texttt{жарат\tag{v}\tag{tv}\tag{ger\_past}\tag{px3sp}\tag{gen}} & \texttt{жарат\tag{v}\tag{tv}\tag{ger\_past}\tag{pl}\tag{px3sp}\tag{gen}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} & \texttt{ярат\tag{v}\tag{tv}\tag{gpr\_past}} \\
+	\texttt{баары\tag{prn}\tag{qnt}\tag{px3sp}\tag{dat}} & \texttt{бәрі\tag{prn}\tag{qnt}\tag{px3sp}\tag{dat}} & \texttt{нәрсә\tag{n}\tag{pl}\tag{dat}} & \texttt{зат\tag{n}\tag{pl}\tag{dat}} \\
+	\texttt{кара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{қара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{кара\tag{v}\tag{tv}\tag{gna\_perf}} & \texttt{къара\tag{v}\tag{tv}\tag{gna\_perf}} \\ 
+	\texttt{,\tag{cm}} & \texttt{,\tag{cm}} & \texttt{,\tag{cm}} & \texttt{,\tag{cm}} \\
+	 --- & ---      & \texttt{алар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{gen}} & \texttt{олар\tag{prn}\tag{pers}\tag{p3}\tag{pl}\tag{nom}} \\
+	\texttt{өтө\tag{adv}} & \texttt{өте\tag{adv}} & \texttt{бик\tag{adv}} & \texttt{бек\tag{adv}} \\
+	\texttt{жакшы\tag{adj}} & \texttt{жақсы\tag{adj}} & \texttt{яхшы\tag{adj}} & \texttt{яхшы\tag{adj}} \\
+	\texttt{э\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{е\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{и\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} & \texttt{э\tag{cop}\tag{ger\_past}\tag{px3sp}\tag{acc}} \\
+	\texttt{көр\tag{v}\tag{tv}\tag{ifi}\tag{p3}\tag{sg}} & \texttt{көр\tag{v}\tag{tv}\tag{ifi}\tag{p3}\tag{sg}} & \texttt{күр\tag{v}\tag{tv}\tag{past}\tag{p3}\tag{sg}} & \texttt{гёр\tag{v}\tag{tv}\tag{past}\tag{p3}\tag{sg}} \\  
+	\texttt{.\tag{sent}} & \texttt{.\tag{sent}} & \texttt{.\tag{sent}} & \texttt{.\tag{sent}} \\
 \bottomrule
 \end{tabular}
 }
@@ -553,7 +547,28 @@
 
 		}
 
-		\headerbox{Evaluation}{name=coverage,span=1,column=2,below=exout}{
+		\headerbox{Categorisation}{name=lexc,below=exout,column=1}{
+		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
+			\begin{itemize}
+				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
+				\item Our approach:\ categorisation (e.g., adjectives, below)
+			\end{itemize}
+
+		\scalebox{0.63}{
+			\begin{tabular}{lllll}
+				\toprule
+				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
+				\midrule
+				\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
+				\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
+				\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
+				\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
+				\bottomrule
+			\end{tabular}
+		}
+	}
+
+		\headerbox{Evaluation}{name=coverage,span=1,column=3,row=0}{
 
 			\htwo{Number of stems}
 			%\vspace{-1.5em}
@@ -716,7 +731,7 @@
 %			\end{center}
 		}
 
-		\headerbox{Orthography-phonology mapping issues}{name=twol,column=1,below=exout}{
+		\headerbox{Orthography-phonology mapping issues}{name=twol,column=2,below=exout}{
 			\htwo{Ambiguous characters}
 			\begin{itemize}
 				\item Have front- and back-vowel readings in native words
@@ -905,7 +920,7 @@
 %				}
 %		}
 
-		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=coverage}{
+		\headerbox{Ongoing and future work}{name=nedostatki,column=3,below=coverage}{
 			\begin{itemize}
 %				\item case changes for words with one root\\
 %					\hiliteone{Ф}инландия \eng{Finland}, \hiliteone{ф}инландиялык \eng{Finnish}
@@ -924,7 +939,7 @@
 			%\vspace{0.98em}
 		}
 
-		\headerbox{Further information}{name=getting,column=0,below=lexc}{
+		\headerbox{Further information}{name=getting,column=4}{
 			\begin{itemize}
 				\item Part of Apertium Turkic project:\\
 				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
