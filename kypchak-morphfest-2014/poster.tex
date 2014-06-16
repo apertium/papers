@@ -396,7 +396,9 @@
 			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
 		\end{itemize}
 	}
-	\headerbox{Development effort}{name=devel,below=morphtrans}{
+
+	\headerbox{Development effort}{name=devel,below=adjectives,column=1}{
+
 		\begin{itemize}
 			\item Kumyk transducer based on Kazakh, Tatar transducers
 			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
@@ -547,7 +549,7 @@
 
 		}
 
-		\headerbox{Categorisation}{name=lexc,below=exout,column=1}{
+		\headerbox{Categorisation}{name=adjectives,below=exout,column=1}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
 			\begin{itemize}
 				\item Example:\ morphologically distinct adjective classes (not documented elsewhere)
@@ -575,23 +577,23 @@
 			%\vspace{-1.5em}
 			\vspace{-0.5em}
 			\begin{center}
-			\begin{tabular}{lrrr}
+			\begin{tabular}{lrrrr}
 				\toprule
-				\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{3}{c}{\textbf{Number of stems}} \\ \cmidrule{2-4}
-				& \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+				\multirow{2}{*}{\textbf{Part of speech}} & \multicolumn{4}{c}{\textbf{Number of stems}} \\ \cmidrule{2-5}
+				& \textbf{Kyrgyz} & \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
 				\midrule
-				Noun & 2640 & 2795 & 2568 \\
-				Verb & 1470 & 1143 & 386 \\
-				Adjective & 754 & 816 & 219 \\
-				Proper noun & 5701 & 5361 & 1443 \\
-				Adverb & 171 & 177 & 63 \\
-				Numeral & 63 & 63 & 44 \\
-				Conjunction & 46 & 45 & 13 \\
-				Postposition & 50 & 43 & 12 \\
-				Pronoun & 32 & 28 & 17 \\
-				Determiner & 39 & 34 & 9 \\
+				Noun & 4582 & 2640 & 2795 & 2568 \\
+				Verb & 1193 & 1470 & 1143 & 386 \\
+				Adjective & 1211 & 754 & 816 & 219 \\
+				Proper noun & 5887 & 5701 & 5361 & 1443 \\
+				Adverb & 312 & 171 & 177 & 63 \\
+				Numeral & 66 & 63 & 63 & 44 \\
+				Conjunction & 77 & 46 & 45 & 13 \\
+				Postposition & 50 & 50 & 43 & 12 \\
+				Pronoun & 51 & 32 & 28 & 17 \\
+				Determiner & 64 & & 39 & 34 & 9 \\
 				\midrule
-				Total: & \hiliteone{11224} & \hiliteone{10737} & \hiliteone{4845} \\
+				Total: & \hiliteone{13749} & \hiliteone{11224} & \hiliteone{10737} & \hiliteone{4845} \\
 				\bottomrule
 			\end{tabular}
 			\end{center}
@@ -625,9 +627,10 @@
 				\toprule
 					& \textbf{Wikipedia} & \textbf{News} & \textbf{Religion} \\
 				\midrule
-					\texttt{\textbf{kaz}} & Wikipedia & azattyk.org & Quran + Bible \\
-					\texttt{\textbf{tat}} & Wikipedia & tat.tatar-inform.ru & Quran + New Testament \\
-					\texttt{\textbf{kum}} & --- & yoldash.etnosmi.ru & Genesis + New Testament \\
+					\texttt{\textbf{Kyrgyz}} & Wikipedia & azattyk.org & Quran + Bible \\
+					\texttt{\textbf{Kazakh}} & Wikipedia & azattyq.org & Quran + Bible \\
+					\texttt{\textbf{Tatar}} & Wikipedia & tat.tatar-inform.ru & Quran + New Testament \\
+					\texttt{\textbf{Kumyk}} & --- & yoldash.etnosmi.ru & Genesis + New Testament \\
 				\bottomrule
 			\end{tabular}
 
@@ -667,6 +670,11 @@
 			\begin{tabular}{llrrr}
 				\toprule
 				 & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
+				\midrule
+
+				\multirow{4}{*}{\textbf{Kyrgyz}} & Wikipedia & M &  $\pm$  &  \\
+					&  &  &  $\pm$  &  \\\cmidrule{2-5}
+				 (r54474) & Average &  & \hiliteone{} $\pm$  &  \\
 				\midrule
 				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 2.43 \\
 					& News & 3.8M & 92.12 $\pm$ 2.72  & 2.88 \\
@@ -921,7 +929,7 @@
 %				}
 %		}
 
-		\headerbox{Ongoing and future work}{name=nedostatki,column=3,below=coverage}{
+		\headerbox{Ongoing and future work}{name=nedostatki,column=5}{
 			\begin{itemize}
 %				\item case changes for words with one root\\
 %					\hiliteone{Ф}инландия \eng{Finland}, \hiliteone{ф}инландиялык \eng{Finnish}
@@ -934,6 +942,7 @@
 %					{\qipa иште- \eng{work} → иштеш / иштөө \eng{working}}\\
 %					{\qipa же- \eng{eat} → жеш / *жөө \eng{eating}}
 				\item Disambiguation, more stems
+				\item Clean up Kyrgyz transducer
 				\item Machine translation between these languages
 				\item Bring our other Kypchak transducers to comparable performance:\\
 				Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
@@ -942,7 +951,7 @@
 			%\vspace{0.98em}
 		}
 
-		\headerbox{Further information}{name=getting,column=4}{
+		\headerbox{Further information}{name=getting,column=0,below=morphtrans}{
 			\begin{itemize}
 				\item Part of Apertium Turkic project:\\
 				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
