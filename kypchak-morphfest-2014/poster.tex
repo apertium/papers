@@ -373,6 +373,7 @@
 	\headerbox{Morphological transducers}{name=morphtrans,below=kypchaklgs}{
 		\htwo{Morphological transducers}
 		\begin{itemize}
+			\item Efficient (in speed \& size) models of a language's morphology
 			\item Take a surface form, and produce valid lexical form(s)
 			\item Take a lexical form, and produce valid surface form(s)
 		\end{itemize}
@@ -397,7 +398,7 @@
 		\end{itemize}
 	}
 
-	\headerbox{Development effort}{name=devel,below=adjectives,column=1}{
+	\headerbox{Development effort}{name=devel,column=4,row=0}{
 
 		\begin{itemize}
 			\item Kumyk transducer based on Kazakh, Tatar transducers
@@ -571,7 +572,7 @@
 		}
 	}
 
-		\headerbox{Evaluation}{name=coverage,span=1,column=3,row=0}{
+		\headerbox{Evaluation}{name=coverage,span=1,column=5,row=0}{
 
 			\htwo{Number of stems}
 			%\vspace{-1.5em}
@@ -628,6 +629,7 @@
 					& \textbf{Wikipedia} & \textbf{News} & \textbf{Religion} \\
 				\midrule
 					\texttt{\textbf{Kyrgyz}} & Wikipedia & azattyk.org & Quran + Bible \\
+					% 2013-05-30, 2010, 
 					\texttt{\textbf{Kazakh}} & Wikipedia & azattyq.org & Quran + Bible \\
 					\texttt{\textbf{Tatar}} & Wikipedia & tat.tatar-inform.ru & Quran + New Testament \\
 					\texttt{\textbf{Kumyk}} & --- & yoldash.etnosmi.ru & Genesis + New Testament \\
@@ -672,8 +674,9 @@
 				 & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
 				\midrule
 
-				\multirow{4}{*}{\textbf{Kyrgyz}} & Wikipedia & M &  $\pm$  &  \\
-					&  &  &  $\pm$  &  \\\cmidrule{2-5}
+				\multirow{4}{*}{\textbf{Kyrgyz}} & Wikipedia & M & 84.51 $\pm$ 2.27 &  \\
+					& News &  & 91.43 $\pm$ 0.51 &  \\
+					& Religion &  &  $\pm$  &  \\\cmidrule{2-5}
 				 (r54474) & Average &  & \hiliteone{} $\pm$  &  \\
 				\midrule
 				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 2.43 \\
@@ -712,6 +715,7 @@
 				\toprule
 					\textbf{Language} & \textbf{Forms} & \textbf{Precision} (\%) & \textbf{Recall} (\%) \\
 				\midrule
+					Kyrgyz & 500 &  &  \\
 					Kazakh & 1000 & 98.61 &  57.98 \\
 					Tatar & 1000 & 95.03 & 85.65 \\
 					Kumyk & 500 & 96.57 & 69.11 \\
@@ -740,7 +744,7 @@
 %			\end{center}
 		}
 
-		\headerbox{Orthography-phonology mapping issues}{name=twol,column=2,below=exout}{
+		\headerbox{Orthography-phonology mapping issues}{name=twol,column=3}{ %,below=exout}{
 			\htwo{Ambiguous characters}
 			\begin{itemize}
 				\item Have front- and back-vowel readings in native words
@@ -843,6 +847,57 @@
 
 		}
 
+
+		\headerbox{Ongoing and future work}{name=nedostatki,column=5,below=coverage}{
+			\begin{itemize}
+%				\item case changes for words with one root\\
+%					\hiliteone{Ф}инландия \eng{Finland}, \hiliteone{ф}инландиялык \eng{Finnish}
+%				\item phonol.\ (vowel harmony, desonorisation) with abbrevs.\\
+%					АКШ [акышы] \eng{USA} → АКШ\hiliteone{н}ын / *АКШ\hiliteone{т}ын
+%				\item vowel harmony with numbers\\
+%					{\qipa 100 [жүз] → 100дүн [жүздүн] / *100нын}
+%				\item compound verbs (esp.\ ones with changeable parts)
+%				\item gerunds with mono-syllabic V-final verbs\\
+%					{\qipa иште- \eng{work} → иштеш / иштөө \eng{working}}\\
+%					{\qipa же- \eng{eat} → жеш / *жөө \eng{eating}}
+				\item Disambiguation, more stems
+				\item Clean up Kyrgyz transducer
+				\item Machine translation between these languages
+				\item Bring other Kypchak transducers to comparable performance:\\
+				Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
+				\item Other Turkic lgs.:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+			\end{itemize}
+			%\vspace{0.98em}
+		}
+
+		\headerbox{Further information}{name=getting,column=0,below=morphtrans}{
+			\begin{itemize}
+				\item Part of Apertium Turkic project:\\
+				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
+				\item Transducers available live at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
+				\item Source code available from apertium's svn repo
+				%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
+
+				\item Turkic RBMT mailing list (>25 subscribers):\\
+				\texttt{apertium-turkic@lists.sourceforge.net}\\
+				\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
+				\item See our papers in LREC proceedings\\
+				(2012:\ Kyrgyz, 2014:\ Kazakh, Tatar, Kumyk)
+				\item And feel free to contact the authors any time!
+			\end{itemize}
+			%\vspace{2.8ex}
+		}
+
+
+%		\headerbox{References}{name=references,column=2,below=nedostatki}{
+%			%\begin{thebibliography}{1}\itemsep=-0.01em
+%			\setlength{\baselineskip}{0.4em}
+%		}
+
+
+
+
+		\headerbox{Morphophonology}{name=morphophon,column=1,below=exout}{
 %			\htwo{Vowel harmony}
 %			\begin{itemize}
 %				\item two basic vowel archiphonemes:
@@ -878,40 +933,40 @@
 %
 %			\end{itemize}
 
-%			\htwo{Desonorisation}
-%\begin{itemize}
-%	\item {\texttt \{N\}} desonorises to д after a consonant\\
-%		алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
-%		сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
-%	\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
-%		сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
-%		кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
-%\end{itemize}
-%
-%	\vspace{-0.5ex}
-%\codeex{
-%			\texttt{"L Desonorisation"\\
-%			\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
-%			
-%			\texttt{"N Desonorisation"\\
-%			\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
-%}
-%
-%			\htwo{Lenition}
-%\begin{itemize}
-%	\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
-%	мур\{у\}н → мурун \eng{nose}\\
-%	мур\{у\}н+\{I\}м → мурдум \eng{my nose}\\
-%\end{itemize}
-%	\vspace{-0.5ex}
-%\codeex{
-%{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
-%	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
-%  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
-%  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
-%  \vspace{-0.5ex}\hspace{12ex}         matched ;}}
-%}
-%
+			\htwo{Desonorisation (kaz \& kir)}
+				\begin{itemize}
+					\item {\texttt \{N\}} desonorises to д after a consonant\\
+						алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
+						сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
+					\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
+						сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
+						кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
+				\end{itemize}
+
+				\vspace{-0.5ex}
+				\codeex{
+					\texttt{"L Desonorisation"\\
+						\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
+			
+					\texttt{"N Desonorisation"\\
+						\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
+				}
+
+			\htwo{Epenthesis}
+				\begin{itemize}
+					\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
+					мур\{у\}н → мурун \eng{nose}\\
+					мур\{у\}н+\{I\}м → мурдум \eng{my nose}\\
+				\end{itemize}
+					\vspace{-0.5ex}
+\codeex{
+{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
+	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
+  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
+  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
+  \vspace{-0.5ex}\hspace{12ex}         matched ;}}
+}
+
 %			%\htwo{Nouns ending in /рн/}
 %
 %			\htwo{й+vowel letters}
@@ -927,53 +982,73 @@
 %					\texttt{"Deletion of й before yoticised vowels"\\
 %					й:0 <=> \blank{1em} [ :YotVow ]/[ :0 | \%>:\ ]\ ;}
 %				}
-%		}
-
-		\headerbox{Ongoing and future work}{name=nedostatki,column=5}{
-			\begin{itemize}
-%				\item case changes for words with one root\\
-%					\hiliteone{Ф}инландия \eng{Finland}, \hiliteone{ф}инландиялык \eng{Finnish}
-%				\item phonol.\ (vowel harmony, desonorisation) with abbrevs.\\
-%					АКШ [акышы] \eng{USA} → АКШ\hiliteone{н}ын / *АКШ\hiliteone{т}ын
-%				\item vowel harmony with numbers\\
-%					{\qipa 100 [жүз] → 100дүн [жүздүн] / *100нын}
-%				\item compound verbs (esp.\ ones with changeable parts)
-%				\item gerunds with mono-syllabic V-final verbs\\
-%					{\qipa иште- \eng{work} → иштеш / иштөө \eng{working}}\\
-%					{\qipa же- \eng{eat} → жеш / *жөө \eng{eating}}
-				\item Disambiguation, more stems
-				\item Clean up Kyrgyz transducer
-				\item Machine translation between these languages
-				\item Bring our other Kypchak transducers to comparable performance:\\
-				Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
-				\item Other Turkic lgs.:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
-			\end{itemize}
-			%\vspace{0.98em}
-		}
-
-		\headerbox{Further information}{name=getting,column=0,below=morphtrans}{
-			\begin{itemize}
-				\item Part of Apertium Turkic project:\\
-				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
-				\item Transducers available live at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
-				\item Source code available from apertium's svn repo
-				%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
-
-				\item Turkic RBMT mailing list (>25 subscribers):\\
-				\texttt{apertium-turkic@lists.sourceforge.net}\\
-				\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
-				\item See our papers in LREC proceedings\\
-				(2012:\ Kyrgyz, 2014:\ Kazakh, Tatar, Kumyk)
-				\item And feel free to contact the authors any time!
-			\end{itemize}
-			%\vspace{2.8ex}
 		}
 
 
-%		\headerbox{References}{name=references,column=2,below=nedostatki}{
-%			%\begin{thebibliography}{1}\itemsep=-0.01em
-%			\setlength{\baselineskip}{0.4em}
-%		}
+		\headerbox{Morphotactics}{name=lexc,column=2,below=exout}{
+			\htwo{Morphological \& orthographical words}
+
+			\begin{itemize}
+				\item{} {\qipa өнүктүрөбүзбү ?} \eng{will we develop [it]?}\\
+				\texttt{ өнүк{\small <v><tv><caus><aor><p1><pl>+}бы{\small <qst>}}
+				\item{} {\qipa келатсаң} \eng{if you come}\\
+				\texttt{кел{\tt {\small <v><iv><prc\_impf>}}+жат{\small <vaux><gna\_cnd><p2><sg>}}
+			\end{itemize}
+
+			%\htwo{Irregular negatives of finite verb forms}
+
+			\htwo{Irregular [noun + possessive + case] forms}
+
+			\begin{itemize}
+				\item Some combinations of possessive and case morphemes are non-canonical (i.e., not formed simply by concatenation):
+
+			\begin{center}
+			\vspace{-0.5em}
+{\small
+{\qipa		
+	\begin{tabular}{llllll}
+		\toprule
+		case & form & 1SG & 2SG & 3SP  \\
+		\midrule
+		nom & — & -(I)м & -(I)ң & -(S)I  \\
+		acc & -NI & -(I)мдI & -(I)ңдI & -\textbf{(S)Iн}  \\
+		gen & -NIн & -(I)мдIн & -(I)ңдIн & -(S)IнIн  \\
+		loc & -DA & -(I)мдA & -(I)ңдA & -\textbf{(S)IндA}  \\
+		abl & -DAн & -(I)мдAн, & -(I)ндAн, & -\textbf{(S)IнAн}  \\
+		~   &     & -\textbf{(I)мAн} & -\textbf{(I)ңAн} \\
+		dat & -GA & -\textbf{(I)мA} & -\textbf{(I)ңA} & -\textbf{(S)IнA} \\
+		\bottomrule
+	\end{tabular}
+}}
+			\end{center}
+
+%				\item Trade-off:
+%				\begin{itemize}
+					\item morphophon.\ complicateder, morphotactics simpler
+					\item underlying form used: \texttt{\{S\}\{I\}\{n\}}
+					\item phonological rules delete \texttt{\{n\}}, \texttt{\{S\}} by context
+%				\end{itemize}
+			\end{itemize}
+
+			\htwo{Noun-noun compounds}
+
+			\begin{itemize}
+				\item one type of N-N compunds: N2 has \texttt{<px3>} and related morphology
+			\end{itemize}
+			\vspace{0.6ex}
+			\codeex{
+			{\small
+			\texttt{LEXICON N-INFL-3PX-COMPOUND\\
+			\vspace{-0.5ex}\%<n\%>:\%>\%\{S\%\}\%\{I\%\}\%\{n\%\} GEN-POS ;}\\
+			
+			\texttt{LEXICON Nouns\\
+			\vspace{-0.5ex}аба\%\ ырайы:аба\%\ ырай\ N-INFL-3PX-COMPOUND ;\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}!\ "weather"\\
+			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}COMPOUND ;\ !\ "invitation"}}
+			}
+				
+			\vspace{0.5ex}
+			%чакыруу кагазы
+		}
 
 
 	\end{poster}
