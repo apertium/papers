@@ -229,6 +229,7 @@
 			\includegraphics[angle=90,height=6.5em]{apertium5b}%\hspace{-2em}
 			%Eye Catcher, empty if option eyecatcher=false - unused
 			%\begin{minipage}[t]{0.2\textwidth}
+				\hspace{1cm}\includegraphics[height=6.5em]{22888536}
 				\hspace{1cm}\includegraphics[height=6.5em]{iu_tab}
 				\hspace{1cm}\includegraphics[height=6.5em]{kfu}
 				\hspace{1cm}\includegraphics[height=6.5em]{uitlogo}
@@ -378,7 +379,7 @@
 			\item Take a lexical form, and produce valid surface form(s)
 		\end{itemize}
 		\scalebox{0.96}{
-			`алдым' \hilitetwo{↔} \texttt{ал{\small <v><tv><ifi><p1><sg>}}, \texttt{алд{\small <n><px1sg><nom>}}
+			`алдым' \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}, \texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
 		}
 
 		\htwo{Transducers for Turkic languages}
@@ -592,7 +593,7 @@
 				Conjunction & 77 & 46 & 45 & 13 \\
 				Postposition & 50 & 50 & 43 & 12 \\
 				Pronoun & 51 & 32 & 28 & 17 \\
-				Determiner & 64 & & 39 & 34 & 9 \\
+				Determiner & 64 & 39 & 34 & 9 \\
 				\midrule
 				Total: & \hiliteone{13749} & \hiliteone{11224} & \hiliteone{10737} & \hiliteone{4845} \\
 				\bottomrule
@@ -623,16 +624,16 @@
 %				\bottomrule
 %			\end{tabular}
 %		}
-		\scalebox{0.77}{
+		\scalebox{0.8}{
 			\begin{tabular}{llll}
 				\toprule
 					& \textbf{Wikipedia} & \textbf{News} & \textbf{Religion} \\
 				\midrule
-					\texttt{\textbf{Kyrgyz}} & Wikipedia & azattyk.org & Quran + Bible \\
+					\textbf{Kyrgyz} & Wikipedia & azattyk.org & Bible \\
 					% 2013-05-30, 2010, 
-					\texttt{\textbf{Kazakh}} & Wikipedia & azattyq.org & Quran + Bible \\
-					\texttt{\textbf{Tatar}} & Wikipedia & tat.tatar-inform.ru & Quran + New Testament \\
-					\texttt{\textbf{Kumyk}} & --- & yoldash.etnosmi.ru & Genesis + New Testament \\
+					\textbf{Kazakh} & Wikipedia & azattyq.org & Quran + Bible \\
+					\textbf{Tatar} & Wikipedia & tat.tatar-inform.ru & Quran + New Testament \\
+					\textbf{Kumyk} & --- & yoldash.etnosmi.ru & Genesis + New Testament \\
 				\bottomrule
 			\end{tabular}
 
@@ -667,17 +668,18 @@
 			%\begin{itemize}
 			%	\item each corpus split into 10 equal parts; coverage calculated over each separately; st.\ dev.\ of mean calculated
 			%\end{itemize}
-
-		\scalebox{0.89}{
+			\vspace{-0.5em}
+\begin{center}
+		\scalebox{0.91}{
 			\begin{tabular}{llrrr}
 				\toprule
 				 & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
 				\midrule
 
-				\multirow{4}{*}{\textbf{Kyrgyz}} & Wikipedia & M & 84.51 $\pm$ 2.27 &  \\
-					& News &  & 91.43 $\pm$ 0.51 &  \\
-					& Religion &  &  $\pm$  &  \\\cmidrule{2-5}
-				 (r54474) & Average &  & \hiliteone{} $\pm$  &  \\
+				\multirow{4}{*}{\textbf{Kyrgyz}} & Wikipedia & 5.3M & 84.51 $\pm$ 2.27 & 3.56 \\
+					& News & 4.1M & 91.43 $\pm$ 0.51 & 4.19 \\
+					& Religion & 215K & 91.66 $\pm$ 1.81 & 3.99 \\\cmidrule{2-5}
+				 (r54474) & Average &  & \hiliteone{89.20} $\pm$ 3.48 &  \\
 				\midrule
 				\multirow{4}{*}{\textbf{Kazakh}} & Wikipedia & 25.6M & 85.61 $\pm$ 1.37 & 2.43 \\
 					& News & 3.8M & 92.12 $\pm$ 2.72  & 2.88 \\
@@ -695,6 +697,7 @@
 				\bottomrule
 			\end{tabular}\\
 		}
+\end{center}
 			%}
 			%%\end{centering}
 %		}
@@ -703,9 +706,10 @@
 
 %			\htwo{Two measures}
 %			\htwo{Precision \& recall}
-			\vspace{0.425em}
+			%\vspace{0.425em}
+			\vspace{-0.5em}
 			\begin{itemize}
-				\item {}{\footnotesize selected \& proofed unique random surface forms from news corpora}
+				\item {}{\small selected \& proofed unique random surface forms from news corpora}
 			\end{itemize}
 
 
@@ -860,12 +864,11 @@
 %				\item gerunds with mono-syllabic V-final verbs\\
 %					{\qipa иште- \eng{work} → иштеш / иштөө \eng{working}}\\
 %					{\qipa же- \eng{eat} → жеш / *жөө \eng{eating}}
-				\item Disambiguation, more stems
-				\item Clean up Kyrgyz transducer
+				\item Disambiguation, more stems, clean up transducers
 				\item Machine translation between these languages
 				\item Bring other Kypchak transducers to comparable performance:\\
 				Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
-				\item Other Turkic lgs.:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+				\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
 			\end{itemize}
 			%\vspace{0.98em}
 		}
@@ -990,9 +993,9 @@
 
 			\begin{itemize}
 				\item{} {\qipa өнүктүрөбүзбү ?} \eng{will we develop [it]?}\\
-				\texttt{ өнүк{\small <v><tv><caus><aor><p1><pl>+}бы{\small <qst>}}
+				\texttt{өнүк\tag{v}\tag{tv}\tag{caus}\tag{aor}\tag{p1}\tag{pl}+бы\tag{qst}}
 				\item{} {\qipa келатсаң} \eng{if you come}\\
-				\texttt{кел{\tt {\small <v><iv><prc\_impf>}}+жат{\small <vaux><gna\_cnd><p2><sg>}}
+				\texttt{кел\tag{v}\tag{iv}\tag{prc\_impf}+жат\tag{vaux}\tag{gna\_cnd}\tag{p2}\tag{sg}}
 			\end{itemize}
 
 			%\htwo{Irregular negatives of finite verb forms}
@@ -1033,7 +1036,7 @@
 			\htwo{Noun-noun compounds}
 
 			\begin{itemize}
-				\item one type of N-N compunds: N2 has \texttt{<px3>} and related morphology
+				\item one type of N-N compunds:\ N2 has \tag{px3} and related morphology
 			\end{itemize}
 			\vspace{0.6ex}
 			\codeex{
@@ -1043,7 +1046,7 @@
 			
 			\texttt{LEXICON Nouns\\
 			\vspace{-0.5ex}аба\%\ ырайы:аба\%\ ырай\ N-INFL-3PX-COMPOUND ;\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}!\ "weather"\\
-			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}COMPOUND ;\ !\ "invitation"}}
+			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-COMPOUND\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{};\ !\ "invitation"}}
 			}
 				
 			\vspace{0.5ex}
