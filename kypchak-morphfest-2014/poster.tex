@@ -19,13 +19,16 @@
 %\definecolor{headercol2}{RGB}{80,80,80}
 %\definecolor{headercol1}{RGB}{153,0,0}
 %\definecolor{headercol2}{RGB}{153,0,0}
+%\definecolor{headercol}{RGB}{6,130,22}
+%\definecolor{headercolone}{RGB}{6,130,22}
 \definecolor{headercolone}{RGB}{6,130,22}
 \definecolor{headercoltwo}{RGB}{6,130,22}
 %\definecolor{boxcolor}{RGB}{186,215,230}
 %\definecolor{boxcolor}{RGB}{110,230,209}
 %\definecolor{boxcolor}{RGB}{143,255,236}
 %\definecolor{boxcolor}{RGB}{171,255,241}
-\definecolor{boxcolor}{RGB}{176,232,223}
+%definecolor{boxcolor}{RGB}{176,232,223}
+\definecolor{boxcolor}{RGB}{176,208,223}
 \definecolor{headerfontcol}{RGB}{255,255,255}
 %\definecolor{boxcolor}{RGB}{186,215,230}
 %\definecolor{boxcolor}{RGB}{226,200,200}
@@ -73,6 +76,7 @@
 
 \newcommand{\tags}[1]{\hiliteone{#1}}
 \newcommand{\tag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
+\newcommand{\archiphon}[1]{\hilitegrey{\{}\hiliteone{#1}\hilitegrey{\}}}
 
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
 %\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
@@ -334,7 +338,7 @@
 			\item Turkic languages (SOV, agglutinative, vowel harmony)
 		\end{itemize}
 
-	\scalebox{0.79}{
+	\scalebox{0.78}{
 		\begin{tabular}{lllll}
 			\toprule
 				 & \textbf{Kyrgyz} & \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
@@ -376,11 +380,12 @@
 		\begin{itemize}
 			\item Efficient (in speed \& size) models of a language's morphology
 			\item Take a surface form, and produce valid lexical form(s)
-			\item Take a lexical form, and produce valid surface form(s)
-		\end{itemize}
-		\scalebox{0.96}{
-			`алдым' \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}, \texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
+			\item Take a lexical form, and produce valid surface form(s)\\
+		%\end{itemize}
+		\scalebox{0.98}{
+			алдым \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}, \texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
 		}
+		\end{itemize}
 
 		\htwo{Transducers for Turkic languages}
 		\begin{itemize}
@@ -397,6 +402,14 @@
 			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
 			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
 		\end{itemize}
+		\htwo{Approach}
+		\begin{itemize}
+			\item morphotactics implemented in \texttt{lexc}
+			\item morphophonology implemented in \texttt{twol}
+			\item compiled separately; compose-intersected to single transducer\\
+			алдым \hilitetwo{↔} \texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м} \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}
+		\end{itemize}
+
 	}
 
 	\headerbox{Development effort}{name=devel,column=4,row=0}{
@@ -551,7 +564,7 @@
 
 		}
 
-		\headerbox{Categorisation}{name=adjectives,below=exout,column=1}{
+		\headerbox{Categorisation}{name=adjectives,column=4,below=devel}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
 			\begin{itemize}
 				\item Example:\ morphologically distinct adjective classes (not documented elsewhere)
@@ -559,7 +572,7 @@
 				\item Our approach:\ categorisation (generates/analyses only correct forms)
 			\end{itemize}
 
-		\scalebox{0.63}{
+		\scalebox{0.72}{
 			\begin{tabular}{lllll}
 				\toprule
 				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
@@ -754,7 +767,7 @@
 				\item Have front- and back-vowel readings in native words
 			\end{itemize}
 
-		\scalebox{0.92}{
+		%\scalebox{0.92}{
 			\begin{tabular}{llll}
 				\toprule
 					& \textbf{letters} & \textbf{values} & \textbf{examples} \\
@@ -776,7 +789,8 @@
 						&	&	& {\qipa \hiliteone{ё}лл\hilitetwo{а}р} \eng{roads} \\
 				\bottomrule
 			\end{tabular}
-		}\vspace{0.5em}
+		%}
+		\vspace{0.5em}
 			\begin{itemize}
 				\item solution:\ hairy \texttt{twol} rules cover majority of examples
 				\item unaccounted-for words get a harmony-forcing character
@@ -787,7 +801,7 @@
 				\begin{itemize}
 					\item Letters that represent front vowels in native words may represent ``back'' vowels in Russian words
 				\end{itemize}
-			\scalebox{0.86}{
+			\scalebox{0.92}{
 				\begin{tabular}{lll}
 					\toprule
 						 & \textbf{native word example} & \textbf{Russian word example} \\
@@ -816,9 +830,11 @@
 				\begin{itemize}
 					\item \texttt{twol} rules handle phonology for spelt-out words\\
 					{\qipa от\hiliteone{ыз}\hilitetwo{да}н} \eng{from thirty}, {\qipa б\hiliteone{ес}\hilitetwo{те}н} \eng{from five}
-					\item no phonological triggers available in numerals (etc.)\\
+					\item no phonological triggers available in numerals
+					\item (incorrect phonological triggers in acronyms)\\
 					{\qipa 30-\hilitetwo{да}н} \eng{from 30}, {\qipa 5-\hilitetwo{те}н} \eng{from 5}
 					\item solution:\ phonology-triggering characters
+					\item simplified:\ e.g., \archiphon{с} for all voiceless ostruents
 				\end{itemize}
 				\codeex{
 					\begin{spacing}{0.9}
@@ -844,10 +860,16 @@
 \hspace*{0.1em}\hfill{}       [ :RdYotVow :Cns* \%\{☭\%\}:0 :Cns* ]/[ :0 - \%\{☭\%\}:0 ] \_ ; \\ % ! -ёрлар in Russian words \\
 \hspace*{0.1em}\hfill{}                          [ :Cns :р \%\{☭\%\}: \%>: :Cns* ]/:0 \_ ; \\% ! центр and тигр take back vowels \\
 \hspace*{0.1em}\hfill{}         [ [ :Vow - :RdYotVow ] :RdYotVow :Cns :Cns* ]/:0 \_ ; \\% ! for some reason the rule above doesn't exclude this condition  e.g., боюнгъа \\
-\hspace*{0.1em}\hfill{}                          [ :Vow ]/[ [ :0 - й:0 ] | \%>: ] \_ ;\\
-			\vspace{-1em}
-					\end{spacing}
+\hspace*{0.1em}\hfill{}                          [ :Vow ]/[ [ :0 - й:0 ] | \%>: ] \_ ;\end{spacing}
+			\vspace{1em}
+					
 				}
+
+			\htwo{Related issues}
+				\begin{itemize}
+					\item Stem-final й combines with following а, о, у to form я, ё, ю
+					\item 
+				\end{itemize}
 
 		}
 
@@ -875,13 +897,13 @@
 
 		\headerbox{Further information}{name=getting,column=0,below=morphtrans}{
 			\begin{itemize}
-				\item Part of Apertium Turkic project:\\
+				\item Part of \textbf{Apertium Turkic} project:\\
 				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
-				\item Transducers available live at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
-				\item Source code available from apertium's svn repo
+				\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
+				\item \textbf{Source code} available from Apertium's svn repo
 				%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
 
-				\item Turkic RBMT mailing list (>25 subscribers):\\
+				\item Turkic RBMT \textbf{mailing list} (>25 subscribers):\\
 				\texttt{apertium-turkic@lists.sourceforge.net}\\
 				\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
 				\item See our papers in LREC proceedings\\
@@ -958,16 +980,18 @@
 			\htwo{Epenthesis}
 				\begin{itemize}
 					\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
-					мур\{у\}н → мурун \eng{nose}\\
-					мур\{у\}н+\{I\}м → мурдум \eng{my nose}\\
+					мур\archiphon{у}н → мурун \eng{nose}\\
+					мур\archiphon{у}н+\archiphon{I}м → мурдум \eng{my nose}\\
 				\end{itemize}
 					\vspace{-0.5ex}
 \codeex{
+			\begin{spacing}{0.9}
 {\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
 	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
   \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
   \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
-  \vspace{-0.5ex}\hspace{12ex}         matched ;}}
+  \vspace{-0.5ex}\hspace{12ex}         matched ;}}\vspace{-1.5em}
+  			\end{spacing}
 }
 
 %			%\htwo{Nouns ending in /рн/}
@@ -1003,7 +1027,8 @@
 			\htwo{Irregular [noun + possessive + case] forms}
 
 			\begin{itemize}
-				\item Some combinations of possessive and case morphemes are non-canonical (i.e., not formed simply by concatenation):
+				\item Some combinations of possessive + case morphemes are unpredicted (i.e., not formed simply by concatenation and application of phonology):
+			\end{itemize}
 
 			\begin{center}
 			\vspace{-0.5em}
@@ -1013,43 +1038,45 @@
 		\toprule
 		case & form & 1SG & 2SG & 3SP  \\
 		\midrule
-		nom & — & -(I)м & -(I)ң & -(S)I  \\
-		acc & -NI & -(I)мдI & -(I)ңдI & -\textbf{(S)Iн}  \\
-		gen & -NIн & -(I)мдIн & -(I)ңдIн & -(S)IнIн  \\
-		loc & -DA & -(I)мдA & -(I)ңдA & -\textbf{(S)IндA}  \\
-		abl & -DAн & -(I)мдAн, & -(I)ндAн, & -\textbf{(S)IнAн}  \\
+		nominative & — & -(I)м & -(I)ң & -(с)I  \\
+		accusative & -NI & -(I)мдI & -(I)ңдI & -\textbf{(с)Iн}  \\
+		genitive & -NIн & -(I)мдIн & -(I)ңдIн & -(с)IнIн  \\
+		locative & -DA & -(I)мдA & -(I)ңдA & -\textbf{(с)IндA}  \\
+		ablative & -DAн & -(I)мдAн, & -(I)ндAн, & -\textbf{(с)IнAн}  \\
 		~   &     & -\textbf{(I)мAн} & -\textbf{(I)ңAн} \\
-		dat & -GA & -\textbf{(I)мA} & -\textbf{(I)ңA} & -\textbf{(S)IнA} \\
+		dative & -GA & -\textbf{(I)мA} & -\textbf{(I)ңA} & -\textbf{(с)IнA} \\
 		\bottomrule
-	\end{tabular}
+	\end{tabular}\\
 }}
-			\end{center}
+	{\footnotesize A,I,N,D,G have various allophones; (I) null after vowels; (с) null after cons.}\vspace{-1em}\end{center}
 
 %				\item Trade-off:
-%				\begin{itemize}
-					\item morphophon.\ complicateder, morphotactics simpler
-					\item underlying form used: \texttt{\{S\}\{I\}\{n\}}
-					\item phonological rules delete \texttt{\{n\}}, \texttt{\{S\}} by context
+				\begin{itemize}
+					\item underlying \tag{px3sp} form used:\ \texttt{\archiphon{s}\archiphon{I}\archiphon{n}}
+					\item phonological rules delete \texttt{\archiphon{s}}, \texttt{\archiphon{n}} by context
+					\item morphophonology more complicated, morphotactics simpler
 %				\end{itemize}
 			\end{itemize}
 
 			\htwo{Noun-noun compounds}
 
 			\begin{itemize}
-				\item one type of N-N compunds:\ N2 has \tag{px3} and related morphology
+				\item a N-N compund type:\ N2 has \tag{px3} and related morphology\\
+				e.g., \texttt{аба ырайы\tag{n}\tag{loc}:\ \hiliteone{аба ырайында}, *\hilitetwo{аба ырайыда}}
 			\end{itemize}
 			\vspace{0.6ex}
 			\codeex{
+			\begin{spacing}{0.9}
 			{\small
 			\texttt{LEXICON N-INFL-3PX-COMPOUND\\
 			\vspace{-0.5ex}\%<n\%>:\%>\%\{S\%\}\%\{I\%\}\%\{n\%\} GEN-POS ;}\\
 			
 			\texttt{LEXICON Nouns\\
 			\vspace{-0.5ex}аба\%\ ырайы:аба\%\ ырай\ N-INFL-3PX-COMPOUND ;\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{}!\ "weather"\\
-			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-COMPOUND\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{};\ !\ "invitation"}}
-			}
+			\vspace{-0.5ex}чакыруу\%\ кагазы:чакыруу\%\ кагаз\ N-INFL-3PX-COMPOUND\\\vspace{-0.5ex}\hspace{0.1pt}\hfill{};\ !\ "invitation"}}\end{spacing}
+			\vspace{0.5ex}}
 				
-			\vspace{0.5ex}
+			%\vspace{0.5ex}
 			%чакыруу кагазы
 		}
 
