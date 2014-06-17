@@ -331,9 +331,9 @@
 %		}
 
 	\headerbox{Kypchak languages}{name=kypchaklgs,column=0,row=0}{
-		\vspace{0.5ex}
+		\vspace{0.1ex}
 		\includegraphics[width=\textwidth]{map/map}
-		\vspace{-1.1em}  % -1.25em
+		\vspace{-1.25em}  % -1.25em
 		\begin{itemize}
 			\item Turkic languages (SOV, agglutinative, vowel harmony)
 		\end{itemize}
@@ -380,7 +380,7 @@
 		\begin{itemize}
 			\item Efficient (in speed \& size) models of a language's morphology
 			\item Take a surface form, and produce valid lexical form(s)
-			\item Take a lexical form, and produce valid surface form(s)\\
+			\item Take a lexical form, and produce valid surface form(s)\vspace{-0.1ex}\\
 		%\end{itemize}
 		\scalebox{0.98}{
 			алдым \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}, \texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
@@ -406,15 +406,29 @@
 		\begin{itemize}
 			\item morphotactics implemented in \texttt{lexc}
 			\item morphophonology implemented in \texttt{twol}
-			\item compiled separately; compose-intersected to single transducer\\
-			алдым \hilitetwo{↔} \texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м} \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}
+			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
+			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}\vspace{-0.1ex}\\
+			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
 		\end{itemize}
 
 	}
 
 	\headerbox{Development effort}{name=devel,column=4,row=0}{
-
+	\scalebox{0.92}{
+		\begin{tabular}{lllll}
+			\toprule
+			 & \textbf{Kyrgyz} & \textbf{Kazakh} & \textbf{Tatar} & \textbf{Kumyk} \\
+			\midrule
+			begun & Apr.\ 2011 & Dec.\ 2010 & Dec.\ 2011 & Oct.\ 2013 \\
+			80\% cov.\ & Aug.?\ 2011 & Aug.\ 2012 & Aug.\ 2012 & Oct.\ 2013 \\\midrule
+			time & 4 months & 19 months & 7 months & 1 week \\
+			\bottomrule
+		\end{tabular}
+	}
 		\begin{itemize}
+			%\item Kyrgyz and Kazakh transducers begun in 2011
+			%\item Kyrgyz transducer reached 80\% coverage summer of 2011
+			\item Kazakh transducer based on Kyrgyz transducer
 			\item Kumyk transducer based on Kazakh, Tatar transducers
 			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
 		\end{itemize}
@@ -566,13 +580,18 @@
 
 		\headerbox{Categorisation}{name=adjectives,column=4,below=devel}{
 		%\headerbox{Morphophonology}{name=morphophon,below=morphtrans}{
+			\htwo{Adjectives}
 			\begin{itemize}
-				\item Example:\ morphologically distinct adjective classes (not documented elsewhere)
+				\item morphologically distinct adjective classes
+				\item most sources:\ adjectives can be used substantively and adverbially
 				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
-				\item Our approach:\ categorisation (generates/analyses only correct forms)
+				\item but not all adjectives have all of the following:\\
+				comparative forms, substantive readings, adverbial readings
+				\item Our approach:\ categorisation 
+				\item only correct forms are analysed and generated
 			\end{itemize}
 
-		\scalebox{0.72}{
+		\scalebox{0.7}{
 			\begin{tabular}{lllll}
 				\toprule
 				\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
@@ -683,7 +702,7 @@
 			%\end{itemize}
 			\vspace{-0.5em}
 \begin{center}
-		\scalebox{0.91}{
+		\scalebox{0.94}{
 			\begin{tabular}{llrrr}
 				\toprule
 				 & \textbf{Corpus} & \textbf{Tokens} & \textbf{Coverage} (\%) & \textbf{Amb.} \\
@@ -720,7 +739,7 @@
 %			\htwo{Two measures}
 %			\htwo{Precision \& recall}
 			%\vspace{0.425em}
-			\vspace{-0.5em}
+			\vspace{-0.4em}
 			\begin{itemize}
 				\item {}{\small selected \& proofed unique random surface forms from news corpora}
 			\end{itemize}
@@ -728,6 +747,7 @@
 
 			\vspace{-1em}
 			\begin{center}
+			\scalebox{1.05}{
 				\begin{tabular}{lrrr}
 				\toprule
 					\textbf{Language} & \textbf{Forms} & \textbf{Precision} (\%) & \textbf{Recall} (\%) \\
@@ -738,6 +758,7 @@
 					Kumyk & 500 & 96.57 & 69.11 \\
 				\bottomrule
 				\end{tabular}
+			}
 			\end{center}
 
 			%\vspace{0.49em}
@@ -826,12 +847,13 @@
 					\vspace{0em}
 				}\\
 
+			\vspace{-0.75ex}
 			\htwo{Acronyms and numerals}
 				\begin{itemize}
 					\item \texttt{twol} rules handle phonology for spelt-out words\\
 					{\qipa от\hiliteone{ыз}\hilitetwo{да}н} \eng{from thirty}, {\qipa б\hiliteone{ес}\hilitetwo{те}н} \eng{from five}
-					\item no phonological triggers available in numerals
-					\item (incorrect phonological triggers in acronyms)\\
+					\item no phonological triggers available in numerals\vspace{-0.2em}\\
+					 (incorrect phonological triggers in acronyms)\\
 					{\qipa 30-\hilitetwo{да}н} \eng{from 30}, {\qipa 5-\hilitetwo{те}н} \eng{from 5}
 					\item solution:\ phonology-triggering characters
 					\item simplified:\ e.g., \archiphon{с} for all voiceless ostruents
@@ -844,6 +866,28 @@
 					\vspace{0em}
 				}\\
 	
+
+			\vspace{-0.75ex}
+			\htwo{й + vowel letters}
+				\begin{itemize}
+					%\item Stem-final й combines with following а, о, у to form я, ё, ю
+					\item{} [ а о у ] become [ я ё ю ] after й and й deletes
+					\item й incorporated into the context of many rules
+					\item additional rules to change the characters and delete original й
+				\end{itemize}
+%	\vspace{-1ex}
+%
+				\codeex{
+					\begin{spacing}{0.9}
+					\texttt{"Deletion of й before yoticised vowels"\\
+					й:0 <=> \blank{1em} [ :YotVow ]/[ :0 | \%>:\ ]\ ;}
+					\end{spacing}
+					\vspace{0em}
+				}
+%					\item 
+%				\end{itemize}
+
+
 			\htwo{A resulting messy \texttt{twol} rule}
 				\codeex{
 					\begin{spacing}{0.4}
@@ -864,13 +908,6 @@
 			\vspace{1em}
 					
 				}
-
-			\htwo{Related issues}
-				\begin{itemize}
-					\item Stem-final й combines with following а, о, у to form я, ё, ю
-					\item 
-				\end{itemize}
-
 		}
 
 
@@ -898,7 +935,7 @@
 		\headerbox{Further information}{name=getting,column=0,below=morphtrans}{
 			\begin{itemize}
 				\item Part of \textbf{Apertium Turkic} project:\\
-				{\small \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}}
+				\url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
 				\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
 				\item \textbf{Source code} available from Apertium's svn repo
 				%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
@@ -1053,7 +1090,7 @@
 %				\item Trade-off:
 				\begin{itemize}
 					\item underlying \tag{px3sp} form used:\ \texttt{\archiphon{s}\archiphon{I}\archiphon{n}}
-					\item phonological rules delete \texttt{\archiphon{s}}, \texttt{\archiphon{n}} by context
+					\item \texttt{\archiphon{s}} and \texttt{\archiphon{n}} default to с and н; rules map to null by context
 					\item morphophonology more complicated, morphotactics simpler
 %				\end{itemize}
 			\end{itemize}
