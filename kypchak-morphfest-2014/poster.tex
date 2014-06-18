@@ -688,8 +688,12 @@
 			\begin{itemize}
 				\item \textbf{Naïve coverage} - percentage of surface forms in a given corpus receiving ≥ 1 analysis%\\(surface forms may have missing analyses)
 				\item \textbf{Mean ambiguity} - average number of analyses for each surface form found in analysed corpus
-				\item \textbf{Precision} - of a form's analyses, \% correct
-				\item \textbf{Recall} - \% of analyses provided by transducer that are correct for a form, by comparing against a gold standard
+%				Precision is the probability that an analysis provided by the transducer is accurate.
+%				Recall is the probability that some correct analysis is among those provided.
+				\item \textbf{Precision} - probability that a provided analysis is accurate
+				\item \textbf{Recall} - probability that a certain correct analysis is among those provided by the transducer
+				%\item \textbf{Precision} - of a form's analyses, \% correct
+				%\item \textbf{Recall} - \% of analyses provided by transducer that are correct for a form, by comparing against a gold standard
 			\end{itemize}
 			%\htwo{Coverage results}\\
 			\htwo{Evaluation results}
