@@ -428,9 +428,11 @@
 		\begin{itemize}
 			%\item Kyrgyz and Kazakh transducers begun in 2011
 			%\item Kyrgyz transducer reached 80\% coverage summer of 2011
+			\item (various periods of intermission, various rewrites)
 			\item Kazakh transducer based on Kyrgyz transducer
-			\item Kumyk transducer based on Kazakh, Tatar transducers
-			\item \tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
+			\item Kyrgyz transducer currently being rewritten based on insights gained while writing other Turkic transducers
+			\item Kumyk transducer based on Kazakh, Tatar transducers:\\
+			\tilda{}1 week to reach 80\% coverage, +1 week to reach 90\%
 		\end{itemize}
 		\vspace*{-2.5em}
 		\hspace*{-2em}\includegraphics[width=0.9\textwidth,angle=270]{../kipchak-lrec-2013/graphs/kumyk-yoldash-cov}
@@ -583,7 +585,7 @@
 			\htwo{Adjectives}
 			\begin{itemize}
 				\item morphologically distinct adjective classes
-				\item most sources:\ adjectives can be used substantively and adverbially
+				\item most sources claim:\ adjectives can be used substantively and adverbially
 				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
 				\item but not all adjectives have all of the following:\\
 				comparative forms, substantive readings, adverbial readings
@@ -606,10 +608,40 @@
 
 		\htwo{Adverbs}
 			\begin{itemize}
-				\item Certain time adverbs have special attributive and genetive forms\\
-				бүгүн, быйыл, кече, жана, 
+				\item Certain adverbs have special attributive and ablative forms
+				\item Mostly time adverbs
+				%\item Mostly time adverbs, e.g.\\
+				%{\qipa бүгүн} \eng{today}, {\qipa быйыл} \eng{this year}, {\qipa кечээ} \eng{yesterday}, {\qipa жана} \eng{just now}
+				%\item Attributive forms:\\
+				%{\qipa бүгүнкү} \eng{today's}, {\qipa быйылкы} \eng{this year's}, {\qipa кечээги} \eng{yesterday's}, {\qipa жанагы} \eng{just now}
+				%\item Ablative forms:\\
+				%{\qipa бүгүнтөн} \eng{from today}, {\qipa быйылтан} \eng{from this year}, {\qipa кечээтен} \eng{from yesterday}, {\qipa жанатан} \eng{from just now}
+				\item Some also have noun readings:\ regular ablative, other cases:
+				%{\qipa бүгүндөн} \eng{from today}, {\qipa быйылдан} \eng{from this year}
 			\end{itemize}
-		
+			\scalebox{0.83}{
+			\begin{tabular}{lllll}
+				\toprule
+				word & {\qipa бүгүн} & {\qipa быйыл} & {\qipa кечээ} &  {\qipa жана}\\
+				gloss & \eng{today} & \eng{this year} & \eng{yesterday} & \eng{just now} \\
+				\midrule
+				\tag{attr} form & {\qipa бүгүнкү} & {\qipa быйылкы} & {\qipa кечээги} &  {\qipa жанагы}\\
+				\tag{adv}\tag{abl} form & {\qipa бүгүнтөн} & {\qipa быйылтан} & {\qipa кечээтен} &  {\qipa жанатан}\\
+				\tag{n}\tag{abl} form & {\qipa бүгүндөн} & {\qipa быйылдан} & — & — \\
+				\bottomrule
+			\end{tabular}
+			}\vspace{0.2em}
+				\codeex{
+					\begin{spacing}{0.8}
+					\texttt{LEXICON ADV-WITH-KI-ABL\\
+\\
+ADV ;\\
+ADV-KI ;\\
+ADV-ABL ;
+					}
+					\end{spacing}
+					\vspace{0em}
+				}
 	}
 
 		\headerbox{Evaluation}{name=coverage,span=1,column=5,row=0}{
@@ -763,7 +795,7 @@
 				\toprule
 					\textbf{Language} & \textbf{Forms} & \textbf{Precision} (\%) & \textbf{Recall} (\%) \\
 				\midrule
-					Kyrgyz & 500 &  &  \\
+					Kyrgyz & 200 & 90.77 & 69.15 \\
 					Kazakh & 1000 & 98.61 &  57.98 \\
 					Tatar & 1000 & 95.03 & 85.65 \\
 					Kumyk & 500 & 96.57 & 69.11 \\
@@ -1062,8 +1094,10 @@
 		\headerbox{Other uses}{name=uses,column=1,below=morphophon}{
 			\begin{itemize}
 				\item HFST transducers are trivially converted to \textbf{spell checkers}
-				\item Segmenter, e.g.\ {\qipa көрүшкөндөрүмдөнсүңбү} :\\
-				 {\small \texttt{көр\hilitegrey{>}\{I\}ш\hilitegrey{>}\{G\}\{A\}н\hilitegrey{>}\{L\}\{A\}р\hilitegrey{>}\{I\}м\hilitegrey{>}\{D\}\{A\}н\hilitegrey{>}с\{I\}ң\hilitegrey{>}\{B\}\{I\}}}
+				\item Segmenter, e.g.\ {\qipa көргөзгөндөрдөнсүңбү} :\\
+				 {\small \texttt{көр\hilitegrey{>}\{G\}\{A\}з\hilitegrey{>}\{G\}\{A\}н\hilitegrey{>}\{L\}\{A\}р\hilitegrey{>}\{D\}\{A\}н\hilitegrey{>}с\{I\}ң\hilitegrey{>}\{B\}\{I\}}}
+				 
+				 %көр\hilitegrey{>}\{I\}ш\hilitegrey{>}\{G\}\{A\}н\hilitegrey{>}\{L\}\{A\}р\hilitegrey{>}\{I\}м\hilitegrey{>}\{D\}\{A\}н\hilitegrey{>}с\{I\}ң\hilitegrey{>}\{B\}\{I\}}}
 			\end{itemize}
 		}
 
