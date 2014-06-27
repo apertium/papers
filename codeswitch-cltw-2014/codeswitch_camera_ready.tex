@@ -105,11 +105,13 @@ into the current or the next segment.\footnote{The software used in this experim
 
 We first built character language models using IRSTLM \cite{federico08a} for the five languages in question. For English
 and French a model was trained using the EuroParl corpus \cite{koehn2005europarl}. 
-For Breton, Welsh and Irish we used corpora of text crawled from the web. For each of the languages we sampled 1.5 million words. \\
+For Breton, Welsh and Irish we used corpora of text crawled from the web. For each of the languages we sampled 1.5 million words. The accuracy of the results saturate after the size of the dataset is around 1 million, and also since our collected corpus for Irish was around 1.5 million words we chose the limit of the sample to be this which also ensures no bias in the sampling of the languages. \\
 In order to build a character language model as opposed to the standard word-ngram based model we replaced spaces with the underscore 
-symbol `\_', and then placed a space chracter between each character. For example, `sl\'{a}inte' would be broken down into a sequence 
-of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e \_'\}. Then the probability for the alphabet sequence is calculated 
-for each language to be used in the experiment. 
+symbol `\_', and then placed a space character between each character. Punctuations and non letters are also part of this language model as we didn't mean to preserve the identity of the language being used in the original form. For example, `sl\'{a}inte' would be broken down into a sequence 
+of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e \_'\}. 
+
+%Then the probability for the alphabet sequence is calculated 
+%for each language to be used in the experiment. 
 %Improved Kneser-Ney is used for smoothing, and this smoothing approach would be useful 
 %for higher-grams. \cite{kneser1995improved} \\
 
