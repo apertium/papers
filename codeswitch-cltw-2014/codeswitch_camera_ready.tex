@@ -101,6 +101,10 @@ recognise segments in running text, only identifying individual words.
 \section{Methodology}
 \label{sec:method}
 
+As the number of possible languages for each segment is in theory the set of all the world's written languages, we take 
+a decision to simplify the task by only looking at texts in the Celtic language and the corresponding majority language spoken
+where the Celtic language is spoken. That is, we looked at detecting between Irish and English, Welsh and English 
+and Breton and French.
 
 \subsection{Corpus}
 
@@ -265,7 +269,8 @@ This is the most na\"{i}ve method of classification, we used the language identi
 \subsection{\texttt{langid} character trigram prediction}
 \label{langidstuff}
 
-Restricting the predicted languages to be amongst the two in the dataset was a decision made to identify the language pairs in a better fashion, both by our techniques and by the other tools. Then we used the character trigram probabilities to predict the detected language for each token. Trigrams were chosen after experimenting with 1--5 grams. The heuristics in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
+
+For this system we used the character trigram probabilities to predict the detected language for each token. Trigrams were chosen after experimenting with 1--5 grams. The heuristics in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
 
 \section{Results}
 \label{sec:results}
