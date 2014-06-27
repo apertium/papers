@@ -230,7 +230,7 @@ This is the most na\"{i}ve method of classification, we used the language identi
 \subsection{\texttt{langid} character bigram and trigram prediction}
 \label{langidstuff}
 
-Restricting the predicted languages to be amongst the two in the dataset was a decision made to identify the language pairs in a better fashion, both by our techniques and by the competitive tools too. Then we used the character bigram and then trigram probabilities to predict the detected language for each token. Rules in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
+Restricting the predicted languages to be amongst the two in the dataset was a decision made to identify the language pairs in a better fashion, both by our techniques and by the competitive tools too. Then we used the character bigram and then character trigram probabilities to predict the detected language for each token. Rules in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
 %which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. 
 
 \section{Results}
@@ -301,15 +301,15 @@ As described in the ~\ref{sec:method} the data collected from Twitter for the th
 \hline
 \texttt{baseline} & 42.76 & 42.16 & 44.07 \\
 \hline
-\texttt{langid2} & 50.35 & 42.28 & 45.11  \\
+\texttt{langid-2character} & 50.35 & 42.28 & 45.11  \\
 \hline
-\texttt{langid3} & 57.24 & 45.92 & 43.16 \\
+\texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
 \hline
 \texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
 \hline
-\texttt{bigram} & 81.29 & 65.62 & 76.79 \\
+\texttt{character bigram} & 81.29 & 65.62 & 76.79 \\
 \hline
-\texttt{wordlist+bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
+\texttt{wordlist+character bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
 \hline
 \end{tabular}
 \end{center}
