@@ -1,4 +1,4 @@
-%Try1: akshay minocha
+%Try2: akshay minocha
 %
 % File coling2014.tex
 %
@@ -194,7 +194,7 @@ but in case of a conflict, a character bigram backoff was introduced to help us 
 \section{Evaluation}
 \label{sec:eval}
 
-We hand-annotated a small evaluation set from a selection of posts to a popular microblogging site\footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}}. The posts `tweets' were filtered into three sets which had been identified as Irish, Welsh and Breton.  Certain tokens were escaped from the data, such as mentioned (which are preceded by an \texttt{@} symbol), subject tags `hashtags' which are preceded by a \texttt{\#} symbol), hyperlinks and the sequence \texttt{rt} which stands for `re-tweet'. An example of the content of our corpus after hand annotation is given in Figure~\ref{fig:tweets}. All of the tweets had at least one instance of code-switching.
+We hand-annotated a small evaluation set from a selection of posts to a popular microblogging site\footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}}. The posts `tweets' were filtered into three sets which had been identified as Irish, Welsh and Breton using the langid tool.  Certain tokens were escaped from the data, such as mentioned (which are preceded by an \texttt{@} symbol), subject tags `hashtags' which are preceded by a \texttt{\#} symbol), hyperlinks and the sequence \texttt{rt} which stands for `re-tweet'. An example of the content of our corpus after hand annotation is given in Figure~\ref{fig:tweets}. All of the tweets had at least one instance of code-switching.
 
 For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task on language-independent 
 named entity recognition: dividing text into syntactically related non-overlapping groups of words. This 
