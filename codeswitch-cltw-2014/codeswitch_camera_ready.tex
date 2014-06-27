@@ -33,7 +33,12 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-  Bilingual communities contribute majorly to the code-switching phenomena, where speakers produce sentences containing words and expressions from a second language. With the increase in the data on the web, specially on informal platforms like that of the social media, it becomes increasingly important to detect such irregularities and handle them appropriately. In this paper we propose ways of dealing with code-switching and detecting sub-segments for texts in three Celtic languages: Breton, Irish and Welsh. 
+  This paper describes an experiment to perform language identification on a sub-sentence basis. The typical
+  case of language identification is to detect the language of documents or sentences. However, it may be the 
+  case that a single sentence or segment contains more than one language. This is especially the case in texts
+  where \emph{code switching} occurs. 
+
+%  Bilingual communities contribute majorly to the code-switching phenomena, where speakers produce sentences containing words and expressions from a second language. With the increase in the data on the web, specially on informal platforms like that of the social media, it becomes increasingly important to detect such irregularities and handle them appropriately. In this paper we propose ways of dealing with code-switching and detecting sub-segments for texts in three Celtic languages: Breton, Irish and Welsh. 
 \end{abstract}
 
 \section{Introduction}
@@ -48,8 +53,8 @@ the text in another language. But when dealing with informal text, particularly 
 where the speech community is predominantly bi- or multi-lingual, this assumption may not hold.
 
 There are several ways in which an informal text may contain parts in different languages, such as
-code switching, quotations, named entities, interjections, translations, etc. Some of these are presented
-in Table~\ref{table:examples}.
+code switching, quotations, named entities, interjections, translations --- either of the full text, or 
+part of the text, comments, etc. Some of these are presented in Table~\ref{table:examples}.
 
 The work presented in this paper was motivated by the problems in normalising non-standard input
 for the Celtic languages as a precursor to machine translation. When applying a normalisation 
@@ -66,7 +71,7 @@ presents future work and conclusions.
 \begin{center}
 \begin{tabular}{ll}
  \textbf{Code switching}: & You're a [Meirice\'{a}nach, c\'{e}n f\'{a}th] are you [foghlaim Gaeilge?!] \\
-\textbf{Quotations}: & The anthem starts with the words [`Mae hen wlad fy nhadau\ldots'] \\
+ \textbf{Quotations}: & The anthem starts with the words [`Mae hen wlad fy nhadau\ldots'] \\
  \textbf{Named entities}: & [Dr Jekyll] ha [Mr Hyde] embannet gant [\'{E}ditions Aber] \\
  \textbf{Interjections}: & Hey, that's great, [diolch yn fawr!] \\
  \textbf{Translations}: & Bloavezh mat d'an holl ! [Bonne ann\'{e} \`{a} tous !] \\
@@ -95,20 +100,64 @@ recognise segments in running text, only identifying individual words.
 
 \section{Methodology}
 \label{sec:method}
+
+
+\subsection{Corpus}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|r|r|r|r}
+\hline
+\multirow{2}{*}{\textbf{Pair}} & \multirow{2}{*}{\textbf{Language}}  & \multicolumn{2}{c|}{\textbf{Statistics} (\%)} \\\cline{3-4}
+                &  &  Tokens & Segments \\
+\hline
+\multirow{2}{*}{Irish---English} & Irish & 332 & 40 \\
+                                 & English & 379 & 42 \\
+\hline
+\multirow{2}{*}{Welsh---English} & Welsh & 419 & 64 \\
+                                 & English & 378 & 66  \\
+\hline
+\multirow{2}{*}{Breton---French} & Breton & 388 & 54 \\
+                                 & French & 379 & 53  \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Document statistics of the annotated data used. }
+\label{table:datastats}
+\end{table}
+
+We hand-annotated a small evaluation set from a selection of posts to a popular microblogging site.\footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}} The \emph{tweets} (microblog posts) were filtered into three sets which had been identified as Irish, Welsh and Breton using the \emph{langid} tool \cite{lui2012langid}. From these, we manually selected between 40 and 50 tweets for each language pair. Statistics on the number of segments and tokens is presented in Table~\ref{table:datastats}.
+Certain tokens were escaped from the data, such as the `mentioned' character (\texttt{@} symbol), subject tags `hashtags' which are preceded by a \texttt{\#} symbol, hyperlinks and the sequence \texttt{rt} which stands for `re-tweet'. An example of the content of our corpus after hand annotation is given in Figure~\ref{fig:tweets}. All of the tweets had at least one instance of code-switching.
+
+\begin{figure}
+\begin{small}
+\begin{alltt}
+[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!] 
+@afaltomkins [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init] 
+[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!] 
+\end{alltt}
+\end{small}
+\caption{Example of text from a microblogging site chunked manually.}
+\label{fig:tweets}
+\end{figure}
+
+
+
+\subsection{Alphabet n-gram approach}
+\label{alphan}
+
 We use the character n-gram approach along with some heuristics which are relevant to our problem domain of identifying
 segments for subsequent processing. We would like 
 to both predict the code switched points but looking at the surrounding structure also decide the inclusion of them 
 into the current or the next segment.\footnote{The software used in this experiment is available online at: \url{removed for review}.}
 
-\subsection{Alphabet n-gram approach}
-\label{alphan}
-
 We first built character language models using IRSTLM \cite{federico08a} for the five languages in question. For English
 and French a model was trained using the EuroParl corpus \cite{koehn2005europarl}. 
-For Breton, Welsh and Irish we used corpora of text crawled from the web. For each of the languages we sampled 1.5 million words. The accuracy of the results saturate after the size of the dataset is around 1 million, and also since our collected corpus for Irish was around 1.5 million words we chose the limit of the sample to be this which also ensures no bias in the sampling of the languages. \\
+For Breton, Welsh and Irish we used corpora of text crawled from the web. For each of the languages we sampled 1.5 million words. The accuracy of the results saturate after the size of the dataset is around 1 million, and also since our collected corpus for Breton was around 1.5 million words we chose the limit of the sample to be this which also ensures no bias in the sampling of the languages. \\
 In order to build a character language model as opposed to the standard word-ngram based model we replaced spaces with the underscore 
-symbol `\_', and then placed a space character between each character. Punctuations and non letters are also part of this language model as we didn't mean to preserve the identity of the language being used in the original form. For example, `sl\'{a}inte' would be broken down into a sequence 
-of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e \_'\}. 
+symbol `\_', and then placed a space character between each character. Punctuation and non-letter characters are also 
+part of this language model. For example, the word `sl\'{a}inte!' would be broken down into a sequence 
+of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}. 
 
 %Then the probability for the alphabet sequence is calculated 
 %for each language to be used in the experiment. 
@@ -194,25 +243,11 @@ but in case of a conflict, a character bigram backoff was introduced to help us 
 \section{Evaluation}
 \label{sec:eval}
 
-We hand-annotated a small evaluation set from a selection of posts to a popular microblogging site\footnote{\url{http://indigenoustweets.blogspot.in/2013/12/mapping-celtic-twittersphere.html}}. The posts `tweets' were filtered into three sets which had been identified as Irish, Welsh and Breton using the langid tool.  Certain tokens were escaped from the data, such as mentioned (which are preceded by an \texttt{@} symbol), subject tags `hashtags' which are preceded by a \texttt{\#} symbol), hyperlinks and the sequence \texttt{rt} which stands for `re-tweet'. An example of the content of our corpus after hand annotation is given in Figure~\ref{fig:tweets}. All of the tweets had at least one instance of code-switching.
-
-For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task on language-independent 
+or the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task on language-independent 
 named entity recognition: dividing text into syntactically related non-overlapping groups of words. This 
 chunking mechanism \cite{tjong2003introduction} is very similar to ours, in terms of words which only belong to 
 one category (here, language), and also evaluation based on the segment structure present in the data. The chunks 
 here are such that they belong to only one language. 
-
-\begin{figure}
-\begin{small}
-\begin{alltt}
-[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!] 
-@afaltomkins [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init] 
-[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!] 
-\end{alltt}
-\end{small}
-\caption{Example of text from a microblogging site chunked manually.}
-\label{fig:tweets}
-\end{figure}
 
 For our current task, each of the texts have been limited to two languages i.e. the primary language (the Celtic language) and the 
 secondary language (the `majority' language). Hence the type of chunking tags are limited to these. The evaluation statistics shown 
@@ -225,39 +260,16 @@ Apart from the techniques discussed in section~\ref{sec:method}, some baselines 
 \subsection{Baseline}
 \label{baseline}
 
-This is the most na\"{i}ve method of classification, we used the language identification tool \texttt{langid.py} \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single majority classification. As no chunking is performed we can expect that the precision and recall will be very low. However it does provide a reasonable baseline for the per-word accuracy.  \\
+This is the most na\"{i}ve method of classification, we used the language identification tool \texttt{langid.py} \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this single majority classification. As no chunking is performed we can expect that the precision and recall will be very low. However it does provide a reasonable baseline for the per-word accuracy.  
 
-\subsection{\texttt{langid} character bigram and trigram prediction}
+\subsection{\texttt{langid} character trigram prediction}
 \label{langidstuff}
 
-Restricting the predicted languages to be amongst the two in the dataset was a decision made to identify the language pairs in a better fashion, both by our techniques and by the competitive tools too. Then we used the character bigram and then character trigram probabilities to predict the detected language for each token. Rules in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
-%which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. 
+Restricting the predicted languages to be amongst the two in the dataset was a decision made to identify the language pairs in a better fashion, both by our techniques and by the other tools. Then we used the character trigram probabilities to predict the detected language for each token. Trigrams were chosen after experimenting with 1--5 grams. The heuristics in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
 
 \section{Results}
 \label{sec:results}
-As described in ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statistics of the same are given in Table~\ref{table:datastats}. // 
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|l|r|r|r|r}
-\hline
-\multirow{2}{*}{\textbf{Pair}} & \multirow{2}{*}{\textbf{Language}}  & \multicolumn{2}{c|}{\textbf{Statistics} (\%)} \\\cline{3-4}
-                &  &  Tokens & Segments \\
-\hline
-\multirow{2}{*}{Irish---English} & Irish & 332 & 40 \\
-                                 & English & 379 & 42 \\
-\hline
-\multirow{2}{*}{Welsh---English} & Welsh & 419 & 64 \\
-                                 & English & 378 & 66  \\
-\hline
-\multirow{2}{*}{Breton---French} & Breton & 388 & 54 \\
-                                 & French & 379 & 53  \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Document statistics of the annotated data used. }
-\label{table:datastats}
-\end{table}
+As described in ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statistics of the same are given in Table~\ref{table:datastats}. 
 
 \begin{table}
 \begin{center}
@@ -268,9 +280,6 @@ As described in ~\ref{sec:method} the data collected from Twitter for the three 
 \hline 
 \multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
                                           & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
-\hline
-\multirow{2}{*}{\texttt{langid-2character}}         &  $p$ &  0.00   & 7.14     & 0.0   & 18.18    & 0.0 & 28.30 \\
-                                          & $r$  & 0.00    & 5.00     & 0.0   & 14.12 & 0.0 & 18.99 \\
 \hline
 \multirow{2}{*}{\texttt{langid-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
                                           & $r$  & 5.41    & 8.45     & 0.0   & 14.58 & 1.92 & 12.36 \\
@@ -301,8 +310,6 @@ As described in ~\ref{sec:method} the data collected from Twitter for the three 
 \hline
 \texttt{baseline} & 42.76 & 42.16 & 44.07 \\
 \hline
-\texttt{langid-2character} & 50.35 & 42.28 & 45.11  \\
-\hline
 \texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
 \hline
 \texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
@@ -327,7 +334,7 @@ identify particular words in a language, but also segments.
 \label{sec:conclusions}
 
 This paper has presented a very preliminary investigation into subsegment language identification in Celtic language texts. We have
-proposed a model that chunks input text into segments, and performs language identification on these segments at the same time. Precision and
+proposed a model that chunks input text into segments and performs language identification on these segments at the same time. Precision and
 recall are low, leaving a lot of room for further work. Some of our plans are as follows. We would like to annotate more test data,
 at least 100 tweets in each language. We would also like to attempt our method using higher order character n-gram models for backoff, and
 n-gram word language models for detection. 
@@ -344,7 +351,8 @@ n-gram word language models for detection.
 
 \section*{Acknowledgements}
 
-%We thank Kevin Scannell for help with providing data from Twitter and for useful comments and suggestions.
+We thank Kevin Scannell for help with providing data from Twitter and for useful comments and suggestions. This work
+was undertaken as part of the Apertium project in the 2014 Google Summer of Code.
 
 % include your own bib file like this:
 \bibliographystyle{acl}
