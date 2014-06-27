@@ -230,7 +230,8 @@ This is the most na\"{i}ve method of classification, we used the language identi
 \subsection{\texttt{langid} character bigram and trigram prediction}
 \label{langidstuff}
 
-After restricting the predicted languages to be amongst the two in the dataset, we used the character bigram and then trigram probabilities to predict the detected language for each token, some rules like in section~\ref{sec:method} were followed which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. 
+Restricting the predicted languages to be amongst the two in the dataset was a decision made to identify the language pairs in a better fashion, both by our techniques and by the competitive tools too. Then we used the character bigram and then trigram probabilities to predict the detected language for each token. Rules in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
+%which included that the span of a segment or a code-switched phrase is more than a word, the social media non-language entities such as the hashtags, usernames and urls do not make a difference. 
 
 \section{Results}
 \label{sec:results}
