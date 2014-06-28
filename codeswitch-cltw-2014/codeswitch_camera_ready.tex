@@ -211,12 +211,13 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 
 This section describes the heuristics taken into account while performing the chunking of the input data according to 
 the sequences of segments in different languages. 
-'Chunks' represent the evaluated tuples of segments and their labelled language, buffer is the expanding segment.
+In Figure ~\ref{fig:chunkal}, `chunks' represent the list of evaluated tuples of segments and their labelled language, `buffer' is the expanding segment.
  \textit{lang\_predict} corressponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
-
 \begin{algorithm}
-\caption{Chunking algorithm}\label{euclid}
+\caption*{\textsc{}}
+%\caption{Chunking algorithm}\label{euclid}
+{\fontsize{10}{10}\selectfont
 \begin{algorithmic}[1]
 %\Procedure{}{}
 \State $\textit{buffer} = [\ ] \text{\ \ \  \#undecided expanding window of chunk}$
@@ -254,9 +255,14 @@ variable helps in implementing the heuristic of minimum segment size while label
 
 \EndIf
 %\EndProcedure
-\end{algorithmic}
+\end{algorithmic}}
 \end{algorithm}
-
+\vspace{-0.4cm}
+\begin{figure}[hb]
+\def\@fs@post{}
+\caption{Chunking Algorithm}
+\label{fig:chunkal}
+\end{figure}
 %A flag is set at the beginning of the input text, and this moves forward to the position in the text upto where confident 
 %chunking has been performed. For example, in case of a continuous prediction there would be no change and since the 
 %predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the 
@@ -266,6 +272,7 @@ variable helps in implementing the heuristic of minimum segment size while label
 %is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
 %that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
 
+\vspace{-0.6cm}
 \subsection{Word-based prediction}
 \label{wbased}
 
@@ -303,7 +310,7 @@ For our current task, each of the texts have been limited to two languages i.e. 
 secondary language (the `majority' language). Hence the type of chunking tags are limited to these. The evaluation statistics shown 
 in Tables~\ref{table:precisionrecall}~and~\ref{table:accuracy} mention two values for each of the experiment conducted on the three bilingual 
 language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the 
-number of phrases in the data that were found by the chunker, which is the overall recall. \\
+number of phrases in the data that were found by the chunker, which is the overall recall. 
 
 Apart from the techniques discussed in section~\ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanisms perform.
 
