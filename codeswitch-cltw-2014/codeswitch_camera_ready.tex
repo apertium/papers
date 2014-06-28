@@ -202,16 +202,19 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 \label{cschunking}
 
 This section describes the heuristics taken into account while performing the chunking of the input data according to 
-the sequences of segments in different languages.
+the sequences of segments in different languages. 
+'Chunks' represent the evaluated tuples of segments and their labelled language, buffer is the expanding segment.
+ \textit{lang\_predict} corressponds to any function which is used to determine the language of the token. The flag 
+variable helps in implementing the heuristic of minimum segment size while labelling chunks.
 
-A flag is set at the beginning of the input text, and this moves forward to the position in the text upto where confident 
-chunking has been performed. For example, in case of a continuous prediction there would be no change and since the 
-predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the 
-same chunk. In case of a doubt, the flag is set at the same position, and no final decision on labelling the word is 
-performed, to have more confidence on the code-switch, the process moves on to the next token, if it corresponds to 
-that of the previous chunk, then both these undecided words are labelled and included in the chunk, otherwise a change 
-is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
-that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
+%A flag is set at the beginning of the input text, and this moves forward to the position in the text upto where confident 
+%chunking has been performed. For example, in case of a continuous prediction there would be no change and since the 
+%predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the 
+%same chunk. In case of a doubt, the flag is set at the same position, and no final decision on labelling the word is 
+%performed, to have more confidence on the code-switch, the process moves on to the next token, if it corresponds to 
+%that of the previous chunk, then both these undecided words are labelled and included in the chunk, otherwise a change 
+%is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
+%that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
 
 \subsection{Word-based prediction}
 \label{wbased}
