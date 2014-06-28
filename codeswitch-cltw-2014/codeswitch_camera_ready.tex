@@ -128,7 +128,7 @@ presents future work and conclusions.
 Code-switching and segment detection problems have been the subject of previous research. A good deal of work
 has been done on detecting code-switched segments in speech data \cite{chan2004detection,lyu2006language}.
 It is seen that language modelling techniques have shown promise earlier, such as in \newcite{yu2013identification}, 
-the experiment on Mandarin-Taiwanese sentences show a high accuracy in terms of detecting code-switched sentences. \\
+the experiment on Mandarin-Taiwanese sentences show a high accuracy in terms of detecting code-switched sentences. 
 
 In \newcite{chan2004detection} the authors have made use of the bi-phone probabilities and calculated them to measure a confidence metric, 
 to \cite{lyu2006language} which has made use of a classification method, named syllable-based duration classification, 
@@ -224,38 +224,38 @@ variable helps in implementing the heuristic of minimum segment size while label
 {\fontsize{10}{10}\selectfont
 \begin{algorithmic}[1]
 %\Statex{}%Procedure{}{}
-\Statex $\textit{buffer} = [\ ] \text{\ \ \  \#undecided expanding window of chunk}$
-\Statex $\textit{chunks} = [\ ] \text{\ \ \  \#decided labelled segment}$
-\Statex $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
-\Statex $\textit{flag} \gets \text{0}$
+\State $\textit{buffer} = [\ ] \text{\ \ \  \#undecided expanding window of chunk}$
+\State $\textit{chunks} = [\ ] \text{\ \ \  \#decided labelled segment}$
+\State $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
+\State $\textit{flag} \gets \text{0}$
 %\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
 \For{\texttt{word in sentence}}
 \If {$ \textit{lang\_predict(word)} \text{==} \textit{buffer\_language} $}
         \If {$ \textit{flag} \text{=\ =\ 1} $}
-        \Statex $\textit{buffer} += [\textit{word\_d,word}] $
-        \Statex $\textit{flag} \gets \text{0}$
+        \State $\textit{buffer} += [\textit{word\_d,word}] $
+        \State $\textit{flag} \gets \text{0}$
         \Else
-        \Statex $\textit{buffer} += [\textit{word}] $
+        \State $\textit{buffer} += [\textit{word}] $
         \EndIf
         \EndIf
 \If {$ \textit{lang\_prediction(word)} \text{!=} \textit{buffer\_langugae} $}
         \If {$ \textit{flag} \text{=\ =\ 0} $}
-        \Statex $\textit{flag} \gets \text{1}$
-        \Statex $\textit{word\_d} \gets \textit{word} $
-        \Statex $\text{continue}$
+        \State $\textit{flag} \gets \text{1}$
+        \State $\textit{word\_d} \gets \textit{word} $
+        \State $\text{continue}$
 
         \Else
-        \Statex $\textit{chunk} \text{+= \ }  \textit{[(buffer,buffer\_language)]} $
+        \State $\textit{chunk} \text{+= \ }  \textit{[(buffer,buffer\_language)]} $
         %\State $\textit{buffer} \gets [] $
-        \Statex $\textit{buffer} = [\textit{word\_d,word}] $
-        \Statex $\textit{buffer\_language} = \gets \textit{lang\_predict}\text{(word)}$% \text{\#Language of new expanding chunk}$
-        \Statex $\textit{flag} \gets \text{0}$
+        \State $\textit{buffer} = [\textit{word\_d,word}] $
+        \State $\textit{buffer\_language} = \gets \textit{lang\_predict}\text{(word)}$% \text{\#Language of new expanding chunk}$
+        \State $\textit{flag} \gets \text{0}$
         \EndIf
 
 \EndIf
 \EndFor
 \If {$\textit{length(buffer)} \text{!=0\ } $}
-        \Statex $\textit{chunk} \text{+= \ }  \text{[\textit{[(buffer,buffer\_language)]}} $
+        \State $\textit{chunk} \text{+= \ }  \text{[\textit{[(buffer,buffer\_language)]}} $
 
 \EndIf
 %\EndProcedure
