@@ -16,6 +16,7 @@
 
 \usepackage{amsmath}
 \usepackage{algorithm}
+\usepackage{algcompatible}
 \usepackage[noend]{algpseudocode}
 
 %\setlength\titlebox{5cm}
@@ -57,14 +58,17 @@ this may be the case --- although there are exceptions --- such as quotations em
 the text in another language. But when dealing with informal text, particularly in languages
 where the speech community is predominantly bi- or multi-lingual, this assumption may not hold.
 
-There are several ways in which an informal text may contain parts in different languages, such as
-code switching, quotations, named entities, interjections, translations --- either of the full text, or 
-part of the text, comments, etc. Some of these are presented in Table~\ref{table:examples}.
+%Such as
+%code switching, quotations, named entities, interjections, translations --- either of the full text, or 
+%part of the text, comments, etc. 
 
 The work presented in this paper was motivated by the problems in normalising non-standard input
 for the Celtic languages as a precursor to machine translation. When applying a normalisation 
 strategy to a piece of text, it is necessary to first know the language of the piece of text you 
 are applying it to.
+
+There are several ways in which an informal text may contain parts in different languages.
+Some of these are presented in Table~\ref{table:examples}.
 
 The remainder of the paper is laid out as follows. In section~\ref{sec:method} we describe the problem
 in more detail and look at relevant prior work before proposing a novel method of sub-sentential
@@ -219,42 +223,43 @@ variable helps in implementing the heuristic of minimum segment size while label
 %\caption{Chunking algorithm}\label{euclid}
 {\fontsize{10}{10}\selectfont
 \begin{algorithmic}[1]
-%\Procedure{}{}
-\State $\textit{buffer} = [\ ] \text{\ \ \  \#undecided expanding window of chunk}$
-\State $\textit{chunks} = [\ ] \text{\ \ \  \#decided labelled segment}$
-\State $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
-\State $\textit{flag} \gets \text{0}$
+%\Statex{}%Procedure{}{}
+\Statex $\textit{buffer} = [\ ] \text{\ \ \  \#undecided expanding window of chunk}$
+\Statex $\textit{chunks} = [\ ] \text{\ \ \  \#decided labelled segment}$
+\Statex $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
+\Statex $\textit{flag} \gets \text{0}$
 %\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
 \For{\texttt{word in sentence}}
 \If {$ \textit{lang\_predict(word)} \text{==} \textit{buffer\_language} $}
         \If {$ \textit{flag} \text{=\ =\ 1} $}
-        \State $\textit{buffer} += [\textit{word\_d,word}] $
-        \State $\textit{flag} \gets \text{0}$
+        \Statex $\textit{buffer} += [\textit{word\_d,word}] $
+        \Statex $\textit{flag} \gets \text{0}$
         \Else
-        \State $\textit{buffer} += [\textit{word}] $
+        \Statex $\textit{buffer} += [\textit{word}] $
         \EndIf
         \EndIf
 \If {$ \textit{lang\_prediction(word)} \text{!=} \textit{buffer\_langugae} $}
         \If {$ \textit{flag} \text{=\ =\ 0} $}
-        \State $\textit{flag} \gets \text{1}$
-        \State $\textit{word\_d} \gets \textit{word} $
-        \State $\text{continue}$
+        \Statex $\textit{flag} \gets \text{1}$
+        \Statex $\textit{word\_d} \gets \textit{word} $
+        \Statex $\text{continue}$
 
         \Else
-        \State $\textit{chunk} \text{+= \ }  \textit{[(buffer,buffer\_language)]} $
+        \Statex $\textit{chunk} \text{+= \ }  \textit{[(buffer,buffer\_language)]} $
         %\State $\textit{buffer} \gets [] $
-        \State $\textit{buffer} = [\textit{word\_d,word}] $
-        \State $\textit{buffer\_language} = \gets \textit{lang\_predict}\text{(word)}$% \text{\#Language of new expanding chunk}$
-        \State $\textit{flag} \gets \text{0}$
+        \Statex $\textit{buffer} = [\textit{word\_d,word}] $
+        \Statex $\textit{buffer\_language} = \gets \textit{lang\_predict}\text{(word)}$% \text{\#Language of new expanding chunk}$
+        \Statex $\textit{flag} \gets \text{0}$
         \EndIf
 
 \EndIf
 \EndFor
 \If {$\textit{length(buffer)} \text{!=0\ } $}
-        \State $\textit{chunk} \text{+= \ }  \text{[\textit{[(buffer,buffer\_language)]}} $
+        \Statex $\textit{chunk} \text{+= \ }  \text{[\textit{[(buffer,buffer\_language)]}} $
 
 \EndIf
 %\EndProcedure
+%\Statex{}
 \end{algorithmic}}
 \end{algorithm}
 \vspace{-0.4cm}
@@ -296,6 +301,7 @@ but in case of a conflict, a character bigram backoff was introduced to help us 
 %% spelling
 %% abbreviations
 
+\vspace{-0.4cm}
 
 \section{Evaluation}
 \label{sec:eval}
