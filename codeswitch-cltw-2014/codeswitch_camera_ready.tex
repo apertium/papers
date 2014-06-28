@@ -48,6 +48,7 @@
 \end{abstract}
 
 \section{Introduction}
+\vspace{-0.132cm}
 \label{intro}
 Determining the language of a piece of text is one of the first steps that must be taken
 before proceeding with further computational processing. This task has received a substantial amount of
@@ -120,6 +121,7 @@ presents future work and conclusions.
 %\vspace{-0.65cm}
 
 \section{Related Work}
+\vspace{-0.132cm}
 \label{sec:relwork}
 
 Code-switching and segment detection problems have been the subject of previous research. A good deal of work
@@ -136,6 +138,7 @@ recognise segments in running text, only identifying individual words.
 %Our idea of going to character level inspection has been inspired both by the language modelling techniques used by the community as well as the acoustic modelling research. 
 
 \section{Methodology}
+\vspace{-0.132cm}
 \label{sec:method}
 
 As the number of possible languages for each segment is in theory the set of all the world's written languages, we take 
@@ -144,6 +147,7 @@ where the Celtic language is spoken. That is, we looked at detecting between Iri
 and Breton and French.
 
 \subsection{Corpus}
+\vspace{-0.152cm}
 
 \begin{table}
 \begin{center}
@@ -178,7 +182,6 @@ Certain tokens were escaped from the data, such as the `mentioned' character (\t
 [\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!] 
 \end{alltt}
 \end{small}
-\vspace{-0.3cm}
 \caption{Example of text from a microblogging site chunked manually.}
 \label{fig:tweets}
 \end{figure}
@@ -186,6 +189,7 @@ Certain tokens were escaped from the data, such as the `mentioned' character (\t
 
 
 \subsection{Alphabet n-gram approach}
+\vspace{-0.152cm}
 \label{alphan}
 
 We use the character n-gram approach along with some heuristics which are relevant to our problem domain of identifying
@@ -211,6 +215,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 %for higher-grams. \cite{kneser1995improved} \\
 
 \subsection{Sequence chunking}
+\vspace{-0.152cm}
 \label{cschunking}
 
 This section describes the way we apply heuristics to segment and label the input text.
@@ -263,11 +268,13 @@ variable helps in implementing the heuristic of minimum segment size while label
 %\Statex{}
 \end{algorithmic}}
 \end{algorithm}
+\vspace{-0.4cm}
 \begin{figure}[hb]
 \def\@fs@post{}
 \caption{Chunking Algorithm}
 \label{fig:chunkal}
 \end{figure}
+\vspace{-0.4cm}
 %A flag is set at the beginning of the input text, and this moves forward to the position in the text upto where confident 
 %chunking has been performed. For example, in case of a continuous prediction there would be no change and since the 
 %predicted tag of the new word corresponds to that already of the expanding chunk, this word is also included in the 
@@ -277,9 +284,8 @@ variable helps in implementing the heuristic of minimum segment size while label
 %is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
 %that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
 
-\vspace{-0.7cm}
 \subsection{Word-based prediction}
-\vspace{-0.132cm}
+\vspace{-0.152cm}
 \label{wbased}
 
 Designed keeping in mind importance of the most common words, this procedure included 
@@ -297,7 +303,8 @@ of continuing with the previous span was taken and the previous selected tag was
 %A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character-based techniques 
 %as described above.
 In case of the word being present in only one of the two monolingual word lists the classification is simple, 
-but in case of a conflict, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards the majority class. 
+but in case of a conflict, a character bigram backoff was introduced to help us disambiguate the language label. 
+%This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards the majority class. 
 
 
 % issues:
@@ -307,8 +314,9 @@ but in case of a conflict, a character bigram backoff was introduced to help us 
 %% abbreviations
 
 
+\vspace{-0.132cm}
 \section{Evaluation}
-\vspace{-0.152cm}
+\vspace{-0.132cm}
 \label{sec:eval}
 
 For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task on language-independent 
@@ -328,12 +336,14 @@ number of phrases in the data that were found by the chunker, which is the overa
 Apart from the techniques discussed in section~\ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanisms perform.
 
 \subsection{Baseline}
+\vspace{-0.132cm}
 \label{baseline}
 
 %This is the most na\"{i}ve method of classification, 
 We used the language identification tool \texttt{langid.py} \cite{lui2012langid} on the whole dataset and labelled all the individual lines according to this majority classification. As no chunking is performed we can expect that the precision and recall will be very low. However it does provide a reasonable baseline for the per-word accuracy.  
 
 \subsection{\texttt{langid} character trigram prediction}
+\vspace{-0.132cm}
 \label{langidstuff}
 
 
@@ -393,7 +403,6 @@ As described in Section~\ref{sec:method} the data collected from Twitter for the
 \hline
 \end{tabular}
 \end{center}
-\vspace{-0.3cm}
 \caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
   was assigned to the right language, independent of span.}
 \label{table:accuracy}
@@ -405,8 +414,9 @@ While the precision and recall are low for the remaining models, we see that we 
 The performance by combining the wordlist based model with a character bigram model. And what is more, we are able to begin to not only 
 identify particular words in a language, but also segments.
 
+\vspace{-0.132cm}
 \section{Conclusions}
-\vspace{-0.152cm}
+\vspace{-0.132cm}
 \label{sec:conclusions}
 
 This paper has presented a very preliminary investigation into subsegment language identification in Celtic language texts. We have
@@ -427,6 +437,7 @@ recall are low, leaving a lot of room for further work.
 %% higher order character n-gram models
 
 \section*{Acknowledgements}
+\vspace{-0.132cm}
 
 We thank Kevin Scannell for help with providing data from Twitter and for useful comments and suggestions. This work
 was undertaken as part of the Apertium project in the 2014 Google Summer of Code.
