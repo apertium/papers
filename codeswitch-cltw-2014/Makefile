@@ -1,5 +1,5 @@
 all:
-	xelatex codeswitch.tex
-	bibtex codeswitch
-	xelatex codeswitch.tex
+	xelatex codeswitch_camera_ready.tex
+	bibtex codeswitch_camera_ready
+	xelatex codeswitch_camera_ready.tex
 
