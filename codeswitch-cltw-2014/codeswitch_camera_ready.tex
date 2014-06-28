@@ -13,6 +13,11 @@
 \usepackage[small,bf]{caption}
 \usepackage{multirow}
 
+
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
 %\setlength\titlebox{5cm}
 
 \title{Subsegmental language detection in Celtic language text}
@@ -206,6 +211,48 @@ the sequences of segments in different languages.
 'Chunks' represent the evaluated tuples of segments and their labelled language, buffer is the expanding segment.
  \textit{lang\_predict} corressponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
+
+\begin{algorithm}
+\caption{Chunking algorithm}\label{euclid}
+\begin{algorithmic}[1]
+\Procedure{}{}
+\State $\textit{buffer} = [] \text{\ \ \  \#undecided expanding window of chunk}$
+\State $\textit{chunks} = [] \text{\ \ \  \#decided labelled segment}$
+\State $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
+\State $\textit{flag} \gets \text{0}$
+%\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
+\For{\texttt{word in sentence}}
+\If {$ \textit{lang\_predict(word)} \text{==} \textit{buffer\_language} $}
+        \If {$ \textit{flag} \text{==\ 1} $}
+        \State $\textit{buffer} += [\textit{word\_d,word}] $
+        \State $\textit{flag} \gets \text{0}$
+        \Else
+        \State $\textit{buffer} += [\textit{word}] $
+        \EndIf
+        \EndIf
+\If {$ \textit{lang\_prediction(word)} \text{!=} \textit{buffer\_langugae} $}
+        \If {$ \textit{flag} \text{==\ 0} $}
+        \State $\textit{flag} \gets \text{1}$
+        \State $\textit{word\_d} \gets \textit{word} $
+        \State $\text{continue}$
+
+        \Else
+        \State $\textit{chunk} \text{+= \ }  \textit{[(buffer,buffer\_language)]} $
+        \State $\textit{buffer} \gets [] $
+        \State $\textit{buffer} += [\textit{word\_d,word}] $
+        \State $\textit{buffer\_language} = \gets \textit{lang\_predict}\text{(word)}$% \text{\#Language of new expanding chunk}$
+        \State $\textit{flag} \gets \text{0}$
+        \EndIf
+
+\EndIf
+\EndFor
+\If {$\textit{length(buffer)} \text{!=0\ } $}
+        \State $\textit{chunk} \text{+= \ }  \text{[\textit{[(buffer,buffer\_language)]}} $
+
+\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 %A flag is set at the beginning of the input text, and this moves forward to the position in the text upto where confident 
 %chunking has been performed. For example, in case of a continuous prediction there would be no change and since the 
