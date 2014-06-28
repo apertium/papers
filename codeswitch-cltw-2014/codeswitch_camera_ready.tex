@@ -230,8 +230,8 @@ variable helps in implementing the heuristic of minimum segment size while label
 {\fontsize{9}{9}\selectfont
 \begin{algorithmic}[1]
 %\Statex{}%Procedure{}{}
-\State $\textit{buffer} = [\ ] \text{\ \ \  \#undecided expanding window of chunk}$
-\State $\textit{chunks} = [\ ] \text{\ \ \  \#decided labelled segment}$
+\State $\textit{buffer} = [\ ] \text{\ \ \  \#Undecided expanding window of chunk}$
+\State $\textit{chunks} = [\ ] \text{\ \ \  \#Decided labelled segment}$
 \State $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
 \State $\textit{flag} \gets \text{0}$
 %\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
@@ -244,7 +244,7 @@ variable helps in implementing the heuristic of minimum segment size while label
         \State $\textit{buffer} += [\textit{word}] $
         \EndIf
         \EndIf
-\If {$ \textit{lang\_prediction(word)} \text{!=} \textit{buffer\_langugae} $}
+\If {$ \textit{lang\_prediction(word)} \text{!=} \textit{buffer\_language} $}
         \If {$ \textit{flag} \text{=\ =\ 0} $}
         \State $\textit{flag} \gets \text{1}$
         \State $\textit{word\_d} \gets \textit{word} $
@@ -261,7 +261,7 @@ variable helps in implementing the heuristic of minimum segment size while label
 \EndIf
 \EndFor
 \If {$\textit{length(buffer)} \text{!=0\ } $}
-        \State $\textit{chunk} \text{+= \ }  \text{[\textit{[(buffer,buffer\_language)]}} $
+        \State $\textit{chunk} \text{+= \ }  \text{[\textit{(buffer,buffer\_language)}]} $
 
 \EndIf
 %\EndProcedure
