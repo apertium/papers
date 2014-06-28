@@ -29,7 +29,7 @@
   Hyderabad (India) \\
   {\small {\tt akshay.minocha@students.iiit.ac.in}} \\\And
   Francis M. Tyers \\
-  Giellatekno / CLEAR \\
+  Giellatekno \\ %/CLEAR \\
   UiT Norgga \'arktala\v{s} universitehta  \\
   9017 Romsa (Norway) \\
   {\small {\tt francis.tyers@uit.no}} \\}
@@ -62,11 +62,10 @@ where the speech community is predominantly bi- or multi-lingual, this assumptio
 
 The work presented in this paper was motivated by the problems in normalising non-standard input
 for the Celtic languages as a precursor to machine translation. When applying a normalisation 
-strategy to a piece of text, it is necessary to first know the language of the piece of text you 
-are applying it to.
-
-There are several ways in which an informal text may contain parts in different languages.
-Some of these are presented in Table~\ref{table:examples}.
+strategy to a piece of text, it is necessary to first know the language of the piece of text you are applying it to.
+%Table~\ref{table:examples} shows some examples of how code switching is present in text
+%There are several ways in which an informal text may contain parts in different languages.
+%Some of these are presented in Table~\ref{table:examples}.
 
 The remainder of the paper is laid out as follows. In section~\ref{sec:method} we describe the problem
 in more detail and look at relevant prior work before proposing a novel method of sub-sentential
@@ -104,21 +103,21 @@ presents future work and conclusions.
 }
 
 
-\begin{table}[h]
-\begin{center}
-\vspace{-0.3cm}
-\begin{tabular}{ll}
-\textbf{Code switching}: & You're a [Meirice\'{a}nach, c\'{e}n f\'{a}th] are you [foghlaim Gaeilge?!] \\
-\textbf{Quotations}: & The anthem starts with the words [`Mae hen wlad fy nhadau\ldots'] \\
-\textbf{Named entities}: & [Dr Jekyll] ha [Mr Hyde] embannet gant [\'{E}ditions Aber] \\
-\textbf{Interjections}: & Hey, that's great, [diolch yn fawr!] \\
-\textbf{Translations}: & Bloavezh mat d'an holl ! [Bonne ann\'{e} \`{a} tous !] \\
-\end{tabular}
-\caption{Some examples of text segments containing more than one language}
-\label{table:examples}
-\end{center}
-\end{table}
-\vspace{-0.65cm}
+%\begin{table}[h]
+%\begin{center}
+%\vspace{-0.3cm}
+%%\begin{tabular}{ll}
+%\textbf{Code switching}: & You're a [Meirice\'{a}nach, c\'{e}n f\'{a}th] are you [foghlaim Gaeilge?!] \\
+%\textbf{Quotations}: & The anthem starts with the words [`Mae hen wlad fy nhadau\ldots'] \\
+%\textbf{Named entities}: & [Dr Jekyll] ha [Mr Hyde] embannet gant [\'{E}ditions Aber] \\
+%\textbf{Interjections}: & Hey, that's great, [diolch yn fawr!] \\
+%\textbf{Translations}: & Bloavezh mat d'an holl ! [Bonne ann\'{e} \`{a} tous !] \\
+%\end{tabular}
+%\caption{Some examples of text segments containing more than one language}
+%\label{table:examples}
+%\end{center}
+%\end{table}
+%\vspace{-0.65cm}
 
 \section{Related Work}
 \label{sec:relwork}
@@ -129,7 +128,7 @@ It is seen that language modelling techniques have shown promise earlier, such a
 the experiment on Mandarin-Taiwanese sentences show a high accuracy in terms of detecting code-switched sentences. 
 
 In \newcite{chan2004detection} the authors have made use of the bi-phone probabilities and calculated them to measure a confidence metric, 
-to \cite{lyu2006language} which has made use of a classification method, named syllable-based duration classification, 
+to \cite{lyu2006language} which has made use of named syllable-based duration classification, 
 which uses the tonal syllable properties along with the speech signals to help predict the code switch points. In \newcite{yeong2010language} 
  the authors use syllable structure information to identify words in code-switched text in Malay-English, however they did not 
 recognise segments in running text, only identifying individual words.
@@ -147,7 +146,6 @@ and Breton and French.
 \subsection{Corpus}
 
 \begin{table}
-\vspace{-0.65cm}
 \begin{center}
 \begin{tabular}{|l|r|r|r|r}
 \hline
@@ -193,7 +191,8 @@ Certain tokens were escaped from the data, such as the `mentioned' character (\t
 We use the character n-gram approach along with some heuristics which are relevant to our problem domain of identifying
 segments for subsequent processing. We would like 
 to both predict the code switched points but looking at the surrounding structure also decide the inclusion of them 
-into the current or the next segment.\footnote{The software used in this experiment is available online at: \url{removed for review}.}
+into the current or the next segment.
+%\footnote{The software used in this experiment is available online at: \url{removed for review}.}
 
 We first built character language models using IRSTLM \cite{federico08a} for the five languages in question. For English
 and French a model was trained using the EuroParl corpus \cite{koehn2005europarl}. 
@@ -214,8 +213,9 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 \subsection{Sequence chunking}
 \label{cschunking}
 
-This section describes the heuristics taken into account while performing the chunking of the input data according to 
-the sequences of segments in different languages. 
+This section describes the way we apply heuristics to segment and label the input text.
+%the heuristics taken into account while performing the chunking of the input data according to 
+%the sequences of segments in different languages. 
 In Figure ~\ref{fig:chunkal}, `chunks' represent the list of evaluated tuples of segments and their labelled language, `buffer' is the expanding segment.
  \textit{lang\_predict} corressponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
@@ -263,7 +263,6 @@ variable helps in implementing the heuristic of minimum segment size while label
 %\Statex{}
 \end{algorithmic}}
 \end{algorithm}
-\vspace{-0.6cm}
 \begin{figure}[hb]
 \def\@fs@post{}
 \caption{Chunking Algorithm}
@@ -278,8 +277,9 @@ variable helps in implementing the heuristic of minimum segment size while label
 %is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
 %that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
 
-\vspace{-0.8cm}
+\vspace{-0.7cm}
 \subsection{Word-based prediction}
+\vspace{-0.132cm}
 \label{wbased}
 
 Designed keeping in mind importance of the most common words, this procedure included 
@@ -291,10 +291,12 @@ case of a conflict, for example, when the word exists in both wordlists, or in t
 of continuing with the previous span was taken and the previous selected tag was labelled, thus increasing the chunk. 
 
 \subsection{Word-based prediction with character backoff}
+\vspace{-0.152cm}
 \label{wbasedbackoff}
 
-A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character-based techniques 
-as described above. In case of the word being present in only one of the two monolingual word lists the classification is simple, 
+%A better way to predict the spans of the sub-segments of the text is to include the two methods of word and character-based techniques 
+%as described above.
+In case of the word being present in only one of the two monolingual word lists the classification is simple, 
 but in case of a conflict, a character bigram backoff was introduced to help us disambiguate the language label. This method works well because the earlier heuristic approach of just labelling the word with the label of the span which is expanding, would mean less code-switch detection and more shift towards the majority class. 
 
 
@@ -304,9 +306,9 @@ but in case of a conflict, a character bigram backoff was introduced to help us 
 %% spelling
 %% abbreviations
 
-\vspace{-0.2cm}
 
 \section{Evaluation}
+\vspace{-0.152cm}
 \label{sec:eval}
 
 For the Evaluation procedure, we follow the footsteps of the CoNLL-2000 shared task on language-independent 
@@ -338,7 +340,6 @@ We used the language identification tool \texttt{langid.py} \cite{lui2012langid}
 For this system we used the character trigram probabilities to predict the detected language for each token. Trigrams were chosen after experimenting with 1--5 grams. The heuristics in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
 
 \section{Results}
-\vspace{-0.152cm}
 \label{sec:results}
 As described in Section~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statistics of the same are given in Table~\ref{table:datastats}. 
 
@@ -398,18 +399,22 @@ As described in Section~\ref{sec:method} the data collected from Twitter for the
 \label{table:accuracy}
 \end{table}
 In terms of per-word accuracy, the baseline performs as expected, given that half of the words in the test set are from a given language. 
-The \texttt{langid.py} based methods allow for segmenting the text into chunks, but favour the majority language.\footnote{This could be because of the default models being used.} 
+The \texttt{langid.py} based methods allow for segmenting the text into chunks, but favour the majority language.
+%\footnote{This could be because of the default models being used.} 
 %While the precision and recall are low for the remaining models, we see that we are able to improve 
 The performance by combining the wordlist based model with a character bigram model. And what is more, we are able to begin to not only 
 identify particular words in a language, but also segments.
 
 \section{Conclusions}
+\vspace{-0.152cm}
 \label{sec:conclusions}
 
 This paper has presented a very preliminary investigation into subsegment language identification in Celtic language texts. We have
 proposed a model that chunks input text into segments and performs language identification on these segments at the same time. Precision and
-recall are low, leaving a lot of room for further work. Some of our plans are as follows. We would like to annotate more test data,
-at least 100 tweets in each language. Although In \cite{king2013labeling}, the authors label on a per word level, yet we would like to include supervised methods and features talked about in this research to improve our efficiency while dealing with segments. We would also like to attempt our method using higher order character n-gram models for backoff, and n-gram word language models for detection. 
+recall are low, leaving a lot of room for further work.
+% Some of our plans are as follows. We would like to annotate more test data,
+%at least 100 tweets in each language.
+ Although In \cite{king2013labeling}, the authors label on a per word level, yet we would like to include supervised methods and features talked about in this research to improve our efficiency while dealing with segments. We would also like to attempt our method using higher order character n-gram models for backoff, and n-gram word language models for detection and on more annotated data. 
 
 % future work
 
