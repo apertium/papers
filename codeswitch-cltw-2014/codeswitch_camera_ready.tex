@@ -49,7 +49,6 @@
 
 \section{Introduction}
 \label{intro}
-\vspace{-0.1cm}
 Determining the language of a piece of text is one of the first steps that must be taken
 before proceeding with further computational processing. This task has received a substantial amount of
 attention in recent years \cite{cavnar1994n,lui2012langid}. However, previous research has on the whole assumed
@@ -57,7 +56,6 @@ that a given text will be in a single language. When dealing with text from form
 this may be the case --- although there are exceptions --- such as quotations embedded in
 the text in another language. But when dealing with informal text, particularly in languages
 where the speech community is predominantly bi- or multi-lingual, this assumption may not hold.
-
 %Such as
 %code switching, quotations, named entities, interjections, translations --- either of the full text, or 
 %part of the text, comments, etc. 
@@ -120,7 +118,7 @@ presents future work and conclusions.
 \label{table:examples}
 \end{center}
 \end{table}
-\vspace{-0.6cm}
+\vspace{-0.65cm}
 
 \section{Related Work}
 \label{sec:relwork}
@@ -149,6 +147,7 @@ and Breton and French.
 \subsection{Corpus}
 
 \begin{table}
+\vspace{-0.65cm}
 \begin{center}
 \begin{tabular}{|l|r|r|r|r}
 \hline
@@ -181,6 +180,7 @@ Certain tokens were escaped from the data, such as the `mentioned' character (\t
 [\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!] 
 \end{alltt}
 \end{small}
+\vspace{-0.3cm}
 \caption{Example of text from a microblogging site chunked manually.}
 \label{fig:tweets}
 \end{figure}
@@ -197,10 +197,11 @@ into the current or the next segment.\footnote{The software used in this experim
 
 We first built character language models using IRSTLM \cite{federico08a} for the five languages in question. For English
 and French a model was trained using the EuroParl corpus \cite{koehn2005europarl}. 
-For Breton, Welsh and Irish we used corpora of text crawled from the web. 
+For Breton, Welsh and Irish we used corpora of text crawled from the web. To ensure no bias and also since our dataset for Breton was around 1.5 million, we sampled the same size of data for all the five languages. 
 %For each of the languages we sampled 1.5 million words.
-The accuracy of the results saturate after the size of the dataset is around 1 million, and also since our collected corpus for Breton was around 1.5 million words we chose the limit of the sample to be this which also ensures no bias in the sampling of the languages. \\
-In order to build a character language model as opposed to the standard word-ngram based model we replaced spaces with the underscore 
+%The accuracy of the results saturate after the size of the dataset is around 1 million, and also since our collected corpus for Breton was around 1.5 million words we chose the limit of the sample to be this which also ensures no bias in the sampling of the languages. \\
+In order to build a character language model %as opposed to the standard word-ngram based model %
+we replaced spaces with the underscore 
 symbol `\_', and then placed a space character between each character. Punctuation and non-letter characters are also 
 part of this language model. For example, the word `sl\'{a}inte!' would be broken down into a sequence 
 of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}. 
@@ -277,7 +278,7 @@ variable helps in implementing the heuristic of minimum segment size while label
 %is noted and a new chunk is created with the changed label. In this process, we are trying to identify the sub-segments 
 %that we need, thus performing both tasks at once, the first being language prediction and second being the chunking decision. 
 
-\vspace{-0.6cm}
+\vspace{-0.8cm}
 \subsection{Word-based prediction}
 \label{wbased}
 
@@ -301,7 +302,7 @@ but in case of a conflict, a character bigram backoff was introduced to help us 
 %% spelling
 %% abbreviations
 
-\vspace{-0.4cm}
+\vspace{-0.2cm}
 
 \section{Evaluation}
 \label{sec:eval}
@@ -333,7 +334,7 @@ For this system we used the character trigram probabilities to predict the detec
 
 \section{Results}
 \label{sec:results}
-As described in ~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statistics of the same are given in Table~\ref{table:datastats}. 
+As described in Section~\ref{sec:method} the data collected from Twitter for the three language pairs, was processed using the techniques mentioned. The statistics of the same are given in Table~\ref{table:datastats}. 
 
 \begin{table}
 \begin{center}
@@ -359,6 +360,7 @@ As described in ~\ref{sec:method} the data collected from Twitter for the three 
 \hline
 \end{tabular}
 \end{center}
+\vspace{-0.4cm}
 \caption{Precision, $p$ and recall, $r$ for the systems by language.}
 \label{table:precisionrecall}
 
