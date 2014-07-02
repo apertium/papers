@@ -68,10 +68,10 @@ strategy to a piece of text, it is necessary to first know the language of the p
 %There are several ways in which an informal text may contain parts in different languages.
 %Some of these are presented in Table~\ref{table:examples}.
 
-The remainder of the paper is laid out as follows. In section~\ref{sec:method} we describe the problem
+The remainder of the paper is laid out as follows. In Section~\ref{sec:method} we describe the problem
 in more detail and look at relevant prior work before proposing a novel method of sub-sentential
-language detection. Section~\ref{sec:eval} describes the evaluation methodology. Then in section~\ref{sec:results}
-we present the results of our method and compare it against several other possible methods. Finally, section~\ref{sec:conclusions}
+language detection. Section~\ref{sec:eval} describes the evaluation methodology. Then in Section~\ref{sec:results}
+we present the results of our method and compare it against several other possible methods. Finally, Section~\ref{sec:conclusions}
 presents future work and conclusions.
 \blfootnote{
     %
@@ -222,7 +222,7 @@ This section describes the way we apply heuristics to segment and label the inpu
 %the heuristics taken into account while performing the chunking of the input data according to 
 %the sequences of segments in different languages. 
 In Figure ~\ref{fig:chunkal}, `chunks' represent the list of evaluated tuples of segments and their labelled language, `buffer' is the expanding segment.
- \textit{lang\_predict} corressponds to any function which is used to determine the language of the token. The flag 
+ \textit{lang\_predict} corresponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
 \begin{algorithm}
 \caption*{\textsc{}}
@@ -333,7 +333,7 @@ in Tables~\ref{table:precisionrecall}~and~\ref{table:accuracy} mention two value
 language datasets. The first, is the percentage of correctly detected phrases, which is the overall precision and the second is the 
 number of phrases in the data that were found by the chunker, which is the overall recall. 
 
-Apart from the techniques discussed in section~\ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanisms perform.
+Apart from the techniques discussed in Section~\ref{sec:method}, some baselines are also used to give a comparative view of how well all the mechanisms perform.
 
 \subsection{Baseline}
 \vspace{-0.132cm}
@@ -347,7 +347,7 @@ We used the language identification tool \texttt{langid.py} \cite{lui2012langid}
 \label{langidstuff}
 
 
-For this system we used the character trigram probabilities to predict the detected language for each token. Trigrams were chosen after experimenting with 1--5 grams. The heuristics in section~\ref{sec:method} were followed for the text processing and chunking part of the method.
+For this system we used the character trigram probabilities to predict the detected language for each token. Trigrams were chosen after experimenting with 1--5 grams. The heuristics in Section~\ref{sec:method} were followed for the text processing and chunking part of the method.
 
 \section{Results}
 \label{sec:results}
@@ -424,7 +424,7 @@ proposed a model that chunks input text into segments and performs language iden
 recall are low, leaving a lot of room for further work.
 % Some of our plans are as follows. We would like to annotate more test data,
 %at least 100 tweets in each language.
- Although In \cite{king2013labeling}, the authors label on a per word level, yet we would like to include supervised methods and features talked about in this research to improve our efficiency while dealing with segments. We would also like to attempt our method using higher order character n-gram models for backoff, and n-gram word language models for detection and on more annotated data. 
+ Although \newcite{king2013labeling} label on a per word level, yet we would like to include supervised methods and features talked about in this research to improve our efficiency while dealing with segments. We would also like to attempt our method using higher order character n-gram models for backoff, and n-gram word language models for detection and on more annotated data. 
 
 % future work
 
