@@ -16,9 +16,8 @@
 
 \usepackage{amsmath}
 \usepackage{algorithm}
-\usepackage{algorithmic}
-%\usepackage{algcompatible}
-%\usepackage[noend]{algpseudocode}
+\usepackage{algcompatible}
+\usepackage[noend]{algpseudocode}
 
 %\setlength\titlebox{5cm}
 
@@ -121,7 +120,7 @@ presents future work and conclusions.
 %\end{table}
 %\vspace{-0.65cm}
 
-\section{Related work}
+\section{Related Work}
 \vspace{-0.132cm}
 \label{sec:relwork}
 
@@ -223,44 +222,57 @@ This section describes the way we apply heuristics to segment and label the inpu
 %the heuristics taken into account while performing the chunking of the input data according to 
 %the sequences of segments in different languages. 
 In Figure ~\ref{fig:chunkal}, `chunks' represent the list of evaluated tuples of segments and their labelled language, `buffer' is the expanding segment.
- \textit{lang\_predict} corresponds to any function which is used to determine the language of the token. The flag 
+ \textsc{LangPredict} corresponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
-\begin{algorithm}
-\begin{algorithmic}
-\REQUIRE s : sentence to chunk
-\STATE \textrm{buffer} = [\ ] /*Undecided expanding window of chunk*/
-\STATE \textrm{chunks} = [\ ] /*Decided labelled segment*/
-\STATE \( \textrm{buffer\_language} \gets \textsc{LangPredict}(s[0])\) /* Language of first word */
-\STATE \( \textrm{flag} \gets 0 \)
-\FORALL {\(w \in s\)}
-  \IF {\( \textsc{LangPredict}(w) = \textrm{buffer\_language}\)}
-    \STATE \( \textrm{buffer} += [w] \) 
-    \STATE \( \textrm{flag} \gets 0 \)
-  \ELSE 
-    \STATE \( \textrm{buffer} += [w] \)
-  \ENDIF
+\begin{algorithm*}
+\caption*{\textsc{}}
+%\caption{Chunking algorithm}\label{euclid}
+{\fontsize{9}{9}\selectfont
+\begin{algorithmic}[1]
+%\Statex{}%Procedure{}{}
+\Require s : sentence to chunk
+\State $\textrm{buffer} = [\ ] \text{ /*Undecided expanding window of chunk*/}$
+\State $\textrm{chunks} = [\ ] \text{ /*Decided labelled segment*/ }$
+\State $\textrm{buffer\_language} \gets \textsc{LangPredict}(s[0]) \text{ /* Language of first word */ }$
+\State $\textrm{flag} \gets \text{0}$
+%\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
+\ForAll{\(w \in s\)} %{\texttt{word in sentence}}
+\If {$ \textsc{LangPredict}(w) \text{==} \textrm{buffer\_language} $}
+        \If {$ \textrm{flag} \text{=\ =\ 1} $}
+        \State $\textrm{buffer} += [\textrm{word\_buffer,w}] $
+        \State $\textrm{flag} \gets \text{0}$
+        \Else
+        \State $\textrm{buffer} += [\textrm{w}] $
+        \EndIf
+        \EndIf
+\If {$ \textsc{LangPredict(w)} \not{=} \textrm{buffer\_language} $}
+        \If {$ \textrm{flag} \text{=\ =\ 0} $}
+        \State $\textrm{flag} \gets \text{1}$
+        \State $\textrm{word\_buffer} \gets \textrm{w} $
+        \State $\text{continue}$
 
-  \IF {\( \textsc{LangPredict}(w) \not{=} \textrm{buffer\_language}\)}
-    \IF {\( \textrm{flag} = 0 \)}
-      \STATE \( \textrm{flag} \gets 1 \)
-    \ELSE
-      \STATE \( \textrm{chunks} += [(\textrm{buffer},\textrm{buffer\_language})] \)
-      \STATE \( \textrm{buffer} = [] \)
-      \STATE \( \textrm{buffer\_language} \gets \textsc{LangPredict}(w) \) /* Language of new expanding chunk */
-      \STATE \( \textrm{flag} \gets 0 \)
-    \ENDIF
-  \ENDIF
-\ENDFOR
-\IF {\( \textsc{len}(\textrm{buffer}) > 0 \)}
-  \STATE \textrm{chunks} += [(\textrm{buffer},\textrm{buffer\_language})]
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
+        \Else
+        \State $\textrm{chunks} \text{+= \ }  \textrm{[(buffer,buffer\_language)]} $
+        %\State $\textit{buffer} \gets [] $
+        \State $\textrm{buffer} = [\textrm{word\_buffer,w}] $
+        \State $\textrm{buffer\_language} = \gets \textsc{LangPredict}\text{(word)} \text{ /* Language of new expanding chunk */}$
+        \State $\textrm{flag} \gets \text{0}$
+        \EndIf
 
+\EndIf
+\EndFor
+\If {$\textrm{length(buffer)} \text{!=0\ } $}
+        \State $\textrm{chunks} \text{+= \ }  \text{[\textrm{(buffer,buffer\_language)}]} $
+
+\EndIf
+%\EndProcedure
+%\Statex{}
+\end{algorithmic}}
+\end{algorithm*}
 \vspace{-0.4cm}
 \begin{figure}[hb]
 \def\@fs@post{}
-\caption{Chunking algorithm}
+\caption{Chunking Algorithm}
 \label{fig:chunkal}
 \end{figure}
 \vspace{-0.4cm}
