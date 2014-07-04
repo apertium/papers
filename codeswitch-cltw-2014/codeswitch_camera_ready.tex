@@ -16,8 +16,9 @@
 
 \usepackage{amsmath}
 \usepackage{algorithm}
-\usepackage{algcompatible}
-\usepackage[noend]{algpseudocode}
+\usepackage{algorithmic}
+%\usepackage{algcompatible}
+%\usepackage[noend]{algpseudocode}
 
 %\setlength\titlebox{5cm}
 
@@ -120,7 +121,7 @@ presents future work and conclusions.
 %\end{table}
 %\vspace{-0.65cm}
 
-\section{Related Work}
+\section{Related work}
 \vspace{-0.132cm}
 \label{sec:relwork}
 
@@ -225,53 +226,41 @@ In Figure ~\ref{fig:chunkal}, `chunks' represent the list of evaluated tuples of
  \textit{lang\_predict} corresponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
 \begin{algorithm}
-\caption*{\textsc{}}
-%\caption{Chunking algorithm}\label{euclid}
-{\fontsize{9}{9}\selectfont
-\begin{algorithmic}[1]
-%\Statex{}%Procedure{}{}
-\State $\textit{buffer} = [\ ] \text{\ \ \  \#Undecided expanding window of chunk}$
-\State $\textit{chunks} = [\ ] \text{\ \ \  \#Decided labelled segment}$
-\State $\textit{buffer\_language} \gets \textit{lang\_predict}\text{(sentence[0])} \text{\ \ \ \#Language of first word}$
-\State $\textit{flag} \gets \text{0}$
-%\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
-\For{\texttt{word in sentence}}
-\If {$ \textit{lang\_predict(word)} \text{==} \textit{buffer\_language} $}
-        \If {$ \textit{flag} \text{=\ =\ 1} $}
-        \State $\textit{buffer} += [\textit{word\_d,word}] $
-        \State $\textit{flag} \gets \text{0}$
-        \Else
-        \State $\textit{buffer} += [\textit{word}] $
-        \EndIf
-        \EndIf
-\If {$ \textit{lang\_prediction(word)} \text{!=} \textit{buffer\_language} $}
-        \If {$ \textit{flag} \text{=\ =\ 0} $}
-        \State $\textit{flag} \gets \text{1}$
-        \State $\textit{word\_d} \gets \textit{word} $
-        \State $\text{continue}$
+\begin{algorithmic}
+\REQUIRE s : sentence to chunk
+\STATE \textrm{buffer} = [\ ] /*Undecided expanding window of chunk*/
+\STATE \textrm{chunks} = [\ ] /*Decided labelled segment*/
+\STATE \( \textrm{buffer\_language} \gets \textsc{LangPredict}(s[0])\) /* Language of first word */
+\STATE \( \textrm{flag} \gets 0 \)
+\FORALL {\(w \in s\)}
+  \IF {\( \textsc{LangPredict}(w) = \textrm{buffer\_language}\)}
+    \STATE \( \textrm{buffer} += [w] \) 
+    \STATE \( \textrm{flag} \gets 0 \)
+  \ELSE 
+    \STATE \( \textrm{buffer} += [w] \)
+  \ENDIF
 
-        \Else
-        \State $\textit{chunk} \text{+= \ }  \textit{[(buffer,buffer\_language)]} $
-        %\State $\textit{buffer} \gets [] $
-        \State $\textit{buffer} = [\textit{word\_d,word}] $
-        \State $\textit{buffer\_language} = \gets \textit{lang\_predict}\text{(word)}$% \text{\#Language of new expanding chunk}$
-        \State $\textit{flag} \gets \text{0}$
-        \EndIf
-
-\EndIf
-\EndFor
-\If {$\textit{length(buffer)} \text{!=0\ } $}
-        \State $\textit{chunk} \text{+= \ }  \text{[\textit{(buffer,buffer\_language)}]} $
-
-\EndIf
-%\EndProcedure
-%\Statex{}
-\end{algorithmic}}
+  \IF {\( \textsc{LangPredict}(w) \not{=} \textrm{buffer\_language}\)}
+    \IF {\( \textrm{flag} = 0 \)}
+      \STATE \( \textrm{flag} \gets 1 \)
+    \ELSE
+      \STATE \( \textrm{chunks} += [(\textrm{buffer},\textrm{buffer\_language})] \)
+      \STATE \( \textrm{buffer} = [] \)
+      \STATE \( \textrm{buffer\_language} \gets \textsc{LangPredict}(w) \) /* Language of new expanding chunk */
+      \STATE \( \textrm{flag} \gets 0 \)
+    \ENDIF
+  \ENDIF
+\ENDFOR
+\IF {\( \textsc{len}(\textrm{buffer}) > 0 \)}
+  \STATE \textrm{chunks} += [(\textrm{buffer},\textrm{buffer\_language})]
+\ENDIF
+\end{algorithmic}
 \end{algorithm}
+
 \vspace{-0.4cm}
 \begin{figure}[hb]
 \def\@fs@post{}
-\caption{Chunking Algorithm}
+\caption{Chunking algorithm}
 \label{fig:chunkal}
 \end{figure}
 \vspace{-0.4cm}
