@@ -224,51 +224,51 @@ This section describes the way we apply heuristics to segment and label the inpu
 In Figure ~\ref{fig:chunkal}, `chunks' represent the list of evaluated tuples of segments and their labelled language, `buffer' is the expanding segment.
  \textsc{LangPredict} corresponds to any function which is used to determine the language of the token. The flag 
 variable helps in implementing the heuristic of minimum segment size while labelling chunks.
-\begin{algorithm*}
+\begin{algorithm}
 \caption*{\textsc{}}
 %\caption{Chunking algorithm}\label{euclid}
 {\fontsize{9}{9}\selectfont
 \begin{algorithmic}[1]
 %\Statex{}%Procedure{}{}
-\Require s : sentence to chunk
+\Require \(s\) : sentence to chunk
 \State $\textrm{buffer} = [\ ] \text{ /*Undecided expanding window of chunk*/}$
 \State $\textrm{chunks} = [\ ] \text{ /*Decided labelled segment*/ }$
 \State $\textrm{buffer\_language} \gets \textsc{LangPredict}(s[0]) \text{ /* Language of first word */ }$
 \State $\textrm{flag} \gets \text{0}$
 %\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
 \ForAll{\(w \in s\)} %{\texttt{word in sentence}}
-\If {$ \textsc{LangPredict}(w) \text{==} \textrm{buffer\_language} $}
-        \If {$ \textrm{flag} \text{=\ =\ 1} $}
-        \State $\textrm{buffer} += [\textrm{word\_buffer,w}] $
+\If {$ \textsc{LangPredict}(w) \text{=} \textrm{buffer\_language} $}
+        \If {$ \textrm{flag} \text{\ = 1} $}
+        \State $\textrm{buffer} \gets \textrm{buffer} + [\textrm{word\_buffer,\(w\)}] $
         \State $\textrm{flag} \gets \text{0}$
         \Else
-        \State $\textrm{buffer} += [\textrm{w}] $
+        \State $\textrm{buffer} \gets \textrm{buffer} +[\textrm{ \(w\)}] $
         \EndIf
         \EndIf
-\If {$ \textsc{LangPredict(w)} \not{=} \textrm{buffer\_language} $}
-        \If {$ \textrm{flag} \text{=\ =\ 0} $}
+\If {$ \textsc{LangPredict}(w) \not{=} \textrm{buffer\_language} $}
+        \If {$ \textrm{flag} \text{=\ 0} $}
         \State $\textrm{flag} \gets \text{1}$
-        \State $\textrm{word\_buffer} \gets \textrm{w} $
-        \State $\text{continue}$
+        \State $\textrm{word\_buffer} \gets \textrm{\(w\)} $
+        \State $\textbf{continue}$
 
         \Else
-        \State $\textrm{chunks} \text{+= \ }  \textrm{[(buffer,buffer\_language)]} $
+        \State $\textrm{chunks} \gets \textrm{chunks} + \textrm{[(buffer,buffer\_language)]} $
         %\State $\textit{buffer} \gets [] $
-        \State $\textrm{buffer} = [\textrm{word\_buffer,w}] $
-        \State $\textrm{buffer\_language} = \gets \textsc{LangPredict}\text{(word)} \text{ /* Language of new expanding chunk */}$
+        \State $\textrm{buffer} \gets [\textrm{word\_buffer,\(w\)}] $
+        \State $\textrm{buffer\_language} \gets \textsc{LangPredict}\text{(\(w\))} \text{ /* Language of new expanding chunk */}$
         \State $\textrm{flag} \gets \text{0}$
         \EndIf
 
 \EndIf
 \EndFor
-\If {$\textrm{length(buffer)} \text{!=0\ } $}
-        \State $\textrm{chunks} \text{+= \ }  \text{[\textrm{(buffer,buffer\_language)}]} $
+\If {$\textrm{length(buffer)} \not{=} 0\ $}
+        \State $\textrm{chunks} \gets \textrm{chunks} +[\textrm{(buffer,buffer\_language)}] $
 
 \EndIf
 %\EndProcedure
 %\Statex{}
 \end{algorithmic}}
-\end{algorithm*}
+\end{algorithm}
 \vspace{-0.4cm}
 \begin{figure}[hb]
 \def\@fs@post{}
