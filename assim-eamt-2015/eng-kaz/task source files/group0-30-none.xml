@@ -1,0 +1,9 @@
+<set id="3daf84ca581d4070a067215a00f8cf92" source-language="eng" target-language="kaz"><seg id="1" doc-id="e61ade7548224e42874dd2db756dddba" hide-source="True"><source>Zhasuzakov has been appointed First Deputy Minister of Defense and Chief of the General Staff of the Armed Forces of the Republic of Kazakhstan and relieved of his previous post.</source>
+
+<translation system="Apertium" type="simple" fill=";;;;;" keys="Қорғаныс;орынбасары;Республикасы;Бас;бастығы;атқарған">Жасұзақов { } министрінің бірінші { } – Қазақстан { } Қарулы Күштері { } штабының { } қызметіне тағайындалды, ол бұрынғы { } қызметінен босатылды.</translation></seg>
+<seg id="2" doc-id="e61ade7548224e42874dd2db756dddba" hide-source="True"><source>Zhaksylykov has been appointed Commander-in-Chief of the Internal Military Troops of the Interior Affairs Ministry of the Republic of Kazakhstan and relieved of his previous post.</source>
+
+<translation system="Apertium" type="simple" fill=";;;;" keys="Республикасы;істер;әскерлер;қызметіне;атқарған">Жақсылықов Қазақстан { } Ішкі { } министрлігінің Ішкі { } бас қолбасшысы { } тағайындалды, ол бұрынғы { } қызметінен босатылды.</translation></seg>
+<seg id="3" doc-id="e61ade7548224e42874dd2db756dddba" hide-source="True"><source>"On behalf of the people of Kazakhstan and on my own behalf I express my deep condolences to you, families and relatives of the victims and all the people of Brazil.</source>
+
+<translation system="Apertium" type="simple" fill=";;;;" keys="тарапымнан;халқына;өрттен;қайғыларына;айтамын">"Халқымыздың атынан және өз { } Бразилия { } және { } құрбан болғандардың жақындары мен туыстарына { } ортақтасып, көңіл { }.</translation></seg></set>

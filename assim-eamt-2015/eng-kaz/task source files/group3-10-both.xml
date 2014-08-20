@@ -1,0 +1,9 @@
+<set id="aa8882ea63634bd1ae242d2a052b6ba5" source-language="eng" target-language="kaz"><seg id="1" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="None"><source>following the meeting, a Memorandum of Understanding on Cooperation between the Kazakhstan Engineering National Company, JSC and the Airbus Military was signed.</source>
+<reference>кездесудің еру,   Түсінушіліктің Меморандумы  Ынтымақтастықтың үстінде   Қазақстан Ғимаратының арасында Ұлттық Компания, JSC және  Airbus Әскері  қол қойылды.</reference>
+<translation system="Apertium" type="simple" fill=";" keys="ынтымақтастық;түсіністік">келіссөздер қорытындысы бойынша "Қазақстан инжиниринг" ҰК" АҚ мен "Эйрбас Милитари" арасындағы { } жөніндегі өзара { } туралы Меморандумға қол қойылды.</translation></seg>
+<seg id="2" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="None"><source>MAXAM Company includes more than 140 companies with production facilities in 40 countries of the world.</source>
+<reference>MAXAM Компаниясы  көбірек қосады қарағанда  өндіріс тәсіл   40 елде 140 компания   дүниенің.</reference>
+<translation system="Apertium" type="simple" fill="" keys="әлемнің">"Максам" компаниясына { } 40 еліндегі өндірістік қуаты бар 140-тан астам кәсіпорын кіреді.</translation></seg>
+<seg id="3" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="None"><source>President Nursultan Nazarbayev Meets with Leaders of Spanish Companies as MAXAM, OHL and Next Limit Technologies.</source>
+<reference>Назарбаевтың Президент Нұрсұлтаны   Басшылармен Кездеседі  Испандық Компания ретінде MAXAM, OHL және Келесі Шек Технологиясы.</reference>
+<translation system="Apertium" type="simple" fill="" keys="басшыларымен">Қазақстан Президенті Нұрсұлтан Назарбаев "Максам", "OHL" және "Next Limit Technologies" компанияларының { } кездесті.</translation></seg></set>

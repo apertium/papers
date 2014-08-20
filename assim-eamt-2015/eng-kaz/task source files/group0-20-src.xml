@@ -1,0 +1,9 @@
+<set id="cd191fa2a2ff43778dd844fa1491667f" source-language="eng" target-language="kaz"><seg id="1" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>"I sincerely believe that your work on a new post will contribute to the strengthening of cooperation based on friendship and mutual understanding between the two countries, in particular, to the successful implementation of the agreements reached during my visit to the Czech Republic in 2012», the telegram reads.</source>
+
+<translation system="Apertium" type="simple" fill=";;;;;;" keys="ел;түсіністік;нығаюына;атап;сапарым;іске;жеделхатта">"Сіздің жаңа қызметіңіз екі { } арасындағы достық пен өзара { } негізінде қалыптасқан ынтымақтастықтың { }, { } айтқанда, 2012 жылғы Чехияға ресми { } барысында қол жеткізілген уағдаластықтардың табысты { } асырылуына септігін тигізетініне кәміл сенемін" делінген { }.</translation></seg>
+<seg id="2" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>I gave the instructions to the corresponding state bodies to investigate the reasons of the accident and provide necessary assistance to the families of the victims.</source>
+
+<translation system="Apertium" type="simple" fill=";;" keys="ұшақтың;қайтыс;көрсетуді">мен тиісті мемлекеттік органдарға { } апатқа ұшырауының себептерін анықтап, { } болғандардың отбасыларына қажетті көмек { } тапсырдым.</translation></seg>
+<seg id="3" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>".</source>
+
+<translation system="Apertium" type="simple" fill=";;" keys="себептерін;белгілейтін;құрылды">- Менің тапсырмаммен қайғының { } анықтайтын, ұшу қауіпсіздігін күшейту жөніндегі шараларды { } арнайы үкіметтік комиссия { }.</translation></seg></set>

@@ -1,0 +1,9 @@
+<set id="cd191fa2a2ff43778dd844fa1491667f" source-language="eng" target-language="kaz"><seg id="1" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="True"><source>"I received with grief the message on the crash of the passenger plane operated by the SCAT Airlines in the village of Kyzyl Tu of the Almaty Region that caused numerous deaths.</source>
+
+<translation system="Apertium" type="simple" fill=";;;;" keys="облысының;адам;компаниясы;жолаушылар;хабарды">- Алматы { } Қызылту кенті маңында { } құрбандығына душар еткен "Scat" әуе { } { } ұшағының апатқа ұшырағаны туралы қаралы { } күйзеле отырып қабылдадым.</translation></seg>
+<seg id="2" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="True"><source>President Nursultan Nazarbayev has sent a telegram of condolences to the families and relatives of the dead following the crash of the passenger aircraft near the village of Kyzyl Tu in the Almaty Region.</source>
+
+<translation system="Apertium" type="simple" fill=";;;" keys="облысының;жолаушылар;салдарынан;көңіл">Мемлекет басшысы Нұрсұлтан Назарбаев Алматы { } Қызылту кенті маңында { } ұшағының апатқа ұшырауы { } қаза болғандардың туған-туыстарына { } айтты.</translation></seg>
+<seg id="3" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="True"><source>at Barajas Airport in Madrid President Nazarbayev was met by Gonzalo de Benito, the State Secretary for Foreign Affairs and the Minister of Foreign Affairs and Cooperation of the Kingdom of Spain.</source>
+
+<translation system="Apertium" type="simple" fill=";;" keys="басшысын;ынтымақтастық;хатшысы">Мадридтің "Барахас" әуежайында Мемлекет { } Испания Корольдігінің Сыртқы істер және { } министрлігінің Мемлекеттік { } Гонсало де Бенито қарсы алды.</translation></seg></set>

@@ -1,0 +1,9 @@
+<set id="aa8882ea63634bd1ae242d2a052b6ba5" source-language="eng" target-language="kaz"><seg id="1" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="True"><source>during the visit the President is expected to hold bilateral meetings with King of Spain Juan Carlos I, Prime Minister of the Kingdom of Spain Mariano Rajoy and some of Spain's business leaders.</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="төрағасы;жоспарланған">сапар барысында Испания Королі Хуан Карлос I-мен, Испания Корольдігі Үкіметінің { } Рахоймен және испандық бірқатар компаниялардың басшыларымен екіжақты кездесу өткізу { }.</translation></seg>
+<seg id="2" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="True"><source>in the course of the meeting with the heads of the leading Spanish companies held within the framework of the working visit to the Kingdom of Spain, President Nursultan Nazarbayev discussed the prospects of interaction in various spheres of economy.</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="сапары;басшыларымен">Испания Корольдігіне { } аясында өткен кездесулер барысында Нұрсұлтан Назарбаев испандық жетекші компаниялардың { } экономиканың түрлі салаларындағы өзара іс-қимыл перспективаларын талқылады.</translation></seg>
+<seg id="3" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="True"><source>the President said that Airbus Military is implementing a number of joint projects and stressed the need to deepen the mutually beneficial cooperation.</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="Президенті;компаниясымен">Қазақстан { } "Эйрбас Милитари" { } бірқатар бірлескен жобалар іске асырылып жатқанын атап өтіп, өзара тиімді ынтымақтастықты тереңдету қажеттігіне тоқталды.</translation></seg></set>

@@ -1,0 +1,9 @@
+<set id="cd191fa2a2ff43778dd844fa1491667f" source-language="eng" target-language="kaz"><seg id="1" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>on behalf of the people of Kazakhstan and on my own behalf I express my deep condolences to the families and relatives of the victims.</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="атымнан;айтамын">Қазақстан халқының және жеке өзімнің { } қаза болғандардың туған-туыстарына қайғырып көңіл { }.</translation></seg>
+<seg id="2" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>the Government is charged to assist the families of the dead passengers and crew members.</source>
+
+<translation system="Apertium" type="simple" fill=";;" keys="қаза;жолаушылар;көмектесу">Үкіметке { } болған { } мен экипаж мүшелерінің отбасыларына барынша { } жөнінде тапсырма берілді.</translation></seg>
+<seg id="3" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>opening the meeting with the leadership of the law enforcement agencies at Akorda, the President once again expressed condolences to the families and relatives of the victims of the plane crash.</source>
+
+<translation system="Apertium" type="simple" fill=";;;" keys="басшы;Президенті;отбасына;көңіл">Ақордада құқық қорғау органдарының { } құрамымен кеңесті ашқан Қазақстан { } ұшақ апатынан қаза болғандардың барлығының { }, туған-туыстарына тағы да { } айтты.</translation></seg></set>

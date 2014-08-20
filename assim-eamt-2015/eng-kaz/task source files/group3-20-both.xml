@@ -1,0 +1,9 @@
+<set id="cd191fa2a2ff43778dd844fa1491667f" source-language="eng" target-language="kaz"><seg id="1" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>President Nursultan Nazarbayev Makes a Statement Following the Air Crash near the Almaty Airport.</source>
+<reference>Назарбаевтың Президент Нұрсұлтаны Арыз Жасайды Ауаның Еру    Алматы Әуежайының тұсында Күйрейді.</reference>
+<translation system="Apertium" type="simple" fill=";;" keys="қаласының;апатына;жасады">Мемлекет басшысы Нұрсұлтан Назарбаев Алматы { } әуежайы маңында болған ұшақ { } байланысты Қазақстан халқына мәлімдеме { }.</translation></seg>
+<seg id="2" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>in conclusion, President Nursultan Nazarbayev wished Milos Zeman good health, energy, and success at this responsible post, as well as unity and prosperity to the friendly Czech people.</source>
+<reference>тұжырымда, Назарбаевтың Президент Нұрсұлтаны Милос Земаны тіледі жақсы ахуал, қуат, және  мынау жауапты бағанада сәт, сонымен қатар  ынтымақ ретінде және   достас чехке көркею адамдар.</reference>
+<translation system="Apertium" type="simple" fill=";;" keys="денсаулық;қызметіне;халқына">жеделхат соңында Нұрсұлтан Назарбаев Земанға зор { }, қажымас қайрат, аса жауапты { } табыс, ал достас Чехия { } - береке-бірлік және өсіп-өркендеуді тілейді.</translation></seg>
+<seg id="3" doc-id="f9e897b31bcd48ecbcb129a80e022d61" hide-source="None"><source>I made a decision to announce the 31st of January as a Day of National Mourning," the President said.</source>
+<reference>Мен     шешімнің жариялағанын 31-інші жасадым  қантардың   Ұлттық тілінің   Күні ретінде Жоқтайтын," Президент айтты.</reference>
+<translation system="Apertium" type="simple" fill=";;" keys="күні;жариялау;қабылдадым">мен 31 қаңтарды Жалпыұлттық аза тұту { } деп { } туралы шешім { }, - деді Мемлекет басшысы.</translation></seg></set>

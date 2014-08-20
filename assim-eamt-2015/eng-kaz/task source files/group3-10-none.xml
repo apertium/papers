@@ -1,0 +1,9 @@
+<set id="aa8882ea63634bd1ae242d2a052b6ba5" source-language="eng" target-language="kaz"><seg id="1" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="True"><source>a range of issues on further cooperation, including in the field of provision of services and support for military transport aircraft was discussed at the meeting.</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="кездесуде;мәселелер">{ } одан арғы ынтымақтастыққа, соның ішінде әскери-көлік авиациясына техникалық қызмет көрсету саласына байланысты ауқымды { } қаралды.</translation></seg>
+<seg id="2" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="True"><source>Airbus Military is a subdivision of Airbus SAS, which is a part of the European Aeronautic Defence and Space Company (EADS).</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="компаниясы;құрамына">Испанияның "Эйрбас Милитари" { } Еуропалық Аэроғарыш және Қорғаныс Концернінің (EADS) { } кіретін Airbus SAS авиақұрылыс компаниясының бөлімшесі болып саналады.</translation></seg>
+<seg id="3" doc-id="714765965a064ed291e1b097e139a9a1" hide-source="True"><source>the issues on cooperation in the sphere of production of explosives for civil use in the construction and mining industry, in the sphere of construction of infrastructure facilities, including seaports, airports, roads and railways were discussed at the meeting.</source>
+
+<translation system="Apertium" type="simple" fill=";;" keys="орайда;жолдарын;қолдану">осы { } құрылыс және тау-кен өнеркәсібін, теңіз порттарын, әуежайларды, автомобиль { } және теміржолды қоса алғанда, азаматтық мақсатта пайдалану үшін жарылғыш { } жүйесі өндірісі саласындағы ынтымақтастық мәселелері қаралды.</translation></seg></set>

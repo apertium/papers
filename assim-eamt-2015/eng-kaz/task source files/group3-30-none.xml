@@ -1,0 +1,9 @@
+<set id="3daf84ca581d4070a067215a00f8cf92" source-language="eng" target-language="kaz"><seg id="1" doc-id="e61ade7548224e42874dd2db756dddba" hide-source="True"><source>President Nursultan Nazarbayev has sent a telegram of congratulations to Milos Zeman on the occasion of his election to the post of the President of Czech Republic.</source>
+
+<translation system="Apertium" type="simple" fill=";;;;" keys="Чех;Президенті;қызметіне;орай;жолдады">Қазақстан Президенті Нұрсұлтан Назарбаев Милош Земанның { } Республикасының { } { } сайлануына { } құттықтау жеделхатын { }.</translation></seg>
+<seg id="2" doc-id="e61ade7548224e42874dd2db756dddba" hide-source="True"><source>the role of the lead dancers is played by national artists such as Basbayeva, Gatauov, Ospanbayeva, Zhanburchinova and Rustemova.</source>
+
+<translation system="Apertium" type="simple" fill=";" keys="еліміздің;орындады">басты рөлдерді { } бишілері Басбаева, Гатауов, Оспанбаева, Жанбурчинова, Рүстемова және басқалар { }.</translation></seg>
+<seg id="3" doc-id="e61ade7548224e42874dd2db756dddba" hide-source="True"><source>I believe that on these mournful days the Brazilian people will bravely strongly bear all hardships," the telegram reads.</source>
+
+<translation system="Apertium" type="simple" fill=";;" keys="түскен;төзімділікпен;көтереді">осындай қайғылы күндерде Бразилия халқы басқа { } қиыншылықты { } { } деп сенемін" делінген жеделхатта.</translation></seg></set>
