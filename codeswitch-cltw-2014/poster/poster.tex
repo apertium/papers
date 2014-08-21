@@ -57,7 +57,7 @@
 \defaultfontfeatures{PunctuationSpace=3,Scale=MatchLowercase,Mapping=tex-text}
 \newfontfeature{IPA}{+mgrk}
 %\setromanfont[IPA]{FreeSerif}
-%\setromanfont[IPA,Scale=0.8]{CMU Serif}
+%\setromanfont[IPA,Scale=0.8]{FreeSerif}
 \setromanfont[IPA]{Liberation Serif}
 %\setromanfont[IPA]{Times New Roman}
 %\setromanfont[IPA]{NimbusRomNo9L-Regu}
@@ -70,7 +70,8 @@
 \usepackage[small,bf]{caption}
 %\newfontfamily\qipa[IPA]{NimbusRomNo9L-Regu}
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
-\newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
+\newfontfamily\qgmk[IPA,Scale=0.8]{FreeSerif}
+
 \newfontfamily\litamono[IPA,Scale=0.5]{DejaVu Sans Mono}
 
 \newcommand{\tilda}{{\qipa ∼}}
@@ -81,9 +82,9 @@
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
 %\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
 %\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
-\newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{CMU Sans Serif}
-%\newfontfamily\titlefont[IPA,Scale=0.52]{CMU Serif}
-\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Serif}
+\newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{FreeSerif}
+%\newfontfamily\titlefont[IPA,Scale=0.52]{FreeSerif}
+\newfontfamily\titlefont[IPA,Scale=0.7]{FreeSerif}
 \newcommand{\htwo}[1]{{\htwofont \textbf{\dotfill{}#1\dotfill{}}}}
 \usepackage{graphicx}  % [dvipdfm]
 
@@ -273,7 +274,7 @@
 
 
 		\headerbox{Chunking algorithm}{name=lexc,below=morphtrans}{
-		foo
+		\includegraphics[scale=0.85]{pseudocode.pdf}
 %		\begin{algorithm}
 %		\caption*{\textsc{}}
 %		%\caption{Chunking algorithm}\label{euclid}
