@@ -270,14 +270,19 @@
 	   	\begin{itemize}
 			\item	Character Language model
 		\newline
+		\vspace{-0.3cm}
 			\item	Using IRSTLM we build a language model for the five languages 
 		\newline
+		\vspace{-0.3cm}
 			\item	For English and French - Europarl 
 		\newline
+		\vspace{-0.3cm}
 			\item	Breton, Welsh and Irish - Corpora of text crawled from the web
 		\newline
+		\vspace{-0.3cm}
 			\item	Size of the corpus from which this language model was built - 1.5 million tokens
 		\newline
+		\vspace{-0.3cm}
 			\item 	Example - the word `sl\'{a}inte!' would be broken down into a sequence
 of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\newline
@@ -288,8 +293,10 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\begin{itemize}
 			\item	Generate word lists for the languages using aspell which is widely used on Unix systems.
 		\newline
+		\vspace{-0.3cm}
 			\item 	Word are labeled according to their presence in the particular word list. 
 		\newline
+		\vspace{-0.3cm}
 			\item	In case of a confusion the word is added to the previous segment 
 		\newline
 		\end{itemize}
@@ -311,6 +318,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\begin{itemize}
 			\item	Trigram probabilities from \emph{langid} were taken into account. 	
 		\newline
+		\vspace{-0.3cm}
 			\item	All other heuristics and chunking algorithm are same as for other methods.
 		\newline
 		\end{itemize}
