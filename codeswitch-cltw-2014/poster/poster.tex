@@ -227,6 +227,8 @@
 		We aim to perform language identification on sub segmental basis: \\
 		\begin{itemize}
 			\item Typical case is to detect the language of documents and sentences. 	
+			\newline
+		\vspace{-0.3cm}
 			\item We are focussing on cases where - A single sentence may have different \textbf{code switching} points 
 		\end{itemize}
 		\vspace{0.5cm}
@@ -236,6 +238,8 @@
 		%\htwo{Morphological transducers}
 		\begin{itemize}
 			\item Simplifying the task by taking into account Celtic languages and a corresponding majority language. \\
+			\newline
+		\vspace{-0.3cm}
 			\item Manual annotation of about 40-50 tweets for each of the three language pairs.  \\
 		\end{itemize}
 
@@ -259,7 +263,7 @@
 	%	\caption{Document statistics of the annotated data used. }
 
 	%	\label{table:datastats}
-		\vspace{0.7cm}
+		\vspace{0.5cm}
 
 
 	}
@@ -325,15 +329,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\end{itemize}
 		}
 
-
-		\headerbox{Examples of code-switching segmentation}{name=examplescode,column=1,row=0,span=2}{
-		\begin{center}
-		[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!] \\
-		@afaltomkins [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init]	\\
-		[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!]\\
-		\end{center}
-		}
-		\headerbox{Example}{name=examples,column=1,below=examplescode,span=2}{
+		\headerbox{Typology}{name=examples,column=1,row=0,span=2}{
 		%	\begin{table}[h]
 			\begin{center}
 			\begin{tabular}{ll}
@@ -348,7 +344,15 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 			\end{center}
 		%	\end{table}
 		}
-		\headerbox{Chunking algorithm}{name=lexc,column=1,below=examples,span=2}{
+
+		\headerbox{Annotated Data}{name=examplescode,column=1,span=2,below=examples}{
+		\begin{center}
+		[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!] \\
+		@afaltomkins [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init]	\\
+		[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!]\\
+		\end{center}
+		}
+		\headerbox{Chunking algorithm}{name=lexc,column=1,below=examplescode,span=2}{
 		%\includegraphics[trim = 4.4cm 9.5cm 0 4cm, clip, scale=0.55]{pseudocode.pdf}
 		\includegraphics[trim = 4.4cm 11.5cm 0 4cm, clip, width=0.8\textwidth]{pseudocode.pdf}
 %		\begin{algorithm}
