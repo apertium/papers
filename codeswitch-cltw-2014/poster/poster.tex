@@ -272,8 +272,52 @@
 
 	}
 
+		\headerbox{Methodology}{name=exout,below=morphtrans}{
 
-		\headerbox{Chunking algorithm}{name=lexc,below=morphtrans}{
+		\htwo{Alphabet n-gram approach}
+		\newline
+	   	\begin{itemize}
+			\item	Character Language model
+			\item	Using IRSTLM we build a language model for the five languages 
+			\item	For English and French - Europarl 
+			\item	Breton, Welsh and Irish - Corpora of text crawled from the web
+			\item	Size of the corpus from which this language model was built - 1.5 million tokens
+			\item 	Example - the word `sl\'{a}inte!' would be broken down into a sequence
+of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
+		\newline
+		\end{itemize}	
+
+		\htwo{Word based prediction}
+		\newline
+		\begin{itemize}
+			\item	Generate word lists for the languages using aspell which is widely used on Unix systems.
+			\item 	Word are labeled according to their presence in the particular word list. 
+			\item	In case of a confusion the word is added to the previous segment 
+		\newline
+		\end{itemize}
+		\htwo{Word-based prediction with character backoff}
+		\newline
+		\begin{itemize}
+			\item	Same as Word-based prediction, but in case of confusion this falls back to the Alphabet bi-gram approach. 
+		\end{itemize}
+		\htwo{Baseline}
+		\newline
+		\begin{itemize}
+			\item	Using langid.py labeled all the lines in a particular dataset according to the majority classification 
+		\newline
+		\end{itemize}
+
+		\htwo{Langid character trigram prediction}
+		\newline
+		\begin{itemize}
+			\item	Trigram probabilities from langid were taken into account. 	
+			\item	All other heuristics and chunking algorithm are same as for other methods.
+		\newline
+		\end{itemize}
+		}
+
+
+		\headerbox{Chunking algorithm}{name=lexc,column=1,row=0}{
 		\includegraphics[trim = 4.4cm 10.5cm 0 4cm, clip, scale=0.55]{pseudocode.pdf}
 %		\begin{algorithm}
 %		\caption*{\textsc{}}
@@ -345,7 +389,7 @@
 		}
 		
 		
-		\headerbox{Results}{name=results,column=1,row=0,span=2}{
+		\headerbox{Results}{name=results,column=1,row=1,span=2,below=lexc}{
 			
 			\begin{center}
 			\begin{tabular}{|lc|r|r|r|r|r|r|}
@@ -399,65 +443,6 @@
 			\label{table:accuracy}
 
 }
-
-		\headerbox{Methodology}{name=exout,column=1,row=1,below=results}{
-
-		\htwo{Alphabet n-gram approach}
-		\newline
-	   	\begin{itemize}
-			\item	Character Language model
-		\newline
-			\item	Using IRSTLM we build a language model for the five languages 
-		\newline
-			\item	For English and French - Europarl 
-		\newline
-			\item	Breton, Welsh and Irish - Corpora of text crawled from the web
-		\newline
-			\item	Size of the corpus from which this language model was built - 1.5 million tokens
-		\newline
-			\item 	Example - the word `sl\'{a}inte!' would be broken down into a sequence
-of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
-		\newline
-		\end{itemize}	
-
-		\htwo{Word based prediction}
-		\newline
-		\newline
-		\begin{itemize}
-			\item	Generate word lists for the languages using aspell which is widely used on Unix systems.
-		\newline
-			\item 	Word are labeled according to their presence in the particular word list. 
-		\newline
-			\item	In case of a confusion the word is added to the previous segment 
-		\newline
-		\end{itemize}
-		\htwo{Word-based prediction with character backoff}
-		\newline
-		\newline
-		\begin{itemize}
-			\item	Same as Word-based prediction, but in case of confusion this falls back to the Alphabet bi-gram approach. 
-		\newline
-
-		\end{itemize}
-			
-		\htwo{Baseline}
-		\newline
-		\newline
-		\begin{itemize}
-			\item	Using langid.py labeled all the lines in a particular dataset according to the majority classification 
-		\newline
-		\end{itemize}
-
-		\htwo{Langid character trigram prediction}
-		\newline
-		\newline
-		\begin{itemize}
-			\item	Trigram probabilities from langid were taken into account. 	
-		\newline
-			\item	All other heuristics and chunking algorithm are same as for other methods.
-		\newline
-		\end{itemize}
-		}
 
 		\headerbox{Conclusions}{name=conclusions,column=2,below=results}{
 			\begin{itemize}
