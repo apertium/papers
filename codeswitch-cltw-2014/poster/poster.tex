@@ -274,7 +274,7 @@
 
 
 		\headerbox{Chunking algorithm}{name=lexc,below=morphtrans}{
-		\includegraphics[trim = 4.4cm 5cm 0 4cm, clip, scale=0.55]{pseudocode.pdf}
+		\includegraphics[trim = 4.4cm 10.5cm 0 4cm, clip, scale=0.55]{pseudocode.pdf}
 %		\begin{algorithm}
 %		\caption*{\textsc{}}
 %		%\caption{Chunking algorithm}\label{euclid}
@@ -330,7 +330,77 @@
 
 
 
-		\headerbox{Methodology}{name=exout,column=1,row=0}{
+		\headerbox{Evaluation}{name=eval,column=2,row=0}{
+		\begin{itemize}
+		\newline	
+			\item	We followed the footsteps of CoNLL 2000 shared task on language independent named entity recognition. 
+		\newline	
+			\item	Divide the text into non-overlapping segments.
+		\newline	
+			\item	Precision - percentage of correctly detected phrases.
+		\newline	
+			\item	Recall - number of phrases in the data that were found by the chunker.
+		\newline	
+		\end{itemize}
+		}
+		
+		
+		\headerbox{Results}{name=results,column=1,row=0,span=2}{
+			
+			\begin{center}
+			\begin{tabular}{|lc|r|r|r|r|r|r|}
+			\hline
+			\multirow{2}{*}{\textbf{System}}            & & \multicolumn{2}{c}{\textbf{Irish---English}} & \multicolumn{2}{|c|}{\textbf{Welsh---English}} & \multicolumn{2}{c|}{\textbf{Breton---French}}  \\\cline{3-8}
+			                                          &      &  Irish &  English & Welsh  & English & Breton & French \\
+			\hline
+			\multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
+			                                          & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
+			\hline
+			\multirow{2}{*}{\texttt{langid-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
+			                                          & $r$  & 5.41    & 8.45     & 0.0   & 14.58 & 1.92 & 12.36 \\
+			\hline
+			\multirow{2}{*}{\texttt{wordlist}}        &  $p$ &  32.50 & 28.57     & 26.69 & {\bf 40.91} & 57.41 & 33.96 \\
+			                                          & $r$  & 23.64  & 26.09     & {\bf 26.03} & {\bf 33.75} & 47.69 & 33.33 \\
+			\hline
+			\multirow{2}{*}{\texttt{character bigram}}          &  $p$ &  32.50   & 35.71   & 23.44 & 19.70  & 57.41 & 52.83 \\
+			                                          & $r$  & 22.41    & 26.79   & 15.31 & 16.67 & 41.33 & 37.84 \\
+			\hline
+			\multirow{2}{*}{\texttt{wordlist+character bigram}} &  $p$ &  {\bf 52.50}   & {\bf 50.00}   & {\bf 32.81} & 31.82 & {\bf 70.37} & {\bf 67.92} \\
+			                                          & $r$  & {\bf 38.18}    & {\bf 43.75}   & 24.14 & 25.61 & {\bf 57.58} & {\bf 57.14} \\
+			\hline
+			\end{tabular}
+			\end{center}
+			\vspace{-0.4cm}
+		\caption{Precision, $p$ and recall, $r$ for the systems by language.}
+			\label{table:precisionrecall}
+			
+
+			\begin{center}
+			\begin{tabular}{|l|r|r|r|}
+			\hline
+			\multirow{2}{*}{\textbf{System}} &  \multicolumn{3}{c|}{\textbf{Accuracy} (\%)} \\\cline{2-4}
+			       &   Irish---English & Welsh---English & Breton---French \\
+			\hline
+			\texttt{baseline} & 42.76 & 42.16 & 44.07 \\
+			\hline
+			\texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
+			\hline
+			\texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
+			\hline
+			\texttt{character bigram} & 81.29 & 65.62 & 76.79 \\
+			\hline
+			\texttt{wordlist+character bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
+			\hline
+			\end{tabular}
+			\end{center}
+			\vspace{-0.4cm}
+		\caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
+			  was assigned to the right language, independent of span.}
+			\label{table:accuracy}
+
+}
+
+		\headerbox{Methodology}{name=exout,column=1,row=1,below=results}{
 
 		\htwo{Alphabet n-gram approach}
 		\newline
@@ -388,77 +458,6 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\newline
 		\end{itemize}
 		}
-
-		\headerbox{Evaluation}{name=eval,column=2,row=0}{
-		\begin{itemize}
-		\newline	
-			\item	We followed the footsteps of CoNLL 2000 shared task on language independent named entity recognition. 
-		\newline	
-			\item	Divide the text into non-overlapping segments.
-		\newline	
-			\item	Precision - percentage of correctly detected phrases.
-		\newline	
-			\item	Recall - number of phrases in the data that were found by the chunker.
-		\newline	
-		\end{itemize}
-		}
-		
-		
-		\headerbox{Results}{name=results,column=2,below=eval}{
-			
-		\includegraphics[trim = 4.7cm 15cm 0 4cm, clip, scale=0.55]{results.pdf}
-		%	\begin{center}
-		%	\begin{tabular}{|lc|r|r|r|r|r|r|}
-		%	\hline
-		%	\multirow{2}{*}{\textbf{System}}            & & \multicolumn{2}{c}{\textbf{Irish---English}} & \multicolumn{2}{|c|}{\textbf{Welsh---English}} & \multicolumn{2}{c|}{\textbf{Breton---French}}  \\\cline{3-8}
-		%	                                          &      &  Irish &  English & Welsh  & English & Breton & French \\
-		%	\hline
-		%	\multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
-		%	                                          & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
-		%	\hline
-		%	\multirow{2}{*}{\texttt{langid-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
-		%	                                          & $r$  & 5.41    & 8.45     & 0.0   & 14.58 & 1.92 & 12.36 \\
-		%	\hline
-		%	\multirow{2}{*}{\texttt{wordlist}}        &  $p$ &  32.50 & 28.57     & 26.69 & {\bf 40.91} & 57.41 & 33.96 \\
-		%	                                          & $r$  & 23.64  & 26.09     & {\bf 26.03} & {\bf 33.75} & 47.69 & 33.33 \\
-		%	\hline
-		%	\multirow{2}{*}{\texttt{character bigram}}          &  $p$ &  32.50   & 35.71   & 23.44 & 19.70  & 57.41 & 52.83 \\
-		%	                                          & $r$  & 22.41    & 26.79   & 15.31 & 16.67 & 41.33 & 37.84 \\
-		%	\hline
-		%	\multirow{2}{*}{\texttt{wordlist+character bigram}} &  $p$ &  {\bf 52.50}   & {\bf 50.00}   & {\bf 32.81} & 31.82 & {\bf 70.37} & {\bf 67.92} \\
-		%	                                          & $r$  & {\bf 38.18}    & {\bf 43.75}   & 24.14 & 25.61 & {\bf 57.58} & {\bf 57.14} \\
-		%	\hline
-		%	\end{tabular}
-		%	\end{center}
-		%	\vspace{-0.4cm}
-%			\caption{Precision, $p$ and recall, $r$ for the systems by language.}
-%			\label{table:precisionrecall}
-			
-
-		%	\begin{center}
-		%	\begin{tabular}{|l|r|r|r|}
-		%%	\hline
-		%	\multirow{2}{*}{\textbf{System}} &  \multicolumn{3}{c|}{\textbf{Accuracy} (\%)} \\\cline{2-4}
-		%	       &   Irish---English & Welsh---English & Breton---French \\
-		%	\hline
-		%	\texttt{baseline} & 42.76 & 42.16 & 44.07 \\
-		%	\hline
-		%	\texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
-		%	\hline
-		%	\texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
-		%	\hline
-		%	\texttt{character bigram} & 81.29 & 65.62 & 76.79 \\
-		%	\hline
-		%	\texttt{wordlist+character bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
-		%	\hline
-		%	\end{tabular}
-		%	\end{center}
-		%	\vspace{-0.4cm}
-%			\caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
-%			  was assigned to the right language, independent of span.}
-%			\label{table:accuracy}
-
-}
 
 		\headerbox{Conclusions}{name=conclusions,column=2,below=results}{
 			\begin{itemize}
