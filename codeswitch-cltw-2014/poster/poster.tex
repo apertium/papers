@@ -333,49 +333,73 @@
 		\headerbox{Methodology}{name=exout,column=1,row=0}{
 
 		\htwo{Alphabet n-gram approach}
+		\newline
 	   	\begin{itemize}
 			\item	Character Language model
+		\newline
 			\item	Using IRSTLM we build a language model for the five languages 
+		\newline
 			\item	For English and French - Europarl 
+		\newline
 			\item	Breton, Welsh and Irish - Corpora of text crawled from the web
+		\newline
 			\item	Size of the corpus from which this language model was built - 1.5 million tokens
+		\newline
 			\item 	Example - the word `sl\'{a}inte!' would be broken down into a sequence
 of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
+		\newline
 		\end{itemize}	
 
 		\htwo{Word based prediction}
+		\newline
+		\newline
 		\begin{itemize}
 			\item	Generate word lists for the languages using aspell which is widely used on Unix systems.
+		\newline
 			\item 	Word are labeled according to their presence in the particular word list. 
+		\newline
 			\item	In case of a confusion the word is added to the previous segment 
+		\newline
 		\end{itemize}
-
 		\htwo{Word-based prediction with character backoff}
+		\newline
+		\newline
 		\begin{itemize}
 			\item	Same as Word-based prediction, but in case of confusion this falls back to the Alphabet bi-gram approach. 
+		\newline
 
 		\end{itemize}
 			
 		\htwo{Baseline}
+		\newline
+		\newline
 		\begin{itemize}
 			\item	Using langid.py labeled all the lines in a particular dataset according to the majority classification 
-
+		\newline
 		\end{itemize}
 
 		\htwo{Langid character trigram prediction}
+		\newline
+		\newline
 		\begin{itemize}
 			\item	Trigram probabilities from langid were taken into account. 	
+		\newline
 			\item	All other heuristics and chunking algorithm are same as for other methods.
+		\newline
 		\end{itemize}
 		}
 
 		\headerbox{Evaluation}{name=eval,column=2,row=0}{
-		
 		\begin{itemize}
+		\newline	
 			\item	We followed the footsteps of CoNLL 2000 shared task on language independent named entity recognition. 
+		\newline	
 			\item	Divide the text into non-overlapping segments.
+		\newline	
 			\item	Precision - percentage of correctly detected phrases.
+		\newline	
 			\item	Recall - number of phrases in the data that were found by the chunker.
+		\newline	
 		\end{itemize}
 		}
 		
@@ -439,12 +463,16 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\headerbox{Conclusions}{name=conclusions,column=2,below=results}{
 			\begin{itemize}
 			\item	A very preliminary investigation into subsegment language identification in Celtic language texts.
+		\newline	
 
 			\item	We would like to include supervised methods and features talked about by King and Abney (2013)
+		\newline	
 
 			\item	We would also like to check our methods with higher order n-grams and more options in backoff.
+		\newline	
 
 			\item	Explore a lattice technique where each word is a lattice node and the inclusions of the words are done using probability.
+		\newline	
 			\end{itemize}
 		}
 
