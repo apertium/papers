@@ -76,7 +76,7 @@
 \newcommand{\tilda}{{\qipa ∼}}
 
 \newcommand{\tags}[1]{\hiliteone{#1}}
-\newcommand{\tag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
+\newcommand{\newtag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
 
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
 %\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
@@ -204,13 +204,7 @@
 					{Francis M.\ Tyers}\\
 					{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
 				\end{spacing}
-			\end{minipage}
-			%\begin{minipage}[t]{8.2em}
-			%	\begin{spacing}{0.4}
-			%		{Francis M.\ Tyers}\\
-			%		{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
-			%	\end{spacing}
-			%\end{minipage}}
+			\end{minipage}}
 			\begin{minipage}[t]{5.5em}
 				\vspace{-0.25em}
 				\begin{spacing}{0.4}
@@ -225,25 +219,26 @@
 				\end{spacing}
 			\end{minipage}
 			\end{center}
-
+		}{
+			foo
 		}
 	\headerbox{Introduction}{name=kypchaklgs,column=0,row=0}{
-		We aim to perform language identification on sub segmental basis - \\
+		We aim to perform language identification on sub segmental basis: \\
 		\begin{itemize}
 			\item Typical case is to detect the language of documents and sentences. \\	
 			\item We are focussing on cases where - A single sentence may have different code switching points \\
 		\end{itemize}
-                \begin{figure}
-		\begin{small}
-		\begin{alltt}
-		[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!]
-		@afaltomkins [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init]
-		[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!]
-		\end{alltt}
-		\end{small}
-		\caption{Example of text from a microblogging site chunked manually.}
-		\label{fig:tweets}
-		\end{figure}
+%                \begin{figure}
+%		\begin{small}
+%		\begin{alltt}
+%		[\textbf{en} You're a] [\textbf{ga} Meirice\'{a}nach, c\'{e}n f\'{a}th] [\textbf{en} are you] [\textbf{ga} foghlaim Gaeilge?!]
+%		@afaltomkins [\textbf{cy} gorfod cael bach o tan] [\textbf{en} though init]
+%		[\textbf{en} omg] [\textbf{cy} mar cwn bach yn] [\textbf{en} black and tan] [\textbf{cy} a popeth,] [\textbf{en} even cuter!!]
+%		\end{alltt}
+%		\end{small}
+%		\caption{Example of text from a microblogging site chunked manually.}
+%		\label{fig:tweets}
+%		\end{figure}
 
 	}
 	
@@ -253,81 +248,82 @@
 			\item Simplifying the task by taking into account Celtic languages and a corresponding majority language. \\
 			\item Manual annotation of about 40-50 tweets for each of the three language pairs.  \\
 		\end{itemize}
-		\begin{table}
-		\begin{center}
-		\begin{tabular}{|l|r|r|r|r}
-		\hline
-		\multirow{2}{*}{\textbf{Pair}} & \multirow{2}{*}{\textbf{Language}}  & \multicolumn{2}{c|}{\textbf{Statistics} (\%)} \\\cline{3-4}
-		                &  &  Tokens & Segments \\
-		\hline
-		\multirow{2}{*}{Irish---English} & Irish & 332 & 40 \\
-		                                 & English & 379 & 42 \\
-		\hline
-		\multirow{2}{*}{Welsh---English} & Welsh & 419 & 64 \\
-		                                 & English & 378 & 66  \\
-		\hline
-		\multirow{2}{*}{Breton---French} & Breton & 388 & 54 \\
-		                                 & French & 379 & 53  \\
-		\hline
-		\end{tabular}
-		\end{center}
-		\caption{Document statistics of the annotated data used. }
-		\label{table:datastats}
-		\end{table}
-
+%		\begin{table}
+%		\begin{center}
+%		\begin{tabular}{|l|r|r|r|r}
+%		\hline
+%		\multirow{2}{*}{\textbf{Pair}} & \multirow{2}{*}{\textbf{Language}}  & \multicolumn{2}{c|}{\textbf{Statistics} (\%)} \\\cline{3-4}
+%		                &  &  Tokens & Segments \\
+%		\hline
+%		\multirow{2}{*}{Irish---English} & Irish & 332 & 40 \\
+%		                                 & English & 379 & 42 \\
+%		\hline
+%		\multirow{2}{*}{Welsh---English} & Welsh & 419 & 64 \\
+%		                                 & English & 378 & 66  \\
+%		\hline
+%		\multirow{2}{*}{Breton---French} & Breton & 388 & 54 \\
+%		                                 & French & 379 & 53  \\
+%		\hline
+%		\end{tabular}
+%		\end{center}
+%		\caption{Document statistics of the annotated data used. }
+%		\label{table:datastats}
+%		\end{table}
+%
 	}
 
 
 		\headerbox{Chunking Algorithm}{name=lexc,below=morphtrans}{
-		\begin{algorithm}
-		\caption*{\textsc{}}
-		%\caption{Chunking algorithm}\label{euclid}
-		{\fontsize{9}{9}\selectfont
-		\begin{algorithmic}[1]
-		%\Statex{}%Procedure{}{}
-		\Require \(s\) : sentence to chunk
-		\State $\textrm{buffer} = [\ ] \text{ /*Undecided expanding window of chunk*/}$
-		\State $\textrm{chunks} = [\ ] \text{ /*Decided labelled segment*/ }$
-		\State $\textrm{buffer\_language} \gets \textsc{LangPredict}(s[0]) \text{ /* Language of first word */ }$
-		\State $\textrm{flag} \gets \text{0}$
-		%\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
-		\ForAll{\(w \in s\)} %{\texttt{word in sentence}}
-		\If {$ \textsc{LangPredict}(w) \text{=} \textrm{buffer\_language} $}
-		        \If {$ \textrm{flag} \text{\ = 1} $}
-		        \State $\textrm{buffer} \gets \textrm{buffer} + [\textrm{word\_buffer,\(w\)}] $
-		        \State $\textrm{flag} \gets \text{0}$
-		        \Else
-		        \State $\textrm{buffer} \gets \textrm{buffer} +[\textrm{ \(w\)}] $
-		        \EndIf
-		        \EndIf
-		\If {$ \textsc{LangPredict}(w) \not{=} \textrm{buffer\_language} $}
-		        \If {$ \textrm{flag} \text{=\ 0} $}
-		        \State $\textrm{flag} \gets \text{1}$
-		        \State $\textrm{word\_buffer} \gets \textrm{\(w\)} $
-		        \State $\textbf{continue}$
-
-		        \Else
-		        \State $\textrm{chunks} \gets \textrm{chunks} + \textrm{[(buffer,buffer\_language)]} $
-		        %\State $\textit{buffer} \gets [] $
-		        \State $\textrm{buffer} \gets [\textrm{word\_buffer,\(w\)}] $
-		        \State $\textrm{buffer\_language} \gets \textsc{LangPredict}\text{(\(w\))} \text{ /* Language of new expanding chunk */}$
-		        \State $\textrm{flag} \gets \text{0}$
-		        \EndIf
-	
-		\EndIf
-		\EndFor
-		\If {$\textrm{length(buffer)} \not{=} 0\ $}
-		        \State $\textrm{chunks} \gets \textrm{chunks} +[\textrm{(buffer,buffer\_language)}] $
-		
-		\EndIf
-		\end{algorithmic}}
-		\end{algorithm}
-		\vspace{-0.4cm}
-		\begin{figure}[hb]
-		\def\@fs@post{}
-		\caption{Chunking Algorithm}
-		\label{fig:chunkal}
-		\end{figure}
+		foo
+%		\begin{algorithm}
+%		\caption*{\textsc{}}
+%		%\caption{Chunking algorithm}\label{euclid}
+%		{\fontsize{9}{9}\selectfont
+%		\begin{algorithmic}[1]
+%		%\Statex{}%Procedure{}{}
+%		\Require \(s\) : sentence to chunk
+%		\State $\textrm{buffer} = [\ ] \text{ /*Undecided expanding window of chunk*/}$
+%		\State $\textrm{chunks} = [\ ] \text{ /*Decided labelled segment*/ }$
+%		\State $\textrm{buffer\_language} \gets \textsc{LangPredict}(s[0]) \text{ /* Language of first word */ }$
+%		\State $\textrm{flag} \gets \text{0}$
+%		%\State $\text{for \ } \textit{word \ } \text{in \ } \textit{sentence:} $
+%		\ForAll{\(w \in s\)} %{\texttt{word in sentence}}
+%		\If {$ \textsc{LangPredict}(w) \text{=} \textrm{buffer\_language} $}
+%		        \If {$ \textrm{flag} \text{\ = 1} $}
+%		        \State $\textrm{buffer} \gets \textrm{buffer} + [\textrm{word\_buffer,\(w\)}] $
+%		        \State $\textrm{flag} \gets \text{0}$
+%		        \Else
+%		        \State $\textrm{buffer} \gets \textrm{buffer} +[\textrm{ \(w\)}] $
+%		        \EndIf
+%		        \EndIf
+%		\If {$ \textsc{LangPredict}(w) \not{=} \textrm{buffer\_language} $}
+%		        \If {$ \textrm{flag} \text{=\ 0} $}
+%		        \State $\textrm{flag} \gets \text{1}$
+%		        \State $\textrm{word\_buffer} \gets \textrm{\(w\)} $
+%		        \State $\textbf{continue}$
+%
+%		        \Else
+%		        \State $\textrm{chunks} \gets \textrm{chunks} + \textrm{[(buffer,buffer\_language)]} $
+%		        %\State $\textit{buffer} \gets [] $
+%		        \State $\textrm{buffer} \gets [\textrm{word\_buffer,\(w\)}] $
+%		        \State $\textrm{buffer\_language} \gets \textsc{LangPredict}\text{(\(w\))} \text{ /* Language of new expanding chunk */}$
+%		        \State $\textrm{flag} \gets \text{0}$
+%		        \EndIf
+%	
+%		\EndIf
+%		\EndFor
+%		\If {$\textrm{length(buffer)} \not{=} 0\ $}
+%		        \State $\textrm{chunks} \gets \textrm{chunks} +[\textrm{(buffer,buffer\_language)}] $
+%		
+%		\EndIf
+%		\end{algorithmic}}
+%		\end{algorithm}
+%		\vspace{-0.4cm}
+%		\begin{figure}[hb]
+%		\def\@fs@post{}
+%		\caption{Chunking Algorithm}
+%		\label{fig:chunkal}
+%		\end{figure}
 			}
 
 					\renewcommand{\arraystretch}{0.65}
@@ -385,61 +381,63 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		
 		
 		\headerbox{Results}{name=results,column=2,below=eval}{
+%			
+%			\begin{table}
+%			\begin{center}
+%			\begin{tabular}{|lc|r|r|r|r|r|r|}
+%			\hline
+%			\multirow{2}{*}{\textbf{System}}            & & \multicolumn{2}{c}{\textbf{Irish---English}} & \multicolumn{2}{|c|}{\textbf{Welsh---English}} & \multicolumn{2}{c|}{\textbf{Breton---French}}  \\\cline{3-8}
+%			                                          &      &  Irish &  English & Welsh  & English & Breton & French \\
+%			\hline
+%			\multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
+%			                                          & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
+%			\hline
+%			\multirow{2}{*}{\texttt{langid-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
+%			                                          & $r$  & 5.41    & 8.45     & 0.0   & 14.58 & 1.92 & 12.36 \\
+%			\hline
+%			\multirow{2}{*}{\texttt{wordlist}}        &  $p$ &  32.50 & 28.57     & 26.69 & {\bf 40.91} & 57.41 & 33.96 \\
+%			                                          & $r$  & 23.64  & 26.09     & {\bf 26.03} & {\bf 33.75} & 47.69 & 33.33 \\
+%			\hline
+%			\multirow{2}{*}{\texttt{character bigram}}          &  $p$ &  32.50   & 35.71   & 23.44 & 19.70  & 57.41 & 52.83 \\
+%			                                          & $r$  & 22.41    & 26.79   & 15.31 & 16.67 & 41.33 & 37.84 \\
+%			\hline
+%			\multirow{2}{*}{\texttt{wordlist+character bigram}} &  $p$ &  {\bf 52.50}   & {\bf 50.00}   & {\bf 32.81} & 31.82 & {\bf 70.37} & {\bf 67.92} \\
+%			                                          & $r$  & {\bf 38.18}    & {\bf 43.75}   & 24.14 & 25.61 & {\bf 57.58} & {\bf 57.14} \\
+%			\hline
+%			\end{tabular}
+%			\end{center}
+%			\vspace{-0.4cm}
+%			\caption{Precision, $p$ and recall, $r$ for the systems by language.}
+%			\label{table:precisionrecall}
+%			
+%			\end{table}
+%
+			foo
 			
-			\begin{table}
-			\begin{center}
-			\begin{tabular}{|lc|r|r|r|r|r|r|}
-			\hline
-			\multirow{2}{*}{\textbf{System}}            & & \multicolumn{2}{c}{\textbf{Irish---English}} & \multicolumn{2}{|c|}{\textbf{Welsh---English}} & \multicolumn{2}{c|}{\textbf{Breton---French}}  \\\cline{3-8}
-			                                          &      &  Irish &  English & Welsh  & English & Breton & French \\
-			\hline
-			\multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
-			                                          & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
-			\hline
-			\multirow{2}{*}{\texttt{langid-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
-			                                          & $r$  & 5.41    & 8.45     & 0.0   & 14.58 & 1.92 & 12.36 \\
-			\hline
-			\multirow{2}{*}{\texttt{wordlist}}        &  $p$ &  32.50 & 28.57     & 26.69 & {\bf 40.91} & 57.41 & 33.96 \\
-			                                          & $r$  & 23.64  & 26.09     & {\bf 26.03} & {\bf 33.75} & 47.69 & 33.33 \\
-			\hline
-			\multirow{2}{*}{\texttt{character bigram}}          &  $p$ &  32.50   & 35.71   & 23.44 & 19.70  & 57.41 & 52.83 \\
-			                                          & $r$  & 22.41    & 26.79   & 15.31 & 16.67 & 41.33 & 37.84 \\
-			\hline
-			\multirow{2}{*}{\texttt{wordlist+character bigram}} &  $p$ &  {\bf 52.50}   & {\bf 50.00}   & {\bf 32.81} & 31.82 & {\bf 70.37} & {\bf 67.92} \\
-			                                          & $r$  & {\bf 38.18}    & {\bf 43.75}   & 24.14 & 25.61 & {\bf 57.58} & {\bf 57.14} \\
-			\hline
-			\end{tabular}
-			\end{center}
-			\vspace{-0.4cm}
-			\caption{Precision, $p$ and recall, $r$ for the systems by language.}
-			\label{table:precisionrecall}
-			
-			\end{table}
-			
-			\begin{table}
-			\begin{center}
-			\begin{tabular}{|l|r|r|r|}
-			\hline
-			\multirow{2}{*}{\textbf{System}} &  \multicolumn{3}{c|}{\textbf{Accuracy} (\%)} \\\cline{2-4}
-			       &   Irish---English & Welsh---English & Breton---French \\
-			\hline
-			\texttt{baseline} & 42.76 & 42.16 & 44.07 \\
-			\hline
-			\texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
-			\hline
-			\texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
-			\hline
-			\texttt{character bigram} & 81.29 & 65.62 & 76.79 \\
-			\hline
-			\texttt{wordlist+character bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
-			\hline
-			\end{tabular}
-			\end{center}
-			\vspace{-0.4cm}
-			\caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
-			  was assigned to the right language, independent of span.}
-			\label{table:accuracy}
-			\end{table}
+%			\begin{table}
+%			\begin{center}
+%			\begin{tabular}{|l|r|r|r|}
+%			\hline
+%			\multirow{2}{*}{\textbf{System}} &  \multicolumn{3}{c|}{\textbf{Accuracy} (\%)} \\\cline{2-4}
+%			       &   Irish---English & Welsh---English & Breton---French \\
+%			\hline
+%			\texttt{baseline} & 42.76 & 42.16 & 44.07 \\
+%			\hline
+%			\texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
+%			\hline
+%			\texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
+%			\hline
+%			\texttt{character bigram} & 81.29 & 65.62 & 76.79 \\
+%			\hline
+%			\texttt{wordlist+character bigram} & \textbf{85.79} & 72.40 & \textbf{88.79} \\
+%			\hline
+%			\end{tabular}
+%			\end{center}
+%			\vspace{-0.4cm}
+%			\caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
+%			  was assigned to the right language, independent of span.}
+%			\label{table:accuracy}
+%			\end{table}
 
 }
 
