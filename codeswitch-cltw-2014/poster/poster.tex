@@ -227,7 +227,7 @@
 		We aim to perform language identification on sub segmental basis: \\
 		\begin{itemize}
 			\item Typical case is to detect the language of documents and sentences. 	
-			\item We are focussing on cases where - A single sentence may have different code switching points 
+			\item We are focussing on cases where - A single sentence may have different \textbf{code switching} points 
 		\end{itemize}
 	}
 	
@@ -258,6 +258,7 @@
 	%	\caption{Document statistics of the annotated data used. }
 
 	%	\label{table:datastats}
+		\vspace{1}
 
 
 	}
@@ -268,10 +269,15 @@
 		\newline
 	   	\begin{itemize}
 			\item	Character Language model
+		\newline
 			\item	Using IRSTLM we build a language model for the five languages 
+		\newline
 			\item	For English and French - Europarl 
+		\newline
 			\item	Breton, Welsh and Irish - Corpora of text crawled from the web
+		\newline
 			\item	Size of the corpus from which this language model was built - 1.5 million tokens
+		\newline
 			\item 	Example - the word `sl\'{a}inte!' would be broken down into a sequence
 of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\newline
@@ -281,7 +287,9 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\newline
 		\begin{itemize}
 			\item	Generate word lists for the languages using aspell which is widely used on Unix systems.
+		\newline
 			\item 	Word are labeled according to their presence in the particular word list. 
+		\newline
 			\item	In case of a confusion the word is added to the previous segment 
 		\newline
 		\end{itemize}
@@ -289,18 +297,20 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\newline
 		\begin{itemize}
 			\item	Same as Word-based prediction, but in case of confusion this falls back to the Alphabet bi-gram approach. 
+		\newline
 		\end{itemize}
 		\htwo{Baseline}
 		\newline
 		\begin{itemize}
-			\item	Using langid.py labeled all the lines in a particular dataset according to the majority classification 
+			\item	Using \emph{langid.py} labeled all the lines in a particular dataset according to the majority classification 
 		\newline
 		\end{itemize}
 
-		\htwo{Langid character trigram prediction}
+		\htwo{\emph{Langid} character trigram prediction}
 		\newline
 		\begin{itemize}
-			\item	Trigram probabilities from langid were taken into account. 	
+			\item	Trigram probabilities from \emph{langid} were taken into account. 	
+		\newline
 			\item	All other heuristics and chunking algorithm are same as for other methods.
 		\newline
 		\end{itemize}
@@ -399,7 +409,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 			\multirow{2}{*}{\texttt{baseline}}        &  $p$ &  2.50   & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
 			                                          & $r$  & 2.56    & 0.0      & 0.0   & 0.0 & 0.0 & 0.0 \\
 			\hline
-			\multirow{2}{*}{\texttt{langid-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
+			\multirow{2}{*}{\texttt{\emph{langid}-3character}}         &  $p$ &  5.00   & 14.29    & 0.0   & 21.21 & 1.85 & 20.75 \\
 			                                          & $r$  & 5.41    & 8.45     & 0.0   & 14.58 & 1.92 & 12.36 \\
 			\hline
 			\multirow{2}{*}{\texttt{wordlist}}        &  $p$ &  32.50 & 28.57     & 26.69 & {\bf 40.91} & 57.41 & 33.96 \\
@@ -417,7 +427,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\caption{Precision, $p$ and recall, $r$ for the systems by language.}
 			\label{table:precisionrecall}
 			
-			\vspace{0.5cm}
+			\vspace{0.3cm}
 
 			\begin{center}
 			\begin{tabular}{|l|r|r|r|}
@@ -427,7 +437,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 			\hline
 			\texttt{baseline} & 42.76 & 42.16 & 44.07 \\
 			\hline
-			\texttt{langid-3character} & 57.24 & 45.92 & 43.16 \\
+			\texttt{\emph{langid}-3character} & 57.24 & 45.92 & 43.16 \\
 			\hline
 			\texttt{wordlist} & 79.75 & \textbf{74.28} & 83.96 \\
 			\hline
@@ -441,19 +451,19 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		\caption{Accuracy of the systems over the three language pairs. The accuracy measures how often a token
 			  was assigned to the right language, independent of span.}
 			\label{table:accuracy}
-			\vspace{0.5cm}
+			\vspace{0.3cm}
 
 }
 		\headerbox{Evaluation}{name=eval,column=1,below=results}{
 		\begin{itemize}
 		\newline	
-			\item	We followed the footsteps of CoNLL 2000 shared task on language independent named entity recognition. 
+			\item	We followed the footsteps of \textbf{CoNLL 2000} shared task on language independent named entity recognition. 
 		\newline	
 			\item	Divide the text into non-overlapping segments.
 		\newline	
-			\item	Precision - percentage of correctly detected phrases.
+			\item	\textbf{Precision} - percentage of correctly detected phrases.
 		\newline	
-			\item	Recall - number of phrases in the data that were found by the chunker.
+			\item	\textbf{Recall} - number of phrases in the data that were found by the chunker.
 		\newline	
 		\end{itemize}
 		}
