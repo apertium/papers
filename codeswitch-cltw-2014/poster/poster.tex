@@ -84,23 +84,9 @@
 \newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{CMU Sans Serif}
 %\newfontfamily\titlefont[IPA,Scale=0.52]{CMU Serif}
 \newfontfamily\titlefont[IPA,Scale=0.7]{CMU Serif}
-%\newfontfamily\titlefont[IPA,Scale=0.55]{DejaVu Serif}
-
-%\newcommand{\htwo}[1]{::: {\htwofont #1} :::}%\hrule} %\hline\\}
-%\newcommand{\htwo}[1]{{\htwofont \textbf{:::#1:::}}}%\hrule} %\hline\\}
 \newcommand{\htwo}[1]{{\htwofont \textbf{\dotfill{}#1\dotfill{}}}}
-
-
 \usepackage{graphicx}  % [dvipdfm]
 
-%\definecolor{MyGray}{rgb}{0.96,0.97,0.98}
-%\newenvironment{codebox}{%
-%   \begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}{\end{minipage}\end{lrbox}%
-%   \colorbox{MyGray}{\usebox{\@tempboxa}}
-%}
-%\newcommand{\codeex}[1]{\begin{codebox}#1\end{codebox}}
-
-%\definecolor{grey}{rgb}{0.96,0.97,0.98}
 \definecolor{grey}{rgb}{0.91,0.91,0.91}
 \newcommand{\codeex}[1]{
    \fbox{\colorbox{grey}{
@@ -118,31 +104,6 @@
 %\newfontfamily\arabicfont[Script=Arabic,Scale=1.5]{Lateef}
 
 \usepackage{natbib}
-
-%\makeatletter
-%\renewenvironment{thebibliography}[1][]{\htwo{\bibname}}
-%     {\section*{\bibname}% <-- this line was changed from \chapter* to \section*
-%	  \htwo{\bibname}
-%      \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
-%      \list{\@biblabel{\@arabic\c@enumiv}}%
-%           {\settowidth\labelwidth{\@biblabel{#1}}%
-%            \leftmargin\labelwidth
-%            \advance\leftmargin\labelsep
-%            \@openbib@code
-%            \usecounter{enumiv}%
-%            \let\p@enumiv\@empty
-%            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-%      \sloppy
-%      \clubpenalty4000
-%      \@clubpenalty \clubpenalty
-%      \widowpenalty4000%
-%      \sfcode`\.\@m}
-%     {\def\@noitemerr
-%       {\@latex@warning{Empty `thebibliography' environment}}%
-%      \endlist}%}
-%}
-%\makeatother
-%\usepackage[in]{fullpage}
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
 
 \usepackage{subfigure}
@@ -189,11 +150,6 @@
 %	\includegraphics[width=0.99\textwidth]{flagkg2}
 %}
 	\background{{
-%		\begin{tikzpicture}[remember picture,overlay]%
-%			\draw (current page.north west)+(-4em,2em) node[anchor=north west] {\includegraphics[width=1.1\textwidth,height=1.1\textheight]{flagkg2}};
-%		\end{tikzpicture}%
-%%		\includegraphics[width=0.99\textwidth]{flagkg2}
-%%			\draw (current page.north west)+(-2em,2em) node[anchor=north west] {\includegraphics[width=0.9\textwidth]{flagkg2}};
 	}}
 
 
