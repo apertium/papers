@@ -317,7 +317,7 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 		}
 
 
-		\headerbox{Chunking algorithm}{name=lexc,column=1,row=0}{
+		\headerbox{Chunking algorithm}{name=lexc,column=1,row=0,span=2}{
 		\includegraphics[trim = 4.4cm 10.5cm 0 4cm, clip, scale=0.55]{pseudocode.pdf}
 %		\begin{algorithm}
 %		\caption*{\textsc{}}
@@ -374,20 +374,6 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 
 
 
-		\headerbox{Evaluation}{name=eval,column=2,row=0}{
-		\begin{itemize}
-		\newline	
-			\item	We followed the footsteps of CoNLL 2000 shared task on language independent named entity recognition. 
-		\newline	
-			\item	Divide the text into non-overlapping segments.
-		\newline	
-			\item	Precision - percentage of correctly detected phrases.
-		\newline	
-			\item	Recall - number of phrases in the data that were found by the chunker.
-		\newline	
-		\end{itemize}
-		}
-		
 		
 		\headerbox{Results}{name=results,column=1,row=1,span=2,below=lexc}{
 			
@@ -443,6 +429,20 @@ of \{`\_ s', `s l', `l \'{a}', `\'{a} i', `i n', `n t', `t e', `e !', `! \_'\}.
 			\label{table:accuracy}
 
 }
+		\headerbox{Evaluation}{name=eval,column=1,below=results}{
+		\begin{itemize}
+		\newline	
+			\item	We followed the footsteps of CoNLL 2000 shared task on language independent named entity recognition. 
+		\newline	
+			\item	Divide the text into non-overlapping segments.
+		\newline	
+			\item	Precision - percentage of correctly detected phrases.
+		\newline	
+			\item	Recall - number of phrases in the data that were found by the chunker.
+		\newline	
+		\end{itemize}
+		}
+		
 
 		\headerbox{Conclusions}{name=conclusions,column=2,below=results}{
 			\begin{itemize}
