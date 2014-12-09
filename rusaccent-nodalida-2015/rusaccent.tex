@@ -17,18 +17,22 @@
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
 %\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
 
+%\usepackage[T2A,T1]{fontenc}
+%\usepackage[russian,english]{babel}
+%\newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
+
 \title{Automatic accent annotation for Russian}
 
-\author{Robert Reynolds \\
+\author{Author1 \\
   Affiliation / Address line 1 \\
   Affiliation / Address line 2 \\
   Affiliation / Address line 3 \\
-  {\tt email@uit.no} \\\And
-  Francis M. Tyers \\
+  {\tt email@domain.com} \\\And
+  Author2 \\
   Affiliation / Address line 1 \\
   Affiliation / Address line 2 \\
   Affiliation / Address line 3 \\
-  {\tt email@uit.no} \\}
+  {\tt email@domain.com} \\}
 
 \date{}
 
@@ -46,22 +50,44 @@
 
 \section{Credits}
 
-This document has been adapted from the instructions for earlier
-(E)ACL-proceedings, including those for EACL-2014 by Gosse Bouma
-and Yannick Parmentier, those for ACL-2013 by Roberto Navigli
-and Jing-Shing Chang, those for ACL-2012 by Maggie Li and Michael
-White, those for ACL-2010 by Jing-Shing Chang and Philipp Koehn,
-those for ACL-2008 by Joakim Nivre and Noah Smith, 
-those for EACL-2006 by Eneko Agirre and Sergi Balari, 
-those for ACL-2005 by Hwee Tou Ng and Kemal Oflazer, those for
-ACL-2002 by Eugene Charniak and Dekang Lin, and earlier ACL and EACL
-formats. Those versions were written by several people, including John
-Chen, Henry S. Thompson and Donald Walker. Additional elements were
-taken from the formatting instructions of the {\em International Joint
-  Conference on Artificial Intelligence}.
+The template had a credits section for the history of the template, but we don't need
+a Credits section, right?
 
 \section{Introduction}
-% das: removed reference to PostScript
+
+Russian word stress is variable, which means that the position of the stress in a word is not 
+generally predictable. Furthermore, the inflecting word classes include complex patterns of
+shifting stress. Lexical stress and its attendant vowel reduction are a prominent feature of
+spoken Russian, but standard written Russian does not typically mark word stress. Students
+of Russian frequently struggle to know how to pronounce written words, so many
+textbooks mark stress. Even texts intended for native speakers
+sometimes mark words that cannot be disambiguated through context.
+
+Word stress ambiguity in Russian arises both between lexemes and within inflectional
+paradigms. Stress ambiguity between lexemes includes pairs of the type
+????? \emph{zámok} `castle' and ????? \emph{zamók} 'lock'. For every inflected form of 
+these two words, they are both morphosyntactically and orthographically identical, their
+meaning differentiated only by stress placement. This kind of ambiguity is relatively uncommon
+in Russian. This paper focuses on stress ambiguities which are connected to morphosyntactic
+differences. ADD EXAMPLE HERE with ????????, ????????, ????????, AND ??????/??????.
+ADD ANOTHER EXAMPLE WITH the paradigms of ???? and ??????.
+
+\subsection{Related Work}
+
+Automatic stress placement in Russian is similar to Diacritic Restoration, a task
+which has received increasing interest over the last 20 years. Generally speaking, diacritics
+disambiguate otherwise homographic wordforms, so missing diacritics can
+complicate many NLP tasks, such as text-to-speech and speech-to-text. For example, speakers 
+of Czech and French sometimes type emails and other communications
+without standard diacritics. In order to generate speech from these texts, they must first be 
+normalized by restoring diacritics. A slightly different
+situation arises with Arabic and Hebrew, since standard orthography lacks vowel diacritics
+altogether. For such languages, the `restoration' of vowel diacritics results in less
+ambiguity than in standard orthography. For languages with inherently ambiguous orthography,
+it may be more precise to refer to this task as `diacritic enhancement', since it produces
+text that is less ambiguous than the standard language. In this sense, Russian orthography
+is similar to Arabic and Hebrew.
+
 
 The following instructions are directed to authors of papers submitted
 to Nodalida-2015 or accepted for publication in its proceedings. 
