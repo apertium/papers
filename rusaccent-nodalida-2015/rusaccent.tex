@@ -7,19 +7,28 @@
 % which in turn was based on the instruction files for previous 
 % ACL and EACL conferences.
 
+
 \documentclass[11pt]{article}
-\usepackage{nodalida2015}
-%\usepackage{times}
-\usepackage{mathptmx}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{fixltx2e} %allows subscripts
+%\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
-\usepackage{latexsym}
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
 %\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
 
-%\usepackage[T2A,T1]{fontenc}
-%\usepackage[russian,english]{babel}
-%\newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
+\usepackage{nodalida2015}
+
+\usepackage{linguex}
+
+\newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
+\newcommand{\ft}[1]{\marginpar{\scriptsize F: #1}}
+\newcommand{\rr}[1]{\marginpar{\scriptsize R: #1}}
 
 \title{Automatic accent annotation for Russian}
 
@@ -48,75 +57,113 @@
   reported in this document.
 \end{abstract}
 
-\section{Credits}
-
-The template had a credits section for the history of the template, but we don't need
-a Credits section, right?
+%\section{Credits}
+%
+%The template had a credits section for the history of the template, but we don't need
+%a Credits section, right?
 
 \section{Introduction}
 
-Russian word stress is variable, which means that the position of the stress in a word is not 
+Russian word stress is variable, which means that the stress position in a given word is not 
 generally predictable. Furthermore, the inflecting word classes include complex patterns of
 shifting stress. Lexical stress and its attendant vowel reduction are a prominent feature of
-spoken Russian, but standard written Russian does not typically mark word stress. Students
-of Russian frequently struggle to know how to pronounce written words, so many
-textbooks mark stress. Even texts intended for native speakers
-sometimes mark words that cannot be disambiguated through context.
+spoken Russian, but standard written Russian does not typically mark word stress.\footnote{
+Texts intended for native speakers sometimes mark stress on words that cannot be 
+disambiguated through context.} Without information about lexical stress position, 
+correctly converting written Russian text to speech is impossible. This is true both for humans
+(e.g. foreign language students) and computers (e.g. text-to-speech or automatic speech 
+recognition).
 
-Word stress ambiguity in Russian arises both between lexemes and within inflectional
-paradigms. Stress ambiguity between lexemes includes pairs of the type
-????? \emph{z�mok} `castle' and ????? \emph{zam�k} 'lock'. For every inflected form of 
-these two words, they are both morphosyntactically and orthographically identical, their
-meaning differentiated only by stress placement. This kind of ambiguity is relatively uncommon
-in Russian. This paper focuses on stress ambiguities which are connected to morphosyntactic
-differences. ADD EXAMPLE HERE with ????????, ????????, ????????, AND ??????/??????.
-ADD ANOTHER EXAMPLE WITH the paradigms of ???? and ??????.
+We identify three different types of word stress ambiguity. \emph{Intraparadigmatic} ambiguity refers
+to homographic wordforms belonging to the same lexeme, as shown in \ref{ex:intrahom}. 
 
-\subsection{Related Work}
+\ex. Intraparadigmatic homographs \label{ex:intrahom}
+\a. \rus{т\'{е}ла} \emph{t\'{e}la} `body.\textsubscript{SG-GEN}' \label{ex:bodySGGEN}
+\b. \rus{тел\'{а}} \emph{tel\'{a}} `body.\textsubscript{PL-NOM}' \label{ex:bodyPLNOM}
+
+The remaining two types of stress ambiguity occur between lexemes. \emph{Morphosyntactically
+congruent homographs} are homographs that belong to separate lexemes, and whose morphosyntactic values are identical, as shown in Table~\ref{table:MScongruent}. 
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|ll}
+\bf Number-Case & \bf `castle' & \bf `lock' \\
+\hline
+\texttt{SG-NOM} & \rus{з\'{a}мок} & \rus{зам\'{о}к} \\
+\texttt{SG-GEN} & \rus{з\'{a}мка} & \rus{замк\'{а}} \\
+\texttt{PL-NOM} & \rus{з\'{a}мки} & \rus{замк\'{и}} \\
+\texttt{PL-GEN} & \rus{з\'{a}мков} & \rus{замк\'{о}в} \\
+... & ... & ... \\
+\end{tabular}
+\end{center}
+\caption{ \label{table:MScongruent} Morphosyntactically congruent homographs. }
+\end{table}
+
+\emph{Morphosyntactically incongruent homographs} are homographs that belong to separate
+lexemes, and whose morphosyntactic values are different, as shown in 
+\ref{ex:MSincongruent}.
+
+\ex. Morphosyntactically incongruent homographs \label{ex:MSincongruent} \rr{more interesting examples? \rus{нашей или было или дорога} }
+\a. \rus{попад\'{а}ть} \emph{popadát'} `fall.\textsubscript{INF-IPFV}' \\
+     \rus{поп\'{а}дать} \emph{popádat'} `fall.\textsubscript{INF-PFV}'
+\b. \rus{узнаёт} \emph{uznaët} `finds out.\textsubscript{PRS-IPFV-3SG}' \\
+     \rus{узн\'{а}ет} \emph{uznáet} `finds out.\textsubscript{FUT-PFV-3SG}'
+
+\rr{another relevant issue is whether the ambiguity can be resolved at all. Maybe this is something we should bring up in the discussion section. For example, when is stress marked in authentic by-native-for-native texts? A computer should not be expected to predict the stress on such words (although a computer could possibly identify words that should be marked for natives.)}
+Different types of stress position ambiguity are overcome by different information. Detailed 
+part-of-speech tagging can determine the stress of intraparadigmatic homographs and
+morphosyntactically incongruent homographs, whereas word sense disambiguation can 
+determine the stress position of morphosyntactically congruent homographs. In the case of
+running text in Russian, most stress placement ambiguity is rooted in morphosyntactic
+ambiguity, so in this study we focus on the role of part-of-speech tagging in improving
+automatic stress placement, leaving word sense disambiguation to future work.
+
+\subsection{Background and Task Definition}
 
 Automatic stress placement in Russian is similar to Diacritic Restoration, a task
 which has received increasing interest over the last 20 years. Generally speaking, diacritics
 disambiguate otherwise homographic wordforms, so missing diacritics can
 complicate many NLP tasks, such as text-to-speech and speech-to-text. For example, speakers 
-of Czech and French sometimes type emails and other communications
+of Czech may type emails and other communications
 without standard diacritics. In order to generate speech from these texts, they must first be 
 normalized by restoring diacritics. A slightly different
 situation arises with Arabic and Hebrew, since standard orthography lacks vowel diacritics
 altogether. For such languages, the `restoration' of vowel diacritics results in less
 ambiguity than in standard orthography. For languages with inherently ambiguous orthography,
-it may be more precise to refer to this task as `diacritic enhancement', since it produces
+it may be more precise to refer to this as `diacritic enhancement', since it produces
 text that is less ambiguous than the standard language. In this sense, Russian orthography
-is similar to Arabic and Hebrew.
+is similar to Arabic and Hebrew, since its vowel qualities are underspecified in
+standard orthography.
 
+Many studies 
+of Russian text-to-speech and automatic speech recognition make note of the 
+difficulties caused by the shortcomings of their stress-marking resources (e.g. CITE Krivnova 1998).
+\cite{Xomicevic_2008} developed a set of heuristics for guessing stress placement on 
+unknown words in Russian. More recently, CITE Hall \& Sproat (2013) trained a maximum entropy
+model on a dictionary of Russian words, achieving 83.9\% accuracy for stress on unknown words 
+and 98.7\% on known words. One major shortcoming of evaluating on wordlists is 
+that they do not reflect wordform frequency and opportunities for disambiguation.
+Many of the most problematic stress ambiguities in Russian occur in 
+high-frequency wordforms, so evaluations based on wordlists - as opposed to running
+text - have inflated results. An added benefit of working with running text
+is the possibility of disambiguating homographs based on syntactic context.
 
-The following instructions are directed to authors of papers submitted
-to Nodalida-2015 or accepted for publication in its proceedings. 
-All submissions must conform to the NoDaLiDa 2015 style guides, as summarized
-and exemplified in this document. All authors are required to adhere to these specifications. 
-Templates are available from the conference web site for \LaTeX\
-(recommended), or MS~Word. If for some reason you have a problem producing this format, please contact the
-Programme Chair (Beata Megyesi; \texttt{beata.megyesi@lingfil.uu.se}) as early as
-possible. The NoDaLiDa Programme Committee reserves the right not to publish papers not
-conforming to the standard format. 
+So far, the few studies related to automatic stress placement in Russian have been aimed at
+text-to-speech and speech recognition technology. However, the target application of our stress
+annotator is a different domain: language learning. Since standard Russian does not contain 
+stress-markings, learners are frequently unable to pronounce unknown words correctly without
+referencing a dictionary or similar resources. In the context
+of language learning, marking stress incorrectly is arguably worse than not marking it
+at all. Because of this, we want our stress annotator to be able to abstain from marking
+stress on words that it is unable to resolve with high confidence.
 
-Submission and reviewing will be on-line, managed by the EasyChair system.
-The only accepted format for submitted papers is PDF.
-NoDaLiDa does not allow submission of supplementary materials.
-All submissions must be uploaded to EasyChair by the submission deadlines;
-submissions received after that time will not be accepted.
-To minimize the risk of network congestion, we encourage authors to upload
-their submissions as early as possible. 
-Improved versions of the submissions may be continuously uploaded until the
-final deadline. 
+\section{Automatic Stress Placement}
 
-On acceptance of a submission, precise instructions will be given on how to
-send the camera ready version; following reviewers' feedback, such instructions
-may include specific requests for modification.
-Camera-ready versions not conforming to requests for revision made by the
-Programme Committee will be considered as unsent, and hence will not be
-included in the proceedings or presented at the conference.
-
-\section{General Instructions}
+State-of-the-art part-of-speech and morphological analysis in Russian is based on finite-state
+technology. We developed free and open-source finite-state tools with the ability to analyze and
+generate stressed wordforms. A finite-state morphological analyzer generates all possible readings
+of each wordform, and the constraint grammar 
+to analyze running text, and to generate stressed wordforms. 
 
 Manuscripts must be in two-column format.  Exceptions to the
 two-column format include the title, authors' names and complete
