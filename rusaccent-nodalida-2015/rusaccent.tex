@@ -30,7 +30,7 @@
 \newcommand{\ft}[1]{\marginpar{\scriptsize F: #1}}
 \newcommand{\rr}[1]{\marginpar{\scriptsize R: #1}}
 
-\title{Automatic accent annotation for Russian}
+\title{Automatic word stress annotation of Russian running text (max 8 pages)}
 
 \author{Author1 \\
   Affiliation / Address line 1 \\
@@ -43,18 +43,15 @@
   Affiliation / Address line 3 \\
   {\tt email@domain.com} \\}
 
-\date{}
+\date{2015}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-  This document contains the instructions for preparing a camera-ready
-  manuscript for the proceedings of Nodalida-2015. The document itself
-  conforms to its own specifications, and is therefore an example of
-  what your manuscript should look like. These instructions should be
-  used for both papers submitted for review and for final versions of
-  accepted papers.  Authors are asked to conform to all the directions
-  reported in this document.
+  We evaluate the effectiveness of new tools that we developed for automatically annotating 
+  word stress in Russian running text. Given an adequate lexicon with specified stress, the
+  primary obstacle for correct stress placement is disambiguating homographic forms. Using a
+  Constraint Grammar, we achieve a X\% improvement over the baseline undisambiguated performance.
 \end{abstract}
 
 %\section{Credits}
@@ -64,17 +61,18 @@
 
 \section{Introduction}
 
-Russian word stress is variable, which means that the stress position in a given word is not 
-generally predictable. Furthermore, the inflecting word classes include complex patterns of
-shifting stress. Lexical stress and its attendant vowel reduction are a prominent feature of
-spoken Russian, but standard written Russian does not typically mark word stress.\footnote{
+Russian word stress is variable. The inflecting word classes include complex patterns of
+shifting stress, and a lexeme's stress pattern cannot be predicted from surface forms.
+Although lexical stress and its attendant vowel reduction are a prominent feature of
+spoken Russian, standard written Russian does not typically mark word stress.\footnote{
 Texts intended for native speakers sometimes mark stress on words that cannot be 
-disambiguated through context.} Without information about lexical stress position, 
+disambiguated through context, although this is somewhat rare.} Without information about lexical 
+stress position, 
 correctly converting written Russian text to speech is impossible. This is true both for humans
-(e.g. foreign language students) and computers (e.g. text-to-speech or automatic speech 
-recognition).
+(e.g. foreign language students) and computers (e.g. text-to-speech).
 
-We identify three different types of word stress ambiguity. \emph{Intraparadigmatic} ambiguity refers
+We identify three different types of word stress ambiguity. \emph{Intraparadigmatic} ambiguity 
+refers
 to homographic wordforms belonging to the same lexeme, as shown in \ref{ex:intrahom}. 
 
 \ex. Intraparadigmatic homographs \label{ex:intrahom}
@@ -82,7 +80,8 @@ to homographic wordforms belonging to the same lexeme, as shown in \ref{ex:intra
 \b. \rus{тел\'{а}} \emph{tel\'{a}} `body.\textsubscript{PL-NOM}' \label{ex:bodyPLNOM}
 
 The remaining two types of stress ambiguity occur between lexemes. \emph{Morphosyntactically
-congruent homographs} are homographs that belong to separate lexemes, and whose morphosyntactic values are identical, as shown in Table~\ref{table:MScongruent}. 
+congruent homographs} are homographs that belong to separate lexemes, and whose morphosyntactic 
+values are identical, as shown in Table~\ref{table:MScongruent}. 
 
 \begin{table}
 \begin{center}
@@ -93,7 +92,7 @@ congruent homographs} are homographs that belong to separate lexemes, and whose 
 \texttt{SG-GEN} & \rus{з\'{a}мка} & \rus{замк\'{а}} \\
 \texttt{PL-NOM} & \rus{з\'{a}мки} & \rus{замк\'{и}} \\
 \texttt{PL-GEN} & \rus{з\'{a}мков} & \rus{замк\'{о}в} \\
-... & ... & ... \\
+... & \hskip 1em ... & \hskip 1em ... \\
 \end{tabular}
 \end{center}
 \caption{ \label{table:MScongruent} Morphosyntactically congruent homographs. }
@@ -103,14 +102,26 @@ congruent homographs} are homographs that belong to separate lexemes, and whose 
 lexemes, and whose morphosyntactic values are different, as shown in 
 \ref{ex:MSincongruent}.
 
-\ex. Morphosyntactically incongruent homographs \label{ex:MSincongruent} \rr{more interesting examples? \rus{нашей или было или дорога} }
+\ex. Morphosyntactically incongruent homographs \label{ex:MSincongruent}
 \a. \rus{попад\'{а}ть} \emph{popadát'} `fall.\textsubscript{INF-IPFV}' \\
-     \rus{поп\'{а}дать} \emph{popádat'} `fall.\textsubscript{INF-PFV}'
+    \rus{поп\'{а}дать} \emph{popádat'} `fall.\textsubscript{INF-PFV}'
 \b. \rus{узнаёт} \emph{uznaët} `finds out.\textsubscript{PRS-IPFV-3SG}' \\
-     \rus{узн\'{а}ет} \emph{uznáet} `finds out.\textsubscript{FUT-PFV-3SG}'
+    \rus{узн\'{а}ет} \emph{uznáet} `finds out.\textsubscript{FUT-PFV-3SG}'
+\c. \rus{н\'{а}шей} \emph{nášej} `our.\textsubscript{F-SG-GEN/DAT/LOC...}'\\
+    \rus{наш\'{е}й} \emph{našéj} `sew on.\textsubscript{IMP-2SG}'
+\d. \rus{дор\'{о}га} \emph{doróga} `road.\textsubscript{N-F-SG-NOM}'\\
+    \rus{дорог\'{а}} \emph{dorogá} `dear.\textsubscript{ADJ-F-SG-PRED}'
 
-\rr{another relevant issue is whether the ambiguity can be resolved at all. Maybe this is something we should bring up in the discussion section. For example, when is stress marked in authentic by-native-for-native texts? A computer should not be expected to predict the stress on such words (although a computer could possibly identify words that should be marked for natives.)}
-Different types of stress position ambiguity are overcome by different information. Detailed 
+\rr{another relevant issue is whether the ambiguity can be resolved at all. Maybe this is 
+something we should bring up in the discussion section. For example, when is stress marked in 
+authentic by-native-for-native texts? A computer should not be expected to predict the stress on 
+such words (although a computer could possibly identify words that should be marked for 
+natives.)} It should be noted that not all morphosyntactic ambiguity leads to stress ambiguity. For example,
+all inflecting modifiers in Russian have the same form for F-SG-GEN, F-SG-LOC, F-SG-DAT and 
+F-SG-INS. We refer to this as \emph{stress-irrelevant} ambiguity, since all readings have
+the same stress placement. Stress-irrelevant ambiguity can be intraparadigmatic and/or interlexical. 
+
+Different types of stress ambiguity are overcome by different information. Detailed 
 part-of-speech tagging can determine the stress of intraparadigmatic homographs and
 morphosyntactically incongruent homographs, whereas word sense disambiguation can 
 determine the stress position of morphosyntactically congruent homographs. In the case of
@@ -135,21 +146,26 @@ text that is less ambiguous than the standard language. In this sense, Russian o
 is similar to Arabic and Hebrew, since its vowel qualities are underspecified in
 standard orthography.
 
-Many studies 
-of Russian text-to-speech and automatic speech recognition make note of the 
-difficulties caused by the shortcomings of their stress-marking resources (e.g. CITE Krivnova 1998).
+Many studies of Russian text-to-speech and automatic speech recognition make note of the 
+difficulties caused by the shortcomings of their stress-marking resources (e.g. CITE Krivnova 
+1998), but very few studies have targeted stress-marking itself, and they tend to
+focus on place stress on unknown words, with almost no attention to the problems that
+arise with known words. For example, 
 \cite{Xomicevic_2008} developed a set of heuristics for guessing stress placement on 
 unknown words in Russian. More recently, CITE Hall \& Sproat (2013) trained a maximum entropy
 model on a dictionary of Russian words, achieving 83.9\% accuracy for stress on unknown words 
 and 98.7\% on known words. One major shortcoming of evaluating on wordlists is 
-that they do not reflect wordform frequency and opportunities for disambiguation.
+that they do not reflect wordform frequency.
 Many of the most problematic stress ambiguities in Russian occur in 
-high-frequency wordforms, so evaluations based on wordlists - as opposed to running
-text - have inflated results. An added benefit of working with running text
-is the possibility of disambiguating homographs based on syntactic context.
+high-frequency wordforms\rr{might it be worth computing the difference in stress
+ambiguity between wordform lists and running text? i.e. what percentage of tokens have ambiguous
+stress.}, so evaluations based on wordlists - as opposed to running
+text - have inflated results. Furthermore, working with running text allows for the
+possibility of disambiguating homographs based on syntactic context.
 
-So far, the few studies related to automatic stress placement in Russian have been aimed at
-text-to-speech and speech recognition technology. However, the target application of our stress
+So far, the implicit target application the few studies related to automatic stress placement
+in Russian has been text-to-speech and speech recognition technology. However, the target 
+application of our stress
 annotator is a different domain: language learning. Since standard Russian does not contain 
 stress-markings, learners are frequently unable to pronounce unknown words correctly without
 referencing a dictionary or similar resources. In the context
@@ -160,21 +176,49 @@ stress on words that it is unable to resolve with high confidence.
 \section{Automatic Stress Placement}
 
 State-of-the-art part-of-speech and morphological analysis in Russian is based on finite-state
-technology. We developed free and open-source finite-state tools with the ability to analyze and
-generate stressed wordforms. A finite-state morphological analyzer generates all possible readings
-of each wordform, and the constraint grammar 
-to analyze running text, and to generate stressed wordforms. 
+technology.\footnote{add footnote or citations for Dialog, mystem, etc.} We developed free
+and open-source finite-state tools capable of analyzing and
+generating stressed wordforms. A finite-state transducer\footnote{a two-level 
+morphology, xfst/hfst, blah, blah, blah} generates all possible readings
+of each wordform, and a constraint grammar\footnote{vislcg3, blah blah} then removes
+some extra readings based on syntactic context. The ultimate success of our stress placement
+system depends on the performance of the Constraint Grammar. Ideally, the Constraint Grammar would
+successfully remove all but the correct reading for each token, but in practice some
+tokens still have more than one reading remaining. Therefore,
+we also evaluate various approaches to deal with the remaining ambiguity,
+as described in the following paragraph and Table~\ref{tab:conditions}.
 
-Manuscripts must be in two-column format.  Exceptions to the
-two-column format include the title, authors' names and complete
-addresses, which must be centered at the top of the first page, and
-any full-width figures or tables (see the guidelines in
-Subsection~\ref{ssec:fonts}). {\bf Type single-spaced.}  Start all
-pages directly under the top margin. See the guidelines later
-regarding formatting the first page (Subsection~\ref{ssec:first}).
-The manuscript should be printed single-sided and its length should
-not exceed the maximum page limit described in
-Section~\ref{sec:length}.  {\bf Do not number the pages.}
+\begin{table*}[t]
+  \centering
+  \begin{tabular}{r|c|c}
+    & \rus{кость}-N-F-SG-GEN\hskip 1em\rus{к\'{о}сти} & \rus{кость}-N-F-SG-GEN\hskip 1em\rus{к\'{о}сти} \\
+    & \rus{кость}-N-F-SG-DAT\hskip 1em\rus{к\'{о}сти} & \rus{кость}-N-F-SG-DAT\hskip 1em\rus{к\'{о}сти} \\
+    & \rus{костить}-V-IPFV-IMP\hskip 1em\rus{кост\'{и}} & \\
+    \hline
+    {\small {\tt bare}} & \rus{кости} & \rus{кости} \\
+    {\small {\tt safe}} & \rus{кости} & \rus{к\'{о}сти} \\
+    {\small {\tt guess}} & \rus{к\'{о}сти} or \rus{кост\'{и}} & \rus{к\'{о}сти}\\
+    {\small {\tt guessFreq}} & \rus{к\'{о}сти} & \rus{к\'{о}сти}
+  \end{tabular}
+  \caption{Example output of each condition, given a particular set of readings}
+  \label{tab:conditions}
+\end{table*}
+
+The {\small {\tt bare}} approach is to not mark stress on words with more than one reading.
+The {\small {\tt safe}} approach is to mark stress only on
+tokens whose morphosyntactic ambiguity is stress-irrelevant. The {\small {\tt guess}}
+approach is to randomly select one of the available readings.
+The {\small {\tt guessFreq}} approach is to select the reading that is most frequent
+in our corpus. If none of the readings is found in the corpus, then it selects the reading
+with the tagset that is most frequent in our corpus. Note that for tokens with
+stress-irrelevant ambiguity, {\small {\tt guess}} and {\small {\tt guessFreq}} produce
+the same result as the {\small {\tt safe}} method.
+
+For our baseline, we take the output of our morphological analyzer (without the Constraint 
+Grammar) in combination with {\small {\tt bare}}, {\small {\tt safe}}, {\small {\tt guess}} and {\small {\tt guessFreq}}. The purpose of this study is to compare the 
+
+
+
 
 \subsection{Electronically-available resources}
 
