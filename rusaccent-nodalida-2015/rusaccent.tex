@@ -27,8 +27,11 @@
 \usepackage{linguex}
 
 \newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
-\newcommand{\ft}[1]{\marginpar{\scriptsize F: #1}}
-\newcommand{\rr}[1]{\marginpar{\scriptsize R: #1}}
+
+\newcommand{\ft}[1]{\marginpar{\scriptsize F: #1}} % Fran's comments
+\newcommand{\rr}[1]{\marginpar{\scriptsize R: #1}} % Rob's comments
+\newcommand{\dm}[1]{\marginpar{\scriptsize D: #1}} % Detmar's comments
+\newcommand{\lj}[1]{\marginpar{\scriptsize L: #1}} % Laura's comments
 
 \title{Automatic word stress annotation of Russian running text (max 8 pages)}
 
@@ -48,7 +51,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-  We evaluate the effectiveness of new tools that we developed for automatically annotating 
+  We evaluate the effectiveness of tools we developed for automatically annotating 
   word stress in Russian running text. Given an adequate lexicon with specified stress, the
   primary obstacle for correct stress placement is disambiguating homographic forms. Using a
   Constraint Grammar, we achieve a X\% improvement over the baseline undisambiguated performance.
@@ -172,22 +175,6 @@ of language learning, marking stress incorrectly is arguably worse than not mark
 at all. Because of this, we want our stress annotator to be able to abstain from marking
 stress on words that it is unable to resolve with high confidence.
 
-\section{Automatic Stress Placement}
-
-State-of-the-art morphological analysis in Russian is based on finite-state
-technology.\footnote{add footnote or citations for Dialog, mystem, etc.} To our knowledge,
-no open-source resources are available for analyzing and generating stressed wordforms.
-Therefore, we developed free and open-source finite-state tools capable of analyzing and
-generating stressed wordforms. A finite-state transducer\footnote{Using two-level 
-morphology, xfst/hfst, blah, blah, blah} generates all possible readings
-of each wordform, and a constraint grammar\footnote{vislcg3, blah blah} then removes
-some extra readings based on syntactic context. The ultimate success of our stress placement
-system depends on the performance of the Constraint Grammar. Ideally, the Constraint Grammar would
-successfully remove all but the correct reading for each token, but in practice some
-tokens still have more than one reading remaining. Therefore,
-we also evaluate various approaches to deal with the remaining ambiguity,
-as described in the following paragraph and Table~\ref{tab:conditions}.
-
 \begin{table*}[t]
   \centering
   \begin{tabular}{r|c|c}
@@ -204,289 +191,139 @@ as described in the following paragraph and Table~\ref{tab:conditions}.
   \label{tab:conditions}
 \end{table*}
 
+\subsection{Stress Corpus}
+
+Russian texts with marked word stress are relatively rare, except in materials
+for language learners, which are predominantly proprietary. Our corpus was collected from
+free texts on Russian language-learning websites.\footnote{For a list of URL's, please 
+contact the authors.} This small corpus (N=7689) is representative of texts 
+that learners of Russian are likely to encounter in their studies. These texts 
+include excerpts from well-known literary works, as well as dialogs and 
+prose and individual sentences that were written for learners.
+
+Unfortunately, the general practice for marking stress in Russian is to
+\emph{not} mark stress on monosyllabic tokens, effectively assuming that
+all monosyllabics are stressed. However, this approach 
+is not well-motivated. Many words -- both monosyllabic and multisyllabic -- are 
+unstressed, especially among prepositions, conjunctions, and particles.
+\rr{multisyllabics that can be unstressed: \rus{через, между}} Furthermore, there are many
+high-frequency monosyllabic homographs that can be either stressed or unstressed, 
+depending on their part of speech, or particular collocations. Clearly, for
+such words, one cannot assume that they are stressed on the basis of their syllable count.
+
+Based on these considerations, we built our tools to mark stress without regard to
+the number of syllables in a word. However, because our gold corpus texts do not
+mark stress on monosyllabic words, we cannot evaluate our annotation of those words.
+
+\section{Automatic Stress Placement}
+
+State-of-the-art morphological analysis in Russian is based on finite-state
+technology.\footnote{add footnote or citations for Dialog, mystem, etc.} To our knowledge,
+no open-source resources are available for analyzing and generating stressed wordforms.
+Therefore, we developed free and open-source finite-state tools capable of analyzing and
+generating stressed wordforms. A finite-state transducer\footnote{Using two-level 
+morphology, xfst/hfst, blah, blah, blah} (FST) generates all possible morphosyntactic readings
+of each wordform, and a constraint grammar\footnote{vislcg3, blah blah} then removes
+some extra readings based on syntactic context. The ultimate success of our stress placement
+system depends on the performance of the Constraint Grammar. Ideally, the Constraint Grammar would
+successfully remove all but the correct reading for each token, but in practice some
+tokens still have more than one reading remaining. Therefore,
+we also evaluate various approaches to deal with the remaining ambiguity,
+as described in the following paragraph and Table~\ref{tab:conditions}.
+
 The {\small {\tt bare}} approach is to not mark stress on words with more than one reading.
 The {\small {\tt safe}} approach is to mark stress only on
 tokens whose morphosyntactic ambiguity is stress-irrelevant. The {\small {\tt guess}}
-approach is to randomly select one of the available readings.
-The {\small {\tt guessFreq}} approach is to select the reading that is most frequent
-in our corpus. If none of the readings is found in the corpus, then it selects the reading
-with the tagset that is most frequent in our corpus. Note that for tokens with
+approach is to randomly select one of the available readings, and abstain if no readings
+are available. The {\small {\tt guessFreq}} approach is to select the reading that is most frequent.
+\footnote{Frequency data taken from a separate hand-disambiguated corpus.} If none of the readings is found in the corpus, then it selects the reading
+with the tag sequence (lemma removed) that is most frequent in our corpus. If the tag sequence is not found
+in our corpus, then it backs off to the  {\small {\tt guess}} algorithm. Note that for tokens with
 stress-irrelevant ambiguity, {\small {\tt guess}} and {\small {\tt guessFreq}} produce
 the same result as the {\small {\tt safe}} method.
+
+So far, the approaches discussed are
+dependent on the availability of readings from the FST. Two final approaches address unknown tokens.
+The {\small {\tt guessSyll}} and {\small {\tt guessFreqSyll}} approaches are identical to 
+{\small {\tt guess}} and {\small {\tt guessFreq}}, respectively,
+except that for unknown tokens, they places the stress near the end of the stem.\footnote{Determining 
+which vowel is stem-final
+is itself a difficult task. Our algorithm merely places the stress on the last vowel that is 
+followed by a consonant.} \rr{Explain why stem-final is a good guess (and cite someone?)}
+\rr{Discuss the success of the guessSyll approach in the discussion section.}
 
 For our baseline, we take the output of our morphological analyzer (without the Constraint 
 Grammar) in combination with the {\small {\tt bare}}, {\small {\tt safe}}, 
 {\small {\tt guess}} and {\small {\tt guessFreq}} approaches.
 
-\subsection{Stress Corpus}
+We also compare our outcomes with the RussianGram\footnote{http://russiangram.com/} plugin 
+for the Google Chrome web browser. RussianGram is not open-source, so we
+can only guess what technologies support the service. In any case, it provides a
+meaningful reference point for the success of each of the methods described above.
 
-Obtaining a suitable corpus for this study Russian texts with marked word stress are relatively rare, except in materials
-for language learners, which are predominantly proprietary.
+\section{Results}
 
+\begin{table*}[t]
+  \centering
+  \begin{tabular}{r | r r r | r r }
+    approach & correct\% & error\% & abstention\% & totTry\% & totFail\% \\
+    \hline
+    \hline
+    {\small {\tt noCGbare}} & 30.43 & 0.17 & 69.39 & 30.61 & 69.57 \\
+    {\small {\tt noCGsafe}} & 90.07 & 0.49 & 9.44 & 90.56 & 9.93 \\
+    {\small {\tt noCGguess}} & 94.34 & 3.36 & 2.30 & 97.70 & 5.66 \\
+    {\small {\tt noCGguessFreq}} & 95.53 & 2.59 & 1.88 & 98.12 & 4.47 \\
+    {\small {\tt noCGguessSyll}} & 94.99 & 4.05 & 0.96 & 99.04 & 5.01 \\
+    {\small {\tt noCGguessFreqSyll}} & 95.83 & 3.46 & 0.72 & 99.28 & 4.17 \\
+    \hline
+    {\small {\tt CGbare}} & 45.78 & 0.44 & 53.78 & 46.22 & 54.22 \\
+    {\small {\tt CGsafe}} & 93.21 & 0.74 & 6.05 & 93.95 & 6.79 \\
+    {\small {\tt CGguess}} & 95.50 & 2.59 & 1.90 & 98.10 & 4.50 \\
+    {\small {\tt CGguessFreq}} & 95.73 & 2.40 & 1.88 & 98.12 & 4.27 \\
+    {\small {\tt CGguessSyll}} & 95.92 & 3.33 & 0.74 & 99.26 & 4.08 \\
+    {\small {\tt CGguessFreqSyll}} & 96.15 & 3.14 & 0.72 & 99.28 & 3.85 \\
+    \hline
+    {\small {\tt RussianGram}} & 90.09 & 0.79 & 9.12 & 90.88 & 9.91
+  \end{tabular}
+  \caption{Results of stress placement task evaluation. (N = 4048)}
+  \label{tab:results}
+\end{table*}
 
-\subsection{Format of Electronic Manuscript}
-\label{sect:pdf}
+Single-syllable words and words that are unstressed in the gold standard were
+not evaluated for reasons discussed above, leaving 4048 tokens for evaluation.
+Recall was computed by testing whether stressed 
+multisyllabic wordforms in the gold standard stress corpus were found in the 
+finite-state transducer. Out of 4048 tokens, 3949 were found in the FST, which is equal to 97.55\%.
+This number represents the ceiling for rule-based methods relying on the FST.
+Higher scores are only achievable by expanding the FST or by using syllable-guessing algorithms.
+After running the Constraint Grammar, 3937 tokens were found in the FST, which
+indicates that the Constraint Grammar ruled out 0.20\% of the correct forms.
+By inspecting these errors, we can improve the Constraint Grammar.
 
-For the production of the electronic manuscript you must use Adobe's
-Portable Document Format (PDF). 
-%% Add instructions about using pdflatex
-This format can be generated directly from \LaTeX2e files or from
-postscript ones. On Linux/Unix-like systems, you can use {\tt
-  pdflatex} to generate a PDF file from \LaTeX2e files, or {\tt
-  ps2pdf} to convert from postscript to PDF. 
-%%
-In Microsoft Windows, you can use Adobe's Distiller, or if you have
-\texttt{cygwin} installed, you can use \texttt{dvipdf} or
-\texttt{ps2pdf}. Note that some word processing programs generate PDF
-which may not include all the necessary fonts (esp. tree diagrams,
-symbols). When you print or create the PDF file, there is usually an
-option in your printer setup to include none, all or just non-standard
-fonts.  Please make sure that you select the option of including ALL
-the fonts. {\em Before sending it, test your PDF by printing it from a
-  computer different from the one where it was created.} Moreover,
-some word processors may generate very large postscript/PDF files,
-where each page is rendered as an image. Such images may reproduce
-poorly. In this case, try alternative ways to obtain the postscript
-and/or PDF. One way on some systems is to install a driver for a
-postscript printer, send your document to the printer specifying
-``Output to a file'', then convert the file to PDF.
-Please keep in mind that it is of utmost importance to use \textbf{A4 format}.
+Results were compiled for each of the nine conditions discussed above: 
+\emph{without} the Constraint Grammar ({\small {\tt noCG}}) X 4 approaches, 
+\emph{with} the Constraint Grammar ({\small {\tt CG}}) X 4 approaches, 
+and RussianGram ({\small {\tt RG}}). 
+Failures to correctly place stress were split into two categories: errors and abstentions. 
+If the stress tool outputs a stressed wordform, and it is incorrect, then it is
+counted as an `error'. If the stress tool outputs an unstressed wordform, then
+it is counted as an `abstention'. The sum of the errors and abstentions is referred
+to as `totFail'. The sum of correct attempts and `errors' is referred to as `totTry'.
+Results are given in Table~\ref{tab:results}.
+ 
+WE NEED TO COMPUTE SIGNIFICANCE ON THESE RESULTS
 
-%%Removed by YP (use of the \special command above instead):
-%% It is of utmost importance to specify the \textbf{A4 format} (21 cm x
-%% 29.7 cm) when formatting the paper. 
-%% When working with {\tt dvips}, for instance, one should specify {\tt -t a4}.
-
-Print-outs of the PDF file on A4 paper should be identical to the
-hardcopy version. If you cannot meet the above requirements about the
-production of your electronic submission, please contact the
-program chair above as soon as possible.
-
-
-\subsection{Layout}
-\label{ssec:layout}
-
-Format manuscripts two columns to a page, in the manner these
-instructions are formatted. The exact dimensions for a page on A4
-paper are:
-
-\begin{itemize}
-\item Left and right margins: 2.5 cm
-\item Top margin: 2.5 cm
-\item Bottom margin: 2.5 cm
-\item Column width: 7.7 cm
-\item Column height: 24.7 cm
-\item Gap between columns: 0.6 cm
-\end{itemize}
-
-\noindent Papers should not be submitted on any other paper size.
- If you cannot meet the above requirements about the production of your electronic submission, 
-please contact the program chair above as soon as possible.
-
-\subsection{Fonts}
-\label{ssec:fonts}
-For reasons of uniformity, Adobe's {\bf Times Roman} font should be
-used. In \LaTeX2e{} this is accomplished by putting
-
-\begin{quote}
-\begin{verbatim}
-\usepackage{times}
-\usepackage{latexsym}
-\end{verbatim}
-\end{quote}
-in the preamble. If Times Roman is unavailable, use {\bf Computer
-  Modern Roman} (\LaTeX2e{}'s default).  Note that the latter is about
-  10\% less dense than Adobe's Times Roman font.
+\section{Discussion}
 
 
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{|l|rl|}
-\hline \bf Type of Text & \bf Font Size & \bf Style \\ \hline
-paper title & 15 pt & bold \\
-author names & 12 pt & bold \\
-author affiliation & 12 pt & \\
-the word ``Abstract'' & 12 pt & bold \\
-section titles & 12 pt & bold \\
-document text & 11 pt  &\\
-captions & 11 pt & \\
-abstract text & 10 pt & \\
-bibliography & 10 pt & \\
-footnotes & 9 pt & \\
-\hline
-\end{tabular}
-\end{center}
-\caption{\label{font-table} Font guide. }
-\end{table}
 
-\subsection{The First Page}
-\label{ssec:first}
 
-Center the title, author's name(s) and affiliation(s) across both
-columns. Do not use footnotes for affiliations. Do not include the
-paper ID number assigned during the submission process. Use the
-two-column format only when you begin the abstract.
 
-{\bf Title}: Place the title centered at the top of the first page, in
-a 15-point bold font. (For a complete guide to font sizes and styles, 
-see Table~\ref{font-table}.) Long titles should be typed on two lines without
-a blank line intervening. Approximately, put the title at 2.5 cm from
-the top of the page, followed by a blank line, then the author's
-names(s), and the affiliation on the following line. Do not use only
-initials for given names (middle initials are allowed). Do not format surnames
-in all capitals (e.g., use ``Schlangen'' not ``SCHLANGEN'').
-Do not format title and section headings in all capitals as well
-except for proper names (such as ``BLEU'') that are conventionally
-in all capitals.
-The affiliation should contain the author's complete address, and if
-possible, an electronic mail address. Leave about 2 cm between the
-affiliation and the body of the first page.
-The title, author names and addresses should be completely
-identical to those entered to the electronical paper submission
-website in order to maintain the consistency of author information
-among all publications of the conference.
+%\section*{Acknowledgments}
+%
+%Do not number the acknowledgment section. Do not include this section
+%when submitting your paper for review.
 
-{\bf Abstract}: Type the abstract at the beginning of the first
-column. The width of the abstract text should be smaller than the
-width of the columns for the text in the body of the paper by about
-0.6 cm on each side. Center the word {\bf Abstract} in a 12 point bold
-font above the body of the abstract. The abstract should be a concise
-summary of the general thesis and conclusions of the paper. It should
-be no longer than 200 words. The abstract text should be in 10 point font.
-
-{\bf Text}: Begin typing the main body of the text immediately after
-the abstract, observing the two-column format as shown in 
-the present document. Do not include page numbers.
-
-{\bf Indent} when starting a new paragraph. Use 11 points for text and 
-subsection headings, 12 points for section headings and 15 points for
-the title. 
-
-\subsection{Sections}
-
-{\bf Headings}: Type and label section and subsection headings in the
-style shown on the present document.  Use numbered sections (Arabic
-numerals) in order to facilitate cross references. Number subsections
-with the section number and the subsection number separated by a dot,
-in Arabic numerals. Do not number subsubsections.
-
-{\bf Citations}: Citations within the text appear
-in parentheses as~\cite{Gusfield:97} or, if the author's name appears in
-the text itself, as Gusfield~\shortcite{Gusfield:97}. 
-Append lowercase letters to the year in cases of ambiguity.  
-Treat double authors as in~\cite{Aho:72}, but write as
- in~\cite{Chandra:81} when more than two authors are involved. Collapse multiple citations as
-in~\cite{Gusfield:97,Aho:72}. Also refrain from using full citations as sentence constituents. We
-suggest that instead of
-\begin{quote}
-  ``\cite{Gusfield:97} showed that ...''
-\end{quote}
-you use
-\begin{quote}
-``Gusfield \shortcite{Gusfield:97}   showed that ...''
-\end{quote}
-
-If you are using the provided \LaTeX{} and Bib\TeX{} style files, you
-can use the command \verb|\newcite| to get ``author (year)'' citations.
-
-As reviewing will be double-blind, the submitted version of the papers should not include the
-authors' names and affiliations. Furthermore, self-references that
-reveal the author's identity, e.g.,
-\begin{quote}
-``We previously showed \cite{Gusfield:97} ...''  
-\end{quote}
-should be avoided. Instead, use citations such as 
-\begin{quote}
-``Gusfield \shortcite{Gusfield:97}
-previously showed ... ''
-\end{quote}
-
-\textbf{Please do not  use anonymous citations} and  do not include acknowledgements 
-when submitting your paper. Papers that do not conform
-to these requirements may be rejected without review. 
-
-\textbf{References}: Gather the full set of references together under
-the heading {\bf References}; place the section before any Appendices,
-unless they contain references. Arrange the references alphabetically
-by first author, rather than by order of occurrence in the text.
-Provide as complete a citation as possible, using a consistent format,
-such as the one for {\em Computational Linguistics\/} or the one in the 
-{\em Publication Manual of the American 
-Psychological Association\/}~\cite{APA:83}.  Use of full names for
-authors rather than initials is preferred.  A list of abbreviations
-for common computer science journals can be found in the ACM 
-{\em Computing Reviews\/}~\cite{ACM:83}.
-
-The \LaTeX{} and Bib\TeX{} style files provided roughly fit the
-American Psychological Association format, allowing regular citations, 
-short citations and multiple citations as described above.
-
-{\bf Appendices}: Appendices, if any, directly follow the text and the
-references (but see above).  Letter them in sequence and provide an
-informative title: {\bf Appendix A. Title of Appendix}.
-
-\textbf{Acknowledgement} section should appear in accepted manuscripts
-only. It should go as a last section immediately
-before the references.  Do not number the acknowledgement section.
-
-\subsection{Footnotes}
-
-{\bf Footnotes}: Put footnotes at the bottom of the page and use 9
-points text. They may be numbered or referred to by asterisks or other
-symbols.\footnote{This is how a footnote should appear.} Footnotes
-should be separated from the text by a line.\footnote{Note the line
-separating the footnotes from the text.}
-
-\subsection{Graphics}
-
-{\bf Illustrations}: Place figures, tables, and photographs in the
-paper near where they are first discussed, rather than at the end, if
-possible.  Wide illustrations may run across both columns.  Color
-illustrations are allowed, provided you have verified that  
-they will be understandable when printed in black ink.
-
-{\bf Captions}: Provide a caption for every illustration; number each one
-sequentially in the form:  ``Figure 1. Caption of the Figure.'' ``Table 1.
-Caption of the Table.''  Type the captions of the figures and 
-tables below the body, using 11 point text.  
-
-\section{Translation of non-English Terms}
-
-It is also advised to supplement non-English characters and terms
-with appropriate transliterations and/or translations
-since not all readers understand all such characters and terms.
-Inline transliteration or translation can be represented in
-the order of: original-form transliteration ``translation''.
-
-\section{Length of Submission}
-\label{sec:length}
-
-Long papers may consist of up to 8 pages of content (excluding
-references) and short papers may consist of up to 
-four (4) pages plus 2 pages for references in the proceedings.  Papers that do not conform to the
-specified length and formatting requirements are subject to be
-rejected without review.
-
-%\section{Other Issues}
-
-%Papers that had software and/or dataset submitted for the review
-%process should also submit it with the camera-ready paper. Besides,
-%the software and/or dataset should not be anonymous.
-
-% Please note that the publications of Nodalida-2015 will be publicly
-% available at ACL Anthology (http://aclweb.org/anthology-new/) in May,
-% 2015. Since some of the authors may have plans to file patents related to their papers in
-% the conference, we are reminding authors that May 12th, 2015 may be
-% considered to be the official publication date, i.e., the opening
-% day of the conference.
-
-\section*{Acknowledgments}
-
-Do not number the acknowledgment section. Do not include this section
-when submitting your paper for review.
-
-% If you use BibTeX with a bib file named eacl2014.bib, 
-% you should add the following two lines:
 \bibliographystyle{acl}
 \bibliography{rusaccent}
 
