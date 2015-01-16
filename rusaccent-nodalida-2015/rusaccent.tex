@@ -145,12 +145,11 @@ is similar to Arabic and Hebrew, since its vowel qualities are underspecified in
 standard orthography.
 
 Many studies of Russian text-to-speech and automatic speech recognition make note of the 
-difficulties caused by the shortcomings of their stress-marking resources (e.g. CITE Krivnova 
-1998), but very few studies have targeted stress-marking itself, and they tend to
+difficulties caused by the shortcomings of their stress-marking resources (e.g. \cite{krivnova_1998}), but very few studies have targeted stress-marking itself, and they tend to
 focus on placing stress on unknown words, with almost no attention to the problems that
 arise with known words. For example, 
 \cite{Xomicevic_2008} developed a set of heuristics for guessing stress placement on 
-unknown words in Russian. More recently, CITE Hall \& Sproat (2013) trained a maximum entropy
+unknown words in Russian. More recently, \cite{hall_sproat_russian_2013} trained a maximum entropy
 model on a dictionary of Russian words, achieving 83.9\% accuracy for stress on unknown words 
 and 98.7\% on known words. One major shortcoming of evaluating on wordlists is 
 that they do not reflect wordform frequency.
@@ -218,8 +217,8 @@ technology.\footnote{add footnote or citations for Dialog, mystem, etc.} To our 
 no open-source resources are available for analyzing and generating stressed wordforms.
 Therefore, we developed free and open-source finite-state tools capable of analyzing and
 generating stressed wordforms, based on the well-known 
-\emph{Grammatical Dictionary of Russian} \cite{Zaliznjak-77}. A finite-state 
-transducer\footnote{Using two-level 
+\emph{Grammatical Dictionary of Russian} \cite{Zaliznjak-77}. A Finite-State 
+Transducer\footnote{Using two-level 
 morphology, xfst/hfst, blah, blah, blah} (FST) generates all possible morphosyntactic readings
 of each wordform, and a constraint grammar\footnote{vislcg3, blah blah} then removes
 some extra readings based on syntactic context. The ultimate success of our stress placement
@@ -370,31 +369,45 @@ forms in our FST (which is based on the same dictionary used for
 of the 2~804~492 wordforms contained in our FST are stress-ambiguous. \rr{These 
 stress-ambiguous wordforms have an average of 2.01 possible stress positions.} 
 Compare this with the finding of our experiment, that in running 
-text, at least 7.5\% of the tokens are stress-ambiguous. This is because many of 
+text, at least 7.5\% of the tokens are stress-ambiguous. This is at least partly 
+because many of 
 the lexemes with shifting stress patterns are high-frequency. Any system that
 cannot leverage syntactic context to disambiguate these wordforms cannot 
 achieve accuracy above 92.5\% without making an higher number of errors.
 Since the task of wordstress placement is virtually always performed on
 running text, it seems prudent to make use of surrounding information.
+The experiment described in this paper demonstrates that a Constraint Grammar
+can effectively improve the accuracy of a stress placement system without 
+significantly raising the error rate. Our Russian Constraint Grammar is
+under continual development, so we expect higher accuracy in the future.
 
-We have shown that our Russian Constraint Grammar is able to 
+The experiment was limited by properties of the gold standard corpus, including
+its size, genre distribution, and quality. Ideally, a gold standard corpus for Russian wordstress should mark 
+whether monosyllabic words are stressed, and of course its annotations should
+be accurate. Our gold corpus represents a broad variety of text genres, which 
+makes our results more generalizable, but a larger corpus would allow for
+evaluating each genre individually. For example, the vast majority of words with
+shifting stress are of Slavic origins, so we expect a genre such as technical
+writing to have a lower proportion of words with stress ambiguity, since it
+uses a more modern lexicon that has not inherited the idiosyncrasies that lead
+to wordstress ambiguity.
 
-Limitations
+In addition to genre, it seems likely that text
+complexity affects the difficulty of the stress placement task, so subcorpora at
+various reading levels would shed light on those interactions as well.
 
-Another relevant issue is whether the ambiguity can be resolved at all. For example, when is stress marked in 
-authentic by-native-for-native texts? A computer should not be expected to predict the stress on 
-such words (although a computer could possibly identify words that should be marked for 
-natives.) 
+The syllable-guessing algorithm used in this experiment was overly simplistic,
+and it was not surprising that it was 
 
-Future work:
+Future work/potential applications:
 Two sections: known words and unknown words
 \begin{itemize}
-\item New domains and reading levels
 \item As with any lexicon- and rule-based system, those components can be expanded and improved, especially considering the short span over which they were developed.
 \item Integrate a more principled unknown word-guessing method (homicevic)
 \item Compare and/or integrate with stochastic methods. So far stochastic
 methods have only been used for guessing stress on unknown words.
-\item 
+\item Another relevant issue is whether the ambiguity can be resolved at all. For example, when is stress marked in authentic by-native-for-native texts? A computer should not be expected to predict the stress on such words (although a computer could possibly identify words that should be marked for 
+natives.)
 
 \end{itemize}
 %\section*{Acknowledgments}
