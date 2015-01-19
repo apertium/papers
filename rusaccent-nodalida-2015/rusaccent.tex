@@ -319,10 +319,10 @@ focus of this study.
 
 For our baseline, we take the output of our morphological analyzer (without the 
 Constraint Grammar) in combination with the {\small {\tt bare}}, 
-{\small {\tt safe}}, {\small {\tt guess}} and {\small {\tt guessFreq}} 
-approaches. We also compare our outcomes with the 
-RussianGram\footnote{http://russiangram.com/} plugin 
-for the Google Chrome web browser. RussianGram is not open-source, so we
+{\small {\tt safe}}, {\small {\tt guess}}, {\small {\tt guessFreq}}, 
+{\small {\tt guessSyll}}, and {\small {\tt guessFreqSyll}} approaches. We also 
+compare our outcomes with the RussianGram\footnote{http://russiangram.com/} 
+plugin for the Google Chrome web browser. RussianGram is not open-source, so we
 can only guess what technologies support the service. In any case, it provides a
 meaningful reference point for the success of each of the methods described 
 above.
@@ -506,20 +506,17 @@ for unknown words, \newcite{hall_sproat_russian_2013} achieve an accuracy of
 83.9\%. Implementing a similar model in a rule-based system like ours would allow 
 for some improvements to this result. Their model was trained on a full list of 
 Russian words, which is not representative of the words that would be unknown to 
-a system like ours. Most of the complicated wordstress patterns are a closed 
-class\footnote{The growing number of masculine nouns with shifting stress 
+a system like ours. Most of the complicated wordstress patterns are closed 
+classes\footnote{The growing number of masculine nouns with shifting stress 
 (\emph{d\'{o}ktor$\sim$doktor\'{a}}) are an exception to this generalization.},
 so we could exclude closed classes of words from the training data, leaving only
 word classes that are likely to be similar to unknown tokens, such as those with 
 productive derivational affixes.
 
 Future work/potential applications:
-Two sections: known words and unknown words
 \begin{itemize}
 \item As with any lexicon- and rule-based system, those components can be expanded and improved, especially considering the short span over which they were developed.
-\item Another relevant issue is whether the ambiguity can be resolved at all. For example, when is stress marked in authentic by-native-for-native texts? A computer should not be expected to predict the stress on such words (although a computer could possibly identify words that should be marked for 
-natives.)
-
+\item Another relevant issue is whether the ambiguity can be resolved at all. For example, when is stress marked in authentic by-native-for-native texts? A computer should not be expected to predict the stress on such words (although a computer could possibly identify words that should be marked for natives.)
 \end{itemize}
 %\section*{Acknowledgments}
 %
