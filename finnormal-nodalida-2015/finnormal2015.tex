@@ -124,7 +124,8 @@ parallel corpus \cite{koehn2005}.
 We developed two sets of rules for the unsupervised normalisation approach:
 
 \begin{itemize}
-  \item 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97)
+  \item 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97). The 
+    rules took around one hour to implement.
   \item Rules from the development corpus.
 \end{itemize}
 
@@ -185,7 +186,8 @@ part of the corpus as the target language.
      Baseline & 46.12 & 48.04 & 26.31 \\
      \hline
      rules-1 & 38.27 & 41.19 & 32.65 \\
-     rules-2 & - & - & - \\
+     rules-2 & 38.17 & 35.25 & 36.41 \\
+     rules-c & 36.56 & 39.68 & 34.68 \\
      \hline
      CBMT-cn & - & - & - \\
      CBMT-cs & - & - & - \\
