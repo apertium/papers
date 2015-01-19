@@ -1,0 +1,224 @@
+%
+% File nodalida2015.tex
+%
+% Contact beata.megyesi@lingfil.uu.se
+%
+% Based on the instruction file for EACL 2014
+% which in turn was based on the instruction files for previous 
+% ACL and EACL conferences.
+
+\documentclass[11pt]{article}
+\usepackage{nodalida2015}
+%\usepackage{times}
+\usepackage{mathptmx}
+%\usepackage{txfonts}
+\usepackage{url}
+\usepackage{latexsym}
+\special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
+%\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
+
+\title{Automatic conversion of colloquial Finnish to standard Finnish}
+
+\author{Francis M. Tyers\\
+  UiT Norgga \'{a}rktala\v{s} universitehta, \\
+  N-9015 Norway \\
+  {\tt francis.tyers@uit.no} \\\And
+  Inari Listenmaa\\
+  Chalmers tekniska h\"{o}gskola, \\
+  Sweden \\
+  {\tt inari@cse.chalmers.se} \\}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  This paper presents an unsupervised method for converting between colloquial Finnish
+  and standard Finnish. The method relies upon a small number of orthographical rules
+  combined with a large language model of standard Finnish for ranking the possible 
+  conversions. Aside from this contribution, the paper also presents an evaluation
+  corpus consisting of aligned sentences in colloquial Finnish, orthographically-standardised
+  colloquial Finnish and standard Finnish. The methods we present outperforms the baseline
+  of simply treating colloquial Finnish as standard Finnish and offers promise for the adaptation
+  of language-technology tools created for standard Finnish to colloquial Finnish.
+\end{abstract}
+
+\section{Introduction}
+
+Most language technology tools are designed or trained based on standard language 
+forms, where they exist. The application of these tools to non-standard
+language can cause a substantial decrease in quality. For example in machine translation,
+or part-of-speech tagging. CITEXXX
+
+For language-technology researchers working on non-standard forms of language, there are 
+two clear options: either create new tools to process non-standard text,
+  or create tools to preprocess non-standard text, standardising it to be subsequently processed
+ by existing tools.
+
+This paper presents a method for converting colloquial Finnish to standard Finnish and 
+a parallel corpus for evaluation.
+
+\section{Related work}
+
+There are a number of areas of research related to the task of text normalisation. Text
+proofing tools, such as spelling and grammar checkers CITEXXX can be used to encourage adherence
+to particular orthographic or grammatical norms. Accent and diacritic restoration CITEXXX is similar
+in that it aims to bring text closer to standard orthography in order to facilitate treatment by 
+automatic tools. Another related area is machine translation between different written norms of 
+the same language. For example between Norwegian Bokmål and Norwegian Nynorsk CITEXXX.
+
+\newcite{scannell2014} presents a method for normalising pre-standardised text in Irish to 
+the modern standard. The method relies on 
+
+\subsection{Colloquial Finnish}
+
+ \emph{suomen puhekieli}
+
+\section{Corpus}
+
+\begin{table*}
+  \centering
+  \begin{tabular}{|l|l|l|}
+  \hline
+  \textbf{Colloquial} & \textbf{Normalised} & \textbf{Standardised} \\
+  \hline
+  mut siis, oli siell\"{a} jotain vaikka     & mutta siis, oli siell\"{a} jotain vaikka     & mutta oli siell\"{a} jotain     \\
+  puheteknologiamatskuja.  & puheteknologiamateriaaleja. & puheteknologiamateriaaleja.  \\
+  \hline
+  oon tosi hy\"{o}dyllinen assari     & ole todella hy\"{o}dyllinen assistentti & ole todella hy\"{o}dyllinen assistentti \\
+  t\"{a}n vikan minuutin.           & t\"{a}m\"{a}n viimeisen minuutin.            & t\"{a}m\"{a}n viimeisen minuutin. \\
+  \hline
+  \ldots & \ldots & \ldots \\
+  \hline
+  \end{tabular}
+  \caption{Example sentences from the parallel corpus.}
+  \label{table:corpexample}
+\end{table*}
+
+Our evaluation corpus was created by manually translating texts in colloquial Finnish
+to standard Finnish.\footnote{The corpus is freely available and published under the 
+CreativeCommons {\sc cc-by-sa} 3.0 licence.} The texts were extracts from internet 
+relay chat (IRC) conversations. We performed the conversion process in two steps, the first
+step involved simple orthographic normalisation, for 
+example \emph{oon} $\rightarrow$ \emph{olen} `I am'. Syntactic and stylistic conversions 
+were not applied at this stage. The second conversion step normalised the text
+both orthographically and syntactically/stylistically. Table~\ref{table:corpexample} presents
+an excerpt from each of the three parts of the corpus.
+
+The corpus was split into three parts, testing, development and training. The testing
+and development portions contain 1,000 words each, with the remaining X,000 for training
+supervised models.\footnote{The corpus is split into XX files of 500 words each. Files 01--02 
+  were used for development; 03--04 for testing and 05--XX for training.}
+
+\section{Methodology}
+
+\subsection{Unsupervised normalisation}
+
+For the unsupervised normalisation we applied a set of regular-expression based 
+replace rules to the input text to produce all the possible candidate sentences 
+in standard Finnish and then used a target-language model to rank the possible 
+candidates. The candidate with the highest rank was selected as the normalised sentence.
+For the target-language model we used the Finnish side of the English--Finnish EuroParl
+parallel corpus \cite{koehn2005}.
+
+We developed two sets of rules for the unsupervised normalisation approach:
+
+\begin{itemize}
+  \item 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97)
+  \item Rules from the development corpus.
+\end{itemize}
+
+%Rules: mä -> minä, oon -> olen, ?*nkaa -> ?*n kanssa
+%
+%Input: Mä oon Inarinkaa
+%Step 1: Mä oon Inarinkaa
+%        Minä oon Inarinkaa
+%Step 2: Mä oon Inarinkaa
+%        Minä oon Inarinkaa
+%        Mä olen Inarinkaa
+%        Minä olen Inarinkaa
+%Step 3: Mä oon Inarinkaa
+%        Minä oon Inarinkaa
+%        Mä olen Inarinkaa
+%        Minä olen Inarinkaa
+%        Mä oon Inarin kanssa
+%        Minä oon Inarin kanssa
+%        Mä olen Inarin kanssa
+%        Minä olen Inarin kanssa
+%Rank:
+%	-13.4885 ← minä olen Inarin kanssa
+%	-12.7176 ← minä oon Inarin kanssa
+%	-12.4408 ← mä olen Inarin kanssa
+%	-9.2045 ← mä oon Inarin kanssa
+%	-8.8651 ← minä olen Inarinkaa
+%	-8.0941 ← minä oon Inarinkaa
+%	-7.8174 ← mä olen Inarinkaa
+%	-4.5811 ← mä oon Inarinkaa
+%Output: Minä olen Inarin kanssa	
+
+\subsection{Statistical machine translation}
+
+
+The statistical-machine translation approaches were implemented using the 
+Moses toolkit \cite{koehn2007}. The training set up was that used for
+the baseline system in the  in the WMT shared tasks
+on machine translation.\footnote{\url{http://www.statmt.org/wmt11/baseline.html}}
+
+The target-language model used was the same as in the unsupervised experiments. 
+
+For both approaches we trained two systems, the first used the \emph{normalised}
+part of the corpus as the target language; the second used the \emph{standardised} 
+part of the corpus as the target language.
+
+\subsubsection{Phrase-based}
+
+\subsubsection{Character-based}
+
+\section{Results}
+
+\begin{table}
+  \centering
+  \begin{tabular}{|l|r|r|r|}
+     \hline
+    \textbf{System} & \textbf{PER} & \textbf{WER} & \textbf{BLEU} \\
+     \hline
+     Baseline & 46.12 & 48.04 & 26.31 \\
+     \hline
+     rules-1 & 38.27 & 41.19 & 32.65 \\
+     rules-2 & - & - & - \\
+     \hline
+     CBMT-cn & - & - & - \\
+     CBMT-cs & - & - & - \\
+     PBMT-cn & - & - & - \\
+     PBMT-cs & - & - & - \\
+     \hline
+  \end{tabular}
+  \label{table:results}
+  \caption{Results...}
+\end{table}
+
+\section{Future work}
+
+% weight rules 
+% use system in pipeline (e.g. translation)
+% 
+
+\section{Conclusions}
+
+We have presented a parallel corpus of colloquial Finnish and standard Finnish --
+to our knowledge the first of its kind -- and a method for converting colloquial
+Finnish to standard Finnish.
+
+%The main contribution of this paper is a parallel corpus of colloquial Finnish
+%and standard Finnish
+
+\section*{Acknowledgments}
+
+Joonas Kyl\"{a}m\"{a}
+
+% If you use BibTeX with a bib file named eacl2014.bib, 
+% you should add the following two lines:
+\bibliographystyle{acl}
+\bibliography{finnormal2015.bib}
+
+\end{document}

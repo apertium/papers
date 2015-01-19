@@ -1,0 +1,56 @@
+(17:15:53) francis.tyers: around?
+(17:16:07) Kevin Scannell: yup
+(17:16:13) francis.tyers: cool :)
+(17:16:17) Kevin Scannell: watching launch of Gmail in Irish
+(17:16:20) francis.tyers: :)
+(17:16:31) francis.tyers: i'm checking out your article on irish standardisation
+(17:16:36) francis.tyers: and was thinking of doing something similar for finnish
+(17:16:38) Kevin Scannell: oh cool
+(17:16:39) francis.tyers: we have some GCI students 
+(17:16:48) francis.tyers: doing normalisation of texts in colloquial finnish
+(17:16:51) francis.tyers: to standard written finnish
+(17:17:04) francis.tyers: compare: https://svn.code.sf.net/p/apertium/svn/languages/apertium-fin/texts/normalisation/irc-logs.01.colloquial.txt
+(17:17:10) francis.tyers: and: https://svn.code.sf.net/p/apertium/svn/languages/apertium-fin/texts/normalisation/irc-logs.01.book.txt
+(17:17:33) Kevin Scannell: those done by hand?
+(17:17:35) francis.tyers: yeah
+(17:17:40) francis.tyers: we won't have enough data to train a model
+(17:17:45) francis.tyers: but we will have enough data to evaluate
+(17:17:48) Kevin Scannell: yeah that was the big win for me
+(17:17:53) francis.tyers: if we do something rule-based/unsupervised
+(17:17:59) Kevin Scannell: some books hand-standardized and digitized
+(17:18:06) Kevin Scannell: (for the dict projects I'm working on)
+(17:18:12) francis.tyers: i wrote something trivial that basically takes a list of regex replacements http://wiki.apertium.org/wiki/User:Francis_Tyers/Finnish
+(17:18:24) francis.tyers: and expands the possibilities
+(17:18:35) francis.tyers: and scores them on a TLM of standard finnish
+(17:18:47) francis.tyers: which kind of works, but i was wondering if you had something prepared that could do something similar ? 
+(17:19:03) francis.tyers: that way i could just say "we used the system as described in scannell (2014)" :)
+(17:19:33) francis.tyers: (the ° in those replacements stands for \w+
+(17:19:36) Kevin Scannell: well what you're doing isn't so far from what Scannell (2014) does
+(17:19:46) Kevin Scannell: I don't have a translation model really
+(17:20:10) Kevin Scannell: so you could conceivably use the code here:
+(17:20:19) Kevin Scannell: http://github.com/kscanne/caighdean
+(17:20:48) Kevin Scannell: your substitutions on the wiki are full words or morphemes?
+(17:21:19) francis.tyers: can be both 
+(17:21:22) francis.tyers: strings and substrings
+(17:21:25) Kevin Scannell: ok
+(17:21:35) Kevin Scannell: well those would probably go into my system as "rules"
+(17:21:40) francis.tyers: so e.g. °oo -> °oa would take katoo and make katoa
+(17:21:43) Kevin Scannell: regex substitutions
+(17:22:03) Kevin Scannell: yeah you could make that work
+(17:22:28) Kevin Scannell: but not clearly easier to plug it all into my code than it would be to write it yourself  :-/
+(17:22:28) francis.tyers: does it output 1-best ?
+(17:22:36) Kevin Scannell: yeah
+(17:22:38) francis.tyers: ok
+(17:22:40) Kevin Scannell: but that's tweakable I guess
+(17:22:56) francis.tyers: i was also thinking of ways to weight the rules
+(17:23:02) Kevin Scannell: keeps a list of hypotheses
+(17:23:06) Kevin Scannell: until the en
+(17:23:07) Kevin Scannell: end
+(17:24:22) francis.tyers: ok :)
+(17:24:26) francis.tyers: so, i'll try and hack something together
+(17:24:40) francis.tyers: and i'll send it over it it ever gets to looking like a paper :)
+(17:25:04) Kevin Scannell: cool
+(17:25:14) Kevin Scannell: happy to guide you if needed
+(17:25:17) francis.tyers: thanks :)
+(17:25:25) Kevin Scannell: in figuring out the code I mean
+(17:25:27) francis.tyers: i was thinking for nodalida (jan. 19th deadline)

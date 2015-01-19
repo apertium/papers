@@ -1,0 +1,77 @@
+    Unsupervised automatic conversion of colloquial Finnish to standard Finnish 
+
+Abstract
+
+Introduction
+
+* Most language technology is based on standard language. Application to non-standard
+  language can cause a substantial decrease in quality. [example for fin-eng translation]
+
+* Given this, there are two options, either create new tools to process non-standard text,
+  or create tools to convert non-standard text to standardised text. This paper describes 
+  the latter.
+
+* We present a small parallel corpus of standard Finnish and colloquial Finnish and describe
+  some experiments in converting from colloquial Finnish to standard Finnish.
+
+Related work
+
+* Spellchecking and grammar checking
+
+* Accent/diacritic restoration
+  -- Note that we can't autogenerate corpora here from standard Finnish
+
+* Text normalisation
+  -- Not any work on Finnish, but e.g. English, Irish, ...
+  -- Scannell (2014)
+
+* Translation between geographic varieties, e.g. Brazilian Portuguese and Iberian Portuguese
+
+Standard Finnish and Colloquial Finnish
+
+* Give an overview of differences
+
+  -- Lexicon
+
+  -- Morphology
+
+  -- Syntax
+
+Corpus
+
+* Description of corpus. 
+
+* Corpus created by manual "translation" of colloquial Finnish texts (IRC logs)
+  into standard Finnish. The conversion process was two-step. First a character/context-free
+  conversion was done. Then this was altered to preserve meaning. 
+
+* Examples.
+
+* [Table!]
+
+* The corpus is not large enough to be able to reliably train statistical machine translation
+  models, but is large enough to provide an objective evaluation of unsupervised methods
+
+Experiments
+
+
+Results
+
+* Reference systems 
+
+  -- Photocopy:
+  -- CBMT:
+
+* Systems: 
+
+  -- Fred's rules:
+  -- Fred's rules + devel rules
+
+* [Table!]
+
+Conclusions
+
+
+Bibliography
+
+Statistical models for text normalization and machine translation, Proceedings of the Celtic Language Technology Workshop at COLING 2014, Baile Átha Cliath, August 23, 2014 (Paper, Slides)
