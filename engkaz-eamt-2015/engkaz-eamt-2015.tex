@@ -54,8 +54,18 @@ in garden  -  ^бақша<n><sg><PXD><loc
 In Apertium is used XML-based formats for linguistic data, it includes bilingual and monolingual dictionaries, structural transfer, lexical rules and rules for part-of-speech tagging.
 
 Dictionaries
+Dictionaries are used in lexical processing and morphological analysing, there are use two types: morphological(monolingual) and bilingual.
 
+Monolingual dictionaries 
 
+English dictionary uses to determine lexical forms of each surface forms, it contains of list of all lexical units, definition of source language alphabet, grammatical categories, which is used to specify lexical forms, for example, like noun, verb, gender, etc., each categories have paradigms, they describes groups of correspondences between parts of surface forms and lexical forms. 
+
+For Kazakh side, is used morphological transducers, which are based on the Helsinki
+Finite State Toolkit (Linden et al., 2011). It uses formalisms lexc for defining lexicons, twol formalism for morphophonological rules. Lexc formalism defines different word classes and subclasses. And twol determines phonological transformation like vowel harmony,desonorisation. For example, depend on preceding vowel, plural form "TAR" could be TER by harmonising with vowels on word: kitap+TAR, but mektep+TER.
+
+Bilingual dictionary
+
+Kazakh dictionary uses
 \section{Results}
 
 \section{Evaluation}
