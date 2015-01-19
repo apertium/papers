@@ -25,6 +25,7 @@
 \usepackage{nodalida2015}
 
 \usepackage{linguex}
+\usepackage{needspace}
 
 \newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
 
@@ -51,10 +52,19 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-  We evaluate the effectiveness of tools we developed for automatically annotating 
-  word stress in Russian running text. Given an adequate lexicon with specified stress, the
-  primary obstacle for correct stress placement is disambiguating homographic forms. Using a
-  Constraint Grammar, we achieve a X\% improvement over the baseline undisambiguated performance.
+  We evaluate the effectiveness of finite-state tools we developed for 
+  automatically annotating word stress in Russian running text. To our knowledge,
+  this is the first study to empirically evaluate the results of this task. 
+  Given an adequate 
+  lexicon with specified stress, the primary obstacle for correct stress 
+  placement is disambiguating homographic wordforms. Using a Constraint Grammar, 
+  we achieve 93.21\% accuracy, a 3.14\% improvement over the baseline
+  undisambiguated performance. 
+  Combining our Constraint Grammar with frequency data and a simple
+  algorithm for unknown word stress position guessing, we achieve 96.15\%
+  accuracy. These results highlight the need morphosyntactic disambiguation
+  in the wordstress placement task for Russian, and set a standard for future
+  research on this task.
 \end{abstract}
 
 %\section{Credits}
@@ -64,27 +74,37 @@
 
 \section{Introduction}
 
-Russian word stress is variable. The inflecting word classes include complex patterns of
-shifting stress, and a lexeme's stress pattern cannot be predicted from surface forms.
-Although lexical stress and its attendant vowel reduction are a prominent feature of
-spoken Russian, standard written Russian does not typically mark word stress.\footnote{
-Texts intended for native speakers sometimes mark stress on words that cannot be 
-disambiguated through context, although this is somewhat rare.} Without information about lexical 
-stress position, 
-correctly converting written Russian text to speech is impossible. This is true both for humans
-(e.g. foreign language students) and computers (e.g. text-to-speech).
+Russian word stress is variable and phonemic. The inflecting word classes include complex 
+patterns of shifting stress, and a lexeme's stress pattern cannot be predicted 
+from surface forms. Lexical stress and its attendant vowel reduction are 
+a prominent feature of spoken Russian, and the incorrect placement of stress
+can render speech incomprehensible. However, standard written Russian does not 
+typically mark word stress.\footnote{Texts intended for native speakers sometimes 
+mark stress on words that cannot be disambiguated through context, although this 
+is rare.} Without information about lexical stress position, 
+correctly converting written Russian text to speech is impossible. This is true 
+both for humans (e.g. foreign language students) and computers (e.g. text-to-
+speech).
 
-We identify three different types of word stress ambiguity. \emph{Intraparadigmatic}
-stress ambiguity refers
-to homographic wordforms belonging to the same lexeme, as shown in \ref{ex:intrahom}. 
+We identify three different types of word stress ambiguity.
+\emph{Intraparadigmatic} stress ambiguity refers
+to homographic wordforms belonging to the same lexeme, as shown in 
+\ref{ex:intrahom}. 
 
+\needspace{4\baselineskip}
 \ex. Intraparadigmatic homographs \label{ex:intrahom}
-\a. \rus{т\'{е}ла} \emph{t\'{e}la} `body.\textsubscript{SG-GEN}' \label{ex:bodySGGEN}
-\b. \rus{тел\'{а}} \emph{tel\'{a}} `body.\textsubscript{PL-NOM}' \label{ex:bodyPLNOM}
+\a. \rus{т\'{е}ла} \emph{t\'{e}la} `body.\textsubscript{SG-GEN}' 
+    \label{ex:bodySGGEN}
+\b. \rus{тел\'{а}} \emph{tel\'{a}} `body.\textsubscript{PL-NOM}' 
+    \label{ex:bodyPLNOM}
 
-The remaining two types of stress ambiguity occur between lexemes. \emph{Morphosyntactically
-congruent} stress ambiguity occurs between homographs that belong to separate lexemes, 
-and whose morphosyntactic values are identical, as shown in Table~\ref{table:MScongruent}. 
+The remaining two types of stress ambiguity occur between lexemes. 
+\emph{Morphosyntactically congruent} stress ambiguity occurs between homographs 
+that belong to separate lexemes, 
+and whose morphosyntactic values are identical, as shown in
+Table~\ref{table:MScongruent}. This kind of stress ambiguity is relatively rare.
+Resolving this ambiguity would require the use of  Word Sense Disambiguation, which is
+outside the scope of this paper.
 
 \begin{table}
 \begin{center}
@@ -115,34 +135,39 @@ that belong to separate lexemes, and whose morphosyntactic values are different,
 \d. \rus{дор\'{о}га} \emph{doróga} `road.\textsubscript{N-F-SG-NOM}'\\
     \rus{дорог\'{а}} \emph{dorogá} `dear.\textsubscript{ADJ-F-SG-PRED}'
 
-It should be noted that not all morphosyntactic ambiguity leads to stress ambiguity. For example, all inflecting modifiers have the same form for F-SG-GEN, F-SG-LOC, F-SG-DAT and 
-F-SG-INS. We refer to this as \emph{stress-irrelevant} ambiguity, since all readings have
-the same stress placement. Stress-irrelevant ambiguity can be intraparadigmatic and/or interlexical. 
+It should be noted that not all morphosyntactic ambiguity leads to stress 
+ambiguity. For example, all inflecting modifiers have the same form for F-SG-GEN, 
+F-SG-LOC, F-SG-DAT and F-SG-INS. We refer to this as \emph{stress-irrelevant} 
+ambiguity, since all readings have
+the same stress placement. Stress-irrelevant ambiguity can be intraparadigmatic 
+and/or interlexical. 
 
-Different types of stress ambiguity are overcome by different information. Detailed 
-part-of-speech tagging can determine the stress of intraparadigmatic homographs and
-morphosyntactically incongruent homographs, whereas word sense disambiguation can 
-determine the stress position of morphosyntactically congruent homographs. In the case of
-running text in Russian, most stress placement ambiguity is rooted in morphosyntactic
-ambiguity, so in this study we focus on the role of part-of-speech tagging in improving
+Different types of stress ambiguity are overcome by different information. 
+Detailed part-of-speech tagging can determine the stress of intraparadigmatic 
+homographs and morphosyntactically incongruent homographs, whereas word sense 
+disambiguation can determine the stress position of morphosyntactically congruent 
+homographs. In the case of running text in Russian, most stress placement 
+ambiguity is rooted in morphosyntactic ambiguity, so in this study we focus on 
+the role of part-of-speech tagging in improving
 automatic stress placement, leaving word sense disambiguation to future work.
 
 \subsection{Background and Task Definition}
 
 Automatic stress placement in Russian is similar to Diacritic Restoration, a task
-which has received increasing interest over the last 20 years. Generally speaking, diacritics
-disambiguate otherwise homographic wordforms, so missing diacritics can
-complicate many NLP tasks, such as text-to-speech. For example, speakers 
-of Czech may type emails and other communications
-without standard diacritics. In order to generate speech from these texts, they must first be 
-normalized by restoring diacritics. A slightly different
-situation arises with Arabic and Hebrew, since standard orthography lacks vowel diacritics
-altogether. For such languages, the `restoration' of vowel diacritics results in less
-ambiguity than in standard orthography. For languages with inherently ambiguous orthography,
-it may be more precise to refer to this as `diacritic enhancement', since it produces
-text that is less ambiguous than the standard language. In this sense, Russian orthography
-is similar to Arabic and Hebrew, since its vowel qualities are underspecified in
-standard orthography.
+which has received increasing interest over the last 20 years. Generally 
+speaking, diacritics disambiguate otherwise homographic wordforms, so missing 
+diacritics can complicate many NLP tasks, such as text-to-speech. For example, 
+speakers of Czech may type emails and other communications
+without standard diacritics. In order to generate speech from these texts, they 
+must first be normalized by restoring diacritics. A slightly different
+situation arises with Arabic and Hebrew, since standard orthography lacks vowel 
+diacritics altogether. For such languages, the `restoration' of vowel diacritics 
+results in less ambiguity than in standard orthography. For languages with 
+inherently ambiguous orthography,
+it may be more precise to refer to this as `diacritic enhancement', since it 
+produces text that is less ambiguous than the standard language. In this sense, 
+Russian orthography is similar to Arabic and Hebrew, since its vowel qualities 
+are underspecified in standard orthography.
 
 Many studies of Russian text-to-speech and automatic speech recognition make note of the 
 difficulties caused by the shortcomings of their stress-marking resources (e.g. \cite{krivnova_1998}), but very few studies have targeted stress-marking itself, and they tend to
@@ -160,7 +185,7 @@ stress.}, so evaluations based on wordlists - as opposed to running
 text - have inflated results. Furthermore, working with running text allows for the
 possibility of disambiguating homographs based on syntactic context.
 
-So far, the implicit target application the few studies related to automatic stress placement
+So far, the implicit target application of the few studies related to automatic stress placement
 in Russian has been text-to-speech and automatic speech recognition. However, the target 
 application of our stress
 annotator is a different domain: language learning. Since standard Russian does not contain 
@@ -240,22 +265,32 @@ stress-irrelevant ambiguity, {\small {\tt guess}} and {\small {\tt guessFreq}} p
 the same result as the {\small {\tt safe}} method.
 
 So far, the approaches discussed are
-dependent on the availability of readings from the FST. Two final approaches address unknown tokens.
-The {\small {\tt guessSyll}} and {\small {\tt guessFreqSyll}} approaches are identical to 
-{\small {\tt guess}} and {\small {\tt guessFreq}}, respectively,
-except that for unknown tokens, they places the stress near the end of the stem.\footnote{Determining 
+dependent on the availability of readings from the FST. Two final approaches 
+address unknown tokens.
+The {\small {\tt guessSyll}} and {\small {\tt guessFreqSyll}} approaches are 
+identical to {\small {\tt guess}} and {\small {\tt guessFreq}}, respectively,
+except that the {\small {\tt Syll}} approaches attempt to place stress on
+unknown tokens (i.e. tokens not found in the FST). Empirical research with
+Russian native speakers reading nonce words in running text concludes that
+the default stress position in Russian is the last syllable of the stem, or
+in other words, the last vowel that is not part of an inflectional ending 
+\cite{Crosswhite.ea-03}. Therefore, the {\small {\tt Syll}} approaches 
+place the stress near the end of the stem. Determining 
 which vowel is stem-final
-is itself a difficult task. Our algorithm merely places the stress on the last vowel that is 
-followed by a consonant.} \rr{Explain why stem-final is a good guess (and cite someone?)}
+is itself a difficult task. Our algorithm merely places the stress on the last 
+vowel that is followed by a consonant. Although more sophisticated algorithms
+are necessary to accurately locate the stem boundary, this is not the central
+focus of this study.
 
-For our baseline, we take the output of our morphological analyzer (without the Constraint 
-Grammar) in combination with the {\small {\tt bare}}, {\small {\tt safe}}, 
-{\small {\tt guess}} and {\small {\tt guessFreq}} approaches.
-
-We also compare our outcomes with the RussianGram\footnote{http://russiangram.com/} plugin 
+For our baseline, we take the output of our morphological analyzer (without the 
+Constraint Grammar) in combination with the {\small {\tt bare}}, 
+{\small {\tt safe}}, {\small {\tt guess}} and {\small {\tt guessFreq}} 
+approaches. We also compare our outcomes with the 
+RussianGram\footnote{http://russiangram.com/} plugin 
 for the Google Chrome web browser. RussianGram is not open-source, so we
 can only guess what technologies support the service. In any case, it provides a
-meaningful reference point for the success of each of the methods described above.
+meaningful reference point for the success of each of the methods described 
+above.
 
 \section{Results}
 
@@ -305,9 +340,9 @@ Each token was categorised as either Failures to correctly place stress were
 split into two categories: errors and abstentions. 
 If the stress tool outputs a stressed wordform, and it is incorrect, then it is
 counted as an `error'. If the stress tool outputs an unstressed wordform, then
-it is counted as an `abstention'. The sum of the errors and abstentions is referred
-to as `totFail'. The sum of correct attempts and `errors' is referred to as `totTry'.
-Results are given in Table~\ref{tab:results}.
+it is counted as an `abstention'. The sum of the errors and abstentions is 
+referred to as `totFail'. The sum of correct attempts and `errors' is referred to 
+as `totTry'. Results are given in Table~\ref{tab:results}.
 
 \rr{Are differences significant?}
 
@@ -353,19 +388,19 @@ on overall accuracy from {\small {\tt CGguessFreq}} to
 {\small {\tt CGguessFreqSyll}} is 0.42\%, which means that the 
 {\small {\tt Syll}} was accurate 21\% of the time.
 
-\begin{itemize}
-\item Examine errors and categorize/refute them.
-\end{itemize}
+\rr{Examine errors and categorize/refute them.}
 
 \section{Discussion}
 
 One of the main points of this paper is to highlight the importance of 
-syntactic context in the Russian wordstress placement task. \cite{hall_sproat_russian_2013} 
-achieve 98.7\% accuracy on stress placement of individual wordforms. To 
+syntactic context in the Russian wordstress placement task. 
+\newcite{hall_sproat_russian_2013} achieve 98.7\% accuracy on stress placement of 
+individual wordforms. To 
 understand this result, it should be remembered that Russian has a considerable
 number of words that are ambiguous with regard to stress. Based on the surface 
 forms in our FST (which is based on the same dictionary used for 
-\cite{hall_sproat_russian_2013}), we calculate that only 29~518 (1.05\%) 
+\cite{hall_sproat_russian_2013}\rr{need to cite this without parentheses}), we 
+calculate that only 29~518 (1.05\%) 
 of the 2~804~492 wordforms contained in our FST are stress-ambiguous. \rr{These 
 stress-ambiguous wordforms have an average of 2.01 possible stress positions.} 
 Compare this with the finding of our experiment, that in running 
@@ -381,8 +416,12 @@ can effectively improve the accuracy of a stress placement system without
 significantly raising the error rate. Our Russian Constraint Grammar is
 under continual development, so we expect higher accuracy in the future.
 
+We are unaware of any other studies of Russian wordstress placement in running
+text. The results of our experiment are promising, but many questions remain
+unanswered.
 The experiment was limited by properties of the gold standard corpus, including
-its size, genre distribution, and quality. Ideally, a gold standard corpus for Russian wordstress should mark 
+its size, genre distribution, and quality. Ideally, a gold standard corpus for 
+Russian wordstress should mark 
 whether monosyllabic words are stressed, and of course its annotations should
 be accurate. Our gold corpus represents a broad variety of text genres, which 
 makes our results more generalizable, but a larger corpus would allow for
@@ -392,12 +431,32 @@ writing to have a lower proportion of words with stress ambiguity, since it
 uses a more modern lexicon that has not inherited the idiosyncrasies that lead
 to wordstress ambiguity.
 
-In addition to genre, it seems likely that text
-complexity affects the difficulty of the stress placement task, so subcorpora at
-various reading levels would shed light on those interactions as well.
+In addition to genre, it is also likely that text
+complexity affects the difficulty of the stress placement task. The distribution
+of different kinds of syntactic constructions vary with text complexity 
+\cite{Vajjala.Meurers-12}, and
+we expect that the effectiveness of the Constraint Grammar will be affected by
+those differences. used in would shed light on those interactions as well.
 
-The syllable-guessing algorithm used in this experiment was overly simplistic,
-and it was not surprising that it was 
+The syllable-guessing algorithm {\small {\tt Syll}} used in this experiment was 
+overly simplistic, and it was not surprising that it was only moderately 
+successful. More rigorous approaches have been suggested in other studies.
+One approach -- exemplified by \newcite{Church-85}, 
+\newcite{Williams-87} and \newcite{Xomicevic_2008} -- is to 
+attempt to parse the unknown token by matching known prefixes and suffixes.
+Another approach -- exemplified by Pearson.ea-00, Webster-04, Dou.ea-09, and 
+\newcite{hall_sproat_russian_2013} -- is based on machine-learning. For unknown 
+words, \newcite{hall_sproat_russian_2013} achieve an accuracy of 83.9\%.
+It should be noted that their model was trained on a full list of Russian words,
+which is not representative of the words that would be unknown to a system like
+ours. Most of the complicated wordstress patterns are a closed 
+class.\footnote{The growing number of masculine nouns with shifting stress are 
+the exception to this generalization.} Future machine-learning work on Russian 
+wordstress placement in running text should limit the training data to word
+classes that are likely to be similar to unknown tokens, such as those with
+productive derivational affixes.
+
+
 
 Future work/potential applications:
 Two sections: known words and unknown words
