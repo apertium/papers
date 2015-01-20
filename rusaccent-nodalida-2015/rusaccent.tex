@@ -152,7 +152,7 @@ the role of part-of-speech tagging in improving
 automatic stress placement, leaving morphosyntactically congruent stress 
 ambiguity to future work. \rr{this paragraph is choppy.}
 
-\subsection{Background and Task Definition}
+\subsection{Background and Task Definition} \label{background}
 
 Automatic stress placement in Russian is similar to Diacritic Restoration, a task
 which has received increasing interest over the last 20 years. Generally 
@@ -336,20 +336,20 @@ above.
     \hline
     \hline
     {\small {\tt noCGbare}} & 30.43 & 0.17 & 69.39 & 30.61 & 69.57 \\
-    {\small {\tt noCGsafe}} & \bf{90.07} & 0.49 & 9.44 & 90.56 & 9.93 \\
+    {\small {\tt noCGsafe}} & 90.07 & 0.49 & 9.44 & 90.56 & 9.93 \\
     {\small {\tt noCGguess}} & 94.34 & 3.36 & 2.30 & 97.70 & 5.66 \\
     {\small {\tt noCGguessFreq}} & 95.53 & 2.59 & 1.88 & 98.12 & 4.47 \\
     {\small {\tt noCGguessSyll}} & 94.99 & 4.05 & 0.96 & 99.04 & 5.01 \\
     {\small {\tt noCGguessFreqSyll}} & 95.83 & 3.46 & 0.72 & 99.28 & 4.17 \\
     \hline
     {\small {\tt CGbare}} & 45.78 & 0.44 & 53.78 & 46.22 & 54.22 \\
-    {\small {\tt CGsafe}} & \bf{93.21} & 0.74 & 6.05 & 93.95 & 6.79 \\
+    {\small {\tt CGsafe}} & 93.21 & 0.74 & 6.05 & 93.95 & 6.79 \\
     {\small {\tt CGguess}} & 95.50 & 2.59 & 1.90 & 98.10 & 4.50 \\
-    {\small {\tt CGguessFreq}} & \bf{95.73} & \bf{2.40} & 1.88 & 98.12 & 4.27 \\
+    {\small {\tt CGguessFreq}} & 95.73 & 2.40 & 1.88 & 98.12 & 4.27 \\
     {\small {\tt CGguessSyll}} & 95.92 & 3.33 & 0.74 & 99.26 & 4.08 \\
-    {\small {\tt CGguessFreqSyll}} & \bf{96.15} & \bf{3.14} & 0.72 & 99.28 & 3.85 \\
+    {\small {\tt CGguessFreqSyll}} & 96.15 & 3.14 & 0.72 & 99.28 & 3.85 \\
     \hline
-    {\small {\tt RussianGram}} & \bf{90.09} & 0.79 & 9.12 & 90.88 & 9.91
+    {\small {\tt RussianGram}} & 90.09 & 0.79 & 9.12 & 90.88 & 9.91
   \end{tabular}
   \caption{Results of stress placement task evaluation. (N = 4048)}
   \label{tab:results}
@@ -387,7 +387,7 @@ totTry value of 30.61. The term `totFail' refers to the sum of error rate
 and abstention rate, which is the 
 proportion of tokens for which the system failed to output the correct stressed 
 form. In the case of {\small {\tt noCGbare}}, the error\% (0.17) 
-and abstention\% (69.39) sum to the (rounded) totFail value of of 69.57. 
+and abstention\% (69.39) sum to the totFail value of of 69.57 (rounded). 
 
 \rr{Are differences significant?}
 
@@ -400,8 +400,7 @@ forms whose stress position varies from speaker to speaker (e.g.
 achieves a 60\% improvement in accuracy (90.07\%), which means that 89.39\% of 
 morphosyntactic ambiguity on our corpus is stress-irrelevant. Interestingly, the 
 RussianGram web service achieves results that are very close 
-to the {\small {\tt noCGsafe}} approach, so it would appear that it 
-utilizes a similar approach.
+to the {\small {\tt noCGsafe}} approach.
 
 Since the ceiling recall for the FST is 97.55\%, and since the 
 {\small {\tt noCGsafe}} approach achieves 90.07\%, the maximum improvement 
@@ -436,23 +435,32 @@ on overall accuracy from {\small {\tt CGguessFreq}} to
 \section{Discussion} \label{discussion}
 
 One of the main points of this paper is to highlight the importance of 
-syntactic context in the Russian wordstress placement task. 
-\newcite{hall_sproat_russian_2013} achieve 98.7\% accuracy on stress placement of 
-individual wordforms. To 
-understand this result, it should be remembered that Russian has a considerable
-number of words that are ambiguous with regard to stress. Based on the surface 
+syntactic context in the Russian wordstress placement task. If your intended 
+application has a low tolerance for error, the 
+{\small {\tt noCGsafe}} approach represents the highest accuracy that is possible 
+without leveraging syntactic information for disambiguation (90.07\%). In other words, a 
+system that is blind to morphosyntax and contextual disambiguation cannot
+significantly outperform {\small {\tt noCGsafe}}. It would appear that this is
+the method used by {\small {\tt RussianGram}}, since its results are so similar
+to {\small {\tt noCGsafe}}. Indeed, this result can be achieved most efficiently
+without any part-of-speech tagging, but through simple dictionary lookup.
+
+We noted in Section~\ref{background} that \newcite{hall_sproat_russian_2013}
+achieved 98.7\% accuracy on stress placement for individual wordforms 
+in a list (i.e. \emph{without} syntax). This result is 8.63\% higher than
+{\small {\tt noCGsafe}}, but it is also a fundamentally different task.
+Based on the surface 
 forms in our FST -- which is based on the same dictionary used for 
 \newcite{hall_sproat_russian_2013} -- 
 we calculate that only 29~518 (1.05\%) 
 of the 2~804~492 wordforms contained in our FST are stress-ambiguous. \rr{These 
-stress-ambiguous wordforms have an average of 2.01 possible stress positions.} 
-Compare this with the finding of our experiment, that in running 
-text, at least 7.5\% of the tokens are stress-ambiguous. Stress ambiguity is
+stress-ambiguous wordforms have an average of 2.01 possible stress positions,
+so a perfect stress placement tool has a 50/50 chance of getting them right.
+This means that a perfect stress placement tool could achieve 99.48\% on their
+task.} In our corpus of running text, at least 7.5\% of the tokens are stress-
+ambiguous. Stress ambiguity is
 therefore 7 times more prevalent in our corpus of running text than it is in 
-wordform dictionaries. This is at least partly because many of 
-the lexemes with shifting stress patterns are high-frequency. Any system that
-cannot leverage syntactic context to disambiguate these wordforms cannot 
-achieve accuracy above 92.5\% without making an higher number of errors.
+our wordform dictionary.
 Since the task of wordstress placement is virtually always performed on
 running text, it seems prudent to make use of surrounding information.
 The experiment described in this paper demonstrates that a Constraint Grammar
@@ -460,9 +468,9 @@ can effectively improve the accuracy of a stress placement system without
 significantly raising the error rate. Our Russian Constraint Grammar is
 under continual development, so we expect higher accuracy in the future.
 
-We are unaware of any other studies of Russian wordstress placement in running
-text. The results of our experiment are promising, but many questions remain
-unanswered.
+We are unaware of any other empirical evaluations of Russian wordstress placement 
+in running text. The results of our experiment are promising, but many questions 
+remain unanswered.
 The experiment was limited by properties of the gold standard corpus, including
 its size, genre distribution, and quality. Ideally, a gold standard corpus for 
 Russian wordstress should mark 
@@ -472,8 +480,7 @@ makes our results more generalizable, but a larger corpus would allow for
 evaluating each genre individually. For example, the vast majority of words with
 shifting stress are of Slavic origins, so we expect a genre such as technical
 writing to have a lower proportion of words with stress ambiguity, since it
-uses a more modern lexicon that has not inherited the idiosyncrasies that lead
-to wordstress ambiguity.
+uses a higher proportion of borrowed words.
 
 In addition to genre, it is also likely that text
 complexity affects the difficulty of the stress placement task. The distribution
@@ -512,6 +519,8 @@ classes\footnote{The growing number of masculine nouns with shifting stress
 so we could exclude closed classes of words from the training data, leaving only
 word classes that are likely to be similar to unknown tokens, such as those with 
 productive derivational affixes.
+
+
 
 Future work/potential applications:
 \begin{itemize}
