@@ -154,7 +154,7 @@ the role of part-of-speech tagging in improving
 automatic stress placement. We leave morphosyntactically congruent stress 
 ambiguity to future work because of a combination of two reasons, 1) it is by far the least common type of stress ambiguity, and 2) disambiguating morphosyntactically congruent stress requires word sense disambiguation, a fundamentally different technology from the other approaches of this study.
 
-\subsection{Background and Task Definition} \label{background}
+\subsection{Background and task definition} \label{background}
 
 Automatic stress placement in Russian is similar to Diacritic Restoration, a task
 which has received increasing interest over the last 20 years. Generally 
@@ -218,7 +218,7 @@ confidence.
   \label{tab:conditions}
 \end{table*}
 
-\subsection{Stress Corpus}
+\subsection{Stress corpus}
 
 Russian texts with marked word stress are relatively rare, except in materials
 for language learners, which are predominantly proprietary. Our corpus was 
@@ -247,18 +247,20 @@ word, both monosyllabic and multisyllabic. However, because our gold corpus text
 do not mark stress on monosyllabic words, we cannot evaluate our annotation of 
 those words.
 
-\section{Automatic Stress Placement}
+\section{Automatic stress placement}
 
 State-of-the-art morphological analysis in Russian is based on finite-state
-technology.\footnote{add footnote or citations for Dialog, mystem, etc.} To our 
-knowledge, no open-source resources are available for analyzing and generating 
+technology\cite{Nozhov-03,Segalovich-03}. To our knowledge, no existing 
+open-source resources are available for analyzing and generating 
 stressed wordforms. Therefore, we developed free and open-source finite-state 
 tools capable of analyzing and generating stressed wordforms, based on the
 well-known \emph{Grammatical Dictionary of Russian} \cite{Zaliznjak-77}.
 A Finite-State Transducer\footnote{Using two-level 
-morphology, xfst/hfst, blah, blah, blah} (FST) generates all possible 
-morphosyntactic readings of each wordform, and a constraint grammar\footnote{vislcg3, blah blah} then removes
-some extra readings based on syntactic context. The ultimate success of our 
+morphology \cite{Koskenniemi-84}, implemented in xfst \cite{Beesley.Karttunen-03} and hfst \cite{hfst-11}} (FST) generates all possible 
+morphosyntactic readings of each wordform, and a constraint 
+grammar\footnote{Implemented using vislcg3 constraint grammar parser (http://beta.visl.sdu.dk/cg3.html).}
+\cite{Karlsson-90,Karlsson.Voutilainen.ea-95} then removes
+some readings based on syntactic context. The ultimate success of our 
 stress placement system depends on the performance of the Constraint Grammar. 
 Ideally, the Constraint Grammar would successfully remove all but the correct 
 reading for each token, but in practice some
@@ -287,7 +289,7 @@ ambiguity, so a random selection of a reading has the same result as the
  
 The {\small {\tt guessFreq}} 
 approach is to select the reading that is most frequent, with frequency data
-taken from a separate hand-disambiguated corpus. If none of the readings is 
+taken from a separate hand-disambiguated corpus. If none of the readings are 
 found in the corpus, then {\small {\tt guessFreq}} selects the reading
 with the tag sequence (lemma removed) that is most frequent in our corpus. If the 
 tag sequence is not found
@@ -462,7 +464,7 @@ so a perfect stress placement tool has a 50/50 chance of getting them right.
 This means that a perfect stress placement tool could achieve 99.48\% on their
 task.} In our corpus of running text, at least 7.5\% of the tokens are stress-
 ambiguous. Stress ambiguity is
-therefore 7 times more prevalent in our corpus of running text than it is in 
+therefore seven times more prevalent in our corpus of running text than it is in 
 our wordform dictionary.
 Since the task of wordstress placement is virtually always performed on
 running text, it seems prudent to make use of surrounding information.
@@ -529,7 +531,7 @@ productive derivational affixes.
 We have demonstrated the effectiveness of using a Constraint Grammar to improve
 the results of a Russian wordstress placement task in running text by resolving
 42\% of the ambiguity in our gold corpus. We showed
-that stress ambiguity is 7 times more prevalent in our corpus of running text
+that stress ambiguity is seven times more prevalent in our corpus of running text
 than it is in our lexicon, suggesting the importance of context-based
 disambiguation for this task.  As with any 
 lexicon- and rule-based system, the lexicon and rules can be expanded and 
