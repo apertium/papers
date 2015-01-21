@@ -77,11 +77,14 @@
 Russian word stress is variable and phonemic. The inflecting word classes include complex 
 patterns of shifting stress, and a lexeme's stress pattern cannot be predicted 
 from surface forms. Lexical stress and its attendant vowel reduction are 
-a prominent feature of spoken Russian, and the incorrect placement of stress
+a prominent feature of spoken Russian; the incorrect placement of stress
 can render speech almost incomprehensible. However, standard written Russian does not 
 typically mark word stress.\footnote{Texts intended for native speakers sometimes 
-mark stress on words that cannot be disambiguated through context, although this 
-is rare.} Without information about lexical stress position, 
+mark stress on words that cannot be disambiguated through context. Theoretically, 
+a perfect wordstress placement method could help an author identify
+tokens which should be stressed: any token that cannot
+be disambiguated by syntactic or semantic means should be marked for stress.} 
+Without information about lexical stress position, 
 correctly converting written Russian text to speech is impossible. This is true 
 both for humans (e.g. foreign language students) and computers (e.g. text-to-
 speech).
@@ -142,15 +145,14 @@ ambiguity, since all readings have
 the same stress placement. Stress-irrelevant ambiguity can be intraparadigmatic 
 and/or interlexical. 
 
-In the case of running 
-text in Russian, most stress placement 
+In the case of running text in Russian, most stress placement 
 ambiguity is rooted in intraparadigmatic and morphosyntactically incongruent 
 ambiguity. Detailed part-of-speech tagging can help determine the stress of 
 these forms, since each alternative stress placement is tied to a different
 tag sequence. In this study we focus on 
 the role of part-of-speech tagging in improving
-automatic stress placement, leaving morphosyntactically congruent stress 
-ambiguity to future work. \rr{this paragraph is choppy.}
+automatic stress placement. We leave morphosyntactically congruent stress 
+ambiguity to future work because of a combination of two reasons, 1) it is by far the least common type of stress ambiguity, and 2) disambiguating morphosyntactically congruent stress requires word sense disambiguation, a fundamentally different technology from the other approaches of this study.
 
 \subsection{Background and Task Definition} \label{background}
 
@@ -177,8 +179,9 @@ arise with known words. For example,
 \cite{Xomicevic_2008} developed a set of heuristics for guessing stress placement on 
 unknown words in Russian. More recently, \cite{hall_sproat_russian_2013} trained 
 a maximum entropy model on a dictionary of Russian words, and evaluated on
-wordlists containing `known' and `unknown' wordforms.\footnote{ADD FOOTNOTE
-EXPLAINING THEIR DEFINITION OF KNOWN AND UNKNOWN.} Their model 
+wordlists containing `known' and `unknown' wordforms.\footnote{\newcite{hall_sproat_russian_2013} randomly selected their training
+and test data from a list of wordforms, and so a number of lexemes had wordforms in both the training and test data. Wordforms in the test data whose sibling wordforms from the same lexeme were in the training set were categorised as 
+`known' wordforms.} Their model 
 achieved 98.7\% accuracy on known words, and 83.9\% accuracy on unknown words. 
 One major shortcoming of evaluating on wordlists is 
 that they do not reflect wordform frequency.
@@ -221,7 +224,7 @@ Russian texts with marked word stress are relatively rare, except in materials
 for language learners, which are predominantly proprietary. Our corpus was 
 collected from
 free texts on Russian language-learning websites.\footnote{URLs can be found in
-the TROLLing data repository (ADD URL).} This small corpus (N=7689) is 
+the X data repository (URL will be added in the final version).} This small corpus (N=7689) is 
 representative of texts 
 that learners of Russian are likely to encounter in their studies. These texts 
 include excerpts from well-known literary works, as well as dialogs and 
@@ -232,8 +235,8 @@ Unfortunately, the general practice for marking stress in Russian is to
 all monosyllabics are stressed. However, this approach 
 is not well-motivated. Many words -- both monosyllabic and multisyllabic -- are 
 unstressed, especially among prepositions, conjunctions, and particles.
-\rr{multisyllabics that can be unstressed: \rus{через, между}} Furthermore, there 
-are many
+% multisyllabics that can be unstressed: \rus{через, между} 
+Furthermore, there are many
 high-frequency monosyllabic homographs that can be either stressed or unstressed, 
 depending on their part of speech, or particular collocations. Clearly, for
 such words, one cannot assume that they are stressed on the basis of their 
@@ -480,7 +483,8 @@ makes our results more generalizable, but a larger corpus would allow for
 evaluating each genre individually. For example, the vast majority of words with
 shifting stress are of Slavic origins, so we expect a genre such as technical
 writing to have a lower proportion of words with stress ambiguity, since it
-uses a higher proportion of borrowed words.
+uses a higher proportion of borrowed words, calques, and neologisms with simple
+stress patterns.
 
 In addition to genre, it is also likely that text
 complexity affects the difficulty of the stress placement task. The distribution
@@ -520,13 +524,24 @@ so we could exclude closed classes of words from the training data, leaving only
 word classes that are likely to be similar to unknown tokens, such as those with 
 productive derivational affixes.
 
+\section{Conclusions}
 
+We have demonstrated the effectiveness of using a Constraint Grammar to improve
+the results of a Russian wordstress placement task in running text by resolving
+42\% of the ambiguity in our gold corpus. We showed
+that stress ambiguity is 7 times more prevalent in our corpus of running text
+than it is in our lexicon, suggesting the importance of context-based
+disambiguation for this task.  As with any 
+lexicon- and rule-based system, the lexicon and rules can be expanded and 
+improved, but our initial results are promising, especially considering the short 
+timespan over which they were developed.
 
-Future work/potential applications:
-\begin{itemize}
-\item As with any lexicon- and rule-based system, those components can be expanded and improved, especially considering the short span over which they were developed.
-\item Another relevant issue is whether the ambiguity can be resolved at all. For example, when is stress marked in authentic by-native-for-native texts? A computer should not be expected to predict the stress on such words (although a computer could possibly identify words that should be marked for natives.)
-\end{itemize}
+As this is the first empirical study of its kind, we also discussed 
+methodological limitations and possibilities for subsequent research, including
+collecting stressed corpora of varying text complexity and/or genre, as well as
+implementing and/or adapting established wordstress-guessing methods for unknown 
+words.
+
 %\section*{Acknowledgments}
 %
 %Do not number the acknowledgment section. Do not include this section
