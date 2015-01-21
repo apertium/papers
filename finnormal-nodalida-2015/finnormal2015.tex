@@ -19,15 +19,17 @@
 
 \title{Automatic conversion of colloquial Finnish to standard Finnish}
 
-\author{Francis M. Tyers\\
-  UiT Norgga \'{a}rktala\v{s} universitehta, \\
-  N-9015 Norway \\
-  {\tt francis.tyers@uit.no} \\\And
-  Inari Listenmaa\\
-  Chalmers tekniska h\"{o}gskola, \\
-  Sweden \\
-  {\tt inari@cse.chalmers.se} \\}
-
+\author{}
+%
+%Francis M. Tyers\\
+%  UiT Norgga \'{a}rktala\v{s} universitehta, \\
+%  N-9015 Norway \\
+%  {\tt francis.tyers@uit.no} \\\And
+%  Inari Listenmaa\\
+%  Chalmers tekniska h\"{o}gskola, \\
+%  Sweden \\
+%  {\tt inari@cse.chalmers.se} \\}
+%
 \date{}
 
 \begin{document}
@@ -75,6 +77,21 @@ the modern standard. The method relies on
  \emph{suomen puhekieli}
 
 \section{Corpus}
+
+\begin{table}
+  \centering
+ \begin{tabular}{|l|r|}
+    \hline
+    \textbf{Section} & \textbf{Tokens} \\
+    \hline
+    \texttt{train} & 2,538 \\
+    \texttt{test} & 1,012 \\
+    \texttt{dev} & 1,003 \\
+    \hline
+ \end{tabular} 
+  \caption{Statistics on sentences from the parallel corpus.}
+  \label{table:corpsize}
+\end{table}
 
 \begin{table*}
   \centering
@@ -126,7 +143,8 @@ We developed two sets of rules for the unsupervised normalisation approach:
 \begin{itemize}
   \item 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97). The 
     rules took around one hour to implement.
-  \item Rules from the development corpus.
+  \item 98 rules written by examining the development corpus, these rules also
+    took approximately one hour to implement.
 \end{itemize}
 
 %Rules: mä -> minä, oon -> olen, ?*nkaa -> ?*n kanssa
