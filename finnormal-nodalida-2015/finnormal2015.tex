@@ -67,7 +67,7 @@ proofing tools, such as spelling and grammar checkers CITEXXX can be used to enc
 to particular orthographic or grammatical norms. Accent and diacritic restoration CITEXXX is similar
 in that it aims to bring text closer to standard orthography in order to facilitate treatment by 
 automatic tools. Another related area is machine translation between different written norms of 
-the same language. For example between Norwegian Bokmål and Norwegian Nynorsk CITEXXX.
+the same language. For example between Norwegian Bokmål and Norwegian Nynorsk \cite{unhammer2009}.
 
 \newcite{scannell2014} presents a method for normalising pre-standardised text in Irish to 
 the modern standard. The method relies on 
@@ -123,7 +123,7 @@ both orthographically and syntactically/stylistically. Table~\ref{table:corpexam
 an excerpt from each of the three parts of the corpus.
 
 The corpus was split into three parts, testing, development and training. The testing
-and development portions contain 1,000 words each, with the remaining X,000 for training
+and development portions contain approximately 1,000 words each, with the remaining 2,538 for training
 supervised models.\footnote{The corpus is split into XX files of 500 words each. Files 01--02 
   were used for development; 03--04 for testing and 05--XX for training.}
 
@@ -183,17 +183,18 @@ Moses toolkit \cite{koehn2007}. The training set up was that used for
 the baseline system in the  in the WMT shared tasks
 on machine translation.\footnote{\url{http://www.statmt.org/wmt11/baseline.html}}
 
-The target-language model used was the same as in the unsupervised experiments. 
+The target-language model corpus used was the same as in the unsupervised experiments. 
+
+We trained models based on two approaches, the first being phrase-based machine translation
+CITEXXX and the second on character-based machine translation \cite{nakov2012}.
 
 For both approaches we trained two systems, the first used the \emph{normalised}
 part of the corpus as the target language; the second used the \emph{standardised} 
 part of the corpus as the target language.
 
-\subsubsection{Phrase-based}
-
 \subsubsection{Character-based}
 
-\cite{nakov2012}
+\newcite{nakov2012}
 
 \section{Results}
 
@@ -209,7 +210,7 @@ part of the corpus as the target language.
      rules-2 & 38.17 & 35.25 & 36.41 \\
      rules-c & 36.56 & 39.68 & 34.68 \\
      \hline
-     CBMT$^1$-cn & - & - & - \\
+     CBMT$^1$-cn & 43.09 & 48.34 & 33.55 \\
      CBMT$^1$-cs & 46.22 & 52.27 & 29.21 \\
      CBMT$^2$-cn & - & - & - \\
      CBMT$^2$-cs & - & - & - \\
