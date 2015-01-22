@@ -13,6 +13,7 @@
 \usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
+\usepackage{multirow}
 \usepackage{latexsym}
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
 %\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
@@ -80,13 +81,14 @@ the modern standard. The method relies on
 
 \begin{table}
   \centering
- \begin{tabular}{|l|r|}
+ \begin{tabular}{|l|r|r|r|}
     \hline
-    \textbf{Section} & \textbf{Tokens} \\
+    \multirow{2}{*}{\textbf{Section}} & \multicolumn{3}{|c|}{\textbf{Tokens}} \\\cline{2-4}
+                                      & \texttt{train} & \texttt{test} & \texttt{dev} \\
     \hline
-    \texttt{train} & 2,538 \\
-    \texttt{test} & 1,012 \\
-    \texttt{dev} & 1,003 \\
+    Colloquial                           & 2,538 & 1,012 & 1,003 \\ 
+    Normalised                           & 2,538 & 1,012 & 1,003 \\ 
+    Standardised                         & 2,476 & 991 & 1,000 \\
     \hline
  \end{tabular} 
   \caption{Statistics on sentences from the parallel corpus.}
@@ -191,6 +193,8 @@ CITEXXX and the second on character-based machine translation \cite{nakov2012}.
 For both approaches we trained two systems, the first used the \emph{normalised}
 part of the corpus as the target language; the second used the \emph{standardised} 
 part of the corpus as the target language.
+
+The idea behind this was that the \emph{normalised} part of the corpus would be 
 
 \subsubsection{Character-based}
 
