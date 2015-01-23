@@ -9,6 +9,7 @@
 
 \documentclass[11pt]{article}
 \usepackage{nodalida2015}
+\usepackage{expex}
 %\usepackage{times}
 \usepackage{mathptmx}
 %\usepackage{txfonts}
@@ -29,7 +30,7 @@
 %  Inari Listenmaa\\
 %  Chalmers tekniska h\"{o}gskola, \\
 %  Sweden \\
-%  {\tt inari@cse.chalmers.se} \\}
+%  {\tt inari@chalmers.se} \\}
 %
 \date{}
 
@@ -75,9 +76,33 @@ the modern standard. The method relies on
 
 \subsection{Colloquial Finnish}
 
-\cite{viinikka2013}
+Colloquial Finnish differs from standard Finnish in some key features: 
 
-``Yleensä kirjakieli ymmärretään samaksi kuin yleiskieli: kielenhuollon suositusten mukaiseksi standardoiduksi kieleksi, jonka sanasto on yleistajuista. Puhekieli puolestaan mielletään kirjakieltä arkisemmaksi ja tyyliltään vapaamuotoisemmaksi kielimuodoksi, jonka ei tarvitse noudattaa kirjakielen sääntöjä (esim. mie, hänen koira, me kirjotetaan vs. minä, hänen koiransa, me kirjoitamme).''
+Morphology: dialectal variation, shortening and merging together morphemes, e.g. \emph{en min\"{a}} `not I' $\rightarrow$ \emph{emm\"{a}} (`I don't').
+Syntax: due to the spontaneous nature of colloquial language, syntactic structures have stuffs that are common to spoken language, such as ......
+
+Sentence 1 is written in colloquial Finnish, and Sentence 2 is how it would be expressed in a standard way.
+
+\ex
+\begingl
+\gla nelonenkin oli vaan silleen et fonotaksista p\"{a}\"{a}ttelin //
+\glb fourth-{\sc also} was just like.that that phonotactics.{\sc ela} I.deduced //
+% \glft `I deduced also the fourth from phonotactics' //
+\endgl
+\xe
+
+\ex
+\begingl
+\gla p\"{a}\"{a}ttelin nelj\"{a}nnenkin fonotaksista //
+\glb I.deduced fourth-{\sc also} phonotactics.{\sc ela} //
+% \glft `I deduced also the fourth from phonotactics' //
+\endgl
+\xe
+
+
+
+\cite{viinikka2013} describe the common meaning of the terms colloquial  (\emph{puhekieli}) and standard (\emph{yleiskieli} or \emph{kirjakieli}) Finnish: standard language follows the recommendations of kielenhuolto and is unified in morphology and vocabulary; colloquial language is everyday and free and shows local and idiolectal variation and doesn't need to follow the rules of kielenhuolto.
+% ``Yleens\"{a} kirjakieli ymm\"{a}rret\"{a}\"{a}n samaksi kuin yleiskieli: kielenhuollon suositusten mukaiseksi standardoiduksi kieleksi, jonka sanasto on yleistajuista. Puhekieli puolestaan miellet\"{a}\"{a}n kirjakielt\"{a} arkisemmaksi ja tyylilt\"{a}\"{a}n vapaamuotoisemmaksi kielimuodoksi, jonka ei tarvitse noudattaa kirjakielen s\"{a}\"{a}ntöj\"{a} (esim. mie, h\"{a}nen koira, me kirjotetaan vs. min\"{a}, h\"{a}nen koiransa, me kirjoitamme).''
 
 
 \section{Corpus}
@@ -108,7 +133,7 @@ the modern standard. The method relies on
   erikseen jokin & tai en min\"{a} tied\"{a} oliko erikseen \\
   nuorisoalennus & nuorisoalennus & nuorisoalennus \\
   \hline
- toistaseks tullu kaks kysymyst\"{a} &toistaiseksi tullut kaksi kysymyst\"{a} & toistaseksi on tullut kaksi kysymyst\"{a} \\
+ toistaseks tullu kaks kysymyst\"{a} &toistaiseksi tullut kaksi kysymyst\"{a} & toistaiseksi on tullut kaksi kysymyst\"{a} \\
   \hline
   \ldots & \ldots & \ldots \\
   \hline
@@ -152,33 +177,33 @@ We developed two sets of rules for the unsupervised normalisation approach:
     took approximately one hour to implement.
 \end{itemize}
 
-%Rules: mä -> minä, oon -> olen, ?*nkaa -> ?*n kanssa
+%Rules: m\"{a} -> min\"{a}, oon -> olen, ?*nkaa -> ?*n kanssa
 %
-%Input: Mä oon Tomminkaa
-%Step 1: Mä oon Tomminkaa
-%        Minä oon Tomminkaa
-%Step 2: Mä oon Tomminkaa
-%        Minä oon Tomminkaa
-%        Mä olen Tomminkaa
-%        Minä olen Tomminkaa
-%Step 3: Mä oon Tomminkaa
-%        Minä oon Tomminkaa
-%        Mä olen Tomminkaa
-%        Minä olen Tomminkaa
-%        Mä oon Tommin kanssa
-%        Minä oon Tommin kanssa
-%        Mä olen Tommin kanssa
-%        Minä olen Tommin kanssa
+%Input: M\"{a} oon Tomminkaa
+%Step 1: M\"{a} oon Tomminkaa
+%        Min\"{a} oon Tomminkaa
+%Step 2: M\"{a} oon Tomminkaa
+%        Min\"{a} oon Tomminkaa
+%        M\"{a} olen Tomminkaa
+%        Min\"{a} olen Tomminkaa
+%Step 3: M\"{a} oon Tomminkaa
+%        Min\"{a} oon Tomminkaa
+%        M\"{a} olen Tomminkaa
+%        Min\"{a} olen Tomminkaa
+%        M\"{a} oon Tommin kanssa
+%        Min\"{a} oon Tommin kanssa
+%        M\"{a} olen Tommin kanssa
+%        Min\"{a} olen Tommin kanssa
 %Rank:
-%	-13.4885 ← minä olen Tommin kanssa
-%	-12.7176 ← minä oon Tommin kanssa
-%	-12.4408 ← mä olen Tommin kanssa
-%	-9.2045 ← mä oon Tommin kanssa
-%	-8.8651 ← minä olen Tomminkaa
-%	-8.0941 ← minä oon Tomminkaa
-%	-7.8174 ← mä olen Tomminkaa
-%	-4.5811 ← mä oon Tomminkaa
-%Output: Minä olen Tommin kanssa	
+%	-13.4885 ← min\"{a} olen Tommin kanssa
+%	-12.7176 ← min\"{a} oon Tommin kanssa
+%	-12.4408 ← m\"{a} olen Tommin kanssa
+%	-9.2045 ← m\"{a} oon Tommin kanssa
+%	-8.8651 ← min\"{a} olen Tomminkaa
+%	-8.0941 ← min\"{a} oon Tomminkaa
+%	-7.8174 ← m\"{a} olen Tomminkaa
+%	-4.5811 ← m\"{a} oon Tomminkaa
+%Output: Min\"{a} olen Tommin kanssa	
 
 \subsection{Statistical machine translation}
 
