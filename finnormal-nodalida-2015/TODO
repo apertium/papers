@@ -1,0 +1,9 @@
+
+
+* translate irc-logs.0[34] to english
+* compare end-to-end pipeline results for finnish-english with best of each system
+* run 2-gram cbmt experiments
+* write section on colloquial finnish
+* add missing references
+* write future work section
+* clean up text
