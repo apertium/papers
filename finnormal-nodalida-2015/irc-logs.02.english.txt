@@ -1,0 +1,52 @@
+it's 4 hours of Java in Swedish again
+so far I've got two questions
+"if input is not in the right format, throw an exception" "do I need to throw an exception or what should I do"
+then there was someone who was confused about how lists are indexed
+I'm probably quite unapproachable tutor when I just talk on IRC and look scared
+fourth question was that why public int blaablaa() doesn't work without return statement
+now I'm in a different classroom than last week, this is nicer because I can hang out in front and I see everyone
+should I take beer with me next time
+and then I could give it to my students too so it would be relaxed
+I'm just so scared that I'm typoing
+it was by the way funny yesterday to look at vote percentages by area
+there where I lived before, in a family suburb, major part was like the local Coalition party 30+%
+except one area, that has a massive student apartment cluster
+like the whole road, numbers 1-19 are student apartments
+there the biggest party was Greens
+now I'm starting to feel normal again
+I'm sure it'll get easier week by week
+then they asked me help that why doesn't it work when they have first a return statement and then print
+aha now there were guys who thought that this is the lab session for parallel programming
+yay now there were questions about null for three lines in a row
+some asked about Eclipse and I said that after two weeks you'll know Eclipse lot better than me
+I remembered something at least, that it throws .class files in a different directory
+and then they asked if they should create a new project or Java project or a class
+yeah I don't intend to be entertaining, I'm just busying myself to calm my nerves
+questions come so often that I can't do anything useful
+I browsed Facebook and I was just confused
+then I nodded and waved back and he started walking
+but I also became very feverish last night
+I'll come to Helsinki next weekend
+but I heard there's a good chance that it isn't full
+and if we go early, probably we'll fit fine
+are you now my real friends since you're not anymore school friends
+sometimes I have a good flow and sometimes I'm showing angle brackets with my hands
+it's okay, but this is not yet completely in my comfort zone
+and isn't pharmacist too?
+and they recommend for example that you go to a research exchange after licentiate
+what I've looked at friends' licentiate theses, it's enough to have for example 3 shortish papers, one had just one extended paper
+"one extended paper" which means 69 pages
+the three papers guy has 49 pages in total
+have you got more fit after the beginning
+or are you still weak
+or do you get used to it
+why now just one? less passengers?
+she said that she earned as a PhD student for Langnet 11 euros per hour
+but if I remember correctly, if she had been full-time, the gross salary would've been around 2000
+I haven't here either calculated the hourly wage, in euros my gross salary is almost 3000
+or well ~2850, I had the impression that last autumn it was more, maybe the exchange rate has changed or something
+but enough that I don't bother to worry about how much it is :-P
+hmm, tutoring makes you a bit stiff, when you bend over the first year students' screens all the time
+or they are patient about my bad swedish :-P then some, even if they wouldn't be the most clueless, just feel more difficult
+of course like the ideal question is from someone who already knows basic things, and asks only some detail
+or maybe not ideal, but easiest to answer
