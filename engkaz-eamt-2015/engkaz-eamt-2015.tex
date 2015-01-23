@@ -67,6 +67,14 @@ Bilingual dictionary
 
 Bilingual dictionary provides correspondences between lexical forms of source and target lanugages. Each entry consists of English word on the left side with part of speech and corresponding Kazakh word on the right side. Some entries could be ambiguous by part of speech, or just have many translations, which wil be chosen by lexical selection rules depend on context. This dictionary currently contains 13130 stems.
 
+Rules
+Disambiguation rules
+
+This kind of rules solves the problem of part-of-speech(POS) ambiguity by Constraint Grammar(CG) (Karlsson et al., 1995). The output of morphological analyser could be ambiguous, and in this case CG rules choose correct analysis from multiple analyses. From English to Kazakh POS ambiguity could be only in English side, but also some choices depends on Kazakh grammar.
+
+Lexicon selection rules 
+
+
 \section{Results}
 
 \section{Evaluation}
