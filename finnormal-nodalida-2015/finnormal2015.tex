@@ -200,6 +200,8 @@ The idea behind this was that the \emph{normalised} part of the corpus would be
 
 \newcite{nakov2012} present a method of statistical machine translation on the character level between related languages that takes advantage of phrase-based machine translation architecture. The method relies on preprocessing the input and output by inserting spaces in between the characters of words, for example the string `M\"{a} meen Helsinkiin' would become `M \"{a} \$ m e e n \$ H e l s i n k i i n' with a unigram model, or `M\"{a} \$ me en \$ He ls in ki in' with a bigram model.
 
+After preprocessing, the corpora are processed as with the phrase-based system, with the difference that the language model order is increased from 5 to 10-grams.
+
 \section{Results}
 
 \begin{table}
