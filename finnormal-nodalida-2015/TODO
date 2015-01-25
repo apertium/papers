@@ -1,6 +1,5 @@
 
 
-* translate irc-logs.0[34] to english
 * FMT: compare end-to-end pipeline results for finnish-english with best of each system
 * FMT: run 2-gram cbmt experiments
 * write section on colloquial finnish
@@ -9,3 +8,13 @@
 * FMT: clean up text
 * finish translating rest of texts to standard/partial
 * FMT: write up how unsupervised works
+
+Translation results:
+
+              | BLEU
+colloq->eng   | 11.95
+partial->eng  | 21.81
+book->eng     | 17.62
+rules-2
+cbmt-cn
+pbmt-cn
