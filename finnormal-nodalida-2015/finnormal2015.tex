@@ -61,7 +61,8 @@ two clear options: either create new tools to process non-standard text,
   or create tools to preprocess non-standard text, standardising it to be subsequently processed
  by existing tools.
 
-This paper evaluates a number of methods for converting colloquial Finnish to standard Finnish and describes a parallel corpus for evaluation.
+This paper evaluates a number of methods for converting colloquial Finnish to 
+standard Finnish and describes a parallel corpus for evaluation.
 
 \section{Related work}
 
@@ -200,9 +201,9 @@ parallel corpus \cite{koehn2005}.
 We developed two sets of rules for the unsupervised normalisation approach:
 
 \begin{itemize}
-  \item 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97). The 
+  \item \texttt{rules-1}: 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97). The 
     rules took around one hour to implement.
-  \item 98 rules written by examining the development corpus, these rules also
+  \item \texttt{rules-2}: 98 rules written by examining the development corpus, these rules also
     took approximately one hour to implement.
 \end{itemize}
 
@@ -218,15 +219,15 @@ using three replace rules.
     \hline
     \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Tomminkaa `I am with Tommi'.} \\
     \hline
-    \multirow{2}{*}{Step 1} & & M\"{a} oon Tomminkaa & apply rule 1 \\
+    \multirow{2}{*}{Step 1} & & M\"{a} oon Tomminkaa & apply rule 1: \\
                             & & Min\"{a} oon Tomminkaa & m\"{a} $\rightarrow$ min\"{a} \\
     \hline
-    \multirow{2}{*}{Step 2} & & M\"{a} oon Tomminkaa & apply rule 2 \\
+    \multirow{2}{*}{Step 2} & & M\"{a} oon Tomminkaa & apply rule 2: \\
                             &   & Min\"{a} oon Tomminkaa & oon $\rightarrow$ olen \\
                             &   & M\"{a} olen Tomminkaa & \\
                             &   & Min\"{a} olen Tomminkaa & \\
     \hline
-    \multirow{2}{*}{Step 3} &   & M\"{a} oon Tomminkaa   & apply rule 3\\
+    \multirow{2}{*}{Step 3} &   & M\"{a} oon Tomminkaa   & apply rule 3:\\
                             &   & Min\"{a} oon Tomminkaa  & (?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
                             &   & M\"{a} olen Tomminkaa  &\\
                             &   & Min\"{a} olen Tomminkaa  &\\
@@ -264,8 +265,7 @@ on machine translation.\footnote{\url{http://www.statmt.org/wmt11/baseline.html}
 
 The target-language model corpus used was the same as in the unsupervised experiments. 
 
-We trained models based on two approaches, the first being phrase-based machine translation
-\cite{zens2002} and the second on character-based machine translation \cite{nakov2012,TiedemannEAMT2009}.
+We trained models based on two approaches, the first being phrase-based machine translation (PBMT, \newcite{zens2002}) and the second on character-based machine translation (CBMT, \newcite{nakov2012,TiedemannEAMT2009}).
 
 For both approaches we trained two systems, the first used the \emph{normalised}
 part of the corpus as the target language; the second used the \emph{standardised} 
@@ -286,10 +286,11 @@ After preprocessing, the corpora are processed as with the phrase-based system, 
 In order to evaluate how well the different normalisation strategies worked in 
 combination with another language technology tool, we performed an end-to-end experiment
 involving machine translation.
-To evaluate this, we took the test corpus and translated it to English. 
-
-We then translated the corpus with each of the best performing methods of each class, and 
-calculated the {\sc bleu} score.
+To evaluate this, we took the colloquial portion of the test corpus and manually 
+translated it to English. For each of the best-performing systems we first passed
+the colloquial text through, and then translated the output to English using
+a widely-used online machine translation engine with Finnish to English. We compared
+the output to translating the text to English without the standardiser. 
 
 \section{Results}
 
@@ -302,20 +303,28 @@ calculated the {\sc bleu} score.
      Baseline & 46.12 & 48.04 & 26.31 \\
      \hline
      rules-1 & 38.27 & 41.19 & 32.65 \\
-     rules-2 & 38.17 & 35.25 & 36.41 \\
+     rules-2 & \textbf{38.17} & \textbf{35.25} & \textbf{36.41} \\
      rules-c & 36.56 & 39.68 & 34.68 \\
      \hline
      CBMT-cn & 43.09 & 48.34 & 33.55 \\
      CBMT-cs & 46.22 & 52.27 & 29.21 \\
-     PBMT-cn & 28.05 & 35.42 & 48.37 \\
+     PBMT-cn & \textbf{28.05} & \textbf{35.42} & \textbf{48.37} \\
      PBMT-cs & 27.95 & 36.13 & 46.76 \\
      \hline
   \end{tabular}
-  \caption{Results for the normalisation task}
+  \caption{Results for the normalisation task. The system \texttt{rules-c} is the combination
+     of the rules in \texttt{rules-1} and \texttt{rules-2}. The figures in bold are the 
+     best results for unsupervised and supervised methods.}
   \label{table:results-norm}
 \end{table}
 
-Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results of the experiments.
+Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results of the experiments. 
+
+% unsupervised does as well as CBMT, and and half the way towards pbmt
+
+% supervised systems trained on the normalised corpus outperform those trained on the standardised corpus (WHY?)
+
+% the rules written from the development portion of the corpus outperform the rules from the grammar
 
 \begin{table}
   \centering
@@ -323,18 +332,27 @@ Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results
      \hline
     \textbf{System} & \textbf{PER} & \textbf{WER} & \textbf{BLEU} \\
      \hline
-     Colloquial & - & - & 11.95 \\
-     Normalised & - & - & 21.81 \\
-     Standardised & - & - & 17.62 \\
+     Colloquial   & 45.31 & 71.28 & 11.95 \\
+     Normalised   & 34.63 & 62.34 & 21.81 \\
+     Standardised & 38.67 & 63.35 & 17.62 \\
      \hline
-     rules-2 & - & - & 12.28 \\
-     cbmt-cn & - & - & 12.35 \\
-     pbmt-cn & - & - & 17.90 \\
+     rules-2      & 42.71 & 70.42 & 12.28 \\
+     \hline
+     cbmt-cn      & 44.44 & 74.17 & 12.35 \\
+     pbmt-cn      & 38.38 & 66.81 & 17.90 \\
      \hline
   \end{tabular}
-  \caption{Results for the translation task}
+  \caption{Results for the translation task. The first three rows are the results 
+    from translating the sections of the corpus. As with the }
   \label{table:results-trad}
 \end{table}
+
+% example translations
+
+%colloq: ooh what onks there snow
+%pbmt: ooh what if there's snow
+%ref: ooh what, is there snow?
+
 
 \section{Future work}
 
