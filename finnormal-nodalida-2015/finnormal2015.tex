@@ -199,33 +199,57 @@ We developed two sets of rules for the unsupervised normalisation approach:
     took approximately one hour to implement.
 \end{itemize}
 
-%Rules: m\"{a} -> min\"{a}, oon -> olen, ?*nkaa -> ?*n kanssa
-%
-%Input: M\"{a} oon Tomminkaa
-%Step 1: M\"{a} oon Tomminkaa
-%        Min\"{a} oon Tomminkaa
-%Step 2: M\"{a} oon Tomminkaa
-%        Min\"{a} oon Tomminkaa
-%        M\"{a} olen Tomminkaa
-%        Min\"{a} olen Tomminkaa
-%Step 3: M\"{a} oon Tomminkaa
-%        Min\"{a} oon Tomminkaa
-%        M\"{a} olen Tomminkaa
-%        Min\"{a} olen Tomminkaa
-%        M\"{a} oon Tommin kanssa
-%        Min\"{a} oon Tommin kanssa
-%        M\"{a} olen Tommin kanssa
-%        Min\"{a} olen Tommin kanssa
-%Rank:
-%	-13.4885 ← min\"{a} olen Tommin kanssa
-%	-12.7176 ← min\"{a} oon Tommin kanssa
-%	-12.4408 ← m\"{a} olen Tommin kanssa
-%	-9.2045 ← m\"{a} oon Tommin kanssa
-%	-8.8651 ← min\"{a} olen Tomminkaa
-%	-8.0941 ← min\"{a} oon Tomminkaa
-%	-7.8174 ← m\"{a} olen Tomminkaa
-%	-4.5811 ← m\"{a} oon Tomminkaa
-%Output: Min\"{a} olen Tommin kanssa	
+\begin{table*}
+  \centering
+  \begin{tabular}{|lrl|l|}
+    \hline
+    \textbf{Rules:} & & 1. m\"{a} $\rightarrow$ min\"{a} \\
+     ~              & & 2. oon $\rightarrow$ olen \\
+     ~              & & 3. (?+)nkaa $\rightarrow$ ...n kanssa \\
+    \hline
+  \end{tabular}
+~\\
+~\\
+  \begin{tabular}{|l|r|l|l|}
+    \hline
+    \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Inarinkaa `I am with Inari'.} \\
+    \hline
+    \multirow{2}{*}{Step 1} & & M\"{a} oon Inarinkaa & apply rule 1 \\
+                            & & Min\"{a} oon Inarinkaa & \\
+    \hline
+    \multirow{2}{*}{Step 2} & & M\"{a} oon Inarinkaa & apply rule 2 \\
+                            &   & Min\"{a} oon Inarinkaa & \\
+                            &   & M\"{a} olen Inarinkaa & \\
+                            &   & Min\"{a} olen Inarinkaa & \\
+    \hline
+    \multirow{2}{*}{Step 3} &   & M\"{a} oon Inarinkaa   & apply rule 3\\
+                            &   & Min\"{a} oon Inarinkaa  &\\
+                            &   & M\"{a} olen Inarinkaa  &\\
+                            &   & Min\"{a} olen Inarinkaa  &\\
+                            &   & M\"{a} oon Inarin kanssa  &\\
+                            &   & Min\"{a} oon Inarin kanssa  &\\
+                            &   & M\"{a} olen Inarin kanssa  &\\
+                            &   & Min\"{a} olen Inarin kanssa  &\\
+    \hline
+    \multirow{2}{*}{Step 4} & -4.5811 &  Min\"{a} olen Inarin kanssa & rank candidates \\
+                            & -7.8174 &  Min\"{a} oon Inarin kanssa & \\
+                            & -8.0941 &  M\"{a} olen Inarin kanssa & \\
+                            & -8.8651&  M\"{a} oon Inarin kanssa & \\
+                            & -9.2045 &  Min\"{a} olen Inarinkaa & \\
+                            & -12.4408 &  Min\"{a} oon Inarinkaa & \\
+                            & -12.7176 &  M\"{a} olen Inarinkaa & \\
+                            & -13.4885 &  M\"{a} oon Inarinkaa & \\
+
+    \hline
+    \textbf{Output:} & \multicolumn{3}{l|}{Min\"{a} olen Inarin kanssa} \\
+    \hline
+  \end{tabular}
+  \caption{Example trace of the unsupervised normalisation method. Rules are applied in order to each of 
+     the possible candidate translations in turn. The candidates are then ranked using an $n$-gram language model 
+     of standard Finnish and either an $n$-best list
+     or the best candidate is output.}
+  \label{table:unsup-trace}
+\end{table*}
 
 \subsection{Statistical machine translation}
 
