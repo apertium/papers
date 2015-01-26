@@ -221,15 +221,15 @@ using three replace rules.
     \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Tomminkaa `I am with Tommi'.} \\
     \hline
     \multirow{2}{*}{Step 1}  & M\"{a} oon Tomminkaa & & apply rule 1: \\
-                             & Min\"{a} oon Tomminkaa & & m\"{a} $\rightarrow$ min\"{a} \\
+                             & Min\"{a} oon Tomminkaa & & ~~~m\"{a} $\rightarrow$ min\"{a} \\
     \hline
     \multirow{2}{*}{Step 2}  & M\"{a} oon Tomminkaa & & apply rule 2: \\
-                             & Min\"{a} oon Tomminkaa & & oon $\rightarrow$ olen \\
+                             & Min\"{a} oon Tomminkaa & & ~~~oon $\rightarrow$ olen \\
                              & M\"{a} olen Tomminkaa & & \\
                              & Min\"{a} olen Tomminkaa & & \\
     \hline
     \multirow{2}{*}{Step 3}  & M\"{a} oon Tomminkaa   & & apply rule 3:\\
-                             & Min\"{a} oon Tomminkaa &  & (?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
+                             & Min\"{a} oon Tomminkaa &  & ~~~(?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
                              & M\"{a} olen Tomminkaa  & &\\
                              & Min\"{a} olen Tomminkaa  & &\\
                              & M\"{a} oon Tommin kanssa  & &\\
@@ -264,7 +264,7 @@ Moses toolkit \cite{koehn2007}. The training set up was that used for
 the baseline system in the  in the WMT shared tasks
 on machine translation.\footnote{\url{http://www.statmt.org/wmt11/baseline.html}}
 
-The target-language model corpus used was the same as in the unsupervised experiments. 
+The target-language model corpus, trained using KenLM \cite{heafield2011}, used was the same as in the unsupervised experiments.  
 
 We trained models based on two approaches, the first being phrase-based machine translation (PBMT, \newcite{zens2002}) and the second on character-based machine translation (CBMT, \newcite{nakov2012}; \newcite{TiedemannEAMT2009}).
 
