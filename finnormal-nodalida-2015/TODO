@@ -2,20 +2,7 @@
 
 * FMT: compare end-to-end pipeline results for finnish-english with best of each system
 * FMT: run 2-gram cbmt experiments
-* FMT: add missing references
-* FMT: write future work section
 * FMT: clean up text
 * finish translating rest of texts to standard/partial
-* FMT: write up how unsupervised works
 
 * check numbers for corpus size: colloq. normalised should have same number of tokens
-
-Translation results:
-
-              | BLEU
-colloq->eng   | 11.95
-rules-2       | 12.28
-book->eng     | 17.62
-cbmt-cn
-pbmt-cn       | 17.90
-partial->eng  | 21.81

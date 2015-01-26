@@ -15,6 +15,7 @@
 %\usepackage{txfonts}
 \usepackage{url}
 \usepackage{multirow}
+\usepackage[small,bf]{caption}
 \usepackage{latexsym}
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
 %\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
@@ -265,7 +266,7 @@ on machine translation.\footnote{\url{http://www.statmt.org/wmt11/baseline.html}
 
 The target-language model corpus used was the same as in the unsupervised experiments. 
 
-We trained models based on two approaches, the first being phrase-based machine translation (PBMT, \newcite{zens2002}) and the second on character-based machine translation (CBMT, \newcite{nakov2012,TiedemannEAMT2009}).
+We trained models based on two approaches, the first being phrase-based machine translation (PBMT, \newcite{zens2002}) and the second on character-based machine translation (CBMT, \newcite{nakov2012}; \newcite{TiedemannEAMT2009}).
 
 For both approaches we trained two systems, the first used the \emph{normalised}
 part of the corpus as the target language; the second used the \emph{standardised} 
@@ -339,7 +340,7 @@ Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results
      rules-2      & 42.71 & 70.42 & 12.28 \\
      \hline
      cbmt-cn      & 44.44 & 74.17 & 12.35 \\
-     pbmt-cn      & 38.38 & 66.81 & 17.90 \\
+     pbmt-cn      & \textbf{38.38} & \textbf{66.81} & \textbf{17.90} \\
      \hline
   \end{tabular}
   \caption{Results for the translation task. The first three rows are the results 
