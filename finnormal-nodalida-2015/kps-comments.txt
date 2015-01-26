@@ -1,0 +1,84 @@
+(19:16:47) fran: hey!
+(19:17:26) KPS: what's up?
+(19:17:36) fran: not much, just frantically working on this fin2fin paper :)
+(19:17:46) fran: would you have 5-10 mins to read over a draft?
+(19:17:53) KPS: sure
+(19:17:58) fran: i'll send it over
+(19:18:08) KPS: a few mins before I teach
+(19:18:12) fran: it's very rough around the ears
+(19:18:18) fran: but any comments would be helpful :)
+(19:25:19) KPS: would help to set up terms early in the paper
+(19:25:22) KPS: colloquial
+(19:25:31) fran: ok
+(19:25:36) KPS: ortho.-standardised colloquial = normalized?
+(19:25:44) KPS: e.g. in Table 1?
+(19:25:45) fran: yes
+(19:25:53) KPS: just use that throughout
+(19:26:08) KPS: in the text you say "For the partial version..." at beginning of p.2
+(19:26:12) fran: aha
+(19:26:15) fran: good point
+(19:26:15) KPS: that == Normalised again?
+(19:26:23) fran: fixed
+(19:26:23) fran: yeah
+(19:27:11) KPS: but in that paragraph you say "and in the standard translation it is replaced by..."
+(19:27:28) fran: yeah
+(19:27:47) KPS: so I don't really get what the Normalised language is...
+(19:27:59) fran: standardised = this is good book-finnish, normalised = we fix orthography bit not lexical choices
+(19:28:22) KPS: seiska -> seitsem\"as isn't a lexical choice?
+(19:28:29) KPS: that's just ortho?
+(19:28:29) fran: oops
+(19:28:33) fran: :D
+(19:28:37) fran: we do lexical
+(19:28:40) fran: but not syntax/style
+(19:28:45) KPS: ah ok
+(19:28:52) KPS: yeah make all that explicit
+(19:28:54) fran: so e.g. "just" -> "juuri" and "seiskakin" -> "seitsemäskin" 
+(19:28:57) KPS: give definitions
+(19:28:59) fran: ok
+(19:29:02) KPS: cool
+(19:29:13) KPS: and before (3) on that page
+(19:29:17) fran: that's a good idea, actually i think (3)
+(19:29:21) fran: has some stuff we could move 
+(19:29:22) KPS: "The translation into is shorter and more..."
+(19:29:28) KPS: missing "Standard language" or whatever.
+(19:29:38) fran: yes
+(19:29:49) fran: fixed :)
+(19:30:18) KPS: 4.2  "in the in the"
+(19:30:31) fran: fixed
+(19:32:12) KPS: Table 5 is the en-fi task?
+(19:32:19) fran: yeah
+(19:32:25) fran: i can specify
+(19:32:26) fran: languages
+(19:32:29) fran: :D
+(19:32:29) KPS: yeah
+(19:32:37) KPS: there's a lot of translation going on in this paper
+(19:32:38) KPS: !
+(19:32:41) fran: :D
+(19:33:46) KPS: interesting how bad cbmt is
+(19:33:50) fran: yeah
+(19:34:01) KPS: I keep meaning to do that carefully with gd2ga
+(19:34:05) fran: it could be the size of the corpus
+(19:34:06) KPS: and the Irish standardizer.
+(19:34:10) fran: the training corpus was pretty small
+(19:34:17) fran: for other CBMT experiments
+(19:34:18) KPS: still, worse than baseline
+(19:34:34) fran: only for the WER interestingly enough
+(19:34:51) fran: one reason could be that the word-alignments are worse 
+(19:34:54) KPS: oh yeah, huh.
+(19:34:57) fran: because the corpus is so small
+(19:35:03) fran: and the result is better for the "normalised" training
+(19:35:07) fran: as opposed to standardised training
+(19:35:15) KPS: cool paper in any case.
+(19:35:22) fran: thanks :)
+(19:35:37) KPS: off to teach in a couple of mins
+(19:35:39) fran: ok!
+(19:35:43) fran: any other quick comments ?
+(19:35:44) KPS: wonder if I'll see it again to review  ;-)
+(19:35:52) fran: was my description of your method in sec. 2 ok?
+(19:35:59) KPS: yeah perfect
+(19:36:00) fran: cool
+(19:36:12) KPS: clearer than my description  ;-)
+(19:36:13) fran: haha
+(19:36:14) fran: :D
+(19:37:49) fran: thanks for your comments!
+(19:38:20) KPS: no problem.
