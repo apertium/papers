@@ -2,7 +2,6 @@
 
 * FMT: compare end-to-end pipeline results for finnish-english with best of each system
 * FMT: run 2-gram cbmt experiments
-* write section on colloquial finnish
 * FMT: add missing references
 * FMT: write future work section
 * FMT: clean up text
@@ -13,8 +12,8 @@ Translation results:
 
               | BLEU
 colloq->eng   | 11.95
-partial->eng  | 21.81
+rules-2       | 12.28
 book->eng     | 17.62
-rules-2
 cbmt-cn
-pbmt-cn
+pbmt-cn       | 17.90
+partial->eng  | 21.81

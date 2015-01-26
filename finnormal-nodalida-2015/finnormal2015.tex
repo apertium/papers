@@ -44,7 +44,9 @@
   corpus consisting of aligned sentences in colloquial Finnish, orthographically-standardised
   colloquial Finnish and standard Finnish. The methods we present outperforms the baseline
   of simply treating colloquial Finnish as standard Finnish and offers promise for the adaptation
-  of language-technology tools created for standard Finnish to colloquial Finnish.
+  of language-technology tools created for standard Finnish to colloquial Finnish. To this end
+  the paper also presents preliminary results which show promise for using normalisation in 
+  the machine translation task.
 \end{abstract}
 
 \section{Introduction}
@@ -97,7 +99,7 @@ Prototypically, colloquial language is spoken and spontaneous, and standard is w
 \xe
 
 
-For the partial version, we didn't touch the syntactic structure, but changed morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the partial version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vaan} $\rightarrow$ \emph{vain} or shortening in  \emph{et} $\rightarrow$ \emph{että}. The original sentence and the partial translation are shown below, aligned word by word.
+For the partial version, we did not change the syntactic structure, but changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the partial version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vaan} $\rightarrow$ \emph{vain} or shortening in  \emph{et} $\rightarrow$ \emph{että}. The original sentence and the partial translation are shown below, aligned word by word.
 
 \ex
 \begingl
@@ -134,9 +136,9 @@ The translation into  is shorter and more precise, leaving just the main informa
     \multirow{2}{*}{\textbf{Section}} & \multicolumn{3}{|c|}{\textbf{Tokens}} \\\cline{2-4}
                                       & \texttt{train} & \texttt{test} & \texttt{dev} \\
     \hline
-    Colloquial                           & 2,538 & 1,012 & 1,003 \\ 
-    Normalised                           & 2,538 & 1,012 & 1,003 \\ 
-    Standardised                         & 2,476 & 991 & 1,000 \\
+    Colloquial                           & 5,103 & 1,012 & 1,003 \\ 
+    Normalised                           & 5,105 & 1,012 & 1,003 \\ 
+    Standardised                         & 4,982 & 991 & 1,000 \\
     \hline
  \end{tabular} 
   \caption{Statistics on sentences from the parallel corpus.}
@@ -149,11 +151,11 @@ The translation into  is shorter and more precise, leaving just the main informa
   \hline
   \textbf{Colloquial} & \textbf{Normalised} & \textbf{Standardised} \\
   \hline
-  tai emm\"{a} tii\"{a} olikse erikseen joku & tai en\#min\"{a} tied\"{a} oliko\#se
-  erikseen jokin & tai en min\"{a} tied\"{a} oliko erikseen \\
-  nuorisoalennus & nuorisoalennus & nuorisoalennus \\
+  tai emm\"{a} tii\"{a} olikse erikseen & tai en\#min\"{a} tied\"{a} oliko\#se erikseen & tai en min\"{a} tied\"{a} oliko erikseen \\
+  joku nuorisoalennus                             & jokin nuorisoalennus & nuorisoalennus \\
   \hline
- toistaseks tullu kaks kysymyst\"{a} &toistaiseksi tullut kaksi kysymyst\"{a} & toistaiseksi on tullut kaksi kysymyst\"{a} \\
+   toistaseks tullu        & toistaiseksi tullut  & toistaiseksi on tullut  \\
+   kaks kysymyst\"{a}       & kaksi kysymyst\"{a} & kaksi kysymyst\"{a} \\
   \hline
   \ldots & \ldots & \ldots \\
   \hline
@@ -173,11 +175,11 @@ both orthographically and syntactically/stylistically. Table~\ref{table:corpexam
 an excerpt from each of the three parts of the corpus.
 
 The corpus was split into three parts, testing, development and training. The testing
-and development portions contain approximately 1,000 words each, with the remaining 2,538 for training
+and development portions contain approximately 1,000 words each, with the remaining approximately 5,000 words for training
 supervised models.\footnote{The corpus is split into XX files of 500 words each. Files 01--02 
-  were used for development; 03--04 for testing and 05--XX for training.}
+  were used for development; 03--04 for testing and 05--14 for training.}
 
-\section{Methodology}
+\section{Experiments}
 
 \subsection{Unsupervised normalisation}
 
@@ -250,6 +252,15 @@ The idea behind this was that the \emph{normalised} part of the corpus would be
 
 After preprocessing, the corpora are processed as with the phrase-based system, with the difference that the language model order is increased from 5 to 10-grams.
 
+\subsection{End-to-end translation}
+
+The idea of the end-to-end translation experiment was to evaluate how well the different 
+normalisation strategies worked in combination with another language technology tool. To
+evaluate this, we took the test corpus and translated it to English. 
+
+We then translated the corpus with each of the best performing methods of each class, and 
+calculated the {\sc bleu} score.
+
 \section{Results}
 
 \begin{table}
@@ -264,31 +275,53 @@ After preprocessing, the corpora are processed as with the phrase-based system, 
      rules-2 & 38.17 & 35.25 & 36.41 \\
      rules-c & 36.56 & 39.68 & 34.68 \\
      \hline
-     CBMT$^1$-cn & 43.09 & 48.34 & 33.55 \\
-     CBMT$^1$-cs & 46.22 & 52.27 & 29.21 \\
-     CBMT$^2$-cn & - & - & - \\
-     CBMT$^2$-cs & - & - & - \\
+     CBMT-cn & 43.09 & 48.34 & 33.55 \\
+     CBMT-cs & 46.22 & 52.27 & 29.21 \\
      PBMT-cn & 28.05 & 35.42 & 48.37 \\
      PBMT-cs & 27.95 & 36.13 & 46.76 \\
      \hline
   \end{tabular}
-  \caption{Results...}
-  \label{table:results}
+  \caption{Results for the normalisation task}
+  \label{table:results-norm}
 \end{table}
 
-Table~\ref{table:results} presents the results of the experiments.
+Tables~\ref{table:results-norm} and \ref{table:results-trad} presents the results of the experiments.
+
+\begin{table}
+  \centering
+  \begin{tabular}{|l|r|r|r|}
+     \hline
+    \textbf{System} & \textbf{PER} & \textbf{WER} & \textbf{BLEU} \\
+     \hline
+     Colloquial & - & - & 11.95 \\
+     Normalised & - & - & 21.81 \\
+     Standardised & - & - & 17.62 \\
+     \hline
+     rules-2 & - & - & 12.28 \\
+     cbmt-cn & - & - & 12.35 \\
+     pbmt-cn & - & - & 17.90 \\
+     \hline
+  \end{tabular}
+  \caption{Results for the translation task}
+  \label{table:results-trad}
+\end{table}
 
 \section{Future work}
 
+% expand test corpus -- up to 10,000 words
+% add other colloquial genres
+% apply to other NLP tasks
 % weight rules 
-% use system in pipeline (e.g. translation)
 % 
 
 \section{Conclusions}
 
 We have presented a parallel corpus of colloquial Finnish and standard Finnish --
-to our knowledge the first of its kind -- and a method for converting colloquial
-Finnish to standard Finnish.
+to our knowledge the first of its kind -- and an evaluation of methods for 
+converting colloquial Finnish to standard Finnish. 
+
+We have shown that converting from colloquial Finnish to standard Finnish substantially
+helps with the machine translation task.
 
 %The main contribution of this paper is a parallel corpus of colloquial Finnish
 %and standard Finnish
