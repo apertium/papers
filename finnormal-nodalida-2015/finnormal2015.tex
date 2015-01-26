@@ -278,7 +278,9 @@ For both approaches we trained two systems, the first used the \emph{normalised}
 part of the corpus as the target language; the second used the \emph{standardised} 
 part of the corpus as the target language.
 
-The idea behind this was that the \emph{normalised} part of the corpus would be 
+The idea behind this was that the \emph{normalised} part of the corpus would be closer
+to the original colloquial text than the \emph{standardised} part, making it easier
+to learn the alignment model. 
 
 \subsubsection{Character-based}
 
@@ -288,9 +290,10 @@ After preprocessing, the corpora are processed as with the phrase-based system, 
 
 \subsection{End-to-end translation}
 
-The idea of the end-to-end translation experiment was to evaluate how well the different 
-normalisation strategies worked in combination with another language technology tool. To
-evaluate this, we took the test corpus and translated it to English. 
+In order to evaluate how well the different normalisation strategies worked in 
+combination with another language technology tool, we performed an end-to-end experiment
+involving machine translation.
+To evaluate this, we took the test corpus and translated it to English. 
 
 We then translated the corpus with each of the best performing methods of each class, and 
 calculated the {\sc bleu} score.
