@@ -85,7 +85,7 @@ sentence is reached, the most probable is output.
 \subsection{Colloquial Finnish}
 
 
-\newcite{viinikka2013} describe the common meaning of the terms colloquial (\emph{puhekieli}) and standard (\emph{yleiskieli} or \emph{kirjakieli}) Finnish: standard language is unified in morphology and vocabulary, following the regulations of a language board; colloquial language shows local and idiolectal variation, and has structures that are characteristic to spoken variety,  such as discourse particles and incomplete clauses.
+\newcite{viinikka2013} describe the common meaning of the terms colloquial (\emph{puhekieli}) and standard (\emph{yleiskieli} or \emph{kirjakieli}) Finnish: standard language is unified in morphology and vocabulary, following the regulations of a language board; colloquial language shows local and idiolectal variation, and has structures that are characteristic to spoken variety,  such as discourse particles and incomplete clauses. 
 
 % Colloquial Finnish differs from standard Finnish in some key features: 
 
@@ -105,7 +105,7 @@ We illustrate the differences with the following example from our data set. Sent
 \xe
 
 
-For the normalised version, we changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the normalised version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vain} $\rightarrow$ \emph{vaan} or shortening in  \emph{ett\"{a}} $\rightarrow$ \emph{et}. The original sentence and the normalised translation are shown below, aligned word by word.
+For the normalised version,\footnote{The normalised version is converted orthographically and lexically, but not syntactically or stylistically.} we changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the normalised version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vain} $\rightarrow$ \emph{vaan} or shortening in  \emph{ett\"{a}} $\rightarrow$ \emph{et}. The original sentence and the normalised translation are shown below, aligned word by word.
 
 \ex
 \begingl
@@ -383,12 +383,6 @@ on more formal texts. Frequent contractions such as \emph{onks?} `is there?',
 
 \section{Future work}
 
-% expand test corpus -- up to 10,000 words
-% add other colloquial genres
-% apply to other NLP tasks
-% weight rules 
-% 
-
 Although a reasonable size for a test corpus, the corpus is still too small for 
 wide-coverage experiments. We intend to expand the corpus size to at least 10,000
 words. Another weakness of the corpus is that it contains text from a single author,
@@ -397,7 +391,7 @@ the challenge here is finding text that is both free of privacy issues and avail
 to release under a free/open-source licence.
 
 As for the methods, we would like to follow \newcite{scannell2014} in incorporating
-`translation' probabilities into our normalisation model. Our current model relies 
+`translation' probabilities into our unsupervised normalisation model. Our current model relies 
 exclusively on the target-language model probability, however some rules may be more
 reliable or probable than others.
 
