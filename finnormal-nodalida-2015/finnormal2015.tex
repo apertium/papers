@@ -216,35 +216,35 @@ using three replace rules.
 
 \begin{table*}
   \centering
-  \begin{tabular}{|l|r|l|l|}
+  \begin{tabular}{|l|l|r|l|}
     \hline
     \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Tomminkaa `I am with Tommi'.} \\
     \hline
-    \multirow{2}{*}{Step 1} & & M\"{a} oon Tomminkaa & apply rule 1: \\
-                            & & Min\"{a} oon Tomminkaa & m\"{a} $\rightarrow$ min\"{a} \\
+    \multirow{2}{*}{Step 1}  & M\"{a} oon Tomminkaa & & apply rule 1: \\
+                             & Min\"{a} oon Tomminkaa & & m\"{a} $\rightarrow$ min\"{a} \\
     \hline
-    \multirow{2}{*}{Step 2} & & M\"{a} oon Tomminkaa & apply rule 2: \\
-                            &   & Min\"{a} oon Tomminkaa & oon $\rightarrow$ olen \\
-                            &   & M\"{a} olen Tomminkaa & \\
-                            &   & Min\"{a} olen Tomminkaa & \\
+    \multirow{2}{*}{Step 2}  & M\"{a} oon Tomminkaa & & apply rule 2: \\
+                             & Min\"{a} oon Tomminkaa & & oon $\rightarrow$ olen \\
+                             & M\"{a} olen Tomminkaa & & \\
+                             & Min\"{a} olen Tomminkaa & & \\
     \hline
-    \multirow{2}{*}{Step 3} &   & M\"{a} oon Tomminkaa   & apply rule 3:\\
-                            &   & Min\"{a} oon Tomminkaa  & (?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
-                            &   & M\"{a} olen Tomminkaa  &\\
-                            &   & Min\"{a} olen Tomminkaa  &\\
-                            &   & M\"{a} oon Tommin kanssa  &\\
-                            &   & Min\"{a} oon Tommin kanssa  &\\
-                            &   & M\"{a} olen Tommin kanssa  &\\
-                            &   & Min\"{a} olen Tommin kanssa  &\\
+    \multirow{2}{*}{Step 3}  & M\"{a} oon Tomminkaa   & & apply rule 3:\\
+                             & Min\"{a} oon Tomminkaa &  & (?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
+                             & M\"{a} olen Tomminkaa  & &\\
+                             & Min\"{a} olen Tomminkaa  & &\\
+                             & M\"{a} oon Tommin kanssa  & &\\
+                             & Min\"{a} oon Tommin kanssa  & &\\
+                             & M\"{a} olen Tommin kanssa  & &\\
+                             & Min\"{a} olen Tommin kanssa  & &\\
     \hline
-    \multirow{2}{*}{Step 4} & -4.5811 &  Min\"{a} olen Tommin kanssa & rank candidates \\
-                            & -7.8174 &  Min\"{a} oon Tommin kanssa & \\
-                            & -8.0941 &  M\"{a} olen Tommin kanssa & \\
-                            & -8.8651&  M\"{a} oon Tommin kanssa & \\
-                            & -9.2045 &  Min\"{a} olen Tomminkaa & \\
-                            & -12.4408 &  Min\"{a} oon Tomminkaa & \\
-                            & -12.7176 &  M\"{a} olen Tomminkaa & \\
-                            & -13.4885 &  M\"{a} oon Tomminkaa & \\
+    \multirow{2}{*}{Step 4} &  Min\"{a} olen Tommin kanssa & -4.5811 & rank candidates \\
+                            &  Min\"{a} oon Tommin kanssa & -7.8174 & \\
+                            &  M\"{a} olen Tommin kanssa & -8.0941 & \\
+                            &  M\"{a} oon Tommin kanssa & -8.8651 & \\
+                            &  Min\"{a} olen Tomminkaa & -9.2045 & \\
+                            &  Min\"{a} oon Tomminkaa & -12.4408 & \\
+                            &  M\"{a} olen Tomminkaa & -12.7176 & \\
+                            &  M\"{a} oon Tomminkaa & -13.4885 & \\
 
     \hline
     \textbf{Output:} & \multicolumn{3}{l|}{Min\"{a} olen Tommin kanssa} \\
@@ -321,11 +321,17 @@ the output to translating the text to English without the standardiser.
 
 Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results of the experiments. 
 
-% unsupervised does as well as CBMT, and and half the way towards pbmt
+The baseline was made by calculating the metric scores between the standardised `reference' 
+and the colloquial input. The results show that all conversion methods outperform the baseline.
+
+Our unsupervised method performs similarly to the character-based machine translation systems. Both 
+the character-based systems and the unsupervised system achieve around half of the performance of the 
+supervised phrase-based system.
+
+Out of the unsupervised systems, the set of rules which was created by examining the development corpus
+outperforms both the set of rules from the grammar and the combined rules.
 
 % supervised systems trained on the normalised corpus outperform those trained on the standardised corpus (WHY?)
-
-% the rules written from the development portion of the corpus outperform the rules from the grammar
 
 \begin{table}
   \centering
@@ -350,10 +356,26 @@ Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results
 
 % example translations
 
-%colloq: ooh what onks there snow
-%pbmt: ooh what if there's snow
+%! ooh mitä onks siellä lunta
 %ref: ooh what, is there snow?
+%colloq: ooh what onks there snow
+%book: what! Is there snow?
+%pbmt: ooh what if there's snow
+%rules: ooh what if there's snow
 
+%! mä vaa protestoin et ei siinä mitää tavurajaa oo i:den välissä
+%ref: I was just protesting that there's no syllable break between the two i's
+%colloq: I VAA you do not protest it makes no tavurajaa oo i: in between
+%book: I just protest, that's not anything tavurajaa no i in between
+%pbmt: I only protest that there is no tavurajaa in between the i-den
+%rules: I VAA you do not protest it makes no tavurajaa no i in between
+
+%! (kyse oli siis vaan jostain 3 rivistä loopin sisällä)
+% ref: (it was only like 3 lines inside a loop)
+% colloq: (it was, therefore, but for some three lines within the loop)
+% book: (it was, therefore, only three to a row within a loop)
+% pbmt: (it was, therefore, only some three-line within the loop)
+% rules: (it was Siisi only some 3 lines of the loop inside)
 
 \section{Future work}
 
