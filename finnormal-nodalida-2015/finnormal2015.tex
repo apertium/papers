@@ -61,8 +61,7 @@ two clear options: either create new tools to process non-standard text,
   or create tools to preprocess non-standard text, standardising it to be subsequently processed
  by existing tools.
 
-This paper presents a method for converting colloquial Finnish to standard Finnish and 
-a parallel corpus for evaluation.
+This paper evaluates a number of methods for converting colloquial Finnish to standard Finnish and describes a parallel corpus for evaluation.
 
 \section{Related work}
 
@@ -74,7 +73,12 @@ automatic tools. Another related area is machine translation between different w
 the same language. For example between Norwegian Bokm\aa{}l and Norwegian Nynorsk \cite{unhammer2009}.
 
 \newcite{scannell2014} presents a method for normalising pre-standardised text in Irish to 
-the modern standard. The method relies on 
+the modern standard. The method relies on a translation model consisting of word-to-word 
+correspondences in addition to spelling rules. Each word-to-word mapping has the same
+conditional probability and a penalty is assigned to each spelling rule application. Decoding
+works by processing the source sentence word-for-word left-to-right, keeping track of the 
+possible `hypothesis' translations and their probabilities, and when the end of 
+sentence is reached, the most probable is output.
 
 \subsection{Colloquial Finnish}
 
@@ -162,7 +166,8 @@ menin Japaniin & menin Japaniin & menin Japaniin
  \\
   \hline
   \end{tabular}
-  \caption{Example sentences from the parallel corpus.}
+  \caption{Example sentences from the parallel corpus. The \texttt{\#} mark represents a missing
+    word boundary.}
   \label{table:corpexample}
 \end{table*}
 
@@ -178,8 +183,8 @@ an excerpt from each of the three parts of the corpus.
 
 The corpus was split into three parts, testing, development and training. The testing
 and development portions contain approximately 1,000 words each, with the remaining approximately 5,000 words for training
-supervised models.\footnote{The corpus is split into XX files of 500 words each. Files 01--02 
-  were used for development; 03--04 for testing and 05--14 for training.}
+supervised models.\footnote{The corpus is split into 14 files of 500 words each. Files 01--02 
+  were used for development; 03--04 for testing and 05--14 for training.} Table~\ref{table:corpsize} gives statistics on the number of words in each section.
 
 \section{Experiments}
 
