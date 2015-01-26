@@ -332,6 +332,7 @@ Out of the unsupervised systems, the set of rules which was created by examining
 outperforms both the set of rules from the grammar and the combined rules.
 
 % supervised systems trained on the normalised corpus outperform those trained on the standardised corpus (WHY?)
+% could be because of better word alignment  
 
 \begin{table}
   \centering
@@ -350,11 +351,14 @@ outperforms both the set of rules from the grammar and the combined rules.
      \hline
   \end{tabular}
   \caption{Results for the Finnish to English translation task. The first three rows are the results 
-    from translating the sections of the corpus. As with the }
+    from translating the sections of the corpus.}
   \label{table:results-trad}
 \end{table}
 
-% example translations
+The systems for normalisation are able to improve out-of-vocabulary rates in 
+many cases, most likely as the online statistical system that we used is trained
+on more formal texts. Frequent contractions such as \emph{onks?} `is there?',
+\emph{oo} `not' and \emph{vaa} `only' are found untranslated in the output.
 
 %! ooh mitä onks siellä lunta
 %ref: ooh what, is there snow?
@@ -404,10 +408,7 @@ to our knowledge the first of its kind -- and an evaluation of methods for
 converting colloquial Finnish to standard Finnish. 
 
 We have shown that converting from colloquial Finnish to standard Finnish substantially
-helps with the machine translation task.
-
-%The main contribution of this paper is a parallel corpus of colloquial Finnish
-%and standard Finnish
+helps with the Finnish to English machine translation task.
 
 \section*{Acknowledgments}
 
