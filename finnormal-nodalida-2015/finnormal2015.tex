@@ -331,8 +331,10 @@ supervised phrase-based system.
 Out of the unsupervised systems, the set of rules which was created by examining the development corpus
 outperforms both the set of rules from the grammar and the combined rules.
 
-% supervised systems trained on the normalised corpus outperform those trained on the standardised corpus (WHY?)
-% could be because of better word alignment  
+It is interesting to note that supervised systems trained on the normalised section of the corpus outperform
+those trained on the standardised corpus. One explanation for this could be that the corpus size is small, so 
+that the word alignments are not as reliable on the standardised corpus which is by nature not a word-for-word 
+conversion.
 
 \begin{table}
   \centering
@@ -358,9 +360,11 @@ outperforms both the set of rules from the grammar and the combined rules.
 The systems for normalisation are able to improve out-of-vocabulary rates in 
 many cases, most likely as the online statistical system that we used is trained
 on more formal texts. Frequent contractions such as \emph{onks?} `is there?',
-\emph{oo} `not' and \emph{vaa} `only' are found untranslated in the output.
+\emph{oo} `not' and \emph{vaa} `only' are found untranslated in the output, but 
+are easily converted by the systems.
 
 %! ooh mitä onks siellä lunta
+%! mitä! Onko siellä lunta?
 %ref: ooh what, is there snow?
 %colloq: ooh what onks there snow
 %book: what! Is there snow?
@@ -368,6 +372,7 @@ on more formal texts. Frequent contractions such as \emph{onks?} `is there?',
 %rules: ooh what if there's snow
 
 %! mä vaa protestoin et ei siinä mitää tavurajaa oo i:den välissä
+%! minä vain protestoin, että ei siinä mitään tavurajaa ole i:den välissä
 %ref: I was just protesting that there's no syllable break between the two i's
 %colloq: I VAA you do not protest it makes no tavurajaa oo i: in between
 %book: I just protest, that's not anything tavurajaa no i in between
@@ -375,6 +380,7 @@ on more formal texts. Frequent contractions such as \emph{onks?} `is there?',
 %rules: I VAA you do not protest it makes no tavurajaa no i in between
 
 %! (kyse oli siis vaan jostain 3 rivistä loopin sisällä)
+%! (kyse oli siis vain 3:sta rivistä loopin sisällä)
 % ref: (it was only like 3 lines inside a loop)
 % colloq: (it was, therefore, but for some three lines within the loop)
 % book: (it was, therefore, only three to a row within a loop)
