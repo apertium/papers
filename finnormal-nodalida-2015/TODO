@@ -8,6 +8,8 @@
 * finish translating rest of texts to standard/partial
 * FMT: write up how unsupervised works
 
+* check numbers for corpus size: colloq. normalised should have same number of tokens
+
 Translation results:
 
               | BLEU
