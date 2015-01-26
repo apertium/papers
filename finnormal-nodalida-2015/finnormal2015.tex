@@ -55,7 +55,8 @@
 Most language technology tools are designed or trained based on standard language 
 forms, where they exist. The application of these tools to non-standard
 language can cause a substantial decrease in quality. For example in machine translation,
-parsing and part-of-speech tagging \cite{eisenstein2013}.
+parsing and part-of-speech tagging \cite{eisenstein2013}. Non-standard language can 
+have different orthographic conventions, along with different morphology, syntax and stylistics.
 
 For language-technology researchers working on non-standard forms of language, there are 
 two clear options: either create new tools to process non-standard text,
@@ -307,10 +308,10 @@ the output to translating the text to English without the standardiser.
      rules-2 & \textbf{38.17} & \textbf{35.25} & \textbf{36.41} \\
      rules-c & 36.56 & 39.68 & 34.68 \\
      \hline
-     CBMT-cn & 43.09 & 48.34 & 33.55 \\
-     CBMT-cs & 46.22 & 52.27 & 29.21 \\
-     PBMT-cn & \textbf{28.05} & \textbf{35.42} & \textbf{48.37} \\
-     PBMT-cs & 27.95 & 36.13 & 46.76 \\
+     {\sc cbmt}-cn & 43.09 & 48.34 & 33.55 \\
+     {\sc cbmt}-cs & 46.22 & 52.27 & 29.21 \\
+     {\sc pbmt}-cn & \textbf{28.05} & \textbf{35.42} & \textbf{48.37} \\
+     {\sc pbmt}-cs & 27.95 & 36.13 & 46.76 \\
      \hline
   \end{tabular}
   \caption{Results for the normalisation task. The system \texttt{rules-c} is the combination
@@ -342,14 +343,14 @@ conversion.
      \hline
     \textbf{System} & \textbf{PER} & \textbf{WER} & \textbf{BLEU} \\
      \hline
-     Colloquial   & 45.31 & 71.28 & 11.95 \\
-     Normalised   & 34.63 & 62.34 & 21.81 \\
-     Standardised & 38.67 & 63.35 & 17.62 \\
+     Colloquial &  41.02  &  69.57  & 12.11 \\
+     Normalised &  30.73  &  59.73  & 22.56 \\
+     Standardised &  33.88  &  61.61  & 19.49 \\
      \hline
-     rules-2      & 42.71 & 70.42 & 12.28 \\
+     rules-2 &  37.94  &  69.35  & 12.92 \\
      \hline
-     cbmt-cn      & 44.44 & 74.17 & 12.35 \\
-     pbmt-cn      & \textbf{38.38} & \textbf{66.81} & \textbf{17.90} \\
+     {\sc cbmt}-cn &  65.59  &  86.25  & 13.06 \\
+     {\sc pbmt}-cn &  \textbf{35.69}  &  \textbf{65.14}  & \textbf{17.75} \\
      \hline
   \end{tabular}
   \caption{Results for the Finnish to English translation task. The first three rows are the results 
