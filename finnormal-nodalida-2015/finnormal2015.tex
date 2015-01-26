@@ -103,7 +103,7 @@ Prototypically, colloquial language is spoken and spontaneous, and standard is w
 \xe
 
 
-For the partial version, we did not change the syntactic structure, but changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the partial version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vaan} $\rightarrow$ \emph{vain} or shortening in  \emph{et} $\rightarrow$ \emph{että}. The original sentence and the partial translation are shown below, aligned word by word.
+For the partial version, we did not change the syntactic structure, but changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the partial version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vain} $\rightarrow$ \emph{vaan} or shortening in  \emph{ett\"{a}} $\rightarrow$ \emph{et}. The original sentence and the partial translation are shown below, aligned word by word.
 
 \ex
 \begingl
@@ -225,36 +225,36 @@ using three replace rules.
 ~\\
   \begin{tabular}{|l|r|l|l|}
     \hline
-    \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Inarinkaa `I am with Inari'.} \\
+    \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Tomminkaa `I am with Tommi'.} \\
     \hline
-    \multirow{2}{*}{Step 1} & & M\"{a} oon Inarinkaa & apply rule 1 \\
-                            & & Min\"{a} oon Inarinkaa & \\
+    \multirow{2}{*}{Step 1} & & M\"{a} oon Tomminkaa & apply rule 1 \\
+                            & & Min\"{a} oon Tomminkaa & \\
     \hline
-    \multirow{2}{*}{Step 2} & & M\"{a} oon Inarinkaa & apply rule 2 \\
-                            &   & Min\"{a} oon Inarinkaa & \\
-                            &   & M\"{a} olen Inarinkaa & \\
-                            &   & Min\"{a} olen Inarinkaa & \\
+    \multirow{2}{*}{Step 2} & & M\"{a} oon Tomminkaa & apply rule 2 \\
+                            &   & Min\"{a} oon Tomminkaa & \\
+                            &   & M\"{a} olen Tomminkaa & \\
+                            &   & Min\"{a} olen Tomminkaa & \\
     \hline
-    \multirow{2}{*}{Step 3} &   & M\"{a} oon Inarinkaa   & apply rule 3\\
-                            &   & Min\"{a} oon Inarinkaa  &\\
-                            &   & M\"{a} olen Inarinkaa  &\\
-                            &   & Min\"{a} olen Inarinkaa  &\\
-                            &   & M\"{a} oon Inarin kanssa  &\\
-                            &   & Min\"{a} oon Inarin kanssa  &\\
-                            &   & M\"{a} olen Inarin kanssa  &\\
-                            &   & Min\"{a} olen Inarin kanssa  &\\
+    \multirow{2}{*}{Step 3} &   & M\"{a} oon Tomminkaa   & apply rule 3\\
+                            &   & Min\"{a} oon Tomminkaa  &\\
+                            &   & M\"{a} olen Tomminkaa  &\\
+                            &   & Min\"{a} olen Tomminkaa  &\\
+                            &   & M\"{a} oon Tommin kanssa  &\\
+                            &   & Min\"{a} oon Tommin kanssa  &\\
+                            &   & M\"{a} olen Tommin kanssa  &\\
+                            &   & Min\"{a} olen Tommin kanssa  &\\
     \hline
-    \multirow{2}{*}{Step 4} & -4.5811 &  Min\"{a} olen Inarin kanssa & rank candidates \\
-                            & -7.8174 &  Min\"{a} oon Inarin kanssa & \\
-                            & -8.0941 &  M\"{a} olen Inarin kanssa & \\
-                            & -8.8651&  M\"{a} oon Inarin kanssa & \\
-                            & -9.2045 &  Min\"{a} olen Inarinkaa & \\
-                            & -12.4408 &  Min\"{a} oon Inarinkaa & \\
-                            & -12.7176 &  M\"{a} olen Inarinkaa & \\
-                            & -13.4885 &  M\"{a} oon Inarinkaa & \\
+    \multirow{2}{*}{Step 4} & -4.5811 &  Min\"{a} olen Tommin kanssa & rank candidates \\
+                            & -7.8174 &  Min\"{a} oon Tommin kanssa & \\
+                            & -8.0941 &  M\"{a} olen Tommin kanssa & \\
+                            & -8.8651&  M\"{a} oon Tommin kanssa & \\
+                            & -9.2045 &  Min\"{a} olen Tomminkaa & \\
+                            & -12.4408 &  Min\"{a} oon Tomminkaa & \\
+                            & -12.7176 &  M\"{a} olen Tomminkaa & \\
+                            & -13.4885 &  M\"{a} oon Tomminkaa & \\
 
     \hline
-    \textbf{Output:} & \multicolumn{3}{l|}{Min\"{a} olen Inarin kanssa} \\
+    \textbf{Output:} & \multicolumn{3}{l|}{Min\"{a} olen Tommin kanssa} \\
     \hline
   \end{tabular}
   \caption{Example trace of the unsupervised normalisation method. Rules are applied in order to each of 
@@ -325,7 +325,7 @@ calculated the {\sc bleu} score.
   \label{table:results-norm}
 \end{table}
 
-Tables~\ref{table:results-norm} and \ref{table:results-trad} presents the results of the experiments.
+Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results of the experiments.
 
 \begin{table}
   \centering
