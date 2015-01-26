@@ -214,29 +214,20 @@ using three replace rules.
 
 \begin{table*}
   \centering
-  \begin{tabular}{|lrl|l|}
-    \hline
-    \textbf{Rules:} & & 1. m\"{a} $\rightarrow$ min\"{a} \\
-     ~              & & 2. oon $\rightarrow$ olen \\
-     ~              & & 3. (?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
-    \hline
-  \end{tabular}
-~\\
-~\\
   \begin{tabular}{|l|r|l|l|}
     \hline
     \textbf{Input:} & \multicolumn{3}{l|}{M\"{a} oon Tomminkaa `I am with Tommi'.} \\
     \hline
     \multirow{2}{*}{Step 1} & & M\"{a} oon Tomminkaa & apply rule 1 \\
-                            & & Min\"{a} oon Tomminkaa & \\
+                            & & Min\"{a} oon Tomminkaa & m\"{a} $\rightarrow$ min\"{a} \\
     \hline
     \multirow{2}{*}{Step 2} & & M\"{a} oon Tomminkaa & apply rule 2 \\
-                            &   & Min\"{a} oon Tomminkaa & \\
+                            &   & Min\"{a} oon Tomminkaa & oon $\rightarrow$ olen \\
                             &   & M\"{a} olen Tomminkaa & \\
                             &   & Min\"{a} olen Tomminkaa & \\
     \hline
     \multirow{2}{*}{Step 3} &   & M\"{a} oon Tomminkaa   & apply rule 3\\
-                            &   & Min\"{a} oon Tomminkaa  &\\
+                            &   & Min\"{a} oon Tomminkaa  & (?+)nkaa $\rightarrow$ \textbackslash1n kanssa \\
                             &   & M\"{a} olen Tomminkaa  &\\
                             &   & Min\"{a} olen Tomminkaa  &\\
                             &   & M\"{a} oon Tommin kanssa  &\\
@@ -265,7 +256,6 @@ using three replace rules.
 \end{table*}
 
 \subsection{Statistical machine translation}
-
 
 The statistical-machine translation approaches were implemented using the 
 Moses toolkit \cite{koehn2007}. The training set up was that used for
