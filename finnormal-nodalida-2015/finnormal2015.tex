@@ -354,6 +354,18 @@ Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results
 % weight rules 
 % 
 
+Although a reasonable size for a test corpus, the corpus is still too small for 
+wide-coverage experiments. We intend to expand the corpus size to at least 10,000
+words. Another weakness of the corpus is that it contains text from a single author,
+we would ideally like to add texts from other authors and other colloquial genres. Although
+the challenge here is finding text that is both free of privacy issues and available
+to release under a free/open-source licence.
+
+As for the methods, we would like to follow \newcite{scannell2014} in incorporating
+`translation' probabilities into our normalisation model. Our current model relies 
+exclusively on the target-language model probability, however some rules may be more
+reliable or probable than others.
+
 \section{Conclusions}
 
 We have presented a parallel corpus of colloquial Finnish and standard Finnish --
