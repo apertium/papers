@@ -1,0 +1,71 @@
+%
+% File nodalida2015.tex
+%
+% Contact beata.megyesi@lingfil.uu.se
+%
+% Based on the instruction file for EACL 2014
+% which in turn was based on the instruction files for previous 
+% ACL and EACL conferences.
+
+
+\documentclass[11pt]{article}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{fixltx2e} %allows subscripts
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+\usepackage{url}
+\special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
+%\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
+
+\usepackage{nodalida2015}
+
+\usepackage{linguex}
+\usepackage{needspace}
+
+\newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
+
+\newcommand{\ft}[1]{\marginpar{\scriptsize F: #1}} % Fran's comments
+\newcommand{\rr}[1]{\marginpar{\scriptsize R: #1}} % Rob's comments
+\newcommand{\cw}[1]{\marginpar{\scriptsize W: #1}} % Cute wife's comments
+\newcommand{\dm}[1]{\marginpar{\scriptsize D: #1}} % Detmar's comments
+\newcommand{\lj}[1]{\marginpar{\scriptsize L: #1}} % Laura's comments
+
+\title{A preliminary constraint grammar for Russian}
+
+\author{Author1 \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  {\tt email@domain.com} \\\And
+  Author2 \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  {\tt email@domain.com} \\}
+
+\date{2015}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  Hargle bargle
+\end{abstract}
+
+\section{Introduction}
+
+\section{Conclusions}
+
+%\section*{Acknowledgments}
+%
+%Do not number the acknowledgment section. Do not include this section
+%when submitting your paper for review.
+
+\bibliographystyle{acl}
+\bibliography{ruscg}
+
+\end{document}
