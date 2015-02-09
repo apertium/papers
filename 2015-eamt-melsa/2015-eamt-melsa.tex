@@ -168,7 +168,8 @@ The remainder of the article is organised as follows:
 %  mentioned. For what is it used? This should be explain in this
 %  section.}
 
-\comment{Improve this} Lexical selection in this paper considers for
+%\comment{Improve this} 
+Lexical selection in this paper considers for
 each word a simple source-language context made up of neighbouring
 lemma+part-of-speech combinations. Contexts considered include up to
 two words to the left and up to two words to the right of the word to
@@ -264,11 +265,16 @@ model, it is after these first stages that lexical selection
 and generation take place; a function $\tau(g_i,S)$ represents the
 result of these last stages, which we will call \emph{post-lexsel},
 and returns a finished translation of a specific lexical-selection
-path $g_i$ of sentence $S$. Schematically:
+path $g_i$ of sentence $S$. Figure~\ref{fig:lexselschema} shows
+ this process schematically.
+\begin{figure*}
 \begin{displaymath}
   \label{eq:steps}
   S \to \mbox{\framebox{\parbox{0.8cm}{\textit{pre- lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{1.0cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{0.8cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
 \end{displaymath}
+ \caption{A schema of the training process}
+ \label{fig:lexselschema}
+\end{figure*}
 
 %Taking our previous example for the parallel corpus, Table~\ref{table:ex-monocorp} 
 %presents an example of five possible samples. 
@@ -767,9 +773,9 @@ rules based on part-of-speech and relative position. The corpus was
 reviewed manually before being used in further experiments
 \citep{specia2005}.
 
-\todo[inline]{FSM: I would explain what comes in the following
-  paragraph (the need for an evaluation corpus and how it is built) in
-  advance. Most probably where the measures are defined.}
+%! \todo[inline]{FSM: I would explain what comes in the following
+%!  paragraph (the need for an evaluation corpus and how it is built) in
+%!  advance. Most probably where the measures are defined.}
 
 The ideal situation would be to have, as described by
 \cite{zinovjeva2000}, a hand-annotated evaluation corpus for testing
@@ -890,8 +896,9 @@ test corpora.
 We compare our method to the following reference (or baseline) systems:
 
 \begin{itemize}
-\item \textbf{Linguist-chosen defaults}. \comment{FSM: This should go
-    to the section explaining Apertium.}  A bilingual dictionary in an
+\item \textbf{Linguist-chosen defaults}. 
+%! \comment{FSM: This should go to the section explaining Apertium.}  
+  A bilingual dictionary in an
   Apertium language pair contains correspondences between lexical
   forms. The dictionaries allow many lexical forms to translate to one
   lexical form. For example, \emph{ahizpa} and \emph{arreba} in Basque
@@ -996,8 +1003,10 @@ have eventually been sed for each language pair.
  ---the pair with the least data--- and the English--Spanish language
  pairs. In the remaining cases, the maximum-entropy method comes close
  to the target-language model performance, at a much smaller
- computational cost.\comment{FSM: This needs to be proved, and for
-   this computation times needs to be provided.} 
+ computational cost.
+
+%! \comment{FSM: This needs to be proved, and for
+%!    this computation times needs to be provided.} 
 
 %\begin{table}
 %\begin{tabular}{lrrrr}
@@ -1016,9 +1025,11 @@ Improvements with
  to the effective use the maximum-entropy model makes of information
  about the relevant source-language contexts and their translations,
  through the weighting of features representing those source-language
- contexts across the whole training corpus. \comment{First attempt at
-   an explanation. We should have an explanation for this that does
-   not act as referee magnet}
+ contexts across the whole training corpus. 
+
+%! \comment{First attempt at
+%!    an explanation. We should have an explanation for this that does
+%!    not act as referee magnet}
 
 \begin{table*}
  \begin{center}
@@ -1051,20 +1062,21 @@ Improvements with
   \label{table:eval-mono-results}
 \end{table*}
 
-\todo[inline]{FSM: I think we should better discuss the results and try to see if we disambiguate all the categories the same way. Think about this and also about reporting the number of times not feature gets activated. It could be that your method is better but you do not seen in the figures because most of the times there is no context to disambiguate}
-
-\todo[inline]{FSM: The results need a more in-depth discussion. For
-  instance, why is that LER improves and BLEU gets worse at the same
-  time for br-fr?}
-
-\todo[inline]{FSM: I would further analyse the results obtained by
-  giving LER for different lexical categories. It may happen that we
-  are better at resolving the ambiguity of nouns that the ambiguity of
-  verbs, just to give an example.}
-
+%! \todo[inline]{FSM: I think we should better discuss the results and try to see if we disambiguate all the categories the same way. Think about this and also about reporting the number of times not feature gets activated. It could be that your method is better but you do not seen in the figures because most of the times there is no context to disambiguate}
+%! 
+%! \todo[inline]{FSM: The results need a more in-depth discussion. For
+%!   instance, why is that LER improves and BLEU gets worse at the same
+%!   time for br-fr?}
+%! 
+%! \todo[inline]{FSM: I would further analyse the results obtained by
+%!   giving LER for different lexical categories. It may happen that we
+%!   are better at resolving the ambiguity of nouns that the ambiguity of
+%!   verbs, just to give an example.}
+%! 
 \section{Conclusions}
 
-\comment{First try at a set of conclusions by Mikel} This paper has
+%! \comment{First try at a set of conclusions by Mikel} 
+This paper has
 presented a method to perform lexical selection in a rule-based
 machine translation system, and one that can be trained in an
 unsupervised way, that is, without the need for an annotated corpus,
@@ -1087,18 +1099,20 @@ show that the method obtains similar or better results than those
 expensively obtained by scoring an exponential number of lexical
 selections for each sentence using the target-language model online.
 
-\todo[inline]{FSM: The fact that, to the best of our knowledge, this
-  is the first time fractional counts are used with MaxEnt should be
-  stressed.}
+%! \todo[inline]{FSM: The fact that, to the best of our knowledge, this
+%!   is the first time fractional counts are used with MaxEnt should be
+%!   stressed.}
 
 \section*{Acknowledgements}
 
-The authors thank Filip Petkovski for his help in running some of the
-experiments. They also acknowledge partial support from the Ministry
-of Science and Innovation of the Spanish Government through project
-TIN2009-14009-C02-01, and the NILS mobility grant (Abel Predoc
-Research Grant) coordinated by the Universidad Complutense de Madrid.
+\emph{Removed for review}
 
+%The authors thank Filip Petkovski for his help in running some of the
+%experiments. They also acknowledge partial support from the Ministry
+%of Science and Innovation of the Spanish Government through project
+%TIN2009-14009-C02-01, and the NILS mobility grant (Abel Predoc
+%Research Grant) coordinated by the Universidad Complutense de Madrid.
+%
 \bibliographystyle{apalike}
 \bibliography{2015-eamt-melsa}
 
