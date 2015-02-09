@@ -47,12 +47,12 @@
  HSL-fakultehta, \\
  UiT Norgga \'{a}rktala\v{s} universitehta, \\
  N-9018 Romsa \\
- \and
+ \And
  Felipe S\'anchez-Mart\'inez \\
  Dept.\ Lleng.\ i Sist.\ Inform., \\
  Universitat d'Alacant,\\
  E-03071 Alacant\\
- \and
+ \And
  Mikel L.\ Forcada \\
  Dept.\ Lleng.\ i Sist.\ Inform., \\
  Universitat d'Alacant,\\
@@ -305,7 +305,7 @@ in Spanish, the first \emph{pez} refers to the living animal, whereas
 %  have to face the problem of free rides. Should this be mentioned
 %  here?}
 
-\begin{table}
+\begin{table*}
  \begin{center}
   \begin{tabular}{|c|l|r|}
     \hline
@@ -357,7 +357,7 @@ in Spanish, the first \emph{pez} refers to the living animal, whereas
     probability mass is the most adequate.}
    \label{tb:workedexample}
  \end{center}
-\end{table}
+\end{table*}
 
 
 \section{Experimental setting}
@@ -424,7 +424,7 @@ ambiguity is provided for both all words, and for only ambiguous open-category
 words. In the experiments, lexical-selection rules are learnt for the open categories
 of adjective, noun and verb.
 
-\begin{table}
+\begin{table*}
   \centering
   \begin{tabular}{|l|r|r|r|r|r|}
     \hline
@@ -445,7 +445,7 @@ of adjective, noun and verb.
     column gives the total mean ambiguity for open classes (nouns, verbs, adjectives);
     and the final column gives the mean ambiguity for ambiguous words in open classes.}
   \label{table:lang-pair-stats}
-\end{table}
+\end{table*}
 
 %\todo[inline]{FSM: More information about the language pairs needs to be
 %  given: naive coverage, average lexical ambiguity over all words and
@@ -550,7 +550,7 @@ module disambiguates the output of the lexical-transfer module as
 compared to a gold-standard corpus. For this task, we define a metric,
 the lexical-selection error rate ({\sc ler}),
 % see section~\ref{sec:ler}. 
-\begin{figure}
+\begin{figure*}
 \begin{center}
 \setlength\tabcolsep{5.2pt}%
  \begin{tabular}{|l|llllll|}
@@ -575,7 +575,7 @@ the lexical-selection error rate ({\sc ler}),
    50\%.}
 \label{fig:ler-example}
 \end{center}
-\end{figure}
+\end{figure*}
 
 %\todo[inline]{FSM: LER is measured on lemmas rather than on surface
 %  forms but this is not mentioned anywhere, otherwise the example in
@@ -793,7 +793,7 @@ example the reference translation has a word which is not found in
 the bilingual dictionaries on the MT system).
 
 
-\begin{table}
+\begin{table*}
 \begin{center}
  \begin{tabular}{|l|r|r||r|r|r|r|}
     \hline  
@@ -824,7 +824,7 @@ the bilingual dictionaries on the MT system).
    and {\bf no.\ amb} are calculated over the whole corpus.}
  \label{table:input-corp}
 \end{center}
-\end{table}
+\end{table*}
 
 %\todo[inline]{FSM: In Table \ref{table:input-corp} it would be good to
 %have the average ambiguity per ambiguous words, not all words, since
@@ -850,7 +850,7 @@ module, which returns all the possible translations, and for each
 ambiguous word, the translation is selected which is found aligned in
 the reference.
 
-\begin{table}
+\begin{table*}
 \begin{center}
  \begin{tabular}{|l|r|r|r|r|r|}
     \hline 
@@ -870,7 +870,7 @@ the reference.
     the number of word with more than one translation and the percentage of SL words which have 
     more than one translation respectively.}
   \label{table:test-corp}
-\end{table}
+\end{table*}
 
 After this process, we selected 1,000 sentence pairs at random for
 testing (\texttt{test}), 1,000 for development (\texttt{dev})\footnote{The development corpus  
@@ -1020,7 +1020,7 @@ Improvements with
    an explanation. We should have an explanation for this that does
    not act as referee magnet}
 
-\begin{table}
+\begin{table*}
  \begin{center}
 
   \begin{tabular}{|l|l|r|r|r||r|}
@@ -1049,7 +1049,7 @@ Improvements with
    improvements for the maximum-entropy model compared to the target language model 
    according to pair-bootstrap resampling.}
   \label{table:eval-mono-results}
-\end{table}
+\end{table*}
 
 \todo[inline]{FSM: I think we should better discuss the results and try to see if we disambiguate all the categories the same way. Think about this and also about reporting the number of times not feature gets activated. It could be that your method is better but you do not seen in the figures because most of the times there is no context to disambiguate}
 
