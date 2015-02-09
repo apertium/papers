@@ -302,71 +302,71 @@ The method used here
 for lexical selection is analogous to the method used by
 \cite{sanchez08b} to train a hidden-Markov-model-based part-of-speech
 tagger in a rule-based machine translation system. 
-Table~\ref{tb:workedexample} shows how a collection of samples
-\(\mathcal{G}\) for the translation of Basque sentences containing the
-word \emph{arrain}.\footnote{The word \emph{arrain} `fish' has two translations
-in Spanish, the first \emph{pez} refers to the living animal, whereas
-\emph{pescado} refers to the animal as food.} 
+%Table~\ref{tb:workedexample} shows how a collection of samples
+%\(\mathcal{G}\) for the translation of Basque sentences containing the
+%word \emph{arrain}.\footnote{The word \emph{arrain} `fish' has two translations
+%in Spanish, the first \emph{pez} refers to the living animal, whereas
+%\emph{pescado} refers to the animal as food.} 
 %\comment{FSM: The correct translations
 %  should be clearly identified in the table.}
 %\todo[inline]{FSM: There is an important difference between the
 %  approach in \cite{sanchez08b} and the one in this paper: we do not
 %  have to face the problem of free rides. Should this be mentioned
 %  here?}
-
-\begin{table*}
- \begin{center}
-  \begin{tabular}{|c|l|r|}
-    \hline
-       & \textbf{Sentence} & $p(g_i|S)$ \\
-    \hline % Los pescados grandes peque\~{n}o come
-     \(S_1\) & \emph{Arrain handiak txikia jaten du}  &  \\
-                        $\tau(g_{11},S_1)$ & El pez grande se come el peque\~{n}o &  0.830 \\
-                        $\tau(g_{12},S_1)$ & El pescado grande se come el peque\~{n}o & 0.134 \\
-                        $\tau(g_{13},S_1)$ & El pescado capaz se come el peque\~{n}o & 0.034\\
-                        $\tau(g_{14},S_1)$ & El pez capaz se come el peque\~{n}o  & 0.001\\
-    \hline % El padre el pescado nos ha preparado para cenar
-     \(S_2\) & \emph{Aitak arraina prestatu digu afaltzeko} &  \\
-                        $\tau(g_{21},S_2)$ & Padre nos ha preparado pescado para cenar & 0.846 \\
-                        $\tau(g_{22},S_2)$ & Pap\'{a} nos ha preparado pescado para cenar & 0.134 \\
-                        $\tau(g_{23},S_2)$ & Padre nos ha preparado pez para cenar & 0.015 \\
-                        $\tau(g_{24},S_2)$ & Pap\'{a} nos ha preparado pez para cenar & 0.005 \\
-    \hline % Aqu\'{\i} el pescado muy es dulce
-    $S_3$  & \emph{Hemen arraina oso goxoa da}  & \\
-                        $\tau(g_{31},S_3)$ & Aqu\'{\i} el pescado es muy rico & 0.912 \\
-                        $\tau(g_{32},S_3)$ & Aqu\'{\i} el pescado es muy suave & 0.067 \\
-                        $\tau(g_{33},S_3)$ & Aqu\'{\i} el pez es muy rico & 0.011 \\
-                        $\tau(g_{34},S_3)$ & Aqu\'{\i} el pez es muy suave & 0.008 \\
-                        $\tau(g_{35},S_3)$ & Aqu\'{\i} el pez es muy dulce & 0.001 \\
-                        $\tau(g_{36},S_3)$ & Aqu\'{\i} el pescado es muy dulce & 0.001 \\
-    \hline % Un pescado grande del mar es
-    \(S_4\) & \emph{Itsasoko arrain handi bat da} & \\
-                        $\tau(g_{41},S_4)$ & Es un pez grande del mar & 0.595 \\
-                        $\tau(g_{42},S_4)$ & Es un pescado grande del mar & 0.403 \\
-                        $\tau(g_{43},S_4)$ & Es un pez capaz del mar & 0.001 \\
-                        $\tau(g_{44},S_4)$ & Es un pescado capaz del mar & 0.001 \\
-    \hline % El pescado grande por esos serv\'{\i}an para alimentar
-    $S_5$ &  \emph{Arrain handiak horiez baliatzen ziren elikatzeko} &  \\
-                        $\tau(g_{51},S_5)$ & Los peces grandes se nutr\'{\i}an de esos & 0.862 \\
-                        $\tau(g_{52},S_5)$ & Los pescados grandes se nutr\'{\i}an de esos & 0.121 \\
-                        $\tau(g_{53},S_5)$ & Los peces grandes se alimentaban de esos & 0.012 \\
-                        $\tau(g_{54},S_5)$ & Los peces capaces se alimentaban de esos & 0.001 \\
-                        $\tau(g_{55},S_5)$ & Los pescados grandes se alimentaban de esos & 0.001 \\
-                        $\tau(g_{56},S_5)$ & Los pescados capaces se alimentaban de esos & 0.001 \\
-                        $\tau(g_{57},S_6)$ & Los peces capaces se nutr\'{\i}an de esos & 0.001 \\
-                        $\tau(g_{58},S_7)$ & Los pescados capaces se nutr\'{\i}an de esos & 0.001 \\
-    \hline
-  
-  \end{tabular}
-  \caption{A sample of source-language sentences, the output of the
-    possible lexical-selection paths after scoring on a
-    target-language model. The scores are normalised as fractional
-    counts, which are used as inputs to the maximum-entropy training
-    process. In all sentences, the resultant translation with the highest share of the 
-    probability mass is the most adequate.}
-   \label{tb:workedexample}
- \end{center}
-\end{table*}
+% 
+% \begin{table*}
+%  \begin{center}
+%   \begin{tabular}{|c|l|r|}
+%     \hline
+%        & \textbf{Sentence} & $p(g_i|S)$ \\
+%     \hline % Los pescados grandes peque\~{n}o come
+%      \(S_1\) & \emph{Arrain handiak txikia jaten du}  &  \\
+%                         $\tau(g_{11},S_1)$ & El pez grande se come el peque\~{n}o &  0.830 \\
+%                         $\tau(g_{12},S_1)$ & El pescado grande se come el peque\~{n}o & 0.134 \\
+%                         $\tau(g_{13},S_1)$ & El pescado capaz se come el peque\~{n}o & 0.034\\
+%                         $\tau(g_{14},S_1)$ & El pez capaz se come el peque\~{n}o  & 0.001\\
+%     \hline % El padre el pescado nos ha preparado para cenar
+%      \(S_2\) & \emph{Aitak arraina prestatu digu afaltzeko} &  \\
+%                         $\tau(g_{21},S_2)$ & Padre nos ha preparado pescado para cenar & 0.846 \\
+%                         $\tau(g_{22},S_2)$ & Pap\'{a} nos ha preparado pescado para cenar & 0.134 \\
+%                         $\tau(g_{23},S_2)$ & Padre nos ha preparado pez para cenar & 0.015 \\
+%                         $\tau(g_{24},S_2)$ & Pap\'{a} nos ha preparado pez para cenar & 0.005 \\
+%     \hline % Aqu\'{\i} el pescado muy es dulce
+%     $S_3$  & \emph{Hemen arraina oso goxoa da}  & \\
+%                         $\tau(g_{31},S_3)$ & Aqu\'{\i} el pescado es muy rico & 0.912 \\
+%                         $\tau(g_{32},S_3)$ & Aqu\'{\i} el pescado es muy suave & 0.067 \\
+%                         $\tau(g_{33},S_3)$ & Aqu\'{\i} el pez es muy rico & 0.011 \\
+%                         $\tau(g_{34},S_3)$ & Aqu\'{\i} el pez es muy suave & 0.008 \\
+%                         $\tau(g_{35},S_3)$ & Aqu\'{\i} el pez es muy dulce & 0.001 \\
+%                         $\tau(g_{36},S_3)$ & Aqu\'{\i} el pescado es muy dulce & 0.001 \\
+%     \hline % Un pescado grande del mar es
+%     \(S_4\) & \emph{Itsasoko arrain handi bat da} & \\
+%                         $\tau(g_{41},S_4)$ & Es un pez grande del mar & 0.595 \\
+%                         $\tau(g_{42},S_4)$ & Es un pescado grande del mar & 0.403 \\
+%                         $\tau(g_{43},S_4)$ & Es un pez capaz del mar & 0.001 \\
+%                         $\tau(g_{44},S_4)$ & Es un pescado capaz del mar & 0.001 \\
+%     \hline % El pescado grande por esos serv\'{\i}an para alimentar
+%     $S_5$ &  \emph{Arrain handiak horiez baliatzen ziren elikatzeko} &  \\
+%                         $\tau(g_{51},S_5)$ & Los peces grandes se nutr\'{\i}an de esos & 0.862 \\
+%                         $\tau(g_{52},S_5)$ & Los pescados grandes se nutr\'{\i}an de esos & 0.121 \\
+%                         $\tau(g_{53},S_5)$ & Los peces grandes se alimentaban de esos & 0.012 \\
+%                         $\tau(g_{54},S_5)$ & Los peces capaces se alimentaban de esos & 0.001 \\
+%                         $\tau(g_{55},S_5)$ & Los pescados grandes se alimentaban de esos & 0.001 \\
+%                         $\tau(g_{56},S_5)$ & Los pescados capaces se alimentaban de esos & 0.001 \\
+%                         $\tau(g_{57},S_6)$ & Los peces capaces se nutr\'{\i}an de esos & 0.001 \\
+%                         $\tau(g_{58},S_7)$ & Los pescados capaces se nutr\'{\i}an de esos & 0.001 \\
+%     \hline
+%   
+%   \end{tabular}
+%   \caption{A sample of source-language sentences, the output of the
+%     possible lexical-selection paths after scoring on a
+%     target-language model. The scores are normalised as fractional
+%     counts, which are used as inputs to the maximum-entropy training
+%     process. In all sentences, the resultant translation with the highest share of the 
+%     probability mass is the most adequate.}
+%    \label{tb:workedexample}
+%  \end{center}
+% \end{table*}
 
 
 \section{Experimental setting}
@@ -721,7 +721,7 @@ included only as it is commonly used to evaluate MT systems.
 \subsubsection{Confidence intervals}
 Confidence intervals for both metrics will be calculated through the
 \emph{bootstrap resampling} method~\citep{efron94} as described
-by~\citet{koehn04}.%\footnote{Broadly speaking, % and \citet{zhang04}
+by~\citet{koehn04}. %\footnote{Broadly speaking, % and \citet{zhang04}
 %  this involves iteratively taking a random sample (with replacements)
 %  from the test set and computing the score for that sample. The
 %  scores are sorted and, presuming we want the 95\% confidence
@@ -782,11 +782,12 @@ reliable, which decreases the accuracy of the annotated corpus. An
 alternative method is described by \cite{zinovjeva2000}, who manually
 tags a selection of ambiguous words in English sentences with their
 translation in Swedish. The size of the annotated corpus is not
-mentioned. \cite{specia2005a} use a parallel corpus, but eschew using
-word alignment in favour of using a bilingual dictionary and heuristic
-rules based on part-of-speech and relative position. The corpus was
-reviewed manually before being used in further experiments
-\citep{specia2005}.
+mentioned. 
+%\cite{specia2005a} use a parallel corpus, but eschew using
+%word alignment in favour of using a bilingual dictionary and heuristic
+%rules based on part-of-speech and relative position. The corpus was
+%reviewed manually before being used in further experiments
+%\citep{specia2005}.
 
 %! \todo[inline]{FSM: I would explain what comes in the following
 %!  paragraph (the need for an evaluation corpus and how it is built) in
