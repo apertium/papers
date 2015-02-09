@@ -74,7 +74,6 @@
   existing MT system, the sentences in the source-language corpus are
   translated in all possible ways according to the different
   translation equivalents in the bilingual dictionary of the system.
-%  taking into account all of the lexical selection possibilities.
   These translations are then scored on the target-language model and
   the scores are normalised to provide fractional counts for training
   a source-language maximum-entropy lexical-selection model. We show
@@ -122,7 +121,8 @@ example in a collocation.
 %  available.}
 
 \subsection{Prior work}
-\comment{This section should be ironed out a bit.}  In their
+%@@@ \comment{This section should be ironed out a bit.}  
+In their
 pioneering work, \cite{dagan1994word} used the term
 \emph{word sense disambiguation} to refer to what is actually target
 word selection in machine translation; they used a parser to identify
@@ -149,15 +149,17 @@ model provides probabilities of word sequences in the target language.
 As regards rule-based machine translation, \cite{sanchez07a} proposed 
 to use information from the target language to train a statistical 
 lexical-selection module but did not provide any experiments. 
-\todo[inline]{FMT: integrate \citep{sanchez07a} somewhere here}
+%@@@ \todo[inline]{FMT: integrate \citep{sanchez07a} somewhere here}
 \cite{marechek10} trained a maximum-entropy lexical selector for their TectoMT rule-based system
 using a bilingual corpus.  More recently, \cite{tyers12a} presented a
 method of lexical selection for rule-based machine translation based
 on rules which select or remove translations in fixed-length contexts,
 along with a training method for learning the rules from a
-word-aligned parallel corpus. The principal disadvantage with this
-method is that it relies on a parallel corpus for the language pair,
-something which is not always available.
+word-aligned parallel corpus. 
+
+% The principal disadvantage with this
+% method is that it relies on a parallel corpus for the language pair,
+% something which is not always available.
 
 The remainder of the article is organised as follows: 
 \todo[inline]{FMT: Add article structure}
