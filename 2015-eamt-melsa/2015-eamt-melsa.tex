@@ -137,7 +137,7 @@ an automatically determined threshold for confidence.
 Then \cite{berger1996} illustrated the use of maximum-entropy classifiers
 on the specific problem of lexical selection in IBM-style word-based
 statistical machine translation. Other authors
-\citep{carbonell06,melero07a} have used target-language models to rank
+\citep{melero07a} have used target-language models to rank %@@@ carbonell06
 the translations resulting from all possible combinations of lexical
 selections.  Nowadays, in state-of-the-art phrase-based statistical
 machine translation \citep{koehn2009statistical}, lexical selection is
@@ -667,10 +667,12 @@ come', although the lexical selection made was more
 adequate. Generation errors --- where a word is found in the bilingual
 dictionary, but not in the target language morphological dictionary
 --- may also lead to the same problem.  The {\sc bleu} metric \citep{papineni02} is
-included only as it is commonly used to evaluate MT systems. Other
-metrics with similar performance to {\sc bleu} such as {\sc meteor}
-\citep{lavie09} and {\sc nist} \citep{doddington02} are not included
-as we have chosen to focus on lexical-selection performance.
+included only as it is commonly used to evaluate MT systems. 
+
+%@@@ Other
+%@@@ metrics with similar performance to {\sc bleu} such as {\sc meteor}
+%@@@ \citep{lavie09} and {\sc nist} \citep{doddington02} are not included
+%@@@ as we have chosen to focus on lexical-selection performance.
 
 %\todo[inline]{FSM: If we focus on lexical-selection performance may be
 %  we should not give BLEU. Anyway, I think we can give BLEU and PER
@@ -927,7 +929,7 @@ We compare our method to the following reference (or baseline) systems:
   generate all the possible translations for an input sentence, and
   then score these translations \emph{on-line} on a model of the
   target language. The highest scoring sentence is then picked as
-  output. This is the method used by \cite{carbonell06} and
+  output. This is the method used by %@@@ \cite{carbonell06} and
   \cite{melero07a}.  We used a five-gram language model of surface
   forms generated from the target-language side of the parallel
   corpus. %\comment{FSM: Why not a much larger corpus? (I reviewer may ask)}
