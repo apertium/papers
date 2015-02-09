@@ -224,7 +224,7 @@ This feature considers a context of zero words to the left of the
 problem word and one word to the right of it.
 
 As a result of training, each feature in the classifier is assigned a
-weight $\lambda_k^s$, and combining these weights of active features
+weight $\lambda_k^s$. Combining these weights of active features
 as in equation~(\ref{eq:max-ent-sum}) yields the probability of a
 translation $t$ for word $s$ in context $c$.
 
@@ -297,13 +297,14 @@ $p(g_i|S)$ for the events $(s,t,c)$ found in \(g_i\), that is, when in
 if event $(s,t,c)$ had been seen a fractional number $p(g_i,s)$ of
 times. We prune features occurring less than a certain number of times 
 in the corpus, using a development corpus to guide pruning (see section~\ref{sec:eval-ref-results}).
-\comment{Reword this to avoid repetition} The method used here
+%@@@ \comment{Reword this to avoid repetition} 
+The method used here
 for lexical selection is analogous to the method used by
 \cite{sanchez08b} to train a hidden-Markov-model-based part-of-speech
 tagger in a rule-based machine translation system. 
 Table~\ref{tb:workedexample} shows how a collection of samples
 \(\mathcal{G}\) for the translation of Basque sentences containing the
-word \emph{arrain} into Spanish.\footnote{The word \emph{arrain} `fish' has two translations
+word \emph{arrain}.\footnote{The word \emph{arrain} `fish' has two translations
 in Spanish, the first \emph{pez} refers to the living animal, whereas
 \emph{pescado} refers to the animal as food.} 
 %\comment{FSM: The correct translations
@@ -379,8 +380,8 @@ whole translation task. Evaluating lexical-selection performance is an
 intrinsic module-based evaluation.  It measures how well the lexical
 selection module disambiguates the lexical-transfer
 output as compared to a gold-standard corpus. The lexical 
-transfer output is the result if looking up the translations of the 
-source-language \emph{lexical forms} --- combinations of lemma and morphological
+transfer output is the result of looking up the translations of the 
+source-language \emph{lexical forms} --- combinations of lemma and 
 tags --- in the bilingual dictionary.
 
 The
@@ -389,10 +390,10 @@ tests how much the system improves as regards final translation
 quality in a real system.
 
 The lexical-selection module should be as language-independent as
-possible. To that end, the language pairs tested should show as wide a
+possible. To that end, the language pairs tested show a wide
 variety of linguistic phenomena. It is also important that the
 methodology be as applicable to lesser-resourced and marginalised
-languages, as to major languages.
+languages as to major languages.
 
 This section begins with a short description of the Apertium 
 platform \citep{forcada2011apertium}. This is followed by 
@@ -474,25 +475,30 @@ of adjective, noun and verb.
   but some entries were added later to start work on lexical
   selection. The version used in this paper is SVN revision
   41375.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr}}
-  This is the only available machine translation system between Breton
-  and French. It has been developed part-time over a number of years.
+%  This is the only available machine translation system between Breton
+%  and French. It has been developed part-time over a number of years.
 
 
 \item[Macedonian--English:] The Macedonian--English pair
   in Apertium was created specifically for the purposes of running
-  lexical-selection experiments. The resources reused from other pairs
-  were the English morphological dictionary from the Icelandic and
-  English pair \citep{brandt11}, the Macedonian morphological
-  dictionary and constraint grammar from the Macedonian and Bulgarian
-  pair \citep{rangelov11}, and the SETimes parallel corpus
-  \citep{tyers10}.  The work was carried out over a period of eight
-  days, and consisted of creating the bilingual dictionary and
-  transfer rules. The bilingual dictionary was created by tagging both
-  sides of the parallel corpus, word-aligning them with {\sc giza++}
-  \citep{och03a} and extracting the probabilistic lexicon. Entries
-  from this lexicon were checked manually according to frequency and
-  included in the bilingual dictionary of the machine translation
-  system. The most probable entry was checked to ensure that it was 
+  lexical-selection experiments. 
+% The resources reused from other pairs
+%  were the English morphological dictionary from the Icelandic and
+%  English pair \citep{brandt11}, the Macedonian morphological
+%  dictionary and constraint grammar from the Macedonian and Bulgarian
+%  pair \citep{rangelov11}, and the SETimes parallel corpus
+  The lexical resources for the pair were tuned to the SETimes parallel corpus
+  \citep{tyers10}.  
+% The work was carried out over a period of eight
+%  days, and consisted of creating the bilingual dictionary and
+%  transfer rules. The bilingual dictionary was created by tagging both
+%  sides of the parallel corpus, word-aligning them with {\sc giza++}
+%  \citep{och03a} and extracting the probabilistic lexicon. Entries
+%  from this lexicon were checked manually according to frequency and
+%  included in the bilingual dictionary of the machine translation
+%  system. 
+  The most probable entry from automatic word alignment of this 
+  corpus using {\sc giza++} \citep{och03a} was checked to ensure that it was 
   an adequate translation, and if so marked as the 
   default.\footnote{A bilingual dictionary in Apertium
     \citep{forcada2011apertium} may contain more than one possible
@@ -503,13 +509,15 @@ of adjective, noun and verb.
     and marks it as the \emph{linguistic default} translation.} As a
   result of attempting to include all possible translations, the
   average number of translations per word is much higher (see table~\ref{table:lang-pair-stats})
-than in other pairs.  The transfer rules were written
-  by hand to treat translation problems in the corpus. The version of
-  the software used in this paper is SVN revision
-  41476.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}.
+than in other pairs.  
+% The transfer rules were written
+%  by hand to treat translation problems in the corpus. The version of
+%  the software used in this paper is SVN revision
+%  41476.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}.
 \item[Basque--Spanish:] The development of the Basque to Spanish pair
-  is described in \cite{ginesti09}. The bilingual dictionary was taken
-  from the free/open-source Matxin system \citep{mayor2011}. 
+  is described in \cite{ginesti09}. 
+% The bilingual dictionary was taken
+%  from the free/open-source Matxin system \citep{mayor2011}. 
   Alternative translations were included in the bilingual
   dictionary.% , but non-default translations were marked with a
 %  direction restriction\comment{FSM: This needs to be carefully
@@ -532,9 +540,10 @@ than in other pairs.  The transfer rules were written
   contains a number of entries in the bilingual dictionary with
   more than one translation. The most-frequent translation, as judged
   by the language pair developer, is marked as the \emph{default}
-  translation and non-default translations were added according to
-  their frequency. The version used in this paper is SVN revision
-  41387.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
+  translation and non-default translations added according to
+  frequency. 
+% The version used in this paper is SVN revision
+%  41387.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
 \end{description}
 
 
@@ -579,7 +588,7 @@ the lexical-selection error rate ({\sc ler}),
    error rate. The source sentence $S = (s_1, s_2, \ldots, s_{|S|})$
    has two ambiguous words, \emph{estaci\'{o}} and \emph{llarg}. There is one difference
    between the reference set $T_r(s_i)$ and the test set $T_t(s_i)$ of
-   translations; as a result, the error rate for this sentence is
+   translations; thus, the error rate for this sentence is
    50\%.}
 \label{fig:ler-example}
 \end{center}
@@ -598,8 +607,10 @@ the bilingual dictionary. The second function, $T_t(s_i)$, returns the
 translations of $s_i$ selected by the lexical-selection module:
 $T_t(s_i) \subseteq T_s(s_i)$; and usually $|T_t(s_i)| = 1$. If the
 lexical-selection module returns more than one translation, the first
-translation is selected. \comment{FSM: How many times does this
-  happens?. I would move this last sentence to an appendix.}  The
+translation is selected. 
+%! \comment{FSM: How many times does this
+%!  happens?. I would move this last sentence to an appendix.}  
+The
 function $T_r(s_i)$ returns the set of reference translations which
 are acceptable for $s_i$ in sentence $S$.\footnote{Depending on how
   the reference is built, the set returned by $T_r(s_i)$ may be
@@ -710,13 +721,14 @@ included only as it is commonly used to evaluate MT systems.
 \subsubsection{Confidence intervals}
 Confidence intervals for both metrics will be calculated through the
 \emph{bootstrap resampling} method~\citep{efron94} as described
-by~\citet{koehn04} and \citet{zhang04}.\footnote{Broadly speaking,
-  this involves iteratively taking a random sample (with replacements)
-  from the test set and computing the score for that sample. The
-  scores are sorted and, presuming we want the 95\% confidence
-  interval, the top- and bottom-2.5\% are removed. The highest and
-  lowest remaining are given as the interval. For more detail, refer
-  to the references provided.} In all cases, bootstrap resampling will
+by~\citet{koehn04}.%\footnote{Broadly speaking, % and \citet{zhang04}
+%  this involves iteratively taking a random sample (with replacements)
+%  from the test set and computing the score for that sample. The
+%  scores are sorted and, presuming we want the 95\% confidence
+%  interval, the top- and bottom-2.5\% are removed. The highest and
+%  lowest remaining are given as the interval. For more detail, refer
+%  to the references provided.} 
+In all cases, bootstrap resampling will
 be carried out for 1,000 iterations. Where the $p = 0.05$ confidence
 intervals overlap, we will also perform paired bootstrap resampling
 \citep{koehn04}.
@@ -738,8 +750,7 @@ for training, and a target language corpus for scoring, we used four parallel co
     of the Breton language'. The corpus was published before this date
     so we use the original name.}  It contains some parallel data
   previously described in \cite{tyers09b}, and also some new data. The
-  whole corpus has been made available online through the {\sc opus}
-  collection.\footnote{\url{http://opus.lingfil.uu.se/OfisPublik.php}.}
+  corpus has been made available online through {\sc opus}.\footnote{\url{http://opus.lingfil.uu.se/OfisPublik.php}.}
 \item \textbf{South-East European Times} (\texttt{SETimes}): Described
   in \cite{tyers10}, this corpus is a multilingual corpus of the
   Balkan languages in the news domain. The Macedonian and English
@@ -752,7 +763,7 @@ for training, and a target language corpus for scoring, we used four parallel co
 \item \textbf{European Parliament Proceedings} (\texttt{EuroParl}):
   Described by \cite{koehn05a}, this is a multilingual corpus of the
   European Union official languages. We are using the English--Spanish
-  data from version 7 of the corpus.
+  data from version 7.
 \end{itemize}
 
 There are a number of approaches to creating evaluation corpora for
