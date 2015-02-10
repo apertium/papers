@@ -475,6 +475,8 @@ is used for evaluation (see Section \ref{ss:measures}).
 
 
 \begin{description}
+\addtolength{\itemsep}{-0.10in}
+
 \item[Breton--French:] Development of the Breton--French pair has been
   described in \citep{tyers10b}. The bilingual % tyers09b
   dictionaries were not built with polysemy in mind from the outset,
@@ -749,8 +751,8 @@ intervals overlap, we will also perform paired bootstrap resampling
 
 For creating the test corpora, and for providing a source language corpus 
 for training, and a target language corpus for scoring, we used four parallel corpora: 
-\addtolength{\itemsep}{-0.15in}
 \begin{itemize}
+\addtolength{\itemsep}{-0.10in}
 \item \textbf{Ofis ar Brezhoneg} (\texttt{OAB}): This parallel corpus
   of Breton and French has been collected specifically for
   lexical-selection experiments from translations produced by
@@ -885,27 +887,27 @@ module, which returns all the possible translations, and for each
 ambiguous word, the translation is selected which is found aligned in
 the reference.
 
-\begin{table*}
-\begin{center}
- \begin{tabular}{|l|r|r|r|r|r|}
-    \hline 
-    {\bf Pair}      & {\bf Lines} & {\bf SL words} & {\bf TL words} & {\bf Amb. words} & {\bf \% ambig} \\ 
-    \hline 
-     \texttt{br-fr} & 1,000 & 13,854  & 13,878  & 1,163 & 8.39   \\
-    \hline 
-     \texttt{mk-en} & 1,000 & 13,441 & 14,228  & 3,872 & 28.80 \\
-    \hline 
-     \texttt{eu-es} & 1,000 & 7,967 & 11,476  & 1,360  & 17.07 \\
-    \hline 
-     \texttt{en-es} & 1,000 & 19,882 & 20,944  & 1,469  & 7.38 \\
-    \hline 
- \end{tabular} 
-\end{center}
- \caption{Statistics about the test corpora. The columns \textbf{amb.\ words} and \textbf{\%~ambig} gives 
-    the number of word with more than one translation and the percentage of SL words which have 
-    more than one translation respectively.}
-  \label{table:test-corp}
-\end{table*}
+%  \begin{table*}
+%  \begin{center}
+%   \begin{tabular}{|l|r|r|r|r|r|}
+%      \hline 
+%      {\bf Pair}      & {\bf Lines} & {\bf SL words} & {\bf TL words} & {\bf Amb. words} & {\bf \% ambig} \\ 
+%      \hline 
+%       \texttt{br-fr} & 1,000 & 13,854  & 13,878  & 1,163 & 8.39   \\
+%      \hline 
+%       \texttt{mk-en} & 1,000 & 13,441 & 14,228  & 3,872 & 28.80 \\
+%      \hline 
+%       \texttt{eu-es} & 1,000 & 7,967 & 11,476  & 1,360  & 17.07 \\
+%      \hline 
+%       \texttt{en-es} & 1,000 & 19,882 & 20,944  & 1,469  & 7.38 \\
+%      \hline 
+%   \end{tabular} 
+%  \end{center}
+%   \caption{Statistics about the test corpora. The columns \textbf{amb.\ words} and \textbf{\%~ambig} gives 
+%      the number of word with more than one translation and the percentage of SL words which have 
+%      more than one translation respectively.}
+%    \label{table:test-corp}
+%  \end{table*}
 
 After this process, we selected 1,000 sentence pairs at random for
 testing (\texttt{test}), 1,000 for development (\texttt{dev})\footnote{The development corpus  
@@ -917,8 +919,8 @@ the smallest corpus (for Breton--French) after sentence discarding was
 only little over 4,000 sentences long. Table~\ref{table:input-corp}
 gives statistics about the size of the input corpora, and how many
 sentences were left after processing for testing, training and
-development. Table~\ref{table:test-corp} gives information about the
-test corpora.
+development. %Table~\ref{table:test-corp} gives information about the
+%test corpora.
 
 \subsection{Reference systems}
 
@@ -956,7 +958,7 @@ We compare our method to the following reference (or baseline) systems:
   selection is to use the existing machine translation system to
   generate all the possible translations for an input sentence, and
   then score these translations \emph{on-line} on a model of the
-  target language. The highest scoring sentence is then picked as
+  target language. The highest scoring sentence is then 
   output. This is the method used by %@@@ \cite{carbonell06} and
   \cite{melero07a}.  
 % We used a five-gram language model of surface
