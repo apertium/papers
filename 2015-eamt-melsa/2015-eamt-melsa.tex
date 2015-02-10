@@ -64,6 +64,7 @@
 \begin{document}
 \maketitle
 
+
 \begin{abstract}
   This article presents a method of training maximum-entropy models to
   perform lexical selection in a rule-based machine translation
@@ -748,6 +749,7 @@ intervals overlap, we will also perform paired bootstrap resampling
 
 For creating the test corpora, and for providing a source language corpus 
 for training, and a target language corpus for scoring, we used four parallel corpora: 
+\addtolength{\itemsep}{-0.15in}
 \begin{itemize}
 \item \textbf{Ofis ar Brezhoneg} (\texttt{OAB}): This parallel corpus
   of Breton and French has been collected specifically for
@@ -922,6 +924,7 @@ test corpora.
 We compare our method to the following reference (or baseline) systems:
 
 \begin{itemize}
+\addtolength{\itemsep}{-0.05in}
 \item \textbf{Linguist-chosen defaults}. 
 %! \comment{FSM: This should go to the section explaining Apertium.}  
   A bilingual dictionary in an
@@ -1141,7 +1144,9 @@ selections for each sentence using the target-language model online.
 %Research Grant) coordinated by the Universidad Complutense de Madrid.
 %
 \bibliographystyle{apalike}
+\small{
 \bibliography{2015-eamt-melsa}
+}
 
 
 \end{document}
