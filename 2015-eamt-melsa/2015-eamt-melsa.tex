@@ -161,8 +161,8 @@ word-aligned parallel corpus.
 % method is that it relies on a parallel corpus for the language pair,
 % something which is not always available.
 
-The remainder of the article is organised as follows: 
-\todo[inline]{FMT: Add article structure}
+%The remainder of the article is organised as follows: 
+%\todo[inline]{FMT: Add article structure}
 
 \section{Method}
 
@@ -198,10 +198,14 @@ the principle of maximum entropy has been applied to the problem of
 lexical selection before; in particular, \cite{berger1996} cast the
 problem of lexical selection in statistical MT as a classification
 problem. They learn a separate maximum-entropy classifier for each SL
-word form,\comment{[:we do too, integrate this later]} using SL context to
+word form,
+%\comment{[:we do too, integrate this later]} 
+using SL context to
 distinguish between possible translations. These classifiers are then
 incorporated into the translation model of their word-based SMT
-system.\comment{[how is our work different?]}  In their approach, a
+system.
+%\comment{[how is our work different?]}  
+In their approach, a
 classifier consists of a set of binary feature functions and
 corresponding weights for each feature. 
 In both \cite{berger1996} and our method, features are defined in the
@@ -425,36 +429,37 @@ Evaluation will be performed using four language pairs. These pairs
 have been selected as they include languages with different
 morphological complexity, and different amounts of resources available
 --- although for all pairs there is a parallel corpus available, which
-is used for evaluation (see Section \ref{ss:measures}). Table~\ref{table:lang-pair-stats} 
-presents statistics about the development status of each of the language 
-pairs chosen, including the number of bilingual dictionary entries, coverage of
-test corpora and translational ambiguity of the bilingual dictionary. Translation
-ambiguity is provided for both all words, and for only ambiguous open-category 
-words. In the experiments, lexical-selection rules are learnt for the open categories
-of adjective, noun and verb.
+is used for evaluation (see Section \ref{ss:measures}). 
+% Table~\ref{table:lang-pair-stats} 
+%presents statistics about the development status of each of the language 
+%pairs chosen, including the number of bilingual dictionary entries, coverage of
+%test corpora and translational ambiguity of the bilingual dictionary. Translation
+%ambiguity is provided for both all words, and for only ambiguous open-category 
+%words. In the experiments, lexical-selection rules are learnt for the open categories
+%of adjective, noun and verb.
 
-\begin{table*}
-  \centering
-  \begin{tabular}{|l|r|r|r|r|r|}
-    \hline
-    \multirow{2}{*}{\textbf{Pair}} & \textbf{Lexical} & \multirow{2}{*}{\textbf{Ambig.}} & \textbf{Na\"{i}ve}& \textbf{Total} & \textbf{Ambig. of}\\\
-                          & \textbf{items} &                            & \textbf{coverage} & \textbf{ambig.} & \textbf{ambig. words}\\
-    \hline
-    \texttt{br-fr} & 27,690 & 235  &  94.47 \%  & 1.02 & 2.5 \\
-    \texttt{mk-en} & 33,229 & 1,323 & 92.17 \%  & 1.37 & 2.8 \\
-    \texttt{eu-es} & 19,323 & 455 & 91.70 \% & 1.08 & 2.4 \\
-    \texttt{en-es} & 30,186 & 822 & 98.08 \% & 1.05 & 2.2 \\
-    \hline
-  \end{tabular}
-  \caption{Statistics about development status of language pairs. The second
-    column gives the number of entries in the bilingual dictionaries of the systems;
-    the third column gives the total number of source language words with more 
-    than one translation in the target language; the fourth column gives the coverage
-    of the dictionaries on the test corpus (see section~\ref{sec:eval-corpus}); the fifth
-    column gives the total mean ambiguity for open classes (nouns, verbs, adjectives);
-    and the final column gives the mean ambiguity for ambiguous words in open classes.}
-  \label{table:lang-pair-stats}
-\end{table*}
+% \begin{table*}
+%   \centering
+%   \begin{tabular}{|l|r|r|r|r|r|}
+%     \hline
+%     \multirow{2}{*}{\textbf{Pair}} & \textbf{Lexical} & \multirow{2}{*}{\textbf{Ambig.}} & \textbf{Na\"{i}ve}& \textbf{Total} & \textbf{Ambig. of}\\\
+%                           & \textbf{items} &                            & \textbf{coverage} & \textbf{ambig.} & \textbf{ambig. words}\\
+%     \hline
+%     \texttt{br-fr} & 27,690 & 235  &  94.47 \%  & 1.02 & 2.5 \\
+%     \texttt{mk-en} & 33,229 & 1,323 & 92.17 \%  & 1.37 & 2.8 \\
+%     \texttt{eu-es} & 19,323 & 455 & 91.70 \% & 1.08 & 2.4 \\
+%     \texttt{en-es} & 30,186 & 822 & 98.08 \% & 1.05 & 2.2 \\
+%     \hline
+%   \end{tabular}
+%   \caption{Statistics about development status of language pairs. The second
+%     column gives the number of entries in the bilingual dictionaries of the systems;
+%     the third column gives the total number of source language words with more 
+%     than one translation in the target language; the fourth column gives the coverage
+%     of the dictionaries on the test corpus (see section~\ref{sec:eval-corpus}); the fifth
+%     column gives the total mean ambiguity for open classes (nouns, verbs, adjectives);
+%     and the final column gives the mean ambiguity for ambiguous words in open classes.}
+%   \label{table:lang-pair-stats}
+% \end{table*}
 
 %\todo[inline]{FSM: More information about the language pairs needs to be
 %  given: naive coverage, average lexical ambiguity over all words and
@@ -470,7 +475,7 @@ of adjective, noun and verb.
 
 \begin{description}
 \item[Breton--French:] Development of the Breton--French pair has been
-  described in two articles \citep{tyers09b,tyers10b}. The bilingual
+  described in \citep{tyers10b}. The bilingual % tyers09b
   dictionaries were not built with polysemy in mind from the outset,
   but some entries were added later to start work on lexical
   selection. The version used in this paper is SVN revision
@@ -508,7 +513,7 @@ of adjective, noun and verb.
     most frequent translation among the set of possible translations
     and marks it as the \emph{linguistic default} translation.} As a
   result of attempting to include all possible translations, the
-  average number of translations per word is much higher (see table~\ref{table:lang-pair-stats})
+  average number of translations per word is much higher % (see table~\ref{table:lang-pair-stats})
 than in other pairs.  
 % The transfer rules were written
 %  by hand to treat translation problems in the corpus. The version of
@@ -660,7 +665,8 @@ description of how the reference was built is given in
 section~\ref{sec:eval-corpus}.
 
 \subsubsection{Machine translation performance} 
-\comment{This part of the text needs compressing and merging} This is
+%! \comment{This part of the text needs compressing and merging} 
+This is
 an extrinsic evaluation, which ideally would test how much the system
 improves as regards an approximate measurement of final translation
 quality in a real system. For this task, we use the widely-used {\sc
@@ -670,16 +676,18 @@ performance of the module will depend greatly on (a) the coverage of
 the bilingual dictionaries of the RBMT system in question, and (b) the
 number of reference translations. It is also worth noting that
 successful lexical selections may not lead to successful translations
-due to inadequate transfer of morphological features. For example, if
-we translate the Spanish phrase \emph{La gente le dice que no venga}
-`The people tell him not to come', where \emph{decir} can be
-translated as `say' or `tell' in English, and our machine translation
-system generates `The people \emph{tells} him not to come', it would
-be counted the same as if it were `The people \emph{says} him not to
-come', although the lexical selection made was more
-adequate. Generation errors --- where a word is found in the bilingual
-dictionary, but not in the target language morphological dictionary
---- may also lead to the same problem.  The {\sc bleu} metric \citep{papineni02} is
+due to inadequate transfer of morphological features. 
+% For example, if
+% we translate the Spanish phrase \emph{La gente le dice que no venga}
+% `The people tell him not to come', where \emph{decir} can be
+% translated as `say' or `tell' in English, and our machine translation
+% system generates `The people \emph{tells} him not to come', it would
+% be counted the same as if it were `The people \emph{says} him not to
+% come', although the lexical selection made was more
+% adequate. Generation errors --- where a word is found in the bilingual
+% dictionary, but not in the target language morphological dictionary
+% --- may also lead to the same problem.  
+The {\sc bleu} metric \citep{papineni02} is
 included only as it is commonly used to evaluate MT systems. 
 
 %@@@ Other
@@ -800,19 +808,21 @@ of the lexical transfer module which had been disambiguated by hand by
 one or more human annotators. As this did not exist for any language
 pair, we decided to automatically annotate a test set for each
 language pair using a process similar to that described by
-\cite{vickrey05}. The decision was made to automatically annotate
-instead of hand annotate for a number of reasons. Firstly, the time
-involved in hand-annotating approximately 30 pages of text, per
-language pair, would be prohibitive. Secondly, linguists were not
-available for all of the language pairs. One disadvantage
-to this method is that the set of
-translations for each ambiguous word may not be complete as it will
-only include the translation which is found in the corresponding
-sentence in the parallel corpus. Further disadvantages are that 
-not all sentence pairs in the parallel corpus will have translations
-that are able to be generated by the MT system (for
-example the reference translation has a word which is not found in
-the bilingual dictionaries on the MT system).
+\cite{vickrey05}. 
+
+% The decision was made to automatically annotate
+% instead of hand annotate for a number of reasons. Firstly, the time
+% involved in hand-annotating approximately 30 pages of text, per
+% language pair, would be prohibitive. Secondly, linguists were not
+% available for all of the language pairs. One disadvantage
+% to this method is that the set of
+% translations for each ambiguous word may not be complete as it will
+% only include the translation which is found in the corresponding
+% sentence in the parallel corpus. Further disadvantages are that 
+% not all sentence pairs in the parallel corpus will have translations
+% that are able to be generated by the MT system (for
+% example the reference translation has a word which is not found in
+% the bilingual dictionaries on the MT system).
 
 
 \begin{table*}
@@ -927,16 +937,16 @@ We compare our method to the following reference (or baseline) systems:
   example, \emph{pisu} in Basque translates to \emph{peso} `weight'
   and \emph{piso} `flat' in Spanish. If the translation correspondence
   \emph{pisu $\rightarrow$ peso} is perceived as the most frequent or
-  the most general, it is marked as the default by the linguist who is
-  creating the bilingual dictionary.
+  the most general, it is marked as the default by the author of the dictionary. % linguist who is
+%  creating the bilingual dictionary.
 
 \item \textbf{Oracle}.  The results for the oracle system are those
   achieved by passing the automatically annotated reference
   translation through the rest of the modules of the MT system. This
   is included to give an idea of the upper bound for the performance
-  of the lexical-selection module. If all of the lexical choices were
-  made in accordance with the reference, this is the result that would
-  be achieved.
+  of the lexical-selection module. % If all of the lexical choices were
+%  made in accordance with the reference, this is the result that would
+%  be achieved.
 
 \item \textbf{Target language model} (TLM). One method of lexical
   selection is to use the existing machine translation system to
@@ -944,17 +954,18 @@ We compare our method to the following reference (or baseline) systems:
   then score these translations \emph{on-line} on a model of the
   target language. The highest scoring sentence is then picked as
   output. This is the method used by %@@@ \cite{carbonell06} and
-  \cite{melero07a}.  We used a five-gram language model of surface
-  forms generated from the target-language side of the parallel
-  corpus. %\comment{FSM: Why not a much larger corpus? (I reviewer may ask)}
-%(see section~\ref{sec:eval-corpus}). 
-  This was the best performing system when we compared different
-  approaches, but is impractical for real-world MT because the number
-  of translations to perform grows exponentially with the length of
-  the sentence.  It represents the best that can be achieved using the
-  current systems without access to a parallel corpus. In our work, it
-  was implemented with the IRST language modelling toolkit
-  \cite{federico08a}.
+  \cite{melero07a}.  
+% We used a five-gram language model of surface
+%   forms generated from the target-language side of the parallel
+%   corpus. %\comment{FSM: Why not a much larger corpus? (I reviewer may ask)}
+% %(see section~\ref{sec:eval-corpus}). 
+%   This was the best performing system when we compared different
+%   approaches, but is impractical for real-world MT because the number
+%   of translations to perform grows exponentially with the length of
+%   the sentence.  It represents the best that can be achieved using the
+%   current systems without access to a parallel corpus. In our work, it
+%   was implemented with the IRST language modelling toolkit
+%   \cite{federico08a}.
 \end{itemize}
 
 
