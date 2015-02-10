@@ -1,0 +1,310 @@
+%
+% File eamt15.tex, an adaptation of eamt14.tex (which was a copy of
+% eamt12.tex)
+%
+% Contact: eamt2015@dlsi.ua.es
+
+%%% To ease future customizations, various replaceables have been paramaterized
+%%% as listed in the newcommands section
+
+\documentclass[11pt]{article}
+\usepackage{eamt15}
+\usepackage{times}
+\usepackage{latexsym}
+\setlength\titlebox{6.5cm}    % Expanding the titlebox
+%%% YOUR PACKAGES BELOW THIS LINE %%%
+
+\usepackage{multirow}
+
+\newcommand{\confname}{EAMT 2015}
+\newcommand{\website}{http://www.eamt2015.org/}
+\newcommand{\contactname}{the conference chairs (Felipe
+  S\'anchez-Mart\'inez, Gema Ram\'irez-S\'anchez and Fred Hollowood)}
+\newcommand{\contactemail}{eamt2015@dlsi.ua.es}
+\newcommand{\conffilename}{eamt15}
+\newcommand{\downloadsite}{http://www.eamt2015.org/}
+\newcommand{\paperlength}{$8$ (eight)}
+\newcommand{\shortpaperlength}{$4$ (four)}
+
+\title{A gap-filling approach to evaluation of machine translation for assimilation}
+
+\author{First Author\\
+  Affiliation / Address line 1\\
+  Affiliation / Address line 2\\
+  Affiliation / Address line 3\\
+  {\tt email@domain}  \And
+  Second Author\\
+  Affiliation / Address line 1\\
+  Affiliation / Address line 2\\
+  Affiliation / Address line 3\\
+  {\tt email@domain}}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+   ... 
+\end{abstract}
+
+\section{Introduction}
+
+As suggested by [Church, Hovy 1993], modern machine translation (MT) systems may
+be divided into two broad categories according to their purpose: post-editing systems, e.g.
+Google Translate 1 , and assimilation systems, e.g. Apertium 2 . Both kinds may be
+systematically evaluated, either to control for quality in the development process or to
+compare the systems. The evaluation methods, however, differ depending on the type of
+the system. The methods are described in detail in [Church, Hovy 1993].
+In this work I perform the evaluation of an assimilation MT system called Apertium.
+Apertium is an open-source community-maintained project that provides translation for
+39 language pairs. The goal of this study is to assess whether machine translation
+performed by this system assists users in understanding the gist of texts in an unknown
+language. The evaluation is performed in three separate experiments for the following
+translation directions: Basque to Spanish, English to Kazakh, and Tatar to Russian.
+I build on the methodology established in [Trosterund, Unhammer 2012] and
+\cite{oregan2013}, which are the works describing previous evaluations of
+Apertium language pairs. [O’Regan, Forcada 2013] proposes the gap-filling task as a
+means of assessing participant’s understanding of text. The same methodology is used in
+this work and described in detail in the section below.
+
+\section{Experiment design}
+
+\subsection{Methodology}
+
+This experiment is based on an idea that understanding of text may be assessed through
+gap-filling questions. If the participant is able to restore principal information that had
+been left out from the text, they are assumed to have understood it.
+During the course of the experiment, the participants are offered sentences in their native
+language (the target language of the pair), with some key words left out. Each sentence
+has a counterpart in the source language of the pair. I use four different task settings:
+\begin{itemize}
+\item  Target sentence only. The participants are asked to fill the gaps not being given
+any context. This task serves as a baseline score and as an indicator of phrases
+that can be completed using common knowledge or language intuition (e.g.
+idioms and strong collocations);
+\item  Target sentence and source sentence. In addition to the question, the participants
+are offered the same sentence in the source language of the pair. By setup, the
+participants have no command of this language, however, it may help them to fill
+in proper nouns or loan words;
+\item  Target sentence and machine-translated hint. In addition to the task, the
+participants see the source sentence translated via Apertium. This type of task is
+used for measuring the contribution of machine translation to understanding the
+gist of text;
+\item  Target sentence and both the source and machine-translated hint. This task is
+added mostly for completing the possible combination of task types, and to check
+for any unexpected insights, should they arise.
+\end{itemize}
+
+\subsection{Material}
+
+The data are collected separately for each experiment. A set of sentences is drawn from
+parallel corpora. The source sentences are translated into target language via Apertium.
+The target sentences are processed with a special script that removes significant words.
+For the current experiments, the word is removed if it falls into a list of allowed parts of
+speech:
+\begin{itemize}
+\item nouns;
+\item proper nouns;
+\item adjectives;
+\item adverbs;
+\item lexical verbs.
+\end{itemize}
+Parts of speech are determined automatically with Apertium morphological analyser. To
+rule out homonymy, the set of all possible POS attributions of a given word is checked
+against the POS list. If all of the possible word analyses match the parts of speech listed
+above, it is considered a candidate for removal.
+Each sentence in the set is evaluated in three “gap densities” (ratio of gaps to words in the
+sentence): 10\%, 20\% and 30\%. After the script finds all possible keyword candidates in
+the sentence, it removes the specified percentage of words, evenly distributing the gaps
+across the sentence.
+To exclude headlines and also to allow at least one gap in 10\%-gap sentences, only the
+sentences over 10 words long are used in the tasks.
+The sentences for each experiment are drawn from various parallel text sources:
+\begin{enumerate}
+\item  For Basque-Spanish, from the corpus of legal texts Memorias de traducción del
+Servicio Oficial de Traductores del IVAP 3
+\item  For English-Kazakh, from the official website of the President of the Republic of
+Kazakhstan 4
+\item  For Tatar-Russian, from the following sources on three different topics:
+  \begin{enumerate}
+    \item  Casual conversations, from a textbook 5 of spoken Tatar;
+    \item  Legal texts, from the Constitution and laws 6 of Tatarstan;
+    \item  News, from the President of Tatarstan website 7 .
+  \end{enumerate}
+\end{enumerate}
+
+Each set features 36 pairs of sentences. For the first two experiments the pairs are drawn
+randomly from the corpora, for Tatar-Russian, compiled by hand by the developer of the
+language pair. After processing, the material is transformed into XML used for uploading
+into the evaluation system (see section 2.4).
+
+\subsection{Participants}
+
+For each experiment we called for native speakers of L2 of the language pair (i.e.
+Spanish, Kazakh, and Russian) who had no command of L1 of the pair (Basque, English
+and Tatar, respectively). We had 11 participants in Basque-Spanish evaluation, 8 in
+English-Kazakh, and 28 in Tatar-Russian (although not everyone has completed their task
+in full, see discussion).
+
+\subsection{Procedure}
+
+The evaluations take place online, in a system 8 designed specifically for various MT
+evaluation tasks. We adapted the code to accommodate for the gap-filling tasks. The
+tasks are uploaded into the system and manually distributed between the participants by
+the following rules:
+\begin{enumerate}
+\item  Each participant evaluates every sentence (understood as a succession of words),
+a total of 36;
+\item  Each participant evaluates 9 sentences in each of the four modes (section 2.1);
+\item  All sentences of the set are evaluated with 10, 20 and 30\% of words removed;
+\item  Each sentence-mode-percentage combination is evaluated by at least three
+\end{enumerate}
+The participants are given the instructions in their native language above each task. The
+tasks are split into smaller sets for the participants’ convenience. The instructions are to
+
+read all the available hints and fill each gap with one suitable word, guessing if unsure.
+Participants’ answers are recorded and marked correct or incorrect automatically. In
+addition, the time taken to fill the gaps in one sentence is recorded.
+Since gap-filling task requires open answers, it is possible that the participants may
+provide words that fit the gaps well, but do not match the original answer. To account for
+these cases, we process all the answers to detect possible synonyms. An answer is
+considered a candidate synonym if given by two or more evaluators and does not match
+the answer key. We record each candidate synonym along with the answer key and the
+context sentence. Based on this data, a native speaker of the target language decides
+whether the candidate synonym is indeed synonymic to the answer key in the given
+context. We then check participants’ results against the compiled synonym list and
+increase scores where appropriate.
+
+\section{Expected results}
+
+We expect that, for tasks with MT assistance, the users will fill more gaps correctly,
+which would correspond to better understanding of text. Therefore, the percentage of
+correct answers should be higher for MT and two-hint kinds of tasks than for tasks with
+source sentence as a hint and no hint at all. If the percentage were lower, we would
+expect an error in experiment design.
+
+\section{Results}
+
+The experiment results are presented in the tables below. The first table of each set shows
+the proportion of correct answers depending on evaluation mode and gap density. The
+percentage is spread across all evaluators, that is, we divide the number of correct
+answers given by all evaluators by the number of questions answered by all evaluators.
+The second table of the set shows average time it took to fill the gaps in one sentence. To
+reduce the noise from participants who were distracted during evaluation, when
+calculating times we remove all the results over 6 minutes (the mode is approximately
+two minutes).
+
+\begin{table}
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+    10\%                                    &   58.02            & 55.70       & 35.06        & 45.45        \\
+    20\%                                    &   65.96            & 68.42       & 33.85        & 33.56        \\
+    30\%                                    &   49.84            & 37.28       & 24.23        & 18.93        \\
+    \hline
+  \end{tabular}
+  \caption{Basque--Spanish: Gaps successfully filled (\%), using a synonym list}
+  \label{table:res-eus-spa}
+\end{table}
+
+\begin{table}
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+    10\%                                    & 34.78              & 39.02       & 40.00        & 31.43        \\
+    20\%                                    & 43.84              & 33.80       & 47.83        & 60.34        \\
+    30\%                                    & 41.38              & 36.56       & 44.94        & 31.09        \\
+    \hline
+  \end{tabular}
+  \caption{English--Kazakh: Gaps successfully filled (\%), using a synonym list}
+  \label{table:res-eng-kaz}
+\end{table}
+
+\begin{table}
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+    10\%                                    & 53.89              & 66.06       & 54.43        & 46.34        \\
+    20\%                                    & 65.33              & 60.73       & 48.39        & 39.43        \\
+    30\%                                    & 59.90              & 52.59       & 39.66        & 38.39        \\
+    \hline
+  \end{tabular}
+  \caption{Tatar--Russian: Gaps successfully filled (\%), using a synonym list}
+  \label{table:res-tat-rus}
+\end{table}
+
+
+
+\section{Discussion}
+
+The following trends may be derived from the data above:
+\begin{enumerate}
+\item  In general, tasks with MT assistance score higher than task without MT
+assistance;
+\item  The more words are removed from context, the more difficult it is to fill the gaps
+(see below for exceptions);
+\item  Task without hints take less time to complete than others.
+\end{enumerate}
+The first two trends align with our expectations. Higher scores on MT tasks indicate
+better understanding of text. The large number of gaps in the sentence makes it more
+difficult to predict the answer based on the context, and also leaves more room for
+translation mistakes. We would expect that tasks without hints take the largest amount of
+time rather than that the smallest, since the participant must come up with their own
+answer unassisted. However, in the no-hint task the participant reads only one sentence,
+as opposed to two or three in other tasks, which may be the source of difference.
+In Basque-Spanish and Tatar-Russian these trends are defined reasonably well. In
+English-Kazakh, however, the scores for source-hint task (a parallel sentence in English
+for assistance) are systematically higher than for other types of tasks. In addition, a 20\%no-hint task stands out with 60\% accuracy, which is substantially higher than any other
+scores for this experiment.
+Having analyzed the tasks and the responses for English-Kazakh, I have found the
+following possible reasons of the obtained results:
+\begin{enumerate}
+\item  The experiment was planned for 11 evaluators, although only 8 attempted the
+tasks and 6 completed them in full. Because of this, the sentences were evaluated
+once or twice, and some were not attempted at all. To reliably compare results
+across different categories, all tasks must be completed;
+\item  Due to an error during experiment design, some sentences are not repeated across
+categories, which also suggests that we may not compare these percentages;
+\item  The outlier score of 60\% is made up by three sentences. Two of these scored
+unusually high. It appeared that one of them is a news headline, and the other
+contains clichés such as “express condolences”. There may also be interference
+from other tasks of the set, because some of the sentences are drawn from the
+same news article. We would expect the same sentences to contribute to higher
+percentage in other task modes, but they were not completed there;
+\item  It may be the case that the participants have at least some command of English,
+which would have helped them to derive extra information in the source-hint
+\end{enumerate}
+It remains questionable whether we can compare results for different gap densities. In the
+Basque-Spanish and Tatar-Russian experiments the 10, 20 and 30\% sets were comprised
+of the same sentences. However, in each case different words were removed. It appears
+that some content words are easier to fill than the others. This may explain why in
+Basque-Spanish the 20\% MT tasks are completed with better accuracy than 10\% tasks.
+It may be worth noting that the majority of the participants reported feeling frustrated in
+the course of their work, especially while working on the no-hint tasks. 9 out of 51
+participants quit the experiment before completing it.
+
+\section{Future work}
+The experiment may be repeated for any language pair (provided a parallel corpus) and
+any machine translation system. To enhance the results, the procedure may be amended
+in the following ways:
+\begin{enumerate}
+\item  Reduce the number of questions per participant. In the above experiments each
+participant filled from 110 to 187 gaps, divided into small groups. Reducing the
+amount of work may increase task completion rate;
+\item  Increase the number of participants per experiment. The more evaluators work on
+every question, the more reliable the data;
+\item  Design the tasks with different gap densities in such a way that e.g. the 20\% task
+contains all the gaps of the 10\% task, plus any additional ones;
+\item  Draw sentences from large corpora. This will reduce the influence of previous
+tasks, which may provide the context for other tasks in the set.
+\end{enumerate}
+
+
+\bibliographystyle{apalike}
+
+\bibliography{2015-eamt-assim}
+
+\end{document}
