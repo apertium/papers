@@ -14,6 +14,7 @@
 \usepackage{natbib}
 \usepackage{color}
 \usepackage[small,bf]{caption}
+\usepackage{microtype} % a.k.a. conference paper magic
 
 \usepackage[backgroundcolor=lightgray]{todonotes}
 %\usepackage[disable]{todonotes}
@@ -33,7 +34,6 @@
 % \newcommand{\comment}[1]{{\small{\texttt{$\clubsuit$#1$\clubsuit$}}}}
 %\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
 \newcommand{\comment}[1]{\todo{#1}}
-
 
 
 
@@ -62,8 +62,11 @@
 \date{}
 
 \begin{document}
+
 \maketitle
 
+
+% \renewcommand{\baselinestretch}{0.97} % the undetectable 3% squeeze
 
 \begin{abstract}
   This article presents a method of training maximum-entropy models to
@@ -87,7 +90,7 @@
 \section{Introduction}
 
 Corpus-based MT has been the primary research direction in the field 
-of machine translation in recent years. However, RBMT systems are 
+of machine translation in recent years. However, rule based MT (RBMT) systems are 
 still being developed, and there are many successful commercial 
 and non-commercial systems. One reason for the continued development
 of RBMT systems is that in order to be successful, corpus-based MT requires parallel corpora in
