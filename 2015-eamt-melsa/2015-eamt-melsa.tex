@@ -123,17 +123,17 @@ example in a collocation.
 
 \subsection{Prior work}
 %@@@ \comment{This section should be ironed out a bit.}  
-In their
-pioneering work, \cite{dagan1994word} used the term
+%In their pioneering work, 
+\cite{dagan1994word} used the term
 \emph{word sense disambiguation} to refer to what is actually target
 word selection in machine translation; they used a parser to identify
 some syntactic relations such as subject--object or subject--verb.
 After generating all the possible translations for a given
 input sentence using an ambiguous bilingual dictionary, they extract the syntactic
 tuples from the target language and count the frequency in a previously-trained target-language 
-model of tuples.  They use maximum-likelihood estimation to calculate the probability of a given 
-target language tuple being the translation of a given source language tuple, with
-an automatically determined threshold for confidence.
+model of tuples.  They use maximum-likelihood estimation to calculate the probability that a given 
+target language tuple is the translation of a given source language tuple, with
+an automatically determined confidence threshold.
 
 Then \cite{berger1996} illustrated the use of maximum-entropy classifiers
 on the specific problem of lexical selection in IBM-style word-based
@@ -147,9 +147,9 @@ language model. The translation model provides probabilities of
 translation between words or word sequences (often referred to as
 \emph{phrases}) in the source and target language. The target-language
 model provides probabilities of word sequences in the target language.
-As regards rule-based machine translation, \cite{sanchez07a} proposed 
-to use information from the target language to train a statistical 
-lexical-selection module but did not provide any experiments. 
+%As regards rule-based machine translation, \cite{sanchez07a} proposed 
+%to use information from the target language to train a statistical 
+%lexical-selection module but did not provide any experiments. 
 %@@@ \todo[inline]{FMT: integrate \citep{sanchez07a} somewhere here}
 \cite{marechek10} trained a maximum-entropy lexical selector for their TectoMT rule-based system
 using a bilingual corpus.  More recently, \cite{tyers12a} presented a
@@ -793,7 +793,7 @@ which is adequate, but is not found in the reference translation. A
 second disadvantage is that the word alignments may not be 100\%
 reliable, which decreases the accuracy of the annotated corpus. An
 alternative method is described by \cite{zinovjeva2000}, who manually
-tags a selection of ambiguous words in English sentences with their
+tags ambiguous words in English sentences with their % a selection of
 translation in Swedish. %The size of the annotated corpus is not
 %mentioned. 
 %\cite{specia2005a} use a parallel corpus, but eschew using
@@ -806,14 +806,19 @@ translation in Swedish. %The size of the annotated corpus is not
 %!  paragraph (the need for an evaluation corpus and how it is built) in
 %!  advance. Most probably where the measures are defined.}
 
-The ideal situation would be to have, as described by
-\cite{zinovjeva2000}, a hand-annotated evaluation corpus for testing
-the performance of the lexical-selection module. That is, the output
-of the lexical transfer module which had been disambiguated by hand by
-one or more human annotators. As this did not exist for any language
-pair, we decided to automatically annotate a test set for each
-language pair using a process similar to that described by
-\cite{vickrey05}. 
+%The ideal situation would be to have, as described by
+%\cite{zinovjeva2000}, a hand-annotated evaluation corpus for testing
+%the performance of the lexical-selection module. That is, the output
+%of the lexical transfer module which had been disambiguated by hand by
+%one or more human annotators. As this did not exist for any language
+%pair, we decided to automatically annotate a test set for each
+%language pair using a process similar to that described by
+%\cite{vickrey05}. 
+%
+Ideally we would have had a hand-annotated evaluation corpus, as
+described by \cite{zinovjeva2000}, but as this did not exist, we 
+decided to automatically annotate a test set using a process similar to 
+that described by \cite{vickrey05}.
 
 % The decision was made to automatically annotate
 % instead of hand annotate for a number of reasons. Firstly, the time
@@ -912,11 +917,13 @@ the reference.
 After this process, we selected 1,000 sentence pairs at random for
 testing (\texttt{test}), 1,000 for development (\texttt{dev})\footnote{The development corpus  
   was used for checking the value for frequency pruning of features.} and 
-left the remainder for training. This is a smaller
-number of sentences than used in typical evaluations (such as the WMT
-series, \cite{callisonburch2012}), but was motivated by the fact that
-the smallest corpus (for Breton--French) after sentence discarding was
-only little over 4,000 sentences long. Table~\ref{table:input-corp}
+left the remainder for training. 
+%This is a smaller
+%number of sentences than used in typical evaluations (such as the WMT
+%series, \cite{callisonburch2012}), but was motivated by the fact that
+%the smallest corpus (for Breton--French) after sentence discarding was
+%only little over 4,000 sentences long. 
+Table~\ref{table:input-corp}
 gives statistics about the size of the input corpora, and how many
 sentences were left after processing for testing, training and
 development. %Table~\ref{table:test-corp} gives information about the
@@ -933,17 +940,20 @@ We compare our method to the following reference (or baseline) systems:
   A bilingual dictionary in an
   Apertium language pair contains correspondences between lexical
   forms. The dictionaries allow many lexical forms to translate to one
-  lexical form. For example, \emph{ahizpa} and \emph{arreba} in Basque
-  both translate to \emph{hermana} `sister' in Spanish.\footnote{The
-    difference being that \emph{ahizpa} is a sister of a female, and
-    \emph{arreba} is a sister of a male.} But a single lexical form
+  lexical form. 
+%For example, \emph{ahizpa} and \emph{arreba} in Basque
+%  both translate to \emph{hermana} `sister' in Spanish.\footnote{The
+%    difference being that \emph{ahizpa} is a sister of a female, and
+%    \emph{arreba} is a sister of a male.} 
+  But a single lexical form
   may not have more than one translation without further
   processing. If there are many possible translations of a lexical
-  form, then one must be marked as the \emph{default} translation. For
-  example, \emph{pisu} in Basque translates to \emph{peso} `weight'
-  and \emph{piso} `flat' in Spanish. If the translation correspondence
-  \emph{pisu $\rightarrow$ peso} is perceived as the most frequent or
-  the most general, it is marked as the default by the author of the dictionary. % linguist who is
+  form, then one must be marked as the \emph{default} translation. 
+%For
+%  example, \emph{pisu} in Basque translates to \emph{peso} `weight'
+%  and \emph{piso} `flat' in Spanish. If the translation correspondence
+%  \emph{pisu $\rightarrow$ peso} is perceived as the most frequent or
+%  the most general, it is marked as the default by the author of the dictionary. % linguist who is
 %  creating the bilingual dictionary.
 
 \item \textbf{Oracle}.  The results for the oracle system are those
