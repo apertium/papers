@@ -75,6 +75,9 @@
 
 \cite{Karlsson-90}
 
+% objectives:
+%% make a free/open-source morphology for russian based on Z's dictionary that includes stress
+
 \section{Review of literature}
 % ROB + FRAN
 % different CGs 
@@ -91,14 +94,21 @@
 \subsection{Morphological analyser}
 % ROB
 
+\cite{yablonsky1999russian}
+
 \subsection{Disambiguation rules}
 
 \begin{table}
+  \centering
   \begin{tabular}{lrrr}
     \hline
          & {\sc select} & {\sc remove} & {\sc map} \\
+    Safe & & & \\
+    
+    Heuristic &  & & \\
     \hline
   \end{tabular}
+  \caption{...}
 \end{table}
 
 \section{Development process}
@@ -108,6 +118,7 @@
 \section{Evaluation}
 
 \begin{table}
+  \centering
   \begin{tabular}{|l|r|r|}
     \hline
     Missing lexeme & &  \\          % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
