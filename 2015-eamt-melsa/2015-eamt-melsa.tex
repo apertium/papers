@@ -234,6 +234,17 @@ t~ =~ \textit{pez}~ \\ \mathrm{and}~ \\ \textit{handi}~ \mathrm{follows}~ \texti
 This feature considers a context of zero words to the left of the
 problem word and one word to the right of it.
 
+%%% THIS IS IN A WEIRD PLACE BUT WE WANT IT ON PAGE 3 -FMT
+\begin{figure*}
+\begin{displaymath}
+  \label{eq:steps}
+  S \to \mbox{\framebox{\parbox{0.8cm}{\textit{pre- lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{1.0cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{0.8cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
+\end{displaymath}
+ \caption{A schema of the training process}
+ \label{fig:lexselschema}
+\end{figure*}
+
+
 As a result of training, each feature in the classifier is assigned a
 weight $\lambda_k^s$. Combining these weights of active features
 as in equation~(\ref{eq:max-ent-sum}) yields the probability of a
@@ -279,15 +290,7 @@ and generation take place; a function $\tau(g_i,S)$ represents the
 result of these last stages, which we will call \emph{post-lexsel},
 and returns a finished translation of a specific lexical-selection
 path $g_i$ of sentence $S$. Figure~\ref{fig:lexselschema} shows
- this process schematically.\todo{Can we try to bring the figure closer?}
-\begin{figure*}
-\begin{displaymath}
-  \label{eq:steps}
-  S \to \mbox{\framebox{\parbox{0.8cm}{\textit{pre- lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{1.0cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{0.8cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
-\end{displaymath}
- \caption{A schema of the training process}
- \label{fig:lexselschema}
-\end{figure*}
+ this process schematically. %%%\todo{Can we try to bring the figure closer?}
 
 %Taking our previous example for the parallel corpus, Table~\ref{table:ex-monocorp} 
 %presents an example of five possible samples. 
@@ -306,7 +309,7 @@ The maximum-entropy model is trained instead using the fractional count
 $p(g_i|S)$ for the events $(s,t,c)$ found in \(g_i\), that is, when in
 \(g_i\) $t$ is the translation for \(s\) in context \(c\). That is, as
 if event $(s,t,c)$ had been seen a fractional number $p(g_i|s)$ of
-times. We prune features\todo{features or contexts?} occurring less than a certain number of times 
+times. We prune features \todo{features or contexts?} occurring less than a certain number of times 
 in the corpus, using a development corpus to guide pruning (see section~\ref{sec:eval-ref-results}).
 %@@@ \comment{Reword this to avoid repetition} 
 The method used here
@@ -397,7 +400,7 @@ tags --- in the bilingual dictionary.
 
 The
 whole translation task evaluation is an \emph{extrinsic} evaluation, which
-tests how much the system improves as regards final translation
+tests how the system improves as regards final translation
 quality in a real system.
 
 The lexical-selection module should be as language-independent as
@@ -423,7 +426,7 @@ it comprises an engine, a toolbox and data to build rule-based machine
 translation systems. Translation is implemented as a pipeline consisting
 of the following modules: morphological analysis, morphological disambiguation,
 lexical transfer, lexical selection, structural transfer and morphological
-generation. The relevant \todo{OK?}  modules of the system for this method are the \emph{lexical transfer}
+generation. The relevant modules of the system for this method are the \emph{lexical transfer}
 module which provides for each source language lexical form a set of possible
 target language forms and the \emph{structural transfer} and \emph{morphological generation}
 modules which for each pair of source language lexical form and translation 
@@ -435,8 +438,8 @@ produce a final translation in the target language. \todo{The wording of this la
 Evaluation will be performed using four language pairs. These pairs
 have been selected as they include languages with different
 morphological complexity, and different amounts of resources available
---- although for all pairs there is at least \todo{check "at least" here} a parallel corpus available, which
-is used for evaluation (see Section \ref{ss:measures}). 
+--- although for all pairs there is a parallel corpus available
+for evaluation (see Section \ref{ss:measures}). 
 % Table~\ref{table:lang-pair-stats} 
 %presents statistics about the development status of each of the language 
 %pairs chosen, including the number of bilingual dictionary entries, coverage of
@@ -520,20 +523,22 @@ is used for evaluation (see Section \ref{ss:measures}).
     word. Where there is more than one possible translation, the
     person who is writing the dictionary chooses the most general or
     most frequent translation among the set of possible translations
-    and marks it as the \emph{linguistic default} translation.}\todo{Doesn't this happen in br--fr too?} As a
+    and marks it as the \emph{linguistic default} translation.} As a
   result of attempting to include all possible translations, the
   average number of translations per word is much higher % (see table~\ref{table:lang-pair-stats})
 than in other pairs.  
 % The transfer rules were written
-%  by hand to treat translation problems in the corpus. The version of
-%  the software used in this paper is SVN revision
-%  41476.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}.
+%  by hand to treat translation problems in the corpus. 
+The version of
+  the software used in this paper is SVN revision
+  41476.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}
 \item[Basque--Spanish:] The development of the Basque to Spanish pair
   is described in \cite{ginesti09}. 
 % The bilingual dictionary was taken
 %  from the free/open-source Matxin system \citep{mayor2011}. 
   Alternative translations were included in the bilingual
-  dictionary.% , but non-default translations were marked with a
+  dictionary.\todo{SVN rev}
+% , but non-default translations were marked with a
 %  direction restriction\comment{FSM: This needs to be carefully
 %    explained to avoid confusing the reader.}.\footnote{The bilingual
 %    dictionaries in Apertium are bidirectional. They contain entries
@@ -555,9 +560,9 @@ than in other pairs.
   more than one translation. The most-frequent translation, as judged
   by the language pair developer, is marked as the \emph{default}
   translation and non-default translations added according to
-  frequency.\todo{give SVN rev. for all?}\todo{Default is explained for some LPs only, why?} 
-% The version used in this paper is SVN revision
-%  41387.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
+  frequency.\todo{Default is explained for some LPs only, why?} 
+ The version used in this paper is SVN revision
+  41387.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
 \end{description}
 
 
@@ -736,8 +741,8 @@ included only as it is commonly used to evaluate MT systems.
 %quality.
 
 \subsubsection{Confidence intervals}
-Confidence intervals for both metrics will be calculated through the
-\emph{bootstrap resampling} method~\citep{efron94} as described
+Confidence intervals for both metrics will be calculated through 
+\emph{bootstrap resampling}~\citep{efron94} as described
 by~\citet{koehn04}. %\footnote{Broadly speaking, % and \citet{zhang04}
 %  this involves iteratively taking a random sample (with replacements)
 %  from the test set and computing the score for that sample. The
@@ -773,16 +778,16 @@ The corpus has recently been made available online through {\sc opus}.\footnote{
 \item \textbf{South-East European Times} (\texttt{SETimes}): Described
   in \cite{tyers10}, this corpus is a multilingual corpus of the
   Balkan languages (and English) in the news domain. The Macedonian and English
-  portion will be used.\todo{Not in OPUS?}
+  part will be used.%\todo{Not in OPUS?}
 \item \textbf{Open Data Euskadi} (\texttt{OpenData}): This is a Basque
   and Spanish parallel corpus made from the translation memories of
   the \emph{Herri Arduralaritzaren Euskal Erakundea} `Basque Institute
   of Public
-  Administration'.\footnote{\url{http://tinyurl.com/eu-es-tm}}\todo{shortened URL}
+  Administration'.\footnote{\url{http://tinyurl.com/eu-es-tm}}
 \item \textbf{European Parliament Proceedings} (\texttt{EuroParl}):
   Described by \cite{koehn05a}, this is a multilingual corpus of the
   European Union official languages. We are using the English--Spanish
-  data from version 7.\todo{URL?}
+  data from version 7.\footnote{\url{http://www.statmt.org/europarl/}}
 \end{itemize}
 
 There are a number of approaches to creating evaluation corpora for
@@ -898,27 +903,29 @@ module, which returns all the possible translations, and for each
 ambiguous word, the translation is selected which is found aligned in
 the reference.
 
-%  \begin{table*}
-%  \begin{center}
-%   \begin{tabular}{|l|r|r|r|r|r|}
-%      \hline 
-%      {\bf Pair}      & {\bf Lines} & {\bf SL words} & {\bf TL words} & {\bf Amb. words} & {\bf \% ambig} \\ 
-%      \hline 
-%       \texttt{br-fr} & 1,000 & 13,854  & 13,878  & 1,163 & 8.39   \\
-%      \hline 
-%       \texttt{mk-en} & 1,000 & 13,441 & 14,228  & 3,872 & 28.80 \\
-%      \hline 
-%       \texttt{eu-es} & 1,000 & 7,967 & 11,476  & 1,360  & 17.07 \\
-%      \hline 
-%       \texttt{en-es} & 1,000 & 19,882 & 20,944  & 1,469  & 7.38 \\
-%      \hline 
-%   \end{tabular} 
-%  \end{center}
-%   \caption{Statistics about the test corpora. The columns \textbf{amb.\ words} and \textbf{\%~ambig} gives 
-%      the number of word with more than one translation and the percentage of SL words which have 
-%      more than one translation respectively.}
-%    \label{table:test-corp}
-%  \end{table*}
+  \begin{table}
+  \begin{center}
+   \begin{tabular}{|l|r|r|r|r|}
+      \hline 
+      %{\bf Pair}      & {\bf Lines} & {\bf SL words} & {\bf TL words} & {\bf Amb. words} & {\bf \% ambig} \\ 
+      {\bf Pair}      & {\bf SL} & {\bf TL} & {\bf Amb.} & {\bf \% amb.} \\ 
+      \hline 
+       \texttt{br-fr} & 13,854  & 13,878  & 1,163 & 8.39   \\
+      \hline 
+       \texttt{mk-en} & 13,441 & 14,228  & 3,872 & 28.80 \\
+      \hline 
+       \texttt{eu-es} & 7,967 & 11,476  & 1,360  & 17.07 \\
+      \hline 
+       \texttt{en-es} & 19,882 & 20,944  & 1,469  & 7.38 \\
+      \hline 
+   \end{tabular} 
+  \end{center}
+   \caption{Statistics about the test corpora. The columns \textbf{SL} and \textbf{TL} give the number
+      of tokens in the source and target languages respectively. The columns \textbf{amb.\ words} and \textbf{\%~ambig} gives 
+      the number of word with more than one translation and the percentage of SL words which have 
+      more than one translation respectively.}
+    \label{table:test-corp}
+  \end{table}
 
 After this process, we selected 1,000 sentence pairs at random for
 testing (\texttt{test}), 1,000 for development (\texttt{dev})\footnote{The development corpus  
@@ -932,8 +939,8 @@ left the remainder for training.
 Table~\ref{table:input-corp}
 gives statistics about the size of the input corpora, and how many
 sentences were left after processing for testing, training and
-development. \todo{Why do ambiguity numbers change so much from the paper? Having devel and test in different columns would make the caption smaller and the table would still fit}%Table~\ref{table:test-corp} gives information about the
-%test corpora.
+development. \todo{Why do ambiguity numbers change so much from the paper? Having devel and test in different columns would make the caption smaller and the table would still fit}Table~\ref{table:test-corp} gives information about the
+test corpora.
 \todo{``av. amb'' is a corpus average or a dictionary average?}
 
 \subsection{Reference systems}
@@ -1020,15 +1027,15 @@ have eventually been used for each language pair.
  \begin{center}
     \begin{tabular}{|l|r|r|}
         \hline
-        \textbf{Pair} & \textbf{Pruned} & \textbf{\# features} \\\hline
+        \textbf{Pair} & \textbf{Pruned} & \textbf{\# features} \\
         \hline
-        {\bf br-fr}  & $< 5$              & 5,277    \\ 
+        {\tt br-fr}  & $< 5$              & 5,277    \\ 
         \hline
-        {\bf mk-en} & $< 7$              & 205,494 \\ 
+        {\tt mk-en} & $< 7$              & 205,494 \\ 
         \hline
-        {\bf eu-es} & $< 7$              & 196,024\\
+        {\tt eu-es} & $< 7$              & 196,024\\
         \hline
-        {\bf en-es} & $< 7$              & 195,605\\
+        {\tt en-es} & $< 7$              & 195,605\\
         \hline
     \end{tabular}
  \end{center}
