@@ -518,10 +518,10 @@ for evaluation (see Section \ref{ss:measures}).
   corpus using {\sc giza++} \citep{och03a} was checked to ensure that it was 
   an adequate translation, and if so marked as the 
   default.\footnote{A bilingual dictionary in Apertium
-    \citep{forcada2011apertium} may contain more than one possible
+    \citep{forcada2011apertium} may contain $>1$ possible
     target-language translation for a given source-language
-    word. Where there is more than one possible translation, the
-    person who is writing the dictionary chooses the most general or
+    word. Where there is $>1$ possible translation, the
+    dictionary writer chooses the most general or
     most frequent translation among the set of possible translations
     and marks it as the \emph{linguistic default} translation.} As a
   result of attempting to include all possible translations, the
@@ -537,7 +537,7 @@ The version of
 % The bilingual dictionary was taken
 %  from the free/open-source Matxin system \citep{mayor2011}. 
   Alternative translations were included in the bilingual
-  dictionary.\todo{SVN rev}
+  dictionary. The version used is SVN revision 44846.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-eu-es}}
 % , but non-default translations were marked with a
 %  direction restriction\comment{FSM: This needs to be carefully
 %    explained to avoid confusing the reader.}.\footnote{The bilingual
@@ -975,7 +975,7 @@ We compare our method to the following reference (or baseline) systems:
 \item \textbf{Oracle}.  The results for the oracle system are those
   achieved by passing the automatically annotated reference
   translation through the rest of the modules of the MT system. This
-  is included to give an idea of the upper bound for the performance
+  is included to show the upper bound for the performance
   of the lexical-selection module. % If all of the lexical choices were
 %  made in accordance with the reference, this is the result that would
 %  be achieved.
