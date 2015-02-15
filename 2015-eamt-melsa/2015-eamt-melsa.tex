@@ -395,7 +395,7 @@ whole translation task. Evaluating lexical-selection performance is an
 selection module disambiguates the lexical-transfer
 output as compared to a gold-standard corpus. The lexical 
 transfer output is the result of looking up the translations of the 
-source-language \emph{lexical forms} --- combinations of lemma and 
+source-language \emph{lexical forms} --- lemmas and  % combinations of lemma and tags
 tags --- in the bilingual dictionary.
 
 The
@@ -595,11 +595,15 @@ the lexical-selection error rate ({\sc ler}),
    \hline
    $S$        & \emph{el} & \emph{estiu} & \emph{ser} & \emph{un} & \emph{estaci\'{o}} & \emph{llarg} \\
    \hline
-   $T_s(s_i)$ & \{the\} & \{summer\} & \{be\} & \{a\} & \{station, season\} &  \{long, lengthy\} \\
+   $T_s(s_i)$        & \{the\} & \{summer\} & \{be\} & \{a\} & \{station, season\} &  \{long, lengthy\} \\
    \hline 
-   $T_r(s_i)$ & \{the\} & \{summer\} & \{be\} & \{a\} &  \{season\} & \{long\} \\
+   $T_r(s_i)$        & \{the\} & \{summer\} & \{be\} & \{a\} &  \{season\} & \{long\} \\
    \hline
-   $T_t(s_i)$ & \{the\} & \{summer\} & \{be\} & \{a\} &  \{station\} & \{long\} \\
+   $T_t(s_i)$        & \{the\} & \{summer\} & \{be\} & \{a\} &  \{station\} & \{long\} \\
+   \hline
+   $\textrm{amb}(s_i)$ & 0     & 0          & 0      & 0     & 1            & 1 \\
+   \hline
+   $\mathrm{diff}(T_r(s_i), T_t(s_i))$ & 0     & 0          & 0      & 0     & 1            & 0 \\
    \hline
  \end{tabular}
  \caption{An example input sentence in Catalan and the three sets of
@@ -632,8 +636,9 @@ translation is selected.
 The
 function $T_r(s_i)$ returns the set of reference translations which
 are acceptable for $s_i$ in sentence $S$.\footnote{Depending on how
-  the reference is built, the set returned by $T_r(s_i)$ may be
-  incomplete in the sense that it may not include all possible
+  the reference is built, the set returned by $T_r(s_i)$ % may be
+  % incomplete in the sense that it 
+  may not include all possible
   acceptable translations.} For a
 single sentence, we define the lexical selection error rate (LER) of
 that sentence as
@@ -672,7 +677,7 @@ as each ambiguous word has a \emph{default} translation.}
 %  contain ambiguous words (unfair).}
 
 The table in Figure~\ref{fig:ler-example} gives an
-overview of the inputs. \todo{Could we add "diff()" and "amb()" if we had some space?} In the description it is assumed that the
+overview of the inputs. In the description it is assumed that the
 reference translation has been annotated by hand. However, hand
 annotation is a time-consuming process, and was not possible. A
 description of how the reference was built is given in
@@ -760,7 +765,7 @@ intervals overlap, we will also perform paired bootstrap resampling
 \subsection{Corpora}
 \label{sec:eval-corpus}
 
-For creating the test corpora, and for providing a source language corpus 
+For creating the test corpora, providing a source language corpus 
 for training, and a target language corpus for scoring, we used four parallel corpora: 
 \begin{itemize}
 \addtolength{\itemsep}{-0.10in}
@@ -848,27 +853,25 @@ that described by \cite{vickrey05}.
 
 \begin{table*}
 \begin{center}
- \begin{tabular}{|l|r|r||r|r|r|r|}
+ \begin{tabular}{|l|r|r||r|r|r|r|r|}
     \hline  
     %Pair           & Lines & Words & Extracted & \texttt{train} & \texttt{test} & \texttt{dev} & No. ambig & Av. ambig \\ 
-    {\bf Pair}      & {\bf Lines} & {\bf Extract.} & \texttt{train} & \texttt{other} & {\bf No. amb} & {\bf Av. amb} \\ 
+    {\bf Pair}      & {\bf Lines} & {\bf Extract.} & \texttt{train} & \texttt{dev} & \texttt{test} & {\bf No. amb} & {\bf Av. amb} \\ 
     \hline  
-     %\texttt{br-fr} & 57,305  & 702,328  & 4,668 & 2,668 & 1,000  & 1,000 & 603  & 1.07 \\
-     \texttt{br-fr} & 57,305  & 4,668 & 2,668 & 2,000  & 603  & 3.06 \\
+     %\texttt{br-fr} & 57,305  & 702,328  & 4,668 & 2,668 & & 1,000  & 1,000 & 603  & 1.07 \\
+     \texttt{br-fr} & 57,305  & 4,668 & 2,668 & 1,000 & 1,000  & 603  & 3.06 \\
     \hline  
      %\texttt{mk-en} & 190,493  & 4,259,338  & 19,747  & 17,747  & 1,000 & 1,000 & 13,134  & 1.86  \\
-     \texttt{mk-en} & 190,493  & 19,747  & 17,747  & 2,000 & 13,134  & 3.06  \\
+     \texttt{mk-en} & 190,493  & 19,747  & 17,747  & 1,000 & 1,000 & 13,134  & 3.06  \\
     \hline
      %\texttt{eu-es} & 765,115  & 10,190,079  & 87,907  & 85,907   & 1,000 & 1,000 & 1,806  & 1.30 \\
-     \texttt{eu-es} & 765,115  & 87,907  & 85,907  & 2,000 & 1,806  & 3.11 \\
+     \texttt{eu-es} & 765,115  & 87,907  & 85,907  & 1,000 & 1,000 & 1,806  & 3.11 \\
     \hline
      %\texttt{en-es} & 1,467,708 & 30,154,098  & 312,162 & 310,162 & 1,000 & 1,000 & 2,082  & 1.08 \\
-     \texttt{en-es} & 1,467,708 & 312,162 & 310,162 & 2,000 & 2,082  & 2.28 \\
+     \texttt{en-es} & 1,467,708 & 312,162 & 310,162 & 1,000 & 1,000 & 2,082  & 2.28 \\
     \hline  
  \end{tabular}
- \caption{Statistics about the source corpora. The column {\bf other}
-   gives the number of sentences reserved for testing (1,000) and
-   development (1,000). The column {\bf no.\ amb} gives the number of
+ \caption{Statistics about the source corpora. The column {\bf no.\ amb} gives the number of
    unique tokens with more than one possible translation. The column
    {\bf av.\ amb} gives the average number of translations per ambiguous
    word. This is calculated by looking up each word in the corpus in
@@ -939,9 +942,8 @@ left the remainder for training.
 Table~\ref{table:input-corp}
 gives statistics about the size of the input corpora, and how many
 sentences were left after processing for testing, training and
-development. \todo{Why do ambiguity numbers change so much from the paper? Having devel and test in different columns would make the caption smaller and the table would still fit}Table~\ref{table:test-corp} gives information about the
+development. \todo{Why do ambiguity numbers change so much from the paper?}Table~\ref{table:test-corp} gives information about the
 test corpora.
-\todo{``av. amb'' is a corpus average or a dictionary average?}
 
 \subsection{Reference systems}
 
@@ -1039,7 +1041,7 @@ have eventually been used for each language pair.
         \hline
     \end{tabular}
  \end{center}
- \caption{Number of features (rules) in each rule set and pruning frequency.}
+ \caption{Features in each rule set and pruning frequency.}
  \label{table:maxent-features}
 \end{table}
 
