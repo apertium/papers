@@ -1,0 +1,152 @@
+
+[302] FALSENEG: Тис<np><al><m><nn><sg><nom> ['Тиса<np><al><f><nn><pl><gen>', 'тис<n><m><nn><sg><acc>', 'тис<n><m><nn><sg><nom>']
+
+    Missing from analyser
+
+[534] FALSENEG: что<prn><rel><nt><nn><sg><nom> ['что<cnjsub>']
+  
+    ref: ^что/что¹<prn><rel><nt><nn><sg><nom><SELECT:508>$
+    tst: ^что/что²<cnjsub><SELECT:519>/¬что¹<prn><itg><nt><nn><sg><acc><SELECT:519>/¬что¹<prn><itg><nt><nn><sg><nom><SELECT:519>/¬что¹<prn><rel><nt><nn><sg><acc><SELECT:519>/¬что¹<prn><rel><nt><nn><sg><nom><SELECT:519>$
+  
+    SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
+
+[1457] FALSENEG: франко-норманнский<adj><nt><an><sg><acc> ['франк<n><m><nn><sg><acc>', 'франк<n><m><nn><sg><nom>', 'франк<n><m><aa><sg><nom>', '^о', 'о<pr>', 'о<ij>', '-^норманнское', 'норманнский<adj><nt><an><sg><acc>', 'норманнский<adj><nt><an><sg><nom>']
+
+    Missing from analyser
+
+[1799] FALSENEG: перед<pr> ['перёд<n><m><nn><sg><nom>', 'перёд<n><m><nn><sg><acc>']
+
+    REMOVE Pr IF (1C Cm) ;
+
+    Typo in text " , перед , " 
+
+[4636] FALSENEG: поселение<n><nt><nn><sg><acc> ['поселение<n><nt><nn><sg><nom>']
+
+    REMOVE Det + $$NGDAIP IF (1C N) (1C NGDAIP - $$NGDAIP) (0 NGDAIP - $$NGDAIP) (1 NGDAIP - $$NGDAIP) ;
+
+    REMOVE Acc IF (NOT 1* TV) (NOT 0 AccAdv) (NOT -1* TV) (-1C* IV BARRIER Fin) (NOT -1* Prep/Acc BARRIER NGDAIP - Acc) ;
+
+    "в этот период"
+
+[1763] FALSENEG: столица<n><f><nn><sg><gen> ['столица<n><f><nn><pl><nom>']
+
+    SELECT $$NGDAIP IF (0 N + $$NGDAIP) (1 @CNP LINK 1 N + $$NGDAIP) ;
+    
+    ^знать/знать²<vblex><impf><iv><inf>/знать²<vblex><impf><tv><inf>/знать³<paren>/знать¹<n><f><nn><sg><acc>/знать¹<n><f><nn><sg><nom>$
+    ^проблема/проблема<n><f><nn><sg><nom>$
+    ^перенаселения/перенаселение<n><nt><nn><pl><acc>/перенаселение<n><nt><nn><pl><nom>/перенаселение<n><nt><nn><sg><gen>$
+    ^столицы/столица<n><f><nn><pl><nom><SELECT:1064>/¬столица<n><f><nn><pl><acc><SELECT:1064>/¬столица<n><f><nn><sg><gen><SELECT:1064>$
+    ^и/и<cnjcoo><@CNP><MAP:907>/¬и²<n><nt><nn><pl><acc><REMOVE:548>/¬и²<n><nt><nn><pl><dat><REMOVE:548>/¬и²<n><nt><nn><pl><gen><REMOVE:548>/¬и²<n><nt><nn><pl><ins><REMOVE:548>/¬и²<n><nt><nn><pl><nom><REMOVE:548>/¬и²<n><nt><nn><pl><prp><REMOVE:548>/¬и²<n><nt><nn><sg><acc><REMOVE:548>/¬и²<n><nt><nn><sg><dat><REMOVE:548>/¬и²<n><nt><nn><sg><gen><REMOVE:548>/¬и²<n><nt><nn><sg><ins><REMOVE:548>/¬и²<n><nt><nn><sg><nom><REMOVE:548>/¬и²<n><nt><nn><sg><prp><REMOVE:548>/¬и¹<ij><REMOVE:949>/¬и<adv><REMOVE:953>$
+    ^проблема/проблема<n><f><nn><sg><nom>$
+    ^транспорта/транспорт<n><m><nn><sg><gen>$
+    ^./.<sent>$
+    
+[2078] FALSENEG: Афины<np><al><f><nn><pl><gen> ['Афина<np><ant><f><sg><voc>']
+    
+    SELECT Sg IF (0 Prop) (0 Gen) (-1 N) (1 EOS) (NOT -1* Fin + Pl) ;
+    
+    ^Население/население<n><nt><nn><sg><acc>/население<n><nt><nn><sg><nom>$
+    ^Афин/Афина<np><ant><f><pl><acc>/Афина<np><ant><f><pl><gen>/Афина<np><ant><f><sg><voc>/Афины<np><al><f><nn><pl><gen>$
+    ^вместе/вместе<adv>$
+    ^с/с<pr>$
+    
+[2851] FALSENEG: свой<det><pos><nt><an><sg><prp> ['свой<prn><pos><m><an><sg><prp>', 'свой<prn><pos><nt><an><sg><prp>']
+    
+    SELECT Pron IF (0C Prp) (0 Pron OR Det) (NOT 1* Prp BARRIER (*) - Adv - DetIndecl) ;
+    
+    ^имеют/иметь<vblex><impf><tv><pres><p3><pl>$
+    ^,/,<cm>$
+    ^в/в<pr>$
+    ^большинстве/большинство<n><nt><nn><sg><prp>$
+    ^своём/свой<det><pos><nt><an><sg><prp>$
+    ^,/,<cm>$
+    
+[3372] FALSENEG: что<cnjsub> ['что<prn><rel><nt><nn><sg><acc>', 'что<prn><rel><nt><nn><sg><nom>']
+
+    SELECT Rel IF (0 Pron OR Adv) (-1 Cm LINK -1 Prn/To) ;
+    
+[3556] FALSENEG: что<cnjsub> ['что<prn><rel><nt><nn><sg><acc>', 'что<prn><rel><nt><nn><sg><nom>']
+
+    SELECT Rel IF (0 Pron OR Adv) (-1 Cm LINK -1 Prn/To) ;
+    
+[4578] FALSENEG: как<cnjsub> ['как<adv><rel>']
+    
+    SELECT Adv IF (0 Adv LINK 0 CC) (-1C Fin) (1 Modif LINK NOT 1* Fin BARRIER CLB);
+    
+[4050] FALSENEG: ИИ<abbr> ['Ия<np><al><f><nn><pl><acc>', 'Ия<np><al><f><nn><pl><nom>', 'Ия<np><al><f><nn><sg><gen>', 'Ия<np><ant><f><pl><nom>', 'Ия<np><ant><f><sg><gen>']
+
+    Missing thing
+    
+[4602] FALSENEG: концепция<n><f><nn><sg><dat> ['концепция<n><f><nn><pl><acc>', 'концепция<n><f><nn><pl><nom>', 'концепция<n><f><nn><sg><prp>', 'концепция<n><f><nn><sg><gen>']
+
+    
+    REMOVE Dat IF (NOT 0 Prn/Sebe) (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron) (NOT 1* V/Dat) (NOT -1* V/Dat) (NOT -1* Prep/Dat) (NOT -1C A + Dat) ;
+      # This rule is quite good, but should be after any rules that remove +Prp
+      #! Мне не жарко
+      #! Мне восем лет
+    
+
+[5051] FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
+
+    Missing analysis
+
+
+[5430] FALSENEG: киевский<adj><nt><an><sg><nom> ['киевский<adj><nt><an><sg><acc>']
+[5431] FALSENEG: княжество<n><nt><nn><sg><nom> ['княжество<n><nt><nn><sg><acc>']
+
+    REMOVE NGDAIP - Acc - Prp - Loc IF (-1C* Pr/V OR Pr/Na BARRIER (*) - Adv - Comp - DetIndecl - ModAcc - ModPrp) ;
+       #! В 1960-х электрифицированные высокоскоростные железные дороги появились ...
+    
+    ^В/в<pr><SELECT:457>/¬В.<abbr><SELECT:457>/¬в.<abbr><SELECT:457>$
+    ^дальнейшем/дальнейший<adj><m><an><sg><prp>/дальнейший<adj><nt><an><sg><prp>$
+    ^Киевское/киевский<adj><nt><an><sg><acc>/¬киевский<adj><nt><an><sg><nom><REMOVE:432>$
+    ^княжество/княжество<n><nt><nn><sg><acc>/¬княжество<n><nt><nn><sg><nom><REMOVE:432>$
+    ^продолжило/продолжить<vblex><perf><iv><past><nt><sg>/продолжить<vblex><perf><tv><past><nt><sg>$
+    
+[6395] FALSENEG: Тони<np><ant><m><sg><nom> ['Тоня<np><ant><f><pl><nom>', 'Тоня<np><ant><f><sg><gen>', 'тоня<n><f><nn><pl><nom>', 'тоня<n><f><nn><sg><gen>', 'тонуть<vblex><impf><iv><imp><p2><sg>', 'тоня<n><f><nn><pl><acc>']
+
+
+    Missing lexeme
+
+[6519] FALSENEG: использование<n><nt><nn><sg><nom> ['использование<n><nt><nn><sg><acc>']
+
+    Typo should be использовании
+
+
+[7085] FALSENEG: стать<vblex><perf><iv><inf> ['стать<n><f><nn><sg><acc>']
+
+    SELECT $$NGDAIP IF (0 N + $$NGDAIP) (-1 @CNP LINK -1 N + $$NGDAIP) ;
+
+[8039] FALSENEG: святой<adj><m><an><sg><nom> ['святая<n><f><nn><sg><prp>', 'святая<n><f><aa><sg><prp>', 'святой<adj><f><an><sg><prp>']
+
+    SELECT $$NGDAIP IF (0 N + $$NGDAIP) (-1 @CNP LINK -1 N + $$NGDAIP) ;
+
+[8373] FALSENEG: ортодоксальность<n><f><nn><sg><dat> ['ортодоксальность<n><f><nn><pl><acc>', 'ортодоксальность<n><f><nn><pl><nom>', 'ортодоксальность<n><f><nn><sg><gen>']
+
+    REMOVE Dat IF (NOT 0 Prn/Sebe) (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron) (NOT 1* V/Dat) (NOT -1* V/Dat) (NOT -1* Prep/Dat) (NOT -1C A + Dat) ;
+      # This rule is quite good, but should be after any rules that remove +Prp
+      #! Мне не жарко
+      #! Мне восем лет
+    
+[9626] FALSENEG: рельс<n><m><nn><pl><gen> ['рельс<n><m><nn><sg><acc>', 'рельс<n><m><nn><sg><nom>']
+
+    ^из/из<pr>$
+    ^железных/железный<adj><mfn><an><pl><gen>$
+    ^рельс/рельс<n><m><nn><pl><gen>$
+    ^,/,<cm>$
+    
+    Missing classification: indecl.
+
+[9701] FALSENEG: производить<vblex><impf><tv><pprs><actv><mfn><an><pl><nom> ['производящий<adj><mfn><nn><pl><acc>']
+
+    SELECT A + $$NGDAIP IF (1C* N + $$NGDAIP BARRIER Punct OR Pr OR Lparen OR NGDAIP - $$NGDAIP LINK -1C* A + $$NGDAIP BARRIER Punct OR Pr OR Lparen OR NGDAIP - $$NGDAIP);
+       #! Движущей силой в поездах являются локомотивы, использующие электричество или производящие собственную мощность, обычно дизельными двигателями.
+
+[9813] FALSENEG: что<prn><rel><nt><nn><sg><nom> ['что<cnjsub>']
+
+
+    SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
+
+    Паровые двигатели позволили строить железные дороги на большие расстояния, что, в свою очередь, стало одним из важнейших компонентов индустриальной революции. 
+
+
