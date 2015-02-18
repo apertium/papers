@@ -19,6 +19,7 @@
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
+\usepackage[small,bf]{caption}
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
 %\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
 
@@ -104,11 +105,12 @@
     \hline
          & {\sc select} & {\sc remove} & {\sc map} \\
     Safe & & & \\
-    
+    Safe heuristic  & & & \\
     Heuristic &  & & \\
+    Syntax labelling &  &   & \\ 
     \hline
   \end{tabular}
-  \caption{...}
+  \caption{Rules in the grammar are separated into four sections. }
 \end{table}
 
 \section{Development process}
@@ -117,18 +119,39 @@
 
 \section{Evaluation}
 
+\begin{table*}
+  \centering
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \textbf{Domain} & \textbf{Tokens} & \textbf{Precision} & \textbf{Recall} & \textbf{Ambig. solved} \\
+    \hline
+    Wikipedia       & 7,857      & 0.506        & 0.996    & 44.92\%  \\
+    News            & 642        & 0.471        & 0.990    & 41.60\%  \\
+    Literature      & 1,652      & 0.473        & 0.984    & 42.95\%  \\
+    \hline
+    Total           & 10,150     & 0.498        &  0.994   &  44.39\% \\
+    \hline
+  \end{tabular}
+  \caption{Results for the test corpora.}
+\end{table*}
+
+
 \begin{table}
   \centering
   \begin{tabular}{|l|r|r|}
+    
     \hline
-    Missing lexeme & &  \\          % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
-    Partial lexeme & &  \\          % франко-норманнское
-    Missing analysis & &  \\        % 
-    Equally valid analysis & & \\   % большой<adj><comp><pred> ['больше<adv>'] (?)
-    Correct reading removed & &  \\ % 
+    Error in original        &   & 2 \\
+    Missing lexeme           &   & 8  \\          % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
+    Partial lexeme           &   & 2  \\          % франко-норманнское, рельс
+    Missing analysis         &   &    \\        % 
+    Equally valid analysis   &   &    \\   % большой<adj><comp><pred> ['больше<adv>'] (?)
+    Correct reading removed  &   & 34   \\ % 
+    \hline
+                             &   & 46 \\
     \hline
   \end{tabular}
-
+  \caption{Error analysis of false negatives}
 \end{table}
 
 % unknown words from test corpus, categorisation
