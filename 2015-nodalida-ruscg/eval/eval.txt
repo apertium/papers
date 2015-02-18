@@ -165,4 +165,168 @@
     
 === Dostoevsky ===
 
+[58] FALSENEG: один<num><m><nn><sg><acc> ['один<prn><m><an><sg><nom>', 'один<num><m><an><sg><nom>']
+
+    ^понял/понять<vblex><perf><tv><past><m><sg>$
+    ^как/как<cnjsub>$
+    ^следует/следовать<vblex><impf><iv><pres><p3><sg>$
+    ^один/один<num><m><nn><sg><acc><REMOVE:783>$
+    ^из/из<pr>$
+    ^самых/самый<prn><mfn><an><pl><gen>/самый<det><mfn><an><pl><gen>$
+    
+    
+    REMOVE Acc IF (-1C Fin + IV) (NOT 0 AccAdv) ;
+    
+
+[128] FALSENEG: и<adv> ['и<cnjcoo>']
+
+    ^видимо/видимо<adv>$
+    ^давно/давно<adv>$
+    ^уже/уже<adv>$
+    ^и/и<adv><REMOVE:953>$
+    ^глубоко/глубоко<adv>$
+    ^пораженный/поразить<vblex><perf><tv><pp><pasv><m><an><sg><nom>$
+    ^своей/свой<det><pos><f><an><sg><ins>$
+    ^идеей/идея<n><f><nn><sg><ins>$
+    
+
+    REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+      #! Существует и более мягкая точка зрения; её занимают ак отдельные соционики, критикующие, ...
+    
+
+[140] FALSENEG: что<prn><itg><nt><nn><sg><acc> ['что<cnjsub>']
+
+    ^знаете/знать²<vblex><impf><tv><pres><p2><pl>$
+    ^ли/ли<part>$
+    ^,/,<cm>$
+    ^что/что²<cnjsub><SELECT:519>$
+    ^,/,<cm>$
+    ^что/что¹<prn><itg><nt><nn><sg><acc><SELECT:519>$
+    ^бы/бы<part>$
+    ^вы/вы<prn><pers><p2><pl><nom>$
+    ^ни/ни<part>$
+    ^написали/написать¹<vblex><perf><tv><past><mfn><pl>$
+    
+
+    SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
+
+
+[146] FALSENEG: что<prn><itg><nt><nn><sg><acc> ['что<cnjsub>']
+
+    SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
+
+[151] FALSENEG: что<prn><itg><nt><nn><sg><acc> ['что<cnjsub>']
+
+    SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
+
+[211] FALSENEG: этот<det><dem><m><an><sg><prp> ['это<prn><dem><nt><nn><sg><prp>', 'этот<prn><dem><m><aa><sg><prp>', 'этот<prn><dem><m><an><sg><prp>', 'этот<prn><dem><nt><an><sg><prp>']
+
+    ^в/в<pr><SELECT:457>$
+    ^этом/этот<det><dem><m><an><sg><prp><SELECT:691>$
+    ^же/же<part>$
+    ^роде/род<n><m><nn><sg><prp>$
+    ^такой/такой<det><m><nn><sg><acc>$
+    ^фазис/фазис<n><m><nn><sg><acc>$
+    
+    SELECT Pron IF (0C Prp) (0 Pron OR Det) (NOT 0 Num) (NOT 1* Prp BARRIER (*) - Adv - DetIndecl) ;
+    
+[218] FALSENEG: и<adv> ['и<cnjcoo>']
+    
+    REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+      #! Существует и более мягкая точка зрения; её занимают ак отдельные соционики, критикующие, ...
+    
+[223] FALSENEG: и<adv> ['и<cnjcoo>']
+    
+    REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+      #! Существует и более мягкая точка зрения; её занимают ак отдельные соционики, критикующие, ...
+    
+[227] FALSENEG: что<prn><rel><nt><nn><sg><acc> ['что<cnjsub>']
+
+    SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
+
+[252] FALSENEG: и<adv> ['и<cnjcoo>']
+    
+    REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+      #! Существует и более мягкая точка зрения; её занимают ак отдельные соционики, критикующие, ...
+    
+[258] FALSENEG: этот<det><dem><m><an><sg><nom> ['этот<prn><dem><m><an><sg><nom>', 'этот<prn><dem><m><nn><sg><acc>', 'этот<prn><dem><m><aa><sg><nom>']
+
+    ^и/и<cnjcoo>$
+    ^факт/факт<n><m><nn><sg><nom>$
+    ^этот/этот<det><dem><m><an><sg><nom><REMOVE:491>$
+    ^не/не<part>$
+    ^раз/раз¹<n><m><nn><sg><acc>$
+    ^поражал/поражать<vblex><impf><tv><past><m><sg>$
+    
+    REMOVE Det IF (0 Det OR Pron) (1C Ne) ;
+
+[321] FALSENEG: и<adv> ['и<cnjcoo>']
+    
+    REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+      #! Существует и более мягкая точка зрения; её занимают ак отдельные соционики, критикующие, ...
+    
+[333] FALSENEG: не<adv>+только<adv> ['не только<cnjcoo>']
+
+    Missing decomposition
+
+[482] FALSENEG: его<det><pos><mfn><an><pl><gen> ['его<prn><pos><f><an><sg><nom>', 'его<prn><pos><f><an><sg><acc>', 'его<prn><pos><m><aa><sg><acc>', 'его<prn><pos><m><an><sg><dat>', 'его<prn><pos><m><an><sg><gen>', 'его<prn><pos><m><an><sg><ins>', 'его<prn><pos><m><an><sg><nom>', 'его<prn><pos><f><an><sg><dat>', 'его<prn><pos><m><nn><sg><acc>', 'его<prn><pos><mfn><aa><pl><acc>', 'его<prn><pos><mfn><an><pl><dat>', 'его<prn><pos><mfn><an><pl><gen>', 'его<prn><pos><mfn><an><pl><ins>', 'его<prn><pos><mfn><an><pl><nom>', 'его<prn><pos><f><an><sg><gen>', 'его<prn><pos><mfn><nn><pl><acc>', 'его<prn><pos><nt><an><sg><acc>', 'его<prn><pos><nt><an><sg><dat>', 'его<prn><pos><nt><an><sg><gen>', 'его<prn><pos><nt><an><sg><ins>', 'его<prn><pos><nt><an><sg><nom>', 'его<prn><pos><f><an><sg><ins>', 'он<prn><pers><p3><m><sg><acc>', 'он<prn><pers><p3><m><sg><gen>', 'оно<prn><pers><p3><nt><sg><acc>', 'оно<prn><pers><p3><nt><sg><gen>']
+
+    !!!!
+
+[734] FALSENEG: мой<det><pos><nt><an><sg><acc> ['мой<det><pos><nt><an><sg><nom>', 'мой<prn><pos><nt><an><sg><nom>']
+
+    ^все/все<prn><pl><nom>$
+    ^отпраздновать/отпраздновать<vblex><perf><tv><inf>$
+    ^мое/мой<det><pos><nt><an><sg><acc><SELECT:863>$
+    ^воскресение/воскресение<n><nt><nn><sg><acc>$
+    ^из/из<pr>$
+    ^мертвых/мёртвый<n><m><aa><pl><gen>$
+    
+    SELECT Nom IF (0C Nom OR Acc) (-1C* Nom BARRIER NGDAIP - Nom - Acc LINK -1C* IV BARRIER NGDAIP - Nom OR TV OR CLB OR Pr) ;
+
+[739] FALSENEG: Клик<np><ant><m><аа><sg><gen> ['клик<n><m><nn><sg><gen>', 'клика<n><f><nn><sg><nom>']
+
+    Missing lexeme
+
+[913] FALSENEG: что<cnjsub> ['что<prn><rel><nt><nn><sg><nom>']
+
+    ^то/то<prn><dem><nt><nn><sg><nom><SELECT:826><SELECT:705>$
+    ^,/,<cm>$
+    ^что/что²<cnjsub><SELECT:828>$
+    ^ведь/ведь<part>$
+    ^она/она<prn><pers><p3><f><sg><nom>$
+
+    ...
+
+[1160] FALSENEG: и<adv> ['и<cnjcoo>']
+    
+    REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+      #! Существует и более мягкая точка зрения; её занимают ак отдельные соционики, критикующие, ...
+    
+[1173] FALSENEG: какой<det><itg><mfn><an><pl><nom> ['какой<prn><itg><mfn><an><pl><nom>']
+
+    ^Но/но¹<cnjcoo>$
+    ^какие/какой<det><itg><mfn><an><pl><nom><REMOVE:493>$
+    ^,/,<cm>$
+    ^однако же/однако же<cnjcoo>$
+    ^,/,<cm>$
+    ^два/два<num><nt><nom>$
+    ^разные/разный<adj><mfn><an><pl><nom>$
+    ^создания/создание<n><nt><aa><sg><gen>$
+
+    REMOVE Det IF (0 Det OR Pron) (1 Cm LINK 1 CC OR CS) ;
+
+[1195] FALSENEG: который<prn><itg><f><an><sg><nom> ['который<prn><rel><f><an><sg><nom>']
+
+    ^А/а<cnjcoo>$
+    ^которая/который<prn><itg><f><an><sg><nom>$
+    ^из/из<pr>$
+    ^этих/этот<det><dem><mfn><an><pl><gen>$
+    ^душ/душа<n><f><nn><pl><gen>$
+    ^больше/больше<adv>$
+    ^мучилась/мучить<vblex><impf><tv><past><f><sg><pass>$
+    ^на/на<pr>$
+    ^земле/земля<n><f><nn><sg><prp>$
+
+    REMOVE Det IF (0 Det OR Pron) (1C Fin OR CS OR Pr) ;
 
