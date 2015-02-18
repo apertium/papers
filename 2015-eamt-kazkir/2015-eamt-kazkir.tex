@@ -1,0 +1,78 @@
+%
+% File eamt15.tex, an adaptation of eamt14.tex (which was a copy of
+% eamt12.tex)
+%
+% Contact: eamt2015@dlsi.ua.es
+
+%%% To ease future customizations, various replaceables have been paramaterized
+%%% as listed in the newcommands section
+
+\documentclass[11pt]{article}
+\usepackage{eamt15}
+\usepackage{times}
+\usepackage{latexsym}
+\setlength\titlebox{6.5cm}    % Expanding the titlebox
+%%% YOUR PACKAGES BELOW THIS LINE %%%
+
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{color}
+\usepackage{url}
+
+\newcommand{\confname}{EAMT 2015}
+\newcommand{\website}{http://www.eamt2015.org/}
+\newcommand{\contactname}{the conference chairs (Felipe
+  S\'anchez-Mart\'inez, Gema Ram\'irez-S\'anchez and Fred Hollowood)}
+\newcommand{\contactemail}{eamt2015@dlsi.ua.es}
+\newcommand{\conffilename}{eamt15}
+\newcommand{\downloadsite}{http://www.eamt2015.org/}
+\newcommand{\paperlength}{$8$ (eight)}
+\newcommand{\shortpaperlength}{$4$ (four)}
+
+\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
+
+
+\title{A comparison of approaches to Kazakh to Kyrgyz machine translation}
+
+\author{
+  Jonathan North Washington\\
+  Departments of Linguistics\\
+  and Central Eurasian Studies\\
+  Indiana University\\
+  Bloomington, Indiana 47405 USA\\
+  \texttt{jonwashi@indiana.edu}  \And
+  \textbf{Francis M. Tyers}\\
+  HSL-fakultetet\\ 
+  UiT Norgga\'{a}rktala\v{s} universitehta \\
+  9017 Romsa, Norway \\
+  {\tt francis.tyers@uit.no}
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+...
+\end{abstract}
+
+\section{Introduction}
+
+\section{Previous work}
+\label{sec:prev}
+
+Within the Apertium project, work on several MT systems between Turkic languages has been started (Turkish--Kyrgyz, Azeri--Turkish, Tatar--Bashkir), but the Kazakh--Tatar system described by the present study is the closest to production-ready of them.  Among these systems is a prototype Tatar--Bashkir machine translation system \citep{tyerswashingtonsalimzyanbattalov12}; due to the closeness of these languages, it proved to provide high accuracy in its translations, but being a prototype system by design, had relatively low coverage.
+
+Besides these systems, several previous works on making machine translation systems between Turkic languages 
+exist, although to our knowledge none are publicly available except for the Turkish--Azerbaijani pair available through Google Translate.\footnote{\url{http://translate.google.com}}
+Some MT systems have been reported that translate between Turkish and other Turkic languages, 
+including Turkish--Crimean Tatar \citep{altintas01},
+Turkish--Azerbaijani \citep{hamzaoglu93}, Turkish--Tatar \citep{suleymanov08}, and
+Turkish--Turkmen \citep{tantug07}, though none of these have been released to a public audience. 
+
+
+\bibliographystyle{apalike}
+\bibliography{2015-eamt-kazkir}
+
+\end{document}
