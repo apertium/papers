@@ -142,9 +142,8 @@ model provides probabilities of word sequences in the target language.
 % experiments.  @@@ \todo[inline]{FMT: integrate \citep{sanchez07a}
 % somewhere here}
 \cite{marechek10} trained a maximum-entropy lexical selector for their
-TectoMT rule-based system using a bilingual corpus.\todo{Say a bit
-  more about TectoMT? FSM: Yes, please!}  More recently,
-\cite{tyers12a} presented a method of lexical selection for rule-based
+dependency-grammar-based transfer system TectoMT using a bilingual corpus.
+More recently, \cite{tyers12a} presented a method of lexical selection for rule-based
 machine translation based on rules which select or remove translations
 in fixed-length contexts, along with a training method for learning
 the rules from a word-aligned parallel corpus.
@@ -177,9 +176,8 @@ word $s$ in an SL context $c$ be $p_s(t|c)$. In principle, this value
 could be estimated directly from the available corpora for every
 combination of $(s, t, c)$.  This would however present two questions:
 (1) how should the relevant contexts be chosen? and (2) what should be
-done when the translations of words are not found in the corpus?
-\todo{Wording? When $(s,t,c)$ not found in the corpus?}  A
-maximum-entropy model answers both of these questions. It allows the
+done when $(s, t, c)$ is not found in the corpus?
+A maximum-entropy model answers both of these questions. It allows the
 contexts that we consider to be linguistically interesting to be
 defined \emph{a priori} and then integrate these seamlessly into a
 probabilistic model \citep{Manning99b}.  In answer to the second
@@ -268,9 +266,7 @@ of possible \emph{lexical-selection paths}. A lexical-selection path
 $g = (t_1, t_2, \ldots, t_{|S|})$ is a sequence of lexical-selection
 choices of those SL words, where \(t_i \in
 T_s(s_i)\). % and \(T_s(\cdot)\)
-\todo{Check change \(T(\cdot)\to T_s(\cdot)\) for consistency with
-  later notation. FSM: Check \(t_i \in T_s(s_i)\); before it was \(t_i
-  = T_s(s_i)\)} %is the set of all
+%is the set of all
 %translations for a source word. 
 This is produced in the first stages of RBMT, just after morphological
 analysis, part-of-speech tagging, and bilingual dictionary lookup, and
@@ -301,8 +297,8 @@ The maximum-entropy model is trained instead using the fractional
 count $p(g_i|S)$ for the events $(s,t,c)$ found in \(g_i\), that is,
 when in \(g_i\) $t$ is the translation for \(s\) in context
 \(c\). That is, as if event $(s,t,c)$ had been seen a fractional
-number $p(g_i|S)$ of times. We prune features (contexts)
-\todo{features or contexts?} occurring less than a certain number of
+number $p(g_i|S)$ of times. We prune $(s, t, c)$
+occurring less than a certain number of
 times in the corpus, using a development corpus to guide pruning (see
 section~\ref{sec:eval-ref-results}).
 %@@@ \comment{Reword this to avoid repetition} 
@@ -418,15 +414,15 @@ Apertium is a free/open-source RBMT platform, it comprises an engine,
 a toolbox and data to build RBMT systems. Translation is implemented
 as a pipeline consisting of the following modules: morphological
 analysis, morphological disambiguation, lexical transfer, lexical
-selection, structural transfer and morphological generation. The
-relevant modules of the system for this method are the \emph{lexical
-  transfer} module which provides for each source language lexical
-form a set of possible target language lexical forms and the
-\emph{structural transfer} and \emph{morphological generation} modules
-which for each pair of source language lexical form and translation
-produce a final translation in the target language. \todo{The wording
-  of this last sentence is unclear. Identify pre-lexsel, lexsel and
-  post-lexsel as before}
+selection, structural transfer and morphological generation. 
+%The relevant modules of the system for this method are the \emph{lexical
+%  transfer} module which provides for each source language lexical
+%form a set of possible target language lexical forms and the
+%\emph{structural transfer} and \emph{morphological generation} modules
+%which for each pair of source language lexical form and translation
+%produce a final translation in the target language. \todo{The wording
+%  of this last sentence is unclear. Identify pre-lexsel, lexsel and
+%  post-lexsel as before}
 
 \subsection{Language pairs}
 \label{sec:eval-systems}
@@ -546,17 +542,18 @@ The version of
 
 \item[English--Spanish:] The English--Spanish pair was developed from
   a combination of the English--Catalan and Spanish--Catalan pairs
-  over a period of around 3--5 months.\todo{FSM: 3, 4 or 5?} The pair
+  over a period of around four months. The pair
 %has been used in other
 %  lexical selection experiments \citep{sanchez07a}\comment{FSM: Sure?
 %    It was on en-ca and in that paper no experimental results are
 %    shown. This paper would be better mentioned in the introduction
 %    (it mentions the use of TL info for lexical selection.},
   contains a number of entries in the bilingual dictionary with more
-  than one translation. The most-frequent translation, as judged by
-  the language pair developer, is marked as the \emph{default}
-  translation and non-default translations were added according to
-  frequency. \todo{Default is explained for some LPs only, why?}  The
+  than one translation. %The most-frequent translation, as judged by
+%  the language pair developer, is marked as the \emph{default}
+%  translation and non-default translations were added according to
+%  frequency. \todo{Default is explained for some LPs only, why?}  
+  The
   version used in this paper is SVN revision
   41387.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
 \end{description}
@@ -902,6 +899,7 @@ module, which returns all the possible translations, and for each
 ambiguous word, the translation is selected which is found aligned in
 the reference.
 
+  %% FMT: INCLUDE AVERAGE AMBIGUITY OVER AMBIGUOUS WORDS
   \begin{table}
   \begin{center}
    \begin{tabular}{|l|r|r|r|r|}
@@ -940,9 +938,10 @@ the reference.
   input corpora, and how many sentences were left after processing for
   testing, training and development. \todo{Why do ambiguity numbers
     change so much from the paper?} Table~\ref{table:test-corp} gives
-  information about the test corpora. \todo{FSM: One may wonder which
-    would be the results when the TL side of the training corpus is
-    used to train the models in the usual way.}
+  information about the test corpora. 
+%! \todo{FSM: One may wonder which
+%!    would be the results when the TL side of the training corpus is
+%!    used to train the models in the usual way.}
 
 \subsection{Reference systems}
 
@@ -1011,8 +1010,8 @@ generalised iterative scaling available in the {\sc
   \url{http://downloads.sourceforge.net/project/apertium/apertium-lex-tools/apertium-lex-tools-0.1.0.tar.gz}.}
 to calculate the feature weights.  After learning the feature sets and
 weights, we compute the evaluation measures described in
-section~\ref{ss:measures}. There is an option to remove features
-(contexts)\todo{FSM: Features are contexts, aren't they?} which occur
+section~\ref{ss:measures}. There is an option to remove events 
+$(s, t, c)$ which occur
 less than a certain number of times in the training corpus. This is
 referred to as the feature pruning frequency threshold --- features
 occuring less than the threshold are discarded. The value was set
@@ -1169,7 +1168,7 @@ selections for each sentence using the target-language model online.
 %TIN2009-14009-C02-01 and TIN2012-32615, the European Commission through project
 %Abu-MaTran (FP7-PEOPLE, 324414) (and the NILS mobility grant (Abel Predoc
 %Research Grant) coordinated by the Universidad Complutense de Madrid.
-%
+
 \bibliographystyle{apalike}
 \small{
 \bibliography{2015-eamt-melsa}
