@@ -1,3 +1,4 @@
+=== Code in===
 
 [302] FALSENEG: Тис<np><al><m><nn><sg><nom> ['Тиса<np><al><f><nn><pl><gen>', 'тис<n><m><nn><sg><acc>', 'тис<n><m><nn><sg><nom>']
 
@@ -148,5 +149,20 @@
     SELECT CS IF (0 Čto) (-1 Cm LINK NOT -1 Prn/To) (NOT 1* ("?"));
 
     Паровые двигатели позволили строить железные дороги на большие расстояния, что, в свою очередь, стало одним из важнейших компонентов индустриальной революции. 
+
+
+
+
+=== Rwanda===
+
+[168] FALSENEG: тутси<adj><mfn><an><pl><nom> ['тутси<n><f><aa><pl><acc>', 'тутси<n><f><aa><pl><dat>', 'тутси<n><f><aa><pl><gen>', 'тутси<n><f><aa><pl><ins>', 'тутси<n><f><aa><pl><nom>', 'тутси<n><f><aa><pl><prp>', 'тутси<n><f><aa><sg><acc>', 'тутси<n><f><aa><sg><dat>', 'тутси<n><f><aa><sg><gen>', 'тутси<n><f><aa><sg><ins>', 'тутси<n><f><aa><sg><nom>', 'тутси<n><f><aa><sg><prp>', 'тутси<n><m><aa><pl><acc>', 'тутси<n><m><aa><pl><dat>', 'тутси<n><m><aa><pl><gen>', 'тутси<n><m><aa><pl><ins>', 'тутси<n><m><aa><pl><nom>', 'тутси<n><m><aa><pl><prp>', 'тутси<n><m><aa><sg><acc>', 'тутси<n><m><aa><sg><dat>', 'тутси<n><m><aa><sg><gen>', 'тутси<n><m><aa><sg><ins>', 'тутси<n><m><aa><sg><nom>', 'тутси<n><m><aa><sg><prp>']
+
+    Missing lexeme
+
+[571] FALSENEG: нести<vblex><impf><tv><pres><p3><sg> ['нести<vblex><impf><iv><pres><p3><sg>']
+
+    Missing lexeme
+    
+=== Dostoevsky ===
 
 
