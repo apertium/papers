@@ -86,7 +86,12 @@ Turkish--Turkmen \citep{tantug07}, though none of these have been released to a 
 
 \subsection{Rule-based machine translation}
 
+\cite{washingtonsalimzyantyers14}
+\cite{washingtonipasovtyers12}
+
 \subsection{Corpus-based machine translation}
+
+We trained models based on two approaches, the first being phrase-based machine translation (PBMT, \cite{zens2002}) and the second on character-based machine translation (CBMT, \cite{nakov2012}; \cite{TiedemannEAMT2009}).
 
 \subsection{Corpus}
 
@@ -94,9 +99,30 @@ Turkish--Turkmen \citep{tantug07}, though none of these have been released to a 
 
 \subsubsection{Character-based }
 
+\cite{nakov2012} present a method of statistical machine translation on the character level between related languages that takes advantage of phrase-based machine translation architecture. 
+%The method relies on preprocessing the input and output by inserting spaces in between the characters of words, for example the string `m\"{a} meen Helsinkiin' would become `m \"{a} \$ m e e n \$ H e l s i n k i i n' with a unigram model, or `m\"{a} \"{a}\$ \$m me ee en n\$ \$H He el ls si in nk ki ii in' with a bigram model.
+
+%After preprocessing, the corpora are processed as with the phrase-based system, with the difference that the language model order is increased from 5 to 10-grams.
+
+
+
 \section{Evaluation}
 
 \subsection{Coverage}
+
+\begin{table}
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \textbf{Corpus} & \textbf{Tokens} & \textbf{RBMT} & \textbf{PBSMT} & \textbf{CBMT} \\
+    \hline
+    NT              & 144,946      &      &          &       \\
+    Akorda          & 382,716       &      &          &       \\
+    Wikipedia       & 27,802,493       &      &          &       \\
+    \hline
+  \end{tabular}
+  \caption{Vocabulary coverage for the three systems}
+  \label{table:coverage}
+\end{table}
 
 \subsection{Translation quality}
 
