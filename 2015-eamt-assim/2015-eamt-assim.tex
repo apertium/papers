@@ -61,6 +61,7 @@
 %Katya: has not it first been used in trosterud12?
 \begin{abstract}
 This paper provides additional observations on the viability of a strategy proposed in 2012 for evaluation of machine translation for assimilation purposes. The evaluation method is applied to three translation directions. To reduce preparation time, an automatic open-source task management system is introduced.
+\comment{FMT: Abstract should mirror/summarise the article, e.g. include something about conclusions too}
 \end{abstract}
 
 \section{Introduction}
@@ -71,46 +72,75 @@ Google Translate\footnote{translate.google.com}, and assimilation systems, e.g. 
 \comment{FMT: Apertium can also be used for postedition, e.g. spanish-catalan, and some Google translate directions aren't suitable for that. Perhaps reword or remove this}
 
 \comment{EA: I'd like a citation for the ``most massive application'', could you suggest something?}
-Despite the fact that assimilation (or gisting) is currently the most massive application of MT, few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09}, and multiple choice tests \citep{jones07}, \citep{trosterud12} These approaches are often costly and prone to subjectivity, see the discussion in \citep{oregan13}. As an alternative, the modification of Cloze test was introduced for assimilation evaluation, first in \citep{trosterud12} as a supplementary, and then in \citep{oregan13} as a stand-alone method. Prior to this, Cloze tests have been used to evaluate raw MT quality, see e.g. \citep{vanslype79}, \citep{somers00}. As a principal difference, \citet{trosterud12} and \citet{oregan13} propose to fill the gaps in the reference (human) translation.
+Despite the fact that assimilation (or gisting) is currently the most massive application of MT, few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09}, and multiple choice tests \citep{jones07,trosterud12} These approaches are often costly and prone to subjectivity, see the discussion in \cite{oregan13}. As an alternative, the modification of Cloze test was introduced for assimilation evaluation, first in \citep{trosterud12} as a supplementary, and then in \citep{oregan13} as a stand-alone method. Prior to this, Cloze tests have been used to evaluate raw MT quality, see e.g. \citep{vanslype79}, \citep{somers00}. As a principal difference, \citet{trosterud12} and \citet{oregan13} propose to fill the gaps in the reference (human) translation.
 
 The gap-filling method has been successfully used to evaluate the Basque-English Apertium language pair. In this work we extend the evaluation to three more language pairs: Basque-Spanish, English-Kazakh and Tatar-Russian. For the latter two pairs, the evaluation served as a quality check in the period of active development during the Google Summer of Code'14 programme. In addition to evaluating, we explore new aspects of the experiment: the correlation between evaluators' scores, and the influence of the texts' linguistic domain. To facilitate the evaluation, we introduce an automated task creation system. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on Github\footnote{https://github.com/Sereni/Appraise}.
 
 We anticipate that MT systems under investigation will contribute to the users' understanding of text. We also expect to see different results depending on text domain and on the number of words left out from the task.
 
-The paper is organized as follows: in section~\ref{sec:methodology} we describe the gap-filling method for assimilation evaluation: the task layout, the choice of words, and how the tasks are generated. Section~\ref{sec:setup} introduces the experimental material, the evaluators, the distribution of tasks and the evaluation procedure. In section~\ref{sec:results} we describe and discuss the experiment results. Finally, section~\ref{sec:conclusion} draws conclusions.
+The paper is organised as follows: in section~\ref{sec:methodology} we describe the gap-filling method for assimilation evaluation: the task layout, the choice of words, and how the tasks are generated. Section~\ref{sec:setup} introduces the experimental material, the evaluators, the distribution of tasks and the evaluation procedure. In section~\ref{sec:results} we describe and discuss the experiment results. Finally, section~\ref{sec:conclusion} draws conclusions.
 
 
 \section{Methodology}
 \label{sec:methodology}
+\comment{FMT: This could benefit from an example i think, something like table1? }
 
-This section discusses the reasoning behind the gap-filling method and task structure. The gap-filling method of evaluating machine translation for assimilation purposes is based on the following notion: readers' understanding of a text correlates with the number of keywords they are able to correctly restore in this text. Therefore, the base of an assimilation task is a (reference) sentence, where some of the keywords are blacked out, or removed. The sentence is produced by a human (as opposed to machine-translated), and it is in the language known to evaluators, which is also the ~\emph{target language }  of the evaluated pair.
+\begin{table*}
+  \begin{tabular}{|l|l|}
+     \hline
+     \textbf{Ref}   & Ayudas económicas para el tratamiento de toxicomanías en comunidades terapéuticas no concertadas. \\
+     \textbf{Task}   & Ayudas económicas para el \{ \} de toxicomanías en comunidades terapéuticas no concertadas. \\
+     \textbf{Src} & Komunitate terapeutiko itundu gabeetan toxikomaniak tratatzeko diru-laguntzak ematea. \\
+     \textbf{MT}     & Comunidad terapéutico pactar gabeetan toxikomaniak las-ayudas de dinero para tratar dar. \\
+     \hline
+  \end{tabular}
+  \caption{An example of a set of sentences.} 
+  \label{table:example}
+\end{table*}
 
-The additional elements of the task are what we call hints, or extra sentences that help the participant to understand the main sentence. There are two types of hints: first, the \emph{source}, which is the same sentence as \emph{reference}, also human-produced, but in the source language of the pair. The second type is the \emph{machine-translated } hint, which comes from the machine translation of the \emph{source } sentence.
+This section discusses the reasoning behind the gap-filling method and task structure. The gap-filling method 
+of evaluating machine translation for assimilation purposes is based on the following notion: a reader's understanding 
+of a given text correlates with the number of keywords they are able to correctly restore in the text. Therefore, the 
+base of an assimilation task is a (reference) sentence, where some of the keywords are blacked out, or removed. The sentence 
+is produced by a human (as opposed to machine-translated), and it is in the language known to evaluators, which is also 
+the \emph{target language} of the machine translation system.
+
+The additional elements of the task are what we call hints, or extra sentences that help the participant to understand 
+the main sentence. There are two types of hints: first, the \emph{source}, which is the same sentence as \emph{reference}, 
+also human-produced, but in the source language of the pair. The second type is the \emph{machine-translated} hint, which 
+comes from the machine translation of the \emph{source } sentence.
 
 \comment{EA: I don't really have a good explanation why we used source+mt tasks, except for being exhaustive. could you suggest anything?}
 In the course of the experiment, the following hint combinations are offered:
-\begin{itemize}
-\item  Reference sentence only. The participants are asked to fill the gaps not being given
+\begin{description}
+\item[Reference sentence only:] The participants are asked to fill the gaps not being given
 any context. This task serves as a baseline score and as an indicator of phrases
 that can be completed using common knowledge or language intuition (e.g.
 idioms and strong collocations);
-\item  Reference sentence and source sentence. By setup, the
+\item[Reference sentence and source sentence:] By setup, the
 participants have no command of the source language, however, it may help them to fill
 in proper nouns or loan words;
-\item  Reference sentence and machine-translated hint. In addition to the task, the
+\item[Reference sentence and MT hint:] In addition to the task, the
 participants see the source sentence translated via Apertium. This type of task is
 used for measuring the contribution of machine translation to understanding the
 gist of text;
-\item  Reference sentence and both the source and machine-translated hint. This task is
+\item[Reference sentence and both hints:] This task is
 added for completing the possible combination of task types, and to check
 for unexpected insights, should they arise.
-\end{itemize}
+\end{description}
 
-In order to prepare the evaluation questions, we determine and remove the keywords in the reference sentences. We consider two parameters: the list of allowed parts of speech (POS), and the number of gaps relative to sentence length (``gap density''). For the evaluations described in this paper we use gap densities of 10, 20 and 30 percent, and the following parts of speech: noun, proper noun, adjective, adverb and lexical verb (as opposed to auxiliary verb).
+In order to prepare the evaluation questions, we determine and remove the keywords in the 
+reference sentences. We consider two parameters: the list of allowed parts of speech (POS), and the 
+number of gaps relative to sentence length (``gap density''). For the evaluations described in 
+this paper we use gap densities of 10, 20 and 30 percent, and the following parts of speech: noun, 
+proper noun, adjective, adverb and lexical verb (as opposed to auxiliary verb).
 
-For each sentence, the list of candidate keywords is prepared. It constitutes all the words that fall into the allowed POS list. The number of gaps in the sentence is calculated based on sentence length and specified gap density. Finally, the required number of keywords is selected from the candidate list in such a manner that the gaps are distributed evenly throughout the sentence.
+For each sentence, the list of candidate keywords is prepared. It constitutes all the words that 
+fall into the allowed POS list. The number of gaps in the sentence is calculated based on 
+sentence length and specified gap density. Finally, the required number of keywords is selected 
+from the candidate list in such a manner that the gaps are distributed evenly throughout the sentence.
 
-Keyword removal is one of the most time-consuming steps in task preparation. In our setup, the above procedure is performed by a script integrated into the task generation pipeline. Parts of speech are determined with Apertium morphological analyzer. To control for homonymy, we only allow the word into the candidate list if all of its possible part of speech attributions are on the POS list. 
+Keyword removal is one of the most time-consuming steps in task preparation. In our setup, the above procedure is performed by a script integrated into the task generation pipeline. Parts of speech are determined with Apertium morphological analyser. To control for homonymy, we only allow the word into the candidate list if all of its possible part of speech attributions are on the POS list. 
 
 Having prepared the sentence sets, we assemble them into XML formatted for the Appraise platform.
 
@@ -168,10 +198,10 @@ language pair.
 
 \subsection{Procedure}
 
-The evaluations take place online, in a system called Appraise \citep{federmann12}, which is designed specifically for various MT
-evaluation tasks. We adapted the code to accommodate for the gap-filling tasks. The
-tasks are uploaded into the system and manually distributed between the participants by
-the following rules:
+The evaluations take place online, in a system called Appraise \citep{federmann12}, which is 
+designed specifically for various MT evaluation tasks. We adapted the code to 
+accommodate for the gap-filling tasks. The tasks are uploaded into the system and 
+manually distributed between the participants by the following rules:
 \begin{enumerate}
 \item  Each participant evaluates every sentence (understood as a succession of words),
 a total of 36;
@@ -179,8 +209,10 @@ a total of 36;
 \item  All sentences of the set are evaluated with 10, 20 and 30\% of words removed;
 \item  Each sentence-mode-percentage combination is evaluated by at least three participants.
 \end{enumerate}
+
 The participants are given the instructions in their native language above each task. The
-tasks are split into smaller sets for the participants' convenience. The instructions are the following: read all the available hints and fill each gap with one suitable word, guessing if unsure.
+tasks are split into smaller sets for the participants' convenience. The instructions are the 
+following: read all the available hints and fill each gap with one suitable word, guessing if unsure.
 Participants' answers are recorded and marked correct or incorrect automatically. In
 addition, the time taken to fill the gaps in one sentence is recorded.
 
@@ -193,7 +225,7 @@ context sentence. Based on this data, a native speaker of the target language de
 whether the candidate synonym is indeed synonymic to the answer key in the given
 context. We then check participants' results against the compiled synonym list and
 increase scores where appropriate. Candidate synonym extraction and score update is performed automatically.
-\comment{FMT: How long did making the synonym list take, how many synonyms were added? More details here.}
+\comment{FMT: How long did making the synonym list take, how many synonyms were added? More details here. Also perhaps an example?}
 
 \comment{EA: the sections below are from the report and have not been edited yet.}
 
@@ -206,9 +238,10 @@ source sentence as a hint and no hint at all. If the percentage were lower, we w
 expect an error in experiment design.
 
 \section{Results}
+\label{sec:results}
 
 The experiment results are presented in the tables below. The first table of each set shows
-the proportion of correct answers depending on evaluation mode and gap density.\footnote{FMT: We should probably integrate the other tables, and refer to them using labels.} The
+the proportion of correct answers depending on evaluation mode and gap density.\comment{FMT: We should probably integrate the other tables, and refer to them using labels.} The
 percentage is spread across all evaluators, that is, we divide the number of correct
 answers given by all evaluators by the number of questions answered by all evaluators.
 The second table of the set shows average time it took to fill the gaps in one sentence. To
@@ -260,8 +293,8 @@ two minutes).
 
 
 
-\section{Discussion}
-
+\section{Conclusions}
+\label{sec:conclusion}
 The following trends may be derived from the data above:
 \begin{enumerate}
 \item  In general, tasks with MT assistance score higher than task without MT
@@ -281,7 +314,7 @@ In Basque-Spanish and Tatar-Russian these trends are defined reasonably well. In
 English-Kazakh, however, the scores for source-hint task (a parallel sentence in English
 for assistance) are systematically higher than for other types of tasks. In addition, a 20\%no-hint task stands out with 60\% accuracy, which is substantially higher than any other
 scores for this experiment.
-Having analyzed the tasks and the responses for English-Kazakh, I have found the
+Having analysed the tasks and the responses for English-Kazakh, I have found the
 following possible reasons of the obtained results:
 \begin{enumerate}
 \item  The experiment was planned for 11 evaluators, although only 8 attempted the
@@ -309,6 +342,7 @@ the course of their work, especially while working on the no-hint tasks. 9 out o
 participants quit the experiment before completing it.
 
 \section{Future work}
+\label{sec:futurework}
 The experiment may be repeated for any language pair (provided a parallel corpus) and
 any machine translation system. To enhance the results, the procedure may be amended
 in the following ways:
