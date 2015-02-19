@@ -74,6 +74,8 @@
 
 \section{Introduction}
 
+Our purposes: Processing stressed wordforms and open-source machine translation
+
 \cite{Karlsson-90}
 
 % objectives:
@@ -84,7 +86,24 @@
 % different CGs 
 % faroese
 % estonian
-% 
+
+State-of-the-art morphological analysis in Russian is primarily based on finite-
+state technology \cite{Nozhov-03,Segalovich-03}, although some success has 
+also been found with machine-learning approaches \cite{sharoff08lrec-mocky}. 
+However, no existing Russian morphology tools were suitable for our needs, so
+we have 
+The resources described in this paper Therefore, we developed free and 
+open-source finite-state 
+tools capable of analyzing and generating stressed wordforms, based on the
+well-known \emph{Grammatical Dictionary of Russian} \cite{Zaliznjak-77}.
+Our Finite-State Transducer\footnote{Using two-level 
+morphology \cite{Koskenniemi-84}, implemented in both xfst
+\cite{Beesley.Karttunen-03} and hfst \cite{hfst-11}} (FST) generates all possible 
+morphosyntactic readings of each wordform, and our Constraint 
+Grammar\footnote{Implemented using vislcg3 constraint grammar parser
+(http://beta.visl.sdu.dk/cg3.html).}
+\cite{Karlsson-90,Karlsson.Voutilainen.ea-95} then removes
+some readings based on syntactic context. 
 
 \cite{trosterud2009}
 
