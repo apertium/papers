@@ -58,18 +58,21 @@
 
 \begin{document}
 \maketitle
-%Katya: has not it first been used in trosterud12?
+\comment{EA: has not it first been used in trosterud12?}
 \begin{abstract}
 This paper provides additional observations on the viability of a strategy proposed in 2012 for evaluation of machine translation for assimilation purposes. The evaluation method is applied to three translation directions. To reduce preparation time, an automatic open-source task management system is introduced.
 \comment{FMT: Abstract should mirror/summarise the article, e.g. include something about conclusions too}
+\comment{EA: will add conclusions after writing the section on them}
 \end{abstract}
+
+\comment{EA: I noticed some spelling edits, e.g. organize -> -se, program -> -mme. Is it important that we use British spelling? If so, may I count on someone to go through the paper and correct it? I am not sure I can use British spelling consistently.}
 
 \section{Introduction}
 
 As suggested by \citet{church93}, modern machine translation (MT) systems may
-be divided into two broad categories according to their purpose: post-editing systems, e.g.
-Google Translate\footnote{translate.google.com}, and assimilation systems, e.g. Apertium\footnote{apertium.org}. Both kinds may be systematically evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
+be divided into two broad categories according to their purpose: post-editing systems and assimilation systems. Both kinds may be systematically evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
 \comment{FMT: Apertium can also be used for postedition, e.g. spanish-catalan, and some Google translate directions aren't suitable for that. Perhaps reword or remove this}
+\comment{EA: removed}
 
 \comment{EA: I'd like a citation for the ``most massive application'', could you suggest something?}
 Despite the fact that assimilation (or gisting) is currently the most massive application of MT, few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09}, and multiple choice tests \citep{jones07,trosterud12} These approaches are often costly and prone to subjectivity, see the discussion in \cite{oregan13}. As an alternative, the modification of Cloze test was introduced for assimilation evaluation, first in \citep{trosterud12} as a supplementary, and then in \citep{oregan13} as a stand-alone method. Prior to this, Cloze tests have been used to evaluate raw MT quality, see e.g. \citep{vanslype79}, \citep{somers00}. As a principal difference, \citet{trosterud12} and \citet{oregan13} propose to fill the gaps in the reference (human) translation.
@@ -88,10 +91,10 @@ The paper is organised as follows: in section~\ref{sec:methodology} we describe 
 \begin{table*}
   \begin{tabular}{|l|l|}
      \hline
-     \textbf{Ref}   & Ayudas económicas para el tratamiento de toxicomanías en comunidades terapéuticas no concertadas. \\
-     \textbf{Task}   & Ayudas económicas para el \{ \} de toxicomanías en comunidades terapéuticas no concertadas. \\
+     \textbf{Ref}   & Ayudas econ\'{o}micas para el tratamiento de toxicoman\'{i}�as en comunidades terap\'{e}uticas no concertadas. \\
+     \textbf{Task}   & Ayudas econ\'{o}micas para el \{ \} de toxicoman\'{i}�as en comunidades terap\'{e}uticas no concertadas. \\
      \textbf{Src} & Komunitate terapeutiko itundu gabeetan toxikomaniak tratatzeko diru-laguntzak ematea. \\
-     \textbf{MT}     & Comunidad terapéutico pactar gabeetan toxikomaniak las-ayudas de dinero para tratar dar. \\
+     \textbf{MT}     & Comunidad terap\'{e}utico pactar gabeetan toxikomaniak las-ayudas de dinero para tratar dar. \\
      \hline
   \end{tabular}
   \caption{An example of a set of sentences.} 
@@ -205,7 +208,7 @@ manually distributed between the participants by the following rules:
 \begin{enumerate}
 \item  Each participant evaluates every sentence (understood as a succession of words),
 a total of 36;
-\item  Each participant evaluates 9 sentences in each of the four modes (see section~\ref{sec:methodology};
+\item  Each participant evaluates 9 sentences in each of the four modes (see section~\ref{sec:methodology});
 \item  All sentences of the set are evaluated with 10, 20 and 30\% of words removed;
 \item  Each sentence-mode-percentage combination is evaluated by at least three participants.
 \end{enumerate}
@@ -225,6 +228,20 @@ context sentence. Based on this data, a native speaker of the target language de
 whether the candidate synonym is indeed synonymic to the answer key in the given
 context. We then check participants' results against the compiled synonym list and
 increase scores where appropriate. Candidate synonym extraction and score update is performed automatically.
+
+\begin{table*}
+  \begin{tabular}{|l|l|}
+     \hline
+     \textbf{Sentence:}   & Aprender a jugar y divertirse en el agua sin asumir riesgos. \\
+     \textbf{Key:}   & asumir \\
+     \textbf{Synonym:} & correr \\
+     \hline
+  \end{tabular}
+  \caption{An example candidate synonym.} 
+  \label{table:syn}
+\end{table*}
+\comment{EA: added}
+The synonym lists for Basque-Spanish, English-Kazakh and Tatar-Russian contain 52, 38 and 25 words, respectively. Time taken to compile one list depends on the number of candidate synonyms, and in our case was approximately 30 minutes.
 \comment{FMT: How long did making the synonym list take, how many synonyms were added? More details here. Also perhaps an example?}
 
 \comment{EA: the sections below are from the report and have not been edited yet.}
