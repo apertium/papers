@@ -65,12 +65,12 @@ This paper provides additional observations on the viability of a strategy propo
 \comment{EA: will add conclusions after writing the section on them}
 \end{abstract}
 
-\comment{EA: I noticed some spelling edits, e.g. organize -> -se, program -> -mme. Is it important that we use British spelling? If so, may I count on someone to go through the paper and correct it? I am not sure I can use British spelling consistently.}
+\comment{EA: I noticed some spelling edits, e.g. organize - -se, program - -mme. Is it important that we use British spelling? If so, may I count on someone to go through the paper and correct it? I am not sure I can use British spelling consistently.}
 
 \section{Introduction}
 
 As suggested by \citet{church93}, modern machine translation (MT) systems may
-be divided into two broad categories according to their purpose: post-editing systems and assimilation systems. Both kinds may be systematically evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
+be divided into two broad categories according to their purpose: post-editing and assimilation systems. Both kinds may be evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
 \comment{FMT: Apertium can also be used for postedition, e.g. spanish-catalan, and some Google translate directions aren't suitable for that. Perhaps reword or remove this}
 \comment{EA: removed}
 
@@ -227,7 +227,7 @@ the answer key. We record each candidate synonym along with the answer key and t
 context sentence. Based on this data, a native speaker of the target language decides
 whether the candidate synonym is indeed synonymic to the answer key in the given
 context. We then check participants' results against the compiled synonym list and
-increase scores where appropriate. Candidate synonym extraction and score update is performed automatically.
+increase scores where appropriate. On average, the scores improved by three percent in all evaluation modes. Candidate synonym extraction and score update is performed automatically.
 
 \begin{table*}
   \begin{tabular}{|l|l|}
@@ -241,31 +241,35 @@ increase scores where appropriate. Candidate synonym extraction and score update
   \label{table:syn}
 \end{table*}
 \comment{EA: added}
-The synonym lists for Basque-Spanish, English-Kazakh and Tatar-Russian contain 52, 38 and 25 words, respectively. Time taken to compile one list depends on the number of candidate synonyms, and in our case was approximately 30 minutes.
+The synonym lists for Basque-Spanish, English-Kazakh and Tatar-Russian contain 52, 38 and 25 words, respectively. Time taken to compile one list depends on the number of candidate synonyms, and in our case was approximately 30 minutes. 
 \comment{FMT: How long did making the synonym list take, how many synonyms were added? More details here. Also perhaps an example?}
 
 \comment{EA: the sections below are from the report and have not been edited yet.}
 
-\section{Expected results}
+%\section{Expected results}
+%
+%We expect that, for tasks with MT assistance, the users will fill more gaps correctly,
+%which would correspond to better understanding of text. Therefore, the percentage of
+%correct answers should be higher for MT and two-hint kinds of tasks than for tasks with
+%source sentence as a hint and no hint at all. If the percentage were lower, we would
+%expect an error in experiment design.
 
-We expect that, for tasks with MT assistance, the users will fill more gaps correctly,
-which would correspond to better understanding of text. Therefore, the percentage of
-correct answers should be higher for MT and two-hint kinds of tasks than for tasks with
-source sentence as a hint and no hint at all. If the percentage were lower, we would
-expect an error in experiment design.
-
-\section{Results}
+\section{Results and discussion}
 \label{sec:results}
 
-The experiment results are presented in the tables below. The first table of each set shows
+The experiment results are presented in the tables below. Tables \ref{table:res-eus-spa}, \ref{table:res-eng-kaz} and \ref{table:res-tat-rus} show
 the proportion of correct answers depending on evaluation mode and gap density.\comment{FMT: We should probably integrate the other tables, and refer to them using labels.} The
 percentage is spread across all evaluators, that is, we divide the number of correct
 answers given by all evaluators by the number of questions answered by all evaluators.
-The second table of the set shows average time it took to fill the gaps in one sentence. To
+Tables \ref{table:time-eus-spa}, \ref{table:time-eng-kaz} and \ref{table:time-tat-rus} show average time it took to fill the gaps in one sentence. To
 reduce the noise from participants who were distracted during evaluation, when
 calculating times we remove all the results over 6 minutes (the mode is approximately
 two minutes).
 
+\comment{EA: and what would we like to say about those? The results depend heavily on the Tatar-Russian system. Do we have to provide info on what vocabulary it handles better, what it has and has not been trained on? Or do we just say that casual texts are easier to fill than legal texts?}
+For Tatar--Russian language pair the experiment was conducted in three parts, each part on texts from different domains. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}.
+
+% results with synonyms
 \begin{table}
   \begin{tabular}{|l|r|r|r|r|}
     \hline
@@ -308,6 +312,96 @@ two minutes).
   \label{table:res-tat-rus}
 \end{table}
 
+% begin time tables
+\comment{EA: maybe remove SD from time tables? is it informative?}
+\begin{table*}
+\begin{tabular}{|r |*{4}{c}|}
+\hline
+ &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint}\\
+10\%&1:17 +/- 1:05&1:33 +/- 1:22&1:06 +/- 0:38&0:46 +/- 0:44\\
+20\%&1:23 +/- 1:04&1:14 +/- 0:58&1:27 +/- 1:02&1:22 +/- 1:17\\
+30\%&2:22 +/- 1:10&2:33 +/- 1:26&2:36 +/- 1:22&2:25 +/- 1:30\\
+\hline
+\end{tabular}
+\caption {Basque--Spanish: Time taken to fill the gaps in one sentence, mean and standard deviation.}
+\label{table:time-eus-spa} 
+\end{table*}
+
+\begin{table*}
+\begin{tabular}{|r |*{4}{c}|}
+\hline
+  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+10\%&2:31 +/- 1:29&1:34 +/- 1:03&1:47 +/- 1:36&0:47 +/- 0:35\\
+20\%&1:17 +/- 0:51&2:05 +/- 1:57&2:10 +/- 2:14&1:13 +/- 1:02\\
+30\%&2:00 +/- 1:30&1:46 +/- 1:48&1:41 +/- 1:02&1:44 +/- 1:34\\
+\hline
+\end{tabular}
+\caption {English--Kazakh: Time taken to fill the gaps in one sentence, mean and standard deviation.}
+\label{table:time-eng-kaz} 
+\end{table*}
+
+\begin{table*}
+\begin{tabular}{|r |*{4}{c}|}
+\hline
+  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+10\%&1:26 +/- 1:10&1:05 +/- 1:05&0:45 +/- 0:52&0:31 +/- 0:22\\
+20\%&1:16 +/- 2:06&1:12 +/- 1:44&0:57 +/- 0:59&0:50 +/- 0:55\\
+30\%&1:19 +/- 1:15&1:14 +/- 1:11&1:10 +/- 1:04&1:01 +/- 0:53\\
+\hline
+\end{tabular}
+\caption {Tatar--Russian: Time taken to fill the gaps in one sentence, mean and standard deviation.}
+\label{table:time-tat-rus} 
+\end{table*}
+
+% results by text mode in tat-rus, with synonyms
+
+\begin{table*}
+\begin{tabular}{|r |*{4}{c}|}
+\hline
+  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+10\%&59.52&60.98&65.00&54.76\\
+20\%&73.68&63.16&44.30&37.97\\
+30\%&68.18&58.24&41.67&41.94\\
+\hline
+\end{tabular}
+\caption {Tatar--Russian, casual conversations: Gaps successfully filled (\%), using a synonym list, average} \label{table:rus-casual} 
+\end{table*}
+
+\begin{table*}
+\begin{tabular}{|r |*{4}{c}|}
+\hline
+  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+10\%&52.00&67.11&43.48&38.03\\
+20\%&61.74&63.57&52.46&43.31\\
+30\%&56.07&41.32&37.36&37.23\\
+\hline
+\end{tabular}
+\caption {Tatar--Russian, legal texts: Gaps successfully filled (\%), using a synonym list, average} \label{table:rus-legal} 
+\end{table*}
+
+\begin{table*}
+\begin{tabular}{|r |*{4}{c}|}
+\hline
+  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+10\%&52.00&68.75&61.22&50.98\\
+20\%&64.00&52.86&46.15&34.25\\
+30\%&59.38&63.28&41.41&37.50\\
+\hline
+\end{tabular}
+\caption {Tatar--Russian, news: Gaps successfully filled (\%), using a synonym list, average} \label{table:rus-news} 
+\end{table*}
 
 
 \section{Conclusions}
