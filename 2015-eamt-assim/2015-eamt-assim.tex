@@ -61,18 +61,12 @@
 \comment{EA: has not it first been used in trosterud12?}
 \begin{abstract}
 This paper provides additional observations on the viability of a strategy proposed in 2012 for evaluation of machine translation for assimilation purposes. The evaluation method is applied to three translation directions. To reduce preparation time, an automatic open-source task management system is introduced. The evaluation results suggest that the gap-filling task reflects users' understanding of text, and may be used to measure MT quality for assimilation purposes.
-\comment{FMT: Abstract should mirror/summarise the article, e.g. include something about conclusions too}
-\comment{EA: added}
 \end{abstract}
-
-\comment{EA: I noticed some spelling edits, e.g. organize - -se, program - -mme. Is it important that we use British spelling? If so, may I count on someone to go through the paper and correct it? I am not sure I can use British spelling consistently.}
 
 \section{Introduction}
 
 As suggested by \citet{church93}, modern machine translation (MT) systems may
 be divided into two broad categories according to their purpose: post-editing and assimilation systems. Both kinds may be evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
-\comment{FMT: Apertium can also be used for postedition, e.g. spanish-catalan, and some Google translate directions aren't suitable for that. Perhaps reword or remove this}
-\comment{EA: removed}
 
 \comment{EA: I'd like a citation for the ``most massive application'', could you suggest something?}
 Despite the fact that assimilation (or gisting) is currently the most massive application of MT, few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09}, and multiple choice tests \citep{jones07,trosterud12} These approaches are often costly and prone to subjectivity, see the discussion in \cite{oregan13}. As an alternative, the modification of Cloze test was introduced for assimilation evaluation, first in \citep{trosterud12} as a supplementary, and then in \citep{oregan13} as a stand-alone method. Prior to this, Cloze tests have been used to evaluate raw MT quality, see e.g. \citep{vanslype79}, \citep{somers00}. As a principal difference, \citet{trosterud12} and \citet{oregan13} propose to fill the gaps in the reference (human) translation.
@@ -209,6 +203,7 @@ context. We then check participants' results against the compiled synonym list a
 increase scores where appropriate. On average, the scores improved by three percent in all evaluation modes. Candidate synonym extraction and score update is performed automatically.
 
 \begin{table*}
+  \centering
   \begin{tabular}{|l|l|}
      \hline
      \textbf{Sentence:}   & Aprender a jugar y divertirse en el agua sin asumir riesgos. \\
