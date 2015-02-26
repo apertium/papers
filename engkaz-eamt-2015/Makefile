@@ -1,2 +1,2 @@
 all:
-	pdflatex engkaz-eamt-2015.tex
+	xelatex engkaz-eamt-2015.tex
