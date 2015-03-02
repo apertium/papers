@@ -26,6 +26,7 @@
 \usepackage{xltxtra}
 \usepackage{times}
 \usepackage{fontspec}
+\usepackage{footnote}
 \usepackage{natbib}
 \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
 \usepackage{listings}
@@ -307,24 +308,47 @@ case of noun phrases). Table~\ref{table:nps} describes what kind of noun phrases
   \label{table:nps}
 \end{table*}
 
+\begin{savenotes}
 \begin{table*}
   \centering
   \begin{tabular}{|l|l|l|l|}
     \hline
     \textbf{Phrase type} & \textbf{Description} & \textbf{Examples} & \textbf{Chunk tags} \\
     \hline
-    \texttt{NP} & Noun phrase           &  & \\
-    \texttt{VP} & Verb phrase           & & \\
-    \texttt{PP} & Postpositional phrase & & \\
-    \texttt{GenP} & Genitive phrase  & & \\
-    \texttt{AdjP} & Adjective phrase  & & \\
-    \texttt{SupP} & Superlative phrase & & \\
-    \texttt{Q\_mark} & Question mark  & & \\
+    \multirow{5}{*}{\texttt{NP}} & \multirow{5}{*}{Noun phrase}    & noun & number*, person, \\
+                                 &                                 & determiner-noun & possessor*, case\\
+                                 &                                 & numeral-noun & \\
+                                 &                                 & adjective-noun & \\
+                                 &                                 & determiner-adjective-noun & \\
     \hline
+    \multirow{5}{*}{\texttt{VP}} & \multirow{5}{*}{Verb phrase}    & finite-verb & number, person, \\
+                                 &                                 & have-participle & tense/mood, possessive*, \\
+                                 &                                 & be-gerund & negation* \\
+                                 &                                 & must-infinitive & \\ 
+                                 &                                 & want\_to-infinitive & \\ 
+    \hline
+    \multirow{5}{*}{\texttt{PP}} & \multirow{5}{*}{Postpositional phrase} & preposition-noun & number, person, \\
+                                 &                                        & preposition-determiner-noun & possessor*, case \\
+                                 &                                        & preposition-numeral-noun & \\
+                                 &                                        & preposition-adjective-noun & \\
+                                 &                                        & preposition-determiner-adjective-noun & \\
+    \hline
+    \multirow{2}{*}{\texttt{GenP}} & \multirow{2}{*}{Genitive phrase}  & As with \texttt{PP} except & number, person, \\
+                                   &                                   & with the preposition `of'. & possessor*, case \\
+    \hline
+    \multirow{2}{*}{\texttt{AdjP}} & \multirow{2}{*}{Adjective phrase}  & adjective & n/a \\
+                                   &                                    & ``more''--adjective & \\
+    \hline
+    \multirow{2}{*}{\texttt{SupP}} & \multirow{2}{*}{Superlative phrase} & adjective--``est'' & possessor*,\footnote{Treated as a noun phrase with an implied noun (``the largest [book]'')} case \\
+                                   &                                     & the--``most''--adjective & \\ 
+    \hline
+%    \texttt{Q\_mark} & Question mark  & & \\
+%    \hline
   \end{tabular}
   \caption{Phrase types in the English-Kazakh chunker}
   \label{table:phrases} 
 \end{table*}
+\end{savenotes}
 
 As it is shown above, the most probable sequence of world classes are built phrases and 
 for English-Kazakh chunker there are used next kind of phrases:
@@ -342,11 +366,11 @@ for English-Kazakh chunker there are used next kind of phrases:
 \item[Prepositional phrases:] English prepositional phrases are translated into Kazakh as postpositional phrases, 
   there are three possible outcomes with different cases:
    \begin{itemize}
+    \item Genitive -{N}{I}ң,\footnote{Upper case letters in braces (such as {N}) represent hypothetical archiphonemes (actually archigraphemes) that are realised as phonemes (actually graphemes) after morphophonological rules have been applied. For instance, in the genitive ending “-{N}{I}ң”, the archiphoneme {N} may be realised as т, д, or н and the archiphoneme {I} may be realised as  і  or ы depending on the previous phonological context. } which will be marked GenP:  
+        [PP [P of ] [NP the beautiful garden] ] $\rightarrow$ [GenP [NP әдемі бақша] [P -ның] ] 
     \item Translating the locative ``-{D}{A}'',\footnote{{D} can be д or т, and {A} can be е or а, depending on the 
         phonological context.} ablative ``-{D}{A}н'', etc., except the genitive ``-{N}{I}ң'' cases: 
         [PP [P from ] [NP the five cars] ] $\rightarrow$ [PP [NP бес көлік] [P -тен ] ]
-    \item Genitive -{N}{I}ң, which will be marked GenP:  
-        [PP [P of ] [NP the beautiful garden] ] $\rightarrow$ [GenP [NP әдемі бақша] [P -ның] ] 
     \item With nouns such as аст `under', үст `on', etc. which takes possessive from main noun:  
         [PP [P under ] [NP the garden] ] $\rightarrow$ [PP [NP [GenP [NP бақша ][P -ның]] [NP астын]] [P -да ] ]
     \end{itemize}
