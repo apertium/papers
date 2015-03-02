@@ -261,24 +261,26 @@ Evaluating was tested against  revision 58998 in the Apertium SVN1. Lexical cove
     \hline
     \texttt{apertium-eng-kaz} & 44.23 & 42.88 \\
     Google & 62.00 & 25.92 \\
-    Sanasoft & 3.09 & 99.72 \\
-    Trident & 5.06 & 92.86 \\
+    Sanasoft & 21.00 & 74.52 \\
     \hline
   \end{tabular}
 \end{table}
 
 Evaluating the output of the system was measured with BLEU (Papineni et al. 2002) and Word Error Rate metric(Levenstein, 1966).  Was chosen text small English text, and by postediting output of English-kazakh system, was build parallel text.
 
+As can be seen,  coverage of dictionary is good, average score is 94\%. Our system outperforms other available RBMT system, but fall short of the state-of-the-art performance. However, unlike the state of the art, which uses unavailable corpora, our system is free and open and can be improved.
 
-\com{task-based evaluation (WER, assim, TM-patching?) -FMT}
-
-\com{Compare with GT + other systems -FMT}
+MT systems have some mistakes in translations, which was shown in <...> brackets. Google MT system has BLEU score higher, but in translation separate phrases, it has common error: do not assign right possessive and case. Sanasoft system has more errors with choosing not right translations or do not translate word from English. 
 
 \section{Conclusions}
 
-The current English-Kazakh machine translation system already successfully translates noun-phrases, verb-phrases, prepositional-phrases, and adjectival-phrases, and contains a good vocabulary for testing purposes. 
+We have presented the rule-based MT system from English to Kazakh. The current English-Kazakh machine translation system already successfully translates noun-phrases, verb-phrases, prepositional-phrases, and adjectival-phrases, and contains a good vocabulary for testing purposes. 
+We plan to continue developing English-Kazakh pair, going to extend the coverage to 98% on the corpora, which we used before. Additionally, we will improve the quality of translation by adding more rules, such like constraint grammar rules, structural transfer and lexical rules. The future plan is to use the created data with other open-source MT system with Turkic languages or system with Kazakh language on right side to make transfer systems between the Turkic or other language pairs. Related work is currently ongoing with Russian-Kazakh. 
+Our system is available as free/open-source software and the whole system may be downloaded from sourceforge(apertium-eng-kaz1, apertium-kaz2).
 
 \section*{Acknowledgements}
+
+MLF thanks the Kazakh state program for the attraction of foreign scholars and Prof. Ualsher Tukeyev for supporting his visit to the Kazakh National University, where part of this work was carried out. We also thank Prof. Tukeyev for his valuable input.
 
 \section{References}
 1 Сундетова А.М., Кәрібаева А.С., АПЕРТИУМ ПЛАТФОРМАСЫНДАҒЫ АҒЫЛШЫН-ҚАЗАҚ МАШИНАЛЫҚ АУДАРМАШЫ ҮШІН ЕКІТІЛДІ СӨЗДІКТІ ҚҰРУ. Матер. межд. научн.-практ. конф. «Применение информационно-коммуникационных технологий в образовании и науке», посвященной 50-летию Департамента информационно-коммуникационных технологий и 40-летию кафедры «Информационные системы» КазНУ им. аль-Фараби. 22 ноября 2013г. – Алматы: Қазақ Университеті, 2013. – С.53-57.
