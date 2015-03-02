@@ -526,6 +526,34 @@ has a higher BLEU score, but in translation separate phrases, it has common erro
 the right possessive and case. Sanasoft system has more errors with choosing not right translations 
 and out of vocabulary words.
 
+\begin{table*}
+  \centering
+  \begin{tabular}{|l|l|l|l|}
+    \hline 
+    \textbf{Structure} & \textbf{English} & \textbf{System} & \textbf{Translation} \\
+    \hline 
+    \multirow{3}{*}{Noun phrases} & \multirow{3}{*}{My difficult exercises} & Apertium & Менің қиын жаттығуларым \\
+                                  &                                         & Sanasoft & Менің қиын жаттықтырып *жатыр \\ % <not right POS>
+                                  &                                         & Google   & Менің қиын *жаттығулар \\ % <no 1 person possessive>
+    \hline 
+    \multirow{3}{*}{Adpositional phrases}  & \multirow{3}{*}{Under three big trees}  & Apertium & үш үлкен ағаштың астында \\
+                                           &                                         & Sanasoft & *Three үлкен *ағаштар астында \\ % <unk> <no genitive>
+                                           &                                         & Google   & үш үлкен *ағаштарды астында \\ % <no genitive>
+    \hline 
+    \multirow{3}{*}{Adjective phrases}    & \multirow{3}{*}{The most beautiful}      & Apertium & ең әдемі \\ 
+                                          &                                          & Sanasoft & *Көпшілік әдемі \\ % <not right translation> 
+                                          &                                          & Google   & ең әдемі \\
+    \hline
+    \multirow{3}{*}{Modal verbs}  & \multirow{3}{*}{I must pay}             & Apertium & Мен жүргізе аламын \\
+                                  &                                         & Sanasoft & Мен must pay \\ % <no translation>
+                                  &                                         & Google   & *Мен *төлеуі тиіс \\ % <no genitive> <no possessive>
+    \hline 
+  \end{tabular}
+
+  \caption{Qualitative evaluation}
+  \label{table:qualeval}
+\end{table*}
+
 \section{Conclusions}
 
 We have presented the rule-based MT system from English to Kazakh. The current English-Kazakh machine translation 
