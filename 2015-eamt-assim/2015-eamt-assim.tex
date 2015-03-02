@@ -106,10 +106,12 @@ The paper is organised as follows: in section~\ref{sec:methodology} we describe 
   \label{table:example}
 \end{table*}
 
-\comment{EA: Francis, when I save cyrillic in article body, it gets replaced by ??. I committed a separate file with the table and the footnote that has the text.}
-
 \begin{table*}
   \begin{tabular}{|l|l|}
+  \hline
+%@@@  \textbf{Src (Tatar)} & \rus{???? ?????? ???????; ????? 7 ??????????? ??? ??????? ?????, ????? ??? ????? 100 ???? ??????? ???????.}
+%  \hline
+%  \textbf{MT (Russian)} & \rus{???????? ??????? ????; ??? 7 ??????????? ??????? ?????????? ?????? , ????? ??? ????? 100 ???? ??????? ????.}
      \hline
      \textbf{10\%}   & \rus{Примерно полчаса; вам нужно выйти через 7 \{ \}, потом пройти ещё около 100 метров.} \\
      \textbf{20\%}   & \rus{\{ \} полчаса; вам нужно \{ \} через 7 остановок, \{ \} пройти ещё около 100 метров.} \\
@@ -135,7 +137,7 @@ comes from the machine translation of the \emph{source} sentence. Table~\ref{tab
 \begin{figure*}
   \centering
 \includegraphics[width=0.9\textwidth,resolution=144]{appraise-scr}
- \caption{An example set of sentences in an online environment.}
+ \caption{An example set of sentences in an online environment. The task is 30\% Russian legal text.}
 \label{figure:screenshot}
 \end{figure*}
 
@@ -239,7 +241,7 @@ increase scores where appropriate. On average, the scores improved by three perc
      \textbf{Synonym:} & correr \\
      \hline
   \end{tabular}
-  \caption{An example candidate synonym.} 
+  \caption{An example candidate synonym. The original word \emph{asumir} may be replaced with \emph{correr} in this context.} 
   \label{table:syn}
 \end{table*}
 \comment{EA: added}
@@ -300,7 +302,7 @@ As the MT and MT+source hints are introduced, the agreement between annotators i
 
 \hline
 \end{tabular}
-\caption {Tatar--Russian: Krippendorff Alpha measure} 
+\caption {Basque--Spanish: Krippendorff Alpha measure} 
 \label{table:alpha-eus-spa}
 \end{table*}
 
