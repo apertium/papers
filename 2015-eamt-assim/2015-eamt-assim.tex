@@ -9,16 +9,23 @@
 
 \documentclass[11pt]{article}
 \usepackage{eamt15}
-\usepackage{times}
-\usepackage{latexsym}
 \setlength\titlebox{6.5cm}    % Expanding the titlebox
 %%% YOUR PACKAGES BELOW THIS LINE %%%
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+
+\usepackage{url}
+\usepackage{times}
+\usepackage{latexsym}
 
 \usepackage{multirow}
 \usepackage{natbib}
 \usepackage{color}
 \usepackage[small,bf]{caption}
 \usepackage{graphicx}
+
+
 
 
 \newcommand{\confname}{EAMT 2015}
@@ -33,6 +40,7 @@
 
 \newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
 
+\newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
 
 \title{Evaluating machine translation for assimilation via a gap-filling task}
 
@@ -88,8 +96,8 @@ The paper is organised as follows: in section~\ref{sec:methodology} we describe 
 \begin{table*}
   \begin{tabular}{|l|l|}
      \hline
-     \textbf{Ref}   & Ayudas econ\'{o}micas para el tratamiento de toxicoman\'{i}�as en comunidades terap\'{e}uticas no concertadas. \\
-     \textbf{Task}   & Ayudas econ\'{o}micas para el \{ \} de toxicoman\'{i}�as en comunidades terap\'{e}uticas no concertadas. \\
+     \textbf{Ref}   & Ayudas econ\'{o}micas para el tratamiento de toxicoman\'{i}as en comunidades terap\'{e}uticas no concertadas. \\
+     \textbf{Task}   & Ayudas econ\'{o}micas para el \{ \} de toxicoman\'{i}as en comunidades terap\'{e}uticas no concertadas. \\
      \textbf{Src} & Komunitate terapeutiko itundu gabeetan toxikomaniak tratatzeko diru-laguntzak ematea. \\
      \textbf{MT}     & Comunidad terap\'{e}utico pactar gabeetan toxikomaniak las-ayudas de dinero para tratar dar. \\
      \hline
@@ -100,17 +108,17 @@ The paper is organised as follows: in section~\ref{sec:methodology} we describe 
 
 \comment{EA: Francis, when I save cyrillic in article body, it gets replaced by ??. I committed a separate file with the table and the footnote that has the text.}
 
-%\begin{table*}
-%  \begin{tabular}{|l|l|}
-%     \hline
-%     \textbf{10\%}   & ???????? ???????; ??? ????? { } ????? 7 ?????????, ????? ?????? ??? ????? 100 ??????. \\
-%     \textbf{20\%}   & ???????? ???????; ??? ????? { } ????? 7 ?????????, ????? { } ??? ????? 100 { }. \\
-%     \textbf{30\%} & ???????? ???????; ??? ????? { } ????? 7 { }, ????? ?????? { } ????? 100 { }. \\
-%     \hline
-%  \end{tabular}
-%  \caption{Example of different gap percentage settings.} 
-%  \label{table:percentage}
-%\end{table*}
+\begin{table*}
+  \begin{tabular}{|l|l|}
+     \hline
+     \textbf{10\%}   & \rus{Примерно полчаса; вам нужно выйти через 7 \{ \}, потом пройти ещё около 100 метров.} \\
+     \textbf{20\%}   & \rus{\{ \} полчаса; вам нужно \{ \} через 7 остановок, \{ \} пройти ещё около 100 метров.} \\
+     \textbf{30\%} & \rus{Примерно полчаса; вам нужно \{ \} через 7 \{ \}, потом пройти \{ \} около 100 \{ \}.} \\
+     \hline
+  \end{tabular}
+  \caption{Example of different gap percentage settings.} 
+  \label{table:percentage}
+\end{table*}
 
 
 This section discusses the reasoning behind the gap-filling method and task structure. The gap-filling method 
@@ -122,13 +130,13 @@ the \emph{target language} of the machine translation system.
 The additional elements of the task are what we call hints, or extra sentences that help the participant to understand 
 the main sentence. There are two types of hints: first, the \emph{source}, which is semantically identical to \emph{reference}, 
 also human-produced, but in the source language of the pair. The second type is the \emph{machine-translated} hint, which 
-comes from the machine translation of the \emph{source} sentence. Table~\ref{table:example} shows a sample task, and Figure~\ref{figure:screenshot} shows the task in the online evaluation environment.\comment{EA: for some reason, the reference to screenshot is figure 2, while in the caption it says figure 1 (correctly)}
+comes from the machine translation of the \emph{source} sentence. Table~\ref{table:example} shows a sample task, and Figure~\ref{figure:screenshot} shows the task in the online evaluation environment.
 
 \begin{figure*}
   \centering
 \includegraphics[width=0.9\textwidth,resolution=144]{appraise-scr}
-\label{figure:screenshot}
  \caption{An example set of sentences in an online environment.}
+\label{figure:screenshot}
 \end{figure*}
 
 \comment{EA: I don't really have a good explanation why we used source+mt tasks, except for being exhaustive. could you suggest anything?}
@@ -179,14 +187,12 @@ in full, see discussion).
 By design, our gap-filling tasks require a human translation (reference) of source sentences. Calling for a human translator, however, would significantly increase the resources needed for evaluation. We therefore use parallel text sources, which provide the same sentence in two languages simultaneously:
 \begin{enumerate}
 \item  For Basque-Spanish, from the corpus of legal texts ``Memorias de traducci\'on del
-Servicio Oficial de Traductores del IVAP''\footnote{http://opendata.euskadi.net/memorias-de-traduccion-del-servicio-oficial-de-traductores-del-ivap/w79-contdata/es/};
+Servicio Oficial de Traductores del IVAP''\footnote{\url{http://tinyurl.com/tm-ivap}};
 \item  For Tatar-Russian, from the following sources on three different topics:
   \begin{enumerate}
-\comment{EA: whoops, what is the best way to make it understand cyrillic?}
-    \item  Casual conversations, from a textbook
-    %\footnote{???????? ?.?. ? ??????? ???????? ??-????????. ??????: ????????? ??. ???-??, 1994. ? 320 ?. ISBN 5?298?00463?6 (???. 219, 220, 232, 233, 234)} of spoken Tatar;
-    \item  Legal texts, from the Constitution and laws\footnote{http://tatarstan.ru} of Tatarstan;
-    \item  News, from the President of Tatarstan website\footnote{http://president.tatarstan.ru/}.
+    \item  Casual conversations, from a textbook\footnote{\rus{Литвинов И.Л. Я начинаю говорить по-татарски. Казань: Татарское кн. изд-во, 1994. — 320 с. ISBN 5—298—00463—6 (стр. 219, 220, 232, 233, 234)}} of spoken Tatar;
+    \item  Legal texts, from the Constitution and laws\footnote{\url{http://tatarstan.ru}} of Tatarstan;
+    \item  News, from the President of Tatarstan website\footnote{\url{http://president.tatarstan.ru/}}.
   \end{enumerate}
 \end{enumerate}
 
