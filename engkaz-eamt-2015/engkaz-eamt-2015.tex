@@ -110,12 +110,6 @@ for English-to-Kazakh, which developed by using Apertium free/open-source machin
 translation platform \citep{forcada11}. %(http://www.apertium.org). 
 
 \section{The Apertium platform}
-Apertium \citep{forcada11} is a free/open-source rule-based machine translation (MT) platform that 
-has been developed since 2005 at the Universitat d'Alacant. At first, it was initially aimed at 
-translating texts between closely related languages, then it was extended to deal with less-related 
-languages. This platform has next components: machine translation engine, developer's tools, and linguistic 
-data for an increasing number of language pairs and they are licensed under the 
-free/open-source GNU General Public License (GPL, versions 2 and 3).
 
 \begin{figure*}[htbp]
 \begin{center}
@@ -126,56 +120,61 @@ free/open-source GNU General Public License (GPL, versions 2 and 3).
 %\vspace{-1em}
 \end{figure*}
 
+
+Apertium \citep{forcada11} is a free/open-source rule-based machine translation (MT) platform that 
+has been developed since 2005 at the Universitat d'Alacant. At first, it was initially aimed at 
+translating texts between closely related languages, then it was extended to deal with less-related 
+languages. This platform has next components: machine translation engine, developer's tools, and linguistic 
+data for an increasing number of language pairs and they are licensed under the 
+free/open-source GNU General Public License (GPL, versions 2 and 3).
+
 \begin{description}
 \item[De-formatter:] Separates the text to be translated from the formatting tags.  Formatting tags are 
   encapsulated in brackets so they are treated as ``superblanks'' that are placed between words in 
   such a way that the remaining modules see them as regular blanks.  
 \item[Morphological analyser:] For each surface form the morphological analyser generates one or more 
   lexical forms, which consist of: lemma (dictionary or citation form), lexical category (or part-of-speech), 
-  and inflection information. For example, the morphological analyser will deliver the following analysis for 
-  the sentence ``I played''.
-\begin{verbatim}
-^I/I<prn><subj><p1><mf><sg>$ 
-^played/play<vblex><past>/play<vblex><pp>$
-\end{verbatim}
-  In this example each source form has been analysed as one or more lexical forms: ``I'' is analysed 
-  into ``I'', where lexical category is subject pronoun (\texttt{<prn><subj>}) and first person (\texttt{<p1>}), could be 
-  masculine or feminine (\texttt{<mf>}), singular (\texttt{<sg>}); ``played'' is analysed into lexical verb (\texttt{<vblex>}) 
-  ``play'' with past simple tense (\texttt{<past>}) or it could be past participle (\texttt{<pp>}), so it has two 
-  analyses. Each analysis of word is separated by \texttt{\^{}} and \texttt{\$} symbols, and for one word each lexical 
-  forms are delimited by ``/'', and tags(<...>) show grammatical attributes of lexical form. 
+  and inflection information. 
+%  In this example each source form has been analysed as one or more lexical forms: ``I'' is analysed 
+%  into ``I'', where lexical category is subject pronoun (\texttt{<prn><subj>}) and first person (\texttt{<p1>}), could be 
+%  masculine or feminine (\texttt{<mf>}), singular (\texttt{<sg>}); ``played'' is analysed into lexical verb (\texttt{<vblex>}) 
+%  ``play'' with past simple tense (\texttt{<past>}) or it could be past participle (\texttt{<pp>}), so it has two 
+%  analyses. Each analysis of word is separated by \texttt{\^{}} and \texttt{\$} symbols, and for one word each lexical 
+%  forms are delimited by ``/'', and tags(<...>) show grammatical attributes of lexical form. 
 \item[Part-of-speech (POS) tagger:] This module chooses one of lexical forms of ambiguous word. As can be 
   seen from the previous example, the morphological analyser could deliver more than one lexical form and 
   choosing wrong one could produce errors in translation. POS tagger is based on a statistical model, which 
   based on hidden Markov models and it has been trained on source language texts, which processes the 
   result of the application of  on constraint-grammar rules \citep{karlsson95}, which are used to discard some 
-  analyses using rules based on context. For example, consider the morphological analysis of word ``book'':
-\begin{verbatim}
-^book/book<n><sg>
-/book<vblex><inf>
-/book<vblex><pres>$
-\end{verbatim}
-  This word has 3 lexical forms, and depends on context, ont of them will be chosen by rules or tagger. After  this module, 
-  all words have only one morphological analysis.
+  analyses using rules based on context. 
+%For example, consider the morphological analysis of word ``book'':
+%\begin{verbatim}
+%^book/book<n><sg>
+%/book<vblex><inf>
+%/book<vblex><pres>$
+%\end{verbatim}
+%  This word has 3 lexical forms, and depends on context, ont of them will be chosen by rules or tagger. 
+After  this module, all words have only one morphological analysis.
 \item[Lexical transfer:] It reads each lexical form of source language and delivers a corresponding target language 
-  lexical form. This module uses a bilingual dictionary. For the English-Kazakh language pair, each lexical form of 
-  English word is translated into Kazakh as follows:
-\begin{verbatim}
-^I<prn><subj><p1><mf><sg>/мен<prn><pers><subj><p1><mf><sg>$ 
-^play<vblex><past>/ойна<v><tv><past>$
-\end{verbatim}
+  lexical form. This module uses a bilingual dictionary. 
+%For the English-Kazakh language pair, each lexical form of 
+%  English word is translated into Kazakh as follows:
+%\begin{verbatim}
+%^I<prn><subj><p1><mf><sg>/мен<prn><pers><subj><p1><mf><sg>$ 
+%^play<vblex><past>/ойна<v><tv><past>$
+%\end{verbatim}
  Multiword units can be translated as a single word.
 \item[ Lexical selection:] It uses rules for lexical words, which have many translations, to select one of the translations 
   in the target language according to context. The system is described in \cite{tyers12a}.
 \item [Structural transfer:] This module uses pattern matching to identify sequences of lexical forms  (phrases or 
   segments), which need syntactical processing to translate grammatical differences between two languages (handling of 
   number, gender, etc.). It uses  files with rules, which specify  the syntactic transformation such as word reorderings, 
-  lexical changes such as changes in prepositions and agreement between target language lexical forms. Transfer rules can 
-  produce new sequences for the  target language, for instance, preposition-noun rule is used to built sequence, where for 
-  noun is chosen right case, which depends on preposition: 
-\begin{verbatim}
-in garden  --  ^бақша<n><sg><PXD><loc>$
- \end{verbatim} 
+  lexical changes such as changes in prepositions and agreement between target language lexical forms. %Transfer rules can 
+%  produce new sequences for the  target language, for instance, preposition-noun rule is used to build a sequence, where for 
+%  noun is chosen right case, which depends on preposition.
+%\begin{verbatim}
+%in garden  --  ^бақша<n><sg><PXD><loc>$
+% \end{verbatim} 
 \item[Morphological generator:] Delivers the sequence of target-language lexical forms, produced by the structural transfer, 
   to a corresponding sequence of target language surface forms. The morphological generator executes a finite-state transducer 
   generated by compiling a morphological dictionary for the target language.     
@@ -471,7 +470,7 @@ The set of rules has to be extended, as many combinations of the above phenomena
 Additional cleaning stage was created for removing extra tags which did not determine through the chunker and 
 interchunk steps, for instance, noun was not acting as object and did not get accusative case, so not determined 
 tag was \texttt{<CD>} after ``cleaning'' it will be set on nominative case; at this step, also carried out 
-agreement between noun or adjective and copula ``е''(Мен дәрігер+е<p1 person singualr>), vowel and consonants 
+agreement between noun or adjective and copula ``е''(Мен дәрігер+е<p1 person singular>), vowel and consonants 
 agreement between last word of question and question particle (Сіз келдіңіз + ме? - Сіз келдіңіз + бе?).
 
 \section{Evaluation and results}
@@ -514,8 +513,9 @@ Table~\ref{table:coverage} presents the size of the corpora and the vocabulary c
 \end{table}
 
 Evaluating the output of the system was measured with BLEU \citep{papineni02} and Word Error Rate 
-metric \citep{levenshtein/1966}. Was chosen text small English text, and by postediting output 
-of English-Kazakh system, was build parallel text.
+metric \citep{levenshtein/1966}. We chose a short text in English, and by postediting output 
+of English-Kazakh system, was build parallel text. The output of each of the machine
+translation systems was posteditted independently to avoid biasing one particular system.
 
 As can be seen,  coverage of dictionary is good, average score is 94\%. Our system outperforms the other 
 available RBMT system, but fall short of the state-of-the-art performance. However, unlike the state of 
@@ -528,16 +528,20 @@ and out of vocabulary words.
 
 \section{Conclusions}
 
-We have presented the rule-based MT system from English to Kazakh. The current English-Kazakh machine translation system already successfully translates noun-phrases, verb-phrases, prepositional-phrases, and adjectival-phrases, and contains a good vocabulary for testing purposes. 
-We plan to continue developing English-Kazakh pair, going to extend the coverage to 98\% on the corpora, which we used before. Additionally, we will improve the quality of translation by adding more rules, such like constraint grammar rules, structural transfer and lexical rules. The future plan is to use the created data with other open-source MT system with Turkic languages or system with Kazakh language on right side to make transfer systems between the Turkic or other language pairs. Related work is currently ongoing with Russian--Kazakh. 
-Our system is available as free/open-source software and the whole system may be downloaded from sourceforge(apertium-eng-kaz1, apertium-kaz2).
+We have presented the rule-based MT system from English to Kazakh. The current English-Kazakh machine translation 
+system already successfully translates noun-phrases, verb-phrases, prepositional-phrases, and adjectival-phrases, and 
+contains a good vocabulary for testing purposes. 
+We plan to continue developing English-Kazakh pair, going to extend the coverage to 98\% on the corpora, 
+which we used before. Additionally, we will improve the quality of translation by adding more rules, such like 
+constraint grammar rules, structural transfer and lexical rules. The future plan is to use the created data with other 
+open-source MT system with Turkic languages or system with Kazakh language on right side to make transfer systems 
+between the Turkic or other language pairs. Related work is currently ongoing with Russian--Kazakh. 
+Our system is available as free/open-source software and the whole system may be downloaded 
+from SourceForge.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/incubator/apertium-eng-kaz}}
 
 \section*{Acknowledgements}
 
 MLF thanks the Kazakh state program for the attraction of foreign scholars and Prof. Ualsher Tukeyev for supporting his visit to the Kazakh National University, where part of this work was carried out. We also thank Prof. Tukeyev for his valuable input.
-
-%\section{References}
-%1 Сундетова А.М., Кәрібаева А.С., АПЕРТИУМ ПЛАТФОРМАСЫНДАҒЫ АҒЫЛШЫН-ҚАЗАҚ МАШИНАЛЫҚ АУДАРМАШЫ ҮШІН ЕКІТІЛДІ СӨЗДІКТІ ҚҰРУ. Матер. межд. научн.-практ. конф. «Применение информационно-коммуникационных технологий в образовании и науке», посвященной 50-летию Департамента информационно-коммуникационных технологий и 40-летию кафедры «Информационные системы» КазНУ им. аль-Фараби. 22 ноября 2013г. – Алматы: Қазақ Университеті, 2013. – С.53-57.
 
 \bibliographystyle{apalike}
 
