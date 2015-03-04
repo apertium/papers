@@ -9,7 +9,7 @@
 
 \documentclass[11pt]{article}
 \usepackage{eamt15}
-\usepackage{times}
+%\usepackage{times}
 \usepackage{latexsym}
 \setlength\titlebox{6.5cm}    % Expanding the titlebox
 %%% YOUR PACKAGES BELOW THIS LINE %%%
@@ -19,6 +19,7 @@
 
 
 \usepackage{polyglossia}
+\usepackage{todonotes}
 \setdefaultlanguage[variant=australian]{english}
 \usepackage{latexsym}
 %\usepackage[small,bf]{caption}
@@ -58,7 +59,7 @@
 \newcommand{\shortpaperlength}{$4$ (four)}
 
 \newcommand{\com}[1]{\marginpar{\scriptsize #1}} 
-
+    \setcounter{secnumdepth}{4}
 \title{A free/open-source machine translation system for English to Kazakh}
 
 % Authors:
@@ -68,9 +69,10 @@
 
 \begin{document}
 \maketitle 
+\renewcommand{\baselinestretch}{0.97} % the undetectable 3% squeeze
  
 
-\begin{abstract}
+\begin{abstract}\todo{Decide authors, and put them in phantom boxes}
 This paper presents the current state of development a shallow-transfer rule-based machine translation (MT) system from English to Kazakh. The main syntactic and morphological differences 
 between the two languages are presented, and it is showed how the MT 
 system was designed to tackle these challenges. We show an evaluation of system coverage and 
@@ -99,16 +101,16 @@ conjunctions (\emph{the book which I read}, \emph{the place where I saw him}, \e
 of the English lexical verb \emph{to have}, etc. For an account (in Russian) of 
 syntactic differences between English and Kazakh, see \cite{pecherskih2012}.
 
-We currently build rule-based machine translation system, because for statistical machine translation 
-system we need large sentence-aligned parallel corpora. There are no freely available, large parallel 
-corpora for the English-Kazakh pair. English-Kazakh statistical MT system was built by Google,\footnote{\url{http://translate.google.com}} 
-other work in this language pair was made by building a small parallel corpus and using Moses \citep{assylbekov14}, 
-and existing commercial systems for English to Kazakh (Sanasoft\footnote{\url{http://www.sanasoft.kz/c/ru/node/47}} and Trident\footnote{\url{http://www.translate.ua/us/on-line}}) both appear to be rule-based. Rule-based machine translation, in which developers 
+We set out to build a rule-based machine translation system, because for statistical machine translation 
+system we need large sentence-aligned parallel corpora, which are not freely available
+for the English--Kazakh pair. An English--Kazakh statistical MT system has however recently been built by Google,\footnote{\url{http://translate.google.com}}; 
+other work in this language pair was performed by building a small parallel corpus and using Moses \citep{assylbekov14}. Existing commercial systems for English to Kazakh (Sanasoft\footnote{\url{http://www.sanasoft.kz/c/ru/node/47}} and Trident\footnote{\url{http://www.translate.ua/us/on-line}}) both appear to be rule-based. 
+Rule-based machine translation, in which developers 
 write up dictionaries and grammatical rules that are applied by an engine, in some 
 unusual case will produce better translation.
-
+\todo{What does the last sentence mean? Clarify!}
 This paper describes work in progress of development of machine translation system 
-for English-to-Kazakh, which developed by using Apertium free/open-source machine 
+for English--Kazakh using the Apertium free/open-source machine 
 translation platform \citep{forcada11}. %(http://www.apertium.org). 
 
 \section{The Apertium platform}
@@ -119,23 +121,22 @@ translation platform \citep{forcada11}. %(http://www.apertium.org).
 \end{center}
 \caption{The pipeline architecture of the Apertium system.}
 \label{fig:modules}
-%\vspace{-1em}
+\vspace{-1em}
 \end{figure*}
 
-
 Apertium \citep{forcada11} is a free/open-source rule-based machine translation (MT) platform that 
-has been developed since 2005 at the Universitat d'Alacant. At first, it was initially aimed at 
+has been developed since 2005, started at the Universitat d'Alacant. At first, it was initially aimed at 
 translating texts between closely related languages, then it was extended to deal with less-related 
-languages. This platform has next components: machine translation engine, developer's tools, and linguistic 
+languages. This platform has the following components: machine translation engine, developer's tools, and linguistic 
 data for an increasing number of language pairs and they are licensed under the 
 free/open-source GNU General Public License (GPL, versions 2 and 3).
-
-\begin{description}
+\todo{If space allowed, it would be nice to add a running example as in the Apertium paper}
+\begin{description}\itemsep 0ex
 \item[De-formatter:] Separates the text to be translated from the formatting tags.  Formatting tags are 
   encapsulated in brackets so they are treated as ``superblanks'' that are placed between words in 
   such a way that the remaining modules see them as regular blanks.  
-\item[Morphological analyser:] For each surface form the morphological analyser generates one or more 
-  lexical forms, which consist of: lemma (dictionary or citation form), lexical category (or part-of-speech), 
+\item[Morphological analyser:] For each surface form  (SF) the morphological analyser generates one or more 
+  lexical forms (LF), which consist of: lemma (dictionary or citation form), lexical category (or part-of-speech), 
   and inflection information. 
 %  In this example each source form has been analysed as one or more lexical forms: ``I'' is analysed 
 %  into ``I'', where lexical category is subject pronoun (\texttt{<prn><subj>}) and first person (\texttt{<p1>}), could be 
@@ -143,12 +144,15 @@ free/open-source GNU General Public License (GPL, versions 2 and 3).
 %  ``play'' with past simple tense (\texttt{<past>}) or it could be past participle (\texttt{<pp>}), so it has two 
 %  analyses. Each analysis of word is separated by \texttt{\^{}} and \texttt{\$} symbols, and for one word each lexical 
 %  forms are delimited by ``/'', and tags(<...>) show grammatical attributes of lexical form. 
-\item[Part-of-speech (POS) tagger:] This module chooses one of lexical forms of ambiguous word. As can be 
-  seen from the previous example, the morphological analyser could deliver more than one lexical form and 
-  choosing wrong one could produce errors in translation. POS tagger is based on a statistical model, which 
-  based on hidden Markov models and it has been trained on source language texts, which processes the 
-  result of the application of  on constraint-grammar rules \citep{karlsson95}, which are used to discard some 
-  analyses using rules based on context. 
+\item[Part-of-speech (POS) tagger:] This module chooses one of the LF of an ambiguous SF. 
+%As can be 
+%  seen from the previous example, the morphological analyser could deliver more than one LF and 
+%  choosing wrong one could produce errors in translation. 
+\todo{I have removed some text and  the statistical PoS tagging stuff, as it is not used}
+%POS tagger is based on a statistical model, which 
+%  based on hidden Markov models and it has been trained on source language texts, which processes the 
+%  result of the application of  on constraint-grammar rules \citep{karlsson95}, which are used to discard some 
+%  analyses using rules based on context. 
 %For example, consider the morphological analysis of word ``book'':
 %\begin{verbatim}
 %^book/book<n><sg>
@@ -156,100 +160,104 @@ free/open-source GNU General Public License (GPL, versions 2 and 3).
 %/book<vblex><pres>$
 %\end{verbatim}
 %  This word has 3 lexical forms, and depends on context, ont of them will be chosen by rules or tagger. 
-After  this module, all words have only one morphological analysis.
-\item[Lexical transfer:] It reads each lexical form of source language and delivers a corresponding target language 
-  lexical form. This module uses a bilingual dictionary. 
-%For the English-Kazakh language pair, each lexical form of 
+%After  this module, all words have only one morphological analysis.
+\item[Lexical transfer:] It reads each source-language LF and delivers the corresponding target-language 
+  LFs. This module uses a bilingual dictionary. 
+%For the English--Kazakh language pair, each lexical form of 
 %  English word is translated into Kazakh as follows:
 %\begin{verbatim}
 %^I<prn><subj><p1><mf><sg>/мен<prn><pers><subj><p1><mf><sg>$ 
 %^play<vblex><past>/ойна<v><tv><past>$
 %\end{verbatim}
  Multiword units can be translated as a single word.
-\item[ Lexical selection:] It uses rules for lexical words, which have many translations, to select one of the translations 
-  in the target language according to context. The system is described in \cite{tyers12a}.
-\item [Structural transfer:] This module uses pattern matching to identify sequences of lexical forms  (phrases or 
-  segments), which need syntactical processing to translate grammatical differences between two languages (handling of 
-  number, gender, etc.). It uses  files with rules, which specify  the syntactic transformation such as word reorderings, 
+\item[ Lexical selection:] It uses rules to select one of the target-language LFs, as described in \cite{tyers12a}.
+\item [Structural transfer:] This module uses pattern matching to identify sequences of LF (phrases or 
+  segments), which need syntactical processing 
+%to deal 
+%with grammatical differences between two languages (handling of 
+%  number, gender, etc.). 
+It uses files with rules, which specify  the syntactic transformation such as word reorderings, 
   lexical changes such as changes in prepositions and agreement between target language lexical forms. %Transfer rules can 
 %  produce new sequences for the  target language, for instance, preposition-noun rule is used to build a sequence, where for 
 %  noun is chosen right case, which depends on preposition.
 %\begin{verbatim}
 %in garden  --  ^бақша<n><sg><PXD><loc>$
 % \end{verbatim} 
-\item[Morphological generator:] Delivers the sequence of target-language lexical forms, produced by the structural transfer, 
-  to a corresponding sequence of target language surface forms. The morphological generator executes a finite-state transducer 
-  generated by compiling a morphological dictionary for the target language.     
-  For Kazakh language a finite-state transducer based on two-level rules \citep{washingtonsalimzyantyers14} is used for generation. 
-\item[ Post-generator:] Performs some minor orthographical operations in the target language (for instance, it generates the 
-  English form cannot from can and not). This module is generated from file with rules which are very   similar in format to dictionary files. 
+\item[Morphological generator:] Transforms the sequence of target-language LFs forms, produced by the structural transfer, 
+  to a corresponding sequence of target-language SFs. 
+% The morphological generator executes a finite-state transducer 
+For Kazakh, a finite-state transducer based on two-level rules \citep{washingtonsalimzyantyers14} is used for generation. 
+\item[Post-generator:] Performs some minor orthographical operations in the target language. This module is not used in the English--Kazakh system.\todo{Or is it?}
 \item[ Reformatter:] It places format tags back into the text so that its format is preserved.
 \end{description}
 
 \section{Linguistic data}
 
-Apertium uses XML-based formats for linguistic data, which include bilingual and monolingual dictionaries, structural transfer and
-lexical selection rules. % and rules for part-of-speech tagging.
+Apertium mainly uses XML-based formats for linguistic data, which include bilingual and monolingual dictionaries, structural transfer and
+lexical selection rules. 
 
 \subsection{Dictionaries}
 
-Dictionaries are used in lexical processing and morphological analysis, there are use two types: morphological (monolingual) and bilingual.
+Dictionaries are used in lexical processing: monolingual dictionaries
+for morphological analysis of English and generation of Kazakh and
+bilingual dictionaries for English--Kazakh lexical transfer.  
 
-\subsubsection{Monolingual dictionaries}
+The English dictionary is used to determine lexical forms of each surface
+forms, it contains of list of all lexical units, definition of
+source-language alphabet, grammatical categories, which is used to
+specify lexical forms, for example, like noun, verb, gender, etc.;
+each category has paradigms describing groups of correspondences
+between parts of SFs and LFs.  
 
-English dictionary uses to determine lexical forms of each surface forms, it contains of list of all lexical units, definition 
-of source-language alphabet, grammatical categories, which is used to specify lexical forms, for example, like noun, verb, 
-gender, etc., each categories have paradigms, they describes groups of correspondences between parts of surface forms and lexical forms. 
+The Kazakh dictionary is turned into a
+morphological transducer, using the Helsinki Finite
+State Toolkit \citep{hfst/2011}. It uses the \texttt{lexc} formalism
+for defining lexicons through word classes and subclasses, and the
+\texttt{twol} formalism for morphophonological rules such as vowel
+harmony, desonorization, nasalization, etc.  Depending on the
+preceding vowels and consonants, the plural suffix \emph{-LAr}\footnote{Uppercase Latin letters are used for archiphonemes (actually archigraphemes) that are realised as phonemes (actually graphemes) after morphophonological rules have been applied} could
+become \emph{-тар}, \emph{-тер}, \emph{-lar}, \emph{-ler}, \emph{-dar}, \emph{-ler} depending on vowel harmony: kitap+tar,
+mektep+ter, etc. \todo{Aida, please typeset this example in Cyrillic; braces are not used here, but are used later; homogeneize notation in paper.}
 
-For Kazakh side, is used morphological transducers, which are based on the Helsinki Finite State Toolkit \citep{hfst/2011}. It 
-uses formalisms lexc for defining lexicons, twol formalism for morphophonological rules. Lexc formalism defines different 
-word classes and subclasses. And twol determines phonological transformation like vowel harmony, desonorisation. For example, 
-depend on preceding vowel, plural form \emph{-LAr} could become -тар or -тер depending on vowel harmony: kitap+tar, but mektep+ter.
 
-\subsubsection{Bilingual dictionary}
+%\subsubsection{Bilingual dictionary}
 
-Bilingual dictionary provides correspondences between lexical forms of source and target lanugages. Each entry 
-consists of English word on the left side with part of speech and corresponding Kazakh word on the right side. 
-Some entries could be ambiguous by part of speech, or just have many translations, which will be chosen by 
-lexical-selection rules depending on context. This dictionary currently contains 13,130 stems \citep{sundetova13a}.
-
+The English--Kazakh bilingual dictionary provides correspondences between English LFs and Kazakh LFs. Ambiguity is allowed: one of the LFs will be chosen by 
+lexical-selection rules depending on context. This dictionary currently contains 13,130 stems \citep{sundetova13a}.\todo{later you say 13,135}
 
 \subsection{Rules}
 
-\subsection{Disambiguation rules}
+\subsubsection{Disambiguation rules}
 
-This kind of rules solves the problem of part-of-speech (POS) ambiguity by Constraint Grammar (CG, \cite{karlsson95}). The 
-output of morphological analyser could be ambiguous, and in this case CG rules choose correct analysis from 
-multiple analyses. From English to Kazakh POS ambiguity could be only in English side, but also some choice also
-depend on Kazakh grammar.
+This kind of rules solves the problem of part-of-speech (PoS) ambiguity using the  Constraint Grammar (CG, \cite{karlsson95}) formalism. CG rules choose one of the LFs obtained for each SF. %From English to Kazakh POS ambiguity could be only in English side, but also some choice also
+%depend on Kazakh grammar.\todo{I removed an unclear sentence here}
 
-\subsection{Lexicon selection rules }
+\subsubsection{Lexical selection rules }
 
-Lexical-selection rules choose one of the alternative translations of one word depend on the context. The rule 
-formalism is described in \cite{tyers12a}. Alternative translations are defined in bilingual dictionary by 
-multiple entries of one word. For exmaple, adjective ``beautiful'' could be translated as ``сұлу'', if 
-following noun is subject: ``beautiful girl'' -- ``сұлу қыз''; or ``әдемі'', ``көркем'', if the noun means 
-place or: ``beautiful mountains'' -- ``әдемі таулар''.  Table~\ref{table:lexsel} demonstrates some 
-lexical-selection rules:
-
+Lexical-selection rules choose one of the alternative target-language LFs corresponding to one source-language LF, as described in \cite{tyers12a}. Alternative translations are defined in bilingual dictionary by 
+multiple entries for each source-language LF. For example, the adjective \emph{beautiful} could be translated as \emph{сұлу}, if 
+the following noun is a person: \emph{beautiful girl} \(\to\) \emph{сұлу қыз}; or as \emph{әдемі} or  \emph{көркем}, if the following noun means 
+place or \todo{or what?} \emph{beautiful mountains} \(\to\) \emph{әдемі таулар}.  Table~\ref{table:lexsel} shows some 
+lexical-selection rules:\todo{but this rule is not in the table!!!}
 \begin{table*}
  \centering
  \begin{tabular}{|l|l|l|l|}
     \hline
-    \textbf{Word} & \textbf{Translation} & \textbf{Condition} & \textbf{Example} \\
+    \textbf{SL word \(w\)} & \textbf{TL word} & \textbf{Context} & \textbf{Example} \\
     \hline
-    \multirow{4}{*}{residence} & \multirow{2}{*}{мекен}      & \multirow{2}{*}{--} & I live in a residence. \\
+    \multirow{4}{*}{residence} & \multirow{2}{*}{мекен}      & \multirow{2}{*}{default} & I live in a residence. \\
                                &                             &                     & (Мен) мекенде өмір сүремін. \\
-                               & \multirow{2}{*}{резиденция} & \multirow{2}{*}{\_ of \_ president} & I see the residence of the president \\ 
+                               & \multirow{2}{*}{резиденция} & \multirow{2}{*}{\(w\)\_ of \_ president} & I see the residence of the president \\ 
                                &                             &                                     & (Мен) президенттің резиденциясын көремін \\
     \hline
-    \multirow{4}{*}{boot} & \multirow{2}{*}{бәтеңке} & -- & I bought boots. \\
+    \multirow{4}{*}{boot} & \multirow{2}{*}{бәтеңке} & default & I bought boots. \\
                           &                          &     &  Мен бәтеңкелерді сатып алдым \\
 
-                          & \multirow{2}{*}{жүксалғыш} & \_ of \_ car &  He opened the boot of the car  \\ 
+                          & \multirow{2}{*}{жүксалғыш} & \(w\) \_ of \_ car &  He opened the boot of the car  \\ 
                           &           &              & Ол машинаның жүксалғышын ашты. \\
     \hline
-    \multirow{4}{*}{anything} & \multirow{2}{*}{бір нәрсе} & -- & I see anything \\ 
+    \multirow{4}{*}{anything} & \multirow{2}{*}{бір нәрсе} & default & I see anything  
+\\ 
                               &           &    & Мен бір нәрсе көремін \\
                               & \multirow{2}{*}{еш нәрсе} & not \_[verb] & I do not do anything \\ 
                               &          &             &  Мен еш нәрсе істемеймін. \\
@@ -259,11 +267,11 @@ lexical-selection rules:
   \caption{Example lexical-selection rules}
   \label{table:lexsel}
 \end{table*}
+\todo{I do not understand the \emph{I see anything} example. Does it mean \emph{anything} as \emph{whatever}? I do not know how to put the \(w\) in this example}@
 
-\subsection{Transfer rules}
+\subsubsection{Transfer rules}
 
-For English–Kazakh system this stage uses three stages to improve the granularity of structural-transfer 
-rules \citep{sundetova13b}:
+For English--Kazakh transfer is performed in three stages \citep{sundetova13b}:
 
 \begin{itemize}
 \item A first round of transformations (``chunker'') detects source language (SL) LF patterns and generates the 
@@ -279,17 +287,15 @@ The structural transfer module in Apertium processes the stream of source-langua
 form pairs (SL LF–TL LF pairs) and transforms it into a new sequence of TL LFs after a series of structural transfer 
 operations specified in a set of rules: reordering, elimination or insertion of TL LFs, agreement, etc. 
 
-This section describes the current structural transfer in \texttt{apertium-eng-kaz} (revision ..., ). English to Kazakh 
-chunker rules, interchunk rules and additional clean-up stage will be described in detail next 3 sections. 
+This section describes the current structural transfer in \texttt{apertium-eng-kaz} (revision ..., ).\todo{Complete! 58998? Move to results?} English--Kazakh 
+chunker rules, interchunk rules and an additional clean-up stage will be described in detail in the following 3 sections. 
 
-\subsubsection{Chunker}
-
-In the first round of structural transfer rules do some local operations to cut sentences into chunks, like short noun 
+\paragraph{Chunker:}\todo{This should have 4 numerals, but I don't know how to do this}
+In the first round of structural transfer, rules segment sentences into chunks, like short noun 
 phrases, adjective phrases, verb phrases and adpositional phrases (that is, prepositional phrases in English and 
 postpositional phrases in Kazakh).
-Chunking rules, of which there are currently 168, identify 8 kinds of chunks and translate them into Kazakh as much 
-as possible, leaving some minor operations to be performed in later stages of structural transfer (for instance, the 
-case of noun phrases). Table~\ref{table:nps} describes what kind of noun phrases could appear in sentences and how it could be detected.
+Chunking rules, of which there are currently 168, identify 8 kinds of chunks and translate them into equivalent Kazakh chunks, leaving some adaptations to be performed in later stages of structural transfer (for instance, the 
+morphological case of noun phrases). Table~\ref{table:nps} describes what kind of noun phrases could appear in sentences and how it could be detected.\todo{This table does not add much. the first and second column of the table are essentially the same: it would be more interesting to give the Kazakh sequence of PoS tags, perhaps with an example}
 
 \begin{table*}
   \centering
@@ -340,7 +346,7 @@ case of noun phrases). Table~\ref{table:nps} describes what kind of noun phrases
     \multirow{2}{*}{\texttt{AdjP}} & \multirow{2}{*}{Adjective phrase}  & adjective & n/a \\
                                    &                                    & ``more''--adjective & \\
     \hline
-    \multirow{2}{*}{\texttt{SupP}} & \multirow{2}{*}{Superlative phrase} & adjective--``est'' & possessor*,\footnote{Treated as a noun phrase with an implied noun (``the largest [book]'')} case \\
+    \multirow{2}{*}{\texttt{SupP}} & \multirow{2}{*}{Superlative phrase} & adjective--``est'' & possessor*, case \\
                                    &                                     & the--``most''--adjective & \\ 
     \hline
 %    \texttt{Q\_mark} & Question mark  & & \\
@@ -350,9 +356,9 @@ case of noun phrases). Table~\ref{table:nps} describes what kind of noun phrases
   \label{table:phrases} 
 \end{table*}
 \end{savenotes}
-
 As it is shown above, the most probable sequence of world classes are built phrases and 
 for English-Kazakh chunker there are used next kind of phrases:
+
 
 %% EXAMPLES ?
 
@@ -360,25 +366,27 @@ for English-Kazakh chunker there are used next kind of phrases:
 \item[Noun phrases:] Consider the following example: the chunker identifies the English sequence 
   the large book  (determiner–adjective–noun) as a noun-phrase chunk. It translates into 
   Kazakh, and assigns it four chunk-level tags: number (set to singular), person (set to 3rd), 
-  possessor (to be determined, as the noun кітап ('book') could receive a 3rd-person possesive 
-  ending (кітабы) later if the context were, for instance, the large book of animals, аңдардың үлкен кітабы), 
-  and case (to be determined as it could be, for instance, accusative in I saw the large book, Мен үлкен кітапты көрдім ). Also 
-  noun form of the verb, for instance,  gerund form is determined as NP phrase (Her playing is good – Оның ойыны жақсы).
+  possessor (to be determined, as the noun \emph{кітап} ('book') could receive a 3rd-person possesive 
+  ending (\emph{кітабы}) later if the context were, for instance, \emph{the large book of animals}, \emph{аңдардың үлкен кітабы}), 
+  and case (to be determined as it could be, for instance, accusative in \emph{I saw the large book}, \emph{Мен үлкен кітапты көрдім} ). Also, the
+  noun form of the verb, for instance,  gerund form is determined as NP phrase (\emph{Her playing is good} – \emph{Оның ойыны жақсы}).\todo{Make sure all English and Kazakh examples are in italics}
 \item[Prepositional phrases:] English prepositional phrases are translated into Kazakh as postpositional phrases, 
-  there are three possible outcomes with different cases:
+  there are three possible outcomes with different cases:\todo{remove braces for consistency with the previous notation for archiphonemes: avoid repeating the explanation in the footnote.}
    \begin{itemize}
     \item Genitive -{N}{I}ң,\footnote{Upper case letters in braces (such as {N}) represent hypothetical archiphonemes (actually archigraphemes) that are realised as phonemes (actually graphemes) after morphophonological rules have been applied. For instance, in the genitive ending “-{N}{I}ң”, the archiphoneme {N} may be realised as т, д, or н and the archiphoneme {I} may be realised as  і  or ы depending on the previous phonological context. } which will be marked GenP:  
         [PP [P of ] [NP the beautiful garden] ] $\rightarrow$ [GenP [NP әдемі бақша] [P -ның] ] 
-    \item Translating the locative ``-{D}{A}'',\footnote{{D} can be д or т, and {A} can be е or а, depending on the 
-        phonological context.} ablative ``-{D}{A}н'', etc., except the genitive ``-{N}{I}ң'' cases: 
-        [PP [P from ] [NP the five cars] ] $\rightarrow$ [PP [NP бес көлік] [P -тен ] ]
-    \item With nouns such as аст `under', үст `on', etc. which takes possessive from main noun:  
-        [PP [P under ] [NP the garden] ] $\rightarrow$ [PP [NP [GenP [NP бақша ][P -ның]] [NP астын]] [P -да ] ]
+    \item Translating into any of the morphological cases: locative ``-{D}{A}'',\footnote{{D} can be д or т, and {A} can be е or а, depending on the 
+        phonological context.} ablative ``-{D}{A}н'', etc., except the genitive ``-{N}{I}ң'' case: 
+        [PP [P \emph{from} ] [NP \emph{the five cars}] ] $\rightarrow$ [PP [NP \emph{бес көлік}] [P \emph{-тен} ] ]
+    \item Using postpositional constructs based on positional nouns such as \emph{аст} (`under'), \emph{үст} (`on'), etc., which take the possessive from the main noun:  
+        [PP [P \emph{under} ] [NP \emph{the garden}] ] $\rightarrow$ [PP [NP [GenP [NP \emph{бақша} ][P \emph{-ның}]] [NP \emph{аст\textbf{ын}}]] [P \emph{-да} ] ]
     \end{itemize}
-\item[Verb phrases:] Translation verb phrases into Kazakh  are not always be straightforward, for instance: 
-  present simple and future are rendered using the same tense in Kazakh (I play $\rightarrow$ Мен ойнаймын;  I 
-  will play $\rightarrow$ Мен ойнаймын), this ambiguity problem may be solved by lexical selection, 
-  which will choose right tense by watching context; tenses expressing continued activity, such as the 
+\item[Verb phrases:] Translation of English verb phrases into Kazakh  are not always be straightforward, for instance: 
+  % present simple and future are rendered using the same tense in Kazakh (I play $\rightarrow$ Мен ойнаймын;  I 
+  % will play $\rightarrow$ Мен ойнаймын), this ambiguity problem may be solved by lexical selection, 
+  % which will choose right tense by watching context; 
+\todo{I removed text that pertained to kaz--eng}
+tenses expressing continued activity, such as the 
   English present continuous or past continuous (I am playing, I was playing), have to be detected and 
   mapped onto sets of two lexical units (Мен ойнап жатырмын, Мен ойнап отырдым) where the main verb is 
   found in the -п participle form (ойнап), and a suitable finite form  (жатырмын, отырдым) of an auxiliary 
@@ -387,7 +395,7 @@ for English-Kazakh chunker there are used next kind of phrases:
       when the takes a short time), and жүр (when the activity repeats regularly). Choosing the most adequate auxiliary verb is 
       hard without a semantic analysis, which is not easily available in Apertium. Our current choice (an approximation) 
       is жатыр ('lie') for the present continuous and отыр ('sit') for the past continuous.} 
-  modal verbs are translated by adding adjectives, which means ``necessary'' (керек) or ``proper'' (жөн), 
+  modal verbs are translated by adding adjectives, which means ``necessary'' (керек) or ``proper'' (жөн), \todo{All examples in italics. This part is hard to read. The choice of auxilliary is not justified.}
   and a form of the copula (absent in present tense); the subject receives the genitive or dative case; negative 
   verbs for present continuous and past tense are translated by adding negative word ``емес'' for present 
   perfect continuous (He has not been playing -- Ол ойнап отырған емес) and  ``жоқ'' for past tense and 
@@ -395,16 +403,17 @@ for English-Kazakh chunker there are used next kind of phrases:
 \item[Adjectival phrases:] In Kazakh noun phrases, adjectives come before nouns and do not show any agreement 
   with nouns.  Adjectives can also appear in separate adjective phrases. Here are some examples:
 \begin{itemize}
-\item The adjective alone, marked AdjP: [AdjP big ] $\rightarrow$ [AdjP үлкен] 
+\item The adjective alone, marked AdjP: [AdjP \emph{big} ] $\rightarrow$ [AdjP \emph{үлкен}] 
 \item Comparative adjective phrases  (English more + adjective, or adjective-[e]r); the Kazakh translation 
-   chooses the comparative suffix ``-{I}р{A}{K}'': [AdjP  more  interesting ]  $\rightarrow$ [AdjP қызығырақ]
+   chooses the comparative suffix ``-{I}р{A}{K}'': [AdjP  \emph{more  interesting} ]  $\rightarrow$ [AdjP \emph{қызығ\emph{ырақ}}]
 \item For superlative adjective phrases  ``the most + adjective''  or ``adjective-[e]st'', translation 
-   is built using ``ең'' + adjective:  [SupP  the biggest ]  $\rightarrow$ [SupP ең үлкен] 
-   [SupP  the most important]   $\rightarrow$ [SupP ең маңызды]
+   is built using \emph{ең} + adjective:  [SupP  the \emph{biggest} ]  $\rightarrow$ [SupP \emph{ең үлкен}] 
+   [SupP  \emph{the most important}]   $\rightarrow$ [SupP \emph{ең маңызды}]
 \end{itemize}
 Superlative adjective phrases have some properties of noun phrases (such as receiving possessive morphemes when 
-modified by a genitive phrase: the most beautiful of people $\rightarrow$ адамдардың ең әдемісі); one could 
-say that they are treated as NPs with an implied noun.
+modified by a genitive phrase: \emph{the most beautiful of people} $\rightarrow$ \emph{адамдардың ең әдемі\textbf{сі}}); they are treated as a noun phrase with an implied noun (``the largest [book]'').
+\todo{The table of phrase types is not referred to in the text; also, the meaning of ``*'' is not explained}
+
 \end{description}
 
 \begin{table*}
@@ -449,37 +458,36 @@ say that they are treated as NPs with an implied noun.
   \label{table:vps}
 \end{table*}
 
-\subsubsection{Interchunk processing}
+\paragraph{Interchunk processing:}
+\todo{Table~\ref{table:vps} should be typeset with examples in italics and making sure that the margins are respected}
 
-The second round of structural transfer is currently performed by a proof-of-concept set of 90 rules, representative of following operations:
+The second round of structural transfer is currently performed by a %proof-of-concept 
+set of 90 rules, representative of following operations:\todo{I have removed \emph{proof-of-concept} here}
 \begin{itemize}
 \item Inter-chunk agreement between subject noun phrase and verb phrase in their person and number.
 \item Assigning case to noun phrases (which are generated without case by the chunker): for instance, 
-  accusative case for objects (I bought the table $\rightarrow$ Мен үстелді  сатып алдым), genitive case for 
-  obligatory constructs (I must see $\rightarrow$ менің көруім керек),  dative case for the verb to 
-  need (I need a doctor $\rightarrow$Маған дәрігер керек), locative case for 
-  possession (I have a book $\rightarrow$ Менде кітап бар), etc.
-\item Reordering: placing of object before verb ( I[1] bought[2] the table[3] $\rightarrow$ Мен[1] үстелді[3] сатып алдым[2]), 
-  placing of prepositional pharses before the verb  (They[1] played[2] on top of the tree [3] $\rightarrow$ Олар[1] ағаштың үстінде[3] ойнады [2]), etc.
-\item Adding question word ма/ме/ба/бе in the end of question, if question mark chunk ``?'' is detected (Did<VP\_ques> you<NP> watch<VP> last film<NP> ?<Q\_m> $\rightarrow$ Сіз<NP> соңғы фильмді<NP> көрдіңіз<VP> бе<ques> ?<Q\_m>).
-\item Place possessive for long noun + noun + noun structures(The university of city of Kazakhstan -- Қазақстан қаласының университеті).
+  accusative case for objects (\emph{I bought the table} $\rightarrow$ \emph{Мен үстелді  сатып алдым}), genitive case for 
+  obligatory constructs (\emph{I must see} $\rightarrow$ \emph{менің көруім керек}),  dative case for the verb \emph{to 
+  need} (\emph{I need a doctor} $\rightarrow$ \emph{Маған дәрігер керек}), locative case for 
+  possession (\emph{I have a book} $\rightarrow$ \emph{Менде кітап бар}), etc.\ 
+\item Reordering: placing of object before verb ( I[1] bought[2] the table[3] $\rightarrow$ Мен[1] үстелді[3] сатып алдым[2]), \todo{italics for examples please!}
+  placing of prepositional pharses before the verb  (They[1] played[2] on top of the tree [3] $\rightarrow$ Олар[1] ағаштың үстінде[3] ойнады [2]), etc.\ 
+\item Adding question word ма/ме/ба/бе in the end of question, if the question mark chunk ``?'' is detected (Did<VP\_ques> you<NP> watch<VP> last film<NP> ?<Q\_m> $\rightarrow$ Сіз<NP> соңғы фильмді<NP> көрдіңіз<VP> бе<ques> ?<Q\_m>).\todo{Notation: use brackets as above!}
+\item Place possessive for long noun + noun + noun structures(The university of city of Kazakhstan -- Қазақстан қаласының университеті).\todo{Explain better, as this is a rule to avoid repeating -NIng, -NIng, etc. All possessives are in place}
 \end{itemize}
 
 The set of rules has to be extended, as many combinations of the above phenomena are still not covered.
 
-\subsubsection{Postchunk}
-
-Additional cleaning stage was created for removing extra tags which did not determine through the chunker and 
-interchunk steps, for instance, noun was not acting as object and did not get accusative case, so not determined 
-tag was \texttt{<CD>} after ``cleaning'' it will be set on nominative case; at this step, also carried out 
-agreement between noun or adjective and copula ``е''(Мен дәрігер+е<p1 person singular>), vowel and consonants 
-agreement between last word of question and question particle (Сіз келдіңіз + ме? - Сіз келдіңіз + бе?).
+\paragraph{Postchunk:}\todo{Nothing is said about postchunk --- this talks about the additional cleaning stage}
+An additional cleaning stage was created for removing extra tags which were ot determined during the chunker and 
+interchunk steps, for instance, a noun was not determined to be acting as an object and therefore did not get accusative case; such a noun would have been assigned the  \texttt{<CD>} (``case to be determined'') tag, which after ``cleaning'' would be set to nominative. Other operations  carried out at this stage ensure
+the agreement between noun or adjective and the copula verb ``е''(\emph{Мен дәрігер+е}<p1 person singular>), \todo{add result for copula} or deciding the actual form of the question particle according to the preceding word (\emph{Сіз келдіңіз} + \emph{ме}? \(\to\) \emph{Сіз келдіңіз} + \emph{бе}?).
 
 \section{Evaluation and results}
 
-Current system can translate simple sentences and questions. The English-Kazakh bilingual dictionary 
-contains 13,135 entries, ``chunker'' rules are 168 and interchunk rules are 148. 
-Evaluating was tested against  revision 58998 in the Apertium SVN1. Lexical coverage is calculated 
+Current system can translate simple sentences and questions. The English--Kazakh bilingual dictionary 
+contains 13,135 entries, \todo{13130 before!} There are 168 ``chunker'' rules and 148 interchunk rules. 
+Evaluating was tested against revision 58998 in the Apertium Subversion repository. Lexical coverage is calculated 
 over EuroParl,\footnote{\url{http://www.statmt.org/europarl/v7/es-en.tgz}} SETimes,\footnote{\url{http://nlp.ffzg.hr/data/corpora/setimes/setimes.en-tr.txt.tgz}} NewsCommentary,\footnote{\url{http://www.statmt.org/wmt13/training-parallel-nc-v8.tgz}} Wikipedia.\footnote{\url{http://dumps.wikimedia.org/enwiki/20140402/enwiki-20140402-pages-articles.xml.bz2}; last checked 04/06/2014} 
 Table~\ref{table:coverage} presents the size of the corpora and the vocabulary coverage of the system for the given corpus.
 
@@ -514,16 +522,16 @@ Table~\ref{table:coverage} presents the size of the corpora and the vocabulary c
   \label{table:metrics}
 \end{table}
 
-Evaluating the output of the system was measured with BLEU \citep{papineni02} and Word Error Rate 
+The output of the system was evaluated with BLEU \citep{papineni02} and the word error rate 
 metric \citep{levenshtein/1966}. We chose a short text in English, and by postediting output 
-of English-Kazakh system, was build parallel text. The output of each of the machine
-translation systems was posteditted independently to avoid biasing one particular system.
+of English--Kazakh system, a build parallel text was built. The output of each of the machine
+translation systems was postedited independently to avoid biasing one particular system.
 
-As can be seen,  coverage of dictionary is good, average score is 94\%. Our system outperforms the other 
-available RBMT system, but fall short of the state-of-the-art performance. However, unlike the state of 
+As can be seen,\todo{where!} the coverage of dictionary is good, average score is 94\%. Our system outperforms the other 
+available RBMT system, but fall short of the state-of-the-art performance.\todo{represented by...} However, unlike the state of 
 the art, which uses unavailable corpora, our system is free and open and can be improved.
 
-MT systems have some mistakes in translations, which was shown in <...> brackets. Google MT system 
+MT systems have some mistakes in translations, which was shown in <...> brackets.\todo{you used *!} Google MT system 
 has a higher BLEU score, but in translation separate phrases, it has common error: it does not assign 
 the right possessive and case. Sanasoft system has more errors with choosing not right translations 
 and out of vocabulary words.
@@ -568,21 +576,20 @@ and out of vocabulary words.
 
 \section{Conclusions}
 
-We have presented the rule-based MT system from English to Kazakh. The current English-Kazakh machine translation 
+We have presented the design of a free/open-source rule-based MT system from English to Kazakh. The current English--Kazakh machine translation 
 system already successfully translates noun-phrases, verb-phrases, prepositional-phrases, and adjectival-phrases, and 
 contains a good vocabulary for testing purposes. 
-We plan to continue developing English-Kazakh pair, going to extend the coverage to 98\% on the corpora, 
+We plan to continue developing the English--Kazakh pair, going to extend the coverage to 98\% on the corpora, 
 which we used before. Additionally, we will improve the quality of translation by adding more rules, such like 
 constraint grammar rules, structural transfer and lexical rules. The future plan is to use the created data with other 
 open-source MT system with Turkic languages or system with Kazakh language on right side to make transfer systems 
-between the Turkic or other language pairs. Related work is currently ongoing with Russian--Kazakh. 
+between the Turkic or other language pairs. Related work is currently ongoing with Russian--Kazakh.\todo{Say something about Kazakh--English.}
 Our system is available as free/open-source software and the whole system may be downloaded 
 from SourceForge.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/incubator/apertium-eng-kaz}}
 
 \section*{Acknowledgements}
 
-MLF thanks the Kazakh state program for the attraction of foreign scholars and Prof. Ualsher Tukeyev for supporting his visit to the Kazakh National University, where part of this work was carried out. We also thank Prof. Tukeyev for his valuable input.
-
+MLF thanks the Kazakh state program for the attraction of foreign scholars and Prof. Ualsher Tukeyev for supporting his visit to the Kazakh National University, where part of this work was carried out. We also thank Prof. Tukeyev for his valuable input.\todo{Some references didn't come out right.}
 \bibliographystyle{apalike}
 
 \bibliography{2015-eamt-engkaz}
