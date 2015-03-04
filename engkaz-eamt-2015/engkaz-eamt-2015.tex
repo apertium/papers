@@ -30,6 +30,7 @@
 \usepackage{natbib}
 \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
 \usepackage{listings}
+\usepackage{microtype}
 
 \newfontfeature{IPA}{+mgrk}
 %\setromanfont[IPA]{FreeSerif}
@@ -67,34 +68,35 @@
 
 \begin{document}
 \maketitle 
+ 
 
 \begin{abstract}
-This paper presents rule-based machine translation from English to Kazakh. Main differences 
-between two languages in syntax and morphology are presented, and showed how machine translation 
-system was designed to solve these challenges. We showed an evaluation of system coverage and 
-translation quality and future work.
+This paper presents the current state of development a shallow-transfer rule-based machine translation (MT) system from English to Kazakh. The main syntactic and morphological differences 
+between the two languages are presented, and it is showed how the MT 
+system was designed to tackle these challenges. We show an evaluation of system coverage and 
+translation quality and outline and future work.
 \end{abstract}
 
 \section{Introduction}
 
-This paper presents a shallow-transfer rule-based machine translation system from English 
-into Kazakh language. First of all, English language is a West Germanic language and Kazakh 
-belong to group of Turkic languages. Therefore, the complex agglutinative morphology of Kazakh 
-language is very different from morphologically not too complex language like English; on the other 
-hand, Turkic language morphology shows clear morphotactics (ordering of morphemes), its morphophonology 
-shows complex phonological changes to due to interactions between neighboring morphemes (vowel harmony, 
+This paper presents a shallow-transfer rule-based machine translation (MT) system from English 
+(a West Germanic language) to Kazakh (a Turkic language)
+The complex agglutinative morphology of Kazakh 
+is in contrast with the simple morphology of English.
+Turkic language morphology shows clear morphotactics (ordering of morphemes), but with 
+complex phonological changes (morphophonology) to due to morpheme contact (vowel harmony, 
 sonorisation, etc.) many of which are explicitly represented in writing.
 
 On the other hand, there are many differences between the syntax of Turkic languages 
-and English: subject-adverb–object–verb order (compare subject–verb–object-adverb in English), use of 
-postpositions (compare prepositions in English), head-final syntax with modifiers and specifiers 
-always preceding the modified/specified (normally following in English), overt case marking allowing 
-for a rather free ordering of arguments (versus a more fixed order in English), lack of definite 
+and English: subject–object–verb order (vs.\ subject–verb–object in English), use of 
+postpositions (vs.\ prepositions in English), head-final syntax with modifiers and specifiers 
+always preceding the modified/specified (vs.\ following in English), overt case marking allowing 
+for a rather free ordering of arguments (vs.\ a more fixed order in English), lack of definite 
 articles (extensively used in English), verbal-noun-centered structures where English uses modal 
-verbs (must, have to, want to) or verbal-noun or verbal-adjective-centred constructions where 
+verbs (\emph{must}, \emph{have to}, \emph{want to}) or verbal-noun or verbal-adjective-centred constructions where 
 English has subordinate clauses using finite verbs with relatives or subordinating 
-conjunctions (the book which I read, the place where I saw him, before he came), lack of a parallel 
-of the English verb \emph{have}, as used for possession, etc. For an account (in Russian) of 
+conjunctions (\emph{the book which I read}, \emph{the place where I saw him}, \emph{before he came}), lack of a parallel 
+of the English lexical verb \emph{to have}, etc. For an account (in Russian) of 
 syntactic differences between English and Kazakh, see \cite{pecherskih2012}.
 
 We currently build rule-based machine translation system, because for statistical machine translation 
