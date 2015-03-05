@@ -64,6 +64,8 @@
 
 % Authors:
 % Aida, Mikel, Fran, Inari, ... ?
+%Aida Sundetova
+%Al-Farabi Kazakh National University, Al-Farabi av., 71, 050040 Almaty, Kazakhstan
 
 \date{}
 
@@ -107,7 +109,7 @@ for the English--Kazakh pair. An English--Kazakh statistical MT system has howev
 other work in this language pair was performed by building a small parallel corpus and using Moses \citep{assylbekov14}. Existing commercial systems for English to Kazakh (Sanasoft\footnote{\url{http://www.sanasoft.kz/c/ru/node/47}} and Trident\footnote{\url{http://www.translate.ua/us/on-line}}) both appear to be rule-based. 
 Rule-based machine translation, in which developers 
 write up dictionaries and grammatical rules that are applied by an engine, in some 
-unusual case will produce better translation.
+case, where statistics not work well, will produce better translation.
 \todo{What does the last sentence mean? Clarify!}
 This paper describes work in progress of development of machine translation system 
 for English--Kazakh using the Apertium free/open-source machine 
@@ -187,7 +189,7 @@ It uses files with rules, which specify  the syntactic transformation such as wo
   to a corresponding sequence of target-language SFs. 
 % The morphological generator executes a finite-state transducer 
 For Kazakh, a finite-state transducer based on two-level rules \citep{washingtonsalimzyantyers14} is used for generation. 
-\item[Post-generator:] Performs some minor orthographical operations in the target language. This module is not used in the English--Kazakh system.\todo{Or is it?}
+\item[Post-generator:] Performs some minor orthographical operations in the target language. 
 \item[ Reformatter:] It places format tags back into the text so that its format is preserved.
 \end{description}
 
@@ -216,14 +218,14 @@ for defining lexicons through word classes and subclasses, and the
 \texttt{twol} formalism for morphophonological rules such as vowel
 harmony, desonorization, nasalization, etc.  Depending on the
 preceding vowels and consonants, the plural suffix \emph{-LAr}\footnote{Uppercase Latin letters are used for archiphonemes (actually archigraphemes) that are realised as phonemes (actually graphemes) after morphophonological rules have been applied} could
-become \emph{-тар}, \emph{-тер}, \emph{-lar}, \emph{-ler}, \emph{-dar}, \emph{-ler} depending on vowel harmony: kitap+tar,
-mektep+ter, etc. \todo{Aida, please typeset this example in Cyrillic; braces are not used here, but are used later; homogeneize notation in paper.}
+become \emph{-тар}, \emph{-тер}, \emph{-лар}, \emph{-лер}, \emph{-дар}, \emph{-лер} depending on vowel harmony: кітап+тар,
+мектеп+тер, etc. \todo{Aida, please typeset this example in Cyrillic; braces are not used here, but are used later; DONE  homogeneize notation in paper.}
 
 
 %\subsubsection{Bilingual dictionary}
 
 The English--Kazakh bilingual dictionary provides correspondences between English LFs and Kazakh LFs. Ambiguity is allowed: one of the LFs will be chosen by 
-lexical-selection rules depending on context. This dictionary currently contains 13,130 stems \citep{sundetova13a}.\todo{later you say 13,135}
+lexical-selection rules depending on context. This dictionary currently contains 13,135 stems \citep{sundetova13a}.\todo{later you say 13,135}
 
 \subsection{Rules}
 
@@ -237,8 +239,8 @@ This kind of rules solves the problem of part-of-speech (PoS) ambiguity using th
 Lexical-selection rules choose one of the alternative target-language LFs corresponding to one source-language LF, as described in \cite{tyers12a}. Alternative translations are defined in bilingual dictionary by 
 multiple entries for each source-language LF. For example, the adjective \emph{beautiful} could be translated as \emph{сұлу}, if 
 the following noun is a person: \emph{beautiful girl} \(\to\) \emph{сұлу қыз}; or as \emph{әдемі} or  \emph{көркем}, if the following noun means 
-place or \todo{or what?} \emph{beautiful mountains} \(\to\) \emph{әдемі таулар}.  Table~\ref{table:lexsel} shows some 
-lexical-selection rules:\todo{but this rule is not in the table!!!}
+place or \todo{or what? - mountains} \emph{beautiful mountains} \(\to\) \emph{әдемі таулар}.  Table~\ref{table:lexsel} shows some 
+lexical-selection rules:\todo{but this rule is not in the table!!! - should I add it or just remove upper example??}
 \begin{table*}
  \centering
  \begin{tabular}{|l|l|l|l|}
@@ -267,7 +269,7 @@ lexical-selection rules:\todo{but this rule is not in the table!!!}
   \caption{Example lexical-selection rules}
   \label{table:lexsel}
 \end{table*}
-\todo{I do not understand the \emph{I see anything} example. Does it mean \emph{anything} as \emph{whatever}? I do not know how to put the \(w\) in this example}@
+\todo{Yes, it is mean I see whatever - I do not understand the \emph{I see anything} example. Does it mean \emph{anything} as \emph{whatever}? I do not know how to put the \(w\) in this example}@
 
 \subsubsection{Transfer rules}
 
@@ -287,7 +289,7 @@ The structural transfer module in Apertium processes the stream of source-langua
 form pairs (SL LF–TL LF pairs) and transforms it into a new sequence of TL LFs after a series of structural transfer 
 operations specified in a set of rules: reordering, elimination or insertion of TL LFs, agreement, etc. 
 
-This section describes the current structural transfer in \texttt{apertium-eng-kaz} (revision ..., ).\todo{Complete! 58998? Move to results?} English--Kazakh 
+This section describes the current structural transfer in \texttt{apertium-eng-kaz} (revision 58998, ).\todo{Complete! 58998? Move to results?} English--Kazakh 
 chunker rules, interchunk rules and an additional clean-up stage will be described in detail in the following 3 sections. 
 
 \paragraph{Chunker:}\todo{This should have 4 numerals, but I don't know how to do this}
@@ -472,13 +474,13 @@ set of 90 rules, representative of following operations:\todo{I have removed \em
   possession (\emph{I have a book} $\rightarrow$ \emph{Менде кітап бар}), etc.\ 
 \item Reordering: placing of object before verb ( I[1] bought[2] the table[3] $\rightarrow$ Мен[1] үстелді[3] сатып алдым[2]), \todo{italics for examples please!}
   placing of prepositional pharses before the verb  (They[1] played[2] on top of the tree [3] $\rightarrow$ Олар[1] ағаштың үстінде[3] ойнады [2]), etc.\ 
-\item Adding question word ма/ме/ба/бе in the end of question, if the question mark chunk ``?'' is detected (Did<VP\_ques> you<NP> watch<VP> last film<NP> ?<Q\_m> $\rightarrow$ Сіз<NP> соңғы фильмді<NP> көрдіңіз<VP> бе<ques> ?<Q\_m>).\todo{Notation: use brackets as above!}
+\item Adding question word ма/ме/ба/бе in the end of question, if the question mark chunk ``?'' is detected (Did[VP\_ques] you[NP] watch[VP] last film[NP] ?[Q\_m] $\rightarrow$ Сіз[NP] соңғы фильмді[NP] көрдіңіз[VP] бе<ques> ?[Q\_m]).\todo{Notation: use brackets as above!}
 \item Place possessive for long noun + noun + noun structures(The university of city of Kazakhstan -- Қазақстан қаласының университеті).\todo{Explain better, as this is a rule to avoid repeating -NIng, -NIng, etc. All possessives are in place}
 \end{itemize}
 
 The set of rules has to be extended, as many combinations of the above phenomena are still not covered.
 
-\paragraph{Postchunk:}\todo{Nothing is said about postchunk --- this talks about the additional cleaning stage}
+\paragraph{Postchunk and cleanup:}\todo{Can I do that?  --Nothing is said about postchunk --- this talks about the additional cleaning stage}
 An additional cleaning stage was created for removing extra tags which were ot determined during the chunker and 
 interchunk steps, for instance, a noun was not determined to be acting as an object and therefore did not get accusative case; such a noun would have been assigned the  \texttt{<CD>} (``case to be determined'') tag, which after ``cleaning'' would be set to nominative. Other operations  carried out at this stage ensure
 the agreement between noun or adjective and the copula verb ``е''(\emph{Мен дәрігер+е}<p1 person singular>), \todo{add result for copula} or deciding the actual form of the question particle according to the preceding word (\emph{Сіз келдіңіз} + \emph{ме}? \(\to\) \emph{Сіз келдіңіз} + \emph{бе}?).
@@ -486,7 +488,7 @@ the agreement between noun or adjective and the copula verb ``е''(\emph{Мен 
 \section{Evaluation and results}
 
 Current system can translate simple sentences and questions. The English--Kazakh bilingual dictionary 
-contains 13,135 entries, \todo{13130 before!} There are 168 ``chunker'' rules and 148 interchunk rules. 
+contains 13,135 entries, \todo{13130 before!-changed} There are 168 ``chunker'' rules and 148 interchunk rules. 
 Evaluating was tested against revision 58998 in the Apertium Subversion repository. Lexical coverage is calculated 
 over EuroParl,\footnote{\url{http://www.statmt.org/europarl/v7/es-en.tgz}} SETimes,\footnote{\url{http://nlp.ffzg.hr/data/corpora/setimes/setimes.en-tr.txt.tgz}} NewsCommentary,\footnote{\url{http://www.statmt.org/wmt13/training-parallel-nc-v8.tgz}} Wikipedia.\footnote{\url{http://dumps.wikimedia.org/enwiki/20140402/enwiki-20140402-pages-articles.xml.bz2}; last checked 04/06/2014} 
 Table~\ref{table:coverage} presents the size of the corpora and the vocabulary coverage of the system for the given corpus.
@@ -527,7 +529,7 @@ metric \citep{levenshtein/1966}. We chose a short text in English, and by posted
 of English--Kazakh system, a build parallel text was built. The output of each of the machine
 translation systems was postedited independently to avoid biasing one particular system.
 
-As can be seen,\todo{where!} the coverage of dictionary is good, average score is 94\%. Our system outperforms the other 
+As can be seen from table of coverage,\todo{where!-table of coverage} the coverage of dictionary is good, average score is 94\%. Our system outperforms the other 
 available RBMT system, but fall short of the state-of-the-art performance.\todo{represented by...} However, unlike the state of 
 the art, which uses unavailable corpora, our system is free and open and can be improved.
 
@@ -583,7 +585,7 @@ We plan to continue developing the English--Kazakh pair, going to extend the cov
 which we used before. Additionally, we will improve the quality of translation by adding more rules, such like 
 constraint grammar rules, structural transfer and lexical rules. The future plan is to use the created data with other 
 open-source MT system with Turkic languages or system with Kazakh language on right side to make transfer systems 
-between the Turkic or other language pairs. Related work is currently ongoing with Russian--Kazakh.\todo{Say something about Kazakh--English.}
+between the Turkic or other language pairs. Related work is currently ongoing with Russian--Kazakh and Kazakh--English\citep{sundetova14}.\todo{Say something about Kazakh--English.}
 Our system is available as free/open-source software and the whole system may be downloaded 
 from SourceForge.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/incubator/apertium-eng-kaz}}
 
