@@ -62,10 +62,24 @@
     \setcounter{secnumdepth}{4}
 \title{A free/open-source machine translation system for English to Kazakh}
 
-% Authors:
-% Aida, Mikel, Fran
-%Aida Sundetova
-%Al-Farabi Kazakh National University, Al-Farabi av., 71, 050040 Almaty, Kazakhstan
+\author{Aida Sundetova\\
+  Kazakh National University,  \\
+  050040 Almaty, \\
+  {\tt xxx@xxx}\\
+  \And
+  \textbf{Francis M. Tyers}\\
+  HSL-fakultetet\\ 
+  UiT Norgga \'{a}rktala\v{s} universitehta \\
+  9017 Romsa, \\
+  {\tt francis.tyers@uit.no}
+  \And
+  Mikel L. Forcada\\
+  Dept. Lleng. i Sist. Inform. \\
+  Universitat d'Alacant, \\ 
+  Alacant \\
+  {\tt mlf@dlsi.ua.es}  
+}
+
 
 \date{}
 
@@ -74,8 +88,9 @@
 \renewcommand{\baselinestretch}{0.97} % the undetectable 3% squeeze
  
 
-\begin{abstract}\todo{Decide authors, and put them in phantom boxes}
-This paper presents the current state of development a shallow-transfer rule-based machine translation (MT) system from English to Kazakh. The main syntactic and morphological differences 
+\begin{abstract}
+This paper presents the current state of development a shallow-transfer rule-based machine 
+translation (MT) system from English to Kazakh. The main syntactic and morphological differences 
 between the two languages are presented, and it is showed how the MT 
 system was designed to tackle these challenges. We show an evaluation of system coverage and 
 translation quality and outline and future work.
@@ -106,13 +121,12 @@ syntactic differences between English and Kazakh, see \cite{pecherskih2012}.
 We set out to build a rule-based machine translation system, because for statistical machine translation 
 system we need large sentence-aligned parallel corpora, which are not freely available
 for the English--Kazakh pair. An English--Kazakh statistical MT system has however recently been built by Google,\footnote{\url{http://translate.google.com}}; 
-other work in this language pair was performed by building a small parallel corpus and using Moses \citep{assylbekov14}. Existing commercial systems for English to Kazakh (Sanasoft\footnote{\url{http://www.sanasoft.kz/c/ru/node/47}} and Trident\footnote{\url{http://www.translate.ua/us/on-line}}) both appear to be rule-based. 
-Rule-based machine translation, in which developers 
-write up dictionaries and grammatical rules that are applied by an engine, in some 
-case, where statistics not work well, will produce better translation.
-\todo{What does the last sentence mean? Clarify!}
-This paper describes work in progress of development of machine translation system 
-for English--Kazakh using the Apertium free/open-source machine 
+other work in this language pair was performed by building a small parallel corpus and using Moses \citep{assylbekov14}. Existing 
+commercial systems for English to Kazakh (Sanasoft\footnote{\url{http://www.sanasoft.kz/c/ru/node/47}} 
+and Trident\footnote{\url{http://www.translate.ua/us/on-line}}) both appear to be rule-based. 
+
+This paper describes the development of a machine translation system 
+for English to Kazakh using the Apertium free/open-source machine 
 translation platform \citep{forcada11}. %(http://www.apertium.org). 
 
 \section{The Apertium platform}
@@ -150,7 +164,6 @@ free/open-source GNU General Public License (GPL, versions 2 and 3).
 %As can be 
 %  seen from the previous example, the morphological analyser could deliver more than one LF and 
 %  choosing wrong one could produce errors in translation. 
-\todo{I have removed some text and  the statistical PoS tagging stuff, as it is not used}
 %POS tagger is based on a statistical model, which 
 %  based on hidden Markov models and it has been trained on source language texts, which processes the 
 %  result of the application of  on constraint-grammar rules \citep{karlsson95}, which are used to discard some 
@@ -219,13 +232,14 @@ for defining lexicons through word classes and subclasses, and the
 harmony, desonorization, nasalization, etc.  Depending on the
 preceding vowels and consonants, the plural suffix \emph{-LAr}\footnote{Uppercase Latin letters are used for archiphonemes (actually archigraphemes) that are realised as phonemes (actually graphemes) after morphophonological rules have been applied} could
 become \emph{-тар}, \emph{-тер}, \emph{-лар}, \emph{-лер}, \emph{-дар}, \emph{-лер} depending on vowel harmony: кітап+тар,
-мектеп+тер, etc. \todo{Aida, please typeset this example in Cyrillic; braces are not used here, but are used later; DONE  homogeneize notation in paper.}
+мектеп+тер, etc. 
+%\todo{Aida, please typeset this example in Cyrillic; braces are not used here, but are used later; DONE  homogeneize notation in paper.}
 
 
 %\subsubsection{Bilingual dictionary}
 
 The English--Kazakh bilingual dictionary provides correspondences between English LFs and Kazakh LFs. Ambiguity is allowed: one of the LFs will be chosen by 
-lexical-selection rules depending on context. This dictionary currently contains 13,135 stems \citep{sundetova13a}.\todo{later you say 13,135}
+lexical-selection rules depending on context. This dictionary currently contains 13,135 stems \citep{sundetova13a}.
 
 \subsection{Rules}
 
@@ -297,25 +311,27 @@ In the first round of structural transfer, rules segment sentences into chunks, 
 phrases, adjective phrases, verb phrases and adpositional phrases (that is, prepositional phrases in English and 
 postpositional phrases in Kazakh).
 Chunking rules, of which there are currently 168, identify 8 kinds of chunks and translate them into equivalent Kazakh chunks, leaving some adaptations to be performed in later stages of structural transfer (for instance, the 
-morphological case of noun phrases). Table~\ref{table:nps} describes what kind of noun phrases could appear in sentences and how it could be detected.\todo{This table does not add much. the first and second column of the table are essentially the same: it would be more interesting to give the Kazakh sequence of PoS tags, perhaps with an example}
+morphological case of noun phrases). 
 
-\begin{table*}
-  \centering
-  \begin{tabular}{|l|l|l|}
-  \hline
-  \textbf{Structure} & \textbf{Description} & \textbf{Examples} \\
-  \hline
-  \texttt{n} & Noun & house \\
-  \texttt{adj + n} & Adjective + noun & long road \\
-  \texttt{det + n} & Determiner + noun & an apple, the chance \\
-  \texttt{num + n} & Numeral + noun & five pieces \\
-  \texttt{num + adj + n} & Numeral + adjective + noun & five big pieces \\
-  \texttt{det + num + adj + n} & Determiner + numeral + adjective + noun & the five big pieces \\
-  \hline
-  \end{tabular}
-  \caption{Example of the most common structures of noun phrases}
-  \label{table:nps}
-\end{table*}
+%Table~\ref{table:nps} describes what kind of noun phrases could appear in sentences and how it could be detected.\todo{This table does not add much. the first and second column of the table are essentially the same: it would be more interesting to give the Kazakh sequence of PoS tags, perhaps with an example}
+
+% \begin{table*}
+%   \centering
+%   \begin{tabular}{|l|l|l|}
+%   \hline
+%   \textbf{Structure} & \textbf{Description} & \textbf{Examples} \\
+%   \hline
+%   \texttt{n} & Noun & house \\
+%   \texttt{adj + n} & Adjective + noun & long road \\
+%   \texttt{det + n} & Determiner + noun & an apple, the chance \\
+%   \texttt{num + n} & Numeral + noun & five pieces \\
+%   \texttt{num + adj + n} & Numeral + adjective + noun & five big pieces \\
+%   \texttt{det + num + adj + n} & Determiner + numeral + adjective + noun & the five big pieces \\
+%   \hline
+%   \end{tabular}
+%   \caption{Example of the most common structures of noun phrases}
+%   \label{table:nps}
+% \end{table*}
 
 \begin{savenotes}
 \begin{table*}
@@ -387,17 +403,16 @@ for English-Kazakh chunker there are used next kind of phrases:
   % present simple and future are rendered using the same tense in Kazakh (I play $\rightarrow$ Мен ойнаймын;  I 
   % will play $\rightarrow$ Мен ойнаймын), this ambiguity problem may be solved by lexical selection, 
   % which will choose right tense by watching context; 
-\todo{I removed text that pertained to kaz--eng}
 tenses expressing continued activity, such as the 
-  English present continuous or past continuous (I am playing, I was playing), have to be detected and 
-  mapped onto sets of two lexical units (Мен ойнап жатырмын, Мен ойнап отырдым) where the main verb is 
-  found in the -п participle form (ойнап), and a suitable finite form  (жатырмын, отырдым) of an auxiliary 
-  verb (жатыр, отыр) is used to express number and person agreement,\footnote{Actually, Kazakh language uses four auxiliary verbs: жатыр ('lie', 
-      used when the activity takes a long time), отыр ('sit', used when the activity appears to be done in a sitting position), тұр ('stand', 
-      when the takes a short time), and жүр (when the activity repeats regularly). Choosing the most adequate auxiliary verb is 
+  English present continuous or past continuous (\emph{I am playing}, \emph{I was playing}), have to be detected and 
+  mapped onto sets of two lexical units (\emph{Мен ойнап жатырмын}, \emph{Мен ойнап отырдым}) where the main verb is 
+  found in the -п participle form (\emph{ойнап}), and a suitable finite form  (\emph{жатырмын}, \emph{отырдым}) of an auxiliary 
+  verb (\emph{жатыр}, \emph{отыр}) is used to express number and person agreement,\footnote{Actually, Kazakh language uses four auxiliary verbs: \emph{жатыр} `lie', 
+      used when the activity takes a long time), отыр (`sit', used when the activity appears to be done in a sitting position), \emph{тұр} `stand', 
+      when the takes a short time), and \emph{жүр} (when the activity repeats regularly). Choosing the most adequate auxiliary verb is 
       hard without a semantic analysis, which is not easily available in Apertium. Our current choice (an approximation) 
-      is жатыр ('lie') for the present continuous and отыр ('sit') for the past continuous.} 
-  modal verbs are translated by adding adjectives, which means ``necessary'' (керек) or ``proper'' (жөн), \todo{All examples in italics. This part is hard to read. The choice of auxilliary is not justified.}
+      is \emph{жатыр} `lie' for the present continuous and отыр (`sit') for the past continuous.} 
+  modal verbs are translated by adding adjectives, which means \emph{керек} `necessary' or \emph{жөн} `proper', \todo{This part is hard to read. The choice of auxilliary is not justified.}
   and a form of the copula (absent in present tense); the subject receives the genitive or dative case; negative 
   verbs for present continuous and past tense are translated by adding negative word ``емес'' for present 
   perfect continuous (He has not been playing -- Ол ойнап отырған емес) and  ``жоқ'' for past tense and 
