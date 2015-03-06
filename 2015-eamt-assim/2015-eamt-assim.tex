@@ -9,8 +9,7 @@
 
 \documentclass[11pt]{article}
 \usepackage{eamt15}
-%\usepackage{float}
- \setlength\titlebox{6.5cm}    % Expanding the titlebox
+\setlength\titlebox{6.5cm}    % Expanding the titlebox
 %%% YOUR PACKAGES BELOW THIS LINE %%%
 \usepackage[T2A,T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -25,7 +24,7 @@
 \usepackage{color}
 \usepackage[small,bf]{caption}
 \usepackage{graphicx}
-\usepackage{microtype} % This saves some space and makes nice typesetting choices
+%\usepackage{microtype} % This saves some space and makes nice typesetting choices
 
 
 
@@ -105,27 +104,6 @@ The paper is organised as follows: in section~\ref{sec:methodology} we describe 
 \section{Methodology}
 \label{sec:methodology}
 
-
-\comment{MLF the gap percentage table 2 is not referenced in the text; also, i have changed it to have the \textbf{Ref} row in the table?}
-
-This section discusses the reasoning behind the gap-filling method and task structure. The gap-filling method 
-of evaluating machine translation for assimilation purposes is based on the following hypothesis: a reader's understanding 
-of a given text correlates with the number of words they are able to correctly restore in the text. Therefore, the 
-base of an assimilation task is a (reference) sentence, where some of the words are blacked out, or removed. The sentence 
-is produced by a human (as opposed to machine-translated), and it is in the language known to evaluators, which is also 
-the \emph{target language} of the machine translation system.
-The additional elements of the task are what we call hints, or extra sentences that help the participant to understand 
-the main sentence. There are two types of hints: first, the \emph{source}, which is semantically equivalent to the \emph{reference}, 
-also human-produced, but in the source language of the pair. The second type is the \emph{machine-translated} hint, which 
-comes from the machine translation of the \emph{source} sentence. Table~\ref{table:example} shows a sample task, and Figure~\ref{figure:screenshot} shows the task in the online evaluation environment.
-%\comment{Use the highest possible resolution for the figure so that aliasing is imperceptible}
-\begin{figure*}
-  \centering
-\includegraphics[width=1.0\textwidth,resolution=144]{appraise-scr}
- \caption{An example set of sentences in the online environment. The task is Russian legal text with 30\% gaps.}
-\label{figure:screenshot}
-\end{figure*}
-
 \begin{table*}
   \centering
   \begin{tabular}{|l|l|}
@@ -140,8 +118,41 @@ comes from the machine translation of the \emph{source} sentence. Table~\ref{tab
   \label{table:example}
 \end{table*}
 
+\begin{table*}
+  \centering
+  \begin{tabular}{|l|l|}
+     \hline
+     \textbf{Ref} & \rus{{\small Примерно полчаса; вам нужно выйти через 7 остановок, потом пройти ещё около 100 метров.}} \\
+     \hline
+     \textbf{10\%} & \rus{{\small Примерно полчаса; вам нужно выйти через 7 \{ \}, потом пройти ещё около 100 метров.}} \\
+     \textbf{20\%} & \rus{{\small \{ \} полчаса; вам нужно \{ \} через 7 остановок, \{ \} пройти ещё около 100 метров.}} \\
+     \textbf{30\%} & \rus{{\small Примерно полчаса; вам нужно \{ \} через 7 \{ \}, потом пройти \{ \} около 100 \{ \}.}} \\
+     \hline
+  \end{tabular}
+  \caption{Example of different gap percentage settings for a Russian reference sentence.} 
+  \label{table:percentage}
+\end{table*}
+\comment{MLF the gap percentage table 2 is not referenced in the text; also, i have changed it to have the \textbf{Ref} row in the table?}
 
 
+This section discusses the reasoning behind the gap-filling method and task structure. The gap-filling method 
+of evaluating machine translation for assimilation purposes is based on the following hypothesis: a reader's understanding 
+of a given text correlates with the number of words they are able to correctly restore in the text. Therefore, the 
+base of an assimilation task is a (reference) sentence, where some of the words are blacked out, or removed. The sentence 
+is produced by a human (as opposed to machine-translated), and it is in the language known to evaluators, which is also 
+the \emph{target language} of the machine translation system.
+The additional elements of the task are what we call hints, or extra sentences that help the participant to understand 
+the main sentence. There are two types of hints: first, the \emph{source}, which is semantically equivalent to the \emph{reference}, 
+also human-produced, but in the source language of the pair. The second type is the \emph{machine-translated} hint, which 
+comes from the machine translation of the \emph{source} sentence. Table~\ref{table:example} shows a sample task, and Figure~\ref{figure:screenshot} shows the task in the online evaluation environment.
+%\comment{Use the highest possible resolution for the figure so that aliasing is imperceptible}
+
+\begin{figure*}
+  \centering
+\includegraphics[width=1.0\textwidth,resolution=144]{appraise-scr}
+ \caption{An example set of sentences in the online environment. The task is Russian legal text with 30\% gaps.}
+\label{figure:screenshot}
+\end{figure*}
 
 In the course of the experiment, following \cite{oregan13}, we offer these hint combinations:
 \begin{description}\itemsep 0ex
@@ -166,22 +177,6 @@ number of gaps relative to sentence length (``gap density''). For the evaluation
 this paper we use gap densities of 10, 20 and 30 percent (Table~\ref{table:percentage}), and the following parts of speech: noun, 
 proper noun, adjective, adverb and lexical verb (as opposed to auxiliary verb).
 
-\begin{table*}
-  \centering
-  \begin{tabular}{|l|l|}
-     \hline
-     \textbf{Ref} & \rus{{\small Примерно полчаса; вам нужно выйти через 7 остановок, потом пройти ещё около 100 метров.}} \\
-     \hline
-     \textbf{10\%} & \rus{{\small Примерно полчаса; вам нужно выйти через 7 \{ \}, потом пройти ещё около 100 метров.}} \\
-     \textbf{20\%} & \rus{{\small \{ \} полчаса; вам нужно \{ \} через 7 остановок, \{ \} пройти ещё около 100 метров.}} \\
-     \textbf{30\%} & \rus{{\small Примерно полчаса; вам нужно \{ \} через 7 \{ \}, потом пройти \{ \} около 100 \{ \}.}} \\
-     \hline
-  \end{tabular}
-  \caption{Example of different gap percentage settings for a Russian reference sentence.} 
-  \label{table:percentage}
-\end{table*}
-
-
 For each sentence, the list of candidate keywords is prepared. It is composed of all the words that 
 fall into the allowed PoS list. The number of gaps in the sentence is calculated based on 
 sentence length and specified gap density. All reference sentences are longer than 10 words. Finally, the required number of keywords is selected 
@@ -204,11 +199,11 @@ and Tatar, respectively). Eleven evaluators participated in the Basque--Spanish 
 in full, see discussion).
 
 By design, our gap-filling tasks require a human translation (reference) of source sentences. Calling for a human translator, however, would significantly increase the resources needed for evaluation. We therefore use parallel text sources, which provide the same sentence in two languages simultaneously:
-\begin{enumerate}\itemsep 0ex
+\begin{enumerate}
 \item  For Basque--Spanish, from the corpus of legal texts ``Memorias de traducci\'on del
-Servicio Oficial de Traductores del IVAP''.\footnote{\url{http://tinyurl.com/ivaptm2}} 
+Servicio Oficial de Traductores del IVAP'';\footnote{\url{http://tinyurl.com/ivaptm2}} 
 \item  For Tatar-Russian, from the following sources on three different topics:
-  \begin{enumerate}\itemsep 0ex
+  \begin{enumerate}
     \item  Casual conversations, from a textbook\footnote{\rus{Литвинов И.Л. Я начинаю говорить по-татарски. Казань: Татарское кн. изд-во, 1994. — 320 с. ISBN 5--298--00463--6 (стр. 219, 220, 232, 233, 234)}} of spoken Tatar;
     \item  Legal texts, from the Constitution and laws\footnote{\url{http://tatarstan.ru}} of Tatarstan;
     \item  News, from the President of Tatarstan website\footnote{\url{http://president.tatarstan.ru/}}.
@@ -225,7 +220,7 @@ The evaluations took place online, in a system called Appraise \citep{federmann1
 designed specifically for various MT evaluation tasks. We adapted the code of Appraise to 
 accommodate for the gap-filling tasks. The tasks were uploaded into the system and 
 manually distributed between the participants by the following rules:
-\begin{enumerate}\itemsep 0ex
+\begin{enumerate}
 \item  Each participant evaluates every sentence (understood as a succession of words),
 a total of 36;
 \item  each participant evaluates 9 sentences in each of the four modes (see section~\ref{sec:methodology});
@@ -259,6 +254,79 @@ The synonym lists for Basque--Spanish and Tatar--Russian contain 52 and 25 words
 The results are presented in this section. Tables \ref{table:res-eus-spa} and \ref{table:res-tat-rus} 
 show
 the proportion and standard deviation of correct answers depending on evaluation mode and gap density.
+The evaluators' correct answer percentage is averaged over the number of evaluators. In addition to the percentage of correct answers we kept a record of the time taken to fill the gaps in one sentence. To reduce the noise from participants who were distracted during evaluation, when
+calculating times we remove all the results over 6 minutes (the statistical mode is approximately
+two minutes). The typical time taken to complete one question varies from under one minute for tasks without hints and few gaps, to approximately two minutes for tasks with more hints and gaps. 
+
+% expected results
+We expect to see the following trend: scores received in different task modes inside one gap density should be observed, from highest to lowest, in tasks with MT and source hint, then MT hint only, then source hint only, and finally, no hint. We also expect that with the increase in gap density, the time taken to fill the gaps should also increase, and the percentage of correct answers should decrease. 
+
+% a few notes on time
+The latter trend holds: the average time taken to fill the gaps increases and the average percentage of correct answers decreases as the relative number of gaps goes up. The larger number of gaps in the sentence makes it more
+difficult to predict the answer based on the context, and also leaves more room for
+mistakes. Exploring different percentage-mode combinations, we may note that the 10\% no-hint tasks take the least time to complete. We would have expected longer completion time, since the participant must come up with their own answer unassisted. However, in the no-hint task the participant is required to read only one (reference) sentence, as opposed to two or three (reference and hints) in other tasks. Also, the number of gaps in 10\%-gap tasks is low, as it never exceeds three. We found that, as opposed to trying to devise the best word for no-hint gaps, the participants often resorted to filing these gaps with random words, which takes little time.
+
+% this section talks about percentages in eu-es and tat-rus, and how everything is nice.
+We will now discuss the percentage of correct answers based on task type. In general, tasks with MT hints score higher than tasks without MT hints. This aligns well with our expectations and suggests than machine translation helps to understand the provided text. In addition, tasks with source hints are completed better than tasks without hints, and the same relation holds between MT+source and MT-only types of tasks. 
+
+Two records break this trend: the no-hint 10\% sentences in Basque--Spanish, which scored significantly higher than the source-hint in the same category, and MT+source 10\% sentences in Tatar--Russian, which we would have expected to score higher than the corresponding MT task. In the first case, this is largely due to the use of synonyms list. Before taking synonyms into account, the scores were 32 and 35 percent for source and no-hint tasks, respectively. This still shows a small difference in favor of no-hint tasks. However, the latter percentage increases significantly after we extend the answer list with synonyms. Such an increase suggests that, in this case, the content words were restored by 
+semantic context rather than through strong collocation. The second pattern, low scores in Tatar--Russian 10\% MT+source, does not stem from the task content. Instead, it is the result of the fixed order of tasks: the participants have always been given MT+source 10\% sentences first, followed by other task types.\comment{MLF: Why? Not random? \cite{oregan13} did random! Why was this changed?}The participants have not received any training tasks before the main evaluations. Therefore, it is possible that the accommodation period is responsible for lower-than-expected scores in this mode of evaluation. 
+
+It remains questionable whether we can compare results for different gap densities. The 10, 20 and 30\% sets were comprised
+of the same sentences. However, in each case different words were removed. It appears
+that some content words are easier to fill than the others. This may explain why in
+Basque--Spanish the 20\% MT tasks are completed with better accuracy than 10\% tasks.\comment{MLF: I think this shows that our statistics are weak, should we say something to excuse ourselves?}
+
+% participants and their suffering
+It is worth noting that many participants reported feeling frustrated in
+the course of evaluations, especially while working on the no-hint tasks. 6 out of 49
+participants quit the experiment before completing it. Considering the importance of receiving the full set of evaluations, we must address the issue of participant motivation in the upcoming experiments.
+
+\subsection{Annotator agreement}
+After obtaining the results we calculated Krippendorff's alpha~\citep{krippendorff70} measure to represent annotator agreement, shown in Tables~\ref{table:alpha-eus-spa} and~\ref{table:alpha-tat-rus}. 
+\begin{table*}
+\centering
+  \begin{tabular}{|l|r|r|r|r|}
+  \hline
+ \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+\hline
+10\%&0.496&0.517&0.400&0.124\\
+20\%&0.714&0.700&0.358&0.275\\
+30\%&0.559&0.430&0.406&0.300\\
+
+\hline
+\end{tabular}
+\caption {Basque--Spanish: Krippendorff Alpha measure} 
+\label{table:alpha-eus-spa}
+\end{table*}
+
+\begin{table*}
+\centering
+  \begin{tabular}{|l|r|r|r|r|}
+  \hline
+ \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+\hline
+10\%&0.598&0.459 &0.711 &0.517 \\
+20\%&0.740&0.667 &0.473 &0.261 \\
+30\%&0.534&0.581 &0.411 &0.412 \\
+\hline
+\end{tabular}
+\caption {Tatar--Russian: Krippendorff Alpha measure} 
+\label{table:alpha-tat-rus}
+\end{table*}
+We selected this measure because of its compatibility with more than two annotators per task and the missing data (not all the gaps were evaluated). To calculate Krippendorff's alpha we used an algorithm implementation by Thomas Grill,\footnote{\url{http://grrrr.org/data/dev/krippendorff_alpha/}} dividing the answers in each gap into two categories: correct and incorrect. The previously obtained synonym lists were taken into account, i.e. if the two answers are different but both correct, they fall into one category. The measure was calculated separately for each hint and percentage combination.
+
+As the MT and MT+source hints are introduced, the agreement between annotators increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts (agreement of 0.917). This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
+
+
+
+% a little on categories
+\subsection{Results for different domains}
+For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that, in casual and news texts, the source sentences paired with MT significantly improve participants' performance compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
+
+% results with synonyms
 
 \begin{table*}
 \centering
@@ -276,7 +344,6 @@ the proportion and standard deviation of correct answers depending on evaluation
 \label{table:res-eus-spa}
 \end{table*}
 
-
 \begin{table*}
 \centering
   \begin{tabular}{|l|r|r|r|r|}
@@ -292,81 +359,6 @@ the proportion and standard deviation of correct answers depending on evaluation
   \caption{Tatar--Russian: Average number of gaps successfully filled (\%), using a synonym list}
   \label{table:res-tat-rus}
 \end{table*}
-
-The evaluators' correct answer percentage is averaged over the number of evaluators. In addition to the percentage of correct answers we kept a record of the time taken to fill the gaps in one sentence. To reduce the noise from participants who were distracted during evaluation, when
-calculating times we remove all the results over 6 minutes (the statistical mode is approximately
-two minutes). The typical time taken to complete one question varies from under one minute for tasks without hints and few gaps, to approximately two minutes for tasks with more hints and gaps. 
-
-% expected results
-We expect to see the following trend: scores received in different task modes inside one gap density should be observed, from highest to lowest, in tasks with MT and source hint, then MT hint only, then source hint only, and finally, no hint. We also expect that with the increase in gap density, the time taken to fill the gaps should also increase, and the percentage of correct answers should decrease. 
-
-% a few notes on time
-The latter trend holds: the average time taken to fill the gaps increases and the average percentage of correct answers decreases as the relative number of gaps goes up. The larger number of gaps in the sentence makes it more
-difficult to predict the answer based on the context, and also leaves more room for
-mistakes. Exploring different percentage-mode combinations, we may note that the 10\% no-hint tasks take the least time to complete. We would have expected longer completion time, since the participant must come up with their own answer unassisted. However, in the no-hint task the participant is required to read only one (reference) sentence, as opposed to two or three (reference and hints) in other tasks. Also, the number of gaps in 10\%-gap tasks is low, as it never exceeds three. We found that, as opposed to trying to devise the best word for no-hint gaps, the participants often resorted to filing these gaps with random words, which takes little time.
-
-% this section talks about percentages in eu-es and tat-rus, and how everything is nice.
-We will now discuss the percentage of correct answers based on task type. In general, tasks with MT hints score higher than tasks without MT hints. This aligns well with our expectations and suggests than machine translation helps to understand the provided text. In addition, tasks with source hints are completed better than tasks without hints, and the same relation holds between MT+source and MT-only types of tasks. 
-
-Two records break this trend: the no-hint 10\% sentences in Basque--Spanish, which scored significantly higher than the source-hint in the same category, and MT+source 10\% sentences in Tatar--Russian, which we would have expected to score higher than the corresponding MT task. In the first case, this is largely due to the use of synonyms list. Before taking synonyms into account, the scores were 32 and 35 percent for source and no-hint tasks, respectively. This still shows a small difference in favor of no-hint tasks. However, the latter percentage increases significantly after we extend the answer list with synonyms. Such an increase suggests that, in this case, the content words were restored by 
-semantic context rather than through strong collocation. The second pattern, low scores in Tatar--Russian 10\% MT+source, does not stem from the task content. Instead, it is the result of the fixed order of tasks: the participants have always been given MT+source 10\% sentences first, followed by other task types. \comment{MLF: Why? Not random? \cite{oregan13} did random! Why was this changed?}The participants have not received any training tasks before the main evaluations. Therefore, it is possible that the accommodation period is responsible for lower-than-expected scores in this mode of evaluation. 
-
-It remains questionable whether we can compare results for different gap densities. The 10, 20 and 30\% sets were comprised
-of the same sentences. However, in each case different words were removed. It appears
-that some content words are easier to fill than the others. This may explain why in
-Basque--Spanish the 20\% MT tasks are completed with better accuracy than 10\% tasks.\comment{MLF: I think this shows that our statistics are weak, should we say something to excuse ourselves?}
-
-% participants and their suffering
-It is worth noting that many participants reported feeling frustrated in
-the course of evaluations, especially while working on the no-hint tasks. 6 out of 49
-participants quit the experiment before completing it. Considering the importance of receiving the full set of evaluations, we must address the issue of participant motivation in the upcoming experiments.
-
-\subsection{Annotator agreement}
-After obtaining the results we calculated Krippendorff's alpha~\citep{krippendorff70} measure to represent annotator agreement, shown in Tables~\ref{table:alpha-eus-spa} and~\ref{table:alpha-tat-rus}. 
-\begin{table}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-  \hline
- \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&0.496&0.517&0.400&0.124\\
-20\%&0.714&0.700&0.358&0.275\\
-30\%&0.559&0.430&0.406&0.300\\
-
-\hline
-\end{tabular}
-\caption {Basque--Spanish: Krippendorff Alpha measure} 
-\label{table:alpha-eus-spa}
-\end{table}
-
-\begin{table}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-  \hline
- \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&0.598&0.459 &0.711 &0.517 \\
-20\%&0.740&0.667 &0.473 &0.261 \\
-30\%&0.534&0.581 &0.411 &0.412 \\
-\hline
-\end{tabular}
-\caption {Tatar--Russian: Krippendorff Alpha measure} 
-\label{table:alpha-tat-rus}
-\end{table}
-We selected this measure because of its compatibility with more than two annotators per task and the missing data (not all the gaps were evaluated). To calculate Krippendorff's alpha we used an algorithm implementation by Thomas Grill,\footnote{\url{http://grrrr.org/data/dev/krippendorff_alpha/}} dividing the answers in each gap into two categories: correct and incorrect. The previously obtained synonym lists were taken into account, i.e. if the two answers are different but both correct, they fall into one category. The measure was calculated separately for each hint and percentage combination.
-
-As the MT and MT+source hints are introduced, the agreement between annotators increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts (agreement of 0.917). This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
-
-
-
-% a little on categories
-\subsection{Results for different domains}
-For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that, in casual and news texts, the source sentences paired with MT significantly improve participants' performance compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
-
-% results with synonyms
-
 
 % results by text mode in tat-rus, with synonyms
 
@@ -424,13 +416,13 @@ For the Tatar--Russian language pair the participants were offered texts from th
 \section{Conclusions}
 \label{sec:conclusion}
 We have conducted assimilation evaluation of two Apertium translation directions: Basque--Spanish and Tatar--Russian. The results suggest that this evaluation method reflects the contribution of MT to users' understanding of text. The version of the toolkit used in this 
-experiment may be downloaded from our repository.\footnote{\blankout{\url{https://github.com/Sereni/Appraise/tree/1e9d735faee64d1b97fb343ab111ace6a64509d7}}}
+experiment may be downloaded from our repository.\footnote{\phantom{\url{https://github.com/Sereni/Appraise/tree/1e9d735faee64d1b97fb343ab111ace6a64509d7}}}
 
 In addition to the mentioned language pairs, some preliminary experiments were carried out for the English--Kazakh pair. It remains questionable whether we may draw reliable conclusions from this part of the experiment. By design, the evaluation tasks are distributed evenly among the participants, in such a manner that each sentence is evaluated in all modes or gap densities by several people. The English--Kazakh evaluations have been set up for 11 participants, however, only 8 participants attempted their tasks, and 6 of them completed it in full. As a result, the evaluation became unbalanced: out of 4 sets of sentences, three have been evaluated by three, two and one participant, respectively, and the fourth set has been partially completed by only one participant. A total of 40 (about 10\%) gaps have not been filled by any of the participants. Therefore, we do not report the English--Kazakh evaluation results here.
 
 The experiment may easily be repeated for any language pair (provided a parallel corpus) and
 any machine translation system. Based on our experience, we would like to suggest the following amendments to the procedure:
-\begin{enumerate}\itemsep 0ex
+\begin{enumerate}
 \item As reported in \cite{oregan13}, unless the evaluation is targeted at a specific text domain, it may be beneficial to include a stylistic variety of texts in the initial corpus. Neighboring sentences on the same topic may assist the users in gap-filling tasks;
 \item If possible, increase the number of evaluators, or reduce the number of questions per participant. In the above experiments each participant filled from 110 to 187 gaps, divided into small groups. Reducing the amount of work may increase task completion rate;\comment{MLF's crazy idea: recaptchas?}\comment{EA: the participants did not leave the gaps empty, they just did not attempt the next portions of evaluation after finishing some and getting bored. or did I misunderstand the use of captchas? }
 \item To account for the adaptation period, provide training tasks before the main evaluations take place.
@@ -439,8 +431,6 @@ any machine translation system. Based on our experience, we would like to sugges
 \section*{Acknowledgments}
 
 %This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615 and by the Google Summer of Code 2014 programme. We would like to thank the volunteers who participated in the evaluations.
-
-
 
 \bibliographystyle{apalike}
 
