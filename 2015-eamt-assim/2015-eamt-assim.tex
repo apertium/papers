@@ -39,8 +39,8 @@
 \newcommand{\paperlength}{$8$ (eight)}
 \newcommand{\shortpaperlength}{$4$ (four)}
 
-\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
-%\newcommand{\comment}[1]{}
+%\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
+\newcommand{\comment}[1]{}
 
 \newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
 
@@ -90,7 +90,7 @@
 As suggested by \citet{church93}, modern machine translation (MT) systems may
 be divided into two broad categories according to their purpose: post-editing and assimilation systems. The output of the former is intended to be transformed into text comparable to human translation; the latter systems' goal is to enhance user's comprehension of text. Both kinds may be evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
 
-Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations \citep{google}), few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion in \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} propose to fill gaps in the reference (human) translation. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
+Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations,\footnote{\url{http://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}} few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion in \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} propose to fill gaps in the reference (human) translation. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
 
 The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar-Russian. The former pair, while not producing the output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore new aspects of the experiment: the correlation between evaluators' scores, and the influence of the texts' linguistic domain. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on GitHub.\footnote{\phantom{\url{https://github.com/Sereni/Appraise}}}
 
@@ -425,9 +425,9 @@ any machine translation system. Based on our experience, we would like to sugges
 \item To account for the adaptation period, provide training tasks before the main evaluations take place.
 \end{enumerate}
 
-\section{Acknowledgments}
+\section*{Acknowledgments}
 
-This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615 and by the Google Summer of Code 2014 programme. We would like to thank the volunteers who participated in the evaluations.
+%This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615 and by the Google Summer of Code 2014 programme. We would like to thank the volunteers who participated in the evaluations.
 
 \bibliographystyle{apalike}
 
