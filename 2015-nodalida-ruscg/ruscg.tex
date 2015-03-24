@@ -82,15 +82,12 @@ Our purposes: Processing stressed wordforms and open-source machine translation
 %% make a free/open-source morphology for russian based on Z's dictionary that includes stress
 
 \section{Review of literature}
-% ROB Russian POS tagging
 
-% FRAN
-% different CGs 
-% faroese
-% estonian
-
-State-of-the-art morphological analysis in Russian is primarily based on finite-
-state technology \cite{Nozhov-03,Segalovich-03}.\footnote{Machine-learning approaches have also been successfully applied to Russian, most notably by \newcite{sharoff08lrec-mocky}.} Almost without exception, all large-scale morphological transducers of Russian are based on the
+State-of-the-art morphological analysis in Russian is primarily based on
+finite-state technology
+\cite{Nozhov-03,Segalovich-03}.\footnote{Machine-learning approaches have also been successfully applied to Russian, most notably by 
+\newcite{sharoff08lrec-mocky}.} Almost without exception, all large-scale 
+morphological transducers of Russian are based on the
 forward-looking \emph{Grammatical Dictionary of Russian} \cite{Zaliznjak-77}.
 This dictionary gives fine-grained morphological specifications for more than
 100~000 words, including inflectional endings, morphophonemic alternations, 
@@ -100,6 +97,10 @@ morphology \cite{Koskenniemi-84}, and can be compiled using either {\tt xfst}
 \cite{Beesley.Karttunen-03} or {\tt hfst} \cite{hfst-11}} This finite-state transducer (FST) generates all possible 
 morphosyntactic readings of each wordform, regardless of its frequency or probability. Because Russian is a relatively highly inflected language, broad coverage is important, but widespread homonymy leads to the generation of many spurious readings, as discussed in Section~\ref{ambiguity} below. Because of this, one of the foundational steps in Russian natural language processing is morphosyntactic disambiguation, or \emph{snjatie omonimii}.
 
+% FRAN
+% different CGs 
+% faroese
+% estonian
 
  -- and our Constraint 
 Grammar\footnote{Implemented using vislcg3 constraint grammar parser
@@ -111,25 +112,74 @@ some readings based on syntactic context.
 
 \section{Ambiguity in Russian} \label{ambiguity}
 
-% ROB
-% homography
+We identify three different types of morphosyntactic ambiguity: 
+intraparadigmatic, morphosyntactically incongruent, and morphosyntactically 
+congruent. A recent study by Author (2015) found that about 7.5\% of 
+morphosyntactic ambiguity in a corpus of Russian resulted in stress placement 
+ambiguity. The following examples make use of stress ambiguity to illustrate 
+each kind of ambiguity. \emph{Intraparadigmatic} ambiguity refers to homographic 
+wordforms belonging to the same lexeme, as shown in \ref{ex:intrahom}. 
 
-% sketch out the different kinds of ambiguity and show what percentage they are 
-% give examples
-% describe stress related ambiguity, e.g. where orthographic form is the same but diff. stress
+\needspace{4\baselineskip} % keeps example all together (no orphan line) 
+\ex. Intraparadigmatic homographs \label{ex:intrahom}
+\a. \rus{т\'{е}ла} \emph{t\'{e}la} `body.\textsubscript{SG-GEN}' 
+    \label{ex:bodySGGEN}
+\b. \rus{тел\'{а}} \emph{tel\'{a}} `body.\textsubscript{PL-NOM}' 
+    \label{ex:bodyPLNOM}
+
+The remaining two types of ambiguity occur between lexemes. 
+\emph{Morphosyntactically incongruent} ambiguity occurs between homographs that 
+belong to separate lexemes, and whose morphosyntactic values are different, as 
+shown in \ref{ex:MSincongruent}.
+
+\needspace{4\baselineskip} % keeps example all together (no orphan line) 
+\ex. Morphosyntactically incongruent homographs \label{ex:MSincongruent}
+\a. \rus{н\'{а}шей} \emph{nášej} `our.\textsubscript{F-SG-GEN/DAT/LOC...}'\\
+    \rus{наш\'{е}й} \emph{našéj} `sew on.\textsubscript{IMP-2SG}'
+\b. \rus{дор\'{о}га} \emph{doróga} `road.\textsubscript{N-F-SG-NOM}'\\
+    \rus{дорог\'{а}} \emph{dorogá} `dear.\textsubscript{ADJ-F-SG-PRED}'
+
+\emph{Morphosyntactically congruent} ambiguity occurs between homographs 
+that belong to separate lexemes, and whose morphosyntactic values are identical, 
+as shown in \ref{ex:MScongruent}. As indicated in Table~\ref{table:ambiguity}, 
+this kind of ambiguity is relatively rare, and resolving this ambiguity requires 
+the use of technologies such as Word Sense Disambiguation.
+
+\needspace{6\baselineskip} % keeps example all together (no orphan line) 
+\ex. Morphosyntactically congruent homographs \label{ex:MScongruent}
+\a. \rus{з\'{a}мок} \emph{z\'{a}mok} `castle.\textsubscript{SG-NOM}'\\
+	\rus{зам\'{о}к} \emph{zam\'{o}k} `lock.\textsubscript{SG-NOM}'
+\b. \rus{з\'{a}мков} \emph{z\'{a}mkov} `castle.\textsubscript{PL-GEN}'\\
+	\rus{замк\'{о}в} \emph{zamk\'{o}v} `lock.\textsubscript{PL-GEN}'
+\c. ...\\
+	...
+
+Table \ref{table:ambiguity} shows the proportional prevalence of each kind of 
+ambiguity. Note that these proportions do not sum to 1, since a given token may 
+exhibit more than one kind of ambiguity. The first column shows the proportion 
+of all tokens in a corpus that have each kind of ambiguity. The second column 
+shows what proportion of ambiguous tokens exhibit each kind of ambiguity.
+
+Table~\ref{table:ambiguity} shows that most morphosyntactic ambiguity in 
+unrestricted Russian text is rooted in intraparadigmatic and morphosyntactically 
+incongruent ambiguity. Detailed part-of-speech tagging with morphosyntactic 
+analysis can help disambiguate these forms. Morphosyntactically congruent stress 
+ambiguity cannot be disambiguated by means of detailed part-of-speech tagging, 
+and since congruent stress ambiguity represents only a small percentage of 
+ambiguous wordforms, we leave it to future work.
 
 \begin{table}
   \centering
-  \begin{tabular}{|l|r|r|}
+  \begin{tabular}{l|rr}
     \hline
-    \textbf{Type}     & \textbf{\% all tokens} & \textbf{\% ambig. tokens} \\
+    \textbf{Type}  & \textbf{all tokens} & \textbf{ambig. tokens} \\
     \hline
-    Intraparadigmatic & 59.0                   & 90.9   \\
-    Incongruent       & 27.7                   & 42.7   \\ 
-    Congruent         & 1.20                   & 1.8    \\ 
+    Intraparadigm. & 0.590                   & 0.909   \\
+    Incongruent    & 0.277                   & 0.427   \\ 
+    Congruent      & 0.120                   & 0.180    \\ 
     \hline
   \end{tabular}
-  \caption{Types of ambiguity}
+  \caption{Proportional frequency of different types of morphosyntactic ambiguity in unrestricted text}
   \label{table:ambiguity}
 \end{table}
 
