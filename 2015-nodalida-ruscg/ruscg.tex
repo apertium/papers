@@ -143,7 +143,7 @@ shown in \ref{ex:MSincongruent}.
 that belong to separate lexemes, and whose morphosyntactic values are identical, 
 as shown in \ref{ex:MScongruent}. As indicated in Table~\ref{table:ambiguity}, 
 this kind of ambiguity is relatively rare, and resolving this ambiguity requires 
-the use of technologies such as Word Sense Disambiguation.
+the use of technologies such as word sense disambiguation.
 
 \needspace{6\baselineskip} % keeps example all together (no orphan line) 
 \ex. Morphosyntactically congruent homographs \label{ex:MScongruent}
@@ -220,6 +220,23 @@ ambiguous wordforms, we leave it to future work.
 \subsection{Combining with a statistical tagger}
 
 \section{Evaluation}
+
+\subsection{Corpus}
+
+In order to evaluate the grammar we hand-annotated 10,150 words of Russian text
+from Wikipedia articles, public domain literature and freely-available news sources. The
+annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{...}}
+
+Hand-annotation proceeded as follows: The text was first morphologically analysed, 
+and then an annotator read through the output of the morphological analyser, commenting
+out the readings which were not appropriate in context. This annotated text was then checked
+by a second annotator.
+
+We chose our own texts as opposed to using a well-known hand-annotated corpus
+such as the Russian National Corpus (RNC) for two main reasons: the first was that the 
+RNC is not freely available; the second was that the standards for tokenisation, part-of-speech
+and morphological description are different from our morphological analyser.
+
 
 \subsection{Intrinsic}
 %FRAN
