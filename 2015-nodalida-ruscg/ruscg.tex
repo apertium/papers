@@ -110,6 +110,11 @@ some readings based on syntactic context.
 
 \cite{trosterud2009}
 
+% CGs for Slavic langs
+
+% The preliminary tagging performance is P:,96.1%, R:,99.8% for POS tagging and P:,88.2%, R:,98.1% for complete morphosyntactic tagging.
+\cite{peradin12} 
+
 \section{Ambiguity in Russian} \label{ambiguity}
 
 We identify three different types of morphosyntactic ambiguity: 
@@ -185,6 +190,15 @@ ambiguous wordforms, we leave it to future work.
 
 % numbers not perfect, e.g. лицо should be 'cong.' but will turn up as 'intra.'
 
+% we should perhaps mention something about systematic ambiguities and tagging guidelines,
+% and how we deal with stuffs
+% e.g. adj/participle
+%      det/pron
+%      acc2/nom
+%      lexicalised passive / pass
+
+% perhaps mention where our annotation guidelines are (do we mention stuff like один)?
+
 \section{Pipeline}
 
 % FRAN
@@ -200,22 +214,65 @@ ambiguous wordforms, we leave it to future work.
 \subsection{Disambiguation rules}
 %FRAN
 
+The constraint grammar is composed of 299 rules which 
+
 \begin{table}
   \centering
   \begin{tabular}{lrrr}
     \hline
-         & {\sc select} & {\sc remove} & {\sc map} \\
-    Safe & & & \\
-    Safe heuristic  & & & \\
-    Heuristic &  & & \\
-    Syntax labelling &  &   & \\ 
+                     & {\sc select} & {\sc remove} & {\sc map} \\
+    Safe             &   16         &   34         &  -- \\
+    Safe heuristic   &   89         &   76         &  -- \\
+    Heuristic        &   26         &   52         &  -- \\
+    Syntax labelling & --           & --           & 6 \\ 
     \hline
   \end{tabular}
-  \caption{Rules in the grammar are separated into four sections. }
+  \caption{The 299 rules in the grammar are separated into four sections depending
+      on rule reliability. }
 \end{table}
+
+% The philosophy is that safe rules should represent real constraints in
+% the language. Examples might be that a preposition cannot directly preceed a finite verb
+% or that prepositional case requires a preceeding preposition. 
+
+% Examples where this might go wrong.
+
+% Safe heuristic rules should represent highly frequent tendencies in the language,
+% for example remove a genitive at the beginning of a sentence if it is capitalised
+% and there is no verb governing the genitive found to the right. 
+
+% Examples where this might go wrong.
+
+Heuristic rules are those which we do not consider linguistic constraints, but express
+preferences, often dealing with overgeneration or overspecification in the morphological
+analyser. For example, remove the verbal adverb reading of \rus{такая}, which could be 
+the feminine singular nominative of \rus{такой} `such' or the verbal adverb 
+of \rus{такать} `say \emph{well}\ldots'.
+
+% Examples where this might go wrong.
+
+Given a large hand-annotated corpus we believe that most of the heuristic rules would be 
+better replaced with information learnt from the corpus through stochastic methods. 
+
+
 
 \section{Development process}
 %FRAN
+
+A common approach taken when writing constraint grammar rules is to 
+apply the existing rule set to a new text, write new rules to deal with the 
+ambiguities, then apply the rules to a hand-annotated corpus to see
+how often the rule disambiguated correctly \cite{voutilainen99}.
+
+Due to the lack of a hand-annotated corpus compatible with our morphological
+analyser, we adopted a slightly modified technique. We picked a random text
+from the Russian Wikipedia, ran it through the morphological analyser, wrote 
+rules, and then ran the rules on the whole Wikipedia corpus. For each rule,
+we collected around 100 example applications and checked them. If a rule
+selected the appropriate reading in all cases, we included it in the \emph{safe}
+rule set, if it removed an appropriate reading in less then three cases, 
+then we included it in the \emph{safe heuristic} rule set. Otherwise we either
+discarded the rule or included it in the heuristic rule set.
 
 \subsection{Combining with a statistical tagger}
 
@@ -225,7 +282,7 @@ ambiguous wordforms, we leave it to future work.
 
 In order to evaluate the grammar we hand-annotated 10,150 words of Russian text
 from Wikipedia articles, public domain literature and freely-available news sources. The
-annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{...}}
+annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{http://...}}
 
 Hand-annotation proceeded as follows: The text was first morphologically analysed, 
 and then an annotator read through the output of the morphological analyser, commenting
@@ -236,7 +293,6 @@ We chose our own texts as opposed to using a well-known hand-annotated corpus
 such as the Russian National Corpus (RNC) for two main reasons: the first was that the 
 RNC is not freely available; the second was that the standards for tokenisation, part-of-speech
 and morphological description are different from our morphological analyser.
-
 
 \subsection{Intrinsic}
 %FRAN
@@ -280,6 +336,18 @@ and morphological description are different from our morphological analyser.
 
 % rule error analysis
 
+% safe:
+% <REMOVE:382>	0	29	0	1
+% REMOVE Det IF (1 EOS) ;
+% Но, разумеется, никогда нам не исчерпать всего явления, не добраться до конца и начала его.
+% postposed determiner (or pronoun?)
+
+% <REMOVE:492>	0	12	0	1
+% REMOVE Det IF (0 Det OR Pron) (1C Ne) ;
+% Это я знал еще с 46-го года, когда начал писать, а может быть и раньше, - и факт этот не раз поражал меня и ставил меня в  недоумение  о  полезности искусства при таком видимом его бессилии.
+% postposed determiner
+
+
 \subsection{Extrinsic}
 % ROB accent placement task
 
@@ -290,11 +358,14 @@ and morphological description are different from our morphological analyser.
 % func analysis
 % dep analysis
 
+% better development workflow
+
 \section{Conclusions}
 
 
-%\section*{Acknowledgments}
-%
+\section*{Acknowledgments}
+\textit{Removed for review}
+
 %Do not number the acknowledgment section. Do not include this section
 %when submitting your paper for review.
 
