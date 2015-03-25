@@ -344,16 +344,27 @@ and morphological description are different from our morphological analyser.
 
 % rule error analysis
 
-% safe:
-% <REMOVE:382>	0	29	0	1
+%% safe:
+
+% <REMOVE:382>  0       29      0       1
 % REMOVE Det IF (1 EOS) ;
 % Но, разумеется, никогда нам не исчерпать всего явления, не добраться до конца и начала его.
 % postposed determiner (or pronoun?)
 
-% <REMOVE:492>	0	12	0	1
+% <REMOVE:492>  0       12      0       1
 % REMOVE Det IF (0 Det OR Pron) (1C Ne) ;
 % Это я знал еще с 46-го года, когда начал писать, а может быть и раньше, - и факт этот не раз поражал меня и ставил меня в  недоумение  о  полезности искусства при таком видимом его бессилии.
 % postposed determiner
+
+%% safe-heuristic:
+
+% <SELECT:718>  0       18      0       1
+% SELECT A + $$NGDAIP IF (1C* N + $$NGDAIP BARRIER Punct OR Pr OR Lparen OR NGDAIP - $$NGDAIP LINK -1C* A + $$NGDAIP BARRIER Punct OR Pr OR Lparen OR NGDAIP - $$NGDAIP);
+% Движущей силой в поездах являются локомотивы, использующие электричество или производящие собственную мощность, обычно дизельными двигателями.
+
+% <REMOVE:769>  0       57      0       1
+% REMOVE IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv) ;
+% Их мама внутри дома с кошкой, она смотрит в окно и видит играющих Ваню и Машу.
 
 
 \subsection{Extrinsic}
