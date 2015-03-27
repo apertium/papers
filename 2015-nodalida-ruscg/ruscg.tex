@@ -239,21 +239,30 @@ The constraint grammar is composed of 299 rules which
       on rule reliability. }
 \end{table}
 
-% The philosophy is that safe rules should represent real constraints in
-% the language. Examples might be that a preposition cannot directly preceed a finite verb
-% or that prepositional case requires a preceeding preposition. 
+The philosophy is that safe rules should represent real constraints in
+the language. Examples might be that a preposition cannot directly precede a finite verb
+or that prepositional case requires a preceeding preposition. 
 
 % Examples where this might go wrong.
 
-% Safe heuristic rules should represent highly frequent tendencies in the language,
-% for example remove a genitive at the beginning of a sentence if it is capitalised
-% and there is no verb governing the genitive found to the right. 
+Safe heuristic rules should deal with highly frequent tendencies in the language.
+For example remove a genitive at the beginning of a sentence if it is capitalised
+and there is no verb governing the genitive found to the right and there is also no
+negated verb to the right. This rule relies on the fact that if the genitive is in first 
+position in the sentence it cannot modify anything before, and no preposition 
+can be governing it.
+
+This kind of rule often relies on completeness of sets, in this case the set of verbs
+that can take a genitive complement. 
+
+%It also relies on accurate delimitation of sentence
+%boundaries, including rules for dealing with \ldots ellipsis.
 
 % Examples where this might go wrong.
 
 Heuristic rules are those which we do not consider linguistic constraints, but express
 preferences, often dealing with overgeneration or overspecification in the morphological
-analyser. For example, remove the verbal adverb reading of \rus{такая}, which could be 
+transducer. For example, remove the verbal adverb reading of \rus{такая}, which could be 
 the feminine singular nominative of \rus{такой} `such' or the verbal adverb 
 of \rus{такать} `say \emph{well}\ldots'.
 
