@@ -349,70 +349,105 @@ and morphological description are different from our morphological analyser.
 % <REMOVE:382>  0       29      0       1
 % REMOVE Det IF (1 EOS) ;
 % Но, разумеется, никогда нам не исчерпать всего явления, не добраться до конца и начала его.
-% postposed determiner (or pronoun?)
+%+ postposed determiner (or pronoun?)
 
 % <REMOVE:492>  0       12      0       1
 % REMOVE Det IF (0 Det OR Pron) (1C Ne) ;
 % Это я знал еще с 46-го года, когда начал писать, а может быть и раньше, - и факт этот не раз поражал меня и ставил меня в недоумение о полезности искусства при таком видимом его бессилии.
-% postposed determiner
+%+ postposed determiner (факт этот)
 
 % <REMOVE:414>	0	0	0	1
 % REMOVE A + Short IF (-1C Fin OR Adv OR A) (0C Short OR Adv) ;
 % А если удастся, то я прошу только, чтоб схоронили меня, вполне убедясь, что я мертвая, потому что совсем неприятно проснуться в гробу под землею.
+%+ bad rule. adverb (maybe adj too) does not make sense here 
 
 % <REMOVE:433>	0	992	0	1
 % REMOVE NGDAIP - Acc - Prp - Loc IF (-1C* Pr/V OR Pr/Na BARRIER (*) - Adv - Comp - DetIndecl - ModAcc - ModPrp) ;
 % В 1960-х электрифицированные высокоскоростные железные дороги появились в Японии и некоторых других странах.
+%+ incomplete barrier (ordinal in another case)
 
 % <REMOVE:494>	0	60	0	1
 % REMOVE Det IF (0 Det OR Pron) (1 Cm LINK 1 CC OR CS) ;
 % Но какие, однако же, два разные создания, точно обе с двух разных планет!
+%+ parentheticals
 
 %% safe-heuristic:
 
 % <SELECT:718>  0       18      0       1
 % SELECT A + $$NGDAIP IF (1C* N + $$NGDAIP BARRIER Punct OR Pr OR Lparen OR NGDAIP - $$NGDAIP LINK -1C* A + $$NGDAIP BARRIER Punct OR Pr OR Lparen OR NGDAIP - $$NGDAIP);
 % Движущей силой в поездах являются локомотивы, использующие электричество или производящие собственную мощность, обычно дизельными двигателями.
+%+ missing unification on number, rule too loose.
 
 % <REMOVE:769>  0       57      0       1
 % REMOVE IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv) ;
 % Их мама внутри дома с кошкой, она смотрит в окно и видит играющих Ваню и Машу.
+%+ participle is intransitive, because it is modifying Vanju and Mašu, but they are object of видит so look like object of играющих. both syntactically valid, but semantics would tell you that you can't play people.
 
 % <SELECT:692>	0	10	0	2
 % SELECT Pron IF (0C Prp) (0 Pron OR Det) (NOT 0 Num) (NOT 1* Prp BARRIER (*) - Adv - DetIndecl) ;
-Наземные цели (танки, бронетранспортёры), характерные для штурмовиков и ударных вертолётов, имеют, в большинстве своём, значительно более тяжёлое и прочное бронирование, чем авиационные, что определяет использование бронебойных снарядов.
-
-% <SELECT:835>	0	7	0	1
-% SELECT Adv IF (0 Adv LINK 0 CC) (-1C Fin) (1 Modif LINK NOT 1* Fin BARRIER CLB);
-% Эта концепция, подкреплённая празднованием в 1982 году 1500-летия Киева, рассматривалась как общепринятая.
+% Наземные цели (танки, бронетранспортёры), характерные для штурмовиков и ударных вертолётов, имеют, в большинстве своём, значительно более тяжёлое и прочное бронирование, чем авиационные, что определяет использование бронебойных снарядов.
+%+ postposed determiner своём
 
 % <SELECT:864>	0	13	0	1
 % SELECT Nom IF (0C Nom OR Acc) (-1C* Nom BARRIER NGDAIP - Nom - Acc LINK -1C* IV BARRIER NGDAIP - Nom OR TV OR CLB OR Pr) ;
 % Если самоубийство не удастся, то пусть соберутся все отпраздновать мое воскресение из мертвых бокалами Клика.
+% [ only IV ] (anything not nom) [ only nom ] (any case but nom/acc) [nom or acc]
+%+ bad rule
 
-% <REMOVE:542>	0	10	0	1
-% REMOVE Adv IF (0C N + Ins OR Adv) (NOT 0 InsAdv) ;
-% Он судил организаторов и вдохновителей массового уничтожения граждан Руанды весной 1994 года , среди которых в основном были бывшие чиновники правящего режима.
+% <REMOVE:784>	0	67	0	2
+% REMOVE Acc IF (-1C Fin + IV) (NOT 0 AccAdv) ;
+% Я именно заметил ему перед этим, что я, чуть не сорок лет знающий "Горе от ума", только в этом году понял как следует один из самых ярких типов этой комедии, Молчалина, и понял именно, когда он же, то есть этот самый писатель, с которым я говорил, разъяснил мне Молчалина, вдруг выведя его в одном из своих сатирических очерков.
+%+ parenthetical (как следует)
+%! Было установлено, что после того, как 6 апреля 1994 года в авиакатастрофе погиб президент Хабиаримана, Багосора полностью захватил контроль над политической и военной ситуацией в стране, следовательно несёт ответственность за произошедшие затем события .
+%! нести = TV here, but IV ?
+
+
+% <REMOVE:656>	0	16	0	3
+% REMOVE TV - Pass IF (NOT 1* Acc) (NOT -1* Acc) ;
+% Она ничего не видит, она считает.
+% Люди никогда не получают ответа, когда говорят с собаками!
+% Она смотрит везде, но не может его найти.
+%+ genitive object
+
+%      REMOVE Acc IF (-1C Fin + IV) (NOT 0 AccAdv) ;
+%      bad interaction with auxiliary verb rule, we remove the acc reading on его
 
 %% heuristic:
 
 % <REMOVE:917>	0	533	0	2
 % REMOVE Dat IF (NOT 0 Prn/Sebe) (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron) (NOT 1* V/Dat) (NOT -1* V/Dat) (NOT -1* Prep/Dat) (NOT -1C A + Dat) ;
 % В связи с этим ортодоксальности стали противопоставлять ересь 
+%+ incomplete set (e.g. стали should appear in V/Dat)
 % В противоположность «юбилейной концепции» часть историков и археологов считает, как и прежде, что образование Киева как города проходило в VIII—X веках.
+%+ противоположность takes dative (против-) 
+
+% <REMOVE:954>	0	272	0	7
+% REMOVE Adv/I IF (NOT -1* Adv/Ješë OR Jest OR Rel OR No BARRIER (*) - Adv) (NOT -1* CC BARRIER (*) - Adv) ;
+% А знаете ли вы, - вдруг сказал мне мой собеседник, видимо давно уже и глубоко пораженный своей идеей, - знаете ли, что, что бы вы ни написали, что бы ни вывели, что бы ни отметили в художественном произведении, - никогда вы не сравняетесь с действительностью.
+% Действительность тотчас же представит вам в этом же роде такой фазис какой вы и еще и не предлагали и превышающий все, что могло создать ваше собственное наблюдение и воображение!
+% Действительность тотчас же представит вам в этом же роде такой фазис какой вы и еще и не предлагали и превышающий все, что могло создать ваше собственное наблюдение и воображение!
+% Это я знал еще с 46-го года, когда начал писать, а может быть и раньше, - и факт этот не раз поражал меня и ставил меня в недоумение о полезности искусства при таком видимом его бессилии.
+% Но ведь в том-то и весь вопрос: чей глаз и кто в силах? 
+% Вот эта-то смерть и напомнила мне о сообщенном мне еще летом самоубийстве дочери эмигранта.
+% Зачастую и после убийств над телами жертв совершали издевательства — разрубали их на куски и т. д. 
+%+ this is a complete mess, in certain genres, и is much more frequent as an adverb
+% probably needs collocation info
 
 % <SELECT:1065>	0	4	0	1
 % SELECT $$NGDAIP IF (0 N + $$NGDAIP) (1 @CNP LINK 1 N + $$NGDAIP) ;
 % Однако после войны в Афинах, как и в Греции в целом, начался период ускоренного развития, который длился до 1980-х, когда впервые дали о себе знать проблема перенаселения столицы и проблема транспорта.
+%+ doesn't take into account genitive modifiers
 
 % <SELECT:1071>	0	37	0	1
 % SELECT $$NGDAIP IF (0 N + $$NGDAIP) (-1 @CNP LINK -1 N + $$NGDAIP) ;
 % Образ триединого бога есть сферическая поверхность, а именно: бог-отец в центре, бог-сын — на поверхности и святой дух — в симметричном отношении между центром и описанной вокруг него сферической поверхностью.
+%+ @CNP should be @CVP because of the тире
 
 % <SELECT:1013>	0	4	0	1
 % SELECT Sg IF (0 Prop) (0 Gen) (-1 N) (1 EOS) (NOT -1* Fin + Pl) ;
 % Старое здание Афинского университета, расположенное на проспекте Панепистимиу, является одним из самых стильных в городе, наряду с Национальной библиотекой и Академией Афин.
-
+%+ massive hack, not linguistically motivated
+%+ could be improved by only applying to ant/pat
 
 
 \subsection{Extrinsic}
