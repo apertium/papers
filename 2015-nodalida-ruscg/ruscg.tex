@@ -205,7 +205,7 @@ ambiguous wordforms, we leave it to future work.
 % FRAN
 
 \subsection{Morphological analyser}
-% ROB
+\label{sec:morph}
 
 The morphological transducer used in this study is described in Author (2015). 
 It is primarily based on Zaliznjak's ``Grammatical dictionary of Russian'', 
@@ -214,8 +214,8 @@ including the 2001 version's appendix of proper nouns. It also includes approxim
 Example~\ref{ex:FSToutput} gives some examples of the output.
 
 \ex. \label{ex:FSToutput} 
-	\a. \rus{новый}+A+Msc+Inan+Sg+Nom
-	\b. \rus{автомат}+N+Msc+Inan+Sg+Nom
+	\a. \rus{новый}\texttt{{\small <adj><m><nn><sg><nom>}}
+	\b. \rus{автомат}\texttt{{\small <n><m><nn><sg><nom>}}
 	\c. 
 % det/prn (e.g. pos... их, я, мой)
 % 'over'generation (e.g. all dets get all gen/nbr/case combinations)
@@ -292,22 +292,10 @@ rule set, if it removed an appropriate reading in less then three cases,
 then we included it in the \emph{safe heuristic} rule set. Otherwise we either
 discarded the rule or included it in the heuristic rule set.
 
-\subsection{Combining with a statistical tagger}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.45\textwidth]{graphics/learning-curve.pdf}
-  \caption{Learning curve for three taggers, \texttt{hunpos} with no lexicon, 
-    \texttt{hunpos} with a lexicon, and \texttt{hunpos} with a lexicon and the 
-    Russian constraint grammar in a voting set up.}
-\end{figure}
-
-\cite{hulden12}
-
 \section{Evaluation}
+\label{sec:eval}
 
 \subsection{Corpus}
-
 In order to evaluate the grammar we hand-annotated 10,150 words of Russian text
 from Wikipedia articles, public domain literature and freely-available news sources. The
 annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{http://...}}
@@ -317,7 +305,7 @@ and then an annotator read through the output of the morphological analyser, com
 out the readings which were not appropriate in context. This annotated text was then checked
 by a second annotator.
 
-We chose our own texts as opposed to using a well-known hand-annotated corpus
+We chose to annotate our own texts as opposed to using a well-known hand-annotated corpus
 such as the Russian National Corpus (RNC) for two main reasons: the first was that the 
 RNC is not freely available; the second was that the standards for tokenisation, part-of-speech
 and morphological description are different from our morphological analyser.
@@ -339,6 +327,7 @@ and morphological description are different from our morphological analyser.
     \hline
   \end{tabular}
   \caption{Results for the test corpora.}
+  \label{table:results}
 \end{table*}
 
 
@@ -363,6 +352,81 @@ and morphological description are different from our morphological analyser.
 % unknown words from test corpus, categorisation
 
 % rule error analysis
+
+\begin{description}
+  \item[ Bad linguistics:] In some cases a rule did not take into account grammatical possibilities 
+    in the language. e.g. Two simple rules such as 
+    \begin{itemize}
+      \item \texttt{REMOVE Det IF (0 Det OR Pron) (1C Ne) ;}
+      \item \texttt{REMOVE Det IF (0 Det OR Pron) (1 Cm LINK 1 CC OR CS) ;}
+    \end{itemize}
+    did not take into account the possibility of having a postposed determiner as in
+    \begin{itemize}
+      \item \ldots \rus{а может быть и раньше, и факт этот не раз поражал меня} \ldots
+      \item \ldots and maybe even earlier, and fact \textbf{this} not once surprised me \ldots
+    \end{itemize}
+    or a interposed parenthetical as in
+    \begin{itemize}
+      \item \rus{Но какие, однако же, два разные создания, точно обе с двух разных планет!}
+      \item But what, \textbf{exactly} , two different creatures, just both from two different planets!
+    \end{itemize}
+  \item[ Bad rule:] In some cases a rule was simply incorrectly specified. For example, the 
+    following rule was designed to solve the ambiguity between short-form neuter adjectives and 
+    adverbs
+   \begin{itemize}
+     \item \texttt{REMOVE A + Short IF (-1C Fin OR Adv OR A) (0C Short OR Adv) ;}
+   \end{itemize}
+   However there is no reason why we should prefer an adverb over an adjective after an adverb, 
+   \begin{itemize}
+     \item \ldots \rus{потому что совсем неприятно проснуться в гробу под землею.}
+     \item \ldots because [it is] really \textbf{unpleasant} to wake up in a coffin under the ground.
+   \end{itemize}
+  \item[ Incomplete barrier:] xxx 
+   \begin{itemize} 
+     \item \texttt{REMOVE NGDAIP - Acc - Prp - Loc IF (-1C* Pr/V OR Pr/Na BARRIER (*) - Adv - Comp - DetIndecl - ModAcc - ModPrp) ;}
+   \end{itemize}
+   here the rule removes the nominative reading of the adjective to leave the accusative reading because the preposition \rus{в} `in'
+   is found preceeding. 
+   \begin{itemize}
+     \item \rus{В 1960-х электрифицированные высокоскоростные железные дороги появились в Японии и некоторых других странах.}
+     \item In the 1960's \textbf{electrified} high-speed railways appeared in Japan and some other countries.
+   \end{itemize} 
+  \item[ Incomplete set:] In some cases the rule was a good generalisation, but made use of a set
+    which was incomplete. For example:
+   \begin{itemize}
+     \item \texttt{REMOVE Dat IF (NOT 0 Prn/Sebe) (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron) (NOT 1* V/Dat) (NOT -1* V/Dat) (NOT -1* Prep/Dat) (NOT -1C A + Dat) ;}
+   \end{itemize} 
+   the set \texttt{V/Dat} does not contain the verb \rus{противопоставлять} `opposed to' which takes 
+   a dative argument.
+   \begin{itemize}
+     \item \rus{В связи с этим ортодоксальности стали противопоставлять ересь.}
+     \item In connection with this \textbf{orthodoxy} was opposed to heresy. 
+   \end{itemize}
+  \item[ Rule interaction:] The strong accusative rule below causes incorrect behaviour in the rule to remove transitivity readings
+  \begin{itemize}
+     \item \texttt{REMOVE TV - Pass IF (NOT 1* Acc) (NOT -1* Acc) ;}
+     \item \texttt{REMOVE Acc IF (-1C Fin + IV) (NOT 0 AccAdv) ;}
+  \end{itemize}
+  Consider the following example where \rus{может} `can' is tagged as intransitive, the second rule fires removing 
+  the accusative reading of \rus{его} `him', and thus given the lack of accusative reading, \rus{найти} `find'
+  is disambiguated as intransitive instead of transitive.
+  \begin{itemize}
+    \item \rus{Она смотрит везде, но не может его найти.}
+    \item She looks around, but she cannot \textbf{find him}.
+  \end{itemize}
+  \item[ Difficult linguistics:] Dealing with participles with arguments is challenging in the case that the arguments 
+    of the participle share the same government as the main verb.
+  \begin{itemize}
+    \item \texttt{REMOVE IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv) ;}
+  \end{itemize}
+    Here \rus{Ваню и Машу} `Vanja and Maša' are the object of \rus{видит} `sees' and not \rus{играющих} `playing', although
+    both verbs can take accusative object.
+  \begin{itemize}
+    \item \rus{Их мама внутри дома с кошкой, она смотрит в окно и видит играющих Ваню и Машу.}
+    \item Their mother is inside the house with the cat, she looks through the window and sees Vanja and Maša \textbf{playing}.
+  \end{itemize}
+    This kind of error would ideally be resolved with semantic knowledge. 
+\end{description}
 
 %% safe:
 
@@ -472,6 +536,47 @@ and morphological description are different from our morphological analyser.
 
 \subsection{Extrinsic}
 % ROB accent placement task
+
+\subsection{Combining with a statistical tagger}
+
+Given that just over half of all ambiguity remains after running our preliminary constraint
+grammar and that for many applications unambiguous output is necessary, we decided to 
+experiment with combining the constraint grammar with a statistical tagger to resolve remaining
+ambiguity. 
+
+We follow the voting method described by \newcite{hulden12}. We used the freely available
+\texttt{hunpos} part-of-speech tagger \cite{halacsy07}. We performed 10-fold
+cross validation using our evaluation corpus, taking 10\% for testing and 90\% for training, and
+experimented with three configurations:
+
+\begin{itemize}
+  \item \texttt{HMM}: the \texttt{hunpos} part-of-speech tagger with its default options
+  \item \texttt{HMM+Morph}: as with \texttt{HMM} but incorporating the output of our 
+    morphological analyser (see section~\ref{sec:morph}) as a full form lexicon.
+  \item \texttt{HMM+Morph+CG}: we submitted the output from \texttt{HMM+Morph} and the 
+    constraint grammar to a voting procedure, whereby if the constraint grammar left
+    one valid reading, we chose that, otherwise if the constraint grammar left a word
+    with more than one reading, we chose the result from the \texttt{HMM+Morph} tagger.
+\end{itemize}
+
+As can be seen from Figure~\ref{fig:curve}, incorporating the constraint grammar 
+improves the performance of the HMM tagger, an improvement of nearly 5\% in accuracy,
+similar to that reported by \newcite{hulden12} for the same amount of training data. Our 
+constraint grammar also has a much lower precision as a result of the ambiguity remaining
+in the output.
+
+Note that the final accuracy is below the state of the art for Russian, however the state of
+the art employs unavailable training corpora of over five million tokens. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.45\textwidth]{graphics/learning-curve.pdf}
+  \caption{Learning curve for three taggers, \texttt{hunpos} with no lexicon, 
+    \texttt{hunpos} with a lexicon, and \texttt{hunpos} with a lexicon and the 
+    Russian constraint grammar in a voting set up.}
+  \label{fig:curve}
+\end{figure}
+
 
 \section{Future work}
 
