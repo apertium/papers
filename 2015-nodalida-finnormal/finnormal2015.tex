@@ -22,30 +22,31 @@
 
 \title{Automatic conversion of colloquial Finnish to standard Finnish}
 
-\author{Francis M. Tyers\\
+\author{ Inari Listenmaa\\
+  Chalmers tekniska h\"{o}gskola, \\
+  Sweden \\
+  {\tt inari@chalmers.se} \\\And
+ Francis M. Tyers\\
   HSL-fakultehta, \\
   UiT Norgga \'{a}rktala\v{s} universitehta, \\
   N-9015 Norway \\
-  {\tt francis.tyers@uit.no} \\\And
-  Inari Listenmaa\\
-  Chalmers tekniska h\"{o}gskola, \\
-  Sweden \\
-  {\tt inari@chalmers.se} \\}
+  {\tt francis.tyers@uit.no} }
 
 \date{}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-  This paper presents an unsupervised method for converting between colloquial Finnish
+  This paper presents a rule-based method for converting between colloquial Finnish
   and standard Finnish. The method relies upon a small number of orthographical rules
   combined with a large language model of standard Finnish for ranking the possible 
   conversions. Aside from this contribution, the paper also presents an evaluation
   corpus consisting of aligned sentences in colloquial Finnish, orthographically-standardised
-  colloquial Finnish and standard Finnish. The methods we present outperforms the baseline
-  of simply treating colloquial Finnish as standard Finnish and offers promise for the adaptation
-  of language-technology tools created for standard Finnish to colloquial Finnish. To this end
-  the paper also presents preliminary results which show promise for using normalisation in 
+  colloquial Finnish and standard Finnish. The method we present outperforms the baseline
+  of simply treating colloquial Finnish as standard Finnish, but is outperformed by a phrase-based 
+ MT system trained by the evaluation corpus.
+% Nevertheless, it offers promise for the adaptation of language-technology tools created for standard Finnish to colloquial Finnish. To this end
+  The paper also presents preliminary results which show promise for using normalisation in 
   the machine translation task.
 \end{abstract}
 
@@ -53,7 +54,7 @@
 
 Most language technology tools are designed or trained based on standard language 
 forms, where they exist. The application of these tools to non-standard
-language can cause a substantial decrease in quality. For example in machine translation,
+language can cause a substantial decrease in quality for example in machine translation,
 parsing and part-of-speech tagging \cite{eisenstein2013}. Non-standard language can 
 have different orthographic conventions, along with different morphology, syntax and stylistics.
 
@@ -72,7 +73,7 @@ proofing tools, such as spelling and grammar checkers \cite{kukich1992} can be u
 to particular orthographic or grammatical norms. Accent and diacritic restoration --- for example in \newcite{scannell2011} --- is similar
 in that it aims to bring text closer to standard orthography in order to facilitate treatment by 
 automatic tools. Another related area is machine translation between different written norms of 
-the same language. For example between Norwegian Bokm\aa{}l and Norwegian Nynorsk \cite{unhammer2009}.
+the same language, for example between Norwegian Bokm\aa{}l and Norwegian Nynorsk \cite{unhammer2009}.
 
 \newcite{scannell2014} presents a method for normalising pre-standardised text in Irish to 
 the modern standard. The method relies on a translation model consisting of word-to-word 
@@ -84,72 +85,6 @@ sentence is reached, the most probable is output.
 
 \subsection{Colloquial Finnish}
 
-
-\newcite{viinikka2013} describe the common meaning of the terms colloquial (\emph{puhekieli}) and standard (\emph{yleiskieli} or \emph{kirjakieli}) Finnish: standard language is unified in morphology and vocabulary, following the regulations of a language board; colloquial language shows local and idiolectal variation, and has structures that are characteristic to spoken variety,  such as discourse particles and incomplete clauses. 
-
-% Colloquial Finnish differs from standard Finnish in some key features: 
-
-% Morphology shows dialectal variation, shortening and merging of morphemes, e.g. \emph{en min\"{a}} `not I' $\rightarrow$ \emph{emm\"{a}} (`I don't').
-
-% Syntax: due to the spontaneous nature of colloquial language, syntactic structures are common for spoken language. 
-%Prototypically, colloquial language is spoken and spontaneous, and standard is written, planned and structured. 
-
-We illustrate the differences with the following example from our data set. Sentence 1 is the original colloquial version. The gloss shows the actual word-by-word translation, and the translation shows similar style and register in English.
-
-\ex
-\begingl
-\gla seiskakin oli vaan silleen et fonotaksista p\"{a}\"{a}ttelin //
-\glb seven-{\sc also} was just like.that that phonotactics.{\sc ela} I.deduced //
-\glft `also the seventh, it was like, I just deduced it from phonotactics' //
-\endgl
-\xe
-
-
-For the normalised version,\footnote{The normalised version is converted orthographically and lexically, but not syntactically or stylistically.} we changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the normalised version are common morphological or phonological, phenomena, such as reducing the diphthong in \emph{vain} $\rightarrow$ \emph{vaan} or shortening in  \emph{ett\"{a}} $\rightarrow$ \emph{et}. The original sentence and the normalised translation are shown below, aligned word by word.
-
-\ex
-\begingl
-\gla seiskakin oli vaan silleen et fonotaksista p\"{a}\"{a}ttelin //
-\glb seitsem\"{a}skin oli vain sill\"{a}\#lailla ett\"{a} fonotaksista p\"{a}\"{a}ttelin //
-%\glb seventh-{\sc also} was just like.that that phonotactics.{\sc ela} I.deduced //
-% \glft `also the seventh, it was like, I just deduced it from phonotactics' //
-\endgl
-\xe
-
- The syntactic structure of the original sentence is markedly spoken; the word \emph{seiska} is topicalised, and the main information ``deduced from phonotactics'' is in a subordinate clause. 
-The translation into standard Finnish is shorter and more precise, leaving just the main information.
-
-\ex
-\begingl
-\gla p\"{a}\"{a}ttelin seitsem\"{a}nnenkin fonotaksista //
-\glb I.deduced seventh-{\sc also} phonotactics.{\sc ela} //
-\glft `I deduced also the seventh from phonotactics' //
-\endgl
-\xe
-
-
-
-
-% ``Yleens\"{a} kirjakieli ymm\"{a}rret\"{a}\"{a}n samaksi kuin yleiskieli: kielenhuollon suositusten mukaiseksi standardoiduksi kieleksi, jonka sanasto on yleistajuista. Puhekieli puolestaan miellet\"{a}\"{a}n kirjakielt\"{a} arkisemmaksi ja tyylilt\"{a}\"{a}n vapaamuotoisemmaksi kielimuodoksi, jonka ei tarvitse noudattaa kirjakielen s\"{a}\"{a}ntöj\"{a} (esim. mie, h\"{a}nen koira, me kirjotetaan vs. min\"{a}, h\"{a}nen koiransa, me kirjoitamme).''
-
-
-\section{Corpus}
-
-\begin{table}
-  \centering
- \begin{tabular}{|l|r|r|r|}
-    \hline
-    \multirow{2}{*}{\textbf{Section}} & \multicolumn{3}{|c|}{\textbf{Tokens}} \\\cline{2-4}
-                                      & \texttt{train} & \texttt{test} & \texttt{dev} \\
-    \hline
-    Colloquial                           & 5,103 & 1,012 & 1,003 \\ 
-    Normalised                           & 5,105 & 1,012 & 1,003 \\ 
-    Standardised                         & 4,982 & 991 & 1,000 \\
-    \hline
- \end{tabular} 
-  \caption{Statistics on sentences from the parallel corpus.}
-  \label{table:corpsize}
-\end{table}
 
 \begin{table*}
   \centering
@@ -173,6 +108,64 @@ menin Japaniin & menin Japaniin & menin Japaniin
   \label{table:corpexample}
 \end{table*}
 
+\newcite{viinikka2013} describe the common meaning of the terms colloquial (\emph{puhekieli}) and standard (\emph{yleiskieli} or \emph{kirjakieli}) Finnish: standard language is unified in morphology and vocabulary, following the regulations of a language board; colloquial language shows local and idiolectal variation, and has structures that are characteristic to spoken variety,  such as discourse particles and incomplete clauses. 
+
+We illustrate the differences with the following example from our data set. Sentence 1 is the original colloquial version. The gloss shows the actual word-by-word translation, and the translation shows similar style and register in English.
+
+\ex
+\begingl
+\gla seiskakin oli vaan silleen et fonotaksista p\"{a}\"{a}ttelin //
+\glb seven-{\sc also} was just like.that that phonotactics.{\sc ela} I.deduced //
+\glft `also the seventh, it was like, I just deduced it from phonotactics' //
+\endgl
+\xe
+
+
+For the normalised version,\footnote{The normalised version is converted orthographically and lexically, but not syntactically or stylistically.} we changed only morphology and vocabulary. On the lexical level, the word \emph{seiska} `number 7' is colloquial style, and in the standard translation it is replaced by the ordinal \emph{seitsem\"{a}s} `seventh'.  Other changes in the normalised version target common morphological or phonological phenomena, such as restoring the reduced diphthong in \emph{vaan} $\rightarrow$ \emph{vain}. The original sentence and the normalised translation are shown below, aligned word by word.
+
+\ex
+\begingl
+\gla seiskakin oli vaan silleen et fonotaksista p\"{a}\"{a}ttelin //
+\glb seitsem\"{a}skin oli vain sill\"{a}\#lailla ett\"{a} fonotaksista p\"{a}\"{a}ttelin //
+%\glb seventh-{\sc also} was just like.that that phonotactics.{\sc ela} I.deduced //
+% \glft `also the seventh, it was like, I just deduced it from phonotactics' //
+\endgl
+\xe
+
+ The syntactic structure of the original sentence is markedly spoken; the word \emph{seiska} is topicalised, and the main information ``deduced from phonotactics'' is in a subordinate clause. 
+The translation into standard Finnish is shorter and more precise, leaving just the main information.
+
+\ex
+\begingl
+\gla p\"{a}\"{a}ttelin seitsem\"{a}nnenkin fonotaksista //
+\glb I.deduced seventh-{\sc also} phonotactics.{\sc ela} //
+\glft `I deduced the seventh also from phonotactics' //
+\endgl
+\xe
+
+
+
+
+
+\section{Corpus}
+
+\begin{table}
+  \centering
+ \begin{tabular}{|l|r|r|r|}
+    \hline
+    \multirow{2}{*}{\textbf{Section}} & \multicolumn{3}{|c|}{\textbf{Tokens}} \\\cline{2-4}
+                                      & \texttt{dev} & \texttt{test} & \texttt{train} \\
+    \hline
+    Colloquial                           & 1,003 & 1,012 & 5,103 \\ 
+    Normalised                           & 1,003 & 1,012 & 5,103 \\ 
+    Standardised                         & 1,000 & 991 & 4,982 \\
+    \hline
+ \end{tabular} 
+  \caption{Statistics on sentences from the parallel corpus.}
+  \label{table:corpsize}
+\end{table}
+
+
 Our evaluation corpus was created by manually translating texts in colloquial Finnish
 to standard Finnish.\footnote{The corpus is freely available and published under the 
 CreativeCommons {\sc cc-by-sa} 3.0 licence.} The texts were extracts from internet 
@@ -183,36 +176,9 @@ were not applied at this stage. The second conversion step normalised the text
 both orthographically and syntactically/stylistically. Table~\ref{table:corpexample} presents
 an excerpt from each of the three parts of the corpus.
 
-The corpus was split into three parts, testing, development and training. The testing
-and development portions contain approximately 1,000 words each, with the remaining approximately 5,000 words for training
-supervised models.\footnote{The corpus is split into 14 files of 500 words each. Files 01--02 
+The corpus was split into three parts, development, testing and training. The development and testing portions contain approximately 1,000 words each, with the remaining approximately 5,000 words for training
+phrase-based and character-based models.\footnote{The corpus is split into 14 files of 500 words each. Files 01--02 
   were used for development; 03--04 for testing and 05--14 for training.} Table~\ref{table:corpsize} gives statistics on the number of words in each section.
-
-\section{Experiments}
-
-\subsection{Unsupervised normalisation}
-
-For the unsupervised normalisation we applied a set of regular-expression based 
-replace rules to the input text to produce all the possible candidate sentences 
-in standard Finnish and then used a target-language model to rank the possible 
-candidates. The candidate with the highest rank was selected as the normalised sentence.
-For the target-language model we used the Finnish side of the English--Finnish EuroParl
-parallel corpus \cite{koehn2005}.
-
-We developed two sets of rules for the unsupervised normalisation approach:
-
-\begin{itemize}
-  \item \texttt{rules-1}: 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97). The 
-    rules took around one hour to implement.
-  \item \texttt{rules-2}: 98 rules written by examining the development corpus, these rules also
-    took approximately one hour to implement.
-\end{itemize}
-
-The rules included both simple one-to-one (`m\"{a}' $\rightarrow$ `min\"{a}') and one-to-many (`emm\"{a}' $\rightarrow$ `en min\"{a}') word correspondences,
-and also regular expression substitutions which could match a prefix or a suffix (`(?+)nkaa' $\rightarrow$ `\textbackslash1n kanssa').
-
-Table~\ref{table:unsup-trace} gives an example trace of the system on a simple sentence
-using three replace rules.
 
 \begin{table*}
   \centering
@@ -250,12 +216,42 @@ using three replace rules.
     \textbf{Output:} & \multicolumn{3}{l|}{Min\"{a} olen Tommin kanssa} \\
     \hline
   \end{tabular}
-  \caption{Example trace of the unsupervised normalisation method. Rules are applied in order to each of 
+  \caption{Example trace of the normalisation method. Rules are applied in order to each of 
      the possible candidate translations in turn. The candidates are then ranked using an $n$-gram language model 
      of standard Finnish and either an $n$-best list
      or the best candidate is output.}
-  \label{table:unsup-trace}
+  \label{table:normal-trace}
 \end{table*}
+  \newpage
+
+\section{Experiments}
+
+\subsection{Rule-based normalisation}
+
+
+
+For the rule-based normalisation we applied a set of regular-expression based 
+replace rules to the input text to produce all the possible candidate sentences 
+in standard Finnish and then used a target-language model to rank the possible 
+candidates. The candidate with the highest rank was selected as the normalised sentence.
+For the target-language model we used the Finnish side of the English--Finnish EuroParl
+parallel corpus \cite{koehn2005}.
+
+We developed two sets of rules:
+
+\begin{itemize}
+  \item \texttt{rules-1}: 273 rules from \newcite{karlsson2008}'s grammar of Finnish (\S95--97). The 
+    rules took around one hour to implement.
+  \item \texttt{rules-2}: 98 rules written by examining the development corpus, these rules also
+    took approximately one hour to implement.
+\end{itemize}
+
+The rules included both simple one-to-one (`m\"{a}' $\rightarrow$ `min\"{a}') and one-to-many (`emm\"{a}' $\rightarrow$ `en min\"{a}') word correspondences,
+and also regular expression substitutions which could match a prefix or a suffix (`(?+)nkaa' $\rightarrow$ `\textbackslash1n kanssa').
+
+Table~\ref{table:normal-trace} gives an example trace of the system on a simple sentence
+using three replace rules.
+
 
 \subsection{Statistical machine translation}
 
@@ -264,7 +260,7 @@ Moses toolkit \cite{koehn2007}. The training set up was that used for
 the baseline system in the WMT shared tasks
 on machine translation.\footnote{\url{http://www.statmt.org/wmt11/baseline.html}}
 
-The target-language model corpus, trained using KenLM \cite{heafield2011}, used was the same as in the unsupervised experiments.  
+The target-language model corpus, trained using KenLM \cite{heafield2011}, used was the same as in the rule-based experiments.  
 
 We trained models based on two approaches, the first being phrase-based machine translation (PBMT, \newcite{zens2002}) and the second on character-based machine translation (CBMT, \newcite{nakov2012}; \newcite{TiedemannEAMT2009}).
 
@@ -315,7 +311,7 @@ the output to translating the text to English without the standardiser.
   \end{tabular}
   \caption{Results for the normalisation task. The system \texttt{rules-c} is the combination
      of the rules in \texttt{rules-1} and \texttt{rules-2}. The figures in bold are the 
-     best results for unsupervised and supervised methods.}
+     best results for rule-based and SMT methods.}
   \label{table:results-norm}
 \end{table}
 
@@ -324,11 +320,10 @@ Tables~\ref{table:results-norm} and \ref{table:results-trad} present the results
 The baseline was made by calculating the metric scores between the standardised `reference' 
 and the colloquial input. The results show that all conversion methods outperform the baseline.
 
-Our unsupervised method performs similarly to the character-based machine translation systems. Both 
-the character-based systems and the unsupervised system achieve around half of the performance of the 
-supervised phrase-based system.
+Our rule-based method performs similarly to the character-based machine translation systems. Both 
+the character-based systems and the rule-based system achieve around half of the performance of the phrase-based system.
 
-Out of the unsupervised systems, the set of rules which was created by examining the development corpus
+Out of the rule-based systems, the set of rules which was created by examining the development corpus
 outperforms both the set of rules from the grammar and the combined rules.
 
 It is interesting to note that supervised systems trained on the normalised section of the corpus outperform
@@ -397,7 +392,7 @@ the challenge here is finding text that is both free of privacy issues and avail
 to release under a free/open-source licence.
 
 As for the methods, we would like to follow \newcite{scannell2014} in incorporating
-`translation' probabilities into our unsupervised normalisation model. Our current model relies 
+`translation' probabilities into our rule-based normalisation model. Our current model relies 
 exclusively on the target-language model probability, however some rules may be more
 reliable or probable than others.
 
