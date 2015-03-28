@@ -19,6 +19,7 @@
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
+\usepackage{graphicx}
 \usepackage[small,bf]{caption}
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
 %\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
@@ -293,6 +294,14 @@ discarded the rule or included it in the heuristic rule set.
 
 \subsection{Combining with a statistical tagger}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.45\textwidth]{graphics/learning-curve.pdf}
+  \caption{Learning curve for three taggers, \texttt{hunpos} with no lexicon, 
+    \texttt{hunpos} with a lexicon, and \texttt{hunpos} with a lexicon and the 
+    Russian constraint grammar in a voting set up.}
+\end{figure}
+
 \section{Evaluation}
 
 \subsection{Corpus}
@@ -470,6 +479,9 @@ and morphological description are different from our morphological analyser.
 % dep analysis
 
 % better development workflow
+
+% proof-of-concept for russian, but russian has loads of tagged corpora, for other langs, e.g. sorbian or belarusian 
+% a CG+hmm could be much faster than tagging hundreds of thousands of words of text.
 
 \section{Conclusions}
 
