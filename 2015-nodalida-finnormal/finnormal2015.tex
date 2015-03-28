@@ -167,8 +167,9 @@ The translation into standard Finnish is shorter and more precise, leaving just 
 
 
 Our evaluation corpus was created by manually translating texts in colloquial Finnish
-to standard Finnish.\footnote{The corpus is freely available and published under the 
-CreativeCommons {\sc cc-by-sa} 3.0 licence.} The texts were extracts from internet 
+to standard Finnish. The corpus is freely available and published under the 
+CreativeCommons {\sc cc-by-sa} 3.0 licence\footnote{https://svn.code.sf.net/p/apertium/svn/languages/apertium-fin/texts/normalisation/}.
+The texts were extracts from internet 
 relay chat (IRC) conversations. We performed the conversion process in two steps, the first
 step involved simple orthographic normalisation, for 
 example \emph{oon} $\rightarrow$ \emph{olen} `I am'. Syntactic and stylistic conversions 
@@ -325,8 +326,10 @@ the character-based systems and the rule-based system achieve around half of the
 
 Out of the rule-based systems, the set of rules which was created by examining the development corpus
 outperforms both the set of rules from the grammar and the combined rules.
+The rules from the grammar capture more general tendencies, whereas the rules from the development corpus are more lexicalised.
+Since the testing corpus is small and only contains text from a single author, the higher performance of the second rule set could also be an due to overfitting.
 
-It is interesting to note that supervised systems trained on the normalised section of the corpus outperform
+It is interesting to note that MT systems trained on the normalised section of the corpus outperform
 those trained on the standardised corpus. One explanation for this could be that the corpus size is small, so 
 that the word alignments are not as reliable on the standardised corpus which is by nature not a word-for-word 
 conversion.
@@ -386,10 +389,10 @@ are easily converted by the systems.
 
 Although a reasonable size for a test corpus, the corpus is still too small for 
 wide-coverage experiments. We intend to expand the corpus size to at least 10,000
-words. Another weakness of the corpus is that it contains text from a single author,
-we would ideally like to add texts from other authors and other colloquial genres. Although
-the challenge here is finding text that is both free of privacy issues and available
-to release under a free/open-source licence.
+words. Another weakness of the corpus is that it contains text from a single author.
+We would ideally like to add texts from other authors and other colloquial genres---the 
+challenge here is finding text that is both free of privacy issues and available
+to release under a free/open-source sence.
 
 As for the methods, we would like to follow \newcite{scannell2014} in incorporating
 `translation' probabilities into our rule-based normalisation model. Our current model relies 
@@ -407,7 +410,7 @@ helps with the Finnish to English machine translation task.
 
 \section*{Acknowledgments}
 
-Joonas Kylm\"{a}l\"{a}
+We thank Joonas Kylm\"{a}l\"{a} for translating the colloquial sentences into normalised and standardised versions.
 
 % If you use BibTeX with a bib file named eacl2014.bib, 
 % you should add the following two lines:
