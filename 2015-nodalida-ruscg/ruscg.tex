@@ -39,28 +39,28 @@
 
 \title{A preliminary constraint grammar for Russian}
 
-\author{Francis M. Tyers \\
-  HSL-fakultehta, \\
-  UiT Norgga árktalaš universitehta, \\
-  N-9018 Romsa \\
-  {\tt francis.tyers@uit.no} \\\And
-  Robert Reynolds \\
-  HSL-fakultehta, \\
-  UiT Norgga árktalaš universitehta, \\
-  N-9018 Romsa \\
-  {\tt robert.reynolds@uit.no} \\}
+%\author{Francis M. Tyers \\
+%  HSL-fakultehta, \\
+%  UiT Norgga árktalaš universitehta, \\
+%  N-9018 Romsa \\
+%  {\tt francis.tyers@uit.no} \\\And
+%  Robert Reynolds \\
+%  HSL-fakultehta, \\
+%  UiT Norgga árktalaš universitehta, \\
+%  N-9018 Romsa \\
+%  {\tt robert.reynolds@uit.no} \\}
 
-% \author{Author1 \\
-%   Affiliation / Address line 1 \\
-%   Affiliation / Address line 2 \\
-%   Affiliation / Address line 3 \\
-%   {\tt email@domain.com} \\\And
-%   Author2 \\
-%   Affiliation / Address line 1 \\
-%   Affiliation / Address line 2 \\
-%   Affiliation / Address line 3 \\
-%   {\tt email@domain.com} \\}
-% 
+ \author{Author1 \\
+   Affiliation / Address line 1 \\
+   Affiliation / Address line 2 \\
+   Affiliation / Address line 3 \\
+   {\tt email@domain.com} \\\And
+   Author2 \\
+   Affiliation / Address line 1 \\
+   Affiliation / Address line 2 \\
+   Affiliation / Address line 3 \\
+   {\tt email@domain.com} \\}
+ 
 \date{2015}
 
 \begin{document}
@@ -176,10 +176,22 @@ the use of technologies such as word sense disambiguation.
 	...
 
 Table \ref{table:ambiguity} shows the proportional prevalence of each kind of 
-ambiguity. Note that these proportions do not sum to 1, since a given token may 
-exhibit more than one kind of ambiguity. The first column shows the proportion 
+ambiguity. The first column shows the proportion 
 of all tokens in a corpus that have each kind of ambiguity. The second column 
 shows what proportion of ambiguous tokens exhibit each kind of ambiguity.
+Note that these proportions do not sum to 100\%, since a given token may 
+exhibit more than one kind of ambiguity. For example, the wordform 
+\emph{zamkov} has the readings given in \ref{ex:zamkov}.
+
+\ex. \label{ex:zamkov}
+	 \a. \rus{замок}$^1$+N+Msc+Inan+Pl+Gen \label{ex:zamkovA}
+	 \b. \rus{замок}$^2$+N+Msc+Inan+Pl+Gen \label{ex:zamkovB}
+	 \c. \rus{замковый}+A+Msc+Sg+Pred      \label{ex:zamkovC}
+
+The ambiguity between \ref{ex:zamkovA} and \ref{ex:zamkovB} is morphosyntactically congruent, and
+the ambiguity between \ref{ex:zamkovA}/\ref{ex:zamkovB} and \ref{ex:zamkovC} is
+morphosyntactically incongruent, so this wordform would be counted for both categories in
+Table~\ref{table:ambiguity}.
 
 Table~\ref{table:ambiguity} shows that most morphosyntactic ambiguity in 
 unrestricted Russian text is rooted in intraparadigmatic and morphosyntactically 
@@ -204,18 +216,7 @@ ambiguous wordforms, we leave it to future work.
   \label{table:ambiguity}
 \end{table}
 
-Note that the percentages in Table~\ref{table:ambiguity} overlap, i.e. the readings of a given wordform
-can have more than one kind of ambiguity. For example, the wordform \emph{zamkov} has the readings given in \ref{ex:zamkov}.
 
-\ex. \label{ex:zamkov}
-	 \a. \rus{замок}$^1$+N+Msc+Inan+Pl+Gen \label{ex:zamkovA}
-	 \b. \rus{замок}$^2$+N+Msc+Inan+Pl+Gen \label{ex:zamkovB}
-	 \c. \rus{замковый}+A+Msc+Sg+Pred      \label{ex:zamkovC}
-
-The ambiguity between \ref{ex:zamkovA} and \ref{ex:zamkovB} is morphosyntactically congruent, and
-the ambiguity between \ref{ex:zamkovA}/\ref{ex:zamkovB} and \ref{ex:zamkovC} is
-morphosyntactically incongruent, so this wordform would be counted for both categories in
-Table~\ref{table:ambiguity} above.
 
 % we should perhaps mention something about systematic ambiguities and tagging guidelines,
 % and how we deal with stuffs
@@ -236,9 +237,11 @@ Table~\ref{table:ambiguity} above.
 
 The morphological transducer used in this study is described in Author (2015). 
 It is primarily based on Zaliznjak's \emph{Grammatical dictionary of Russian}, 
-including the 2001 version's appendix of proper nouns. It also includes approximately CITE Grishina and Lyashevskaya 2008. \url{http://dict.ruslang.ru/gram.php} .
+including the 2001 version's appendix of proper nouns. It also includes neologisms
+from Grishina and Lyashevskaya's \emph{Grammatical dictionary of new Russian words},
+which is intended to be a supplement to Zaliznjak's dictionary.\footnote{\url{http://dict.ruslang.ru/gram.php}}
 
-Example~\ref{ex:FSToutput} gives some examples of the output.
+Example~\ref{ex:FSToutput} gives some examples of the FST's output.
 
 \ex. \label{ex:FSToutput} 
 	\a. \rus{новый}\texttt{{\small <adj><m><nn><sg><nom>}}
@@ -284,7 +287,7 @@ position in the sentence it cannot modify anything before, and no preposition
 can be governing it.
 
 This kind of rule often relies on completeness of sets, in this case the set of verbs
-that can take a genitive complement. 
+that can take a genitive complement.
 
 %It also relies on accurate delimitation of sentence
 %boundaries, including rules for dealing with \ldots ellipsis.
