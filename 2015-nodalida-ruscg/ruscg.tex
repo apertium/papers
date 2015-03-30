@@ -295,6 +295,7 @@ then we included it in the \emph{safe heuristic} rule set. Otherwise we either
 discarded the rule or included it in the heuristic rule set.
 
 \begin{figure*}
+\centering
 \begin{alltt}
 {\small
 \rus{
@@ -308,8 +309,8 @@ discarded the rule or included it in the heuristic rule set.
         "1994" num                                            "<трибунал>"
                                                                          "трибунал" n m nn sg acc
 "<года>"                                                           "трибунал" n m nn sg nom
-        "год" n m nn sg gen SELECT:462                             
-;        "год" n m nn pl nom fac SELECT:462                   "<по>"
+        "год" n m nn sg gen SELECT:r462                             
+;        "год" n m nn pl nom fac SELECT:r462                   "<по>"
                                                                    "по" pr 
 "<в>"                                                             
         "в" pr                                                "<Руанде>" 
@@ -317,21 +318,56 @@ discarded the rule or included it in the heuristic rule set.
 "<Танзании>"                                                       "Руанда" np al f nn sg dat
         "Танзания" np al f nn pl acc                           
         "Танзания" np al f nn sg prp                          "<.>" 
-;        "Танзания" np al f nn pl nom REMOVE:424                   "." sent 
-;        "Танзания" np al f nn sg dat REMOVE:433 
-;        "Танзания" np al f nn sg gen REMOVE:433
+;        "Танзания" np al f nn pl nom REMOVE:r424                   "." sent 
+;        "Танзания" np al f nn sg dat REMOVE:r433 
+;        "Танзания" np al f nn sg gen REMOVE:r433
 
 "<начал>"
         "начало" n nt nn pl gen
         "начать" vblex perf tv past m sg
-;        "начать" vblex perf iv past m sg REMOVE:769
+;        "начать" vblex perf iv past m sg REMOVE:r769
 }}
 \end{alltt}
   \caption{Example output from the morphological analyser and constraint grammar for the sentence \rus{В ноябре 1994 
            года в Танзании начал работу Международный трибунал по Руанде.} ``The work of the International Tribunal 
            for Rwanda started in Tanzania in November 1994.'' The input ambiguity is 1.76 readings per word and 
-           the output ambiguity is 1.38 readings per word. Recall is 1.0 and precision is 0.72. 
- } 
+           the output ambiguity is 1.38 readings per word. Recall is 1.0 and precision is 0.72. Figure~\ref{fig:rules} 
+           shows the rules that fired for this example sentence.} 
+  \label{fig:output}
+\end{figure*}
+
+\begin{figure*}
+
+\begin{alltt}
+{\small
+### Safe
+
+SELECT:r462 Gen IF (0 Year) (-1 Num LINK -1 Months LINK -1 Pr/V);
+  # Select genitive reading of `\rus{года}' if there is a numeral immediately
+  # to the left, before that there is a month and before that there is 
+  # the preposition `\rus{в}'.
+
+REMOVE:r424 Nom IF (-1C Pr) ;
+  # Remove nominative case if there is a word which can only be a 
+  # preposition immediately to the left.
+
+REMOVE:r433 NGDAIP - Acc - Prp - Loc IF 
+                (-1C* Pr/V OR Pr/Na
+                  BARRIER (*) - Adv - Comp - DetIndecl - ModAcc - ModPrp);
+  # Remove all cases apart from accusative, preposition and locative
+  # if `\rus{в}' or `\rus{на}' are found to the left and are unambiguous. The barrier
+  # is anything that cannot be found inside a noun phrase.
+
+### Safe heuristic
+
+REMOVE:r769 IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv);
+  # Remove an intransitive reading of a verb if the next word can only
+  # be accusative and is not in the set of nouns which can be used 
+  # adverbially in accusative.
+}
+\end{alltt}
+  \caption{Some example rules from the grammar.}
+  \label{fig:rules}
 \end{figure*}
 
 \section{Evaluation}
