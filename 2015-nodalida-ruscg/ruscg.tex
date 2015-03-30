@@ -16,6 +16,8 @@
 \usepackage{times}
 \usepackage{latexsym}
 \usepackage{fixltx2e} %allows subscripts
+\usepackage{tipa} %allows IPA symbols
+\usepackage{linguex}
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
@@ -97,7 +99,7 @@ stress patterns, exceptions, and idiosyncratic collocations.
 We base our work on the recently developed [anonymous] morphological transducer, which is also based on Zaliznjak's dictionary (Author, 2015).\footnote{The [anonymous] transducer is implemented using a two-level 
 morphology \cite{Koskenniemi-84}, and can be compiled using either {\tt xfst}
 \cite{Beesley.Karttunen-03} or {\tt hfst} \cite{hfst-11}} This finite-state transducer (FST) generates all possible 
-morphosyntactic readings of each wordform, regardless of its frequency or probability. Because Russian is a relatively highly inflected language, broad coverage is important, but widespread homonymy leads to the generation of many spurious readings, as discussed in Section~\ref{ambiguity} below. Because of this, one of the foundational steps in Russian natural language processing is \rus{снятие омонимии} `morphosyntactic disambiguation'.
+morphosyntactic readings of each wordform, regardless of its frequency or probability. Because Russian is a relatively highly inflected language, broad coverage is important, but widespread homonymy leads to the generation of many spurious readings, as discussed in Section~\ref{ambiguity} below. Because of this, one of the foundational steps in Russian natural language processing is homograph disambiguation.
 
 % FRAN
 % different CGs 
@@ -190,7 +192,18 @@ ambiguous wordforms, we leave it to future work.
   \label{table:ambiguity}
 \end{table}
 
-% numbers not perfect, e.g. лицо should be 'cong.' but will turn up as 'intra.'
+Note that the percentages in Table~\ref{table:ambiguity} overlap, i.e. the readings of a given wordform
+can have more than one kind of ambiguity. For example, the wordform \emph{zamkov} has the readings given in \ref{ex:zamkov}.
+
+\ex. \label{ex:zamkov}
+	 \a. \rus{замок}$^1$+N+Msc+Inan+Pl+Gen \label{ex:zamkovA}
+	 \b. \rus{замок}$^2$+N+Msc+Inan+Pl+Gen \label{ex:zamkovB}
+	 \c. \rus{замковый}+A+Msc+Sg+Pred      \label{ex:zamkovC}
+
+The ambiguity between \ref{ex:zamkovA} and \ref{ex:zamkovB} is morphosyntactically congruent, and
+the ambiguity between \ref{ex:zamkovA}/\ref{ex:zamkovB} and \ref{ex:zamkovC} is
+morphosyntactically incongruent, so this wordform would be counted for both categories in
+Table~\ref{table:ambiguity} above.
 
 % we should perhaps mention something about systematic ambiguities and tagging guidelines,
 % and how we deal with stuffs
@@ -207,9 +220,10 @@ ambiguous wordforms, we leave it to future work.
 
 \subsection{Morphological analyser}
 \label{sec:morph}
+%ROB
 
 The morphological transducer used in this study is described in Author (2015). 
-It is primarily based on Zaliznjak's ``Grammatical dictionary of Russian'', 
+It is primarily based on Zaliznjak's \emph{Grammatical dictionary of Russian}, 
 including the 2001 version's appendix of proper nouns. It also includes approximately CITE Grishina and Lyashevskaya 2008. \url{http://dict.ruslang.ru/gram.php} .
 
 Example~\ref{ex:FSToutput} gives some examples of the output.
@@ -220,6 +234,8 @@ Example~\ref{ex:FSToutput} gives some examples of the output.
 	\c. 
 % det/prn (e.g. pos... их, я, мой)
 % 'over'generation (e.g. all dets get all gen/nbr/case combinations)
+%^^^
+%ROB
 
 \subsection{Disambiguation rules}
 %FRAN
@@ -614,6 +630,16 @@ and morphological description are different from our morphological analyser.
 
 \subsection{Extrinsic}
 % ROB accent placement task
+
+The constraint grammar described in this paper has been applied to the task of automatic
+word stress placement (Author, 2015). This task is especially relevant for 
+Russian language learners, because vowels are pronounced differently depending on their position 
+relative to stress position. For example, the word \emph{molokó} `milk' is pronounced 
+/\textipa{m@l2kO}/, where each instance of the letter \emph{o} corresponds to a different vowel sound. 
+Russian has complicated patterns of shifting stress, which are difficult for learners to master.
+Almost 99\% of wordforms with ambiguous stress position can be disambiguated morphosyntactically,
+so a constraint grammar can potentially resolve most stress ambiguity indirectly. The results of Author 2015 show that our constraint grammar overcomes about 42\% of the ambiguity relevant to stress
+ambiguity in unrestricted text.
 
 \subsection{Combining with a statistical tagger}
 
