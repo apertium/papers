@@ -488,7 +488,8 @@ and morphological description are different from our morphological analyser.
      \item \ldots \rus{потому что совсем неприятно проснуться в гробу под землею.}
      \item \ldots because [it is] really \textbf{unpleasant} to wake up in a coffin under the ground.
    \end{itemize}
-  \item[ Incomplete barrier:] xxx 
+  \item[ Incomplete barrier:]  Some rules suffered from incomplete barriers, which is something that would
+     benefit from a more systematic treatment.
    \begin{itemize} 
      \item \texttt{REMOVE NGDAIP - Acc - Prp - Loc IF (-1C* Pr/V OR Pr/Na BARRIER (*) - Adv - Comp - DetIndecl - ModAcc - ModPrp) ;}
    \end{itemize}
@@ -706,6 +707,19 @@ the art employs unavailable training corpora of over five million tokens.
 
 % proof-of-concept for russian, but russian has loads of tagged corpora, for other langs, e.g. sorbian or belarusian 
 % a CG+hmm could be much faster than tagging hundreds of thousands of words of text.
+
+We have a number of plans for future work, the first is increasing the precision of the grammar without
+decreasing recall. Secondly we would like to add syntactic function labelling and dependency analysis. For 
+the dependency analysis we would like to reuse the Giellatekno dependency grammar as in \cite{antonsen10}. 
+
+The development workflow could also be improved, for example during the testing of each rule we could
+save the correct decisions of the grammar and gradually build up a tagged development corpus for the language.
+
+Also it is worth noting that although Russian has a great deal of non-free resources, this paper also presents
+a method which is promising for smaller or lesser-resourced Slavic languages such as Sorbian, Rusyn or Belarusian. Instead
+of hand-annotating a large quantity of text, it may be more efficient to work on grammatical resources --- such
+as a morphological analyser and constraint grammar --- and use 
+them alongside a smaller quantity of high-quality annotated text.
 
 \section{Conclusions}
 \label{sec:conclusions}
