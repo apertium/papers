@@ -19,6 +19,7 @@
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
+\usepackage{alltt}
 \usepackage{graphicx}
 \usepackage[small,bf]{caption}
 \special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
@@ -292,6 +293,46 @@ selected the appropriate reading in all cases, we included it in the \emph{safe}
 rule set, if it removed an appropriate reading in less then three cases, 
 then we included it in the \emph{safe heuristic} rule set. Otherwise we either
 discarded the rule or included it in the heuristic rule set.
+
+\begin{figure*}
+\begin{alltt}
+{\small
+\rus{
+"<В>"                                                         "<работу>"
+        "в" pr                                                     "работа" n f nn sg acc
+
+"<ноябре>"                                                    "<Международный>"
+        "ноябрь" n m nn sg prp                                     "международный" adj m an sg nom
+                                                                   "международный" adj m nn sg acc
+"<1994>"                                        
+        "1994" num                                            "<трибунал>"
+                                                                         "трибунал" n m nn sg acc
+"<года>"                                                           "трибунал" n m nn sg nom
+        "год" n m nn sg gen SELECT:462                             
+;        "год" n m nn pl nom fac SELECT:462                   "<по>"
+                                                                   "по" pr 
+"<в>"                                                             
+        "в" pr                                                "<Руанде>" 
+                                                                   "Руанда" np al f nn sg prp 
+"<Танзании>"                                                       "Руанда" np al f nn sg dat
+        "Танзания" np al f nn pl acc                           
+        "Танзания" np al f nn sg prp                          "<.>" 
+;        "Танзания" np al f nn pl nom REMOVE:424                   "." sent 
+;        "Танзания" np al f nn sg dat REMOVE:433 
+;        "Танзания" np al f nn sg gen REMOVE:433
+
+"<начал>"
+        "начало" n nt nn pl gen
+        "начать" vblex perf tv past m sg
+;        "начать" vblex perf iv past m sg REMOVE:769
+}}
+\end{alltt}
+  \caption{Example output from the morphological analyser and constraint grammar for the sentence \rus{В ноябре 1994 
+           года в Танзании начал работу Международный трибунал по Руанде.} ``The work of the International Tribunal 
+           for Rwanda started in Tanzania in November 1994.'' The input ambiguity is 1.76 readings per word and 
+           the output ambiguity is 1.38 readings per word. Recall is 1.0 and precision is 0.72. 
+ } 
+\end{figure*}
 
 \section{Evaluation}
 \label{sec:eval}
