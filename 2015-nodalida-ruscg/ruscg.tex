@@ -78,15 +78,27 @@
 
 \section{Introduction}
 
-Our purposes: Processing stressed wordforms and open-source machine translation
+This paper presents a preliminary constraint grammar for Russian. The principle 
+objective of the constraint grammar is to produce a high recall grammar to serve
+as input into other natural language processing tasks.
 
-\cite{Karlsson-90}
+The paper is laid out as follows: section~\ref{sec:lit} presents a review of 
+the literature on Russian language processing; section~\ref{ambiguity} gives
+an overview of ambiguity in Russian; section~\ref{sec:pipeline} describes
+our analysis pipeline; section~\ref{sec:devel} gives an account of our 
+development process; section~\ref{sec:eval} presents an evaluation of the 
+system, and sections~\ref{sec:future} and ~\ref{sec:conclusions} present future
+work and conclusions.
+
+%Our purposes: Processing stressed wordforms and open-source machine translation
+
+%\cite{Karlsson-90}
 
 % objectives:
 %% make a free/open-source morphology for russian based on Z's dictionary that includes stress
 
 \section{Review of literature}
-
+\label{sec:lit}
 State-of-the-art morphological analysis in Russian is primarily based on
 finite-state technology
 \cite{Nozhov-03,Segalovich-03}.\footnote{Machine-learning approaches have also been successfully applied to Russian, most notably by 
@@ -106,18 +118,18 @@ morphosyntactic readings of each wordform, regardless of its frequency or probab
 % faroese
 % estonian
 
- -- and our Constraint 
-Grammar\footnote{Implemented using vislcg3 constraint grammar parser
-(\url{http://beta.visl.sdu.dk/cg3.html}).}
-\cite{Karlsson-90,Karlsson.Voutilainen.ea-95} then removes
-some readings based on syntactic context.
+% -- and our Constraint 
+%Grammar\footnote{Implemented using vislcg3 constraint grammar parser
+%(\url{http://beta.visl.sdu.dk/cg3.html}).}
+%\cite{Karlsson-90,Karlsson.Voutilainen.ea-95} then removes
+%some readings based on syntactic context.
 
-\cite{trosterud2009}
+%\cite{trosterud2009}
 
 % CGs for Slavic langs
 
 % The preliminary tagging performance is P:,96.1%, R:,99.8% for POS tagging and P:,88.2%, R:,98.1% for complete morphosyntactic tagging.
-\cite{peradin12} 
+% \cite{peradin12} 
 
 \section{Ambiguity in Russian} \label{ambiguity}
 
@@ -215,7 +227,7 @@ Table~\ref{table:ambiguity} above.
 % perhaps mention where our annotation guidelines are (do we mention stuff like один)?
 
 \section{Pipeline}
-
+\label{sec:pipeline}
 % FRAN
 
 \subsection{Morphological analyser}
@@ -231,7 +243,7 @@ Example~\ref{ex:FSToutput} gives some examples of the output.
 \ex. \label{ex:FSToutput} 
 	\a. \rus{новый}\texttt{{\small <adj><m><nn><sg><nom>}}
 	\b. \rus{автомат}\texttt{{\small <n><m><nn><sg><nom>}}
-	\c. 
+%	\c. 
 % det/prn (e.g. pos... их, я, мой)
 % 'over'generation (e.g. all dets get all gen/nbr/case combinations)
 %^^^
@@ -293,6 +305,7 @@ better replaced with information learnt from the corpus through stochastic metho
 
 
 \section{Development process}
+\label{sec:devel}
 %FRAN
 
 A common approach taken when writing constraint grammar rules is to 
@@ -683,7 +696,7 @@ the art employs unavailable training corpora of over five million tokens.
 
 
 \section{Future work}
-
+\label{sec:future}
 % ROB
 % FRAN
 % func analysis
@@ -695,6 +708,7 @@ the art employs unavailable training corpora of over five million tokens.
 % a CG+hmm could be much faster than tagging hundreds of thousands of words of text.
 
 \section{Conclusions}
+\label{sec:conclusions}
 
 
 \section*{Acknowledgments}
