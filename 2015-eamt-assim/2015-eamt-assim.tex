@@ -39,8 +39,8 @@
 \newcommand{\paperlength}{$8$ (eight)}
 \newcommand{\shortpaperlength}{$4$ (four)}
 
-%\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
-\newcommand{\comment}[1]{}
+\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
+%\newcommand{\comment}[1]{}
 \newcommand{\blankout}[1]{\phantom{#1}} % anonymous
 %\newcommand{\blankout}[1]{#1} % non-anonymous
 
@@ -159,7 +159,7 @@ In the course of the experiment, following \cite{oregan13}, we offer these hint 
 \item[Reference sentence only:] The participants are asked to fill the gaps without being given
 any context. This task serves as a baseline score and as an indicator of gaps
 that can be completed using common knowledge or language intuition (e.g.
-idioms and strong collocations).
+idioms and strong collocations). For example, in an English phrase 'Jack ordered <...> and chips', one of the natural answers would be 'fish'. Such an answer, however, may be unrelated to the meaning of text, and may be given on the basis of collocation only.
 \item[Reference sentence and source sentence:] By setup, the
 participants have no command of the source language, however, it may help them to fill
 in proper nouns or loan words.
@@ -174,8 +174,7 @@ added to check whether MT and source provide complementary hints.
 In order to prepare the evaluation questions, we determine and remove keywords from the 
 reference sentences. We consider two parameters: the list of allowed parts of speech (PoS), and the 
 number of gaps relative to sentence length (``gap density''). For the evaluations described in 
-this paper we use gap densities of 10, 20 and 30 percent (Table~\ref{table:percentage}), and the following parts of speech: noun, 
-proper noun, adjective, adverb and lexical verb (as opposed to auxiliary verb).
+this paper we use gap densities of 10, 20 and 30 percent (Table~\ref{table:percentage}), and the following parts of speech: noun (including proper nouns), adjective, adverb and lexical verb (as opposed to auxiliary verb).
 
 For each sentence, the list of candidate keywords is prepared. It is composed of all the words that 
 fall into the allowed PoS list. The number of gaps in the sentence is calculated based on 
@@ -195,8 +194,8 @@ In this section we will discuss the evaluators, the evaluation procedure, and th
 
 For each experiment we called for native speakers of target language of the language pair (i.e.
 Spanish and Russian) who had no command of source language of the pair (Basque
-and Tatar, respectively). Eleven evaluators participated in the Basque--Spanish experiment, and 28 in Tatar-Russian (although not everyone completed the task
-in full, see discussion).
+and Tatar, respectively). The knowledge was self-reported, and the participants were not asked about any other languages they may know. \comment{EA 12: should I elaborate on this? Write that Basque is not mutually understandable with anything? I am pretty sure we had no one from Tatarstan, but there may have been someone who knows some Bashkir, which might have helped them. Also, with Tatar, I think, Russian loanwords help more than anything else. } Eleven evaluators participated in the Basque--Spanish experiment, and 28 in Tatar-Russian (although not everyone completed the task
+in full, see discussion). The majority of Russian participants were aged 20-25, with university degrees or in the process of obtaining them. Although we have not asked the participants about their knowledge of languages other than Tatar and Russian, it is reasonable to assume that most Russian participants knew English to some extent. \comment{EA 12: could you tell me more about the Spanish evaluators? I would write something similar}
 
 By design, our gap-filling tasks require a human translation (reference) of source sentences. Calling for a human translator, however, would significantly increase the resources needed for evaluation. We therefore use parallel text sources, which provide the same sentence in two languages simultaneously:
 \begin{enumerate}
@@ -232,7 +231,7 @@ a total of 36;
 
 The participants are given the instructions in their native language; these instructions are repeated above each task in the evaluation system. For the participants' convenience, the body of questions is split into smaller groups which allow multiple evaluation sessions. The instructions are the 
 following: read all the available hints and fill each gap with one suitable word, guessing if unsure.
-Participants' answers are recorded and marked correct or incorrect automatically. In
+Participants' answers are recorded and marked correct or incorrect automatically. \comment{EA 11,16: should I try to clarify this? one of the reviewers thought it was manual work}In
 addition, the time taken to fill the gaps in one sentence is recorded.
 
 This variety of the gap-filling task requires open answers, and it is therefore possible that the participants may
@@ -240,17 +239,16 @@ provide words that fit the gaps well, but do not match the original answer. To a
 these cases, we process all the answers to detect possible synonyms (a method suggested by \cite{oregan13}). An answer is
 considered a candidate synonym if it is given by two or more evaluators, and it does not match
 the answer word. We record each candidate synonym along with the answer key and the
-context sentence. For example, the word \emph{asumir} is the original answer in the Spanish sentence \emph{Aprender a jugar y divertirse en el agua sin asumir riesgos} ('Learning to play and have fun in the water without taking risks'). However, two or more evaluators gave a different answer, \emph{correr} (\emph{correr riesgos}, 'running risks'). Based on this data, a native speaker of the target language decides
+context sentence. For example, the word \emph{asumir} is the original answer in the Spanish sentence \emph{Aprender a jugar y divertirse en el agua sin asumir riesgos} ('Learning to play and have fun in the water without taking risks'). However, two or more evaluators gave a different answer, \emph{correr} (\emph{correr riesgos}, 'running risks'). Based on this data, an expert, who is native speaker of the target language and who has not participated in the evaluations, decides
 whether the candidate synonym is an acceptable replacement to the answer key in the given
 context. We then check participants' results against the compiled synonym list and
-increase scores where appropriate. On average, the scores improved by three percent in all evaluation modes. Candidate synonyms are extracted automatically from the evaluators' responses,  and each individual score is automatically updated according to the synonym list.
+increase scores where appropriate. On average, the scores improved by three percentage points in all evaluation modes. Candidate synonyms are extracted automatically from the evaluators' responses,  and each individual score is automatically updated according to the synonym list.
 
 The synonym lists for Basque--Spanish and Tatar--Russian contain 52 and 25 words, respectively. The time taken to compile each list depends on the number of candidate synonyms, and in our case was approximately 30 minutes. 
 
 \section{Results and discussion}
 \label{sec:results}
 
-%\comment{FMT: We should probably integrate the other tables, and refer to them using labels.} 
 The results are presented in this section. Tables \ref{table:res-eus-spa} and \ref{table:res-tat-rus} 
 show
 the proportion and standard deviation of correct answers depending on evaluation mode and gap density.
@@ -277,13 +275,58 @@ of the same sentences. However, in each case different words were removed. It ap
 that some content words are easier to fill than the others. This may explain why in
 Basque--Spanish the 20\% MT tasks are completed with better accuracy than 10\% tasks.\comment{MLF: I think this shows that our statistics are weak, should we say something to excuse ourselves?}
 
-% participants and their suffering
 It is worth noting that many participants reported feeling frustrated in
-the course of evaluations, especially while working on the no-hint tasks. 6 out of 49
-participants quit the experiment before completing it. Considering the importance of receiving the full set of evaluations, we must address the issue of participant motivation in the upcoming experiments.
+the course of evaluations, especially while working on the no-hint tasks. The latter required suggesting the words with very little context, which led some of the participants to giving random words for answers, or leaving the space blank. 6 out of 49
+participants quit the experiment before completing it. Considering the importance of receiving the full set of evaluations, we must address the issue of participant motivation in the upcoming experiments. It may be beneficial to offer monetary compensation for the evaluators' efforts (in our case, they were volunteers).
 
 \subsection{Annotator agreement}
 After obtaining the results we calculated Krippendorff's alpha~\citep{krippendorff70} measure to represent annotator agreement, shown in Tables~\ref{table:alpha-eus-spa} and~\ref{table:alpha-tat-rus}. 
+
+We selected this measure because of its compatibility with more than two annotators per task and the missing data (not all the gaps were evaluated). To calculate Krippendorff's alpha we used an algorithm implementation by Thomas Grill,\footnote{\url{http://grrrr.org/data/dev/krippendorff_alpha/}} dividing the answers in each gap into two categories: correct and incorrect. The previously obtained synonym lists were taken into account, i.e. if the two answers are different but both correct, they fall into one category. The measure was calculated separately for each hint and percentage combination.
+
+% actually, I think the following paragraph may be about kappa, will check once I get access to landis77
+%The interpretation of Krippendorff's alpha varies depending on the application. One of the general guidelines suggested by \citet{landis77} is as follows (cited after \citet{carletta97}: "[values of alpha] < 0 ``poor'' agreement, 0 to .2 ``slight'', .21 to .40 ``fair'', .41 to .60 ``moderate'', .61 - .80 ``substantial'', and .81 to 1 ``near perfect''"
+
+As the MT and MT+source hints are introduced, the agreement between annotators increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts (the agreement for this particular category reached 0.917). \comment{EA: this Alpha is from a table we do not report here, I added a couple of words to clarify}This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
+
+% a little on categories
+\subsection{Results for different domains}
+For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that, in casual and news texts, the source sentences paired with MT significantly improve participants' performance compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
+
+% results with synonyms
+
+\begin{table*}
+\centering
+  \begin{tabular}{|l|r|r|r|r|}
+  \hline
+ \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+\hline
+10\%&62.19 \(\pm\) 32&58.04 \(\pm\) 28&39.90 \(\pm\) 39&48.79 \(\pm\) 40\\
+20\%&64.81 \(\pm\) 30&70.18 \(\pm\) 27&31.37 \(\pm\) 28&30.91 \(\pm\) 30\\
+30\%&48.13 \(\pm\) 26&39.55 \(\pm\) 24&25.94 \(\pm\) 20&18.07 \(\pm\) 18\\
+\hline
+\end{tabular}
+\caption {Basque--Spanish: Average number of gaps successfully filled (\%), using a synonym list} 
+\label{table:res-eus-spa}
+\end{table*}
+
+\begin{table*}
+\centering
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+\hline
+10\%&57.02 \(\pm\) 42&63.76 \(\pm\) 41&53.52 \(\pm\) 43&45.96 \(\pm\) 41\\
+20\%&64.93 \(\pm\) 31&59.77 \(\pm\) 33&45.60 \(\pm\) 31&38.56 \(\pm\) 32\\
+30\%&58.77 \(\pm\) 28&55.83 \(\pm\) 26&40.00 \(\pm\) 28&35.45 \(\pm\) 30\\
+    \hline
+  \end{tabular}
+  \caption{Tatar--Russian: Average number of gaps successfully filled (\%), using a synonym list}
+  \label{table:res-tat-rus}
+\end{table*}
+
 \begin{table*}
 \centering
   \begin{tabular}{|l|r|r|r|r|}
@@ -315,49 +358,6 @@ After obtaining the results we calculated Krippendorff's alpha~\citep{krippendor
 \end{tabular}
 \caption {Tatar--Russian: Krippendorff Alpha measure} 
 \label{table:alpha-tat-rus}
-\end{table*}
-We selected this measure because of its compatibility with more than two annotators per task and the missing data (not all the gaps were evaluated). To calculate Krippendorff's alpha we used an algorithm implementation by Thomas Grill,\footnote{\url{http://grrrr.org/data/dev/krippendorff_alpha/}} dividing the answers in each gap into two categories: correct and incorrect. The previously obtained synonym lists were taken into account, i.e. if the two answers are different but both correct, they fall into one category. The measure was calculated separately for each hint and percentage combination.
-
-As the MT and MT+source hints are introduced, the agreement between annotators increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts (agreement of 0.917). This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
-
-
-
-% a little on categories
-\subsection{Results for different domains}
-For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that, in casual and news texts, the source sentences paired with MT significantly improve participants' performance compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
-
-% results with synonyms
-
-\begin{table*}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-  \hline
- \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&62.19 \(\pm\) 32&58.04 \(\pm\) 28&39.90 \(\pm\) 39&48.79 \(\pm\) 40\\
-20\%&64.81 \(\pm\) 30&70.18 \(\pm\) 27&31.37 \(\pm\) 28&30.91 \(\pm\) 30\\
-30\%&48.13 \(\pm\) 26&39.55 \(\pm\) 24&25.94 \(\pm\) 20&18.07 \(\pm\) 18\\
-\hline
-\end{tabular}
-\caption {Basque--Spanish: Average number of gaps successfully filled (\%), using a synonym list} 
-\label{table:res-eus-spa}
-\end{table*}
-
-\begin{table*}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-    \hline
-    \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&63.76 \(\pm\) 41&57.02 \(\pm\) 42&53.52 \(\pm\) 43&45.96 \(\pm\) 41\\
-20\%&59.77 \(\pm\) 33&64.93 \(\pm\) 31&45.60 \(\pm\) 31&38.56 \(\pm\) 32\\
-30\%&55.83 \(\pm\) 26&58.77 \(\pm\) 28&40.00 \(\pm\) 28&35.45 \(\pm\) 30\\
-    \hline
-  \end{tabular}
-  \caption{Tatar--Russian: Average number of gaps successfully filled (\%), using a synonym list}
-  \label{table:res-tat-rus}
 \end{table*}
 
 % results by text mode in tat-rus, with synonyms
