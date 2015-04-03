@@ -48,25 +48,25 @@
 
 \title{Evaluating machine translation for assimilation via a gap-filling task}
 
-\author{\blankout{Ekaterina Ageeva}\\
-  \blankout{School of Linguistics}\\
-  \blankout{Higher School of Economics}\\
-  \blankout{Moscow, Russia}\\
-  \blankout{{\tt evageeva\_2@edu.hse.ru}}\\[2ex]
-  \blankout{\textbf{Francis M. Tyers}}\\
-  \blankout{HSL-fakultetet}\\ 
-  \blankout{UiT Norgga \'{a}rktala\v{s} universitehta} \\
-  \blankout{9017 Romsa, Norway} \\
-  \blankout{{\tt francis.tyers@uit.no}}
+\author{{Ekaterina Ageeva}\\
+  {School of Linguistics}\\
+  {Higher School of Economics}\\
+  {Moscow, Russia}\\
+  {{\tt evageeva\_2@edu.hse.ru}}\\[2ex]
+  {\textbf{Francis M. Tyers}}\\
+  {HSL-fakultetet}\\ 
+  {UiT Norgga \'{a}rktala\v{s} universitehta} \\
+  {9017 Romsa, Norway} \\
+  {{\tt francis.tyers@uit.no}}
   \And
-  \blankout{Mikel L. Forcada}\\
-  \blankout{Dept. Llenguatges i Sistemes Inform\`{a}tics}\\
+  {Mikel L. Forcada}\\
+  {Dept. Llenguatges i Sistemes Inform\`{a}tics}\\
   \blankout{Universitat d'Alacant, Spain} \\
-  \blankout{{\tt mlf@dlsi.ua.es}}  \\[2ex]
-  \blankout{\textbf{Juan Antonio P\'{e}rez-Ortiz}} \\
-  \blankout{Dept. Llenguatges i Sistemes Inform\`{a}tics}\\
-  \blankout{Universitat d'Alacant, Spain} \\
-  \blankout{{\tt japerez@dlsi.ua.es}}
+  {{\tt mlf@dlsi.ua.es}}  \\[2ex]
+  {\textbf{Juan Antonio P\'{e}rez-Ortiz}} \\
+  {Dept. Llenguatges i Sistemes Inform\`{a}tics}\\
+  {Universitat d'Alacant, Spain} \\
+  {{\tt japerez@dlsi.ua.es}}
 }
 
 \date{}
@@ -94,7 +94,7 @@ be divided into two broad categories according to their purpose: post-editing an
 
 Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations\footnote{\url{http://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}), few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion in \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} propose to fill gaps in the reference (human) translation. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
 
-The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar-Russian. The former pair, while not producing output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore new aspects of the experiment: the correlation between evaluators' scores, and the influence of the texts' linguistic domain. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on GitHub.\footnote{\blankout{\url{https://github.com/Sereni/Appraise}}}
+The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar-Russian. The former pair, while not producing output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore new aspects of the experiment: the correlation between evaluators' scores, and the influence of the texts' linguistic domain. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on GitHub.\footnote{{\url{https://github.com/Sereni/Appraise}}}
 
 We anticipate that the assessed MT systems will contribute to the users' understanding of text, that is, the users will show better results in tasks when assisted with MT. We also expect to see different results depending on text domain and the relative number of gaps in a sentence.
 
@@ -419,7 +419,7 @@ In addition to the mentioned language pairs, some preliminary experiments were c
 \section{Conclusions}
 \label{sec:conclusion}
 We have conducted assimilation evaluation of two Apertium translation directions: Basque--Spanish and Tatar--Russian. The results suggest that this evaluation method reflects the contribution of MT to users' understanding of text. The version of the toolkit used in this 
-experiment may be downloaded from our repository.\footnote{\blankout{\url{https://github.com/Sereni/Appraise/tree/1e9d735faee64d1b97fb343ab111ace6a64509d7}}}
+experiment may be downloaded from our repository.\footnote{{\url{https://github.com/Sereni/Appraise/tree/1e9d735faee64d1b97fb343ab111ace6a64509d7}}}
 
 
 The experiments may easily be repeated for any language pair (provided a parallel corpus) and
