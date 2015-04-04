@@ -39,10 +39,10 @@
 \newcommand{\paperlength}{$8$ (eight)}
 \newcommand{\shortpaperlength}{$4$ (four)}
 
-\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
-%\newcommand{\comment}[1]{}
-\newcommand{\blankout}[1]{\phantom{#1}} % anonymous
-%\newcommand{\blankout}[1]{#1} % non-anonymous
+%\newcommand{\comment}[1]{\marginpar{\scriptsize\sf \textcolor{blue}{#1}}}
+\newcommand{\comment}[1]{}
+%\newcommand{\blankout}[1]{\phantom{#1}} % anonymous
+\newcommand{\blankout}[1]{#1} % non-anonymous
 
 \newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
 
@@ -291,7 +291,7 @@ As the MT and MT+source hints are introduced, the agreement between annotators i
 
 % a little on categories
 \subsection{Results for different domains}
-For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that, in casual and news texts, the source sentences paired with MT significantly improve participants' performance compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
+For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that the source sentences paired with MT improve participants' performance in casual texts, compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
 
 % results with synonyms
 
@@ -432,7 +432,7 @@ any machine translation system. Based on our experience, we would like to sugges
 
 \section*{Acknowledgments}
 
-\phantom{This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615 and by the Google Summer of Code 2014 programme. We would like to thank the volunteers who participated in the evaluations.}
+This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615 and by the Google Summer of Code 2014 programme. We would like to thank the volunteers who participated in the evaluations.
 
 \bibliographystyle{apalike}
 
