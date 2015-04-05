@@ -1,4 +1,43 @@
-Has comments in article:
+*Pending: *
+
+Statistics:
+- 4- The standard deviation is very high. This is probably due to the lack of guidelines and training for the annotators. Or the reason can be the subjectivity of the task. It should be useful to perform some statistical significance tests (such as t-test, ANOVA) to evaluate whether the differences between each set-up are really significant or happened by chance. It is difficult to make any assumption without these tests, mainly because the annotators did not receiving any training.
+- 14 * It would be great to see statistical significance testing.
+- 22 There are several aspects of the analysis that are not clear,
+but what it looks like is that the annotator agreement on the task is very low, and the reasons for this
+should be explored.
+- 26 Firstly, you should show confidence intervals, not standard deviation,
+and this requires knowing how many evaluators are in each condition.
+- 27 Secondly, the standard deviations are huge. If I
+see a figure like 62.19 +/- 32, then taking this as a confidence interval means potentially a 50% relative error! There
+is no sense in reporting 2 decimal places with such large errors.
+
+Add/remove large sections:
+
+Katya: looks like we only have space to add things if we remove something. Please tell me which of these you would like to see.
+
+- 7- Section 4.3 should not appear. It does not add any substantial information.
+- 10- A section of related work is also missing (could be included in the place of Section 4.3).
+Katya: should it be something other than the articles we mention in the introduction?
+- 32 Finally I felt that the brief literature review gave a rather skewed view of MT evaluation. You could, for instance,
+mention the large-scale efforts of NIST, IWSLT and WMT who have experimented with different human evaluation measures.
+Also relevant is work on monolingual post-editing such as from Rebecca Hwa and Philipp Koehn.
+- 28 Also in section 4, you mention timing information. This is important, so why not show it? You have space.
+
+Additional info:
+
+Katya: these are the suggestions that require extra research
+
+- 9- An interesting analysis should be correlating the results of gap filling evaluation method with traditional evaluation metrics or human evaluation.
+- 15 * I am interested how good the MT translation was. Maybe, the authors could provide BLEU scores and some examples.
+- 3- Did you consider including a manual evaluation of the keyword removal automatic task? This could tell the quality of the designed tasks.
+- 23 The abstract mentions that "The evaluation results show that the gap-filling task reflects users' understanding
+of the text, and may be used to measure MT quality for assimilation purposes". Do you really believe this? How
+did you correlate the task with the users' understanding - if that is really possible? How do you use it for measuring
+MT quality - it's a step in that direction but you haven't shown how to turn it into a quality measure.
+
+
+*Has comments in article:*
 
 12 * The participants are native speakers of a target language and have no command of a source language. How did you check that the speakers were monolingual speakers? Did they complete some tests? For example, many Russian people living in Tatarstan and attending obligatory Tatar lessons at school at least understand some primitive expressions in Tatar. I suppose that Kazakh participants could have English as their foreign language. It would be also interesting to know, whether the participants were similar to each other (in age, university degree, number of known foreign languages).
 
@@ -11,7 +50,7 @@ include some brief guidelines on how to interpret it.
 Katya: there isn't really an agreed interpretation, I found one widely cited in Landis and Koch 1977, will check and insert
 
 
-Has questions:
+*Has questions:*
 
 1- The authors should state on the introduction how they will use human references gap filling to evaluate MT. This is unclear until you arrive in Section 2. A short sentences stating it should help.
 Katya: we say something at the end of paragraph 2 of the introduction, should I rephrase?
@@ -26,7 +65,7 @@ Katya: we say about parallel corpora and automatic checking in sections 3 and 3.
 17 * Which points are innovative in comparison to the approach of O'Regan and Forcada (2013)?
 Katya: 10 and 30% gaps, automatic generation, something else?
 
-Solved:
+*Solved:*
 
 5- The discussion is a bit confusing. On the fifth paragraph of Section 4, the authors say that the MT+source 10% sentences in Tatar-Russian scored lower than the corresponding MT task. However, the values presented on Table 6 show a different scenario (57% for MT and 63% for MT+source).
 Katya: mixed table columns. fixed and checked the others.
@@ -56,50 +95,10 @@ Katya: uhm, yes, looks like it.
 21. A native speaker of a target language checked synonym lists. It is not clear whether it was an independent reviewer or one of the participants. In my opinion, he/she should also understand a source sentence to evaluate the appropriateness of a replacement.
 Katya: clarified that they were not a participant
 
+24 With 11 evaluators (Basque-Spanish), each covering 36 sentences, and 12
+conditions (3x4) surely you average less than 1 per condition per sentence? I must be missing something.
+Katya: tried to rephrase that section, not sure if it made it more clear.
+
 25 Also in 3.1, you
  say that (in relation to synonyms) "scores improved by three per cent" - do you mean 3 percentage points, or 3% relative?
  Katya: wrote "percentage points"
-
-
-Pending: 
-
-3- Did you consider including a manual evaluation of the keyword removal automatic task? This could tell the quality of the designed tasks.
-
-4- The standard deviation is very high. This is probably due to the lack of guidelines and training for the annotators. Or the reason can be the subjectivity of the task. It should be useful to perform some statistical significance tests (such as t-test, ANOVA) to evaluate whether the differences between each set-up are really significant or happened by chance. It is difficult to make any assumption without these tests, mainly because the annotators did not receiving any training.
-
-7- Section 4.3 should not appear. It does not add any substantial information.
-
-9- An interesting analysis should be correlating the results of gap filling evaluation method with traditional evaluation metrics or human evaluation.
-
-10- A section of related work is also missing (could be included in the place of Section 4.3).
-
-
-14 * It would be great to see statistical significance testing.
-
-15 * I am interested how good the MT translation was. Maybe, the authors could provide BLEU scores and some examples.
-
-
-22 There are several aspects of the analysis that are not clear,
-but what it looks like is that the annotator agreement on the task is very low, and the reasons for this
-should be explored.
-
-23 The abstract mentions that "The evaluation results show that the gap-filling task reflects users' understanding
-of the text, and may be used to measure MT quality for assimilation purposes". Do you really believe this? How
-did you correlate the task with the users' understanding - if that is really possible? How do you use it for measuring
-MT quality - it's a step in that direction but you haven't shown how to turn it into a quality measure.
-
-24 With 11 evaluators (Basque-Spanish), each covering 36 sentences, and 12
-conditions (3x4) surely you average less than 1 per condition per sentence? I must be missing something.
-
-26 Firstly, you should show confidence intervals, not standard deviation,
-and this requires knowing how many evaluators are in each condition.
-
-27 Secondly, the standard deviations are huge. If I
-see a figure like 62.19 +/- 32, then taking this as a confidence interval means potentially a 50% relative error! There
-is no sense in reporting 2 decimal places with such large errors.
-
-28 Also in section 4, you mention timing information. This is important, so why not show it? You have space.
-
-32 Finally I felt that the brief literature review gave a rather skewed view of MT evaluation. You could, for instance,
-mention the large-scale efforts of NIST, IWSLT and WMT who have experimented with different human evaluation measures.
-Also relevant is work on monolingual post-editing such as from Rebecca Hwa and Philipp Koehn.
