@@ -43,7 +43,7 @@ MT quality - it's a step in that direction but you haven't shown how to turn it 
 
 30 In 4.1 the annotator agreement is presented, but no reasons for the low values are suggested. In fact the poor level
 of agreement is completely ignored, and the only comment is about a high level of agreement (I can't see 0.917 in the
-table though). [JAPEREZ: yes: where is the 0.917 in the table?]
+table though). [JAPEREZ: yes: where is the 0.917 in the table?] Katya: it is not. I looked up alphas by domains, trying to see which contributed the most, and it is from the news domain. It is the last table, table 28 in Tatar--Russian results. 
 
 31 Krippendorff's alpha is perhaps not that familiar to the readership (I had to look it up) so you could
 include some brief guidelines on how to interpret it.

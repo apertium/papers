@@ -82,8 +82,7 @@
   human evaluators, who are asked to restore keywords (to fill gaps) in
   reference translations. The evaluation method is applied to two language pairs, Basque--Spanish and Tatar--Russian. To reduce the amount of time required to prepare tasks
   and analyse results, an open-source task management system is
-  introduced. The evaluation results show that the gap-filling task
-  reflects users' understanding of text, and may be used to measure MT
+  introduced. The evaluation results show that the gap-filling task may be suitable for measuring MT
   quality for assimilation purposes.
 \end{abstract}
 
@@ -92,13 +91,13 @@
 As suggested by \citet{church93}, modern machine translation (MT) systems may
 be divided into two broad categories according to their purpose: post-editing and assimilation systems. The output of the former is intended to be transformed into text comparable to human translation; the latter systems' goal is to enhance user's comprehension of text. Both kinds may be evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
 
-Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations\footnote{\url{http://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}), few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion in \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} propose to fill gaps in the reference (human) translation. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
+Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations\footnote{\url{http://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}), few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion in \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} propose to fill gaps in the reference (human) translation. A designated number of keywords is removed from the human-translated sentences. The evaluators are then asked to fill the gaps with suitable words. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
 
-The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar-Russian. The former pair, while not producing output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore new aspects of the experiment: the correlation between evaluators' scores, and the influence of the texts' linguistic domain. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on GitHub.\footnote{{\url{https://github.com/Sereni/Appraise}}}
+The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar-Russian. The former pair, while not producing output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore the previously unconsidered aspects of the experiment: the correlation between evaluators' scores, and the effects of the texts' linguistic domain and the number of gaps in a sentence. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on GitHub.\footnote{{\url{https://github.com/Sereni/Appraise}}}
 
 We anticipate that the assessed MT systems will contribute to the users' understanding of text, that is, the users will show better results in tasks when assisted with MT. We also expect to see different results depending on text domain and the relative number of gaps in a sentence.
 
-The paper is organised as follows: in section~\ref{sec:methodology} we describe the gap-filling method for assimilation evaluation: the task layout, the choice of words, and how the tasks are generated. Section~\ref{sec:setup} introduces the experimental material, the evaluators, the distribution of tasks and the evaluation procedure. In section~\ref{sec:results} we describe and discuss the experiment results. Finally, section~\ref{sec:conclusion} draws some conclusions.
+The paper is organised as follows: in section~\ref{sec:methodology} we describe the gap-filling method for assimilation evaluation: the task layout, the choice of words, and how the tasks are generated. Section~\ref{sec:setup} introduces the experimental material, the evaluators, the distribution of tasks and the evaluation procedure. In section~\ref{sec:results} we describe and discuss the experiment results. Finally, section~\ref{sec:conclusion} draws some conclusions. This paper is concerned primarily with assimilation evaluation; for a deeper discussion on evaluation see e.g. \citep{koehn2009}.
 
 
 \section{Methodology}
@@ -287,7 +286,7 @@ We selected this measure because of its compatibility with more than two annotat
 % actually, I think the following paragraph may be about kappa, will check once I get access to landis77
 %The interpretation of Krippendorff's alpha varies depending on the application. One of the general guidelines suggested by \citet{landis77} is as follows (cited after \citet{carletta97}: "[values of alpha] < 0 ``poor'' agreement, 0 to .2 ``slight'', .21 to .40 ``fair'', .41 to .60 ``moderate'', .61 - .80 ``substantial'', and .81 to 1 ``near perfect''"
 
-As the MT and MT+source hints are introduced, the agreement between annotators increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts (the agreement for this particular category reached 0.917). \comment{EA: this Alpha is from a table we do not report here, I added a couple of words to clarify}This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
+In general, the level of annotator agreement is relatively high. As the MT and MT+source hints are introduced, the agreement increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts. \comment{EA: this Alpha is from a table we do not report here, I added a couple of words to clarify}This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
 
 % a little on categories
 \subsection{Results for different domains}
@@ -302,9 +301,9 @@ For the Tatar--Russian language pair the participants were offered texts from th
  \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
                                             & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
 \hline
-10\%&62.19 \(\pm\) 32&58.04 \(\pm\) 28&39.90 \(\pm\) 39&48.79 \(\pm\) 40\\
-20\%&64.81 \(\pm\) 30&70.18 \(\pm\) 27&31.37 \(\pm\) 28&30.91 \(\pm\) 30\\
-30\%&48.13 \(\pm\) 26&39.55 \(\pm\) 24&25.94 \(\pm\) 20&18.07 \(\pm\) 18\\
+10\%&62 \(\pm\) 32&58 \(\pm\) 28&40 \(\pm\) 39&49 \(\pm\) 40\\
+20\%&65 \(\pm\) 30&70 \(\pm\) 27&31 \(\pm\) 28&31 \(\pm\) 30\\
+30\%&48 \(\pm\) 26&40 \(\pm\) 24&26 \(\pm\) 20&18 \(\pm\) 18\\
 \hline
 \end{tabular}
 \caption {Basque--Spanish: Average number of gaps successfully filled (\%), using a synonym list} 
@@ -318,9 +317,9 @@ For the Tatar--Russian language pair the participants were offered texts from th
     \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
                                             & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
 \hline
-10\%&57.02 \(\pm\) 42&63.76 \(\pm\) 41&53.52 \(\pm\) 43&45.96 \(\pm\) 41\\
-20\%&64.93 \(\pm\) 31&59.77 \(\pm\) 33&45.60 \(\pm\) 31&38.56 \(\pm\) 32\\
-30\%&58.77 \(\pm\) 28&55.83 \(\pm\) 26&40.00 \(\pm\) 28&35.45 \(\pm\) 30\\
+10\%&57 \(\pm\) 42&64 \(\pm\) 41&54 \(\pm\) 43&46 \(\pm\) 41\\
+20\%&65 \(\pm\) 31&60 \(\pm\) 33&46 \(\pm\) 31&39 \(\pm\) 32\\
+30\%&59 \(\pm\) 28&56 \(\pm\) 26&40 \(\pm\) 28&35 \(\pm\) 30\\
     \hline
   \end{tabular}
   \caption{Tatar--Russian: Average number of gaps successfully filled (\%), using a synonym list}
@@ -371,9 +370,9 @@ For the Tatar--Russian language pair the participants were offered texts from th
 \hline
 \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
 \hline
-10\%&63.64 \(\pm\) 45&63.64 \(\pm\) 43&62.12 \(\pm\) 46&53.03 \(\pm\) 44\\
-20\%&73.33 \(\pm\) 32&63.33 \(\pm\) 36&41.11 \(\pm\) 28&37.78 \(\pm\) 31\\
-30\%&70.28 \(\pm\) 31&59.58 \(\pm\) 24&39.44 \(\pm\) 27&37.71 \(\pm\) 33\\
+10\%&64 \(\pm\) 45&64 \(\pm\) 43&62 \(\pm\) 46&53 \(\pm\) 44\\
+20\%&73 \(\pm\) 32&63 \(\pm\) 36&41 \(\pm\) 28&38 \(\pm\) 31\\
+30\%&70 \(\pm\) 31&60 \(\pm\) 24&39 \(\pm\) 27&38 \(\pm\) 33\\
 \hline
 \end{tabular}
 \caption {Tatar--Russian, casual conversations: Average number of gaps successfully filled (\%), using a synonym list} 
@@ -388,9 +387,9 @@ For the Tatar--Russian language pair the participants were offered texts from th
 \hline
 \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
 \hline
-10\%&53.02 \(\pm\) 40&68.21 \(\pm\) 35&38.77 \(\pm\) 38&32.95 \(\pm\) 35\\
-20\%&60.57 \(\pm\) 25&65.76 \(\pm\) 24&50.28 \(\pm\) 34&48.31 \(\pm\) 34\\
-30\%&50.06 \(\pm\) 26&48.30 \(\pm\) 29&40.05 \(\pm\) 27&34.15 \(\pm\) 29\\
+10\%&53 \(\pm\) 40&68 \(\pm\) 35&39 \(\pm\) 38&33 \(\pm\) 35\\
+20\%&61 \(\pm\) 25&66 \(\pm\) 24&50 \(\pm\) 34&48 \(\pm\) 34\\
+30\%&50 \(\pm\) 26&48 \(\pm\) 29&40 \(\pm\) 27&34 \(\pm\) 29\\
 \hline
 \end{tabular}
 \caption {Tatar--Russian, legal texts: Average number of gaps successfully filled (\%), using a synonym list} \label{table:rus-legal} 
@@ -404,23 +403,19 @@ For the Tatar--Russian language pair the participants were offered texts from th
 \hline
 \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
 \hline
-10\%&53.33 \(\pm\) 38&59.77 \(\pm\) 44&57.47 \(\pm\) 42&49.44 \(\pm\) 39\\
-20\%&59.33 \(\pm\) 34&48.56 \(\pm\) 35&46.53 \(\pm\) 32&28.97 \(\pm\) 29\\
-30\%&58.14 \(\pm\) 22&61.49 \(\pm\) 22&40.51 \(\pm\) 30&34.81 \(\pm\) 27\\
+10\%&53 \(\pm\) 38&60 \(\pm\) 44&57 \(\pm\) 42&49 \(\pm\) 39\\
+20\%&59 \(\pm\) 34&49 \(\pm\) 35&47 \(\pm\) 32&29 \(\pm\) 29\\
+30\%&58 \(\pm\) 22&61 \(\pm\) 22&41 \(\pm\) 30&35 \(\pm\) 27\\
 \hline
 \end{tabular}
 \caption {Tatar--Russian, news: Average number of gaps successfully filled (\%), using a synonym list} 
 \label{table:rus-news} 
 \end{table*}
-\subsection{Experiments with other language pairs}
-In addition to the mentioned language pairs, some preliminary experiments were carried out for the English--Kazakh pair. It remains however questionable whether we may draw reliable conclusions from this part of the experiment. By design, the evaluation tasks are distributed evenly among the participants, in such a manner that each sentence is evaluated in all modes or gap densities by several people. The English--Kazakh evaluations have been set up for 11 participants, however, only 8 participants attempted their tasks, and 6 of them completed it in full. As a result, the evaluation became unbalanced: out of 4 sets of sentences, three have been evaluated by three, two and one participant, respectively, and the fourth set has been partially completed by only one participant. A total of 40 (about 10\%) gaps have not been filled by any of the participants. Therefore, we do not report the English--Kazakh evaluation results here.
-
 
 \section{Conclusions}
 \label{sec:conclusion}
 We have conducted assimilation evaluation of two Apertium translation directions: Basque--Spanish and Tatar--Russian. The results suggest that this evaluation method reflects the contribution of MT to users' understanding of text. The version of the toolkit used in this 
 experiment may be downloaded from our repository.\footnote{{\url{https://github.com/Sereni/Appraise/tree/1e9d735faee64d1b97fb343ab111ace6a64509d7}}}
-
 
 The experiments may easily be repeated for any language pair (provided a parallel corpus) and
 any machine translation system. Based on our experience, we would like to suggest the following amendments to the procedure:
@@ -429,6 +424,8 @@ any machine translation system. Based on our experience, we would like to sugges
 \item If possible, increase the number of evaluators, or reduce the number of questions per participant. In the above experiments each participant filled from 110 to 187 gaps, divided into small groups. Reducing the amount of work may increase task completion rate;\comment{MLF's crazy idea: recaptchas?}\comment{EA: the participants did not leave the gaps empty, they just did not attempt the next portions of evaluation after finishing some and getting bored. or did I misunderstand the use of captchas? }
 \item To account for the adaptation period, provide training tasks before the main evaluations take place.
 \end{enumerate}
+
+As a consideration for future work, it may be beneficial to compare the results of evaluation by gap-filling method with the traditional evaluation metrics, as well as with human evaluation.
 
 \section*{Acknowledgments}
 
