@@ -15,6 +15,8 @@
 \usepackage[backgroundcolor=lightgray]{todonotes}
 \newcommand{\mytodo}[1]{\todo[inline]{#1}}
 \newcommand{\todomlf}[1]{\renewcommand{\baselinestretch}{0.55}\todo{\scriptsize\sf MLF: #1}\renewcommand{\baselinestretch}{1.0}}
+\newcommand{\todofsm}[1]{\renewcommand{\baselinestretch}{0.55}\todo{\scriptsize\sf FSM: #1}\renewcommand{\baselinestretch}{1.0}}
+
 
 \usepackage{microtype} % a.k.a. conference paper magic
 
@@ -75,33 +77,33 @@ E-03071 Alacant\\
 
 \section{Introduction}
 \todomlf{R1 has a general comment: ``watch out for long sentences''}
-Corpus-based MT has been the primary research direction in the field
-of machine translation in recent years. However, rule-based MT (RBMT)
-systems are still being developed, and there are many successful
-commercial and non-commercial systems. One reason for the continued
-development of RBMT systems is that in order to be successful,
-corpus-based MT requires parallel corpora in the order of tens of
-millions of words. Although for some language pairs these exist, they
-only exist for a fraction of the world's languages.
+Corpus-based machine translation (MT) has been the primary research
+direction in the field of MT in recent years. However, rule-based MT
+(RBMT) systems are still being developed, and there are many
+successful commercial and non-commercial systems. One reason for the
+continued development of RBMT systems is that in order to be
+successful, corpus-based MT requires parallel corpora in the order of
+tens of millions of words. Although for some language pairs these
+exist, they only exist for a fraction of the world's languages.
 
 An RBMT system typically consists of an analysis
 component,\footnote{Such as a morphological or syntactic analyser.} a
 transfer component and a generation component. As part of the transfer
 component it is necessary to make choices regarding words in the
-source language which may have more than one translation in the target
-language.
+source language (SL) which may have more than one translation in the
+target language (TL).
 
-\emph{Lexical selection} is the task of choosing, for a given
-source-language word, the most adequate translation in the target
-language among a known set of alternatives.  The task is related to
-the task of word-sense disambiguation \citep{ide98a}. However, it is
-different to word-sense disambiguation in that lexical selection is a
-bilingual problem, not a monolingual problem: its aim is to find the
-most adequate translation, not the most adequate sense. Thus, it is
-not necessary to choose between a series of fine-grained senses if all
-these senses result in the same final translation; however, it may
-sometimes be necessary to choose a different translation for the same
-sense, for example in a collocation.
+\emph{Lexical selection} is the task of choosing, for a given SL word,
+the most adequate translation in the TL among a known set of
+alternatives.  The task is related to the task of word-sense
+disambiguation \citep{ide98a}. However, it is different to word-sense
+disambiguation in that lexical selection is a bilingual problem, not a
+monolingual problem: its aim is to find the most adequate translation,
+not the most adequate sense. Thus, it is not necessary to choose
+between a series of fine-grained senses if all these senses result in
+the same final translation; however, it may sometimes be necessary to
+choose a different translation for the same sense, for example in a
+collocation.
 % It could also be the case that a single sense could have more than
 % one possible translation (for example synonyms).
 
@@ -115,40 +117,39 @@ sense, for example in a collocation.
 %@@@ \comment{This section should be ironed out a bit.}  
 %In their pioneering work, 
 \cite{dagan1994word} used the term \emph{word sense disambiguation} to
-refer to what is actually target word selection in machine
-translation; they used a parser to identify syntactic relations
-such as subject--object or subject--verb.  After generating all the
-possible translations for a given input sentence using an ambiguous
-bilingual dictionary, they extract the syntactic tuples from the
-target language and count the frequency in a previously-trained
-target-language model of tuples.  They use maximum-likelihood
-estimation to calculate the probability that a given target language
-tuple is the translation of a given source language tuple, with an
-automatically determined confidence threshold.
+refer to what is actually target word selection\todofsm{Should we call
+  it lexical selection instead of target word selection?} in MT; they
+used a parser to identify syntactic relations such as subject--object
+or subject--verb.  After generating all the possible translations for
+a given input sentence using an ambiguous bilingual dictionary, they
+extract the syntactic tuples from the TL and count the frequency in a
+previously-trained TL model of tuples.  They use maximum-likelihood
+estimation to calculate the probability that a given TL tuple is the
+translation of a given SL tuple, with an automatically determined
+confidence threshold.
 
 Later, \cite{berger1996} illustrated the use of maximum-entropy
 classifiers on the specific problem of lexical selection in IBM-style
-word-based statistical machine translation. Other authors
-\citep{melero07a} have used target-language models to
-rank %@@@ carbonell06
+word-based statistical MT. Other authors \citep{melero07a} have used
+TL models to rank %@@@ carbonell06
 the translations resulting from all possible combinations of lexical
 selections. Nowadays, in state-of-the-art phrase-based
 statistical % \todo{METIS too?}
-machine translation \citep{koehn2009statistical}, lexical selection is
-taken care of by a combination of the translation model and the
-language model. The translation model provides probabilities of
-translation between words or word sequences (often referred to as
-\emph{phrases}) in the source and target language. The target-language
-model provides probabilities of word sequences in the target language.
+MT \citep{koehn2009statistical}, lexical selection is taken care of by
+a combination of the translation model and the language model. The
+translation model provides probabilities of translation between words
+or word sequences (often referred to as \emph{phrases}) in the source
+and target language. The TL model provides probabilities of word
+sequences in the TL.
 % As regards rule-based machine translation, \cite{sanchez07a}
 % proposed to use information from the target language to train a
 % statistical lexical-selection module but did not provide any
 % experiments.  @@@ \todo[inline]{FMT: integrate \citep{sanchez07a}
 % somewhere here}
 \cite{marechek10} trained a maximum-entropy lexical selector for their
-dependency-grammar-based transfer system TectoMT using a bilingual corpus.
-More recently, \cite{tyers12a} presented a method of lexical selection for rule-based
-machine translation based on rules which select or remove translations
+dependency-grammar-based transfer system TectoMT using a bilingual
+corpus.  More recently, \cite{tyers12a} presented a method of lexical
+selection for RBMT based on rules which select or remove translations
 in fixed-length contexts, along with a training method for learning
 the rules from a word-aligned parallel corpus.
 
@@ -160,59 +161,75 @@ the rules from a word-aligned parallel corpus.
 % \todo[inline]{FMT: Add article structure}
 
 \section{Method}
-\todomlf{R3 says: ``The technique clearly resembles the "Deciphering Foreign Language," (S. Ravi and K. Knight) or “EM Decipherment for Large Vocabularies “
-(M. Nuhn, and H. Ney. EM) approaches, although these techniques were not meant for learning the disambiguation but for learning the translation dictionaries.
-The proposed method only executes one EM iteration in contrast to these works. It would be interesting to highlight differences and resemblances with these deciphering approaches.''. Check and cite? Also, single iteration WTF?  }
+\todomlf{R3 says: ``The technique clearly resembles the "Deciphering
+  Foreign Language," (S. Ravi and K. Knight) or “EM Decipherment for
+  Large Vocabularies “ (M. Nuhn, and H. Ney. EM) approaches, although
+  these techniques were not meant for learning the disambiguation but
+  for learning the translation dictionaries.  The proposed method only
+  executes one EM iteration in contrast to these works. It would be
+  interesting to highlight differences and resemblances with these
+  deciphering approaches.''. Check and cite? Also, single iteration
+  WTF?}
 %\todo[inline]{FSM: In the experiments a development corpus is
 %  mentioned. For what is it used? This should be explain in this
 %  section.}
 
 %\comment{Improve this} 
-Lexical selection in this paper considers for
-each word a simple source-language context made up of neighbouring
-lemma+part-of-speech combinations. Contexts considered include up to
-two words to the left and up to two words to the right of the word to
-be translated. 
+Lexical selection in this paper considers for each word a simple SL
+context made up of neighbouring lemma+part-of-speech
+combinations. Contexts considered include up to two words to the left
+and up to two words to the right of the word to be translated.
 %\comment{FSM: Later, a development corpus is
 %  mentioned. In this section it should be mentioned what it is used
 % for.}
 
-Let the probability of a word $t$ being the translation of a
-word $s$ in a source-language context $c$ be $p_s(t|c)$. In principle, this value
-could be estimated directly from the available corpora for every
-combination of $(s, t, c)$.  This would however present two questions:
-(1) how should the relevant contexts be chosen? and (2) what should be
-done when $(s, t, c)$ is not found in the corpus?
-A maximum-entropy model answers both of these questions. It allows the
-contexts that we consider to be linguistically interesting to be
-defined \emph{a priori} and then integrate these seamlessly into a
-probabilistic model \citep{Manning99b}.  In answer to the second
-question, a maximum-entropy model assumes nothing about what is not
-present in the training data. That is, if there is no information in
-the training data, then it assumes that all outcomes ---that is, all
-possible translations--- are equally likely.  As previously mentioned,
-the principle of maximum entropy has been applied to the problem of
-lexical selection before; in particular, \cite{berger1996} cast the
-problem of lexical selection in statistical MT as a classification
-problem. They learn a separate maximum-entropy classifier for each SL
-word form,
+Let the probability of a word $t$ being the translation of a word $s$
+in a SL context $c$ be $p_s(t|c)$. In principle, this value could be
+estimated directly from the available corpora for every combination of
+$(s, t, c)$.  This would however present two questions: (1) how should
+the relevant contexts be chosen? and (2) what should be done when $(s,
+t, c)$ is not found in the corpus?  A maximum-entropy model answers
+both of these questions. It allows the contexts that we consider to be
+linguistically interesting to be defined \emph{a priori} and then
+integrate these seamlessly into a probabilistic model
+\citep{Manning99b}.  In answer to the second question, a
+maximum-entropy model maximise the entropy subject to match the
+expected counts of the designed features with those found in the
+training data. \todofsm{Solved R3: ``In answer to the second question, a
+  maximum-entropy model assumes nothing about what is not present in
+  the training data. That is, if there is no information in the
+  training data, then it assumes that all outcomes —that is, all
+  possible translations— are equally likely'' can be applied to a
+  uniform distribution for a discrete variable. I think the authors
+  are trying to restate the main property of the maximum entropy
+  model, i.e.  maximum entropy model maximize the entropy (which is
+  the uniformness of the distribution) subject to match the expected
+  counts of the designed features with those found in the training
+  data.  }
+%assumes nothing about what is not present in the
+%training data. 
+That is, if there is no information in the training data, then it
+assumes that all outcomes ---that is, all possible translations--- are
+equally likely.  As previously mentioned, the principle of maximum
+entropy has been applied to the problem of lexical selection before;
+in particular, \cite{berger1996} cast the problem of lexical selection
+in statistical MT as a classification problem. They learn a separate
+maximum-entropy classifier for each SL word form,
 %\comment{[:we do too, integrate this later]} 
-using SL context to
-distinguish between possible translations. These classifiers are then
-incorporated into the translation model of their word-based SMT
-system.
+using SL context to distinguish between possible translations. These
+classifiers are then incorporated into the translation model of their
+word-based statistical MT system.
 %\comment{[how is our work different?]}  
-In their approach, a
-classifier consists of a set of binary feature functions and
-corresponding weights for each feature. 
-In both \cite{berger1996} and our method, features are defined in the
-form $h_k^{s}(t, c)$, where $t$
-is a translation, and $c$ is a source-language (SL) context.\todomlf{Defined SL which had not been defined} One difference is that \cite{berger1996} take $s$, $t$
-and $c$ to be based on word forms, whereas in our method they are based
-on lemma forms.
-An example would be the following feature where the Spanish word \emph{pez} (`fish' as a living animal) is seen as the
+In their approach, a classifier consists of a set of binary feature
+functions and corresponding weights for each feature.  In both
+\cite{berger1996} and our method, features are defined in the form
+$h_k^{s}(t, c)$, where $t$ is a translation, and $c$ is a SL
+context. One difference is that \cite{berger1996} take $s$, $t$ and
+$c$ to be based on word forms, whereas in our method they are based on
+lemma forms.  An example would be the following feature where the
+Spanish word \emph{pez} (`fish' as a living animal) is seen as the
 translation of \emph{arrain} (`fish') in the context \emph{arrain
-  handi} `big fish' would therefore be defined as:
+  handi} `big fish' and would therefore be defined as:
 %\comment{FSM: I have introduced the index $k$
 %  because several features are defined for a SL word $s$.} 
 \begin{equation}
@@ -246,7 +263,11 @@ translation $t$ for word $s$ in context $c$.
 p_s(t|c) = \frac{1}{Z^s(c)} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 \label{eq:max-ent-sum}
 \end{equation}
-\todomlf{R3 complains: `` Probability notation is confusing. I would suggest the use of \(p(t | c,s)\) instead of \(p_s(t|c)\), that will simplify notation. For instance instead of \(Z^s (c)\) we would have \(Z(c,s)\).''. Ignore or take onboard?}
+\todomlf{R3 complains: `` Probability notation is confusing. I would
+  suggest the use of \(p(t | c,s)\) instead of \(p_s(t|c)\), that will
+  simplify notation. For instance instead of \(Z^s (c)\) we would have
+  \(Z(c,s)\).''. Ignore or take onboard? FSM: Mention that we follow
+  the notation of Berger?}
 
 In this equation, $Z^s(c)$ is a normalising constant. Thus, the most
 probable translation \(t^\star\) can be found using
@@ -285,15 +306,21 @@ will call \emph{post-lexsel}, and returns a finished translation of a
 specific lexical-selection path $g_i$ of sentence
 $S$. Figure~\ref{fig:lexselschema} shows this process
 schematically. %%%\todo{Can we try to bring the figure closer?}
-\todomlf{R3 says: ``it would have been nicer to see an example of one sentence going through the pipeline''. Can we add this in the text?}
+\todomlf{R3 says: ``it would have been nicer to see an example of one
+  sentence going through the pipeline''. Can we add this in the text?
+  FSM: We do not have much space}
 %Taking our previous example for the parallel corpus, Table~\ref{table:ex-monocorp} 
 %presents an example of five possible samples. 
 
 As our method is unsupervised, and therefore the occurrences of
-specific lexical selection events \((s,t,c)\) cannot be counted, a
-target language model \(P_\mathrm{TL}(\cdot)\) is used to compute a value for
-the fractional count for disambiguation path \(g_i\), $p(g_i|S)$ after
-suitable normalisation:\todomlf{R2 says ``Nevertheless, I've got problems to understand (4), in particular the paths in post-lexsel step. Some better explanation could be offered maybe by saying that (4) evaluates all possible solutions in the language model.''. Don't know what to do here. }
+specific lexical selection events \((s,t,c)\) cannot be counted, a TL
+model \(P_\mathrm{TL}(\cdot)\) is used to compute a value for the
+fractional count for disambiguation path \(g_i\), $p(g_i|S)$ after
+suitable normalisation:\todomlf{R2 says ``Nevertheless, I've got
+  problems to understand (4), in particular the paths in post-lexsel
+  step. Some better explanation could be offered maybe by saying that
+  (4) evaluates all possible solutions in the language model.''. Don't
+  know what to do here. }
 \begin{equation}
  \label{eq:normalising}
    p(g_i|S) = \frac{P_\mathrm{TL}(\tau(g_i,S))}{\sum_{g_i \in G} P_\mathrm{TL}(\tau(g_i,S))}
@@ -301,16 +328,15 @@ suitable normalisation:\todomlf{R2 says ``Nevertheless, I've got problems to und
 ~\\
 The maximum-entropy model is trained instead using the fractional
 count $p(g_i|S)$ for the events $(s,t,c)$ found in \(g_i\), that is,
-when in \(g_i\) $t$ is the translation for \(s\) in context
-\(c\). That is, as if event $(s,t,c)$ had been seen a fractional
-number $p(g_i|S)$ of times. We prune $(s, t, c)$
-occurring less than a certain number of
-times in the corpus, using a development corpus to guide pruning (see
-section~\ref{sec:eval-ref-results}).
+when in \(g_i\) the translation for \(s\) in context \(c\) is
+$t$. That is, as if event $(s,t,c)$ had been seen a fractional number
+$p(g_i|S)$ of times. We prune $(s, t, c)$ occurring less than a
+certain number of times in the corpus, using a development corpus to
+guide pruning (see section~\ref{sec:eval-ref-results}).
 %@@@ \comment{Reword this to avoid repetition} 
 The method used here for lexical selection is analogous to the method
 used by \cite{sanchez08b} to train a hidden-Markov-model-based
-part-of-speech tagger in a rule-based machine translation system.
+part-of-speech tagger in a RBMT system.
 %Table~\ref{tb:workedexample} shows how a collection of samples
 %\(\mathcal{G}\) for the translation of Basque sentences containing the
 %word \emph{arrain}.\footnote{The word \emph{arrain} `fish' has two translations
@@ -390,7 +416,7 @@ whole translation task. Evaluating lexical-selection performance is an
 selection module disambiguates the lexical-transfer
 output as compared to a gold-standard corpus. The lexical 
 transfer output is the result of looking up the translations of the 
-source-language \emph{lexical forms} --- lemmas and  % combinations of lemma and tags
+SL \emph{lexical forms} --- lemmas and  % combinations of lemma and tags
 tags --- in the bilingual dictionary.
 
 The
@@ -488,11 +514,15 @@ for evaluation (see Section~\ref{ss:measures}).
   described in \citep{tyers10b}. The bilingual % tyers09b
   dictionaries were not built with polysemy in mind from the outset,
   but some entries were added later to start work on lexical
-  selection. The version used in this paper is SVN revision
-  41375.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr}}
+  selection.\footnote{The version used in this paper is SVN revision
+  41375; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr}}
 %  This is the only available machine translation system between Breton
 %  and French. It has been developed part-time over a number of years.
-\todomlf{R1 says ``whole section is rather length especially the revision numbers and URLs of the specific translations systems need not be mentioned in my opinion. The space could rather be used to elaborate in the description of the method in Sec 2.''}
+  \todomlf{R1 says ``whole section is rather length especially the
+    revision numbers and URLs of the specific translations systems
+    need not be mentioned in my opinion. The space could rather be
+    used to elaborate in the description of the method in Sec
+    2.''. FSM: I have moved them to the footnote}
 
 \item[Macedonian--English:] The Macedonian--English pair
   in Apertium was created specifically for the purposes of running
@@ -502,8 +532,8 @@ for evaluation (see Section~\ref{ss:measures}).
 %  English pair \citep{brandt11}, the Macedonian morphological
 %  dictionary and constraint grammar from the Macedonian and Bulgarian
 %  pair \citep{rangelov11}, and the SETimes parallel corpus
-  The lexical resources for the pair were tuned to the SETimes parallel corpus
-  \citep{tyers10}.  
+  The lexical resources for the pair were tuned to the SETimes
+  parallel corpus \citep{tyers10}.
 % The work was carried out over a period of eight
 %  days, and consisted of creating the bilingual dictionary and
 %  transfer rules. The bilingual dictionary was created by tagging both
@@ -516,26 +546,21 @@ for evaluation (see Section~\ref{ss:measures}).
   using {\sc giza++} \citep{och03a} was checked to ensure that it was
   an adequate translation, and if so marked as the default.\footnote{A
     bilingual dictionary in Apertium \citep{forcada2011apertium} may
-    contain several target-language translation for a given SL
-    word. Where there is more than one possible translation, the
-    dictionary writer chooses the most general or most frequent
-    translation among the set of possible translations and marks it as
-    the \emph{linguistic default} translation.} As a result of
-  attempting to include all possible translations, the average number
-  of translations per word is much
-  higher % (see table~\ref{table:lang-pair-stats})
-  than in other pairs.
-% The transfer rules were written
-%  by hand to treat translation problems in the corpus. 
-The version of
-  the software used in this paper is SVN revision
-  41476.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}
+    contain several TL translation for a given SL word. Where there is
+    more than one possible translation, the dictionary writer chooses
+    the most general or most frequent translation among the set of
+    possible translations and marks it as the \emph{linguistic
+      default} translation.} As a result of attempting to include all
+  possible translations, the average number of translations per word
+  is much higher % (see table~\ref{table:lang-pair-stats})
+  than in other pairs.\footnote{The version of the software used in this paper is SVN revision
+  41476; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}
 \item[Basque--Spanish:] The development of the Basque to Spanish pair
   is described in \cite{ginesti09}. 
 % The bilingual dictionary was taken
 %  from the free/open-source Matxin system \citep{mayor2011}. 
   Alternative translations were included in the bilingual
-  dictionary. The version used is SVN revision 44846.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-eu-es}}
+  dictionary.\footnote{The version used is SVN revision 44846; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-eu-es}}
 % , but non-default translations were marked with a
 %  direction restriction\comment{FSM: This needs to be carefully
 %    explained to avoid confusing the reader.}.\footnote{The bilingual
@@ -555,13 +580,15 @@ The version of
 %    shown. This paper would be better mentioned in the introduction
 %    (it mentions the use of TL info for lexical selection.},
   contains a number of entries in the bilingual dictionary with more
-  than one translation. %The most-frequent translation, as judged by
+  than one translation.\footnote{The
+  version used in this paper is SVN revision
+  41387; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
+
+%The most-frequent translation, as judged by
 %  the language pair developer, is marked as the \emph{default}
 %  translation and non-default translations were added according to
 %  frequency. \todo{Default is explained for some LPs only, why?}  
-  The
-  version used in this paper is SVN revision
-  41387.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}\todomlf{4-month mention removed in response to R1}
+\todomlf{4-month mention removed in response to R1}
 \end{description}
 
 
@@ -622,7 +649,7 @@ and morphological generation, are not taken into account.
 
 The lexical-selection error rate is the fraction of times the given
 system chooses a translation for a word which is not  the one found in an
-annotated reference. The process uses a source-language sentence, $S =
+annotated reference. The process uses a SL sentence, $S =
 (s_1, s_2, \ldots, s_{|S|})$ and three functions. The first function,
 $T_s(s_i)$, returns all possible translations of $s_i$ according to
 the bilingual dictionary. The second function, $T_t(s_i)$, returns the
@@ -661,11 +688,16 @@ where
 \end{equation}
 states that there is a difference if the intersection between the set
 of reference translations $T_r(s_i)$ and the set of translations from
-the lexical selection module $T_t(s_i)$ is empty.  Recall that,\todomlf{R1 says ``this has already been mentioned before''. Don't know what to do}
-although $T_t(s_i)$ returns a set, this set will be a singleton, as
-when the lexical-selection module returns more than one translation
-the first one will be selected.\footnote{In practice this does not happen
-as each ambiguous word has a \emph{default} translation.}\todomlf{R1 complains: ``why mention if it doesn't happen in practice? Relevance?'' What should we do?}
+the lexical selection module $T_t(s_i)$ is empty.  Recall
+that,\todomlf{R1 says ``this has already been mentioned
+  before''. Don't know what to do FSM: I would do nothing, this is why
+the sentence says ``Recall ...''} although $T_t(s_i)$ returns a set,
+this set will be a singleton, as when the lexical-selection module
+returns more than one translation the first one will be
+selected.\footnote{In practice this does not happen as each ambiguous
+  word has a \emph{default} translation.}\todomlf{R1 complains: ``why
+  mention if it doesn't happen in practice? Relevance?'' What should
+  we do?}
 
 %\todo[inline]{FSM: What happens to LER when $\sum_{i=1}^{|S|}
 %  \mathrm{amb}(s_i)=0.0$?}
@@ -763,8 +795,8 @@ intervals overlap, we will also perform paired bootstrap resampling
 \subsection{Corpora}
 \label{sec:eval-corpus}
 
-For creating the test corpora, providing a source language corpus 
-for training, and a target language corpus for scoring, we used four parallel corpora: 
+For creating the test corpora, providing a SL corpus for training, and
+a TL corpus for scoring, we used four parallel corpora:
 \begin{itemize}
 \addtolength{\itemsep}{-0.10in}
 \item \textbf{Ofis ar Brezhoneg} (\texttt{OAB}): This parallel corpus
@@ -797,17 +829,17 @@ There are a number of approaches to creating evaluation corpora for
 lexical selection in the literature. \cite{vickrey05} use a parallel
 corpus to make annotated test and training sets for experiments in
 lexical selection applied to a simplified translation problem in
-SMT. They use word alignments from {\sc giza++} \citep{och03a} to
-annotate source language words with their translations from the
+statistical MT. They use word alignments from {\sc giza++}
+\citep{och03a} to annotate SL words with their translations from the
 reference translation in the parallel corpus. One disadvantage of this
-method is that only one translation is annotated per source language
-word, meaning that accuracies may be lower because of missing
-translations --- this happens when the system chooses a translation
-which is adequate, but is not found in the reference translation. A
-second disadvantage is that the word alignments may not be 100\%
-reliable, which decreases the accuracy of the annotated corpus. An
-alternative method is described by \cite{zinovjeva2000}, who manually
-tags ambiguous words in English sentences with their % a selection of
+method is that only one translation is annotated per SL word, meaning
+that accuracies may be lower because of missing translations --- this
+happens when the system chooses a translation which is adequate, but
+is not found in the reference translation. A second disadvantage is
+that the word alignments may not be 100\% reliable, which decreases
+the accuracy of the annotated corpus. An alternative method is
+described by \cite{zinovjeva2000}, who manually tags ambiguous words
+in English sentences with their % a selection of
 translation in Swedish. %The size of the annotated corpus is not
 %mentioned. 
 %\cite{specia2005a} use a parallel corpus, but eschew using
@@ -891,18 +923,17 @@ and those in the target side. Any aligner may be used, but in this
 paper we use {\sc giza++} \citep{och03a}.\footnote{The exact
   configuration of {\sc giza++} used is equivalent to running the {\sc
     Moses} toolkit \citep{koehn07} in default configuration up to step
-  three of training.}  We then use
-these alignments along with the bilingual dictionary of the MT system
-in question to extract only those sentences where: (a) there is at least
-one ambiguous word; (b) that ambiguous word is aligned to a single word in
-the target language; and (c) the word it is aligned to in the target
-language is found in the bilingual dictionary of the MT
-system. Sentences where there are no ambiguous words (approximately
-90\%, see Table~\ref{table:input-corp}) are discarded. The source side
-of the extracted sentence is then passed through the lexical transfer
-module, which returns all the possible translations, and for each
-ambiguous word, the translation is selected which is found aligned in
-the reference.
+  three of training.}  We then use these alignments along with the
+bilingual dictionary of the MT system in question to extract only
+those sentences where: (a) there is at least one ambiguous word; (b)
+that ambiguous word is aligned to a single word in the TL; and (c) the
+word it is aligned to in the TL is found in the bilingual dictionary
+of the MT system. Sentences where there are no ambiguous words
+(approximately 90\%, see Table~\ref{table:input-corp}) are
+discarded. The source side of the extracted sentence is then passed
+through the lexical transfer module, which returns all the possible
+translations, and for each ambiguous word, the translation is selected
+which is found aligned in the reference.
 
   %% FMT: INCLUDE AVERAGE AMBIGUITY OVER AMBIGUOUS WORDS
   \begin{table}
@@ -985,11 +1016,11 @@ We compare our method to the following reference (or baseline) systems:
 %  be achieved.
 
 \item \textbf{Target language model} (TLM). One method of lexical
-  selection is to use the existing machine translation system to
-  generate all the possible translations for an input sentence, and
-  then score these translations \emph{on-line} on a model of the
-  target language. The highest scoring sentence is then output. This
-  is the method used by %@@@ \cite{carbonell06} and
+  selection is to use the existing MT system to generate all the
+  possible translations for an input sentence, and then score these
+  translations \emph{on-line} on a model of the TL. The highest
+  scoring sentence is then output. This is the method used
+  by %@@@ \cite{carbonell06} and
   \cite{melero07a}.% \todo{Also METIS?}
 % We used a five-gram language model of surface
 %   forms generated from the target-language side of the parallel
@@ -1014,19 +1045,26 @@ generalised iterative scaling available in the {\sc
   the compilable version we used is available as part of the Apertium
   \texttt{lex-tools} package,
   \url{http://downloads.sourceforge.net/project/apertium/apertium-lex-tools/apertium-lex-tools-0.1.0.tar.gz}.}
-to calculate the feature weights.  
-\todomlf{R3 says: ``The proposed maximum entropy or log-linear model is trained in a surprising way. In the early days of maximum entropy models, those were trained using the GIS algorithm. However, it has been proved in the literature that GIS has clear disadvantages with respect to other batch gradient descent algorithms. For instance, it does not allow for the use of regularization [...], and it is extremely slow to converge, which yields worse models than other methods. The smoothing/regularization of the model is also poor since it is simply feature pruning instead of regularization.''}
-After learning the feature sets and
-weights, we compute the evaluation measures described in
-Section~\ref{ss:measures}. There is an option to remove events 
-$(s, t, c)$ which occur
-less than a certain number of times in the training corpus. This is
-referred to as the feature pruning frequency threshold --- features
-occuring less than the threshold are discarded. The value was set
-experimentally. Values of between two and seven were tested, and the
-ones which provided the best improvement on the development corpus
-were selected; they happen to come close to the rule-of-thumb value of
-five that \citet[p.~596]{Manning99b} found to be effective.
+to calculate the feature weights.  \todomlf{R3 says: ``The proposed
+  maximum entropy or log-linear model is trained in a surprising
+  way. In the early days of maximum entropy models, those were trained
+  using the GIS algorithm. However, it has been proved in the
+  literature that GIS has clear disadvantages with respect to other
+  batch gradient descent algorithms. For instance, it does not allow
+  for the use of regularization [...], and it is extremely slow to
+  converge, which yields worse models than other methods. The
+  smoothing/regularization of the model is also poor since it is
+  simply feature pruning instead of regularization.'' FSM: I would say
+  something in the discussion (future work).}  After learning the
+feature sets and weights, we compute the evaluation measures described
+in Section~\ref{ss:measures}. There is an option to remove events $(s,
+t, c)$ which occur less than a certain number of times in the training
+corpus. This is referred to as the feature pruning frequency threshold
+--- features occurring less than the threshold are discarded. The value
+was set experimentally. Values of between two and seven were tested,
+and the ones which provided the best improvement on the development
+corpus were selected; they happen to come close to the rule-of-thumb
+value of five that \citet[p.~596]{Manning99b} found to be effective.
 Table~\ref{table:maxent-features} shows the number of features that
 have eventually been used for each language pair.
 
@@ -1057,19 +1095,23 @@ have eventually been used for each language pair.
 %tables~\ref{table:eval-para-results} and \ref{table:eval-mono-results}.
  table \ref{table:eval-mono-results}, which compares the results of
  the new approach with respect to the \emph{default behaviour} (the
- linguist-chosen defaults),\todomlf{R1 says the footnote is important and should be incorporated to the text; what should we do?}\footnote{The high error rate
-   for the Breton--French pair may be as a result of having the
-   linguistic defaults tuned to a different domain than that of the
-   corpus.}  with respect to the \emph{oracle} (which represents the
- upper bound to performance), and with respect to the results obtained
- by using the target-language model online, for each of the language
- pairs in Apertium with respect to our two evaluation metrics.
+ linguist-chosen defaults), with respect to the \emph{oracle} (which
+ represents the upper bound to performance), and with respect to the
+ results obtained by using the TL model online, for each of the
+ language pairs in Apertium with respect to our two evaluation
+ metrics. Note that the high error rate for the Breton--French pair
+ may be as a result of having the linguistic defaults tuned to a
+ different domain than that of the corpus.\todomlf{R1 says the
+   footnote is important and should be incorporated to the text; what
+   should we do? FSM: I have moved it to the main text and split the
+   paragraph into two pieces.}
+
  Significant improvements with respect to the results obtained using
- the target-language model online are apparent with the Breton--French
- ---the pair with the least data--- and the English--Spanish language
- pairs. In the remaining cases, the maximum-entropy method comes close
- to the target-language model performance in terms of similar or better BLEU and LER scores, at a much smaller
- computational cost.
+ the TL model online are apparent with the Breton--French ---the pair
+ with the least data--- and the English--Spanish language pairs. In
+ the remaining cases, the maximum-entropy method comes close to the TL
+ model performance in terms of similar or better BLEU and LER scores,
+ at a much smaller computational cost.
 % \todo{I miss a brief separate discussion of BLEU and LER, which are reported separately!}
 
 %! \comment{FSM: This needs to be proved, and for
@@ -1087,11 +1129,11 @@ have eventually been used for each language pair.
 %\caption{Speed of the systems in words/second.}
 %\end{table}
 
- Improvements with respect to the target-language-model performance
- are likely due to the effective use that the maximum-entropy model
- makes of information about the relevant source-language contexts and
- their translations, through the weighting of features representing
- those source-language contexts across the whole corpus.
+ Improvements with respect to the TL model performance are likely due
+ to the effective use that the maximum-entropy model makes of
+ information about the relevant SL contexts and their translations,
+ through the weighting of features representing those SL contexts
+ across the whole corpus.
 
 %! \comment{First attempt at
 %!    an explanation. We should have an explanation for this that does
@@ -1123,7 +1165,7 @@ have eventually been used for each language pair.
  \caption{LER and BLEU scores with 95\% confidence intervals for the reference
    systems on the test corpora. The \texttt{max-ent} system has been trained using 
    fractional counts. The results in bold face show statistically significant
-   improvements for the maximum-entropy model compared to the target language model 
+   improvements for the maximum-entropy model compared to the TL model 
    according to pair-bootstrap resampling.}
   \label{table:eval-mono-results}
 \end{table*}
@@ -1145,23 +1187,23 @@ have eventually been used for each language pair.
 This paper has presented a method to perform lexical selection in
 RBMT, and one that can be trained in an unsupervised way, that is,
 without the need for an annotated corpus, (in this case a word-aligned
-bilingual corpus): one just needs a source-language corpus, a
-statistical target-language model, and the RBMT system itself. The
-input to the method is simply the part-of-speech tagged source text in
-which each word is annotated with all the translations provided by the
-bilingual dictionary in the system: this makes it applicable to almost
-any rule-based machine translation system. The system uses a
-maximum-entropy formalism for lexical selection, as \cite{berger1996}
-and \cite{marechek10}, but instead of counting actual lexical
-selection events in an annotated corpus, it counts fractional
-occurrences of these events as estimated by a target-language
-model. The method is evaluated both intrinsically (just looking at the
-actual lexical selection events) and extrinsically (measuring the
-quality of machine translation). Results on four language pairs using
-the Apertium \citep{forcada2011apertium} machine translation system
-show that the method obtains similar or better results than those
-expensively obtained by scoring an exponential number of lexical
-selections for each sentence using the target-language model online.\todomlf{R2 says: ``An error analysis would also help to understand the proposal.'' We don't have time now I think.}
+bilingual corpus): one just needs a SL corpus, a statistical TL model,
+and the RBMT system itself. The input to the method is simply the
+part-of-speech tagged source text in which each word is annotated with
+all the translations provided by the bilingual dictionary in the
+system: this makes it applicable to almost any RBMT system. The system
+uses a maximum-entropy formalism for lexical selection, as
+\cite{berger1996} and \cite{marechek10}, but instead of counting
+actual lexical selection events in an annotated corpus, it counts
+fractional occurrences of these events as estimated by a TL model. The
+method is evaluated both intrinsically (just looking at the actual
+lexical selection events) and extrinsically (measuring the quality of
+MT). Results on four language pairs using the Apertium
+\citep{forcada2011apertium} MT system show that the method obtains
+similar or better results than those expensively obtained by scoring
+an exponential number of lexical selections for each sentence using
+the TL model online.\todomlf{R2 says: ``An error analysis would also
+  help to understand the proposal.'' We don't have time now I think.}
 
 %! \todo[inline]{FSM: The fact that, to the best of our knowledge, this
 %!   is the first time fractional counts are used with MaxEnt should be
