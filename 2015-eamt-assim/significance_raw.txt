@@ -1,0 +1,19 @@
+Call:
+lm(formula = avg.score ~ mt.f * src.f, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-60.015 -14.312  -0.428  14.985  56.911 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    38.888      1.958  19.856  < 2e-16 ***
+mt.f1          19.218      2.770   6.939 1.38e-11 ***
+src.f1          4.201      2.776   1.513    0.131    
+mt.f1:src.f1   -2.291      3.921  -0.584    0.559    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.91 on 451 degrees of freedom
+Multiple R-squared:  0.163,	Adjusted R-squared:  0.1574 
+F-statistic: 29.27 on 3 and 451 DF,  p-value: < 2.2e-16
