@@ -117,8 +117,7 @@ collocation.
 %@@@ \comment{This section should be ironed out a bit.}  
 %In their pioneering work, 
 \cite{dagan1994word} used the term \emph{word sense disambiguation} to
-refer to what is actually target word selection\todofsm{Should we call
-  it lexical selection instead of target word selection?} in MT; they
+refer to what is actually lexical selection in MT; they
 used a parser to identify syntactic relations such as subject--object
 or subject--verb.  After generating all the possible translations for
 a given input sentence using an ambiguous bilingual dictionary, they
@@ -223,7 +222,7 @@ word-based statistical MT system.
 In their approach, a classifier consists of a set of binary feature
 functions and corresponding weights for each feature.  In both
 \cite{berger1996} and our method, features are defined in the form
-$h_k^{s}(t, c)$, where $t$ is a translation, and $c$ is a SL
+$h_k^{s}(t, c)$,\footnote{We follow the notation of \cite{berger1996}} where $t$ is a translation, and $c$ is a SL
 context. One difference is that \cite{berger1996} take $s$, $t$ and
 $c$ to be based on word forms, whereas in our method they are based on
 lemma forms.  An example would be the following feature where the
@@ -241,7 +240,7 @@ t~ =~ \textit{pez}~ \\ \mathrm{and}~ \\ \textit{handi}~ \mathrm{follows}~ \texti
 \label{eq:feat-func}
 \end{equation}
 This feature considers a context of zero words to the left of the
-problem word and one word (+ \emph{handi}) to the right of it.\todomlf{Removed \(k\) and used a more informative subscript}
+problem word and one word (+ \emph{handi}) to the right of it.
 
 %%% THIS IS IN A WEIRD PLACE BUT WE WANT IT ON PAGE 3 -FMT
 \begin{figure*}
@@ -255,7 +254,7 @@ problem word and one word (+ \emph{handi}) to the right of it.\todomlf{Removed \
 
 
 As a result of training, each of the \(n_F\) features \(h^s_k(t,c)\) in the classifier is assigned a
-weight $\lambda_k^s$. \todomlf{Reworded to define \(n_F\)} Combining these weights of active features
+weight $\lambda_k^s$. Combining these weights of active features
 as in equation~(\ref{eq:max-ent-sum}) yields the probability of a
 translation $t$ for word $s$ in context $c$.
 
@@ -263,11 +262,11 @@ translation $t$ for word $s$ in context $c$.
 p_s(t|c) = \frac{1}{Z^s(c)} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 \label{eq:max-ent-sum}
 \end{equation}
-\todomlf{R3 complains: `` Probability notation is confusing. I would
-  suggest the use of \(p(t | c,s)\) instead of \(p_s(t|c)\), that will
-  simplify notation. For instance instead of \(Z^s (c)\) we would have
-  \(Z(c,s)\).''. Ignore or take onboard? FSM: Mention that we follow
-  the notation of Berger?}
+%\todomlf{R3 complains: `` Probability notation is confusing. I would
+%  suggest the use of \(p(t | c,s)\) instead of \(p_s(t|c)\), that will
+%  simplify notation. For instance instead of \(Z^s (c)\) we would have
+%  \(Z(c,s)\).''. Ignore or take onboard? FSM: Mention that we follow
+%  the notation of Berger?}
 
 In this equation, $Z^s(c)$ is a normalising constant. Thus, the most
 probable translation \(t^\star\) can be found using
