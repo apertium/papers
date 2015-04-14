@@ -46,3 +46,48 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 Residual standard error: 20.9 on 452 degrees of freedom
 Multiple R-squared:  0.1623,	Adjusted R-squared:  0.1586 
 F-statistic:  43.8 on 2 and 452 DF,  p-value: < 2.2e-16
+
+# checking MT on tasks without source hint
+> fit <- lm(avg.score ~ mt.f, data=data[data$src.f == 0,]) # this selects all rows where the value of column "src.f" equals to 0
+> summary(fit)
+
+Call:
+lm(formula = avg.score ~ mt.f, data = data[data$src.f == 0, ])
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-58.106 -13.888  -1.622  14.883  52.022 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   38.888      1.966  19.780  < 2e-16 ***
+mt.f1         19.218      2.780   6.912 4.82e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.99 on 226 degrees of freedom
+Multiple R-squared:  0.1745,	Adjusted R-squared:  0.1709 
+F-statistic: 47.78 on 1 and 226 DF,  p-value: 4.82e-11
+
+
+# checking source hint on tasks without MT hint
+> fit <- lm(avg.score ~ src.f, data=data[data$mt.f == 0,])
+> summary(fit)
+
+Call:
+lm(formula = avg.score ~ src.f, data = data[data$mt.f == 0, ])
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-43.089 -15.988  -3.089  16.512  56.911 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   38.888      2.112  18.416   <2e-16 ***
+src.f1         4.201      2.993   1.404    0.162    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 22.55 on 225 degrees of freedom
+Multiple R-squared:  0.008679,	Adjusted R-squared:  0.004273 
+F-statistic:  1.97 on 1 and 225 DF,  p-value: 0.1618
