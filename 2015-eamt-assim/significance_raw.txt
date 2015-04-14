@@ -1,3 +1,9 @@
+>data <- read.csv('individual_scores.csv')
+> data$mt.f <- factor(data$mt)
+> data$src.f <- factor(data$src)
+> fit <- lm(avg.score ~ mt.f*src.f, data=data)
+> summary(fit)
+
 Call:
 lm(formula = avg.score ~ mt.f * src.f, data = data)
 
@@ -17,3 +23,26 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 Residual standard error: 20.91 on 451 degrees of freedom
 Multiple R-squared:  0.163,	Adjusted R-squared:  0.1574 
 F-statistic: 29.27 on 3 and 451 DF,  p-value: < 2.2e-16
+
+
+> fit <- lm(avg.score ~ mt.f+src.f, data=data)
+> summary(fit)
+
+Call:
+lm(formula = avg.score ~ mt.f + src.f, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-60.587 -14.460  -0.395  14.628  57.488 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   39.460      1.695  23.273   <2e-16 ***
+mt.f1         18.075      1.959   9.226   <2e-16 ***
+src.f1         3.052      1.959   1.558     0.12    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.9 on 452 degrees of freedom
+Multiple R-squared:  0.1623,	Adjusted R-squared:  0.1586 
+F-statistic:  43.8 on 2 and 452 DF,  p-value: < 2.2e-16
