@@ -247,9 +247,29 @@ The synonym lists for Basque--Spanish and Tatar--Russian contain 52 and 25 words
 
 \section{Results and discussion}
 \label{sec:results}
+\begin{table*}
+\centering
+  \begin{tabular}{|l|r|r|r|r|r|r|r|r|}
+  \hline
+ \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Basque--Spanish} & \multicolumn{4}{|c|}{Tatar--Russian} 
+\\\cline{2-9}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint}& \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} 
+\\
+\hline
+10\%&62 \(\pm\) 32&58 \(\pm\) 28&40 \(\pm\) 39&49 \(\pm\) 40
+&57 \(\pm\) 42&64 \(\pm\) 41&54 \(\pm\) 43&46 \(\pm\) 41\\
+20\%&65 \(\pm\) 30&70 \(\pm\) 27&31 \(\pm\) 28&31 \(\pm\) 30
+&65 \(\pm\) 31&60 \(\pm\) 33&46 \(\pm\) 31&39 \(\pm\) 32\\
+30\%&48 \(\pm\) 26&40 \(\pm\) 24&26 \(\pm\) 20&18 \(\pm\) 18
+&59 \(\pm\) 28&56 \(\pm\) 26&40 \(\pm\) 28&35 \(\pm\) 30\\
+\hline
+\end{tabular}
+\caption{Average number of gaps successfully filled (\%), using a synonym list} 
+\label{table:res}
+\end{table*}
 
-The results are presented in this section. Tables \ref{table:res-eus-spa} and \ref{table:res-tat-rus} 
-show
+The results are presented in this section. Table \ref{table:res} 
+shows
 the proportion and standard deviation of correct answers depending on evaluation mode and gap density.
 The evaluators' correct answer percentage is averaged over the number of evaluators. In addition to the percentage of correct answers we kept a record of the time taken to fill the gaps in one sentence. To reduce the noise from participants who were distracted during evaluation, when
 calculating times we remove all the results over 6 minutes (the statistical mode is approximately
@@ -279,7 +299,23 @@ the course of evaluations, especially while working on the no-hint tasks. The la
 participants quit the experiment before completing it. Considering the importance of receiving the full set of evaluations, we must address the issue of participant motivation in the upcoming experiments. It may be beneficial to offer monetary compensation for the evaluators' efforts (in our case, they were volunteers).
 
 \subsection{Annotator agreement}
-After obtaining the results we calculated Krippendorff's alpha~\citep{krippendorff70} measure to represent annotator agreement, shown in Tables~\ref{table:alpha-eus-spa} and~\ref{table:alpha-tat-rus}. 
+After obtaining the results we calculated Krippendorff's alpha~\citep{krippendorff70} measure to represent annotator agreement, shown in Table~\ref{table:alpha}. 
+\begin{table*}
+\centering
+  \begin{tabular}{|l|r|r|r|r|r|r|r|r|}
+  \hline
+ \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Basque--Spanish}&\multicolumn{4}{|c|}{Tatar--Russian} \\\cline{2-9}
+                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint}& \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+\hline
+10\%&0.496&0.517&0.400&0.124&0.598&0.459 &0.711 &0.517\\
+20\%&0.714&0.700&0.358&0.275&0.740&0.667 &0.473 &0.261\\
+30\%&0.559&0.430&0.406&0.300&0.534&0.581 &0.411 &0.412\\
+
+\hline
+\end{tabular}
+\caption{Krippendorff Alpha measure} 
+\label{table:alpha}
+\end{table*}
 
 We selected this measure because of its compatibility with more than two annotators per task and the missing data (not all the gaps were evaluated). To calculate Krippendorff's alpha we used an algorithm implementation by Thomas Grill,\footnote{\url{http://grrrr.org/data/dev/krippendorff_alpha/}} dividing the answers in each gap into two categories: correct and incorrect. The previously obtained synonym lists were taken into account, i.e. if the two answers are different but both correct, they fall into one category. The measure was calculated separately for each hint and percentage combination.
 
@@ -289,127 +325,189 @@ In general, the level of annotator agreement is relatively high. As the MT and M
 
 % a little on categories
 \subsection{Results for different domains}
-For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in tables \ref{table:rus-casual}, \ref{table:rus-legal}, and \ref{table:rus-news}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that the source sentences paired with MT improve participants' performance in casual texts, compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
+\begin{table*}
+\centering
+\begin{tabular}{|r|r |*{4}{c}|}
+\hline
+\multicolumn{2}{|c|}{} &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+\hline
+\textbf{Domain} & \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+\hline
+ \multirow{3}{*}{\textbf{Casual}} &
+10\%&64 \(\pm\) 45&64 \(\pm\) 43&62 \(\pm\) 46&53 \(\pm\) 44\\
+& 20\%&73 \(\pm\) 32&63 \(\pm\) 36&41 \(\pm\) 28&38 \(\pm\) 31\\
+& 30\%&70 \(\pm\) 31&60 \(\pm\) 24&39 \(\pm\) 27&38 \(\pm\) 33\\
+\hline
+ \multirow{3}{*}{\textbf{Legal}} &
+10\%&53 \(\pm\) 40&68 \(\pm\) 35&39 \(\pm\) 38&33 \(\pm\) 35\\
+&20\%&61 \(\pm\) 25&66 \(\pm\) 24&50 \(\pm\) 34&48 \(\pm\) 34\\
+&30\%&50 \(\pm\) 26&48 \(\pm\) 29&40 \(\pm\) 27&34 \(\pm\) 29\\
+\hline
+ \multirow{3}{*}{\textbf{News}} &
+10\%&53 \(\pm\) 38&60 \(\pm\) 44&57 \(\pm\) 42&49 \(\pm\) 39\\
+&20\%&59 \(\pm\) 34&49 \(\pm\) 35&47 \(\pm\) 32&29 \(\pm\) 29\\
+&30\%&58 \(\pm\) 22&61 \(\pm\) 22&41 \(\pm\) 30&35 \(\pm\) 27\\
+\hline
+
+\end{tabular}
+\caption{Tatar--Russian Average number of gaps successfully filled (\%), using a synonym list, for three different domains.} 
+\label{table:rus} 
+\end{table*}
+
+For the Tatar--Russian language pair the participants were offered texts from three different domains (in equal proportions): casual conversations, legal texts and news. The results by domains are displayed in table~\ref{table:rus}. The MT system used in the evaluation has been targeted to translate texts from all three of the domains. Taking into consideration the above discussion of 10\% MT+Source tasks, we observe similar results across the three categories. Note that the source sentences paired with MT improve participants' performance in casual texts, compared to MT-only task mode. This may be due to the fact that many words are borrowed from Russian into Tatar, and are in fact understood by Russian speakers.
 
 % results with synonyms
 
-\begin{table*}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-  \hline
- \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&62 \(\pm\) 32&58 \(\pm\) 28&40 \(\pm\) 39&49 \(\pm\) 40\\
-20\%&65 \(\pm\) 30&70 \(\pm\) 27&31 \(\pm\) 28&31 \(\pm\) 30\\
-30\%&48 \(\pm\) 26&40 \(\pm\) 24&26 \(\pm\) 20&18 \(\pm\) 18\\
-\hline
-\end{tabular}
-\caption {Basque--Spanish: Average number of gaps successfully filled (\%), using a synonym list} 
-\label{table:res-eus-spa}
-\end{table*}
+% \begin{table*}
+% \centering
+%   \begin{tabular}{|l|r|r|r|r|}
+%   \hline
+%  \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+%                                             & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&62 \(\pm\) 32&58 \(\pm\) 28&40 \(\pm\) 39&49 \(\pm\) 40\\
+% 20\%&65 \(\pm\) 30&70 \(\pm\) 27&31 \(\pm\) 28&31 \(\pm\) 30\\
+% 30\%&48 \(\pm\) 26&40 \(\pm\) 24&26 \(\pm\) 20&18 \(\pm\) 18\\
+% \hline
+% \end{tabular}
+% \caption{Basque--Spanish: Average number of gaps successfully filled (\%), using a synonym list} 
+% \label{table:res-eus-spa}
+% \end{table*}
 
-\begin{table*}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-    \hline
-    \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&57 \(\pm\) 42&64 \(\pm\) 41&54 \(\pm\) 43&46 \(\pm\) 41\\
-20\%&65 \(\pm\) 31&60 \(\pm\) 33&46 \(\pm\) 31&39 \(\pm\) 32\\
-30\%&59 \(\pm\) 28&56 \(\pm\) 26&40 \(\pm\) 28&35 \(\pm\) 30\\
-    \hline
-  \end{tabular}
-  \caption{Tatar--Russian: Average number of gaps successfully filled (\%), using a synonym list}
-  \label{table:res-tat-rus}
-\end{table*}
 
-\begin{table*}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-  \hline
- \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&0.496&0.517&0.400&0.124\\
-20\%&0.714&0.700&0.358&0.275\\
-30\%&0.559&0.430&0.406&0.300\\
+% \begin{table*}
+% \centering
+%   \begin{tabular}{|l|r|r|r|r|}
+%     \hline
+%     \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+%                                             & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&57 \(\pm\) 42&64 \(\pm\) 41&54 \(\pm\) 43&46 \(\pm\) 41\\
+% 20\%&65 \(\pm\) 31&60 \(\pm\) 33&46 \(\pm\) 31&39 \(\pm\) 32\\
+% 30\%&59 \(\pm\) 28&56 \(\pm\) 26&40 \(\pm\) 28&35 \(\pm\) 30\\
+%     \hline
+%   \end{tabular}
+%   \caption{Tatar--Russian: Average number of gaps successfully filled (\%), using a synonym list}
+%   \label{table:res-tat-rus}
+% \end{table*}
 
-\hline
-\end{tabular}
-\caption {Basque--Spanish: Krippendorff Alpha measure} 
-\label{table:alpha-eus-spa}
-\end{table*}
+% \begin{table*}
+% \centering
+%   \begin{tabular}{|l|r|r|r|r|}
+%   \hline
+%  \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+%                                             & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&0.496&0.517&0.400&0.124\\
+% 20\%&0.714&0.700&0.358&0.275\\
+% 30\%&0.559&0.430&0.406&0.300\\
 
-\begin{table*}
-\centering
-  \begin{tabular}{|l|r|r|r|r|}
-  \hline
- \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
-                                            & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&0.598&0.459 &0.711 &0.517 \\
-20\%&0.740&0.667 &0.473 &0.261 \\
-30\%&0.534&0.581 &0.411 &0.412 \\
-\hline
-\end{tabular}
-\caption {Tatar--Russian: Krippendorff Alpha measure} 
-\label{table:alpha-tat-rus}
-\end{table*}
+% \hline
+% \end{tabular}
+% \caption {Basque--Spanish: Krippendorff Alpha measure} 
+% \label{table:alpha-eus-spa}
+% \end{table*}
+
+
+
+% \begin{table*}
+% \centering
+%   \begin{tabular}{|l|r|r|r|r|}
+%   \hline
+%  \multirow{2}{*}{\textbf{Density}} & \multicolumn{4}{|c|}{Evaluation mode} \\\cline{2-5}
+%                                             & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&0.598&0.459 &0.711 &0.517 \\
+% 20\%&0.740&0.667 &0.473 &0.261 \\
+% 30\%&0.534&0.581 &0.411 &0.412 \\
+% \hline
+% \end{tabular}
+% \caption {Tatar--Russian: Krippendorff Alpha measure} 
+% \label{table:alpha-tat-rus}
+% \end{table*}
 
 % results by text mode in tat-rus, with synonyms
+% \begin{table*}
+% \centering
+% \begin{tabular}{|r|r |*{4}{c}|}
+% \hline
+%   &&\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+% \hline
+% & \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+%  \multirow{3}{*}{\textbf{Casual}} &
+% 10\%&64 \(\pm\) 45&64 \(\pm\) 43&62 \(\pm\) 46&53 \(\pm\) 44\\
+% & 20\%&73 \(\pm\) 32&63 \(\pm\) 36&41 \(\pm\) 28&38 \(\pm\) 31\\
+% & 30\%&70 \(\pm\) 31&60 \(\pm\) 24&39 \(\pm\) 27&38 \(\pm\) 33\\
+% \hline
+%  \multirow{3}{*}{\textbf{Legal}} &
+% 10\%&53 \(\pm\) 40&68 \(\pm\) 35&39 \(\pm\) 38&33 \(\pm\) 35\\
+% &20\%&61 \(\pm\) 25&66 \(\pm\) 24&50 \(\pm\) 34&48 \(\pm\) 34\\
+% &30\%&50 \(\pm\) 26&48 \(\pm\) 29&40 \(\pm\) 27&34 \(\pm\) 29\\
+% \hline
+%  \multirow{3}{*}{\textbf{News}} &
+% 10\%&53 \(\pm\) 38&60 \(\pm\) 44&57 \(\pm\) 42&49 \(\pm\) 39\\
+% &20\%&59 \(\pm\) 34&49 \(\pm\) 35&47 \(\pm\) 32&29 \(\pm\) 29\\
+% &30\%&58 \(\pm\) 22&61 \(\pm\) 22&41 \(\pm\) 30&35 \(\pm\) 27\\
+% \hline
 
-\begin{table*}
+% \end{tabular}
+% \caption{Tatar--Russian Average number of gaps successfully filled (\%), using a synonym list, for three different domains.} 
+% \label{table:rus} 
+% \end{table*}
 
-\centering
-\begin{tabular}{|r |*{4}{c}|}
-\hline
-  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
-\hline
-\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&64 \(\pm\) 45&64 \(\pm\) 43&62 \(\pm\) 46&53 \(\pm\) 44\\
-20\%&73 \(\pm\) 32&63 \(\pm\) 36&41 \(\pm\) 28&38 \(\pm\) 31\\
-30\%&70 \(\pm\) 31&60 \(\pm\) 24&39 \(\pm\) 27&38 \(\pm\) 33\\
-\hline
-\end{tabular}
-\caption {Tatar--Russian, casual conversations: Average number of gaps successfully filled (\%), using a synonym list} 
-\label{table:rus-casual} 
-\end{table*}
 
-\begin{table*}
-\centering
-\begin{tabular}{|r |*{4}{c}|}
-\hline
-  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
-\hline
-\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&53 \(\pm\) 40&68 \(\pm\) 35&39 \(\pm\) 38&33 \(\pm\) 35\\
-20\%&61 \(\pm\) 25&66 \(\pm\) 24&50 \(\pm\) 34&48 \(\pm\) 34\\
-30\%&50 \(\pm\) 26&48 \(\pm\) 29&40 \(\pm\) 27&34 \(\pm\) 29\\
-\hline
-\end{tabular}
-\caption {Tatar--Russian, legal texts: Average number of gaps successfully filled (\%), using a synonym list} \label{table:rus-legal} 
-\end{table*}
 
-\begin{table*}
-\centering
-\begin{tabular}{|r |*{4}{c}|}
-\hline
-  &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
-\hline
-\textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
-\hline
-10\%&53 \(\pm\) 38&60 \(\pm\) 44&57 \(\pm\) 42&49 \(\pm\) 39\\
-20\%&59 \(\pm\) 34&49 \(\pm\) 35&47 \(\pm\) 32&29 \(\pm\) 29\\
-30\%&58 \(\pm\) 22&61 \(\pm\) 22&41 \(\pm\) 30&35 \(\pm\) 27\\
-\hline
-\end{tabular}
-\caption {Tatar--Russian, news: Average number of gaps successfully filled (\%), using a synonym list} 
-\label{table:rus-news} 
-\end{table*}
+% \begin{table*}
+
+% \centering
+% \begin{tabular}{|r |*{4}{c}|}
+% \hline
+%   &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+% \hline
+% \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&64 \(\pm\) 45&64 \(\pm\) 43&62 \(\pm\) 46&53 \(\pm\) 44\\
+% 20\%&73 \(\pm\) 32&63 \(\pm\) 36&41 \(\pm\) 28&38 \(\pm\) 31\\
+% 30\%&70 \(\pm\) 31&60 \(\pm\) 24&39 \(\pm\) 27&38 \(\pm\) 33\\
+% \hline
+% \end{tabular}
+% \caption {Tatar--Russian, casual conversations: Average number of gaps successfully filled (\%), using a synonym list} 
+% \label{table:rus-casual} 
+% \end{table*}
+
+% \begin{table*}
+% \centering
+% \begin{tabular}{|r |*{4}{c}|}
+% \hline
+%   &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+% \hline
+% \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&53 \(\pm\) 40&68 \(\pm\) 35&39 \(\pm\) 38&33 \(\pm\) 35\\
+% 20\%&61 \(\pm\) 25&66 \(\pm\) 24&50 \(\pm\) 34&48 \(\pm\) 34\\
+% 30\%&50 \(\pm\) 26&48 \(\pm\) 29&40 \(\pm\) 27&34 \(\pm\) 29\\
+% \hline
+% \end{tabular}
+% \caption {Tatar--Russian, legal texts: Average number of gaps successfully filled (\%), using a synonym list} \label{table:rus-legal} 
+% \end{table*}
+
+% \begin{table*}
+% \centering
+% \begin{tabular}{|r |*{4}{c}|}
+% \hline
+%   &\multicolumn{4}{c|}{\textbf{Evaluation mode}}\\
+% \hline
+% \textbf{Gap percentage} & \textbf{MT \& Src} & \textbf{MT} & \textbf{Src} & \textbf{No hint} \\
+% \hline
+% 10\%&53 \(\pm\) 38&60 \(\pm\) 44&57 \(\pm\) 42&49 \(\pm\) 39\\
+% 20\%&59 \(\pm\) 34&49 \(\pm\) 35&47 \(\pm\) 32&29 \(\pm\) 29\\
+% 30\%&58 \(\pm\) 22&61 \(\pm\) 22&41 \(\pm\) 30&35 \(\pm\) 27\\
+% \hline
+% \end{tabular}
+% \caption {Tatar--Russian, news: Average number of gaps successfully filled (\%), using a synonym list} 
+% \label{table:rus-news} 
+% \end{table*}
 
 \section{Conclusions}
 \label{sec:conclusion}
