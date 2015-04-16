@@ -61,7 +61,7 @@ E-03071 Alacant\\
   system. The training method described is unsupervised; that is, it
   does not require any annotated corpus. The method uses
   source-language monolingual corpora, the machine translation (MT)
-  system in which the models are integrated and a statistical
+  system in which the models are integrated, and a statistical
   target-language model. Using the MT system, the sentences in 
   the source-language corpus are
   translated in all possible ways according to the different
@@ -76,7 +76,7 @@ E-03071 Alacant\\
 
 
 \section{Introduction}
-\todomlf{R1 has a general comment: ``watch out for long sentences''}
+%\todomlf{R1 has a general comment: ``watch out for long sentences''}
 Corpus-based machine translation (MT) has been the primary research
 direction in the field of MT in recent years. However, rule-based MT
 (RBMT) systems are still being developed, and there are many
@@ -100,7 +100,7 @@ disambiguation \citep{ide98a}. However, it is different to word-sense
 disambiguation in that lexical selection is a bilingual problem, not a
 monolingual problem: its aim is to find the most adequate translation,
 not the most adequate sense. Thus, it is not necessary to choose
-between a series of fine-grained senses if all these senses result in
+among a series of fine-grained senses if all these senses result in
 the same final translation; however, it may sometimes be necessary to
 choose a different translation for the same sense, for example in a
 collocation.
@@ -150,7 +150,7 @@ dependency-grammar-based transfer system TectoMT using a bilingual
 corpus.  More recently, \cite{tyers12a} presented a method of lexical
 selection for RBMT based on rules which select or remove translations
 in fixed-length contexts, along with a training method for learning
-the rules from a word-aligned parallel corpus.
+the rules from a word-aligned parallel corpus.\footnote{The work by \cite{ravi2011deciphering} and \cite{nuhn2014decipherment}, who decipher word-ciphered text using monolingual corpora only may be seen as a generalised version of the problem of lexical selection without parallel corpora.}
 
 % The principal disadvantage with this method is that it relies on a
 % parallel corpus for the language pair, something which is not always
@@ -160,15 +160,15 @@ the rules from a word-aligned parallel corpus.
 % \todo[inline]{FMT: Add article structure}
 
 \section{Method}
-\todomlf{R3 says: ``The technique clearly resembles the "Deciphering
-  Foreign Language," (S. Ravi and K. Knight) or “EM Decipherment for
-  Large Vocabularies “ (M. Nuhn, and H. Ney. EM) approaches, although
-  these techniques were not meant for learning the disambiguation but
-  for learning the translation dictionaries.  The proposed method only
-  executes one EM iteration in contrast to these works. It would be
-  interesting to highlight differences and resemblances with these
-  deciphering approaches.''. Check and cite? Also, single iteration
-  WTF?}
+% \todomlf{R3 says: ``The technique clearly resembles the "Deciphering
+%   Foreign Language," (S. Ravi and K. Knight) or “EM Decipherment for
+%   Large Vocabularies “ (M. Nuhn, and H. Ney. EM) approaches, although
+%   these techniques were not meant for learning the disambiguation but
+%   for learning the translation dictionaries.  The proposed method only
+%   executes one EM iteration in contrast to these works. It would be
+%   interesting to highlight differences and resemblances with these
+%   deciphering approaches.''. Check and cite? Also, single iteration
+%   WTF?}
 %\todo[inline]{FSM: In the experiments a development corpus is
 %  mentioned. For what is it used? This should be explain in this
 %  section.}
@@ -192,19 +192,19 @@ both of these questions. It allows the contexts that we consider to be
 linguistically interesting to be defined \emph{a priori} and then
 integrate these seamlessly into a probabilistic model
 \citep{Manning99b}.  In answer to the second question, a
-maximum-entropy model maximise the entropy subject to match the
+maximum-entropy model maximises the entropy subject to match the
 expected counts of the designed features with those found in the
-training data. \todofsm{Solved R3: ``In answer to the second question, a
-  maximum-entropy model assumes nothing about what is not present in
-  the training data. That is, if there is no information in the
-  training data, then it assumes that all outcomes —that is, all
-  possible translations— are equally likely'' can be applied to a
-  uniform distribution for a discrete variable. I think the authors
-  are trying to restate the main property of the maximum entropy
-  model, i.e.  maximum entropy model maximize the entropy (which is
-  the uniformness of the distribution) subject to match the expected
-  counts of the designed features with those found in the training
-  data.  }
+training data. % \todofsm{Solved R3: ``In answer to the second question, a
+  % maximum-entropy model assumes nothing about what is not present in
+  % the training data. That is, if there is no information in the
+  % training data, then it assumes that all outcomes —that is, all
+  % possible translations— are equally likely'' can be applied to a
+  % uniform distribution for a discrete variable. I think the authors
+  % are trying to restate the main property of the maximum entropy
+  % model, i.e.  maximum entropy model maximize the entropy (which is
+  % the uniformness of the distribution) subject to match the expected
+  % counts of the designed features with those found in the training
+  % data.  }
 %assumes nothing about what is not present in the
 %training data. 
 That is, if there is no information in the training data, then it
@@ -246,9 +246,9 @@ problem word and one word (+ \emph{handi}) to the right of it.
 \begin{figure*}
 \begin{displaymath}
   \label{eq:steps}
-  S \to \mbox{\framebox{\parbox{0.8cm}{\textit{pre- lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{1.0cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{0.8cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
+  S \to \mbox{\framebox{\parbox{0.9cm}{\textit{pre- lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{0.9cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{0.9cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
 \end{displaymath}
- \caption{A schema of the training process}
+ \caption{A schema of the lexical selection process: source sentence \(S\) has \(|G|\) lexical selection paths \(g_i\): \emph{lexsel} selects one of them \(g^\star\), which is used to generate translation \(\tau(g^\star,S)\).}
  \label{fig:lexselschema}
 \end{figure*}
 
@@ -291,7 +291,8 @@ $\mathcal{G} = (S, G)$, where $S = (s_1, s_2, \ldots s_{|S|})$ is a
 sequence of SL words, and $G = \{g_1, g_2, \ldots g_{|G|}\}$ is a set
 of possible \emph{lexical-selection paths}. A lexical-selection path
 $g = (t_1, t_2, \ldots, t_{|S|})$ is a sequence of lexical-selection
-choices of those SL words, where \(t_i\) is an element of \(T_s(s_i)\), the set of possible translations of \(s_i\).\todomlf{R1 asked for this, even if redundant, and says: ``can one source word be translated as multiple words? What about multi-word expressions that cannot be translated word-by-word or source words that do not have a TL equivalent'', etc.} % and \(T_s(\cdot)\)
+choices of those SL words, where \(t_i\) is an element of \(T_s(s_i)\), the set of possible translations of \(s_i\).\footnote{We deal only with single-word translations in this paper.}
+% \todomlf{R1 asked for this, even if redundant, and says: ``can one source word be translated as multiple words? What about multi-word expressions that cannot be translated word-by-word or source words that do not have a TL equivalent'', etc.} % and \(T_s(\cdot)\)
 %is the set of all
 %translations for a source word.
 This is produced in the first stages of RBMT, just after morphological
@@ -305,9 +306,9 @@ will call \emph{post-lexsel}, and returns a finished translation of a
 specific lexical-selection path $g_i$ of sentence
 $S$. Figure~\ref{fig:lexselschema} shows this process
 schematically. %%%\todo{Can we try to bring the figure closer?}
-\todomlf{R3 says: ``it would have been nicer to see an example of one
-  sentence going through the pipeline''. Can we add this in the text?
-  FSM: We do not have much space}
+% \todomlf{R3 says: ``it would have been nicer to see an example of one
+%   sentence going through the pipeline''. Can we add this in the text?
+%   FSM: We do not have much space}
 %Taking our previous example for the parallel corpus, Table~\ref{table:ex-monocorp} 
 %presents an example of five possible samples. 
 
@@ -315,11 +316,11 @@ As our method is unsupervised, and therefore the occurrences of
 specific lexical selection events \((s,t,c)\) cannot be counted, a TL
 model \(P_\mathrm{TL}(\cdot)\) is used to compute a value for the
 fractional count for disambiguation path \(g_i\), $p(g_i|S)$ after
-suitable normalisation:\todomlf{R2 says ``Nevertheless, I've got
-  problems to understand (4), in particular the paths in post-lexsel
-  step. Some better explanation could be offered maybe by saying that
-  (4) evaluates all possible solutions in the language model.''. Don't
-  know what to do here. }
+suitable normalisation:%\todomlf{R2 says ``Nevertheless, I've got
+  % problems to understand (4), in particular the paths in post-lexsel
+  % step. Some better explanation could be offered maybe by saying that
+  % (4) evaluates all possible solutions in the language model.''. Don't
+  % know what to do here. }
 \begin{equation}
  \label{eq:normalising}
    p(g_i|S) = \frac{P_\mathrm{TL}(\tau(g_i,S))}{\sum_{g_i \in G} P_\mathrm{TL}(\tau(g_i,S))}
@@ -401,8 +402,7 @@ part-of-speech tagger in a RBMT system.
 %    \label{tb:workedexample}
 %  \end{center}
 % \end{table*}
-
-\todomlf{R1 complains: ``the actual maximum entropy method itself is described very briefly (3 sentences at the end of Section 2)''}
+% \todomlf{R1 complains: ``the actual maximum entropy method itself is described very briefly (3 sentences at the end of Section 2)''}
 \section{Experimental setting}
 
 This section describes the training and evaluation settings used in
@@ -458,11 +458,11 @@ selection, structural transfer and morphological generation.
 \subsection{Language pairs}
 \label{sec:eval-systems}
 
-Evaluation will be performed using four language pairs. These pairs
+Evaluation will be performed using four Apertium \citep{forcada2011apertium} language pairs. These pairs
 have been selected as they include languages with different
 morphological complexity, and different amounts of resources available
 --- although for all pairs there is a parallel corpus available
-for evaluation (see Section~\ref{ss:measures}). 
+for evaluation (see Section~\ref{ss:measures}).\footnote{The Apertium revision (version) used is given in footnotes.}
 % Table~\ref{table:lang-pair-stats} 
 %presents statistics about the development status of each of the language 
 %pairs chosen, including the number of bilingual dictionary entries, coverage of
@@ -507,22 +507,14 @@ for evaluation (see Section~\ref{ss:measures}).
 
 
 \begin{description}
-\addtolength{\itemsep}{-0.10in}
-
-\item[Breton--French:] Development of the Breton--French pair has been
-  described in \citep{tyers10b}. The bilingual % tyers09b
+\addtolength{\itemsep}{-1ex}
+\item[Breton--French]  \citep{tyers10b}: Bilingual
   dictionaries were not built with polysemy in mind from the outset,
   but some entries were added later to start work on lexical
-  selection.\footnote{The version used in this paper is SVN revision
+  selection.\footnote{Revision
   41375; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr}}
 %  This is the only available machine translation system between Breton
 %  and French. It has been developed part-time over a number of years.
-  \todomlf{R1 says ``whole section is rather length especially the
-    revision numbers and URLs of the specific translations systems
-    need not be mentioned in my opinion. The space could rather be
-    used to elaborate in the description of the method in Sec
-    2.''. FSM: I have moved them to the footnote}
-
 \item[Macedonian--English:] The Macedonian--English pair
   in Apertium was created specifically for the purposes of running
   lexical-selection experiments. 
@@ -543,23 +535,21 @@ for evaluation (see Section~\ref{ss:measures}).
 %  system. 
   The most probable entry from automatic word alignment of this corpus
   using {\sc giza++} \citep{och03a} was checked to ensure that it was
-  an adequate translation, and if so marked as the default.\footnote{A
-    bilingual dictionary in Apertium \citep{forcada2011apertium} may
-    contain several TL translation for a given SL word. Where there is
-    more than one possible translation, the dictionary writer chooses
-    the most general or most frequent translation among the set of
-    possible translations and marks it as the \emph{linguistic
-      default} translation.} As a result of attempting to include all
-  possible translations, the average number of translations per word
-  is much higher % (see table~\ref{table:lang-pair-stats})
-  than in other pairs.\footnote{The version of the software used in this paper is SVN revision
-  41476; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}
-\item[Basque--Spanish:] The development of the Basque to Spanish pair
-  is described in \cite{ginesti09}. 
+  an adequate translation, and if so marked as the
+  default.\footnote{Bilingual dictionaries in Apertium
+    \citep{forcada2011apertium} may contain several translations for a
+    given word. Dictionary writers may mark as \emph{linguistic default} the most
+    general or most frequent translation among the set of possible
+    translations.} As a result of attempting to include all possible
+  translations, the average number of translations per word is much
+  higher % (see table~\ref{table:lang-pair-stats})
+  than in other pairs.\footnote{Revision 41476;
+    \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-mk-en}}
+\item[Basque--Spanish]  \citep{ginesti09}:
 % The bilingual dictionary was taken
 %  from the free/open-source Matxin system \citep{mayor2011}. 
-  Alternative translations were included in the bilingual
-  dictionary.\footnote{The version used is SVN revision 44846; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-eu-es}}
+  alternative translations were included in the bilingual
+  dictionary.\footnote{Revision 44846; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-eu-es}}
 % , but non-default translations were marked with a
 %  direction restriction\comment{FSM: This needs to be carefully
 %    explained to avoid confusing the reader.}.\footnote{The bilingual
@@ -579,8 +569,7 @@ for evaluation (see Section~\ref{ss:measures}).
 %    shown. This paper would be better mentioned in the introduction
 %    (it mentions the use of TL info for lexical selection.},
   contains a number of entries in the bilingual dictionary with more
-  than one translation.\footnote{The
-  version used in this paper is SVN revision
+  than one translation.\footnote{Revision
   41387; \url{https://svn.code.sf.net/p/apertium/svn/trunk/apertium-en-es}}
 %The most-frequent translation, as judged by
 %  the language pair developer, is marked as the \emph{default}
@@ -664,7 +653,7 @@ are acceptable for $s_i$ in sentence $S$.\footnote{Depending on how
   may not include all possible
   acceptable translations.} For a
 single sentence, we define the lexical selection error rate (LER) of
-that sentence as\todomlf{R3 says: ``The authors use LER, but F-score measures seem more appropriate to estimate the performance of the disambiguation module. Moreover, the constraint of the disambiguation module to generate only one word when evaluating seems extreme.'' He don't get it.}
+that sentence as% \todomlf{R3 says: ``The authors use LER, but F-score measures seem more appropriate to estimate the performance of the disambiguation module. Moreover, the constraint of the disambiguation module to generate only one word when evaluating seems extreme.'' He don't get it.}
 \begin{equation}
 \mathrm{LER} = \frac{\sum_{i=1}^{|S|} \mathrm{amb}(s_i)\; \mathrm{diff}(T_r(s_i), T_t(s_i))}{\sum_{i=1}^{|S|} \mathrm{amb}(s_i)},
 \label{eq:ler}
@@ -686,15 +675,15 @@ where
 states that there is a difference if the intersection between the set
 of reference translations $T_r(s_i)$ and the set of translations from
 the lexical selection module $T_t(s_i)$ is empty.  Recall
-that,\todomlf{R1 says ``this has already been mentioned
-  before''. Don't know what to do FSM: I would do nothing, this is why
-the sentence says ``Recall ...''} although $T_t(s_i)$ returns a set,
+that, %\todomlf{R1 says ``this has already been mentioned
+%  before''. Don't know what to do FSM: I would do nothing, this is why
+%the sentence says ``Recall ...''} 
+although $T_t(s_i)$ returns a set,
 this set will be a singleton, as when the lexical-selection module
-returns more than one translation the first one will be
-selected.\footnote{In practice this does not happen as each ambiguous
-  word has a \emph{default} translation.}\todomlf{R1 complains: ``why
-  mention if it doesn't happen in practice? Relevance?'' What should
-  we do?}
+returns more than one translation, Apertium will select the default one if marked or the first one of not.\footnote{In practice this does not happen as each ambiguous
+  word has a \emph{default} translation.}%\todomlf{R1 complains: ``why
+  % mention if it doesn't happen in practice? Relevance?'' What should
+  % we do?}
 
 %\todo[inline]{FSM: What happens to LER when $\sum_{i=1}^{|S|}
 %  \mathrm{amb}(s_i)=0.0$?}
@@ -705,18 +694,21 @@ selected.\footnote{In practice this does not happen as each ambiguous
 %  contain ambiguous words (unfair).}
 
 The table in Figure~\ref{fig:ler-example} gives an
-overview of the inputs.\todomlf{Caption of figure extended in response to R3} In the description it is assumed that the
+overview of the inputs.%\todomlf{Caption of figure extended in response to R3} 
+In the description it is assumed that the
 reference translation has been annotated by hand. However, hand
 annotation is a time-consuming process, and was not possible. A
 description of how the reference was built is given in
 Section~\ref{sec:eval-corpus}.
 
 \subsubsection{Machine translation performance} 
-%! \comment{This part of the text needs compressing and merging} 
+
 This is an extrinsic evaluation, which ideally would test how much the
 system improves as regards an approximate measurement of final
 translation quality in a real system. For this task, we use the
-widely-used {\sc bleu} metric \citep{papineni02}.\todomlf{BLEU reference advanced, and wrong section link removed} This is not ideal for evaluating the
+widely-used {\sc bleu} metric \citep{papineni02}.
+%\todomlf{BLEU reference advanced, and wrong section link removed} 
+This is not ideal for evaluating the
 task of a lexical selection module as the performance of the module
 will depend greatly on (a) the coverage of the bilingual dictionaries
 of the RBMT system in question, and (b) the number of reference
@@ -1042,17 +1034,18 @@ generalised iterative scaling available in the {\sc
   the compilable version we used is available as part of the Apertium
   \texttt{lex-tools} package,
   \url{http://downloads.sourceforge.net/project/apertium/apertium-lex-tools/apertium-lex-tools-0.1.0.tar.gz}.}
-to calculate the feature weights.  \todomlf{R3 says: ``The proposed
-  maximum entropy or log-linear model is trained in a surprising
-  way. In the early days of maximum entropy models, those were trained
-  using the GIS algorithm. However, it has been proved in the
-  literature that GIS has clear disadvantages with respect to other
-  batch gradient descent algorithms. For instance, it does not allow
-  for the use of regularization [...], and it is extremely slow to
-  converge, which yields worse models than other methods. The
-  smoothing/regularization of the model is also poor since it is
-  simply feature pruning instead of regularization.'' FSM: I would say
-  something in the discussion (future work).}  After learning the
+to calculate the feature weights.  %\todomlf{R3 says: ``The proposed
+  % maximum entropy or log-linear model is trained in a surprising
+  % way. In the early days of maximum entropy models, those were trained
+  % using the GIS algorithm. However, it has been proved in the
+  % literature that GIS has clear disadvantages with respect to other
+  % batch gradient descent algorithms. For instance, it does not allow
+  % for the use of regularization [...], and it is extremely slow to
+  % converge, which yields worse models than other methods. The
+  % smoothing/regularization of the model is also poor since it is
+  % simply feature pruning instead of regularization.'' FSM: I would say
+  % something in the discussion (future work).}
+After learning the
 feature sets and weights, we compute the evaluation measures described
 in Section~\ref{ss:measures}. There is an option to remove events $(s,
 t, c)$ which occur less than a certain number of times in the training
@@ -1098,10 +1091,7 @@ have eventually been used for each language pair.
  language pairs in Apertium with respect to our two evaluation
  metrics. Note that the high error rate for the Breton--French pair
  may be as a result of having the linguistic defaults tuned to a
- different domain than that of the corpus.\todomlf{R1 says the
-   footnote is important and should be incorporated to the text; what
-   should we do? FSM: I have moved it to the main text and split the
-   paragraph into two pieces.}
+ different domain than that of the corpus.
 
  Significant improvements with respect to the results obtained using
  the TL model online are apparent with the Breton--French ---the pair
@@ -1199,14 +1189,14 @@ MT). Results on four language pairs using the Apertium
 \citep{forcada2011apertium} MT system show that the method obtains
 similar or better results than those expensively obtained by scoring
 an exponential number of lexical selections for each sentence using
-the TL model online.\todomlf{R2 says: ``An error analysis would also
-  help to understand the proposal.'' We don't have time now I think.}
+the TL model online.%\todomlf{R2 says: ``An error analysis would also
+%  help to understand the proposal.'' We don't have time now I think.}
 
 %! \todo[inline]{FSM: The fact that, to the best of our knowledge, this
 %!   is the first time fractional counts are used with MaxEnt should be
 %!   stressed.}
 
-\paragraph{Acknowledgements:} We acknowledge support from the Spanish Ministry of Industry and Competitiveness through project Ayutra (TIC2012-32615) and from the European Commission through project Abu-Matran (FP7-PEOPLE-2012-IAPP, ref.\ 324414) and thank all three anonymous referees for very useful comments on the paper.\todomlf{Fran: add your acknowledgements}
+\paragraph{Acknowledgements:} We acknowledge support from the Spanish Ministry of Industry and Competitiveness through project Ayutra (TIC2012-32615) and from the European Commission through project Abu-Matran (FP7-PEOPLE-2012-IAPP, ref.\ 324414) and thank all three anonymous referees for useful comments on the paper.%\todomlf{Fran: add your acknowledgements}
 
 %The authors thank Filip Petkovski for his help in running some of the
 %experiments. They also acknowledge partial support from the 
