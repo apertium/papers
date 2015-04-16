@@ -61,11 +61,13 @@
   \And
   {Mikel L. Forcada}\\
   {Dept. Llenguatges i Sistemes Inform\`{a}tics}\\
-  \blankout{Universitat d'Alacant, Spain} \\
+  \blankout{Universitat d'Alacant} \\
+  \blankout{E-03071 Alacant, Spain}\\
   {{\tt mlf@dlsi.ua.es}}  \\[2ex]
   {\textbf{Juan Antonio P\'{e}rez-Ortiz}} \\
   {Dept. Llenguatges i Sistemes Inform\`{a}tics}\\
-  {Universitat d'Alacant, Spain} \\
+  \blankout{Universitat d'Alacant} \\
+  \blankout{E-03071 Alacant, Spain}\\
   {{\tt japerez@dlsi.ua.es}}
 }
 
@@ -91,13 +93,13 @@
 As suggested by \citet{church93}, modern machine translation (MT) systems may
 be divided into two broad categories according to their purpose: post-editing and assimilation systems. The output of the former is intended to be transformed into text comparable to human translation; the latter systems' goal is to enhance user's comprehension of text. Both kinds may be evaluated, either to control for quality in the development process or to compare the systems. Importantly, according to \citet{church93}, the evaluation methods must closely consider the system's primary purpose.
 
-Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations\footnote{\url{http://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}), few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion by \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} propose to fill gaps in the reference (human) translation. A designated number of keywords is removed from the human-translated sentences. The evaluators are then asked to fill the gaps with suitable words. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
+Despite the fact that, as a result of widespread usage of online MT, assimilation (or gisting) is currently the most frequent application of MT (in 2012, daily output of Google Translate matched the yearly output of human translations\footnote{\url{http://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}), few methodologies are established for assimilation evaluation of MT. The methods include post-editing and comparison by bilingual experts \citep{ginesti09},\comment{MLF: should we also cite the original WMT reference cited by Ginestí et al.?} and multiple choice tests \citep{jones07,trosterud12}. These approaches are often costly and prone to subjectivity: see the discussion by \cite{oregan13}. As an alternative, the modification of \emph{cloze}\comment{\emph{cloze} stands for \emph{closure}.} testing \citep{taylor53} was introduced for assimilation evaluation, first by \citet{trosterud12} as a supplementary technique, and then by \citet{oregan13} as a stand-alone method. Prior to this, cloze tests have been used to evaluate raw MT quality \citep{vanslype79,somers00}. While these authors ask informants to fill gaps in MT output, \citet{trosterud12} and \citet{oregan13} ask informants to fill gaps in the reference (human) translation. A designated number of keywords is removed from the human-translated sentences. The evaluators are then asked to fill the gaps with suitable words with and without the help of MT output. The gap-filling task models how well users comprehend the key points of the text, as it is roughly equivalent with answering questions. Thus, the method does not directly evaluate the quality of machine-produced text, but rather its usefulness in understanding the meaning of the original text. 
 
-The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar-Russian. The former pair, while not producing output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore the previously unconsidered aspects of the experiment: the correlation between evaluators' scores, and the effects of the texts' linguistic domain and the number of gaps in a sentence. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open source and is available on GitHub.\footnote{{\url{https://github.com/Sereni/Appraise}}}
+The gap-filling method has been successfully used to evaluate the Basque--English Apertium language pair. In this work we extend the evaluation to two more language pairs: Basque--Spanish and Tatar--Russian. The former pair, while not producing output suitable for post-editing, is a good example of an assimilation MT system. In addition, Basque and Spanish are not mutually understandable, and therefore constitute a good pair for evaluation. For the latter pair, the evaluation served as a quality check in the period of active development during the Google Summer of Code 2014 programme. In addition to evaluating, we explore the previously unconsidered aspects of the experiment: the correlation between evaluators' scores, and the effects of the linguistic domain of texts and the percentage of gaps in a sentence. To facilitate the evaluation, we introduce an automated system which creates task sets from parallel corpora given a range of parameters (number of gaps in a sentence, hint type, gap filler,\comment{MLF: gap filler or gap marker?} \comment{EA: well, initially we had questions with lemmas in place of gaps, and also multiple choice questions where answer options got generated automatically. This is not used in this evaluation, but it's still in the toolkit. Should I remove?} etc.), checks evaluators' answers, and calculates and reports generalized results. This system is integrated into the Appraise MT evaluation platform \citep{federmann12}; the code is open-source and is available on GitHub.\footnote{{\url{https://github.com/Sereni/Appraise}}}
 
-We anticipate that the assessed MT systems will contribute to the users' understanding of text, that is, the users will show better results in tasks when assisted with MT. We also expect to see different results depending on text domain and the relative number of gaps in a sentence.
+We anticipate that the assessed MT systems will contribute to the users' understanding of text, that is, the users will show better results in gap-filling tasks when assisted with MT. We also expect to see different results depending on text domain and the relative number of gaps in a sentence.
 
-The paper is organised as follows: in section~\ref{sec:methodology} we describe the gap-filling method for assimilation evaluation: the task layout, the choice of words, and how the tasks are generated. Section~\ref{sec:setup} introduces the experimental material, the evaluators, the distribution of tasks and the evaluation procedure. In section~\ref{sec:results} we describe and discuss the experiment results. Finally, section~\ref{sec:conclusion} draws some conclusions. This paper is concerned primarily with assimilation evaluation; for a deeper discussion on evaluation see e.g. \citep{koehn2010}.
+The paper is organised as follows: in section~\ref{sec:methodology} we describe the gap-filling method for assimilation evaluation: the task layout, the choice of words, and how the tasks are generated. Section~\ref{sec:setup} introduces the experimental material, the evaluators, the distribution of tasks and the evaluation procedure. In section~\ref{sec:results} we describe and discuss the experiment results. Finally, section~\ref{sec:conclusion} draws some conclusions. This paper is concerned primarily with assimilation evaluation; for a deeper discussion on evaluation see e.g. \citep[ch.~8]{koehn2010}.
 
 
 \section{Methodology}
@@ -158,7 +160,7 @@ In the course of the experiment, following \cite{oregan13}, we offer these hint 
 \item[Reference sentence only:] The participants are asked to fill the gaps without being given
 any context. This task serves as a baseline score and as an indicator of gaps
 that can be completed using common knowledge or language intuition (e.g.
-idioms and strong collocations). For example, in an English phrase 'Jack ordered <...> and chips', one of the natural answers would be 'fish'. Such an answer, however, may be unrelated to the meaning of text, and may be given on the basis of collocation only.
+idioms and strong collocations). For example, in an English phrase `Jack ordered <...> and chips', one of the natural answers would be `fish'. Such an answer, however, may be unrelated to the meaning of the source text, and may be given on the basis of collocation only.
 \item[Reference sentence and source sentence:] By setup, the
 participants have no command of the source language, however, it may help them to fill
 in proper nouns or loan words.
@@ -182,7 +184,7 @@ from the candidate list in such a manner that the gaps are distributed evenly th
 %\comment{MLF: O'Regan and Forcada did something lots simpler: why not here? It is probably a bit late to change this}
 
 %\comment{MLF: the procedure described so far seems automatic. What's manual and time consuming?} 
-Keyword removal could be one of the most time-consuming steps in task preparation. It normally requires human effort, because we would like to determine the words that contribute the most to understanding the text as opposed to removing random words. In our automatic setup, the above procedure is performed by a script integrated into the task generation pipeline. Parts of speech are determined with Apertium morphological analyser. To control for homonymy, we only allow the word into the candidate list if all of its possible part of speech attributions are on the PoS list. For example, if we only allow nouns on the word list, and the word "fly" receives two possible part of speech attributions from the tagger, noun and verb, it is not considered for the candidate list.
+Keyword removal could be one of the most time-consuming steps in task preparation. It normally requires human effort, because we would like to determine the words that contribute the most to understanding the text as opposed to removing random words. In our automatic setup, the above procedure is performed by a script integrated into the task generation pipeline. Parts of speech are determined with Apertium's morphological analysers. To control for homonymy, we only allow the word into the candidate list if all of its possible part of speech attributions are on the PoS list. For example, if we only allow nouns on the word list, and the word "fly" receives two possible part of speech attributions from the tagger, noun and verb, it is not considered for the candidate list.
 
 Having prepared the sentence sets, we assemble them into XML formatted for the Appraise platform.
 
@@ -194,7 +196,7 @@ In this section we will discuss the evaluators, the evaluation procedure, and th
 For each experiment we called for native speakers of target language of the language pair (i.e.
 Spanish and Russian) who had no command of source language of the pair (Basque
 and Tatar, respectively). The knowledge was self-reported, and the participants were not asked about any other languages they may know. \comment{EA 12: should I elaborate on this? Write that Basque is not mutually understandable with anything? I am pretty sure we had no one from Tatarstan, but there may have been someone who knows some Bashkir, which might have helped them. Also, with Tatar, I think, Russian loanwords help more than anything else. } Eleven evaluators participated in the Basque--Spanish experiment, and 28 in Tatar-Russian (although not everyone completed the task
-in full, see discussion). The majority of Russian participants were aged 20-25, with university degrees or in the process of obtaining them. Although we have not asked the participants about their knowledge of languages other than Tatar and Russian, it is reasonable to assume that most Russian participants knew English to some extent. The Spanish participants were university staff with background in Computer Science.
+in full, see discussion). The majority of Russian participants were aged 20--25, with university degrees or in the process of obtaining them. Although we have not asked the participants about their knowledge of languages other than Tatar and Russian, it is reasonable to assume that most Russian participants knew English to some extent. The Spanish participants were university staff with background in computer science.
 
 By design, our gap-filling tasks require a human translation (reference) of source sentences. Calling for a human translator, however, would significantly increase the resources needed for evaluation. We therefore use parallel text sources, which provide the same sentence in two languages simultaneously:
 \begin{enumerate}
@@ -209,7 +211,7 @@ Servicio Oficial de Traductores del IVAP'';\footnote{\url{http://tinyurl.com/iva
 \end{enumerate}
 
 Each set features 36 pairs of sentences. For the Basque--Spanish experiment the pairs were drawn
-randomly from the corpora, for Tatar--Russian, compiled by hand by the developer of the
+randomly from the corpora; for Tatar--Russian, compiled by hand by the developer of the
 language pair in Apertium. The Basque--Spanish experiment featured 94, 181 and 272 gaps in the 10, 20 and 30 \% tasks, respectively. For Tatar--Russian these numbers are 272, 396 and 724, due to longer sentences used in task creation. \comment{EA to JA: Ilnar wanted to test the system on his own sentences, should I put it in the paper?}
 
 \subsection{Procedure}
@@ -218,7 +220,7 @@ The evaluations took place online, in a system called Appraise \citep{federmann1
 designed specifically for various MT evaluation tasks. We adapted the code of Appraise to 
 accommodate for the gap-filling tasks. The tasks were uploaded into the system and 
 manually distributed between the participants by the following rules:
-\begin{enumerate}
+\begin{enumerate}\itemsep -0.3ex
 \item  Each participant evaluates every sentence (understood as a succession of words),
 a total of 36;
 \item  these sentences are divided into 4 groups of 9, one for each evaluation mode (see section~\ref{sec:methodology});
@@ -241,7 +243,7 @@ the answer word. We record each candidate synonym along with the answer key and 
 context sentence. For example, the word \emph{asumir} is the original answer in the Spanish sentence \emph{Aprender a jugar y divertirse en el agua sin asumir riesgos} ('Learning to play and have fun in the water without taking risks'). However, two or more evaluators gave a different answer, \emph{correr} (\emph{correr riesgos}, 'running risks'). Based on this data, an expert, who is native speaker of the target language and who has not participated in the evaluations, decides
 whether the candidate synonym is an acceptable replacement to the answer key in the given
 context. We then check participants' results against the compiled synonym list and
-increase scores where appropriate. On average, the scores improved by three percentage points in all evaluation modes. Candidate synonyms are extracted automatically from the evaluators' responses,  and each individual score is automatically updated according to the synonym list.
+increase scores where appropriate. On average, the scores improve by three percentage points in all evaluation modes. Candidate synonyms are extracted automatically from the evaluators' responses,  and each individual score is automatically updated according to the synonym list.
 
 The synonym lists for Basque--Spanish and Tatar--Russian contain 52 and 25 words, respectively. The time taken to compile each list depends on the number of candidate synonyms, and in our case was approximately 30 minutes. 
 
@@ -264,7 +266,7 @@ The synonym lists for Basque--Spanish and Tatar--Russian contain 52 and 25 words
 &59 \(\pm\) 28&56 \(\pm\) 26&40 \(\pm\) 28&35 \(\pm\) 30\\
 \hline
 \end{tabular}
-\caption{Average number of gaps successfully filled (\%), using a synonym list} 
+\caption{Average number of gaps successfully filled (\%), using a synonym list, for each language pair in all four task modes.} 
 \label{table:res}
 \end{table*}
 
@@ -276,7 +278,7 @@ calculating times we remove all the results over 6 minutes (the statistical mode
 two minutes). The typical time taken to complete one question varies from under one minute for tasks without hints and few gaps, to approximately two minutes for tasks with more hints and gaps. 
 
 % expected results
-We expect to see the following trend: scores received in different task modes inside one gap density should be observed, from highest to lowest, in tasks with MT and source hint, then MT hint only, then source hint only, and finally, no hint. We also expect that with the increase in gap density, the time taken to fill the gaps should also increase, and the percentage of correct answers should decrease. 
+We expect the scores obtained in different task modes inside one gap density to decrease when going from tasks with MT and source hint to tasks with MT hint only, to tasks with  source hint only, and finally, to tasks with no hint. We also expect that with the increase in gap density, the time taken to fill the gaps should also increase, and the percentage of correct answers should decrease. 
 
 % a few notes on time
 The latter trend holds: the average time taken to fill the gaps increases and the average percentage of correct answers decreases as the relative number of gaps goes up. The larger number of gaps in the sentence makes it more
@@ -284,13 +286,12 @@ difficult to predict the answer based on the context, and also leaves more room 
 mistakes. Exploring different percentage-mode combinations, we may note that the 10\% no-hint tasks take the least time to complete. We would have expected longer completion time, since the participant must come up with their own answer unassisted. However, in the no-hint task the participant is required to read only one (reference) sentence, as opposed to two or three (reference and hints) in other tasks. Also, the number of gaps in 10\%-gap tasks is low, as it never exceeds three. We found that, as opposed to trying to devise the best word for no-hint gaps, the participants often resorted to filing these gaps with random words, which takes little time.
 
 % this section talks about percentages in eu-es and tat-rus, and how everything is nice.
-We will now discuss the percentage of correct answers based on task type. In general, tasks with MT hints score higher than tasks without MT hints. This aligns well with our expectations and suggests than machine translation helps to understand the provided text. In addition, tasks with source hints are completed better than tasks without hints, and the same relation holds between MT+source and MT-only types of tasks. In view of the relatively large standard deviations, the significance of the hints' contribution was tested using a linear regression model. The data points were represented as an individual evaluator's average score (the number of correct answers divided by the total number of answers) in each of the percentage-hint combinations. Two separate models were created: one for no-hint vs MT-hint tasks, and another for no-hint vs source-hint tasks. Given the null hypothesis of the regression line slope equal to zero, the contribution of MT hint is significant on the p~<~0.001 level, while the contribution of the source hint is significant only with p~<~0.162
+We will now discuss the percentage of correct answers based on task type. In general, tasks with MT hints score higher than tasks without MT hints. This aligns well with our expectations and suggests than machine translation helps to understand the provided text. In addition, tasks with source hints are completed better than tasks without hints, and the same relation holds between MT+source and MT-only types of tasks. In view of the relatively large standard deviations, the significance of the hints' contribution was tested using a linear regression model. The data points (\(y\)) were represented as an individual evaluator's average score (the number of correct answers divided by the total number of answers) in each of the percentage-hint combinations. Two separate models were created: one for no-hint (\(x=0\)) vs MT-hint (\(x=1\)) tasks, and another for no-hint (\(x=0\)) vs source-hint (\(x=1\)) tasks. Given the null hypothesis that the slope \(b\) of the regression line \(y=a+bx\) equals zero, the contribution of MT hint is found to be significant on the \(p<0.001\) level, while the contribution of the source hint is significant only with \(p<0.162\).
 
-Two records in the data do not align with our expectations: the no-hint 10\% sentences in Basque--Spanish, which scored significantly higher than the source-hint in the same category, and MT+source 10\% sentences in Tatar--Russian, which we would have expected to score higher than the corresponding MT task. In the first case, this is largely due to the use of synonyms list. Before taking synonyms into account, the scores were 32 and 35 percent for source and no-hint tasks, respectively. This still shows a small difference in favor of no-hint tasks. However, the latter percentage increases significantly after we extend the answer list with synonyms. Such an increase suggests that, in this case, the content words were restored by 
-semantic context rather than through strong collocation. The second pattern, low scores in Tatar--Russian 10\% MT+source, does not stem from the task content. Instead, it is the result of the fixed order of tasks: the participants have always been given MT+source 10\% sentences first, followed by other task types.\comment{MLF: Why? Not random? \cite{oregan13} did random! Why was this changed?}The participants have not received any training tasks before the main evaluations. Therefore, it is possible that the accommodation period is responsible for lower-than-expected scores in this mode of evaluation. 
+Two records in the data do not align with our expectations: the no-hint 10\% sentences in Basque--Spanish, which scored significantly higher than the source-hint in the same category, and MT+source 10\% sentences in Tatar--Russian, which we would have expected to score higher than the corresponding MT-only task. In the first case, this is largely due to the use of synonyms list. Before taking synonyms into account, the scores were 32 and 35 percent for source and no-hint tasks, respectively. This still shows a small difference in favor of no-hint tasks. However, the latter percentage increases significantly after we extend the answer list with synonyms. Such an increase suggests that, in this case, the content words were restored by 
+semantic context rather than through strong collocation. The second pattern, low scores in Tatar--Russian 10\% MT+source, does not stem from the task content. Instead, it is the result of the fixed order of tasks: the participants have always been given MT+source 10\% sentences first, followed by other task types. The participants have not received any training tasks before the main evaluations. Therefore, it is possible that the accommodation period is responsible for lower-than-expected scores in this mode of evaluation. 
 
-It remains questionable whether we can compare results for different gap densities. The 10, 20 and 30\% sets were comprised
-of the same sentences. However, in each case different words were removed. It appears
+It remains questionable whether we can compare results for different gap densities. The 10\%, 20\%, and 30\% sets contained the same sentences. However, in each case different words were removed. It appears
 that some content words are easier to fill than the others. This may explain why in
 Basque--Spanish the 20\% MT tasks are completed with better accuracy than 10\% tasks.\comment{MLF: I think this shows that our statistics are weak, should we say something to excuse ourselves?}
 
@@ -313,15 +314,15 @@ After obtaining the results we calculated Krippendorff's alpha~\citep{krippendor
 
 \hline
 \end{tabular}
-\caption{Krippendorff Alpha measure} 
+\caption{Krippendorff Alpha measure of annotator agreement, for each language pair in all four task modes.} 
 \label{table:alpha}
 \end{table*}
 
 We selected this measure because of its compatibility with more than two annotators per task and missing data (not all the gaps were evaluated). To calculate Krippendorff's alpha we used an algorithm implementation by Thomas Grill,\footnote{\url{http://grrrr.org/data/dev/krippendorff_alpha/}} dividing the answers in each gap into two categories: correct and incorrect. The previously obtained synonym lists were taken into account, i.e. if the two answers are different but both correct, they fall into one category. The measure was calculated separately for each hint and percentage combination.
 
-The interpretation of Krippendorff's alpha varies depending on the application. One of the general guidelines suggested by \citet{landis77} for kappa-like measures (which includes Krippendorff's Alpha) is as follows: k < 0 indicates ``poor'' agreement, 0 to 0.2 ``slight'', 0.21 to 0.4 ``fair'', 0.41 to 0.6 ``moderate'', 0.61 to 0.8 ``substantial'', and 0.81 to 1 ``near perfect''.
+The interpretation of Krippendorff's alpha varies depending on the application. One of the general guidelines suggested by \citet{landis77} for kappa-like measures (which includes Krippendorff's Alpha) is as follows: \(k < 0\) indicates ``poor'' agreement, 0 to 0.2 ``slight'', 0.21 to 0.4 ``fair'', 0.41 to 0.6 ``moderate'', 0.61 to 0.8 ``substantial'', and 0.81 to 1 ``near perfect''.
 
-In general, the level of annotator agreement is relatively high. As the MT and MT+source hints are introduced, the agreement increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which contributes to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts. \comment{EA: this Alpha is from a table we do not report here, I added a couple of words to clarify}This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
+In general, the level of annotator agreement is relatively high. As the MT and MT+source hints are introduced, the agreement increases (measures closer to 1): the annotators are more consistently correct or incorrect in each given sentence. The agreement measure for the same sentences without hints is closer to zero, which attests to the reliability of our methodology. We note the outlier score in Tatar--Russian 10\% source tasks, which has the most contribution from the news texts. \comment{EA: this Alpha is from a table we do not report here, I added a couple of words to clarify}This set of sentences contains many loan words, which have similar form in Tatar and Russian (e.g. president, minister, championship), and are understood by Russian speakers. The gaps with loan words have mostly been filled correctly, while there was some disagreement in other gaps.
 
 % a little on categories
 \subsection{Results for different domains}
@@ -350,7 +351,7 @@ In general, the level of annotator agreement is relatively high. As the MT and M
 \hline
 
 \end{tabular}
-\caption{Tatar--Russian Average number of gaps successfully filled (\%), using a synonym list, for three different domains.} 
+\caption{Tatar--Russian Average number of gaps successfully filled (\%), using a synonym list, for three different domains, in all four task modes.} 
 \label{table:rus} 
 \end{table*}
 
@@ -516,7 +517,7 @@ experiment may be downloaded from our repository.\footnote{{\url{https://github.
 
 The experiments may easily be repeated for any language pair (provided a parallel corpus) and
 any machine translation system. Based on our experience, we would like to suggest the following amendments to the procedure:
-\begin{enumerate}
+\begin{enumerate}\itemsep -0.3ex
 \item As reported by \cite{oregan13}, unless the evaluation is targeted at a specific text domain, it may be beneficial to include a stylistic variety of texts in the initial corpus. Neighboring sentences on the same topic may assist the users in gap-filling tasks;
 \item If possible, increase the number of evaluators, or reduce the number of questions per participant. In the above experiments each participant filled from 110 to 187 gaps, divided into small groups. Reducing the amount of work may increase task completion rate;\comment{MLF's crazy idea: recaptchas?}\comment{EA: the participants did not leave the gaps empty, they just did not attempt the next portions of evaluation after finishing some and getting bored. or did I misunderstand the use of captchas? }
 \item To account for the adaptation period, provide training tasks before the main evaluations take place.
@@ -524,9 +525,7 @@ any machine translation system. Based on our experience, we would like to sugges
 
 As a consideration for future work, it may be beneficial to compare the results of evaluation by gap-filling method with the traditional evaluation metrics, as well as with human evaluation.
 
-\section*{Acknowledgments}
-
-This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615 and by the Google Summer of Code 2014 programme. Ekaterina Ageeva's work has been supported by Google Summer of Code 2014 through the Apertium project. We would like to thank the volunteers who participated in the evaluations.
+\paragraph{Acknowledgments:} This work has been partly funded by the Spanish Ministerio de Econom{\'i}a y Competitividad through project TIN2012-32615. Ekaterina Ageeva's work has been supported by Google Summer of Code 2014 through the Apertium project. We  thank the volunteers who participated in the evaluations.
 
 \bibliographystyle{apalike}
 
