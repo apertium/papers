@@ -39,28 +39,17 @@
 
 \title{A preliminary constraint grammar for Russian}
 
-%\author{Francis M. Tyers \\
-%  HSL-fakultehta, \\
-%  UiT Norgga árktalaš universitehta, \\
-%  N-9018 Romsa \\
-%  {\tt francis.tyers@uit.no} \\\And
-%  Robert Reynolds \\
-%  HSL-fakultehta, \\
-%  UiT Norgga árktalaš universitehta, \\
-%  N-9018 Romsa \\
-%  {\tt robert.reynolds@uit.no} \\}
+\author{Francis M. Tyers \\
+  HSL-fakultehta, \\
+  UiT Norgga árktalaš universitehta, \\
+  N-9018 Romsa \\
+  {\tt francis.tyers@uit.no} \\\And
+  Robert Reynolds \\
+  HSL-fakultehta, \\
+  UiT Norgga árktalaš universitehta, \\
+  N-9018 Romsa \\
+  {\tt robert.reynolds@uit.no} \\}
 
- \author{Author1 \\
-   Affiliation / Address line 1 \\
-   Affiliation / Address line 2 \\
-   Affiliation / Address line 3 \\
-   {\tt email@domain.com} \\\And
-   Author2 \\
-   Affiliation / Address line 1 \\
-   Affiliation / Address line 2 \\
-   Affiliation / Address line 3 \\
-   {\tt email@domain.com} \\}
- 
 \date{2015}
 
 \begin{document}
@@ -74,6 +63,7 @@
  analyser and constraint grammar. The constraint 
  grammar is tuned to be high recall at the expense of 
  low precision.
+ \rr{more precise results here}
 \end{abstract}
 
 \section{Introduction}
@@ -108,7 +98,7 @@ forward-looking \emph{Grammatical Dictionary of Russian} \cite{Zaliznjak-77}.
 This dictionary gives fine-grained morphological specifications for more than
 100~000 words, including inflectional endings, morphophonemic alternations, 
 stress patterns, exceptions, and idiosyncratic collocations.
-We base our work on the recently developed [anonymous] morphological transducer, which is also based on Zaliznjak's dictionary (Author, 2015).\footnote{The [anonymous] transducer is implemented using a two-level 
+We developed a morphological transducer based on Zaliznjak's dictionary.\footnote{Our transducer is implemented using a two-level 
 morphology \cite{Koskenniemi-84}, and can be compiled using either {\tt xfst}
 \cite{Beesley.Karttunen-03} or {\tt hfst} \cite{hfst-11}} This finite-state transducer (FST) generates all possible 
 morphosyntactic readings of each wordform, regardless of its frequency or probability. Because Russian is a relatively highly inflected language, broad coverage is important, but widespread homonymy leads to the generation of many spurious readings, as discussed in Section~\ref{ambiguity} below. Because of this, one of the foundational steps in Russian natural language processing is homograph disambiguation.
@@ -135,10 +125,11 @@ morphosyntactic readings of each wordform, regardless of its frequency or probab
 
 We identify three different types of morphosyntactic ambiguity: 
 intraparadigmatic, morphosyntactically incongruent, and morphosyntactically 
-congruent. A recent study by Author (2015) found that about 7.5\% of 
+congruent. The following examples make use of stress ambiguity to illustrate 
+each kind of ambiguity.\footnote{A recent study by \newcite{reynolds.tyers-15} 
+found that about 7.5\% of 
 morphosyntactic ambiguity in a corpus of Russian resulted in stress placement 
-ambiguity. The following examples make use of stress ambiguity to illustrate 
-each kind of ambiguity. \emph{Intraparadigmatic} ambiguity refers to homographic 
+ambiguity.} \emph{Intraparadigmatic} ambiguity refers to homographic 
 wordforms belonging to the same lexeme, as shown in \ref{ex:intrahom}. 
 
 \needspace{4\baselineskip} % keeps example all together (no orphan line) 
@@ -175,7 +166,7 @@ the use of technologies such as word sense disambiguation.
 \c. ...\\
 	...
 
-Table \ref{table:ambiguity} shows the proportional prevalence of each kind of 
+Table \ref{table:ambiguity} shows the prevalence of each kind of 
 ambiguity. The first column shows the proportion 
 of all tokens in a corpus that have each kind of ambiguity. The second column 
 shows what proportion of ambiguous tokens exhibit each kind of ambiguity.
@@ -196,12 +187,12 @@ Table~\ref{table:ambiguity}.
 Table~\ref{table:ambiguity} shows that most morphosyntactic ambiguity in 
 unrestricted Russian text is rooted in intraparadigmatic and morphosyntactically 
 incongruent ambiguity. Detailed part-of-speech tagging with morphosyntactic 
-analysis can help disambiguate these forms. Morphosyntactically congruent stress 
+analysis can help disambiguate these forms. However, morphosyntactically congruent stress 
 ambiguity cannot be disambiguated by means of detailed part-of-speech tagging, 
 and since congruent stress ambiguity represents only a small percentage of 
 ambiguous wordforms, we leave it to future work.
 
-\begin{table}
+\begin{table}[ht]
   \centering
   \begin{tabular}{l|rr}
     \hline
@@ -215,8 +206,6 @@ ambiguous wordforms, we leave it to future work.
   \caption{Frequency of different types of morphosyntactic ambiguity in unrestricted text}
   \label{table:ambiguity}
 \end{table}
-
-
 
 % we should perhaps mention something about systematic ambiguities and tagging guidelines,
 % and how we deal with stuffs
@@ -235,12 +224,12 @@ ambiguous wordforms, we leave it to future work.
 \label{sec:morph}
 %ROB
 
-The morphological transducer used in this study is described in Author (2015). 
-It is primarily based on Zaliznjak's \emph{Grammatical dictionary of Russian}, 
+The morphological transducer used in this study is 
+primarily based on Zaliznjak's \emph{Grammatical dictionary of Russian}, 
 including the 2001 version's appendix of proper nouns. It also includes neologisms
 from Grishina and Lyashevskaya's \emph{Grammatical dictionary of new Russian words},
-which is intended to be a supplement to Zaliznjak's dictionary.\footnote{\url{http://dict.ruslang.ru/gram.php}}
-
+which is intended to be a supplement to Zaliznjak's dictionary with words found in
+the Russian National Corpus.\footnote{\url{http://dict.ruslang.ru/gram.php}} 
 Example~\ref{ex:FSToutput} gives some examples of the FST's output.
 
 \ex. \label{ex:FSToutput} 
@@ -255,9 +244,11 @@ Example~\ref{ex:FSToutput} gives some examples of the FST's output.
 \subsection{Disambiguation rules}
 %FRAN
 
-The constraint grammar is composed of 299 rules which 
+The constraint grammar is composed of 299 rules which are divided into four
+categories: Safe, Safe heuristic, Heuristic, and Syntax labelling. The distribution
+of rules is shown in Table~\ref{tab:ruleDist}.
 
-\begin{table}
+\begin{table}[hb]
   \centering
   \begin{tabular}{lrrr}
     \hline
@@ -271,28 +262,30 @@ The constraint grammar is composed of 299 rules which
   \end{tabular}
   \caption{The 299 rules in the grammar are separated into four sections depending
       on rule reliability. }
+  \label{tab:ruleDist}
 \end{table}
 
 The philosophy is that safe rules should represent real constraints in
 the language. Examples might be that a preposition cannot directly precede a finite verb
 or that prepositional case requires a preceeding preposition. 
 
-% Examples where this might go wrong.
+% Examples where this might go wrong:
+% This rule can fail in dialogs where the preposition is explicit in the previous turn.
 
 Safe heuristic rules should deal with highly frequent tendencies in the language.
 For example remove a genitive at the beginning of a sentence if it is capitalised
 and there is no verb governing the genitive found to the right and there is also no
 negated verb to the right. This rule relies on the fact that if the genitive is in first 
 position in the sentence it cannot modify anything before, and no preposition 
-can be governing it.
-
-This kind of rule often relies on completeness of sets, in this case the set of verbs
-that can take a genitive complement.
+can be governing it. This kind of rule often relies on completeness of sets, 
+in this case the set of verbs that can take a genitive complement.
 
 %It also relies on accurate delimitation of sentence
 %boundaries, including rules for dealing with \ldots ellipsis.
 
-% Examples where this might go wrong.
+% Examples where this might go wrong:
+% Russian has relatively free word order. Technically there is no grammatical limitation
+% from having a genitive noun modifying a noun elsewhere in the sentence.
 
 Heuristic rules are those which we do not consider linguistic constraints, but express
 preferences, often dealing with overgeneration or overspecification in the morphological
@@ -300,7 +293,9 @@ transducer. For example, remove the verbal adverb reading of \rus{такая}, w
 the feminine singular nominative of \rus{такой} `such' or the verbal adverb 
 of \rus{такать} `say \emph{well}\ldots'.
 
-% Examples where this might go wrong.
+% Examples where this might go wrong:
+% Anywhere that a verbal adverb is possible, especially if there are no feminine nominals
+% in the sentence.
 
 Given a large hand-annotated corpus we believe that most of the heuristic rules would be 
 better replaced with information learnt from the corpus through stochastic methods. 
@@ -408,7 +403,8 @@ REMOVE:r769 IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv);
 \subsection{Corpus}
 In order to evaluate the grammar we hand-annotated 10,150 words of Russian text
 from Wikipedia articles, public domain literature and freely-available news sources. The
-annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{http://...}}
+annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/apertium-rus/texts/}}
+\rr{is this a good url? Do we need to put a COPYING file in that folder?}
 
 Hand-annotation proceeded as follows: The text was first morphologically analysed, 
 and then an annotator read through the output of the morphological analyser, commenting
@@ -649,13 +645,13 @@ and morphological description are different from our morphological analyser.
 % ROB accent placement task
 
 The constraint grammar described in this paper has been applied to the task of automatic
-word stress placement (Author, 2015). This task is especially relevant for 
+word stress placement \cite{reynolds.tyers-15}. This task is especially relevant for 
 Russian language learners, because vowels are pronounced differently depending on their position 
 relative to stress position. For example, the word \emph{molokó} `milk' is pronounced 
 /\textipa{m@l2kO}/, where each instance of the letter \emph{o} corresponds to a different vowel sound. 
 Russian has complicated patterns of shifting stress, which are difficult for learners to master.
 Almost 99\% of wordforms with ambiguous stress position can be disambiguated morphosyntactically,
-so a constraint grammar can potentially resolve most stress ambiguity indirectly. The results of Author 2015 show that our constraint grammar overcomes about 42\% of the ambiguity relevant to stress
+so a constraint grammar can potentially resolve most stress ambiguity indirectly. The results of \newcite{reynolds.tyers-15} show that our constraint grammar overcomes about 42\% of the ambiguity relevant to stress
 ambiguity in unrestricted text.
 
 \subsection{Combining with a statistical tagger}
@@ -687,7 +683,7 @@ constraint grammar also has a much lower precision as a result of the ambiguity 
 in the output.
 
 Note that the final accuracy is below the state of the art for Russian, however the state of
-the art employs unavailable training corpora of over five million tokens. 
+the art employs unavailable training corpora of over five million tokens.\rr{citations? This comes out of the blue.}
 
 \begin{figure}
   \centering
@@ -706,14 +702,11 @@ the art employs unavailable training corpora of over five million tokens.
 % func analysis
 % dep analysis
 
-% better development workflow
-
-% proof-of-concept for russian, but russian has loads of tagged corpora, for other langs, e.g. sorbian or belarusian 
 % a CG+hmm could be much faster than tagging hundreds of thousands of words of text.
 
 We have a number of plans for future work, the first is increasing the precision of the grammar without
-decreasing recall. Secondly we would like to add syntactic function labelling and dependency analysis. For 
-the dependency analysis we would like to reuse the Giellatekno dependency grammar as in \cite{antonsen10}. 
+decreasing recall. Secondly we would like to add syntactic function labelling and dependency parsing. For 
+the dependency parse we plan to reuse the Giellatekno dependency grammar as in \cite{antonsen10}. 
 
 The development workflow could also be improved, for example during the testing of each rule we could
 save the correct decisions of the grammar and gradually build up a tagged development corpus for the language.
@@ -731,12 +724,10 @@ This paper has presented a preliminary constraint grammar for Russian. The const
 is high recall and improves the performance over a simple HMM-based tagger. It also shows 
 state-of-the-art performance for the stress-placement task.
 
-
 \section*{Acknowledgments}
-\textit{Removed for review}
 
-%Do not number the acknowledgment section. Do not include this section
-%when submitting your paper for review.
+We are grateful to Alan Turing, Richard Stallman, Steve Jobs, and Laura Janda. Without these
+people, this paper would not have been completed the way that it was. \rr{Revise acknowledgments!}
 
 \bibliographystyle{acl}
 \bibliography{ruscg}
