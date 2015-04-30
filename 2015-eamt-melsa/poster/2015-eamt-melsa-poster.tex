@@ -2,6 +2,8 @@
 
 \usepackage{fontspec}
 \usepackage{multirow}
+\usepackage{url}
+\usepackage{alltt}
 
 \defaultfontfeatures{PunctuationSpace=3,Scale=MatchLowercase,Mapping=tex-text}
 
@@ -43,10 +45,14 @@
 \column{0.45} % See Section 4.4
 \block{BlocktitleB}{Blocktext}
 \column{0.55}
-\block{BlocktitleC}{
-\begin{center}
-\includegraphics[width=0.5\textwidth]{architecture-lexsel.pdf}
-\end{center}
+\block{Apertium (\url{www.apertium.org})}{
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{architecture-lexsel.pdf}
+  \end{center}
+  \begin{itemize}
+    \item Free/open-source RBMT platform
+    \item Around 40 released language pairs
+  \end{itemize}
 }
 %\note{Notetext} % See Section 4.3
 \end{columns}
@@ -56,6 +62,87 @@
   \label{eq:steps}
   S \to \mbox{\framebox{\parbox{4.0cm}{\textit{pre-lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{3.5cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{4.0cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
 \end{displaymath}
+}
+\block{Result comparison}{
+
+% Pertsona Fisikoen Errentaren gaineko Zerga (PFEZ).
+% Impuesto sobre la Renta de las Personas Físicas (IRPF).
+El impuesto superior de la renta de [-los mortal físicos-] \{+las personas físicas+\} (PFEZ) .  % 835
+
+% Beste langile baten ordez aritzea, eta laneko sarrera- eta irteera-erregistroak eta kontrolak aldaraztea.
+% La suplantación de otro trabajador, alterando los registros y controles de entrada y salida al trabajo.
+De un otro [-obrero-] {+trabajador+} reemplazar estar , y la entrada del [-curro-] {+trabajo+} y el registro de salida y el control aldaraztea .  % 781 
+
+% 34. artikulua.- Babes Publikoko Etxebizitzen motak.
+% Artículo 34. Tipos de Vivienda de Protección Pública.
+34. El artículo. El tipo de las viviendas [-del amparo público-] {+de la protección pública+} . % 767
+
+% Hezkuntza-administrazioak ikastetxe publikoetako irakasleen plantilla, lege honetan ezarritako helburuen arabera egokituko du.
+% La Administración educativa adecuará la plantilla docente de los centros públicos a los objetivos establecidos en la presente Ley.
+La administración de educación de los profesores de los colegios públicos plantilla , según [-las metas puestas-] {+los objetivos establecidos+} en esta ley adecuará .  % 746
+
+% Hirugarren egunetik Lehen Hezkuntzan ingelesari eta euskarazi dagozkion bajak.
+% Desde el tercer día las bajas correspondientes a Inglés y Euskera en Educación Primaria.
+Desde el tercer día en la [-primera-] educación {+primaria+} al inglés y euskarazi le la baja que están . % 427
+
+% 16/1985 Legea, Espainiako Ondare Historikoarena.
+% Ley 16/1985 de Patrimonio Histórico Español
+Las 16/1985 leyes , el del [-acervo-] {+patrimonio+} histórico de España . % 317
+
+% Lehen hezkuntzan matrikulatuta dauden haurrek bai, badute eskubide hori; derrigorrezko bigarren hezkuntzan daudenek, ordea, ez.
+% Sí lo tienen los niños matriculados en Educación Primaria, no los de Educación Secundaria Obligatoria.
+En la [-primera-] educación {+primaria+} matrikulatuta los niños que están sí , si tienen ese derecho ; obligado en la [-segunda-] educación {+secundaria+} los que están , sin embargo , no .  % 265
+
+% Bigarren Hezkuntzan erabiltzen den hizkuntza Lehen Hezkuntzakoa baina zailagoa da.
+% que sería que el lenguaje que se utiliza en Secundaria es más difícil que el de Primaria.
+En la [-segunda-] educación {+secundaria+} el idioma que utiliza el de la [-primera-] educación {+primaria+} pero es más [-difícil-] {+complicado+} .  % 240
+
+}
+
+% -- weights should go on operations
+%  <rule weight="0.906306">
+%    <match lemma="ondare" tags="n"><select lemma="acervo" tags="n.*"/></match>
+%    <match lemma="historiko" tags="adj.*"/>
+%  </rule>
+%  <rule weight="1.08987">
+%    <match lemma="ondare" tags="n"><select lemma="patrimonio" tags="n.*"/></match>
+%    <match lemma="historiko" tags="adj.*"/>
+%  </rule>
+%
+
+\block{Training}{
+
+\begin{alltt}
+0 \$ 0.830 \# arrain:0 arrain\_handi:0 \# arrain:1 arrain\_handi:1  \# \\
+1 \$ 0.134 \# arrain:0 arrain\_handi:0 \# arrain:1 arrain\_handi:1  \# \\
+1 \$ 0.034 \# arrain:0 arrain\_handi:0 \# arrain:1 arrain\_handi:1  \# \\
+0 \$ 0.001 \# arrain:0 arrain\_handi:0 \# arrain:1 arrain\_handi:1  \# \\
+0 \$ 0.015 \# arrain:0 aita\_arrain:0 arrain\_prestatu:0 \# arrain:1 aita\_arrain:1 arrain\_prestatu:1 \# \\
+0 \$ 0.005 \# arrain:0 aita\_arrain:0 arrain\_prestatu:0 \# arrain:1 aita\_arrain:1 arrain\_prestatu:1 \# \\
+1 \$ 0.846 \# arrain:0 aita\_arrain:0 arrain\_prestatu:0 \# arrain:1 aita\_arrain:1 arrain\_prestatu:1 \# \\
+1 \$ 0.134 \# arrain:0 aita\_arrain:0 arrain\_prestatu:0 \# arrain:1 aita\_arrain:1 arrain\_prestatu:1 \# \\
+\end{alltt}
+\ldots
+}
+
+
+\block{Features}{
+\begin{alltt}
+1.1356   arrain:pez \\
+0.90723  arrain:pescado \\
+1.28196  aita\_arrain:pescado \\
+0.167523 aita\_arrain:pez \\
+0.49622  arrain:pescado\_handi \\
+1.37525  arrain:pez\_handi\\
+1.28196  arrain:pescado\_oso \\
+0.167523 arrain:pez\_oso \\
+1.28196  arrain:pescado\_prestatu \\
+0.167523 arrain:pez\_prestatu \\
+1.28196  hemen\_arrain:pescado \\
+0.167523 hemen\_arrain:pez \\
+1.40647  itsaso\_arrain:pescado \\
+0.8466   itsaso\_arrain:pez \\
+\end{alltt}
 }
 
 \column{0.55}
