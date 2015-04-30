@@ -18,6 +18,7 @@
 \usepackage{fixltx2e} %allows subscripts
 \usepackage{tipa} %allows IPA symbols
 \usepackage{linguex}
+\usepackage[multiple]{footmisc} % separates consecutive footnotes with comma
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
@@ -63,14 +64,22 @@
  analyser and constraint grammar. The constraint 
  grammar is tuned to be high recall at the expense of 
  low precision.
- \rr{more precise results here}
+ \rr{add results here}
 \end{abstract}
 
 \section{Introduction}
 
-This paper presents a preliminary constraint grammar for Russian. The principle 
+This paper presents a preliminary constraint grammar for Russian. The main 
 objective of the constraint grammar is to produce a high recall grammar to serve
 as input into other natural language processing tasks.
+\rr{R3: What is the rationale for choosing high recall at the expense of low precision?
+Was it a deliberate choice or a consequence of limited development time? In my
+experience, this strategy is good for corpus queries in linguistic research
+(fewer relevant constructions are missed) but might be problematic for language
+technology applications, which normally require full disambiguation. Since it is
+stated in the introduction that the principal objective of the grammar is to
+produce input to other language processing tasks, this question is especially
+relevant and warrants some discussion.}
 
 The paper is laid out as follows: section~\ref{sec:lit} presents a review of 
 the literature on Russian language processing; section~\ref{ambiguity} gives
@@ -126,7 +135,8 @@ morphosyntactic readings of each wordform, regardless of its frequency or probab
 We identify three different types of morphosyntactic ambiguity: 
 intraparadigmatic, morphosyntactically incongruent, and morphosyntactically 
 congruent. The following examples make use of stress ambiguity to illustrate 
-each kind of ambiguity.\footnote{A recent study by \newcite{reynolds.tyers-15} 
+each kind of ambiguity.\footnote{Written standard Russian does not typically
+indicate stress position.}\footnote{A recent study by \newcite{reynolds.tyers-15} 
 found that about 7.5\% of 
 morphosyntactic ambiguity in a corpus of Russian resulted in stress placement 
 ambiguity.} \emph{Intraparadigmatic} ambiguity refers to homographic 
@@ -163,8 +173,7 @@ the use of technologies such as word sense disambiguation.
 	\rus{зам\'{о}к} \emph{zam\'{o}k} `lock.\textsubscript{SG-NOM}'
 \b. \rus{з\'{a}мков} \emph{z\'{a}mkov} `castle.\textsubscript{PL-GEN}'\\
 	\rus{замк\'{о}в} \emph{zamk\'{o}v} `lock.\textsubscript{PL-GEN}'
-\c. ...\\
-	...
+\c. etc. \ldots\\ \rr{is this clear that the paradigm continues, but we don't show it?}
 
 Table \ref{table:ambiguity} shows the prevalence of each kind of 
 ambiguity. The first column shows the proportion 
@@ -187,7 +196,7 @@ Table~\ref{table:ambiguity}.
 Table~\ref{table:ambiguity} shows that most morphosyntactic ambiguity in 
 unrestricted Russian text is rooted in intraparadigmatic and morphosyntactically 
 incongruent ambiguity. Detailed part-of-speech tagging with morphosyntactic 
-analysis can help disambiguate these forms. However, morphosyntactically congruent stress 
+analysis can help disambiguate these forms. However, morphosyntactically congruent
 ambiguity cannot be disambiguated by means of detailed part-of-speech tagging, 
 and since congruent stress ambiguity represents only a small percentage of 
 ambiguous wordforms, we leave it to future work.
@@ -313,7 +322,8 @@ how often the rule disambiguated correctly \cite{voutilainen99}.
 
 Due to the lack of a hand-annotated corpus compatible with our morphological
 analyser, we adopted a slightly modified technique. We picked a random text
-from the Russian Wikipedia, ran it through the morphological analyser, wrote 
+from the Russian Wikipedia, ran it through the morphological analyser, wrote
+\rr{R1: Is ru-wikipedia representative of Russian texts on the whole?}
 rules, and then ran the rules on the whole Wikipedia corpus. For each rule,
 we collected around 100 example applications and checked them. If a rule
 selected the appropriate reading in all cases, we included it in the \emph{safe}
@@ -418,6 +428,8 @@ and morphological description are different from our morphological analyser.
 
 \subsection{Intrinsic}
 %FRAN
+\rr{R1 does not understand "intrinsic/extrinsic" (and neither do I) Should we rename them to be qualitative/quantitative?}
+\rr{R1: Add some text introducing intrinsic evaluation. What is this section doing?}
 
 \begin{table*}
   \centering
@@ -455,6 +467,7 @@ and morphological description are different from our morphological analyser.
   \caption{Error analysis of false negatives}
 \end{table}
 
+\rr{R1: Tables 3 and 4 are not discussed enough.}
 % unknown words from test corpus, categorisation
 
 % rule error analysis
@@ -466,6 +479,7 @@ and morphological description are different from our morphological analyser.
       \item \texttt{REMOVE Det IF (0 Det OR Pron) (1C Ne) ;}
       \item \texttt{REMOVE Det IF (0 Det OR Pron) (1 Cm LINK 1 CC OR CS) ;}
     \end{itemize}
+    \rr{R2: The first two rules in 6.2 are a bit odd - the effect would be exactly the same without the first context bracket. Did you mean 0C instead of 0?}
     did not take into account the possibility of having a postposed determiner as in
     \begin{itemize}
       \item \ldots \rus{а может быть и раньше, и факт этот не раз поражал меня} \ldots
@@ -666,6 +680,12 @@ We follow the voting method described by \newcite{hulden12}. We used the freely 
 cross validation using our evaluation corpus, taking 10\% for testing and 90\% for training, and
 experimented with three configurations:
 
+\rr{R1: Note that Johannessen et al (2012) and Lynum et al (2011) have written two articles about building a statistical tagger on top of a cg grammar.
+
+Johannessen, Janne Bond; Hagen, Kristin; Lynum, André; Nøklestad, Anders. 2012. OBT+stat: A combined rule-based and statistical tagger. In Andersen, Gisle (ed.). Exploring Newspaper Language: Using the web to create and investigate a large corpus of modern Norwegian, s. 51–66.
+
+Lynum, Andre; Hagen, Kristin; Johannessen, Janne Bondi; Nøklestad, Anders. OBT+Stat: Evaluation of a combined CG and statistical tagger. In NEALT Proceedings Series 2011 Vol. 14.}
+
 \begin{itemize}
   \item \texttt{HMM}: the \texttt{hunpos} part-of-speech tagger with its default options
   \item \texttt{HMM+Morph}: as with \texttt{HMM} but incorporating the output of our 
@@ -693,8 +713,8 @@ the art employs unavailable training corpora of over five million tokens.\rr{cit
     Russian constraint grammar in a voting set up.}
   \label{fig:curve}
 \end{figure}
-
-
+\rr{R1: Figure 3 is small and hard to read. Shapes indistinguishable.}
+\rr{R2: If I interpret Fig. 3 correctly, the HMM system alone is much more dependent on training corpus size than the voting set-up, where accuracies actually appear to become asymptotic already with 8-10,000 words in the training corpus, indicating that further improvement depends more on the CG than the HMM-component.}
 \section{Future work}
 \label{sec:future}
 % ROB
@@ -723,6 +743,7 @@ them alongside a smaller quantity of high-quality annotated text.
 This paper has presented a preliminary constraint grammar for Russian. The constraint grammar 
 is high recall and improves the performance over a simple HMM-based tagger. It also shows 
 state-of-the-art performance for the stress-placement task.
+\rr{R2: I particularly like the idea of systematically assigning rules to heuristicity sections based on performance thresholds derived from annotation-inspection of a non-gold corpus. Another novel idea (at least in terms of actual implementation) is to go for 100\% recall and add a hybridized HMM-tagger in order to improve precision.}
 
 \section*{Acknowledgments}
 
