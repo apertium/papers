@@ -191,15 +191,21 @@ Compile features into finite-state transducer.
       \includegraphics[width=0.70\textwidth]{transducer2.eps}
     \end{center}
 \vspace{-20pt}
-    arrain:pez = 1.303123 //
-    arrain:pescado = 2.18919
 
 The translation with the highest probability is one with the highest sum of the weights.
 
 \begin{equation}
-  \underset{t \in T_s(s)}{\arg\max} ~ p_s(t|c) = \underset{t \in T_s(s)}{\arg\max} \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)
-\label{eq:max-ent-max}
+p_s(t|c) = \frac{1}{Z} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
+\label{eq:max-ent-sum}
 \end{equation}
+
+    arrain:pez $ = 1.1356 + 0.16752 = 1.303123$ 
+
+    arrain:pescado $ = 0.90723 + 1.28196 = 2.18919$
+%\begin{equation}
+%  \underset{t \in T_s(s)}{\arg\max} ~ p_s(t|c) = \underset{t \in T_s(s)}{\arg\max} \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)
+%\label{eq:max-ent-max}
+%\end{equation}
 
   }
 
