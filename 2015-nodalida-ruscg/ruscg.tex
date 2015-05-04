@@ -18,6 +18,7 @@
 \usepackage{fixltx2e} %allows subscripts
 \usepackage{tipa} %allows IPA symbols
 \usepackage{linguex}
+\usepackage{multicol}
 %\usepackage[multiple]{footmisc} % separates consecutive footnotes with comma
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
@@ -335,37 +336,60 @@ discarded the rule or included it in the heuristic rule set.
 
 \begin{figure*}
 \centering
+\begin{multicols}{2}
 \begin{alltt}
 {\small
-"<\rus{В}>"                                         "<\rus{работу}>"
-    "\rus{в}" pr                                        "\rus{работа}" n f nn sg acc
 
-"<\rus{ноябре}>"                                    "<\rus{Международный}>"
-    "\rus{ноябрь}" n m nn sg prp                        "\rus{международный}" adj m an sg nom
-                                                 "\rus{международный}" adj m nn sg acc
-"<1994>"                                        
-    "1994" num                                      "<\rus{трибунал}>"
-                                                        "\rus{трибунал}" n m nn sg acc
-"<\rus{года}>"                                          "\rus{трибунал}" n m nn sg nom
-    "\rus{год}" n m nn sg gen SELECT:r462                             
-;   "\rus{год}" n m nn pl nom fac SELECT:r462       "<\rus{по}>"
-                                                        "\rus{по}" pr 
-"<\rus{в}>"                                                             
-    "\rus{в}" pr                                    "<\rus{Руанде}>" 
-                                                        "\rus{Руанда}" np al f nn sg prp 
-"<\rus{Танзании}>"                                      "\rus{Руанда}" np al f nn sg dat
-    "\rus{Танзания}" np al f nn pl acc                           
-    "\rus{Танзания}" np al f nn sg prp              "<.>" 
-;   "\rus{Танзания}" np al f nn pl nom REMOVE:r424      "." sent 
-;   "\rus{Танзания}" np al f nn sg dat REMOVE:r433 
+"<\rus{В}>"
+    "\rus{в}" pr
+
+"<\rus{ноябре}>"
+    "\rus{ноябрь}" n m nn sg prp
+
+"<1994>"
+    "1994" num
+
+"<\rus{года}>"
+    "\rus{год}" n m nn sg gen SELECT:r462
+;   "\rus{год}" n m nn pl nom fac SELECT:r462
+
+"<\rus{в}>"
+    "\rus{в}" pr
+
+"<\rus{Танзании}>"
+    "\rus{Танзания}" np al f nn pl acc
+    "\rus{Танзания}" np al f nn sg prp
+;   "\rus{Танзания}" np al f nn pl nom REMOVE:r424
+;   "\rus{Танзания}" np al f nn sg dat REMOVE:r433
 ;   "\rus{Танзания}" np al f nn sg gen REMOVE:r433
 
 "<\rus{начал}>"
     "\rus{начало}" n nt nn pl gen
     "\rus{начать}" vblex perf tv past m sg
 ;   "\rus{начать}" vblex perf iv past m sg REMOVE:r769
+
+"<\rus{работу}>"
+    "\rus{работа}" n f nn sg acc
+    
+"<\rus{Международный}>"
+    "\rus{международный}" adj m an sg nom
+    "\rus{международный}" adj m nn sg acc
+
+"<\rus{трибунал}>"
+    "\rus{трибунал}" n m nn sg acc
+    "\rus{трибунал}" n m nn sg nom
+
+"<\rus{по}>"
+    "\rus{по}" pr
+
+"<\rus{Руанде}>"
+    "\rus{Руанда}" np al f nn sg prp
+    "\rus{Руанда}" np al f nn sg dat
+"<.>"
+    "." sent
 }
 \end{alltt}
+\end{multicols}
   \caption{Example output from the morphological analyser and constraint grammar for the sentence \rus{В ноябре 1994 
            года в Танзании начал работу Международный трибунал по Руанде.} ``The work of the International Tribunal 
            for Rwanda started in Tanzania in November 1994.'' The input ambiguity is 1.76 readings per word and 
