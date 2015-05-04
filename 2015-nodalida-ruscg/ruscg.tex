@@ -170,9 +170,7 @@ as shown in \ref{ex:MScongruent}.
 	\rus{зам\'{о}к} \emph{zam\'{o}k} `lock.\textsubscript{SG-NOM}'
 \b. \rus{з\'{a}мков} \emph{z\'{a}mkov} `castle.\textsubscript{PL-GEN}'\\
 	\rus{замк\'{о}в} \emph{zamk\'{o}v} `lock.\textsubscript{PL-GEN}'\\
-    etc. \ldots
-
-\rr{is this clear that the paradigm continues, but we don't show it? One of the reviewers thought the example was incomplete}
+    etc.
 
 Table \ref{table:ambiguity} shows the prevalence of each kind of 
 ambiguity. The first column shows the proportion 
@@ -482,7 +480,6 @@ In this section, we give a qualitative evaluation of errors made by the CG.
       \item \texttt{REMOVE Det IF (0 Det OR Pron) (1C Ne) ;}
       \item \texttt{REMOVE Det IF (0 Det OR Pron) (1 Cm LINK 1 CC OR CS) ;}
     \end{itemize}
-    \rr{R2: The first two rules in 6.2 are a bit odd - the effect would be exactly the same without the first context bracket. Did you mean 0C instead of 0?}
     did not take into account the possibility of having a postposed determiner as in
     \begin{itemize}
       \item \ldots \rus{а может быть и раньше, и факт этот не раз поражал меня} \ldots
@@ -701,8 +698,7 @@ improves the performance of the HMM tagger, an improvement of nearly 5\% in accu
 similar to that reported by \newcite{hulden12} for the same amount of training data. 
 In Figure~\ref{fig:curve}, it appears that the HMM alone is much more dependent on 
 training corpus size than the voting setup, which improves very little between a training
-corpus size of 5,000 and 9,000. This seems to indicate that further improvements depend
-more on the CG than on training data.
+corpus size of 5,000 and 9,000.
 
 Our constraint grammar also has a much lower precision as a result of the ambiguity remaining
 in the output. Similarly, the final accuracy is below the state of the art for Russian. For instance, 
@@ -718,7 +714,6 @@ tokens -- which is not freely available.
     Russian constraint grammar in a voting set up.}
   \label{fig:curve}
 \end{figure*}
-\rr{R2: If I interpret Fig. 3 correctly, the HMM system alone is much more dependent on training corpus size than the voting set-up, where accuracies actually appear to become asymptotic already with 8-10,000 words in the training corpus, indicating that further improvement depends more on the CG than the HMM-component.}
 
 \section{Future work}
 \label{sec:future}
