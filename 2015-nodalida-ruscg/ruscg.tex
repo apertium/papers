@@ -673,18 +673,12 @@ ambiguity in unrestricted text.
 Given that just over half of all ambiguity remains after running our preliminary constraint
 grammar and that for many applications unambiguous output is necessary, we decided to 
 experiment with combining the constraint grammar with a statistical tagger to resolve remaining
-ambiguity. 
+ambiguity. Similar approaches have been taken by previous researchers with Basque \cite{ezeiza.ea-98}, Czech \cite{hajic.ea-01,hajic.ea-07}, Norwegian \cite{johannessen.ea-11,johannessen.ea-12}, Spanish \cite{hulden12}, and Turkish \cite{oflazer.tur-96}. 
 
 We follow the voting method described by \newcite{hulden12}. We used the freely available
 \texttt{hunpos} part-of-speech tagger \cite{halacsy07}. We performed 10-fold
 cross validation using our evaluation corpus, taking 10\% for testing and 90\% for training, and
 experimented with three configurations:
-
-\rr{R1: Note that Johannessen et al (2012) and Lynum et al (2011) have written two articles about building a statistical tagger on top of a cg grammar.
-
-Johannessen, Janne Bond; Hagen, Kristin; Lynum, André; Nøklestad, Anders. 2012. OBT+stat: A combined rule-based and statistical tagger. In Andersen, Gisle (ed.). Exploring Newspaper Language: Using the web to create and investigate a large corpus of modern Norwegian, s. 51–66.
-
-Lynum, Andre; Hagen, Kristin; Johannessen, Janne Bondi; Nøklestad, Anders. OBT+Stat: Evaluation of a combined CG and statistical tagger. In NEALT Proceedings Series 2011 Vol. 14.}
 
 \begin{itemize}
   \item \texttt{HMM}: the \texttt{hunpos} part-of-speech tagger with its default options
