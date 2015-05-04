@@ -62,9 +62,9 @@
  and out-category homonymy in the inflectional system.
  The pipeline consists of a finite-state morphological
  analyser and constraint grammar. The constraint 
- grammar is tuned to be high recall at the expense of 
+ grammar is tuned to be high recall (over 0.99) at the expense of 
  low precision.
- \rr{add results to abstract}
+% \rr{add results to abstract}
 \end{abstract}
 
 \section{Introduction}
@@ -258,7 +258,7 @@ The constraint grammar is composed of 299 rules which are divided into four
 categories: Safe, Safe heuristic, Heuristic, and Syntax labeling. The distribution
 of rules is shown in Table~\ref{tab:ruleDist}.
 
-\begin{table}[hb]
+\begin{table}
   \centering
   \begin{tabular}{lrrr}
     \hline
@@ -323,8 +323,11 @@ how often the rule disambiguated correctly \cite{voutilainen99}.
 
 Due to the lack of a hand-annotated corpus compatible with our morphological
 analyser, we adopted a slightly modified technique. We picked a random text
-from the Russian Wikipedia, ran it through the morphological analyser, wrote
-\rr{R1: Is ru-wikipedia representative of Russian texts on the whole?}
+from the Russian Wikipedia,\footnote{The Russian Wikipedia was chosen as a testing corpus
+  as it is the largest, freely licensed corpus of Russian available on the internet. It is 
+  not representative of Russian texts as a whole.}
+ran it through the morphological analyser, wrote
+%\rr{R1: Is ru-wikipedia representative of Russian texts on the whole?}
 rules, and then ran the rules on the whole Wikipedia corpus. For each rule,
 we collected around 100 example applications and checked them. If a rule
 selected the appropriate reading in all cases, we included it in the \emph{safe}
@@ -341,22 +344,22 @@ discarded the rule or included it in the heuristic rule set.
         "в" pr                                                     "работа" n f nn sg acc
 
 "<ноябре>"                                                    "<Международный>"
-        "ноябрь" n m nn sg prp                                     "международный" adj m an sg nom
-                                                                   "международный" adj m nn sg acc
+        "ноябрь" n m nn sg prp                                 "международный" adj m an sg nom
+                                                                         "международный" adj m nn sg acc
 "<1994>"                                        
         "1994" num                                            "<трибунал>"
                                                                          "трибунал" n m nn sg acc
 "<года>"                                                           "трибунал" n m nn sg nom
         "год" n m nn sg gen SELECT:r462                             
-;        "год" n m nn pl nom fac SELECT:r462                   "<по>"
-                                                                   "по" pr 
+;        "год" n m nn pl nom fac SELECT:r462       "<по>"
+                                                                          "по" pr 
 "<в>"                                                             
-        "в" pr                                                "<Руанде>" 
-                                                                   "Руанда" np al f nn sg prp 
-"<Танзании>"                                                       "Руанда" np al f nn sg dat
+        "в" pr                                                    "<Руанде>" 
+                                                                          "Руанда" np al f nn sg prp 
+"<Танзании>"                                                     "Руанда" np al f nn sg dat
         "Танзания" np al f nn pl acc                           
         "Танзания" np al f nn sg prp                          "<.>" 
-;        "Танзания" np al f nn pl nom REMOVE:r424                   "." sent 
+;        "Танзания" np al f nn pl nom REMOVE:r424        "." sent 
 ;        "Танзания" np al f nn sg dat REMOVE:r433 
 ;        "Танзания" np al f nn sg gen REMOVE:r433
 
@@ -414,7 +417,8 @@ REMOVE:r769 IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv);
 \subsection{Corpus}
 In order to evaluate the grammar we hand-annotated 10,150 words of Russian text
 from Wikipedia articles, public domain literature and freely-available news sources. The
-annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/apertium-rus/texts/}}\rr{is this a good url? Do we need to put a COPYING file in that folder?}
+annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/apertium-rus/texts/}}
+%\rr{is this a good url? Do we need to put a COPYING file in that folder?}
 
 Hand-annotation proceeded as follows: The text was first morphologically analysed, 
 and then an annotator read through the output of the morphological analyser, commenting
@@ -702,15 +706,14 @@ in the output.
 Note that the final accuracy is below the state of the art for Russian, however the state of
 the art employs unavailable training corpora of over five million tokens.\rr{citations? This comes out of the blue.}
 
-\begin{figure}
+\begin{figure*}
   \centering
-  \includegraphics[width=0.45\textwidth]{graphics/learning-curve.pdf}
+  \includegraphics[width=0.70\textwidth]{graphics/learning-curve.pdf}
   \caption{Learning curve for three taggers, \texttt{hunpos} with no lexicon, 
     \texttt{hunpos} with a lexicon, and \texttt{hunpos} with a lexicon and the 
     Russian constraint grammar in a voting set up.}
   \label{fig:curve}
-\end{figure}
-\rr{R1: Figure 3 is small and hard to read. Shapes indistinguishable.}
+\end{figure*}
 \rr{R2: If I interpret Fig. 3 correctly, the HMM system alone is much more dependent on training corpus size than the voting set-up, where accuracies actually appear to become asymptotic already with 8-10,000 words in the training corpus, indicating that further improvement depends more on the CG than the HMM-component.}
 \section{Future work}
 \label{sec:future}
