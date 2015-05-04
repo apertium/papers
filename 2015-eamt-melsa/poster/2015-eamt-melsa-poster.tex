@@ -9,17 +9,33 @@
 
 \defaultfontfeatures{PunctuationSpace=3,Scale=MatchLowercase,Mapping=tex-text}
 
-\setromanfont[Scale=1.1]{Liberation Serif}
+\setromanfont[Scale=1.1]{FreeSans}
+%\setromanfont[Scale=1.1]{Liberation Serif}
 \setmonofont{DejaVu Sans Mono}
 
 \definecolor{darkgreen}{RGB}{0,127,0}
 
-\settitle{ \centering \vbox{
-%\@titlegraphic \\[\TP@titlegraphictotitledistance] \centering
-\color{titlefgcolor} {\bfseries \Huge \sc \@title \par}
-\vspace*{1em}
-{\LARGE \@author \par} \vspace*{1em} {\Large \@institute}
-}}
+%\settitle{ \centering \vbox{
+%\color{titlefgcolor} {\bfseries \Huge \sc \@title \par}
+%\vspace*{1em}
+%{\Large \@author \par} \vspace*{1em} {\large \@institute}
+%}\@titlegraphic \\[\TP@titlegraphictotitledistance] \centering
+%}
+
+\settitle{ 
+  \vbox{
+    \color{titlefgcolor} {\bfseries \Huge  \@title \par}
+    \vspace*{-0.5em}
+    \begin{tabular}{llr}
+    {\Large \@author \par} & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  &  \multirow{3}{*}{\@titlegraphic } \\ % [\TP@titlegraphictotitledistance]}  \\
+    & ~ & ~   \\
+    {\large \@institute}   & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ &  \\
+    \end{tabular}
+    \vspace*{1em}
+  } 
+}
+
+
 
 \makeatletter
 \def\title#1{\gdef\@title{\scalebox{\TP@titletextscale}{%
@@ -36,15 +52,15 @@
  for lexical selection in rule-based machine translation}
  \institute{$^\star$UiT Norgga árktalaš universitehta, $^\dagger$Universitat d'Alacant} % See Section 4.1
 \author{Francis M. Tyers,$^\star$ Felipe Sánchez-Martínez,$^\dagger$ Mikel L. Forcada$^\dagger$} 
-%\titlegraphic{
-%\includegraphics[width=0.04\textwidth]{LogoSamisk.png} \hspace{20pt}
-%\includegraphics[width=0.15\textwidth]{logodlsioficialcolor.eps} 
-%}
+\titlegraphic{
+\includegraphics[width=0.04\textwidth]{LogoSamisk.png} \hspace{25pt} \includegraphics[width=0.15\textwidth]{logodlsioficialcolor.eps} \hspace{10pt} \includegraphics[width=0.05\textwidth,angle=90]{apertium5a.pdf}
+}
 %\usetheme{Basic} % See Section 5
+%\usebackgroundstyle{Rays}
 \begin{document}
 
 
-\maketitle % See Section 4.1
+\maketitle[titletotopverticalspace=25pt,titletoblockverticalspace=25pt,width=0.96\textwidth] % See Section 4.1
 \begin{columns} % See Section 4.4
 
 \column{0.50} % See Section 4.4
@@ -56,7 +72,7 @@
     \begin{itemize}
     \item Choosing the most adequate 
 translation for a word from a 
-set of possibilities.
+set of possible translations from a bilingual dictionary.
     \end{itemize}
     \item Why unsupervised ? 
     \begin{itemize}
@@ -64,7 +80,7 @@ set of possibilities.
     \end{itemize}
     \item Why maximum entropy ? 
     \begin{itemize}
-      \item Allows linguists to define features for which weights are learnt.
+      \item Allows linguists to freely define relevant features for which weights are automatically learnt.
     \end{itemize}
   \end{itemize}
 
@@ -75,7 +91,7 @@ set of possibilities.
       \includegraphics[width=0.45\textwidth]{architecture-lexsel.pdf}
     \end{center}
     \begin{itemize}
-      \item Free/open-source RBMT platform
+      \item Free/open-source rule-based MT platform
       \item Around 40 released language pairs
     \end{itemize}
   }
@@ -99,7 +115,7 @@ set of possibilities.
 
 
   \begin{center}
-    \includegraphics[width=0.45\textwidth]{schema.eps}
+    \includegraphics[width=0.34\textwidth]{schema.eps}
   \end{center}
   }
 
@@ -108,7 +124,7 @@ set of possibilities.
 
 \block[titleinnersep=10em]{Training}{ % See Section 4.2
 
-Translate SL sentences to TL using existing MT system and score the translations.
+Translate SL sentences to TL using existing MT system and score the translations using an $n$-gram TL model.
 
 \useinnerblockstyle{Table}
 \begin{center}
@@ -183,7 +199,7 @@ itsaso arrain:pez & 0.8466  & itsaso arrain:pescado & 1.40647  \\
 
 \end{columns}
 
-\block[titleinnersep=10em]{« Gaur arraina prestatuko dut. »}{
+\block[titleinnersep=10em]{\emph{Gaur arraina prestatuko dut.} `Today I'll cook fish.'}{
 
 Compile features into finite-state transducer. 
 
@@ -236,7 +252,7 @@ p_s(t|c) = \frac{1}{Z} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 
 % Beste langile baten ordez aritzea, eta laneko sarrera- eta irteera-erregistroak eta kontrolak aldaraztea.
 \begin{center}
-\begin{tabular}{|l|}
+\begin{tabular}{|l|l|}
 %De un otro \textcolor{red}{-obrero} reemplazar estar, y la entrada del \textcolor{red}{-curro} y el registro de salida y el control aldaraztea. \\  % 781 
 %De un otro \textcolor{blue}{+trabajador} reemplazar estar, y la entrada del \textcolor{blue}{+trabajo} y el registro de salida y el control aldaraztea.\\  % 781 
 %La suplantación de otro \textcolor{darkgreen}{trabajador}, alterando los registros y controles de entrada y salida al \textcolor{darkgreen}{trabajo}. \\
@@ -252,26 +268,26 @@ p_s(t|c) = \frac{1}{Z} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 
 %\hline
 % Lehen hezkuntzan matrikulatuta dauden haurrek bai, badute eskubide hori; derrigorrezko bigarren hezkuntzan daudenek, ordea, ez.
-En la \textcolor{red}{-primera educación} matrikulatuta los niños que están sí, si tienen ese derecho; \\ 
-~~~~~ obligado en la \textcolor{red}{-segunda educación} los que están, sin embargo, no.  \\  % 265
-En la \textcolor{blue}{+educación primaria} matrikulatuta los niños que están sí, si tienen ese derecho; \\ 
-~~~~~ obligado en la \textcolor{blue}{+educación secundaria} los que están, sin embargo, no. \\  % 265
-Sí lo tienen los niños matriculados en \textcolor{darkgreen}{Educación Primaria}, \\
-~~~~ no los de \textcolor{darkgreen}{Educación Secundaria} Obligatoria.\\
+& En la \textcolor{red}{primera educación} matrikulatuta los niños que están sí, si tienen ese  \\ 
+& ~~ derecho; obligado en la \textcolor{red}{segunda educación} los que están, sin embargo, no.  \\  % 265
+& En la \textcolor{blue}{educación primaria} matrikulatuta los niños que están sí, si tienen ese  \\ 
+& ~~ derecho; obligado en la \textcolor{blue}{educación secundaria} los que están, sin embargo, no. \\  % 265
+ref & Sí lo tienen los niños matriculados en \textcolor{darkgreen}{Educación Primaria}, \\
+    &~~ no los de \textcolor{darkgreen}{Educación Secundaria} Obligatoria.\\
 \hline
 % Bigarren Hezkuntzan erabiltzen den hizkuntza Lehen Hezkuntzakoa baina zailagoa da.
 % que sería que el lenguaje que se utiliza en Secundaria es más difícil que el de Primaria.
 %En la [-segunda-] educación {+secundaria+} el idioma que utiliza el de la [-primera-] educación {+primaria+} pero es más [-difícil-] {+complicado+} .  % 240
 
 % 34. artikulua.- Babes Publikoko Etxebizitzen motak.
-34. El artículo. El tipo de las viviendas \textcolor{red}{-del amparo público}. \\ % 767
-34. El artículo. El tipo de las viviendas \textcolor{blue}{+de} la \textcolor{blue}{+protección pública}. \\ % 767
-Artículo 34. Tipos de Vivienda \textcolor{darkgreen}{de Protección Pública}.\\
+& 34. El artículo. El tipo de las viviendas \textcolor{red}{del amparo público}. \\ % 767
+& 34. El artículo. El tipo de las viviendas \textcolor{blue}{de} la \textcolor{blue}{protección pública}. \\ % 767
+ref & Artículo 34. Tipos de Vivienda \textcolor{darkgreen}{de Protección Pública}.\\
 \hline
 % 16/1985 Legea, Espainiako Ondare Historikoarena.
-Las 16/1985 leyes , el del \textcolor{red}{-acervo} histórico de España. \\ % 317 
-Las 16/1985 leyes , el del \textcolor{blue}{+patrimonio} histórico de España.  \\ % 317 
-Ley 16/1985 de \textcolor{darkgreen}{Patrimonio} Histórico Español \\
+& Las 16/1985 leyes , el del \textcolor{red}{acervo} histórico de España. \\ % 317 
+& Las 16/1985 leyes , el del \textcolor{blue}{patrimonio} histórico de España.  \\ % 317 
+ref & Ley 16/1985 de \textcolor{darkgreen}{Patrimonio} Histórico Español \\
 \hline
 \end{tabular}
 \end{center}
