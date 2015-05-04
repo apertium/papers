@@ -726,10 +726,12 @@ tokens -- which is not freely available.
 
 We have a number of plans for future work, the first of which is increasing the precision of the grammar without
 decreasing recall. Secondly we would like to add syntactic function labelling and dependency parsing. For 
-the dependency parse we plan to reuse the Giellatekno dependency grammar as in \cite{antonsen10}. 
+the dependency parser we plan to reuse the Giellatekno dependency grammar as in \cite{antonsen10}. 
 
 The development workflow could also be improved, for example during the testing of each rule we could
-save the correct decisions of the grammar and gradually build up a tagged development corpus for the language.
+save the correct decisions of the grammar. This would give us a partially-disambiguated development corpus,
+which could be gradually used to build up a gold-standard corpus, and which could also be used for regression
+testing to ensure that new rules added do not invalidate the correct decisions of previously written rules.
 
 Also it is worth noting that although Russian has a great deal of non-free resources, this paper also presents
 a method which is promising for smaller or lesser-resourced Slavic languages such as Sorbian, Rusyn or Belarusian. Instead
@@ -740,9 +742,11 @@ them alongside a smaller quantity of high-quality annotated text.
 \section{Conclusions}
 \label{sec:conclusions}
 
-This paper has presented a preliminary constraint grammar for Russian. The constraint grammar 
-is high recall and improves the performance over a simple HMM-based tagger. It also shows 
-state-of-the-art performance for the stress-placement task.
+This paper has presented a preliminary constraint grammar for Russian, where rules have
+been assigned to sections based on observations of performance on a non-gold corpus. The constraint grammar 
+is high recall (over 0.99) and improves the performance over a trigram HMM-based tagger. It 
+also shows state-of-the-art performance for the stress-placement task. 
+
 \rr{Emphasize R2's thoughts more in conclusion: I particularly like the idea of systematically assigning rules to heuristicity sections based on performance thresholds derived from annotation-inspection of a non-gold corpus. Another novel idea (at least in terms of actual implementation) is to go for 100\% recall and add a hybridized HMM-tagger in order to improve precision.}
 
 \section*{Acknowledgments}
