@@ -703,8 +703,10 @@ similar to that reported by \newcite{hulden12} for the same amount of training d
 constraint grammar also has a much lower precision as a result of the ambiguity remaining
 in the output.
 
-Note that the final accuracy is below the state of the art for Russian, however the state of
-the art employs unavailable training corpora of over five million tokens.\rr{citations? This comes out of the blue.}
+The final accuracy is below the state of the art for Russian. For instance, 
+\newcite{sharoff08lrec-mocky} report a maximum accuracy of 95.28\% using the TnT tagger.
+Note, however, that this model was trained on a much larger corpus -- over five million
+tokens -- which is not freely available.
 
 \begin{figure*}
   \centering
@@ -715,6 +717,7 @@ the art employs unavailable training corpora of over five million tokens.\rr{cit
   \label{fig:curve}
 \end{figure*}
 \rr{R2: If I interpret Fig. 3 correctly, the HMM system alone is much more dependent on training corpus size than the voting set-up, where accuracies actually appear to become asymptotic already with 8-10,000 words in the training corpus, indicating that further improvement depends more on the CG than the HMM-component.}
+
 \section{Future work}
 \label{sec:future}
 % ROB
@@ -724,7 +727,7 @@ the art employs unavailable training corpora of over five million tokens.\rr{cit
 
 % a CG+hmm could be much faster than tagging hundreds of thousands of words of text.
 
-We have a number of plans for future work, the first is increasing the precision of the grammar without
+We have a number of plans for future work, the first of which is increasing the precision of the grammar without
 decreasing recall. Secondly we would like to add syntactic function labelling and dependency parsing. For 
 the dependency parse we plan to reuse the Giellatekno dependency grammar as in \cite{antonsen10}. 
 
