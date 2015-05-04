@@ -71,15 +71,14 @@
 
 This paper presents a preliminary constraint grammar for Russian. The main 
 objective of the constraint grammar is to produce a high recall grammar to serve
-as input into other natural language processing tasks.
-\rr{R3: What is the rationale for choosing high recall at the expense of low precision?
-Was it a deliberate choice or a consequence of limited development time? In my
-experience, this strategy is good for corpus queries in linguistic research
-(fewer relevant constructions are missed) but might be problematic for language
-technology applications, which normally require full disambiguation. Since it is
-stated in the introduction that the principal objective of the grammar is to
-produce input to other language processing tasks, this question is especially
-relevant and warrants some discussion.}
+as input into other natural language processing tasks. There are two reasons to
+maintain high recall. First, one of the primary applications for this constraint grammar
+is computer-assisted language learning. In the domain, erroneous analyses can lead to
+significant frustration for learners. Therefore, it is important to limit disambiguation
+to cases that can be resolved with high confidence.
+Second, it is frequently the case that competing readings can
+be distinguished only by considering idiosyncratic collocational information. For such cases, 
+we expect that probabilistic approaches are both more effective and simpler to implement.
 
 The paper is laid out as follows: section~\ref{sec:lit} presents a review of 
 the literature on Russian language processing; section~\ref{ambiguity} gives
@@ -172,8 +171,10 @@ the use of technologies such as word sense disambiguation.
 \a. \rus{з\'{a}мок} \emph{z\'{a}mok} `castle.\textsubscript{SG-NOM}'\\
 	\rus{зам\'{о}к} \emph{zam\'{o}k} `lock.\textsubscript{SG-NOM}'
 \b. \rus{з\'{a}мков} \emph{z\'{a}mkov} `castle.\textsubscript{PL-GEN}'\\
-	\rus{замк\'{о}в} \emph{zamk\'{o}v} `lock.\textsubscript{PL-GEN}'
-\c. etc. \ldots\\ \rr{is this clear that the paradigm continues, but we don't show it?}
+	\rus{замк\'{о}в} \emph{zamk\'{o}v} `lock.\textsubscript{PL-GEN}'\\
+    etc. \ldots
+
+\rr{is this clear that the paradigm continues, but we don't show it? One of the reviewers thought the example was incomplete}
 
 Table \ref{table:ambiguity} shows the prevalence of each kind of 
 ambiguity. The first column shows the proportion 
@@ -413,8 +414,7 @@ REMOVE:r769 IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv);
 \subsection{Corpus}
 In order to evaluate the grammar we hand-annotated 10,150 words of Russian text
 from Wikipedia articles, public domain literature and freely-available news sources. The
-annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/apertium-rus/texts/}}
-\rr{is this a good url? Do we need to put a COPYING file in that folder?}
+annotated texts are available online under the {\sc cc-by-sa} licence.\footnote{\url{https://svn.code.sf.net/p/apertium/svn/languages/apertium-rus/texts/}}\rr{is this a good url? Do we need to put a COPYING file in that folder?}
 
 Hand-annotation proceeded as follows: The text was first morphologically analysed, 
 and then an annotator read through the output of the morphological analyser, commenting
@@ -426,10 +426,10 @@ such as the Russian National Corpus (RNC) for two main reasons: the first was th
 RNC is not freely available; the second was that the standards for tokenisation, part-of-speech
 and morphological description are different from our morphological analyser.
 
-\subsection{Intrinsic}
+\subsection{Qualitative evaluation}
 %FRAN
-\rr{R1 does not understand "intrinsic/extrinsic" (and neither do I) Should we rename them to be qualitative/quantitative?}
-\rr{R1: Add some text introducing intrinsic evaluation. What is this section doing?}
+
+In this section, we give a qualitative evaluation of errors made by the CG.
 
 \begin{table*}
   \centering
@@ -454,12 +454,12 @@ and morphological description are different from our morphological analyser.
   \begin{tabular}{|l|r|r|}
     
     \hline
-    Error in original        &   & 2 \\
-    Missing lexeme           &   & 8  \\          % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
-    Partial lexeme           &   & 2  \\          % франко-норманнское, рельс
-    Missing analysis         &   &    \\        % 
+    Error in original        &   & 2  \\
+    Missing lexeme           &   & 8  \\   % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
+    Partial lexeme           &   & 2  \\   % франко-норманнское, рельс
+    Missing analysis         &   &    \\   % 
     Equally valid analysis   &   &    \\   % большой<adj><comp><pred> ['больше<adv>'] (?)
-    Correct reading removed  &   & 34   \\ % 
+    Correct reading removed  &   & 34 \\   % 
     \hline
                              &   & 46 \\
     \hline
@@ -655,7 +655,7 @@ and morphological description are different from our morphological analyser.
 %+ could be improved by only applying to ant/pat
 
 
-\subsection{Extrinsic}
+\subsection{Quantitative evaluation}
 % ROB accent placement task
 
 The constraint grammar described in this paper has been applied to the task of automatic
@@ -665,15 +665,18 @@ relative to stress position. For example, the word \emph{molokó} `milk' is pron
 /\textipa{m@l2kO}/, where each instance of the letter \emph{o} corresponds to a different vowel sound. 
 Russian has complicated patterns of shifting stress, which are difficult for learners to master.
 Almost 99\% of wordforms with ambiguous stress position can be disambiguated morphosyntactically,
-so a constraint grammar can potentially resolve most stress ambiguity indirectly. The results of \newcite{reynolds.tyers-15} show that our constraint grammar overcomes about 42\% of the ambiguity relevant to stress
-ambiguity in unrestricted text.
+so a constraint grammar can potentially resolve most stress ambiguity indirectly. The results of 
+\newcite{reynolds.tyers-15} show that our constraint grammar overcomes about 42\% of the ambiguity 
+relevant to stress ambiguity in unrestricted text.
 
 \subsection{Combining with a statistical tagger}
 
 Given that just over half of all ambiguity remains after running our preliminary constraint
 grammar and that for many applications unambiguous output is necessary, we decided to 
 experiment with combining the constraint grammar with a statistical tagger to resolve remaining
-ambiguity. Similar approaches have been taken by previous researchers with Basque \cite{ezeiza.ea-98}, Czech \cite{hajic.ea-01,hajic.ea-07}, Norwegian \cite{johannessen.ea-11,johannessen.ea-12}, Spanish \cite{hulden12}, and Turkish \cite{oflazer.tur-96}. 
+ambiguity. Similar approaches have been taken by previous researchers with Basque \cite{ezeiza.ea-98}, 
+Czech \cite{hajic.ea-01,hajic.ea-07}, Norwegian \cite{johannessen.ea-11,johannessen.ea-12}, 
+Spanish \cite{hulden12}, and Turkish \cite{oflazer.tur-96}. 
 
 We follow the voting method described by \newcite{hulden12}. We used the freely available
 \texttt{hunpos} part-of-speech tagger \cite{halacsy07}. We performed 10-fold
