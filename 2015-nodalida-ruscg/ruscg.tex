@@ -337,6 +337,7 @@ discarded the rule or included it in the heuristic rule set.
 \begin{figure*}
 \centering
 \begin{multicols}{2}
+\noindent
 \begin{alltt}
 {\small
 
@@ -451,6 +452,8 @@ such as the Russian National Corpus (RNC) for two main reasons: the first was th
 RNC is not freely available; the second was that the standards for tokenisation, part-of-speech
 and morphological description are different from our morphological analyser.
 
+Table~\ref{table:results} gives a quantitative evaluation of the performance of our CG on the test corpus.
+
 \subsection{Qualitative evaluation}
 %FRAN
 
@@ -474,23 +477,23 @@ In this section, we give a qualitative evaluation of errors made by the CG.
 \end{table*}
 
 
-\begin{table}
-  \centering
-  \begin{tabular}{|l|r|r|}
-    
-    \hline
-    Error in original        &   & 2  \\
-    Missing lexeme           &   & 8  \\   % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
-    Partial lexeme           &   & 2  \\   % франко-норманнское, рельс
-    Missing analysis         &   &    \\   % 
-    Equally valid analysis   &   &    \\   % большой<adj><comp><pred> ['больше<adv>'] (?)
-    Correct reading removed  &   & 34 \\   % 
-    \hline
-                             &   & 46 \\
-    \hline
-  \end{tabular}
-  \caption{Error analysis of false negatives}
-\end{table}
+%\begin{table}
+%  \centering
+%  \begin{tabular}{|l|r|r|}
+%    
+%    \hline
+%    Error in original        &   & 2  \\
+%    Missing lexeme           &   & 8  \\   % безбалластный, FALSENEG: Кий<np><ant><m><sg><ins> ['кий<n><m><nn><sg><ins>']
+%    Partial lexeme           &   & 2  \\   % франко-норманнское, рельс
+%    Missing analysis         &   &    \\   % 
+%    Equally valid analysis   &   &    \\   % большой<adj><comp><pred> ['больше<adv>'] (?)
+%    Correct reading removed  &   & 34 \\   % 
+%    \hline
+%                             &   & 46 \\
+%    \hline
+%  \end{tabular}
+%  \caption{Error analysis of false negatives}
+%\end{table}
 
 \rr{R1: Tables 3 and 4 are not discussed enough.}
 % unknown words from test corpus, categorisation
@@ -679,7 +682,7 @@ In this section, we give a qualitative evaluation of errors made by the CG.
 %+ could be improved by only applying to ant/pat
 
 
-\subsection{Quantitative evaluation}
+\subsection{Task-based evaluation}
 % ROB accent placement task
 
 The constraint grammar described in this paper has been applied to the task of automatic
@@ -769,15 +772,12 @@ them alongside a smaller quantity of high-quality annotated text.
 This paper has presented a preliminary constraint grammar for Russian, where rules have
 been assigned to sections based on observations of performance on a non-gold corpus. The constraint grammar 
 is high recall (over 0.99) and improves the performance over a trigram HMM-based tagger. It 
-also shows state-of-the-art performance for the stress-placement task. 
-
-\rr{Emphasize R2's thoughts more in conclusion: I particularly like the idea of systematically assigning rules to heuristicity sections based on performance thresholds derived from annotation-inspection of a non-gold corpus. Another novel idea (at least in terms of actual implementation) is to go for 100\% recall and add a hybridized HMM-tagger in order to improve precision.}
+also shows state-of-the-art performance for the stress-placement task.
 
 \section*{Acknowledgments}
 
 We are grateful to Koen Claessen for insightful discussion, as well as three anonymous reviewers who 
 gave thoughtful feedback on an earlier version of this paper. All remaining errors are our own. 
-\rr{Revise acknowledgments!}
 
 \bibliographystyle{acl}
 \bibliography{ruscg}
