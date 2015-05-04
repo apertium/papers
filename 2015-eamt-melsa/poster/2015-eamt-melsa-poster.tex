@@ -2,6 +2,7 @@
 
 \usepackage{fontspec}
 \usepackage{multirow}
+\usepackage{multicol}
 \usepackage{url}
 \usepackage{alltt}
 \usepackage{color}
@@ -115,7 +116,7 @@ set of possible translations from a bilingual dictionary.
 
 
   \begin{center}
-    \includegraphics[width=0.34\textwidth]{schema.eps}
+    \includegraphics[width=0.40\textwidth]{schema.eps}
   \end{center}
   }
 
@@ -152,14 +153,14 @@ Translate SL sentences to TL using existing MT system and score the translations
                          $\tau(g_{1},S_5)$ & Los peces grandes se nutr\'{\i}an de esos & 0.876 \\
                          $\tau(g_{2},S_5)$ & Los pescados grandes se nutr\'{\i}an de esos & 0.124 \\
      \hline
-   
    \end{tabular}
 \end{center}
+The scores are normalised to produce fractional counts.
 }
 
 \block[titleinnersep=10em]{Model}{
 
-Extract $n$-gram contexts and train MaxEnt model.
+Extract $n$-gram contexts and train MaxEnt model using fractional counts.
 
 \begin{center}
 \begin{tabular}{|l|r|l|r|}
@@ -200,24 +201,42 @@ itsaso arrain:pez & 0.8466  & itsaso arrain:pescado & 1.40647  \\
 \end{columns}
 
 \block[titleinnersep=10em]{\emph{Gaur arraina prestatuko dut.} `Today I'll cook fish.'}{
-
-Compile features into finite-state transducer. 
-
-    \begin{center}
-      \includegraphics[width=0.70\textwidth]{transducer2.eps}
-    \end{center}
-\vspace{-20pt}
-
-The translation with the highest probability is one with the highest sum of the weights.
-
-\begin{equation}
+%Compile features into finite-state transducer. 
+  \begin{multicols*}{2}
+\textbf{Input:} (SL $\rightarrow$ TL)
+~\\
+~\\
+\begin{tabular}{ll}
+~~  &  \texttt{gaur<adv>} $\rightarrow$ \texttt{hoy<adv>}  \\ 
+~~  &  \texttt{arrain<n>} $\rightarrow$ \texttt{pescado<n><m><ND> | pez<n><m><ND>} \\ 
+~~  &  \texttt{prestatu<vblex><pfut>} $\rightarrow$ \texttt{preparar<vblex><pfut>} \\
+~~  &  \texttt{ukan<vbsint><pri><NR\_HU><NK\_NI>} $\rightarrow$ \texttt{tener<vblex><pri>}
+\end{tabular}
+~\\
+~\\
+~\\
+Paths in the rule transducer are traversed and the weights of \\
+matching features are summed:
+\begin{displaymath}
 p_s(t|c) = \frac{1}{Z} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 \label{eq:max-ent-sum}
-\end{equation}
+\end{displaymath}
 
-    arrain:pez $ = 1.1356 + 0.16752 = 1.303123$ 
+    arrain:pez  = 1.1356 + 0.16752 = \textbf{1.303123}
 
-    arrain:pescado $ = 0.90723 + 1.28196 = 2.18919$
+    arrain:pescado  = 0.90723 + 1.28196 = \textbf{2.18919}
+
+~\\
+
+The translation with the highest sum of weights is the most probable.
+
+      \includegraphics[width=0.40\textwidth]{transducer3.eps}
+
+\begin{center}
+      \textbf{Rule transducer}
+\end{center}
+
+\end{multicols*}
 %\begin{equation}
 %  \underset{t \in T_s(s)}{\arg\max} ~ p_s(t|c) = \underset{t \in T_s(s)}{\arg\max} \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)
 %\label{eq:max-ent-max}
@@ -272,7 +291,7 @@ p_s(t|c) = \frac{1}{Z} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 & ~~ derecho; obligado en la \textcolor{red}{segunda educación} los que están, sin embargo, no.  \\  % 265
 & En la \textcolor{blue}{educación primaria} matrikulatuta los niños que están sí, si tienen ese  \\ 
 & ~~ derecho; obligado en la \textcolor{blue}{educación secundaria} los que están, sin embargo, no. \\  % 265
-ref & Sí lo tienen los niños matriculados en \textcolor{darkgreen}{Educación Primaria}, \\
+{\sc ref} & Sí lo tienen los niños matriculados en \textcolor{darkgreen}{Educación Primaria}, \\
     &~~ no los de \textcolor{darkgreen}{Educación Secundaria} Obligatoria.\\
 \hline
 % Bigarren Hezkuntzan erabiltzen den hizkuntza Lehen Hezkuntzakoa baina zailagoa da.
@@ -282,12 +301,12 @@ ref & Sí lo tienen los niños matriculados en \textcolor{darkgreen}{Educación 
 % 34. artikulua.- Babes Publikoko Etxebizitzen motak.
 & 34. El artículo. El tipo de las viviendas \textcolor{red}{del amparo público}. \\ % 767
 & 34. El artículo. El tipo de las viviendas \textcolor{blue}{de} la \textcolor{blue}{protección pública}. \\ % 767
-ref & Artículo 34. Tipos de Vivienda \textcolor{darkgreen}{de Protección Pública}.\\
+{\sc ref} & Artículo 34. Tipos de Vivienda \textcolor{darkgreen}{de Protección Pública}.\\
 \hline
 % 16/1985 Legea, Espainiako Ondare Historikoarena.
 & Las 16/1985 leyes , el del \textcolor{red}{acervo} histórico de España. \\ % 317 
 & Las 16/1985 leyes , el del \textcolor{blue}{patrimonio} histórico de España.  \\ % 317 
-ref & Ley 16/1985 de \textcolor{darkgreen}{Patrimonio} Histórico Español \\
+{\sc ref} & Ley 16/1985 de \textcolor{darkgreen}{Patrimonio} Histórico Español \\
 \hline
 \end{tabular}
 \end{center}
@@ -321,6 +340,7 @@ ref & Ley 16/1985 de \textcolor{darkgreen}{Patrimonio} Histórico Español \\
   \end{tabular}
 
  \end{center}
+ \texttt{Ling}: Linguistic defaults; \texttt{LER} = Lexical-selection error rate.
 
 }
 
