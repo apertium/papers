@@ -18,7 +18,7 @@
 \usepackage{fixltx2e} %allows subscripts
 \usepackage{tipa} %allows IPA symbols
 \usepackage{linguex}
-\usepackage[multiple]{footmisc} % separates consecutive footnotes with comma
+%\usepackage[multiple]{footmisc} % separates consecutive footnotes with comma
 %\usepackage{mathptmx}
 %\usepackage{txfonts}
 \usepackage{url}
@@ -133,11 +133,11 @@ morphosyntactic readings of each wordform, regardless of its frequency or probab
 
 We identify three different types of morphosyntactic ambiguity: 
 intraparadigmatic, morphosyntactically incongruent, and morphosyntactically 
-congruent. The following examples make use of stress ambiguity to illustrate 
+congruent. The following examples make use of word stress ambiguity to illustrate 
 each kind of ambiguity.\footnote{Written standard Russian does not typically
-indicate stress position.}\footnote{A recent study by \newcite{reynolds.tyers-15} 
-found that about 7.5\% of 
-morphosyntactic ambiguity in a corpus of Russian resulted in stress placement 
+indicate stress position, but knowing stress position is essential for pronunciation. 
+A recent study by \newcite{reynolds.tyers-15} found that about 7.5\% of 
+morphosyntactic ambiguity in a corpus of Russian resulted in stress position 
 ambiguity.} \emph{Intraparadigmatic} ambiguity refers to homographic 
 wordforms belonging to the same lexeme, as shown in \ref{ex:intrahom}. 
 
@@ -162,9 +162,7 @@ shown in \ref{ex:MSincongruent}.
 
 \emph{Morphosyntactically congruent} ambiguity occurs between homographs 
 that belong to separate lexemes, and whose morphosyntactic values are identical, 
-as shown in \ref{ex:MScongruent}. As indicated in Table~\ref{table:ambiguity}, 
-this kind of ambiguity is relatively rare, and resolving this ambiguity requires 
-the use of technologies such as word sense disambiguation.
+as shown in \ref{ex:MScongruent}.
 
 \needspace{6\baselineskip} % keeps example all together (no orphan line) 
 \ex. Morphosyntactically congruent homographs \label{ex:MScongruent}
@@ -197,10 +195,10 @@ Table~\ref{table:ambiguity}.
 Table~\ref{table:ambiguity} shows that most morphosyntactic ambiguity in 
 unrestricted Russian text is rooted in intraparadigmatic and morphosyntactically 
 incongruent ambiguity. Detailed part-of-speech tagging with morphosyntactic 
-analysis can help disambiguate these forms. However, morphosyntactically congruent
-ambiguity cannot be disambiguated by means of detailed part-of-speech tagging, 
-and since congruent stress ambiguity represents only a small percentage of 
-ambiguous wordforms, we leave it to future work.
+analysis can help disambiguate these forms. On the other hand, morphosyntactically congruent
+ambiguity represents only a very small percentage of ambiguous wordforms, and instead 
+of detailed part-of-speech tagging, it can be resolved by means of word sense disambiguation.
+Because of this difference, we leave morphosyntactically congruent ambiguity to future work.
 
 \begin{table}[ht]
   \centering
@@ -243,8 +241,10 @@ the Russian National Corpus.\footnote{\url{http://dict.ruslang.ru/gram.php}}
 Example~\ref{ex:FSToutput} gives some examples of the FST's output.
 
 \ex. \label{ex:FSToutput} 
-	\a. \rus{новый}\texttt{{\small <adj><m><nn><sg><nom>}}
-	\b. \rus{автомат}\texttt{{\small <n><m><nn><sg><nom>}}
+	\a. \rus{новый}\texttt{{\small <adj><m><nn><sg><nom>}}\\
+	    `new'
+	\b. \rus{автомат}\texttt{{\small <n><m><nn><sg><nom>}}\\
+	    `automaton, sub-machine gun'
 %	\c. 
 % det/prn (e.g. pos... их, я, мой)
 % 'over'generation (e.g. all dets get all gen/nbr/case combinations)
@@ -255,7 +255,7 @@ Example~\ref{ex:FSToutput} gives some examples of the FST's output.
 %FRAN
 
 The constraint grammar is composed of 299 rules which are divided into four
-categories: Safe, Safe heuristic, Heuristic, and Syntax labelling. The distribution
+categories: Safe, Safe heuristic, Heuristic, and Syntax labeling. The distribution
 of rules is shown in Table~\ref{tab:ruleDist}.
 
 \begin{table}[hb]
@@ -275,9 +275,9 @@ of rules is shown in Table~\ref{tab:ruleDist}.
   \label{tab:ruleDist}
 \end{table}
 
-The philosophy is that safe rules should represent real constraints in
+The philosophy is that Safe rules should represent real constraints in
 the language. Examples might be that a preposition cannot directly precede a finite verb
-or that prepositional case requires a preceeding preposition. 
+or that prepositional case requires a preceding preposition. 
 
 % Examples where this might go wrong:
 % This rule can fail in dialogs where the preposition is explicit in the previous turn.
