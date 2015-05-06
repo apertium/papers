@@ -1,0 +1,208 @@
+%% Hey, emacs(1), this is -*- mode: latex; coding: utf-8; fill-column: 79 -*-
+
+\documentclass{beamer}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[russian,english]{babel}
+\usepackage{relsize}
+\usepackage{linguex}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\usetheme{Montpellier}
+\usecolortheme{beaver}
+
+\title[A preliminary constraint grammar for Russian] % (optional, only for long titles)
+{A preliminary constraint grammar for Russian}
+%\subtitle{}
+\author[Tyers, Reynolds] % (optional, for multiple authors)
+{F.~Tyers \and R.~Reynolds}
+\institute[University of Troms\o] % (optional)
+{
+  Department of Languages and Linguistics\\
+  University of Troms\o
+}
+\date[NODALIDA-CG 2015] % (optional)
+{Constraint Grammar Workshop - Methods, Tools and Applications (NODALIDA 2015)}
+\subject{Constraint Grammar, Russian, Morphosyntactic disambiguation}
+
+\begin{document}
+\frame{\titlepage}
+ 
+\section{Outline}
+
+\begin{frame}
+\frametitle{Presentation outline}
+%\framesubtitle{}
+\begin{itemize}
+	\item Ambiguity in Russian
+	\pause
+	\item Finite-state transducer for Russian part-of-speech tagging
+	\pause
+	\item Constraint Grammar disambiguation rules
+	\pause
+	\item Development process
+	\pause
+	\item Evaluation
+	\pause
+	\begin{itemize}
+		\item Qualitative
+		\pause
+		\item Task-based (word stress placement)
+		\pause
+		\item Combining with HMM tagger
+	\end{itemize}
+	\pause
+	\item Future work
+\end{itemize}
+\end{frame}
+
+\section{Ambiguity in Russian} %ROB
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\section{Finite-state transducer for Russian part-of-speech tagging} %ROB
+\begin{frame}
+\frametitle{New finite-state tools for Russian morphological analysis}
+\framesubtitle{}
+\begin{itemize}
+	\item We developed a finite-state transducer using the two-level formalism \cite{Koskenniemi-83}
+	\pause
+	\begin{itemize}
+		\item can be used to analyze and generate Russian wordforms, with or without stress marks
+		\pause
+	\end{itemize}
+	\item Since Russian has systematic syncretism and widespread homonymy, we are developing a constraint grammar \cite{Karlsson.Voutilainen.ea-95} to disambiguate such cases
+	\pause
+	\item implemented in the freely available CG3 system (http://beta.visl.sdu.dk/cg3.html)
+\end{itemize}
+\end{frame}
+
+\section{Constraint Grammar disambiguation rules} %FRAN
+
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+
+\section{Development process} %FRAN
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\section{Evaluation}
+\subsection{Qualitative evaluation} %FRAN
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\subsection{Task-based evaluation} %ROB
+
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+
+\subsection{Combining with HMM tagger} %FRAN
+
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\section{Conclusions and future work} %FRAN
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+\begin{itemize}
+	\item 
+	\pause
+	\item 
+	\begin{itemize}
+		\item 
+		\pause
+	\end{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\bibliographystyle{apalike}
+\begin{tiny}
+\bibliography{ruscg}
+\end{tiny}
+\end{document}
