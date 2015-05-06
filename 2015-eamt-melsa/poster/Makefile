@@ -4,3 +4,4 @@ all:
 	dot -Teps transducer2.dot -otransducer2.eps
 	dot -Teps transducer3.dot -otransducer3.eps
 	xelatex 2015-eamt-melsa-poster.tex
+	xelatex 2015-eamt-melsa-boaster.tex

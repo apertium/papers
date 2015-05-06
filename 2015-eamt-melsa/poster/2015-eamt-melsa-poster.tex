@@ -26,11 +26,11 @@
 \settitle{ 
   \vbox{
     \color{titlefgcolor} {\bfseries \Huge  \@title \par}
-    \vspace*{-0.5em}
+%    \vspace*{-0.2em}
     \begin{tabular}{llr}
-    {\Large \@author \par} & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  &  \multirow{3}{*}{\@titlegraphic } \\ % [\TP@titlegraphictotitledistance]}  \\
+    {\Large \@author \par} & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  &  \multirow{3}{*}{\@titlegraphic } \\ % [\TP@titlegraphictotitledistance]}  \\
     & ~ & ~   \\
-    {\large \@institute}   & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ &  \\
+    {\large \@institute}   & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ &  \\
     \end{tabular}
     \vspace*{1em}
   } 
@@ -54,7 +54,7 @@
  \institute{$^\star$UiT Norgga árktalaš universitehta, $^\dagger$Universitat d'Alacant} % See Section 4.1
 \author{Francis M. Tyers,$^\star$ Felipe Sánchez-Martínez,$^\dagger$ Mikel L. Forcada$^\dagger$} 
 \titlegraphic{
-\includegraphics[width=0.04\textwidth]{LogoSamisk.png} \hspace{25pt} \includegraphics[width=0.15\textwidth]{logodlsioficialcolor.eps} \hspace{10pt} \includegraphics[width=0.05\textwidth,angle=90]{apertium5a.pdf}
+\includegraphics[width=0.04\textwidth]{LogoSamisk.png} \hspace{35pt} \includegraphics[width=0.15\textwidth]{logodlsioficialcolor.eps} \hspace{15pt} \includegraphics[width=0.05\textwidth,angle=90]{apertium5a.pdf}
 }
 %\usetheme{Basic} % See Section 5
 %\usebackgroundstyle{Rays}
@@ -66,7 +66,7 @@
 
 \column{0.50} % See Section 4.4
 
-\block[titleinnersep=10em]{Lexical selection}{
+\block[titleinnersep=14em]{Lexical selection}{
 
   \begin{itemize}
     \item Lexical selection is:
@@ -87,7 +87,8 @@ set of possible translations from a bilingual dictionary.
 
 }
 
-  \block[titleinnersep=10em]{Apertium (\url{www.apertium.org})}{
+  \block[titleinnersep=14em]{Apertium (\url{www.apertium.org})}{
+\vspace{-1pt}
     \begin{center}
       \includegraphics[width=0.45\textwidth]{architecture-lexsel.pdf}
     \end{center}
@@ -107,26 +108,45 @@ set of possible translations from a bilingual dictionary.
 %  </rule>
 %
 
-  \block[titleinnersep=10em]{Training schema}{
+  \block[titleinnersep=14em]{Schema}{
 
-%\begin{displaymath}
-%    \label{eq:steps}
-%    S \to \mbox{\framebox{\parbox{4.0cm}{\textit{pre-lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{3.5cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{4.0cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
-%  \end{displaymath}
+%This is produced in the first stages of RBMT, just after morphological
+%analysis, part-of-speech tagging, and bilingual dictionary lookup, and
+%before any structural transfer takes place (we will call this
+%\emph{pre-lexsel}). In our model, it is after these first stages that
+%lexical selection (\emph{lexsel}) occurs. After lexical selection,
+%structural transfer and generation take place; a function
+%$\tau(g_i,S)$ represents the result of these last stages, which we
+%will call \emph{post-lexsel}, and returns a finished translation of a
+%specific lexical-selection path $g_i$ of sentence
+%
+
+\begin{displaymath}
+    S \to \mbox{\framebox{\parbox{4.0cm}{\textit{pre-lexsel}}}} \to (\{g_i\}_{i=1}^{i=|G|},S) \to \mbox{\framebox{\parbox{3.5cm}{\textit{\textbf{lexsel}}}}} \to (g^\star,S) \to \mbox{\framebox{\parbox{4.0cm}{\textit{post- lexsel}}}} \to \tau(g^\star,S)
+  \end{displaymath}
+\vspace*{0.1pt}
+\begin{itemize}
+ \item \textbf{pre-lexsel:} pipeline up to lexical transfer
+ \item \textbf{lexsel:} selects one of them \(g^\star\)
+ \item \textbf{post-lexsel:} returns finished translation \(\tau(g^\star,S)\)
+\end{itemize}
+%Source sentence \(S\) has \(|G|\) lexical selection paths \(g_i\): \emph{lexsel} selects one of them \(g^\star\), which is used to generate translation \(\tau(g^\star,S)\).
 
 
-  \begin{center}
-    \includegraphics[width=0.40\textwidth]{schema.eps}
-  \end{center}
+
+
+%  \begin{center}
+%    \includegraphics[width=0.40\textwidth]{schema.eps}
+%  \end{center}
   }
 
 \column{0.5}
  
 
-\block[titleinnersep=10em]{Training}{ % See Section 4.2
+\block[titleinnersep=14em]{Training}{ % See Section 4.2
 
 Translate SL sentences to TL using existing MT system and score the translations using an $n$-gram TL model.
-
+~\\
 \useinnerblockstyle{Table}
 \begin{center}
 \begin{tabular}{|c|l|r|}
@@ -158,10 +178,10 @@ Translate SL sentences to TL using existing MT system and score the translations
 The scores are normalised to produce fractional counts.
 }
 
-\block[titleinnersep=10em]{Model}{
+\block[titleinnersep=14em]{Model}{
 
 Extract $n$-gram contexts and train MaxEnt model using fractional counts.
-
+\vspace{0.2pt}
 \begin{center}
 \begin{tabular}{|l|r|l|r|}
 \hline
@@ -200,7 +220,7 @@ itsaso arrain:pez & 0.8466  & itsaso arrain:pescado & 1.40647  \\
 
 \end{columns}
 
-\block[titleinnersep=10em]{\emph{Gaur arraina prestatuko dut.} `Today I'll cook fish.'}{
+\block[titleinnersep=14em]{\emph{Gaur arraina prestatuko dut.} `Today I'll cook fish.'}{
 %Compile features into finite-state transducer. 
   \begin{multicols*}{2}
 \textbf{Input:} (SL $\rightarrow$ TL)
@@ -222,7 +242,7 @@ p_s(t|c) = \frac{1}{Z} \exp{ \sum_{k=1}^{n_F} \lambda_k^s h_k^s(t, c)}
 \label{eq:max-ent-sum}
 \end{displaymath}
 
-    arrain:pez  = 1.1356 + 0.16752 = \textbf{1.303123}
+    arrain:pez  = 1.1356 + 0.16752 = 1.303123
 
     arrain:pescado  = 0.90723 + 1.28196 = \textbf{2.18919}
 
@@ -233,7 +253,8 @@ The translation with the highest sum of weights is the most probable.
       \includegraphics[width=0.40\textwidth]{transducer3.eps}
 
 \begin{center}
-      \textbf{Rule transducer}
+      \textbf{Rule transducer} \\
+{\small {\tt <:$n$>} denotes rule number}
 \end{center}
 
 \end{multicols*}
@@ -246,7 +267,7 @@ The translation with the highest sum of weights is the most probable.
 
 \begin{columns}
 
-%\block[titleinnersep=10em]{Training}{
+%\block[titleinnersep=14em]{Training}{
 %
 %\begin{alltt}
 %0 \$ 0.830 \# arrain:0 arrain\_handi:0 \# arrain:1 arrain\_handi:1  \# \\
@@ -263,7 +284,7 @@ The translation with the highest sum of weights is the most probable.
 %
 \column{0.55}
  
-\block[titleinnersep=10em]{Result comparison}{
+\block[titleinnersep=14em]{Result comparison}{
 
 % Pertsona Fisikoen Errentaren gaineko Zerga (PFEZ).
 % Impuesto sobre la Renta de las Personas Físicas (IRPF).
@@ -317,7 +338,7 @@ The translation with the highest sum of weights is the most probable.
 
 \column{0.45}
 
-\block[titleinnersep=10em]{Results}{ % See Section 4.2
+\block[titleinnersep=14em]{Results}{ % See Section 4.2
  \begin{center}
 
   \begin{tabular}{|l|l|r|r|r||r|}
@@ -340,6 +361,7 @@ The translation with the highest sum of weights is the most probable.
   \end{tabular}
 
  \end{center}
+~\\
  \texttt{Ling}: Linguistic defaults; \texttt{LER} = Lexical-selection error rate.
 
 }
