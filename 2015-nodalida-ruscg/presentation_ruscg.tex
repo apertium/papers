@@ -176,11 +176,12 @@
 \section{Finite-state transducer for Russian part-of-speech tagging} %ROB
 
 \begin{frame}
-\frametitle{New finite-state tools for Russian morphological analysis}
+\frametitle{New finite-state transducer for Russian morphological analysis}
 \framesubtitle{}
 \begin{itemize}
 	\item We developed a finite-state transducer using the two-level formalism \cite{Koskenniemi-84}
-	\begin{itemize}	
+	\begin{itemize}
+		\item lexc/twolc, can be compiled in xfst or hfst
 		\item analyze and generate Russian wordforms, with or without stress marks
 		\pause
 	\end{itemize}
@@ -190,43 +191,65 @@
 		\item supplemented with \emph{Grammatical dictionary of new Russian words} [Grishina \& Lyashevskaya 2008]
 		\pause
 	\end{itemize}
-	\item Since Russian has systematic syncretism and widespread homonymy, we are developing a constraint grammar \cite{Karlsson.Voutilainen.ea-95} to disambiguate such cases
-	\pause
-	\item implemented in the freely available CG3 system (http://beta.visl.sdu.dk/cg3.html)
+	\item Example output:
+	\begin{itemize}
+		\item \rus{новый}\texttt{{\small <adj><m><nn><sg><nom>}}\\
+	    `new'
+		\item \rus{автомат}\texttt{{\small <n><m><nn><sg><nom>}}\\
+	    `automaton, sub-machine gun'
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
 \section{Constraint Grammar disambiguation rules} %FRAN
 
 \begin{frame}
-\frametitle{}
+\frametitle{CG rules: distribution of rule across levels}
 \framesubtitle{}
+\begin{table}
+  \centering
+  \begin{tabular}{lrrr}
+    \hline
+                     & {\sc select} & {\sc remove} & {\sc map} \\
+    \hline
+    Safe             &   16         &   34         &  -- \\
+    Safe heuristic   &   89         &   76         &  -- \\
+    Heuristic        &   26         &   52         &  -- \\
+    Syntax labelling & --           & --           & 6 \\ 
+    \hline
+  \end{tabular}
+  \caption{The 299 rules in the grammar are separated into four sections depending
+      on rule reliability. }
+  \label{tab:ruleDist}
+\end{table}
 \begin{itemize}
-	\item 
-	\pause
-	\item 
-	\begin{itemize}
-		\item 
+	\item Safe: real constraints in the language\\
+		{\small Ex: preposition cannot directly precede a finite verb}
 		\pause
-	\end{itemize}
-	\item 
+	\item Safe heuristic: highly reliable tendencies\\ % Russian word order is very free
+		{\small Ex: remove GEN from sentence-init. if no verb governing GEN.}
+		\pause
+	\item Heuristic: tendencies that are true most of the time\\ % better replaced with machine-learning
+		{\small Ex: \rus{такая} is `such.FEM-SG-NOM', not `say~\rus{так}.V-PRS-ACT-ADV'}
 \end{itemize}
 \end{frame}
 
 
 \section{Development process} %FRAN
+
 \begin{frame}
-\frametitle{}
+\frametitle{Writing rules and level assignment}
 \framesubtitle{}
 \begin{itemize}
-	\item 
+	\item No hand-annotated corpus was compatible with our analyser
 	\pause
-	\item 
+	\item We sorted new rules using Russian Wikipedia by collecting 100 example applications of the rule
+	\pause
 	\begin{itemize}
-		\item 
-		\pause
+		\item Safe: 100\% correct
+		\item Safe heuristic: > 97\% correct
+		\item Heuristic (or discard): $\leq$ 97\% correct 
 	\end{itemize}
-	\item 
 \end{itemize}
 \end{frame}
 
