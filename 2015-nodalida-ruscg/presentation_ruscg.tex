@@ -7,6 +7,7 @@
 \usepackage{linguex}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{tipa} %allows IPA symbols
 
 \newcommand{\rus}[1]{\foreignlanguage{russian}{#1}}
 
@@ -26,71 +27,167 @@
 %\subtitle{}
 \author[Tyers, Reynolds] % (optional, for multiple authors)
 {F.~Tyers \and R.~Reynolds}
-\institute[University of Troms\o] % (optional)
+\institute[UiT, The Arctic University of Norway] % (optional)
 {
   Department of Languages and Linguistics\\
-  University of Troms\o
+  UiT, The Arctic University of Norway
 }
 \date[NODALIDA-CG 2015] % (optional)
-{Constraint Grammar Workshop - Methods, Tools and Applications (NODALIDA 2015)}
+{Constraint Grammar - Methods, Tools and Applications (NODALIDA workshop, 2015)}
 \subject{Constraint Grammar, Russian, Morphosyntactic disambiguation}
 
 \begin{document}
 \frame{\titlepage}
  
-\section{Outline}
+\section{Goals of the paper}
 
 \begin{frame}
-\frametitle{Presentation outline}
+\frametitle{Goals}
 %\framesubtitle{}
 \begin{itemize}
-	\item Ambiguity in Russian
+	\item Preliminary work on morphosyntactic disambiguator for Russian
 	\pause
-	\item Finite-state transducer for Russian part-of-speech tagging
-	\pause
-	\item Constraint Grammar disambiguation rules
-	\pause
-	\item Development process
+	\item Tuned to be high recall at the expense of precision
 	\pause
 	\item Evaluation
-	\pause
 	\begin{itemize}
 		\item Qualitative
-		\pause
 		\item Task-based (word stress placement)
-		\pause
-		\item Combining with HMM tagger
+		\item Combining CG with HMM tagger
 	\end{itemize}
-	\pause
-	\item Future work
 \end{itemize}
 \end{frame}
 
 \section{Ambiguity in Russian} %ROB
+
 \begin{frame}
-\frametitle{}
+\frametitle{Ambiguity in Russian}
 \framesubtitle{}
 \begin{itemize}
-	\item 
-	\pause
-	\item 
+	\item Russian is characterized by fusional morphology
 	\begin{itemize}
-		\item 
-		\pause
+		\item Nouns: 12+ paradigm cells (6 main cases, sg and pl)
+		\item Modifiers: 34+ paradigm cells (6 cases, 3 genders, etc.)
+		\item Verbs: 13+ paradigm cells (4 past, 6 non-past, imperatives, etc.)
+		% 200+ if you count participles
+
+		\item \rus{выпей} \emph{vypej} `drink.IMP' or `bittern.Pl-GEN'
 	\end{itemize}
-	\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Three kinds of ambiguity}
+\framesubtitle{}
+\begin{itemize}
+	\item We identify three kinds of ambiguity
+	\begin{itemize}
+		\item Intraparadigmatic (same lemma, different morphosyntax)
+		\item Morphosyntactically incongruent (different lemma, different morphosyntax)		
+		\item Morphosyntactically congruent (different lemma, same morphosyntax)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Intraparadigmatic ambiguity}
+\framesubtitle{}
+\begin{itemize}
+	\item \rus{тела} \emph{tela} `body'
+	\begin{itemize}
+		\item \rus{т\'{е}ла} \emph{téla} SG-GEN
+		\item \rus{тел\'{а}} \emph{telá} PL-NOM or PL-ACC
+	\end{itemize}
+	\pause
+	\item \rus{новой} \emph{novoj} `new'
+	\begin{itemize}
+		\item ADJ-SG-FEM-GEN
+		\item ADJ-SG-FEM-LOC
+		\item ADJ-SG-FEM-DAT
+		\item ADJ-SG-FEM-INS
+	\end{itemize}
+	\pause
+	\item \rus{пойдём} \emph{pojdëm} `go'
+	\begin{itemize}
+		\item FUT-1PL `we will go'
+		\item IMP-1PL `let's go!'
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Morphysyntactically incongruent ambiguity}
+\framesubtitle{}
+\begin{itemize}
+	\item \rus{нашей} \emph{našej}
+	\begin{itemize}
+		\item \rus{н\'{а}шей} \emph{nášej} `our.F-SG-GEN/DAT/LOC/INS'
+		\item \rus{наш\'{е}й} \emph{našéj} `sew on.IMP-2SG'
+	\end{itemize}
+	\pause
+	\item \rus{дорога} \emph{doroga}
+	\begin{itemize}
+		\item \rus{дор\'{о}га} \emph{doróga} `road.N-F-SG-NOM'
+    	\item \rus{дорог\'{а}} \emph{dorogá} `dear.ADJ-F-SG-PRED'
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Morphysyntactically congruent ambiguity}
+\framesubtitle{}
+\begin{itemize}
+	\item \rus{замок} \emph{zamok}
+	\begin{itemize}
+		\item \rus{з\'{a}мок} \emph{z\'{a}mok} `castle.SG-NOM'\\
+			  \rus{зам\'{о}к} \emph{zam\'{o}k} `lock.SG-NOM'
+		\item \rus{з\'{a}мков} \emph{z\'{a}mkov} `castle.PL-GEN'\\
+			  \rus{замк\'{о}в} \emph{zamk\'{o}v} `lock.PL-GEN'
+		\item etc.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Frequency of each kind of ambiguity}
+\framesubtitle{}
+\begin{table}
+  \centering
+  \begin{tabular}{l|rr}
+    \hline
+    \textbf{Type}  & \textbf{all tokens} & \textbf{ambig. tokens} \\
+    \hline
+    Intraparadigm. & 59.0\%                   & 90.9\%   \\
+    Incongruent    & 27.7\%                   & 42.7\%   \\ 
+    Congruent      & 1.2\%                   & 1.8\%    \\ 
+    \hline
+  \end{tabular}
+  \caption{Frequency of different types of morphosyntactic ambiguity in unrestricted text}
+  %TODO caption says 'Table :' without a number
+  \label{table:ambiguity}
+\end{table}
+\begin{itemize}
+	\item \rus{з\'{a}мков} \emph{zámkov} `castle.PL-GEN'
+	\item \rus{замк\'{о}в} \emph{zamkóv} `lock.PL-GEN'
+	\item \rus{з\'{а}мков} \emph{zámkov} `having to do with castles.A-MSC-SG-PRED'
 \end{itemize}
 \end{frame}
 
 \section{Finite-state transducer for Russian part-of-speech tagging} %ROB
+
 \begin{frame}
 \frametitle{New finite-state tools for Russian morphological analysis}
 \framesubtitle{}
 \begin{itemize}
-	\item We developed a finite-state transducer using the two-level formalism \cite{Koskenniemi-83}
-	\pause
+	\item We developed a finite-state transducer using the two-level formalism \cite{Koskenniemi-84}
+	\begin{itemize}	
+		\item analyze and generate Russian wordforms, with or without stress marks
+		\pause
+	\end{itemize}
+	\item Based on Zaliznjak's \emph{Grammatical dictionary of Russian} \cite{Zaliznjak-77}
 	\begin{itemize}
-		\item can be used to analyze and generate Russian wordforms, with or without stress marks
+		\item includes the proper noun appendix from 2001 version
+		\item supplemented with \emph{Grammatical dictionary of new Russian words} [Grishina \& Lyashevskaya 2008]
 		\pause
 	\end{itemize}
 	\item Since Russian has systematic syncretism and widespread homonymy, we are developing a constraint grammar \cite{Karlsson.Voutilainen.ea-95} to disambiguate such cases
@@ -153,17 +250,48 @@
 \subsection{Task-based evaluation} %ROB
 
 \begin{frame}
-\frametitle{}
+\frametitle{Automatic word stress placement}
 \framesubtitle{}
 \begin{itemize}
-	\item 
-	\pause
-	\item 
+	\item Russian word stress placement...
 	\begin{itemize}
-		\item 
+		\item ...includes complex patterns of shifting stress
+		\pause
+		\item ...is critical for language learners and text-to-speech\\
+		\begin{itemize}
+			\item \rus{догов\'{о}ром} \emph{dogovórom} > /\textipa{d@g2vOr@m}/
+		\end{itemize}
+		\pause
+		\item ...is lexically specified: there are no universal rules of stress pattern assignment
 		\pause
 	\end{itemize}
-	\item 
+	\item >7.48\% of tokens in Russian running text are stress-ambiguous
+	\item Theoretically, almost 99\% of stress ambiguity can be resolved using a constraint grammar
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Automatic word stress placement - results}
+\framesubtitle{}
+\begin{table}
+  \centering
+  \begin{tabular}{r | r r r }
+     & accuracy\% & error\% & abstention\%  \\
+    \hline
+    \hline
+    {\small {\tt RussianGram}} & 90.09 & 0.79 & 9.12 \\
+    {\small {\tt no CG}} & 90.07 & 0.49 & 9.44  \\
+    {\small {\tt CG}} & 93.21 & 0.74 & 6.05
+  \end{tabular}
+  \caption{Results of stress placement task evaluation}
+  \label{tab:results}
+\end{table}
+\begin{itemize}
+	\item CG makes gains of 3.14\% (42\% of ambiguity from FST)
+	\pause
+	\item CG's high recall leads to a low error rate
+	\pause
+	\item To be continued.... (tomorrow)
 \end{itemize}
 \end{frame}
 
