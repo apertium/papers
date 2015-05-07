@@ -322,33 +322,100 @@
 \subsection{Combining with HMM tagger} %FRAN
 
 \begin{frame}
-\frametitle{}
+\frametitle{Combining CG with HMM tagger}
 \framesubtitle{}
 \begin{itemize}
-	\item 
+	\item CG removes less than half of ambiguity
 	\pause
-	\item 
+	\item To resolve remaining ambiguity, we backoff to HMM tagger
 	\begin{itemize}
-		\item 
+		\item This approach has been applied with...\\
+		Basque \cite{ezeiza.ea-98},\\
+		Czech \cite{hajic.ea-01,hajic.ea-07},\\
+		Norwegian \cite{johannessen.ea-11,johannessen.ea-12},\\
+		Spanish \cite{hulden12},\\
+		and Turkish \cite{oflazer.tur-96}
 		\pause
+	\end{itemize}
+	\item We follow the voting method used by \cite{hulden12}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Voting setup}
+\framesubtitle{}
+\begin{itemize}
+	\item Freely available hunpos tagger
+	\pause
+	\item 10-fold cross-validation (90\% training, 10\% testing)
+	\pause
+	\item 3 configurations
+	\begin{itemize}
+		\item HMM - hunpos with default options
+		\pause
+		\item HMM+Morph - incorporating FST output as full-form lexicon
+		\pause
+		\item HMM+Morph vs CG - Voting setup: if constraint grammar left 1 valid reading,
+		take that. Otherwise, take output of HMM+Morph.
 	\end{itemize}
 	\item 
 \end{itemize}
 \end{frame}
 
-\section{Conclusions and future work} %FRAN
 \begin{frame}
-\frametitle{}
+\frametitle{Voting results}
 \framesubtitle{}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.70\textwidth]{graphics/learning-curve.pdf}
+  %\caption{Learning curve for three taggers, \texttt{hunpos} with no lexicon, 
+  %  \texttt{hunpos} with a lexicon, and \texttt{hunpos} with a lexicon and the 
+  %  Russian constraint grammar in a voting set up.}
+  \label{fig:curve}
+\end{figure}
 \begin{itemize}
+	\item hunpos tagger alone is more dependent on training-corpus size
+	\pause
 	\item 
 	\pause
 	\item 
+	\item 
+\end{itemize}
+\end{frame}
+
+
+\section{Future work and conclusions} %FRAN
+
+\begin{frame}
+\frametitle{Future work}
+\framesubtitle{}
+\begin{itemize}
+	\item Improve precision while maintaining high recall
+	\pause
+	\item Add syntactic functions and dependency parsing
 	\begin{itemize}
-		\item 
+		\item We plan to use Giellatekno's dependency parser \cite{antonsen10}
 		\pause
 	\end{itemize}
-	\item 
+	\item Improve workflow by extending our gold-standard corpus while checking new rule accuracy
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusions}
+\framesubtitle{}
+\begin{itemize}
+	\item Preliminary constraint grammar for Russian
+	\pause
+	\begin{itemize}
+		\item Tuned for high recall at expense of precision
+		\pause
+		\item Rules are assigned to levels, based on tested accuracy
+		\pause
+		\item Improves performance of trigram HMM-based tagger
+		\pause
+	\end{itemize}
+	\item Improve workflow by extending our gold-standard corpus while checking new rule accuracy
 \end{itemize}
 \end{frame}
 
