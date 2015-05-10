@@ -70,8 +70,12 @@
 		\item Modifiers: 34+ paradigm cells (6 cases, 3 genders, etc.)
 		\item Verbs: 13+ paradigm cells (4 past, 6 non-past, imperatives, etc.)
 		% 200+ if you count participles
-
-		\item \rus{выпей} \emph{vypej} `drink.IMP' or `bittern.Pl-GEN'
+	\end{itemize}
+	\pause
+	\item Both in-category and out-of-category ambiguity
+	\begin{itemize}
+		\item \rus{выпей} \emph{vypej} `drink.V-IMPER' or `bittern.N-PL-GEN'
+		\includegraphics[width=0.40\textwidth]{graphics/vypej3103.jpeg} %TODO add image
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -164,12 +168,17 @@
   \end{tabular}
   \caption{Frequency of different types of morphosyntactic ambiguity in unrestricted text}
   %TODO caption says 'Table :' without a number
+  %TODO numbers different from ERC
   \label{table:ambiguity}
 \end{table}
+\pause
 \begin{itemize}
-	\item \rus{з\'{a}мков} \emph{zámkov} `castle.PL-GEN'
-	\item \rus{замк\'{о}в} \emph{zamkóv} `lock.PL-GEN'
-	\item \rus{з\'{а}мков} \emph{zámkov} `having to do with castles.A-MSC-SG-PRED'
+	\item Categories are not mutually exclusive
+	\begin{itemize}
+		\item \rus{з\'{a}мков} \emph{zámkov} `castle.PL-GEN'
+		\item \rus{замк\'{о}в} \emph{zamkóv} `lock.PL-GEN'
+		\item \rus{з\'{а}мков} \emph{zámkov} `having to do with castles.A-MSC-SG-PRED'
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -231,11 +240,12 @@
 		\pause
 	\item Heuristic: tendencies that are true most of the time\\ % better replaced with machine-learning
 		{\small Ex: \rus{такая} is `such.FEM-SG-NOM', not `say~\rus{так}.V-PRS-ACT-ADV'}
+		%TODO better example
 \end{itemize}
 \end{frame}
 
 
-\section{Development process} %FRAN
+\subsection{Development process} %FRAN
 
 \begin{frame}
 \frametitle{Writing rules and level assignment}
@@ -248,25 +258,149 @@
 	\begin{itemize}
 		\item Safe: 100\% correct
 		\item Safe heuristic: > 97\% correct
-		\item Heuristic (or discard): $\leq$ 97\% correct 
+		\item Heuristic (or discard): $\leq$ 97\% correct
+		%TODO put before asdf
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 \section{Evaluation}
-\subsection{Qualitative evaluation} %FRAN
+
 \begin{frame}
-\frametitle{}
+\frametitle{Results}
+\framesubtitle{}
+\begin{table}
+  \centering
+  \begin{tabular}{l|rrrrr}
+    %\hline
+    \textbf{Domain} & \textbf{Tokens} & \textbf{Precision} & \textbf{Recall} & \textbf{F-score} & {Ambig. solved} \\
+    \hline
+    Wikipedia       & 7,857      & 0.506        & 0.996    & 0.671 & 44.92\%  \\
+    Literature      & 1,652      & 0.473        & 0.984    & 0.638 & 42.95\%  \\
+    News            & 642        & 0.471        & 0.990    & 0.638 & 41.60\%  \\
+    \hline
+    \textbf{Total}  & 10,150     & 0.498        &  0.994   & 0.663 & 44.39\% \\
+    %\hline
+  \end{tabular}
+  \caption{Results on the test corpora.}
+  \label{table:results}
+\end{table}
+\end{frame}
+
+\subsection{Qualitative evaluation} %FRAN
+
+\begin{frame}
+\frametitle{Errors from `bad linguistics' (too limiting)}
 \framesubtitle{}
 \begin{itemize}
-	\item 
-	\pause
-	\item 
-	\begin{itemize}
-		\item 
-		\pause
+	  \item In some cases a rule did not take into account grammatical possibilities 
+    in the language. e.g. Two simple rules such as\ldots
+    \begin{itemize}
+      \item \texttt{REMOVE Det IF (0 Det OR Pron) (1C Ne) ;}
+      \item \texttt{REMOVE Det IF (0 Det OR Pron) (1 Cm LINK 1 CC OR CS) ;}
+    \end{itemize}
+    \ldots did not take into account the possibility of having a postposed determiner as in\ldots
+    \begin{itemize}
+      \item \ldots \rus{а может быть и раньше, и факт этот не раз поражал меня} \ldots
+      \item \ldots and maybe even earlier, and fact \textbf{this} not once surprised me \ldots
+    \end{itemize}
+    \ldots or a interposed parenthetical as in\ldots
+    \begin{itemize}
+      \item \rus{Но какие, однако же, два разные создания, точно обе с двух разных планет!}
+      \item But what, \textbf{exactly} , two different creatures, just both from two different planets!
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Errors from bad rules}
+\framesubtitle{}
+\begin{itemize}
+	\item In some cases a rule was simply incorrectly specified. For example, the 
+	following rule was designed to solve the ambiguity between short-form neuter adjectives and 
+	adverbs
+   \begin{itemize}
+		\item \texttt{REMOVE A + Short IF (-1C Fin OR Adv OR A) (0C Short OR Adv) ;}
+   \end{itemize}
+   \item However there is no reason why we should prefer an adverb over an adjective after an adverb, 
+   \begin{itemize}
+     \item \ldots \rus{потому что совсем неприятно проснуться в гробу под землею.}
+     \item \ldots because [it is] really \textbf{unpleasant} to wake up in a coffin under the ground.
+   \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Errors from incomplete barrier}
+\framesubtitle{}
+\begin{itemize}
+	\item Some rules suffered from incomplete barriers, which is something that would
+	benefit from a more systematic treatment.
+	\begin{itemize} 
+		\item \texttt{REMOVE NGDAIP - Acc - Prp - Loc IF (-1C* Pr/V OR Pr/Na BARRIER (*) - Adv - Comp - DetIndecl - ModAcc - ModPrp) ;}
 	\end{itemize}
-	\item 
+	here the rule removes the nominative reading of the adjective to leave the accusative 
+	reading because the preposition \rus{в} `in' is found preceding. 
+	\begin{itemize}
+     \item \rus{В 1960-х электрифицированные высокоскоростные железные дороги появились в Японии и некоторых других странах.}
+     \item In the 1960's \textbf{electrified} high-speed railways appeared in Japan and some other countries.
+   \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Errors from incomplete sets}
+\framesubtitle{}
+\begin{itemize}
+	\item In some cases the rule was a good generalisation, but made use of a set
+	which was incomplete. For example:
+	\begin{itemize}
+		\item \texttt{REMOVE Dat IF (NOT 0 Prn/Sebe) (NOT 0 Anim OR Cog OR Ant) (NOT 0 Pron) (NOT 1* V/Dat) (NOT -1* V/Dat) (NOT -1* Prep/Dat) (NOT -1C A + Dat) ;}
+	\end{itemize} 
+	the set \texttt{V/Dat} does not contain the verb \rus{противопоставлять} `opposed to' which takes 
+	a dative argument.
+	\begin{itemize}
+		\item \rus{В связи с этим ортодоксальности стали противопоставлять ересь.}
+		\item In connection with this \textbf{orthodoxy} was opposed to heresy. 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Errors from rule interaction}
+\framesubtitle{}
+\begin{itemize}
+	\item The strong accusative rule below causes incorrect behaviour in the rule to remove transitivity readings
+	\begin{itemize}
+		\item \texttt{REMOVE TV - Pass IF (NOT 1* Acc) (NOT -1* Acc) ;}
+		\item \texttt{REMOVE Acc IF (-1C Fin + IV) (NOT 0 AccAdv) ;}
+	\end{itemize}
+	Consider the following example where \rus{может} `can' is tagged as intransitive, the second rule fires removing 
+	the accusative reading of \rus{его} `him', and thus given the lack of accusative reading, \rus{найти} `find'
+	is disambiguated as intransitive instead of transitive.
+ 	\begin{itemize}
+		\item \rus{Она смотрит везде, но не может его найти.}
+		\item She looks around, but she cannot \textbf{find him}.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Errors from difficult linguistics}
+\framesubtitle{}
+\begin{itemize}
+	\item Dealing with participles with arguments is challenging in the case that the arguments 
+	of the participle share the same government as the main verb.
+	\begin{itemize}
+		\item \texttt{REMOVE IV IF (0 TV OR IV) (1C Acc) (NOT 1 AccAdv);}
+	\end{itemize}
+		Here \rus{Ваню и Машу} `Vanja and Maša' are the object of \rus{видит} `sees' and not \rus{играющих} `playing', although
+		both verbs can take accusative object.
+	\begin{itemize}
+		\item \rus{Их мама внутри дома с кошкой, она смотрит в окно и видит играющих Ваню и Машу.}
+		\item Their mother is inside the house with the cat, she looks through the window and sees Vanja and Maša \textbf{playing}.
+	\end{itemize}
+	This kind of error would ideally be resolved with semantic knowledge.
 \end{itemize}
 \end{frame}
 
@@ -313,6 +447,9 @@
 	\item CG makes gains of 3.14\% (42\% of ambiguity from FST)
 	\pause
 	\item CG's high recall leads to a low error rate
+	\begin{itemize}
+		\item Higher accuracy was achieved (96.15\%), but with higher error rate (3.14\%)
+	\end{itemize}
 	\pause
 	\item To be continued.... (tomorrow)
 \end{itemize}
@@ -327,7 +464,7 @@
 \begin{itemize}
 	\item CG removes less than half of ambiguity
 	\pause
-	\item To resolve remaining ambiguity, we backoff to HMM tagger
+	\item To resolve remaining ambiguity, we turn to stochastic methods
 	\begin{itemize}
 		\item This approach has been applied with...\\
 		Basque \cite{ezeiza.ea-98},\\
@@ -337,7 +474,7 @@
 		and Turkish \cite{oflazer.tur-96}
 		\pause
 	\end{itemize}
-	\item We follow the voting method used by \cite{hulden12}
+	\item We follow the voting method used by \cite{hulden12}, using the freely available hunpos tagger
 \end{itemize}
 \end{frame}
 
@@ -345,10 +482,6 @@
 \frametitle{Voting setup}
 \framesubtitle{}
 \begin{itemize}
-	\item Freely available hunpos tagger
-	\pause
-	\item 10-fold cross-validation (90\% training, 10\% testing)
-	\pause
 	\item 3 configurations
 	\begin{itemize}
 		\item HMM - hunpos with default options
@@ -358,7 +491,8 @@
 		\item HMM+Morph vs CG - Voting setup: if constraint grammar left 1 valid reading,
 		take that. Otherwise, take output of HMM+Morph.
 	\end{itemize}
-	\item 
+	\pause
+	\item 10-fold cross-validation
 \end{itemize}
 \end{frame}
 
@@ -375,11 +509,6 @@
 \end{figure}
 \begin{itemize}
 	\item hunpos tagger alone is more dependent on training-corpus size
-	\pause
-	\item 
-	\pause
-	\item 
-	\item 
 \end{itemize}
 \end{frame}
 
@@ -390,7 +519,7 @@
 \frametitle{Future work}
 \framesubtitle{}
 \begin{itemize}
-	\item Improve precision while maintaining high recall
+	\item Improve precision (while maintaining high recall)
 	\pause
 	\item Add syntactic functions and dependency parsing
 	\begin{itemize}
@@ -398,6 +527,9 @@
 		\pause
 	\end{itemize}
 	\item Improve workflow by extending our gold-standard corpus while checking new rule accuracy
+	\begin{itemize}
+		\item Can be used for regression testing
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
