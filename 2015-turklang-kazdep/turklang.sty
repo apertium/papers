@@ -48,8 +48,8 @@
  \vspace*{-.25cm}{\Large 3rd International Conference on Computer Processing\\in Turkic Languages (TURKLANG 2015)} \vskip 1em \lineskip 0.5em
  {\Large \bf \@title \par} \vskip 1.5em \lineskip .5em
  \begin{tabular}[t]{c} \large\bf \@name\\ \normalsize \@address \end{tabular}\par 
- \@abstract
  \end{center}
+ \@abstract
  \par
  \vspace*{0.2cm}
 }
@@ -58,13 +58,14 @@
 \def\title#1{\gdef\@title{#1}}
 \def\name#1{\gdef\@name{#1\\}}
 \def\address#1{\gdef\@address{#1\\}}
+\def\keywords#1{\gdef\@keywords{#1\\}}
 \def\abstract#1{\gdef\@abstract{
 	\vskip 1em
 	\hrule
-  {\bf \normalsize \textbf{\abstractname}\vspace{-.5em}\vspace{0.2cm}}
+  {\bf \normalsize \textbf{\abstractname}\vspace{0.2cm}} \vskip 0.1pt
   \setlength{\baselineskip}{10pt}\parbox{17.2cm}{\small #1 \par}
   \vskip 1.5em
-  {\it Keywords:} \@keywords
+  {\it \small Keywords: \@keywords } \vspace{-0.5em}
 	\hrule
 }}
 
@@ -81,3 +82,15 @@
 \def\sthanks#1{\gdef\thefootnote{\fnsymbol{footnote}}\@@savethanks{#1}}
 
 
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Share\LaTeX}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
