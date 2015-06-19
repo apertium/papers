@@ -1,8 +1,7 @@
 all: paper.pdf
 
-paper.pdf: paper.tex paper.bbl
+paper.pdf: 
 	xelatex paper
 	bibtex paper
+	xelatex paper
 
-paper.bbl: paper.bib
-	bibtex paper
