@@ -10,8 +10,8 @@
 \setlength\columnwidth{8.25cm}
 \newlength\titlebox
 \setlength\titlebox{2.0in}
-\setlength\headheight{0pt}
-\setlength\headsep{0pt}
+%\setlength\headheight{0pt}
+%\setlength\headsep{0pt}
 \setlength\footskip{0pt}                % irrelevant when no footers.
 \pagestyle{empty}                       % no page numbers
 \thispagestyle{empty}                   % no page numbers
@@ -58,6 +58,7 @@
 
 \def\title#1{\gdef\@title{#1}}
 \def\name#1{\gdef\@name{#1\\}}
+\def\shortauthor#1{\gdef\@shortauthor{#1 }}
 \def\address#1{\gdef\@address{#1\\}}
 \def\keywords#1{\gdef\@keywords{#1\\}}
 \def\abstract#1{\gdef\@abstract{
@@ -86,14 +87,25 @@
 
 
 \usepackage{fancyhdr}
+\usepackage{ifthen}
  
+
+\newcommand{\turklanghead}[1]{\@shortauthor / TurkLang 2015 / Kazan}
+
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{Share\LaTeX}
-\fancyhead[RE,LO]{Guides and tutorials}
-\fancyfoot[CE,CO]{\leftmark}
-\fancyfoot[LE,RO]{\thepage}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE,LO]{\turklanghead}
+%\fancyhead[C]{\ifthenelse{\value{page}=1}{\turklanghead}{}}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
 
+\fancypagestyle{firststyle}
+{
+	\fancyhf{}
+	\fancyhead[C]{\turklanghead}
+}
 
-\renewcommand{\headrulewidth}{2pt}
-\renewcommand{\footrulewidth}{1pt}
+%\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{1pt}
