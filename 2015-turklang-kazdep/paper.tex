@@ -9,6 +9,7 @@
 \usepackage{xunicode}
 
 \usepackage{multirow}
+\usepackage[small,bf]{caption} % CHECK IF THIS IS OK
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 \usepackage{natbib}
@@ -24,7 +25,13 @@
 
 \keywords{Kazakh; treebank; dependency grammar; universal dependency}
 
-\abstract{250-300-word ``extended abstract in English''}
+%250-300-word ``extended abstract in English''
+\abstract{
+This article describes the first steps towards a free/open-source dependency treebank
+for Kazakh based on universal dependency (UD) annotation standards. The treebank is 
+based on texts from a range of open-source and public domain sources ensuring its 
+free availability and extensibility. 
+}
 
 \begin{document}
 
@@ -39,7 +46,12 @@
 
 \subsection{Kazakh}
 
+% case and function
+% "zero" derivation
+
 \subsection{Treebanks} % Related work
+
+% what are treebanks used for ?
 
 \section{Methodology}
 
@@ -47,32 +59,47 @@
 
 \begin{table}
   \centering
+\begin{small}
   \begin{tabular}{|l|l|r|r|r|}
     \hline
     \textbf{Document} & \textbf{Description} & \textbf{Sentences} & \textbf{Tokens} & \textbf{Avg. length}\\
     \hline
-    Declaration on Human Rights & Legal text on human rights & 25 & 409 & 16.3 \\
+    UN Declaration on Human Rights & Legal text on human rights & 25 & 409 & 16.3 \\
     Phrasebook & Phrases from Wikitravel & 37 & 205 & 5.5 \\
     Жиырма Бесінші Сөз & Philosophical text & 34 & 525 & 15.4 \\ 
     Өлген қазан & Folk tale & 8 & 140 & 17.5 \\
-    Азамат қайда? & Story for children and language learners & 48 & 434 & 9.0 \\
+    Азамат қайда? & Story for language learners & 48 & 434 & 9.0 \\
     Футболдан әлем чемпионаты 2014  & Wikipedia article (2014 World Cup) & 14 & 246 & 17.5 \\
     Иран & Wikipedia article (Iran) & 111 & 1562 & 14.0 \\
     Радиан & Wikipedia article (Radian) & 2 & 17 & 8.5 \\
     \hline
+    \multicolumn{2}{c|}{~} & - & - & - \\\cline{3-5}
   \end{tabular}
-  \caption{Composition of the corpus. The corpus covers a range of genres and text types.}
+\end{small}
+  \caption{Composition of the corpus. The corpus covers a range of genres and text types from 
+    free and public-domain sources.}
 \end{table}
 
 
 \subsection{Preprocessing}
 
 % tokenisation
+% http://universaldependencies.github.io/docs/u/overview/tokenization.html
 \cite{Washington14}
 
 % multiword units
 
+
 \section{Annotation guidelines}
+
+% general procedure
+
+% - disambiguate
+% - annotate
+% - check the tree structure
+% - fix errors
+% - check for label consistency
+% - fix errors
 
 \begin{table}
   \centering
