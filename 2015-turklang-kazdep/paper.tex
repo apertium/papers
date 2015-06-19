@@ -74,7 +74,7 @@ free availability and extensibility.
     Иран & Wikipedia article (Iran)                                & 111 & 1562 & 14.0 \\
     Радиан & Wikipedia article (Radian)                            & 2 & 17 & 8.5 \\
     \hline
-    \multicolumn{2}{c|}{~} & 302 & 3741 & 12.38 \\\cline{3-5}
+    \multicolumn{2}{c|}{~} & 302 & 3741 & 12.3 \\\cline{3-5}
   \end{tabular}
 \end{small}
   \caption{Composition of the corpus. The corpus covers a range of genres and text types from 
@@ -84,12 +84,26 @@ free availability and extensibility.
 
 \subsection{Preprocessing}
 
+Preprocessing the corpus consists of running the text through the Kazakh morphological
+analyser \citep{Washington14}, which also performs tokenisation of multiword units based 
+the longest match left-to-right. Tokenisation for Kazakh is a non-trivial task, and so
+we do not simply take space as a delimiter. The morphological analyser returns all 
+the possible morphological analyses for each word based on a lexicon of around 20,000 lexemes.
+After tokenisation and morphological analysis, the text is processed with a constraint-grammar 
+based disambiguator for Kazakh consisting of 113 rules which remove inappropriate 
+analyses in context. This reduces the average number of analyses per word from around 3.4
+to around 1.7.
+
 % tokenisation
 % http://universaldependencies.github.io/docs/u/overview/tokenization.html
-\cite{Washington14}
 
+\subsubsection{Tokens and words}
+
+% simple tokens
 % multiword units
-
+% copula
+% clitics
+% productive suffixes -lı (cite wafflelazor)
 
 \section{Annotation guidelines}
 
@@ -126,6 +140,8 @@ free availability and extensibility.
 \section{Evaluation}
 
 \section{Future work}
+
+%stabilise guidelines
 
 %crosslingual parsing: Tatar, Kumyk, Kyrgyz, Tuvan
 
