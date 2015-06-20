@@ -106,6 +106,46 @@ can provide reasonable parsing accuracy.
         "." sent 
 
 
+===Tokens and words===
+
+Tokenisation of the corpus is performed by our morphological analyser. This analyser
+performs tokenisation on the basis of a left-to-right longest match algorithm described
+in \textcite{garrido02}. Simple tokens such as \emph{толқулар} `riots' are maintained 
+as a single token, and their lemma and morphological analysis is returned. Multiword
+units such as \emph{ауа райы} `weather' and \emph{ата-ананың} `of parents' are combined
+into a single token. Abbreviations and numerals which bear case, such as АҚШ-пен `with the USA'
+and \emph{90%-ына} `to the 90\%' are analysed as a single token, as are light-verbs such as
+\emph{пайда бол} `to appear' and tense forms written with space like \emph{оқыған жоқ}, 
+the third-person negative past of \emph{оқы} `to learn'. 
+
+In some cases a single token is split into two tokens, as with the aorist copula suffixes, 
+\emph{үйдемін} `I am in the house' is tokenised as үй.{\sc loc} + е.{\sc cop.aor.sg1}. Furthermore
+two input tokens may result in three output tokens, \emph{бар ма?} `is there?' would be 
+tokenised as бар.{\sc adj} + е.{\sc cop.aor.sg1} + ма.{\sc qst}.
+
+%Simple tokens:
+%	толқулар = толқу.{\sc pl.nom}
+%
+%Multiword units:
+%	ауа райы = ауа̣ райы.{\sc nom}
+%	ата-анасы = ата-ана.{\sc px3sg.nom}
+%	АҚШ-пен = АҚШ.{\sc ins}
+%	
+%Abbreviations:
+%	90%-ына = 90.{\sc percent.px3sp.dat}
+%
+%Copula:
+%	үйдемін = үй.{\sc loc}+е.{\sc cop.aor.sg1}
+%
+%Clitics:
+%	бар ма? = бар.{\sc adj}+е.{\sc cop.aor.sg3}+ма.{\sc qst}
+%	
+%Light verbs:
+%	пайда болған = пайда бол.{\sc past}
+%
+%Part of tense:
+%	оқыған жоқ = оқы.{\sc neg.past}
+
 
 ==Evaluation==
 
