@@ -25,7 +25,6 @@
 
 \usepackage{subcaption}
 \usepackage{booktabs}
-\setlength{\cmidrulewidth}{\heavyrulewidth}
 
 %\usepackage{natbib}
 %\bibdata{paper}
@@ -110,19 +109,19 @@ How each of these issues bears on a dependency analysis will be discussed in sec
 \begin{small}
   \begin{tabular}{llrrr}
     \toprule
-    \textbf{Document} & \textbf{Description} & \textbf{Sentences} & \textbf{Tokens} & \textbf{Avg. length}\\
+	    \textbf{Document} & \textbf{Description} & \textbf{Sentences} & \textbf{Tokens} & \textbf{Avg. length}\\
     \midrule
-    UN Declaration on Human Rights & Legal text on human rights & 25 & 409 & 16.3 \\
-    Phrasebook                     & Phrases from Wikitravel   & 37 & 205 & 5.5 \\
-    Жиырма Бесінші Сөз             & Philosophical text        & 34 & 525 & 15.4 \\ 
-    Қожанасырдың тойға баруы       & Folk tale from Wikisource  & 8 & 140 & 17.5 \\
-    Ер Төстік                      & Folk tale from Wikisource  & 23 & 203 & 8.8 \\
-    Азамат қайда?                  & Story for language learners & 48 & 434 & 9.0 \\
-    Футболдан әлем чемпионаты 2014 & Wikipedia article (2014 World Cup) & 14 & 246 & 17.5 \\
-    Иран & Wikipedia article (Iran)                                & 111 & 1562 & 14.0 \\
-    Радиан & Wikipedia article (Radian)                            & 2 & 17 & 8.5 \\
+	    UN Declaration on Human Rights & Legal text on human rights & 25 & 409 & 16.3 \\
+	    Phrasebook                     & Phrases from Wikitravel   & 37 & 205 & 5.5 \\
+	    Жиырма Бесінші Сөз             & Philosophical text        & 34 & 525 & 15.4 \\ 
+	    Қожанасырдың тойға баруы       & Folk tale from Wikisource  & 8 & 140 & 17.5 \\
+	    Ер Төстік                      & Folk tale from Wikisource  & 23 & 203 & 8.8 \\
+	    Азамат қайда?                  & Story for language learners & 48 & 434 & 9.0 \\
+	    Футболдан әлем чемпионаты 2014 & Wikipedia article (2014 World Cup) & 14 & 246 & 17.5 \\
+	    Иран & Wikipedia article (Iran)                                & 111 & 1562 & 14.0 \\
+	    Радиан & Wikipedia article (Radian)                            & 2 & 17 & 8.5 \\
     \midrule
-    \multicolumn{2}{c}{~} & 302 & 3741 & 12.3 \\\cmidrule{3-5}
+	    \multicolumn{2}{c}{~} & 302 & 3741 & 12.3 \\\cmidrule[\heavyrulewidth]{3-5}
   \end{tabular}
 \end{small}
   \caption{Composition of the corpus. The corpus covers a range of genres and text types from 
@@ -357,12 +356,12 @@ surface form. The converted corpus is available alongside the original.\footnote
 	\centering
 	\begin{tabular}{llrr}
 		\toprule
-		\textbf{Features}       & \textbf{Algorithm} &\textbf{LAS} [range] & \textbf{UAS} [range] \\
+			\textbf{Features}       & \textbf{Algorithm} &\textbf{LAS} [range] & \textbf{UAS} [range] \\
 		\midrule
-		surface                & nivreeager  & 33.4 [23.4, 42.5] & 50.9 [41.3, 63.2] \\
-		surface+lemma          & nivreeager  & 33.4 [23.4, 42.5] & 50.9 [41.3, 63.2] \\
-		surface+lemma+POS      & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
-		surface+lemma+POS+MSD  & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
+			surface                & nivreeager  & 33.4 [23.4, 42.5] & 50.9 [41.3, 63.2] \\
+			surface+lemma          & nivreeager  & 33.4 [23.4, 42.5] & 50.9 [41.3, 63.2] \\
+			surface+lemma+POS      & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
+			surface+lemma+POS+MSD  & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
 		\bottomrule
 	\end{tabular}
 	\caption{Preliminary parsing results from MaltParser using different models. The numbers in brackets denote the upper and lower bounds found during cross validation. Adding structural features to the model substantially improves the performance of the parser, although we find no improvement in using full morphosyntactic description (MSD) over using simply the first part-of-speech (POS) tag.}
