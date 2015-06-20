@@ -175,7 +175,78 @@ to around 1.7.
 
 \subsection{Copula}
 
+\begin{figure}[htbp]
+	\centering
+
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{dependency}[theme = simple, font = \small]
+		   \begin{deptext}[column sep=0.3cm]
+				Айгүл \& студент \& · \\
+				\gmk{np} \& \gmk{n} \& \gmk{cop} \\
+				\gloss{Ayğul} \& \gloss{student} \& \gloss{is} \\
+			\end{deptext}
+			\depedge{2}{1}{\udlabel{subj}}
+			\depedge{3}{2}{\udlabel{cop}}
+		\end{dependency}
+		\caption{xxx }\label{fig:compound}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{dependency}[theme = simple, font = \small]
+		   \begin{deptext}[column sep=0.3cm]
+				Айгүл \& студент \& - \\
+				\gmk{np} \& \gmk{-} \& \gmk{-} \\
+				\gloss{Ayğul} \& \gloss{-} \& \gloss{-}\\
+			\end{deptext}
+			\depedge{3}{2}{\udlabel{cop}}
+		\end{dependency}
+		\caption{xxx.}\label{fig:cop2}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{dependency}[theme = simple, font = \small]
+		   \begin{deptext}[column sep=0.3cm]
+				Айгүл   \& - \& - \\
+				\gmk{n} \& \gmk{-} \& \gmk{-} \& \\
+				\gloss{Ayğul} \& \gloss{-} \& \gloss{-} \\
+			\end{deptext}
+			\depedge{3}{2}{\udlabel{cop}}
+		\end{dependency}
+		\caption{xxx.}\label{fig:cop3}
+	\end{subfigure}
+
+	\caption{Dependency trees of copula constructions.}
+\end{figure}
+
+
+
+
 \subsection{Coordination}
+
+\begin{figure}[htbp]
+    \centering
+
+	\begin{dependency}[theme = simple, font = \small]
+	   \begin{deptext}[column sep=0.08cm]
+%               1         2         3          4              5                6              7                8           9             10
+             Барлық \& адамдар \& тумысынан \& азат      \& және         \& қадір-қасиеті \& мен          \& құқықтары  \& тең       \& болып     \& дүниеге \& келеді \\
+                    \&         \&           \& \gmk{adj} \& \gmk{cnjcoo} \& \gmk{n}       \& \gmk{cnjcoo} \& \gmk{n.pl} \& \gmk{adj} \& \gmk{cop} \& \& \\
+                    \&         \&           \& \gloss{free} \& \gloss{and}  \& \gloss{dignity}  \&  \gloss{and} \& \gloss{rights} \&  \gloss{equal} \& \gloss{being} \& \& \\
+		\end{deptext}
+		\depedge{9}{4}{\udlabel{conj}}
+		\depedge{9}{5}{\udlabel{cc}}
+		\depedge{8}{6}{\udlabel{conj}}
+		\depedge{8}{7}{\udlabel{cc}}
+		\depedge{9}{8}{\udlabel{subj}}
+		\depedge{10}{9}{\udlabel{cop}}
+		\depedge{12}{10}{\udlabel{advcl}}
+	\end{dependency}
+	\caption{Coordination}\label{fig:coord}
+	
+\end{figure}
 
 \subsection{Complex nominals}
 
@@ -237,44 +308,70 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 
 \section{Evaluation}
 
-
 In order to test the utility of the treebank in a real-world setting, we trained
 and evaluated a number of models using the popular MaltParser tool \parencite{nivre07}.
 MaltParser is a toolkit for data-driven dependency parsing, it can learn a parsing
 model from treebank data and apply this model to parse unseen sentences. The parser
-has a large number of options and parameters that need to be optimised.
-To select the best parser configuration we relied on
-MaltOptimiser \parencite{ballesteros15}. The optimiser recommended the \emph{covnonproj}
-parsing algorithm.
+has a large number of options and parameters that need to be optimised. 
+To select the best parser configuration we relied on 
+MaltOptimiser \parencite{ballesteros15}. The optimiser was run separately for each of 
+the model configurations.
 
 As the treebank takes advantage of the new tokenisation standards in the CoNLL-U format,
-and MaltParser only supports CoNLL-X, certain transformations were needed to perform
-the experiments. The corpus was flattened with conjoined tokens receiving a dummy
+and MaltParser only supports CoNLL-X, certain transformations were needed to perform 
+the experiments. The corpus was flattened with conjoined tokens receiving a dummy 
 surface form. The converted corpus is available alongside the original.\footnote{\url{removed for review}}
 
+% system1:
+% nivreeager
+% LAS: 0.3341 [0.234 0.288 0.289 0.292 0.333 0.335 0.359 0.378 0.408 0.425]
+% UAS: 0.5093 [0.413 0.464 0.465 0.466 0.474 0.499 0.531 0.545 0.604 0.632]
+
+% system2:
+% nivreeager
+% LAS: 0.234+0.288+0.289+0.292+0.333+0.335+0.359+0.378+0.408+0.425
+% UAS: 0.413+0.464+0.465+0.466+0.474+0.499+0.531+0.545+0.604+0.632
+
+% system3:
+% nivreeager
 % LAS: 0.5529 [0.434 0.446 0.501 0.511 0.515 0.542 0.558 0.572 0.7 0.75]
 % UAS: 0.7376 [0.658 0.669 0.675 0.684 0.694 0.723 0.751 0.776 0.825 0.921]
 
+% system4:
+% covnonproj
+% LAS: 0.6092 [0.519 0.535 0.544 0.569 0.569 0.62 0.621 0.649 0.683 0.783]
+% UAS: 0.7575 [0.674 0.686 0.69 0.714 0.727 0.746 0.795 0.803 0.812 0.928]
+
+%             [0.434+0.446+0.501+0.511+0.515+0.542+0.558+0.572+0.7+0.75]
+%             [0.658+0.669+0.675+0.684+0.694+0.723+0.751+0.776+0.825+0.921]
+
 \begin{table}
-  \centering
-  \begin{tabular}{|l|r|r|}
+\centering
+  \begin{tabular}{|l|l|r|r|}
     \hline
-    \textbf{Features} & \textbf{LAS} & \textbf{UAS} \\
+    \textbf{Features}       & \textbf{Algorithm} &\textbf{LAS} & \textbf{UAS} \\
     \hline
-     - & - & - \\
+     surface                & nivreeager  & 33.4 [23.4, 42.5] & 50.9 [41.3, 63.2] \\
+     surface+lemma          & nivreeager  & 33.4 [23.4, 42.5] & 50.9 [41.3, 63.2] \\
+     surface+lemma+POS      & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
+     surface+lemma+POS+MSD  & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
     \hline
   \end{tabular}
-  \caption{Preliminary parsing results from MaltParser using different models}
+  \caption{Preliminary parsing results from MaltParser using different models. The numbers in 
+    brackets denote the upper and lower bounds found during cross validation. Adding 
+    structural features to the model substantially improves the performance of the parser, although
+    we find no improvement in using full morphosyntactic description (MSD) over using
+    simply the first part-of-speech (POS) tag.}
   \label{table:eval}
 \end{table}
 
 To perform 10-fold cross validation we randomised the order of sentences in the corpus
-and split it into 10 parts. In each iteration we held out one part for testing and used
-the rest for training. We calculated the labelled-attachment score (LAS) and
+and split it into 10 equally-sized parts. In each iteration we held out one part for testing and used
+the rest for training. We calculated the labelled-attachment score (LAS) and 
 unlabelled-attachment score (UAS) for each of the models.
 
-The results we obtain for unlabelled attachment are similar to those obtained with similar 
-sized treebanks, for example the Irish treebank of \cite{Lynn12}, who report an LAS of
+The results we obtain are similar to those obtained with similar 
+sized treebanks, for example the Irish treebank of \textcite{Lynn12}, who report an LAS of
 63.3 and a UAS of 73.3 with the best model.
 
 
