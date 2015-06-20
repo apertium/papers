@@ -28,8 +28,9 @@
 %\usepackage{natbib}
 %\bibdata{paper}
 %\usepackage[backend=bibtex]{biblatex}
-\usepackage[backend=biber,citestyle=apa,style=authoryear,maxbibnames=99]{biblatex}
+\usepackage[backend=biber,citestyle=apa,style=authoryear,maxbibnames=99,maxnames=1]{biblatex}
 \bibliography{paper}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
 
 
 %%%%% Stuff for this paper %%%%%
