@@ -33,7 +33,8 @@
 \newcommand{\gmk}[1]{\texttt{#1}}
 \newcommand{\gloss}[1]{#1}
 \newcommand{\tag}[1]{\texttt{‹#1›}}
-\newcommand{\udtag}[1]{\texttt{@#1}}
+%\newcommand{\udtag}[1]{\texttt{@#1}}
+\newcommand{\udtag}[1]{\textsc{\texttt{#1}}}
 \newcommand{\udlabel}[1]{{\udfont #1}}
 %\newcommand{\corrauthor}[1]{\footnotemark\footnotetext{hargle}}
 
@@ -222,7 +223,7 @@ There are different ways in which two nominals may occur together to act as a si
 	\caption{Dependency trees of complex nominal relations.}
 \end{figure}
 
-As seen in the graphs, the compound relationship of an attributive nominal depending on another nominal is labelled \udlabel{compound}, and genitive relations are considered \udtag{nmod}, regardless of whether there is a definite or indefinite genitive construction.
+As seen in the graphs, the compound relationship of an attributive nominal depending on another nominal is labelled \udtag{compound}, and genitive relations are considered \udtag{nmod}, regardless of whether there is a definite or indefinite genitive construction.
 
 
 \subsection{Non-finite clauses}
