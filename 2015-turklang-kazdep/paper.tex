@@ -233,16 +233,28 @@ tokenised as бар.{\sc adj} + е.{\sc cop.aor.sg1} + ма.{\sc qst}.
 
 % productive suffixes -lı (cite wafflelazor)
 
-\section{Annotation guidelines}\label{sec:annotation}
+\section{Annotation}\label{sec:annotation}
 
-% general procedure
+Annotation of the treebank followed an iterative approach. The first stage was to
+select a text and preprocess it using the morphological analyser and constraint grammar.
+The output of this process was then manually disambiguated by choosing the most appropriate
+analysis in context, or adding a new analysis if one was not returned by the morphological
+analyser. This latter step was mostly in the case of unknown proper nouns.\footnote{New lexemes
+found during the development of the corpus will contribute to the development of the
+morphological analyser.}
 
-% - disambiguate
-% - annotate
-% - check the tree structure
-% - fix errors
-% - check for label consistency
-% - fix errors
+After the text was disambiguated, it was annotated by a single annotator for dependency
+structure relying on the annotation guidelines for universal dependencies.\footnote{\url{http://universaldependencies.github.io/docs/u/overview/syntax.html}}
+
+Where it was not clear how to annotate a particular structure, it was left pending, that
+is marked with the {\sc dep} relation. After a text was annotated, graphical representations
+of the trees were produced and proofread by a second annotator. The final analysis for a
+sentence was decided on during discussions between the two annotators and in some cases
+through the universal-dependency issue tracker.\footnote{\url{https://github.com/UniversalDependencies/docs/issues/}}
+
+During the course of annotation, language-specific annotation guidelines for Kazakh are
+being produced and published online.\footnote{\url{http://wiki.apertium.org/wiki/Dependency_parsing_for_Turkic}} In 
+the remainder of this section we describe a number of Kazakh-specific decisions.
 
 \begin{table}[htbp]
 	\centering
