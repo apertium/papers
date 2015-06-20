@@ -1,4 +1,32 @@
+==Introduction==
 
+This article describes the work towards the development of a dependency treebank for Kazakh, a 
+Turkic language spoken in Central Asia. 
+Despite its status as a \emph{core} Turkic
+language, little computational-linguistic research has been published on syntactic
+parsing for Kazakh. 
+A valuable resource in the study of syntactic parsing is 
+a treebank---a corpus of parsed text containing gold-standard syntactic annotation. 
+
+Freely available treebanks exist for many languages, such as large languages like Finnish (x,y)
+and Polish (xxx) and smaller languages like Irish (zz). To our knowledge only one treebank
+exists for another language, Turkish (yyy), which is unfortunately not freely available.
+
+In building our treebank we take advantage of existing work done on tokenisation,
+morphological analysis and part-of-speech tagging for Kazakh. We also take a pragmatic
+and iterative view of development of the treebank, in line with recent work 
+on cross-linguistic parsing with universal dependencies.
+
+The remainder of the paper is organised as follows. Section~\ref{sec:back} gives some 
+background linguistic information on Kazakh, and outlines some special challenges in 
+parsing Kazakh. In Section~\ref{sec:method} we describe the corpus itself and methodology
+used in annotating it. Section~\ref{sec:annotation} gives a sketch of some decisions
+we have made with respect to annotation guidelines, referring back to the discussion in 
+Section~\ref{sec:back}. For reasons of space, these guidelines are not complete, but 
+present a subset of guidelines which are of particular interest. A small experiment
+in statistical dependency parsing using the corpus is presented in Section~\ref{sec:eval},
+and in Sections~\ref{sec:future} and \ref{sec:conclusions} we give perspectives
+for future work and some concluding remarks.
 
 ==Evaluation==
 
