@@ -72,15 +72,14 @@ This article describes the first steps towards a free/open-source dependency tre
 \section{Introduction}
 
 This article describes work towards the development of a dependency treebank for Kazakh, a Turkic language spoken in Central Asia and Europe.
-Despite its status as a \emph{core} Turkic
+Despite its status as a \emph{core}\footnote{FIXME} Turkic %FIXME
 language, little computational-linguistic research has been published on syntactic
 parsing for Kazakh.
 A valuable resource in the study of syntactic parsing is
 a treebank---a corpus of parsed text containing gold-standard syntactic annotation.
 
 Freely available treebanks exist for many languages, such as large languages like Finnish \parencite{haverinen2013tdt,voutilainen11} 
-and Polish (xxx) and smaller languages like Irish \parencite{Lynn12}. To our knowledge only one treebank
-exists for another language, Turkish \parencite{Oflazer03}, which is unfortunately not freely available.
+and Polish (xxx) and smaller languages like Irish \parencite{Lynn12}. To our knowledge, however, a treebank exists for only one other Turkic language, Turkish \parencite{Oflazer03}, which is unfortunately not freely available.
 
 In building our treebank we take advantage of existing work done on tokenisation,
 morphological analysis and part-of-speech tagging for Kazakh. We also take a pragmatic
@@ -89,7 +88,7 @@ on cross-linguistic parsing with universal dependencies \parencite{DeMarneffe14}
 
 The remainder of the paper is organised as follows. Section~\ref{sec:back} gives some
 background linguistic information on Kazakh, and outlines some special challenges in
-parsing Kazakh. In Section~\ref{sec:method} we describe the corpus itself and methodology
+parsing Kazakh. In Section~\ref{sec:method} we describe the corpus that we annotated and the methodology
 used in annotating it. Section~\ref{sec:annotation} gives a sketch of some decisions
 we have made with respect to annotation guidelines, referring back to the discussion in
 Section~\ref{sec:back}. For reasons of space, these guidelines are not complete, but
@@ -100,7 +99,7 @@ for future work and some concluding remarks.
 
 %\textcite{Atalay03}
 
-\section{Background}
+\section{Background}\label{sec:back}
 
 \subsection{Kazakh}\label{sec:kazakh}
 
@@ -127,7 +126,7 @@ How each of these issues bears on a dependency analysis will be discussed in sec
 
 % what are treebanks used for ?
 
-\section{Methodology}
+\section{Methodology}\label{sec:method}
 
 \subsection{Corpus}
 
@@ -340,7 +339,7 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 % verbal adverbs → advlc
 % * gna_cnd? → advlc?
 
-\section{Evaluation}
+\section{Evaluation}\label{sec:eval}
 
 In order to test the utility of the treebank in a real-world setting, we trained
 and evaluated a number of models using the popular MaltParser tool \parencite{nivre07}.
@@ -405,7 +404,7 @@ sized treebanks, for example the Irish treebank of \textcite{Lynn12}, who report
 63.3 and a UAS of 73.3 with the best model.
 
 
-\section{Future work}
+\section{Future work}\label{sec:future}
 
 %stabilise guidelines
 
@@ -413,7 +412,7 @@ sized treebanks, for example the Irish treebank of \textcite{Lynn12}, who report
 
 %language-specific dependency relations --- (acl:relcl, ...)
 
-\section{Conclusions}
+\section{Conclusions}\label{sec:conclusions}
 
 \section*{Acknowledgements}
 
