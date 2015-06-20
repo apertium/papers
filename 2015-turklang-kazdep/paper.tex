@@ -124,7 +124,23 @@ How each of these issues bears on a dependency analysis will be discussed in sec
 
 \subsection{Treebanks} % Related work
 
-% what are treebanks used for ?
+A treebank is a parsed corpus of sentences annotated syntactically following a particular
+syntactic theory. Two broad groups can be distinguished, phrase-structure treebanks
+which annotate constituency strucure, and dependency treebanks which annotate dependency
+structure. Some treebanks combine both.
+
+Treebanks can be used directly for linguistic and computational linguistic research, by
+performing search queries. For example, to extract a valency lexicon for verbs, or to
+study the frequency of various syntactic phenomena such as word order or nominal case usage
+and syntactic function.
+
+They can also be used to train statistical parsers which can
+be used to annotate previously unseen texts. These parsers can be used in end-user applications
+such as machine translation and computer-aided language learning.
+
+According to \textcite{nivre08}, a parser trained on a treebank of only 1,500 sentences 
+can provide reasonable parsing accuracy.
+
 
 \section{Methodology}\label{sec:method}
 

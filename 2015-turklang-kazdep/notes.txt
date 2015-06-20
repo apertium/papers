@@ -28,6 +28,25 @@ in statistical dependency parsing using the corpus is presented in Section~\ref{
 and in Sections~\ref{sec:future} and \ref{sec:conclusions} we give perspectives
 for future work and some concluding remarks.
 
+==Treebanks==
+
+A treebank is a parsed corpus of sentences annotated syntactically following a particular
+syntactic theory. Two broad groups can be distinguished, phrase-structure treebanks
+which annotate constituency strucure, and dependency treebanks which annotate dependency
+structure. Some treebanks combine both.
+
+Treebanks can be used directly for linguistic and computational linguistic research, by 
+performing search queries. For example, to extract a valency lexicon for verbs, or to 
+study the frequency of various syntactic phenomena such as word order or nominal case usage
+and syntactic function.
+
+They can also be used to train statistical parsers which can
+be used to annotate previously unseen texts. These parsers can be used in end-user applications
+such as machine translation and computer-aided language learning.
+
+According to \cite{nivre08}, a parser trained on a treebank of only 1,500 sentences 
+can provide reasonable parsing accuracy.
+
 ==Evaluation==
 
 In order to test the utility of the treebank in a real-world setting, we trained
