@@ -22,6 +22,8 @@
 \usepackage[small,bf]{caption} % CHECK IF THIS IS OK
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
+\usepackage{subcaption}
+
 \usepackage{natbib}
 \bibdata{paper}
 
@@ -29,6 +31,7 @@
 %%%%% Stuff for this paper %%%%%
 \usepackage{tikz-dependency}
 \newcommand{\gmk}[1]{\texttt{#1}}
+\newcommand{\gloss}[1]{#1}
 \newcommand{\tag}[1]{\texttt{‹#1›}}
 \newcommand{\udtag}[1]{\texttt{@#1}}
 \newcommand{\udlabel}[1]{{\udfont #1}}
@@ -176,14 +179,44 @@ One example of this is indefinite genitives.  In such constructions, a ``modifyi
 
 \begin{figure}[htbp]
 	\centering
-	\begin{dependency}[theme = simple, font = \small]
-	   \begin{deptext}[column sep=0.3cm]
-			әлем \& чемпионаты \\
-			\gmk{n.nom} \& \gmk{n.px3sg.nom} \\
-		\end{deptext}
-		\depedge{1}{2}{\udlabel{nmod}}
-	\end{dependency}
-	\caption{A nominal depending on an indefinite genitive.}\label{fig:indefgen}
+
+	\begin{subfigure}[b]{0.3\textwidth}
+		\begin{dependency}[theme = simple, font = \small]
+		   \begin{deptext}[column sep=0.3cm]
+				көрші \& елдер \\
+				\gmk{n.attr} \& \gmk{n.pl.nom} \\
+				\gloss{neighbour} \& \gloss{countries} \\
+			\end{deptext}
+			\depedge{1}{2}{\udlabel{compound}}
+		\end{dependency}
+		\caption{Compounding: a nominal depending on an attributive nominal.}\label{fig:compound}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\begin{dependency}[theme = simple, font = \small]
+		   \begin{deptext}[column sep=0.3cm]
+				әлем \& чемпионаты \\
+				\gmk{n.nom} \& \gmk{n.px3sg.nom} \\
+				\gloss{world} \& \gloss{championship} \\
+			\end{deptext}
+			\depedge{1}{2}{\udlabel{nmod}}
+		\end{dependency}
+		\caption{Indefinite genitive: A nominal depending on an indefinite genitive.}\label{fig:indefgen}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\begin{dependency}[theme = simple, font = \small]
+		   \begin{deptext}[column sep=0.3cm]
+				Иранның \& экономиясы \\
+				\gmk{n.gen} \& \gmk{n.px3sg.nom} \\
+				\gloss{Iran's} \& \gloss{economy} \\
+			\end{deptext}
+			\depedge{1}{2}{\udlabel{nmod}}
+		\end{dependency}
+		\caption{Definite genitive: A nominal depending on an definite genitive.}\label{fig:indefgen}
+	\end{subfigure}
+
+	\caption{Dependency trees of complex nominal relations.}
 \end{figure}
 
 In these examples, the indefinite genitive is considered \udtag{nmod}.
