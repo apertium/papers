@@ -2,11 +2,21 @@
 
 \usepackage{turklang}
 
+
+%%%%% Language and font stuff %%%%%
+
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=australian]{english}
 
 \usepackage{fontspec}
 \usepackage{xunicode}
+
+%\usepackage{times}
+\setmainfont{Times New Roman}
+\newfontfamily\udfont[Scale=MatchLowercase,Letters=SmallCaps]{Linux Libertine O}
+
+
+%%%%% General formatting stuff %%%%%
 
 \usepackage{multirow}
 \usepackage[small,bf]{caption} % CHECK IF THIS IS OK
@@ -15,14 +25,17 @@
 \usepackage{natbib}
 \bibdata{paper}
 
-%\usepackage{times}
-\setmainfont{Times New Roman}
 
-
-
+%%%%% Stuff for this paper %%%%%
+\usepackage{tikz-dependency}
+\newcommand{\gmk}[1]{\texttt{#1}}
 \newcommand{\tag}[1]{\texttt{‹#1›}}
+\newcommand{\udtag}[1]{\texttt{@#1}}
+\newcommand{\udlabel}[1]{{\udfont #1}}
+%\newcommand{\corrauthor}[1]{\footnotemark\footnotetext{hargle}}
 
 
+%%%%% Paper metadata %%%%%
 
 \title{Towards a free/open-source universal-dependency treebank for Kazakh}
 \name{Francis M. Tyers$^a$ and Jonathan Washington$^b$}
@@ -37,8 +50,12 @@
 This article describes the first steps towards a free/open-source dependency treebank for Kazakh based on universal dependency (UD) annotation standards. The treebank contains 302 sentences and is based on texts from a range of open-source and public domain sources. This ensures its free availability and extensibility. Texts in the treebank are first morphologically analysed and disambiguated and then annotated manually for dependency structure. 
 }
 
+
+%%%%% End preamble %%%%%
+
 \begin{document}
 
+%\thanks{hargle}
 \maketitleabstract{}
 \thispagestyle{firststyle}
 
@@ -48,7 +65,7 @@ This article describes the first steps towards a free/open-source dependency tre
 
 \section{Background}
 
-\subsection{Kazakh}
+\subsection{Kazakh}\label{sec:kazakh}
 
 Kazakh (қазақ тілі), a Turkic language of Central Asia with around 12 million speakers, hargle bargle. %FIXME
 
@@ -155,7 +172,21 @@ to around 1.7.
 
 Some nominals occur together to act as a single nominal.
 
-One example of this is indefinite genitives.  In such constructions, a ``modifying'' nominal is morphologically not marked (i.e., parsed as \tag{nom}), though it is simply an indefinite genitive.
+One example of this is indefinite genitives.  In such constructions, a ``modifying'' nominal is morphologically not marked (which means it will be tagged as \tag{nom}, as discussed in §\ref{sec:kazakh}), though should be considered an indefinite genitive.  The modified element is a nominal with third-person possessive morphology, an example of which is provide in figure~\ref{fig:indefgen}.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{dependency}[theme = simple, font = \small]
+	   \begin{deptext}[column sep=0.3cm]
+			әлем \& чемпионаты \\
+			\gmk{n.nom} \& \gmk{n.px3sg.nom} \\
+		\end{deptext}
+		\depedge{1}{2}{\udlabel{nmod}}
+	\end{dependency}
+	\caption{A nominal depending on an indefinite genitive.}\label{fig:indefgen}
+\end{figure}
+
+In these examples, the indefinite genitive is considered \udtag{nmod}.
 
 
 \subsection{Non-finite clauses}
@@ -176,6 +207,8 @@ One example of this is indefinite genitives.  In such constructions, a ``modifyi
 \section{Conclusions}
 
 \section*{Acknowledgements}
+
+%Tolgonay?, Aida?
 
 \bibliographystyle{apalike}
 \bibliography{paper}
