@@ -67,9 +67,13 @@
 	\vskip 0.5em
   {\bf \normalsize \textbf{\abstractname}\vspace{0.2cm}} \vskip 0.1pt
   \vskip 0.5em
-  \setlength{\baselineskip}{10pt}\parbox{16.2cm}{\small #1 \par} % XXX
+  %\setlength{\baselineskip}{10pt}
+  \noindent\parbox[t]{1.0\linewidth}{\small #1 \par} % XXX 17.2→16.2
+	%\begin{minipage}{\linewidth}
+	%	\small #1
+	%\end{minipage}
   \vskip 1em
-  {\small {\it Keywords:} \@keywords } \vspace{-0.1em}
+  \noindent {\small {\it Keywords:} \@keywords } \vspace{-0.1em}
 	\hrule
 }}
 

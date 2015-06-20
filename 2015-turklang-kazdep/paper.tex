@@ -18,6 +18,12 @@
 %\usepackage{times}
 \setmainfont{Times New Roman}
 
+
+
+\newcommand{\tag}[1]{\texttt{‹#1›}}
+
+
+
 \title{Towards a free/open-source universal-dependency treebank for Kazakh}
 \name{Francis M. Tyers$^a$ and Jonathan Washington$^b$}
 \shortauthor{Tyers \& Washington}
@@ -48,6 +54,12 @@ Kazakh (қазақ тілі), a Turkic language of Central Asia with around 12 m
 
 In the process of designing a Kazakh transducer \citep{Washington14}, several decisions were made about how various inflectional morphemes affect the part of speech and syntactic function of various word forms.  These decisions include the relations to other words defined by ``case'' morphemes, and processes of ``zero derivation''.
 
+All of the traditionally defined ``cases'' in Kazakh have a variety of uses.  The morphemes that mark the accusative and genitive cases are only used when the noun phrase is semantically definite.  This means that indefinite accusative and genitive as well as nominative noun phrases are all unmarked for case, and hence are all ambiguous.  Our Kazakh transducer marks these all as \tag{nom}, but their use may be disambiguated.  Besides identifying the semantic role of an unmarked noun phrase, there are various agreement properties that make it clear what ``case'' the noun phrase ``truly'' receives: genitive noun phrases must have a corresponding noun phrase with possessive morphology that agrees in person with the genitive noun phrase; and nominative noun phrases must have a corresponding predicate that agrees in person with the nominative noun phrase, e.g., a verb or a copula.
+
+Copulas may also be non-overt.  In the present tense, all but third person copulas have realised forms, but the third person copula does not surface.
+
+Adjectives in Kazakh are by default attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  Our morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.
+
 % case and function
 %% indefinite acc/gen = "nom"
 %% attr/subst/advl function of cases
@@ -73,8 +85,8 @@ In the process of designing a Kazakh transducer \citep{Washington14}, several de
     UN Declaration on Human Rights & Legal text on human rights & 25 & 409 & 16.3 \\
     Phrasebook                     & Phrases from Wikitravel   & 37 & 205 & 5.5 \\
     Жиырма Бесінші Сөз             & Philosophical text        & 34 & 525 & 15.4 \\ 
-    Өлген қазан                    & Folk tale                  & 8 & 140 & 17.5 \\
-    Ер Төстік                      & Folk tale                  & 23 & 203 & 8.8 \\
+    Өлген қазан                    & Folk tale from Wikisource  & 8 & 140 & 17.5 \\
+    Ер Төстік                      & Folk tale from Wikisource  & 23 & 203 & 8.8 \\
     Азамат қайда?                  & Story for language learners & 48 & 434 & 9.0 \\
     Футболдан әлем чемпионаты 2014 & Wikipedia article (2014 World Cup) & 14 & 246 & 17.5 \\
     Иран & Wikipedia article (Iran)                                & 111 & 1562 & 14.0 \\
