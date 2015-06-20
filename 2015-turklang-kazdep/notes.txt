@@ -47,6 +47,66 @@ such as machine translation and computer-aided language learning.
 According to \cite{nivre08}, a parser trained on a treebank of only 1,500 sentences 
 can provide reasonable parsing accuracy.
 
+
+==Corpora==
+
+
+"<Елде>"
+        "ел" n loc 
+"<экономикалық>"
+        "экономикалық" adj 
+"<және>"
+        "және" cnjcoo 
+"<мәдени>"
+        "мәдени" adj 
+"<өрлеу>"
+        "өрлеу" n nom 
+"<байқалып>"
+        "байқа" v tv pass gna_perf 
+"<,>"
+        "," cm 
+"<қалалар>"
+        "қала" n pl nom 
+"<өсе>"
+        "өс" v iv prc_impf 
+"<бастады>"
+        "баста" vaux ifi p3 pl 
+"<.>"
+        "." sent 
+
+
+"<Елде>"
+        "ел" n loc 
+"<ағылшын>"
+        "ағылшын" n nom 
+"<үстемдігіне>"
+        "үстемдік" n px3sp dat 
+"<қарсы>"
+        "қарсы" post 
+"<жаңа>"
+        "жаңа" adj 
+"<толқулар>"
+        "толқу" n pl nom 
+"<басталды>"
+        "баста" v tv pass ifi p3 pl 
+"<.>"
+        "." sent 
+
+"<Ол>"
+        "ол" det dem 
+"<толқулар>"
+        "толқу" n pl nom 
+"<күшпен>"
+        "күш" n ins 
+"<басылып>"
+        "бас" v tv pass prc_perf 
+"<отырды>"
+        "отыр" vaux ifi p3 pl 
+"<.>"
+        "." sent 
+
+
+
 ==Evaluation==
 
 In order to test the utility of the treebank in a real-world setting, we trained

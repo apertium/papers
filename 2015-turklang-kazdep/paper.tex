@@ -5,6 +5,7 @@
 
 %%%%% Language and font stuff %%%%%
 
+\usepackage{alltt}
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=australian]{english}
 
@@ -172,6 +173,31 @@ can provide reasonable parsing accuracy.
 
 
 \subsection{Preprocessing}
+
+\begin{figure}
+\begin{tiny}
+\begin{alltt}
+"<Елде>"
+        "ел" n loc
+"<ағылшын>"
+        "ағылшын" n nom
+"<үстемдігіне>"
+        "үстемдік" n px3sp dat
+"<қарсы>"
+        "қарсы" post
+"<жаңа>"
+        "жаңа" adj
+"<толқулар>"
+        "толқу" n pl nom
+"<басталды>"
+        "баста" v tv pass ifi p3 pl
+"<.>"
+        "." sent
+\end{alltt}
+\end{tiny}
+\caption{Example output after preprocessing and manual disambiguation. Each token is annotated for lemma,
+   part of speech and morphosyntactic information.}
+\end{figure}
 
 Preprocessing the corpus consists of running the text through the Kazakh morphological
 analyser \parencite{Washington14}, which also performs tokenisation of multiword units based 
