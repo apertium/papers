@@ -36,7 +36,7 @@
 %%%%% Stuff for this paper %%%%%
 \usepackage{tikz-dependency}
 \newcommand{\gmk}[1]{\texttt{#1}}
-\newcommand{\gloss}[1]{#1}
+\newcommand{\gloss}[1]{{\em #1}}
 \newcommand{\tag}[1]{\texttt{‹#1›}}
 %\newcommand{\udtag}[1]{\texttt{@#1}}
 \newcommand{\udtag}[1]{{\ll \textsc{#1}}}
@@ -76,17 +76,17 @@ This article describes the first steps towards a free/open-source dependency tre
 
 \subsection{Kazakh}\label{sec:kazakh}
 
-Kazakh (қазақ тілі), a Turkic language of Central Asia with around 13 million speakers \parencite{ethnologue}, hargle bargle. %FIXME
+Kazakh (қазақ тілі), a Turkic language of Central Asia, is spoken by around 13 million people in Kazakhstan, China, Mongolia, and adjacent areas \parencite{ethnologue}.  While works like \textcite{Balaqayev54} provide decent syntactic descriptions of the language, there is little to no work on the syntax of Kazakh within modern theoretical syntactic frameworks (though work on related languages, such as Turkish, exists).
 
-While works like \textcite{Balaqayev54} provide decent syntactic descriptions, there is little to no work on the syntax of Kazakh within modern theoretical syntactic frameworks (though work on related languages, such as Turkish, exists).
+As an agglutinative language with rich morphology and agreement phenomena, Kazakh presents some interesting challenges for computational syntax.  A morphological transducer has already been designed \parencite{Washington14}, which implements a number of decisions about how various inflectional morphemes affect the part of speech and syntactic function of various word forms.  These decisions include how the relations ``case'' morphemes create between syntactic elements work, as well as a number of processes of ``zero derivation''.
 
-In the process of designing a Kazakh transducer \parencite{Washington14}, several decisions were made about how various inflectional morphemes affect the part of speech and syntactic function of various word forms.  These decisions include the relations to other words defined by ``case'' morphemes, and processes of ``zero derivation''.
+All of the traditionally defined ``cases'' in Kazakh have a variety of uses.  The morphemes that mark the accusative and genitive cases are only used when the noun phrase is semantically definite (e.g., үйді \gloss{the house} \gmk{acc}, үйдің \gloss{of the house} \gmk{gen}).  This means that indefinite accusative and genitive as well as nominative noun phrases are all unmarked for case, and hence are all ambiguous (e.g., үй \gloss{house}).  The Kazakh transducer marks these all as \tag{nom}, but their use may be disambiguated.  Besides identifying the semantic role of an unmarked noun phrase, there are various agreement properties that make it clear what ``case'' the noun phrase ``truly'' receives: genitive noun phrases must have a corresponding noun phrase with possessive morphology that agrees in person with the genitive noun phrase; and truly nominative noun phrases must have a corresponding predicate that agrees in person with the nominative noun phrase---e.g., a verb or a copula.
 
-All of the traditionally defined ``cases'' in Kazakh have a variety of uses.  The morphemes that mark the accusative and genitive cases are only used when the noun phrase is semantically definite.  This means that indefinite accusative and genitive as well as nominative noun phrases are all unmarked for case, and hence are all ambiguous.  Our Kazakh transducer marks these all as \tag{nom}, but their use may be disambiguated.  Besides identifying the semantic role of an unmarked noun phrase, there are various agreement properties that make it clear what ``case'' the noun phrase ``truly'' receives: genitive noun phrases must have a corresponding noun phrase with possessive morphology that agrees in person with the genitive noun phrase; and nominative noun phrases must have a corresponding predicate that agrees in person with the nominative noun phrase, e.g., a verb or a copula.
+Another category that may also be non-overt is the copula.  In the present tense, all but third person copulas have realised forms (e.g., Мен үйде\textbf{мін}. \gloss{I'm at home.}), but the third person copula does not surface (e.g., Ол үйде. \gloss{S/he's at home.}).
 
-Copulas may also be non-overt.  In the present tense, all but third person copulas have realised forms, but the third person copula does not surface.
+Another type of ``zero-derivation'' involves the use of adjectives and nouns.  In Kazakh, adjectives are all attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  The morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive the readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.  Similarly, many nouns may be used attributively, besides the default substantive reading.  Besides the nominative (and indefinite accusative/genitive) reading of \tag{nom}, the transducer provides an attributive reading for most nominals of \tag{nom}\tag{attr}.
 
-Adjectives in Kazakh are by default attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  Our morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.
+How each of these issues bears on a dependency analysis will be discussed in section~\ref{sec:annotation}.
 
 % case and function
 %% indefinite acc/gen = "nom"
@@ -151,7 +151,7 @@ to around 1.7.
 % clitics
 % productive suffixes -lı (cite wafflelazor)
 
-\section{Annotation guidelines}
+\section{Annotation guidelines}\label{sec:annotation}
 
 % general procedure
 
@@ -345,7 +345,7 @@ surface form. The converted corpus is available alongside the original.\footnote
 %             [0.434+0.446+0.501+0.511+0.515+0.542+0.558+0.572+0.7+0.75]
 %             [0.658+0.669+0.675+0.684+0.694+0.723+0.751+0.776+0.825+0.921]
 
-\begin{table}
+\begin{table}[htbp]
 \centering
   \begin{tabular}{|l|l|r|r|}
     \hline
