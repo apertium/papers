@@ -5,4 +5,5 @@ paper.pdf: paper.tex paper.bbl
 
 paper.bbl: paper.bib
 	xelatex paper
-	bibtex paper
+	#bibtex8 --wolfgang paper
+	biber paper

@@ -25,8 +25,11 @@
 
 \usepackage{subcaption}
 
-\usepackage{natbib}
-\bibdata{paper}
+%\usepackage{natbib}
+%\bibdata{paper}
+%\usepackage[backend=bibtex]{biblatex}
+\usepackage[backend=biber,citestyle=apa,style=apa]{biblatex}
+\bibliography{paper}
 
 
 %%%%% Stuff for this paper %%%%%
@@ -66,15 +69,17 @@ This article describes the first steps towards a free/open-source dependency tre
 
 \section{Introduction}
 
-\citet{Lynn12}, \citet{Atalay03}, \citet{Oflazer03}, \citet{DeMarneffe14}
+\textcite{Lynn12}, \textcite{Atalay03}, \textcite{Oflazer03}, \textcite{DeMarneffe14}
 
 \section{Background}
 
 \subsection{Kazakh}\label{sec:kazakh}
 
-Kazakh (қазақ тілі), a Turkic language of Central Asia with around 12 million speakers, hargle bargle. %FIXME
+Kazakh (қазақ тілі), a Turkic language of Central Asia with around 13 million speakers \parencite{ethnologue}, hargle bargle. %FIXME
 
-In the process of designing a Kazakh transducer \citep{Washington14}, several decisions were made about how various inflectional morphemes affect the part of speech and syntactic function of various word forms.  These decisions include the relations to other words defined by ``case'' morphemes, and processes of ``zero derivation''.
+While works like \textcite{Balaqayev54} provide decent syntactic descriptions, there is little to no work on the syntax of Kazakh within modern theoretical syntactic frameworks (though work on related languages, such as Turkish, exists).
+
+In the process of designing a Kazakh transducer \parencite{Washington14}, several decisions were made about how various inflectional morphemes affect the part of speech and syntactic function of various word forms.  These decisions include the relations to other words defined by ``case'' morphemes, and processes of ``zero derivation''.
 
 All of the traditionally defined ``cases'' in Kazakh have a variety of uses.  The morphemes that mark the accusative and genitive cases are only used when the noun phrase is semantically definite.  This means that indefinite accusative and genitive as well as nominative noun phrases are all unmarked for case, and hence are all ambiguous.  Our Kazakh transducer marks these all as \tag{nom}, but their use may be disambiguated.  Besides identifying the semantic role of an unmarked noun phrase, there are various agreement properties that make it clear what ``case'' the noun phrase ``truly'' receives: genitive noun phrases must have a corresponding noun phrase with possessive morphology that agrees in person with the genitive noun phrase; and nominative noun phrases must have a corresponding predicate that agrees in person with the nominative noun phrase, e.g., a verb or a copula.
 
@@ -125,7 +130,7 @@ Adjectives in Kazakh are by default attributive, but many may also be used eithe
 \subsection{Preprocessing}
 
 Preprocessing the corpus consists of running the text through the Kazakh morphological
-analyser \citep{Washington14}, which also performs tokenisation of multiword units based 
+analyser \parencite{Washington14}, which also performs tokenisation of multiword units based 
 the longest match left-to-right. Tokenisation for Kazakh is a non-trivial task, and so
 we do not simply take space as a delimiter. The morphological analyser returns all 
 the possible morphological analyses for each word based on a lexicon of around 20,000 lexemes.
@@ -233,12 +238,12 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 
 
 In order to test the utility of the treebank in a real-world setting, we trained
-and evaluated a number of models using the popular MaltParser tool \citep{nivre07}.
+and evaluated a number of models using the popular MaltParser tool \parencite{nivre07}.
 MaltParser is a toolkit for data-driven dependency parsing, it can learn a parsing
 model from treebank data and apply this model to parse unseen sentences. The parser
 has a large number of options and parameters that need to be optimised.
 To select the best parser configuration we relied on
-MaltOptimiser \citep{ballesteros15}. The optimiser recommended the \emph{covnonproj}
+MaltOptimiser \parencite{ballesteros15}. The optimiser recommended the \emph{covnonproj}
 parsing algorithm.
 
 As the treebank takes advantage of the new tokenisation standards in the CoNLL-U format,
@@ -286,7 +291,8 @@ sized treebanks, for example the Irish treebank of \cite{Lynn12}, who report an 
 
 %Tolgonay?, Aida?
 
-\bibliographystyle{apalike}
-\bibliography{paper}
+%\bibliographystyle{apalike}
+%\bibliography{paper}
+\printbibliography
 
 \end{document}
