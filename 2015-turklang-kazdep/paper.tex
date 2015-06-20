@@ -193,7 +193,45 @@ In these examples, the indefinite genitive is considered \udtag{nmod}.
 
 \section{Evaluation}
 
-\cite{ballesteros15}, \cite{nivre07}
+
+In order to test the utility of the treebank in a real-world setting, we trained
+and evaluated a number of models using the popular MaltParser tool \citep{nivre07}.
+MaltParser is a toolkit for data-driven dependency parsing, it can learn a parsing
+model from treebank data and apply this model to parse unseen sentences. The parser
+has a large number of options and parameters that need to be optimised.
+To select the best parser configuration we relied on
+MaltOptimiser \citep{ballesteros15}. The optimiser recommended the \emph{covnonproj}
+parsing algorithm.
+
+As the treebank takes advantage of the new tokenisation standards in the CoNLL-U format,
+and MaltParser only supports CoNLL-X, certain transformations were needed to perform
+the experiments. The corpus was flattened with conjoined tokens receiving a dummy
+surface form. The converted corpus is available alongside the original.\footnote{\url{removed for review}}
+
+% LAS: 0.5529 [0.434 0.446 0.501 0.511 0.515 0.542 0.558 0.572 0.7 0.75]
+% UAS: 0.7376 [0.658 0.669 0.675 0.684 0.694 0.723 0.751 0.776 0.825 0.921]
+
+\begin{table}
+  \centering
+  \begin{tabular}{|l|r|r|}
+    \hline
+    \textbf{Features} & \textbf{LAS} & \textbf{UAS} \\
+    \hline
+     - & - & - \\
+    \hline
+  \end{tabular}
+  \caption{Preliminary parsing results from MaltParser using different models}
+  \label{table:eval}
+\end{table}
+
+To perform 10-fold cross validation we randomised the order of sentences in the corpus
+and split it into 10 parts. In each iteration we held out one part for testing and used
+the rest for training. We calculated the labelled-attachment score (LAS) and
+unlabelled-attachment score (UAS) for each of the models.
+
+The results we obtain for unlabelled attachment are similar to those obtained with similar 
+sized treebanks, for example the Irish treebank of \cite{Lynn12}, who report an LAS of
+63.3 and a UAS of 73.3 with the best model.
 
 
 \section{Future work}
