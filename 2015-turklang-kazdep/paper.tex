@@ -594,6 +594,10 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 
 \subsection{Non-finite clauses}
 
+As discussed in section~\ref{sec:kazakh}, Kazakh makes extensive use of non-finite clauses, including verbal adjective clauses, verbal noun clauses, and verbal adverb clauses.
+
+Verbal adjective clauses modify a head nominal, effectively allowing a whole verb phrase to act as an adjective.  The dependency relation between them is \udtag{acl}, per UD documentation.  An example is provided in figure~\ref{fig:gpr}
+
 \begin{figure}[htbp]
 	\centering
 	\begin{dependency}[theme = simple, font = \small]
@@ -629,7 +633,7 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 		\depedge{6}{3}{\udlabel{advcl}}
 		\deproot[edge unit distance=1.3ex]{6}{\udlabel{root}}
 	\end{dependency}
-	\caption{Verbal adverbs: verbal adverbs are the head of everything in their own clause and are an \udtag{advcl} dependency of the verb they are subordinate to.}\label{fig:gpr}
+	\caption{Verbal adverbs: verbal adverbs are the head of everything in their own clause and are an \udtag{advcl} dependency of the verb they are subordinate to.}\label{fig:gna}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -646,7 +650,7 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 		\depedge{7}{6}{\udlabel{ccomp}}
 		\deproot[edge unit distance=1.3ex]{7}{\udlabel{root}}
 	\end{dependency}
-	\caption{Verbal nouns: verbal nouns are the head of everything in their own clause and can be a \udtag{ccomp} dependency of the verb they are the complement of.  Note here that the subject noun phrase of the subordinate clause is in genitive case.}\label{fig:gpr}
+	\caption{Verbal nouns: verbal nouns are the head of everything in their own clause and can be a \udtag{ccomp} dependency of the verb they are the complement of.  Note here that the subject noun phrase of the subordinate clause is in genitive case.}\label{fig:gerdat}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -663,7 +667,7 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 		\depedge{6}{5}{\udlabel{nmod}}
 		\deproot[edge unit distance=1.3ex]{6}{\udlabel{root}}
 	\end{dependency}
-	\caption{Verbal nouns with case/postpositions: verbal nouns with certain case morphology and/or postpositions are the head of everything in their own clause and can be an \udtag{advcl} dependency of the verb they are the complement of.}\label{fig:gpr}
+	\caption{Verbal nouns with case/postpositions: verbal nouns with certain case morphology and/or postpositions are the head of everything in their own clause and can be an \udtag{advcl} dependency of the verb they are the complement of.}\label{fig:gerabl}
 \end{figure}
 
 % verbal adjectives → acl
