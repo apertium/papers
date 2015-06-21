@@ -608,11 +608,29 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 		\depedge{6}{5}{\udlabel{nummod}}
 		\depedge{7}{6}{\udlabel{nmod}}
 		\depedge{9}{7}{\udlabel{acl}}
+		\depedge{9}{8}{\udlabel{amod}}
+		\depedge{9}{10}{\udlabel{cop}}
 		\deproot[edge unit distance=1.3ex]{9}{\udlabel{root}}
 	\end{dependency}
 	\caption{Verbal adjectives: verbal adjectives are the head of everything in their own clause and are an \udtag{acl} dependency of the noun they modify.}\label{fig:gpr}
 \end{figure}
 
+
+\begin{figure}[htbp]
+	\centering
+	\begin{dependency}[theme = simple, font = \small]
+		\begin{deptext}[column sep=0.08cm]
+			1960 \& жылдан \& бастап \& Батыс \& үлгісінде \& дами \& бастады. \\
+			\gmk{num} \& \gmk{n.abl} \& \gmk{v.tv.gna} \& \gmk{n.nom} \& \gmk{n.px3sp.loc} \& \gmk{v.iv.prc} \& \gmk{vaux.ifi} \\
+			\tgloss{1960} \& \tgloss{from year} \& \tgloss{starting} \& \tgloss{the West} \& \tgloss{on its model} \& \tgloss{developing} \& \tgloss{started} \\
+		\end{deptext}
+		\depedge{2}{1}{\udlabel{amod}}
+		\depedge{3}{2}{\udlabel{nmod}}
+		\depedge{6}{3}{\udlabel{advcl}}
+		\deproot[edge unit distance=1.3ex]{6}{\udlabel{root}}
+	\end{dependency}
+	\caption{Verbal adverbs: verbal adverbs are the head of everything in their own clause and are an \udtag{advcl} dependency of the verb they are subordinate to.}\label{fig:gpr}
+\end{figure}
 
 Бразилия өз жерінде чемпионатты екі рет өткізген бесінші ел болды
 
