@@ -285,30 +285,30 @@ can provide reasonable parsing accuracy.
 
 \subsection{Preprocessing}
 
-\begin{figure}
-\begin{tiny}
-\begin{alltt}
-"<Елде>"
-        "ел" n loc
-"<ағылшын>"
-        "ағылшын" n nom
-"<үстемдігіне>"
-        "үстемдік" n px3sp dat
-"<қарсы>"
-        "қарсы" post
-"<жаңа>"
-        "жаңа" adj
-"<толқулар>"
-        "толқу" n pl nom
-"<басталды>"
-        "баста" v tv pass ifi p3 pl
-"<.>"
-        "." sent
-\end{alltt}
-\end{tiny}
-\caption{Example output after preprocessing and manual disambiguation. Each token is annotated for lemma,
-   part of speech and morphosyntactic information.}
-\end{figure}
+%\begin{figure}
+%\begin{tiny}
+%\begin{alltt}
+%"<Елде>"
+%        "ел" n loc
+%"<ағылшын>"
+%        "ағылшын" n nom
+%"<үстемдігіне>"
+%        "үстемдік" n px3sp dat
+%"<қарсы>"
+%        "қарсы" post
+%"<жаңа>"
+%        "жаңа" adj
+%"<толқулар>"
+%        "толқу" n pl nom
+%"<басталды>"
+%        "баста" v tv pass ifi p3 pl
+%"<.>"
+%        "." sent
+%\end{alltt}
+%\end{tiny}
+%\caption{Example output after preprocessing and manual disambiguation. Each token is annotated for lemma,
+%   part of speech and morphosyntactic information.}
+%\end{figure}
 
 Preprocessing the corpus consists of running the text through the Kazakh morphological
 analyser \parencite{Washington14}, which also performs tokenisation of multiword units based 
@@ -436,7 +436,7 @@ tokenised as \kazakh{бар.\gmk{adj} + е.\gmk{cop.aor.sg1} + ма.\gmk{qst}}.
 
 \subsection{Copula}
 
-The copula (both \emph{е} and \emph{бол}) is a challenging problem for dependency 
+The copula (both \emph{е-} and \emph{бол-}) is a challenging problem for dependency 
 analysis of Kazakh. The universal dependency guidelines state that the copula should
 be the dependent of the lexical predicate. However, in many cases the copula in Kazakh
 is found in embedded clauses ...
@@ -600,7 +600,7 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 		\begin{deptext}[column sep=0.08cm]
 			Бразилия \& өз \& жерінде \& чемпионатты \& екі \& рет \& өткізген \& бесінші \& ел \& болды. \\
 			\gmk{np.nom} \& \gmk{det} \& \gmk{nom.px3sp.loc} \& \gmk{n.acc} \& \gmk{num} \& \gmk{n} \& \gmk{v.tv.gpr} \& \gmk{num.ord} \& \gmk{n.nom} \& \gmk{v.iv.ifi} \\
-			\tgloss{Brasil} \& \tgloss{own} \& \tgloss{in its land} \& \tgloss{championship} \& \tgloss{two} \& \tgloss{times} \& \tgloss{having held} \& \tgloss{fifth} \& \tgloss{country} \& \tgloss{became} \\
+			\tgloss{Brazil} \& \tgloss{own} \& \tgloss{in its land} \& \tgloss{championship} \& \tgloss{two} \& \tgloss{times} \& \tgloss{having held} \& \tgloss{fifth} \& \tgloss{country} \& \tgloss{became} \\
 		\end{deptext}
 		\depedge{3}{2}{\udlabel{det}}
 		\depedge{7}{3}{\udlabel{nmod}}
