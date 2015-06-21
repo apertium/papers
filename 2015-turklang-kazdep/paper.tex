@@ -43,6 +43,7 @@
 \newcommand{\gmk}[1]{{\rm {\sc \texttt{#1}}}}
 \newcommand{\kazakh}[1]{{\em #1}}
 \newcommand{\gloss}[1]{`#1'}
+\newcommand{\tgloss}[1]{{\em #1}}
 \newcommand{\tag}[1]{\texttt{‹#1›}}
 %\newcommand{\udtag}[1]{\texttt{@#1}}
 \newcommand{\udtag}[1]{{\ll \textsc{#1}}}
@@ -169,8 +170,9 @@ The attributive use of nominals is similar to the use of adjectives, and could e
 			Adjectives & Attributive\newline
 							Substantive\newline
 							Adverbial
-						& foo \newline
-						\newline
+						& \kazakh{\textbf{жақсы} үй} \gloss{nice house} \newline
+						\kazakh{ең \textbf{жақсы}лары} \gloss{\textbf{the nice}st \textbf{ones}} \newline
+						\kazakh{оны \textbf{жақсы} танимын} \gloss{I know him/her \textbf{well}.}
 						\\
 			Adverbs & Adverbial
 						& 
@@ -184,7 +186,7 @@ Nominals (\tag{n}) default to substantive and adjectives (\tag{adj}) default to 
 
 %Another type of ``zero-derivation'' involves the use of adjectives and nouns.  In Kazakh, adjectives are all attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  The morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive the readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.  Similarly, many nouns may be used attributively, besides the default substantive reading.  Besides the nominative (and indefinite accusative/genitive) reading of \tag{nom}, the transducer provides an attributive reading for most nominals of \tag{attr}.
 
-Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, all but third person copulas have realised forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.}), but the third person copula does not surface (e.g., \kazakh{Ол үйде.} \gloss{S/he's at home.}).
+Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, the verb itself does not surface, but agreement morphology surfaces (cliticised to the previous word) in all but the third person forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.} versus \kazakh{Ол үйде.} \gloss{S/he's at home.}).  The defective copula verb also surfaces in the recent past tense (e.g., \kazakh{Мен үйде еді\textbf{м}.} \gloss{I was at home.}, \kazakh{Інім үйде еді.} \gloss{My younger brother was at home.}).  Of particular interest are non-finite forms of the copula.  Copula clauses can be attributive, as in \kazakh{үйі үлкен жігіт}
 
 
 How each of these issues bears on a dependency analysis will be discussed in section~\ref{sec:annotation}.
@@ -368,7 +370,7 @@ agreement with the subject and accusative marking for the embedded clause.
                    \begin{deptext}[column sep=0.3cm]
                                 Айгүл \& студент \& · \\
                                 \gmk{np} \& \gmk{n} \& \gmk{cop} \\
-                                \gloss{Aygül} \& \gloss{student} \& \gloss{is} \\
+                                \tgloss{Aygül} \& \tgloss{student} \& \tgloss{is} \\
                         \end{deptext}
                         \depedge{2}{1}{\udlabel{subj}}
                         \depedge{2}{3}{\udlabel{cop}}
@@ -382,7 +384,7 @@ agreement with the subject and accusative marking for the embedded clause.
                    \begin{deptext}[column sep=0.3cm]
                                 Айгүл \& студент \& болған \\
                                 \gmk{np} \& \gmk{n} \& \gmk{past} \\
-                                \gloss{Aygül} \& \gloss{student} \& \gloss{was}\\
+                                \tgloss{Aygül} \& \tgloss{student} \& \tgloss{was}\\
                         \end{deptext}
                         \depedge{2}{1}{\udlabel{subj}}
                         \depedge{2}{3}{\udlabel{cop}}
@@ -396,7 +398,7 @@ agreement with the subject and accusative marking for the embedded clause.
                    \begin{deptext}[column sep=0.2cm]
                                 Айгүл \& Азаматтың \& қайда \& екенін \& білмейді. \\
                                 \gmk{np} \& \gmk{np.gen} \& \gmk{adv} \& \gmk{cop} \& \gmk{neg.aor} \\
-                                \gloss{Aygül} \& \gloss{Azamat} \& \gloss{where} \& \gloss{being} \& \gloss{knows not} \\
+                                \tgloss{Aygül} \& \tgloss{Azamat} \& \tgloss{where} \& \tgloss{being} \& \tgloss{knows not} \\
                         \end{deptext}
                         \depedge{5}{1}{\udlabel{subj}}
                         \depedge{3}{2}{\udlabel{subj}}
@@ -431,7 +433,7 @@ results in better parser accuracy \parencite{bengoetxea09}.
 %               1         2         3          4              5                6              7                8           9             10
              Барлық \& адамдар \& тумысынан \& азат      \& және         \& қадір-қасиеті \& мен          \& құқықтары  \& тең       \& болып     \& дүниеге \& келеді \\
                     \&         \&           \& \gmk{adj} \& \gmk{cnjcoo} \& \gmk{n}       \& \gmk{cnjcoo} \& \gmk{n.pl} \& \gmk{adj} \& \gmk{cop} \& \& \\
-                    \&         \&           \& \gloss{free} \& \gloss{and}  \& \gloss{dignity}  \&  \gloss{and} \& \gloss{rights} \&  \gloss{equal} \& \gloss{being} \& \& \\
+                    \&         \&           \& \tgloss{free} \& \tgloss{and}  \& \tgloss{dignity}  \&  \tgloss{and} \& \tgloss{rights} \&  \tgloss{equal} \& \tgloss{being} \& \& \\
 		\end{deptext}
 		\depedge{9}{4}{\udlabel{conj}}
 		\depedge{9}{5}{\udlabel{cc}}
@@ -462,7 +464,7 @@ There are different ways in which two nominals may occur together to act as a si
 		   \begin{deptext}[column sep=0.3cm]
 				көрші \& елдер \\
 				\gmk{n.attr} \& \gmk{n.pl.nom} \\
-				\gloss{neighbour} \& \gloss{countries} \\
+				\tgloss{neighbour} \& \tgloss{countries} \\
 			\end{deptext}
 			\depedge{2}{1}{\udlabel{compound}}
 		\end{dependency}
@@ -475,7 +477,7 @@ There are different ways in which two nominals may occur together to act as a si
 		   \begin{deptext}[column sep=0.3cm]
 				әлем \& чемпионаты \\
 				\gmk{n.nom} \& \gmk{n.px3sg.nom} \\
-				\gloss{world} \& \gloss{championship} \\
+				\tgloss{world} \& \tgloss{championship} \\
 			\end{deptext}
 			\depedge{2}{1}{\udlabel{nmod}}
 		\end{dependency}
@@ -488,7 +490,7 @@ There are different ways in which two nominals may occur together to act as a si
 		   \begin{deptext}[column sep=0.3cm]
 				Иранның \& экономиясы \\
 				\gmk{n.gen} \& \gmk{n.px3sg.nom} \\
-				\gloss{Iran's} \& \gloss{economy} \\
+				\tgloss{Iran's} \& \tgloss{economy} \\
 			\end{deptext}
 			\depedge{2}{1}{\udlabel{nmod}}
 		\end{dependency}
@@ -548,6 +550,7 @@ surface form. The converted corpus is available alongside the original.\footnote
 %             [0.658+0.669+0.675+0.684+0.694+0.723+0.751+0.776+0.825+0.921]
 
 \begin{table}[htbp]
+	\caption{Preliminary parsing results from MaltParser using different models. The numbers in brackets denote the upper and lower bounds found during cross validation. Adding structural features to the model substantially improves the performance of the parser, although we find no improvement in using full morphosyntactic description (MSD) over using simply the first part-of-speech (POS) tag.}
 	\centering
 	\begin{tabular}{llrr}
 		\toprule
@@ -559,7 +562,6 @@ surface form. The converted corpus is available alongside the original.\footnote
 			surface+lemma+POS+MSD  & nivreeager  & 55.2 [43.4, 75.0] & 73.7 [65.8, 92.1] \\
 		\bottomrule
 	\end{tabular}
-	\caption{Preliminary parsing results from MaltParser using different models. The numbers in brackets denote the upper and lower bounds found during cross validation. Adding structural features to the model substantially improves the performance of the parser, although we find no improvement in using full morphosyntactic description (MSD) over using simply the first part-of-speech (POS) tag.}
 	\label{table:eval}
 \end{table}
 
