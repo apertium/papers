@@ -22,6 +22,7 @@
 
 %%%%% General formatting stuff %%%%%
 
+\usepackage{ulem}
 \usepackage{multirow}
 \usepackage[small,bf]{caption} % CHECK IF THIS IS OK
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
@@ -313,15 +314,31 @@ tokenised as бар.{\sc adj} + е.{\sc cop.aor.sg1} + ма.{\sc qst}.
 % - fix errors
 
 \begin{table}[htbp]
-	\centering
-	\begin{tabular}{ll}
-		\toprule
-		\textbf{Label} & \textbf{Description} \\
-		\midrule
-				\\
- 		\bottomrule
-	\end{tabular}
-	\caption{Universal dependency label set}
+        \centering
+\begin{small}
+        \begin{tabular}{ll|ll|ll}
+                \toprule
+                \textbf{Label} & \textbf{Description} & \textbf{Label} & \textbf{Description} & \textbf{Label} & \textbf{Description} \\
+                \midrule
+\texttt{acl} & clausal modifier of noun & \texttt{csubjpass} & clausal passive subject & texttt{neg} & negation modifier\\
+\texttt{advcl} & adverbial clause modifier & \texttt{dep} & unspecified dependency & \texttt{nmod} & nominal modifier\\
+\texttt{advmod} & adverbial modifier & \texttt{det} & determiner & \texttt{nsubj} & nominal subject\\
+\texttt{amod} & adjectival modifier & \texttt{discourse} & discourse element & \texttt{nsubjpass} & passive nominal subject\\
+\texttt{appos} & appositional modifier & \texttt{dislocated} & dislocated elements & \texttt{nummod} & numeric modifier\\
+\texttt{aux} & auxiliary & \texttt{dobj} & direct object & \texttt{parataxis} & parataxis\\
+\texttt{\sout{auxpass}} & passive auxiliary & \texttt{expl} & expletive & \texttt{punct} & punctuation\\
+\texttt{case} & case marking & \texttt{foreign} & foreign words & \texttt{remnant} & remnant in ellipsis\\
+\texttt{cc} & coordinating conjunction & \texttt{goeswith} & goes with & \texttt{reparandum} & overridden disfluency\\
+\texttt{ccomp} & clausal complement & \texttt{iobj} & indirect object & \texttt{root} & root\\
+\texttt{compound} & compound & \texttt{list} & list & \texttt{vocative} & vocative\\
+\texttt{conj} & conjunct & \texttt{mark} & marker & \texttt{xcomp} & open clausal complement\\
+\texttt{cop} & copula & \texttt{mwe} & multi-word expression & \\
+\texttt{csubj} & clausal subject & \texttt{name} & name & \\
+
+                \bottomrule
+        \end{tabular}
+\end{small}
+        \caption{Universal dependency label set}
 \end{table}
 
 \subsection{Copula}
