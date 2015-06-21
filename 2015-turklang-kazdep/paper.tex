@@ -239,7 +239,7 @@ Nominals (\tag{n}) default to substantive and adjectives (\tag{adj}) default to 
 
 Kazakh, like most Turkic languages, makes frequent use of non-finite verb forms by deriving verbal adjectives, verbal nouns, and verbal adverbs from verbs.  Verbal adjective phrases modify nouns, as in \kazakh{\textbf{мені көрген} дәрігер} \gloss{the doctor \textbf{that saw me}}.  Verbal nouns can function as subjects or complements of verbs or copulas, as in \kazakh{Дәрігер сені \textbf{көргенін} білген жоқпын.} \gloss{I didn't know that the doctor had seen you.} and \kazakh{Дәрігер сені \textbf{көргені} жақсы болыпты.} \gloss{It's good that doctor saw you.}  Verbal adverbs allow a verb phrase to function as a clausal verbal adjunct, as in \kazakh{Мен \textbf{дәрігерді көріп} қуанып кеттім.} \gloss{\textbf{Seeing the doctor}, I got happy.}  Verbal nouns with certain case morphology and/or occurring with certain postpositions can also function as a verbal adjunct much in the same way that verbal adverb clauses do, as in \kazakh{Мен \textbf{дәрігерді көргенде} қуанып кеттім.} \gloss{I got happy \textbf{when I saw the doctor}.}, here with a verbal noun in the locative case.
 
-Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, the verb itself does not surface, but agreement morphology surfaces (cliticised to the previous word) in all but the third person forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.} versus \kazakh{Ол үйде.} \gloss{S/he's at home.}).  The defective copula verb also surfaces in the recent past tense (e.g., \kazakh{Мен үйде еді\textbf{м}.} \gloss{I was at home.}, \kazakh{Інім үйде еді.} \gloss{My younger brother was at home.}).  Of particular interest are non-finite forms of the copula.  Copula clauses can be attributive, as in \kazakh{\textbf{үйі жақсы} дәрігер} \gloss{the doctor \textbf{who has a nice house}}, or literally \gloss{\textbf{his/her house is nice} the doctor}.  While this construction never has overt copula marking, copula clauses which are complements of verbs always have an overt copula form, e.g. \kazakh{Дәрігердің үйі жақсы \textbf{екенін} білген жоқпын.} \gloss{I didn't know \textbf{that} the doctor's house \textbf{was} nice.}  Here, \kazakh{екен} is a suppletive gerundive form of the copula and is marked as accusative.
+Another category that may be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, the verb itself does not surface, but agreement morphology surfaces (cliticised to the previous word) in all but the third person forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.} versus \kazakh{Ол үйде.} \gloss{S/he's at home.}).  The defective copula verb also surfaces in the recent past tense (e.g., \kazakh{Мен үйде еді\textbf{м}.} \gloss{I was at home.}, \kazakh{Інім үйде еді.} \gloss{My younger brother was at home.}).  Of particular interest are non-finite forms of the copula.  Copula clauses can be attributive, as in \kazakh{\textbf{үйі жақсы} дәрігер} \gloss{the doctor \textbf{who has a nice house}}, or literally \gloss{\textbf{his/her house is nice} the doctor}.  While this construction never has overt copula marking, copula clauses which are complements of verbs always have an overt copula form, e.g. \kazakh{Дәрігердің үйі жақсы \textbf{екенін} білген жоқпын.} \gloss{I didn't know \textbf{that} the doctor's house \textbf{was} nice.}  Here, \kazakh{екен} is a suppletive verbal noun form of the copula and is marked as accusative.
 
 
 How each of these issues bears on a dependency analysis will be discussed in section~\ref{sec:annotation}.
@@ -254,13 +254,12 @@ How each of these issues bears on a dependency analysis will be discussed in sec
 \subsection{Treebanks} % Related work
 
 A treebank is a parsed corpus of sentences annotated syntactically following a particular
-syntactic theory. Two broad groups can be distinguished, phrase-structure treebanks
+syntactic theory. Two broad groups can be distinguished: phrase-structure treebanks
 which annotate constituency strucure, and dependency treebanks which annotate dependency
 structure. Some treebanks combine both.
 
-Treebanks can be used directly for linguistic and computational linguistic research, by
-performing search queries. For example, to extract a valency lexicon for verbs, or to
-study the frequency of various syntactic phenomena such as word order or nominal case usage
+Treebanks can be used directly for linguistic and computational linguistic research by
+performing search queries---for example, to extract a valency lexicon for verbs, or to study the frequency of various syntactic phenomena such as word order or nominal case usage
 and syntactic function.
 
 They can also be used to train statistical parsers which can
@@ -274,8 +273,8 @@ can provide reasonable parsing accuracy.
 
 \subsection{Corpus}
 
-To create the corpus we selected a range of texts from free and public-domain sources. These texts encompassed 
-texts from a variety of genres, such as: encyclopaedic articles, folk tales, legal texts, and phrases from a phrasebook.
+To create the corpus, we selected a range of texts from free and public-domain sources. These texts encompassed 
+texts from a variety of genres, such as encyclopaedic articles, folk tales, legal texts, and phrases from a phrasebook.
 The corpus is not entirely balanced and leans more towards encyclopaedic text. Table~\ref{table:corpcomp} provides
 a breakdown of the sources.
 
@@ -352,13 +351,13 @@ in \textcite{garrido02}. Simple tokens such as \kazakh{толқулар} \gloss{
 as a single token, and their lemma and morphological analysis is returned. Multiword
 units such as \kazakh{ауа райы} \gloss{weather} and \kazakh{ата-анасының} \gloss{of their parents} are combined
 into a single token. Abbreviations and numerals which bear case, such as \kazakh{АҚШ-пен} \gloss{with the USA}
-and \kazakh{90\%-ына} \gloss{to 90\%} are analysed as a single token, as are light-verbs such as
+and \kazakh{90\%-ына} \gloss{to 90\%} are analysed as a single token, as are light verb constructions such as
 \kazakh{пайда бол} \gloss{to appear} and tense forms written with space like \kazakh{оқыған жоқ},
 the third-person negative past of \kazakh{оқы-} \gloss{to study/read}.
 
 In some cases a single token is split into two tokens, as with the aorist copula suffixes,
-\kazakh{үйдемін} \gloss{I am in the house} is tokenised as \kazakh{үй.\gmk{loc} + е.\gmk{cop.aor.sg1}}. Furthermore
-two input tokens may result in three output tokens, \kazakh{бар ма?} \gloss{is there?} would be
+e.g., \kazakh{үйдемін} \gloss{I am in the house} is tokenised as \kazakh{үй.\gmk{loc} + е.\gmk{cop.aor.sg1}}. Furthermore,
+two input tokens may result in three output tokens, e.g., \kazakh{бар ма?} \gloss{is there?} is
 tokenised as \kazakh{бар.\gmk{adj} + е.\gmk{cop.aor.sg3} + ма.\gmk{qst}}.
 
 
@@ -469,7 +468,7 @@ We have uniformly annotated the copula as a leaf node with the predicate, or adv
 as the head of the structure. For certain structures this is convenient, such as the
 bare copula in phrases like \ref{fig:cop1} or \ref{fig:cop2}, but for phrases where
 the copula is part of an embedded clause this is not necessarily the most  
-effective choice. In \ref{fig:cop3}, the copula holds all the morphological information,
+effective choice. In \ref{fig:cop3}, the copula holds all the morphological information, including
 agreement with the subject and accusative marking for the embedded clause.
 
 \begin{figure}[htbp]
