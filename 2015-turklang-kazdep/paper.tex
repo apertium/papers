@@ -345,52 +345,69 @@ tokenised as \kazakh{бар.\gmk{adj} + е.\gmk{cop.aor.sg1} + ма.\gmk{qst}}.
 
 \subsection{Copula}
 
+The copula (both \emph{е} and \emph{бол}) is a challenging problem for dependency 
+analysis of Kazakh. The universal dependency guidelines state that the copula should
+be the dependent of the lexical predicate. However, in many cases the copula in Kazakh
+is found in embedded clauses ...
+
+We have uniformly annotated the copula as a leaf node with the predicate, or adverbial
+as the head of the structure. For certain structures this is convenient, such as the
+bare copula in phrases like \ref{ex:cop1} or \ref{ex:cop2}, but for phrases where
+the copula is part of an embedded clause this is not necessarily the most  
+effective choice. In \ref{ex:cop3}, the copula holds all the morphological information,
+agreement with the subject and accusative marking for the embedded clause.
+
+
+
 \begin{figure}[htbp]
-	\centering
+        \centering
 
-	\begin{subfigure}[b]{0.3\textwidth}
-		\centering
-		\begin{dependency}[theme = simple, font = \small]
-		   \begin{deptext}[column sep=0.3cm]
-				Айгүл \& студент \& · \\
-				\gmk{np} \& \gmk{n} \& \gmk{cop} \\
-				\gloss{Aygül} \& \gloss{student} \& \gloss{is} \\
-			\end{deptext}
-			\depedge{2}{1}{\udlabel{subj}}
-			\depedge{3}{2}{\udlabel{cop}}
-		\end{dependency}
-		\caption{xxx }\label{fig:compound}
-	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{0.3\textwidth}
-		\centering
-		\begin{dependency}[theme = simple, font = \small]
-		   \begin{deptext}[column sep=0.3cm]
-				Айгүл \& студент \& - \\
-				\gmk{np} \& \gmk{-} \& \gmk{-} \\
-				\gloss{Aygül} \& \gloss{-} \& \gloss{-}\\
-			\end{deptext}
-			\depedge{3}{2}{\udlabel{cop}}
-		\end{dependency}
-		\caption{xxx.}\label{fig:cop2}
-	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{0.3\textwidth}
-		\centering
-		\begin{dependency}[theme = simple, font = \small]
-		   \begin{deptext}[column sep=0.3cm]
-				Айгүл   \& - \& - \\
-				\gmk{n} \& \gmk{-} \& \gmk{-} \& \\
-				\gloss{Aygül} \& \gloss{-} \& \gloss{-} \\
-			\end{deptext}
-			\depedge{3}{2}{\udlabel{cop}}
-		\end{dependency}
-		\caption{xxx.}\label{fig:cop3}
-	\end{subfigure}
+        \begin{subfigure}[b]{0.25\textwidth}
+                \centering
+                \begin{dependency}[theme = simple, font = \small]
+                   \begin{deptext}[column sep=0.3cm]
+                                Айгүл \& студент \& · \\
+                                \gmk{np} \& \gmk{n} \& \gmk{cop} \\
+                                \gloss{Aygül} \& \gloss{student} \& \gloss{is} \\
+                        \end{deptext}
+                        \depedge{2}{1}{\udlabel{subj}}
+                        \depedge{2}{3}{\udlabel{cop}}
+                \end{dependency}
+                \caption{xxx }\label{fig:compound}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[b]{0.25\textwidth}
+                \centering
+                \begin{dependency}[theme = simple, font = \small]
+                   \begin{deptext}[column sep=0.3cm]
+                                Айгүл \& студент \& болған \\
+                                \gmk{np} \& \gmk{n} \& \gmk{past} \\
+                                \gloss{Aygül} \& \gloss{student} \& \gloss{was}\\
+                        \end{deptext}
+                        \depedge{2}{1}{\udlabel{subj}}
+                        \depedge{2}{3}{\udlabel{cop}}
+                \end{dependency}
+                \caption{xxx.}\label{fig:cop2}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[b]{0.40\textwidth}
+                \centering
+                \begin{dependency}[theme = simple, font = \small]
+                   \begin{deptext}[column sep=0.2cm]
+                                Айгүл \& Азаматтың \& қайда \& екенін \& білмейді. \\
+                                \gmk{np} \& \gmk{np.gen} \& \gmk{adv} \& \gmk{cop} \& \gmk{neg.aor} \\
+                                \gloss{Aygül} \& \gloss{Azamat} \& \gloss{where} \& \gloss{being} \& \gloss{knows not} \\
+                        \end{deptext}
+                        \depedge{5}{1}{\udlabel{subj}}
+                        \depedge{3}{2}{\udlabel{subj}}
+                        \depedge{5}{3}{\udlabel{ccomp}}
+                        \depedge{3}{4}{\udlabel{cop}}
+                \end{dependency}
+                \caption{xxx.}\label{fig:cop3}
+        \end{subfigure}
 
-	\caption{Dependency trees of copula constructions.}
+        \caption{Dependency trees of copula constructions.}
 \end{figure}
-
 
 
 
