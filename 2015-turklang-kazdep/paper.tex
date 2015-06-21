@@ -24,11 +24,39 @@
 
 \usepackage[normalem]{ulem}
 \usepackage{multirow}
+\usepackage{multicol}
 \usepackage[small,bf]{caption} % CHECK IF THIS IS OK
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
 
 \usepackage{subcaption}
 \usepackage{booktabs}
+
+%\usepackage{supertabular}
+%\newcount\n
+%\n=0
+%\def\tablebody{}
+%\makeatletter
+%\loop\ifnum\n<100
+        %\advance\n by1
+        %\protected@edef\tablebody{\tablebody
+                %\textbf{\number\n.}& shortText
+                %\tabularnewline
+        %}
+%\repeat
+
+%\makeatletter
+%\let\mcnewpage=\newpage
+%\newcommand{\TrickSupertabularIntoMulticols}{%
+  %\renewcommand\newpage{%
+    %\if@firstcolumn
+      %\hrule width\linewidth height0pt
+      %\columnbreak
+    %\else
+      %\mcnewpage
+    %\fi
+  %}%
+%}
+%\makeatother
 
 %\usepackage{natbib}
 %\bibdata{paper}
@@ -317,6 +345,7 @@ tokenised as \kazakh{бар.\gmk{adj} + е.\gmk{cop.aor.sg1} + ма.\gmk{qst}}.
 
 \section{Annotation guidelines}\label{sec:annotation}
 
+%FIXME:
 % general procedure
 
 % - disambiguate
@@ -353,6 +382,57 @@ tokenised as \kazakh{бар.\gmk{adj} + е.\gmk{cop.aor.sg1} + ма.\gmk{qst}}.
 \end{small}
         \caption{Universal dependency label set}
 \end{table}
+
+%\begin{small}
+%\begin{multicols*}{3}
+	%\tablehead{\toprule \textbf{Label} & \textbf{Description}\\\midrule}
+	%\tabletail{\bottomrule}
+%\TrickSupertabularIntoMulticols
+
+	%\begin{supertabular}{ll}
+%\texttt{acl} & clausal modifier of noun\\
+%\texttt{advcl} & adverbial clause modifier\\
+%\texttt{advmod} & adverbial modifier\\
+%\texttt{amod} & adjectival modifier \\
+%\texttt{appos} & appositional modifier\\
+%\texttt{aux} & auxiliary  \\
+%\texttt{\sout{auxpass}} & passive auxiliary \\
+%\texttt{case} & case marking \\
+%\texttt{cc} & coordinating conjunction \\
+%\texttt{ccomp} & clausal complement \\
+%\texttt{compound} & compound \\
+%\texttt{conj} & conjunct\\ 
+%\texttt{cop} & copula \\
+%\texttt{\sout{csubj}} & clausal subject \\
+%\texttt{\sout{csubjpass}} & clausal passive subject\\
+%\texttt{dep} & unspecified dependency\\
+%\texttt{det} & determiner \\
+%\texttt{discourse} & discourse element \\
+%\texttt{\sout{dislocated}} & dislocated elements \\
+%\texttt{dobj} & direct object \\
+%\texttt{\sout{expl}} & expletive \\
+%\texttt{foreign} & foreign words \\
+%\texttt{\sout{goeswith}} & goes with \\
+%\texttt{iobj} & indirect object \\
+%\texttt{list} & list \\
+%\texttt{mark} & marker \\
+%\texttt{\sout{mwe}} & multi-word expression \\ 
+%\texttt{name} & name \\
+%\texttt{\sout{neg}} & negation modifier\\
+%\texttt{nmod} & nominal modifier\\
+%\texttt{\sout{nsubj}} & nominal subject\\
+%\texttt{\sout{nsubjpass}} & passive nominal subject\\
+%\texttt{nummod} & numeric modifier\\
+%\texttt{parataxis} & parataxis\\
+%\texttt{punct} & punctuation\\
+%\texttt{remnant} & remnant in ellipsis\\
+%\texttt{\sout{reparandum}} & overridden disfluency\\
+%\texttt{root} & root\\
+%\texttt{vocative} & vocative\\
+%\texttt{xcomp} & open clausal complement\\
+	%\end{supertabular}
+%\end{multicols*}
+%\end{small}
 
 \subsection{Copula}
 
@@ -440,7 +520,7 @@ results in better parser accuracy \parencite{bengoetxea09}.
 %               1         2         3          4              5          6          7        8
                 Олар \& Финляндия, \& Швеция \& және \& Эстонияидан \& кейін \& Ресейге \& барды. \\
                 \gmk{prn} \& \gmk{nom} \& \gmk{nom} \& \gmk{cc} \& \gmk{abl} \& \gmk{post} \& \gmk{dat} \& \gmk{past} \\
-                \gloss{They} \& \gloss{Finland}, \& \gloss{Sweden} \& \gloss{and} \& \gloss{Estonia} \& \gloss{after} \& \gloss{Russia} \& \gloss{visited.} \\
+                \tgloss{They} \& \tgloss{Finland}, \& \tgloss{Sweden} \& \tgloss{and} \& \tgloss{Estonia} \& \tgloss{after} \& \tgloss{Russia} \& \tgloss{visited.} \\
                 \end{deptext}
                 \depedge{5}{3}{\udlabel{conj}}
                 \depedge{5}{4}{\udlabel{cc}}
@@ -513,6 +593,35 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 
 
 \subsection{Non-finite clauses}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{dependency}[theme = simple, font = \small]
+		\begin{deptext}[column sep=0.08cm]
+			Бразилия \& өз \& жерінде \& чемпионатты \& екі \& рет \& өткізген \& бесінші \& ел \& болды. \\
+			\gmk{np.nom} \& \gmk{det} \& \gmk{nom.px3sp.loc} \& \gmk{n.acc} \& \gmk{num} \& \gmk{n} \& \gmk{v.tv.gpr} \& \gmk{num.ord} \& \gmk{n.nom} \& \gmk{v.iv.ifi} \\
+			\tgloss{Brasil} \& \tgloss{own} \& \tgloss{in its land} \& \tgloss{championship} \& \tgloss{two} \& \tgloss{times} \& \tgloss{having held} \& \tgloss{fifth} \& \tgloss{country} \& \tgloss{became} \\
+		\end{deptext}
+		\depedge{3}{2}{\udlabel{det}}
+		\depedge{7}{3}{\udlabel{nmod}}
+		\depedge{7}{4}{\udlabel{obj}}
+		\depedge{6}{5}{\udlabel{nummod}}
+		\depedge{7}{6}{\udlabel{nmod}}
+		\depedge{9}{7}{\udlabel{acl}}
+		\deproot[edge unit distance=1.3ex]{9}{\udlabel{root}}
+	\end{dependency}
+	\caption{Verbal adjectives: verbal adjectives are the head of everything in their own clause and are an \udtag{acl} dependency of the noun they modify.}\label{fig:gpr}
+\end{figure}
+
+
+Бразилия өз жерінде чемпионатты екі рет өткізген бесінші ел болды
+
+1960 жылдан бастап Батыс үлгісінде дами бастады.
+
+Ол терезеден Азамат пен Айгүлдің ойнағанына қарап тұр.
+
+Айгүл санап біткеннен кейін айналасына қарады.
+
 
 % verbal adjectives → acl
 % verbal nouns (gerunds) → ccomp, no xcomp
