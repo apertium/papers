@@ -707,7 +707,7 @@ As mentioned earlier, verbal nouns combined with certain case morphology and/or 
 
 In order to test the utility of the treebank in a real-world setting, we trained
 and evaluated a number of models using the popular MaltParser tool \parencite{nivre07}.
-MaltParser is a toolkit for data-driven dependency parsing, it can learn a parsing
+MaltParser is a toolkit for data-driven dependency parsing; it can learn a parsing
 model from treebank data and apply this model to parse unseen sentences. The parser
 has a large number of options and parameters that need to be optimised. 
 To select the best parser configuration we relied on 
@@ -743,7 +743,7 @@ surface form. The converted corpus is available alongside the original.\footnote
 %             [0.658+0.669+0.675+0.684+0.694+0.723+0.751+0.776+0.825+0.921]
 
 \begin{table}[htbp]
-	\caption{Preliminary parsing results from MaltParser using different models. The numbers in brackets denote the upper and lower bounds found during cross validation. Adding structural features to the model substantially improves the performance of the parser, although we find no improvement in using full morphosyntactic description (MSD) over using simply the first part-of-speech (POS) tag.}
+	\caption{Preliminary parsing results from MaltParser using different models. The numbers in brackets denote the upper and lower bounds found during cross-validation.}
 	\centering
 	\begin{tabular}{llrr}
 		\toprule
@@ -758,14 +758,14 @@ surface form. The converted corpus is available alongside the original.\footnote
 	\label{table:eval}
 \end{table}
 
-To perform 10-fold cross validation we randomised the order of sentences in the corpus
+To perform 10-fold cross-validation we randomised the order of sentences in the corpus
 and split it into 10 equally-sized parts. In each iteration we held out one part for testing and used
 the rest for training. We calculated the labelled-attachment score (LAS) and 
 unlabelled-attachment score (UAS) for each of the models.
 
-The results we obtain are similar to those obtained with similar 
-sized treebanks, for example the Irish treebank of \textcite{Lynn12}, who report an LAS of
-63.3 and a UAS of 73.3 with the best model.
+The results we obtain, shown in table~\ref{table:eval}, are similar to those obtained with similar 
+sized treebanks, for example the Irish treebank of \textcite{Lynn12}, for which an LAS of
+63.3 and a UAS of 73.3 were reported with the best model.  Adding structural features to the model substantially improves the performance of the parser, although we find no improvement in using full morphosyntactic description (MSD) over using simply the first part-of-speech (POS) tag.
 
 
 \section{Future work}\label{sec:future}
