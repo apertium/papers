@@ -111,38 +111,40 @@ Kazakh (қазақ тілі), a Turkic language of Central Asia and Europe, is s
 
 As an agglutinative language with rich morphology and agreement phenomena, Kazakh presents some interesting challenges for computational syntax.  These challenges include the syntactic functions of the various ``case'' morphemes, problems of ``zero derivation'', non-finite clauses, and copulas and copula constructions.  An existing morphological transducer of Kazakh \parencite{Washington14} implements analyses of how these various phenomena occur on the morphological level.  These phenomena will be described in this section, and how they were dealt with in the annotation of the treebank will be described in section~\ref{sec:annotation}. 
 
-In Kazakh, as in most languages with case, there is not a one-to-one relation between ``case'' morphemes and syntactic function (not to mention a wide range of semantic functions).  The main syntactic functions of the traditionally defined cases in Kazakh are summarised in table~\ref{tab:cases}
+In Kazakh, as in most languages with case, there is not a one-to-one relation between ``case'' morphemes and syntactic function (not to mention a wide range of semantic functions).  The main syntactic functions of the traditionally defined cases in Kazakh are summarised in table~\ref{tab:cases}.
 
 \begin{table}[htbp]
 	\centering
 	\caption{Primary syntactic functions of traditionally defined cases in Kazakh.}\label{tab:cases}
-	\begin{tabular}{l p{5em} p{8em} p{22em}}
-		\toprule
-			\textbf{Case} & \textbf{Morpheme} & \textbf{Functions} & \textbf{Examples} \\
-		\midrule
-			nominative & - & subject,\newline
-									attributive,\newline
-									indefinite object,\newline
-									indefinite genitival 
-								& hargle bargle \newline
-									jargal barble \newline 
-									\\
-			accusative & -/NI/ & object,\newline
-										embedded subject,\newline
-										causative subject
-									& foo \newline
-										bar \\
-			genitive & -/NIң/ & genitival,\newline
-										embedded subject \\
-			locative & -/DA/ & adverbial
+	\begin{small}
+		\begin{tabular}{l p{5em} p{8em} p{22em}}
+			\toprule
+				\textbf{Case} & \textbf{Morpheme} & \textbf{Functions} & \textbf{Examples} \\
+			\midrule
+				nominative & - & subject,\newline
+										attributive,\newline
+										indefinite object,\newline
+										indefinite genitival 
+									& hargle bargle \newline
+										jargal barble \newline 
+										\\
+				accusative & -/NI/ & object,\newline
+											embedded subject,\newline
+											causative subject
+										& foo \newline
+											bar \\
+				genitive & -/NIң/ & genitival,\newline
+											embedded subject \\
+				locative & -/DA/ & adverbial
+										& \\
+				ablative & -/DAн/ & adverbial,\newline
+											comparator \\
+				dative & -/GA/ & indirect object,\newline
+										attributive
 									& \\
-			ablative & -/DAн/ & adverbial,\newline
-										comparator \\
-			dative & -/GA/ & indirect object,\newline
-									attributive
-								& \\
-		\bottomrule
-	\end{tabular}
+			\bottomrule
+		\end{tabular}
+	\end{small}
 \end{table}
 
 All of the traditionally defined ``cases'' in Kazakh have a variety of uses, .  The morphemes that mark the accusative and genitive cases are only used when the noun phrase is semantically definite (e.g., үйді \gloss{the house} \gmk{acc}, үйдің \gloss{of the house} \gmk{gen}).  This means that indefinite accusative and genitive as well as nominative noun phrases are all unmarked for case, and hence are all ambiguous (e.g., үй \gloss{house}).  The Kazakh transducer marks these all as \tag{nom}, but their use may be disambiguated.  Besides identifying the semantic role of an unmarked noun phrase, there are various agreement properties that make it clear what ``case'' the noun phrase ``truly'' receives: genitive noun phrases must have a corresponding noun phrase with possessive morphology that agrees in person with the genitive noun phrase; and truly nominative noun phrases must have a corresponding predicate that agrees in person with the nominative noun phrase---e.g., a verb or a copula.
@@ -268,28 +270,16 @@ tokenised as бар.{\sc adj} + е.{\sc cop.aor.sg1} + ма.{\sc qst}.
 
 % productive suffixes -lı (cite wafflelazor)
 
-\section{Annotation}\label{sec:annotation}
+\section{Annotation guidelines}\label{sec:annotation}
 
-Annotation of the treebank followed an iterative approach. The first stage was to
-select a text and preprocess it using the morphological analyser and constraint grammar.
-The output of this process was then manually disambiguated by choosing the most appropriate
-analysis in context, or adding a new analysis if one was not returned by the morphological
-analyser. This latter step was mostly in the case of unknown proper nouns.\footnote{New lexemes
-found during the development of the corpus will contribute to the development of the
-morphological analyser.}
+% general procedure
 
-After the text was disambiguated, it was annotated by a single annotator for dependency
-structure relying on the annotation guidelines for universal dependencies.\footnote{\url{http://universaldependencies.github.io/docs/u/overview/syntax.html}}
-
-Where it was not clear how to annotate a particular structure, it was left pending, that
-is marked with the {\sc dep} relation. After a text was annotated, graphical representations
-of the trees were produced and proofread by a second annotator. The final analysis for a
-sentence was decided on during discussions between the two annotators and in some cases
-through the universal-dependency issue tracker.\footnote{\url{https://github.com/UniversalDependencies/docs/issues/}}
-
-During the course of annotation, language-specific annotation guidelines for Kazakh are
-being produced and published online.\footnote{\url{http://wiki.apertium.org/wiki/Dependency_parsing_for_Turkic}} In 
-the remainder of this section we describe a number of Kazakh-specific decisions.
+% - disambiguate
+% - annotate
+% - check the tree structure
+% - fix errors
+% - check for label consistency
+% - fix errors
 
 \begin{table}[htbp]
 	\centering
