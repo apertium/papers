@@ -632,6 +632,23 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 	\caption{Verbal adverbs: verbal adverbs are the head of everything in their own clause and are an \udtag{advcl} dependency of the verb they are subordinate to.}\label{fig:gpr}
 \end{figure}
 
+\begin{figure}[htbp]
+	\centering
+	\begin{dependency}[theme = simple, font = \small]
+		\begin{deptext}[column sep=0.08cm]
+			Ол \& терезеден \& Азамат \& пен \& Айгүлдің \& ойнағанына \& қарап \& тұр. \\
+			\gmk{prn} \& \gmk{n.abl} \& \gmk{np.nom} \& \gmk{cc} \& \gmk{np.gen} \& \gmk{v.iv.ger.px3sp.dat} \& \gmk{v.tv.prc} \& \gmk{vaux.pres} \\
+			\tgloss{she} \& \tgloss{from the window} \& \tgloss{Azamat} \& \tgloss{and} \& \tgloss{Aygül's} \& \tgloss{playing} \& \tgloss{watching} \& \tgloss{is} \\
+		\end{deptext}
+		\depedge{5}{3}{\udlabel{conj}}
+		\depedge{5}{4}{\udlabel{cc}}
+		\depedge{6}{5}{\udlabel{subj}}
+		\depedge{7}{6}{\udlabel{ccomp}}
+		\deproot[edge unit distance=1.3ex]{7}{\udlabel{root}}
+	\end{dependency}
+	\caption{Verbal nouns: verbal nouns are the head of everything in their own clause and can be a \udtag{ccomp} dependency of the verb they are the complement of.  Note here that the subject noun phrase is in genitive case.}\label{fig:gpr}
+\end{figure}
+
 Бразилия өз жерінде чемпионатты екі рет өткізген бесінші ел болды
 
 1960 жылдан бастап Батыс үлгісінде дами бастады.
