@@ -121,19 +121,19 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 			\toprule
 				\textbf{Case} & \textbf{Morpheme} & \textbf{Functions} & \textbf{Examples} \\
 			\midrule
-				nominative & - & subject,\newline
-										attributive,\newline
-										indefinite object,\newline
+				nominative & - & subject\newline
+										attributive\newline
+										indefinite object\newline
 										indefinite genitival 
 									& hargle bargle \newline
 										jargal barble \newline 
 										\\
-				accusative & -/NI/ & object,\newline
-											embedded subject,\newline
+				accusative & -/NI/ & definite object\newline
+											embedded subject\newline
 											causative subject
 										& foo \newline
 											bar \\
-				genitive & -/NIң/ & genitival,\newline
+				genitive & -/NIң/ & definite genitival\newline
 											embedded subject \\
 				locative & -/DA/ & adverbial
 										& \\
@@ -147,7 +147,7 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 	\end{small}
 \end{table}
 
-All of the traditionally defined ``cases'' in Kazakh have a variety of uses, .  The morphemes that mark the accusative and genitive cases are only used when the noun phrase is semantically definite (e.g., үйді \gloss{the house} \gmk{acc}, үйдің \gloss{of the house} \gmk{gen}).  This means that indefinite accusative and genitive as well as nominative noun phrases are all unmarked for case, and hence are all ambiguous (e.g., үй \gloss{house}).  The Kazakh transducer marks these all as \tag{nom}, but their use may be disambiguated.  Besides identifying the semantic role of an unmarked noun phrase, there are various agreement properties that make it clear what ``case'' the noun phrase ``truly'' receives: genitive noun phrases must have a corresponding noun phrase with possessive morphology that agrees in person with the genitive noun phrase; and truly nominative noun phrases must have a corresponding predicate that agrees in person with the nominative noun phrase---e.g., a verb or a copula.
+As seen in the table, the morphologically unmarked nominative case (e.g., үй \gloss{the/a house} \gmk{nom}) has a wide variety of uses, including indefinite object and genitival.  Definite objects are marked with the accusative case (e.g., үйді \gloss{the house} \gmk{acc}), and definite genitivals are marked with the genitive case (e.g., үйдің \gloss{of the house} \gmk{gen}).  While the Kazakh transducer marks these all as \tag{nom}, their use may be disambiguated.  Genitival nominals, whether definite or not, must (NO EXCEPTIONS) have a corresponding nominal with possessive morphology that agrees in person and number (e.g., үйдің есіг\textbf{і} \gloss{the/a door to the house}), and subject nominals must have a corresponding predicate containing e.g., a verb or a copula that agrees in person and number with the nominative nominal (e.g., үй көшіріле\textbf{ді} \gloss{the house gets moved}).
 
 Another category that may also be non-overt is the copula.  In the present tense, all but third person copulas have realised forms (e.g., Мен үйде\textbf{мін}. \gloss{I'm at home.}), but the third person copula does not surface (e.g., Ол үйде. \gloss{S/he's at home.}).
 
