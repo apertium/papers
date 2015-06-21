@@ -40,8 +40,9 @@
 
 %%%%% Stuff for this paper %%%%%
 \usepackage{tikz-dependency}
-\newcommand{\gmk}[1]{\texttt{#1}}
-\newcommand{\gloss}[1]{{\em #1}}
+\newcommand{\gmk}[1]{{\rm {\sc \texttt{#1}}}}
+\newcommand{\kazakh}[1]{{\em #1}}
+\newcommand{\gloss}[1]{`#1'}
 \newcommand{\tag}[1]{\texttt{‹#1›}}
 %\newcommand{\udtag}[1]{\texttt{@#1}}
 \newcommand{\udtag}[1]{{\ll \textsc{#1}}}
@@ -148,9 +149,9 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 	\end{small}
 \end{table}
 
-As seen in the table, the morphologically unmarked nominative case (e.g., үй \gloss{the/a house} \gmk{nom}) has a wide variety of uses, including indefinite object and genitival.  Definite objects are marked with the accusative case (e.g., үйді \gloss{the house} \gmk{acc}), and definite genitivals are marked with the genitive case (e.g., үйдің \gloss{of the house} \gmk{gen}).  The Kazakh transducer marks all bare nominals both as \tag{nom} and \tag{attr}, but the various functions may be disambiguated syntactically.  Genitival nominals, whether definite or not, must (NO EXCEPTIONS) have a corresponding nominal with possessive morphology that agrees in person and number (e.g., үйдің есіг\textbf{і} \gloss{the/a door to the house}; үй тапсырма\textbf{сы} \gloss{homework}), and subject nominals must have a corresponding predicate containing e.g., a verb or a copula that agrees in person and number with the nominative nominal (e.g., үй көшіріле\textbf{ді} \gloss{the house gets moved}).  When a nominative nominal depends on another nominal that does not have possessive case, the first one must be considered attributive (e.g., үй киім \gloss{house clothes}).
+As seen in the table, the morphologically unmarked nominative case (e.g., \kazakh{үй} \gloss{the/a house} \gmk{nom}) has a wide variety of uses, including indefinite object and genitival.  Definite objects are marked with the accusative case (e.g., \kazakh{үйді} \gloss{the house} \gmk{acc}), and definite genitivals are marked with the genitive case (e.g., \kazakh{үйдің} \gloss{of the house} \gmk{gen}).  The Kazakh transducer marks all bare nominals both as \tag{nom} and \tag{attr}, but the various functions may be disambiguated syntactically.  Genitival nominals, whether definite or not, must (NO EXCEPTIONS) have a corresponding nominal with possessive morphology that agrees in person and number (e.g., \kazakh{үйдің есіг\textbf{і}} \gloss{the/a door to the house}; \kazakh{үй тапсырма\textbf{сы}} \gloss{homework}), and subject nominals must have a corresponding predicate containing e.g., a verb or a copula that agrees in person and number with the nominative nominal (e.g., \kazakh{үй көшіріле\textbf{ді}} \gloss{the house gets moved}).  When a nominative nominal depends on another nominal that does not have possessive case, the first one must be considered attributive (e.g., \kazakh{үй киім} \gloss{house clothes}).
 
-The attributive use of nominals is similar to the use of adjectives, and could even be thought of as a ``zero-derivation'' of nouns into adjectives.  Interestingly, many adjectives can also be used substantively.  Table~\ref{tab:zeroderiv} shows the various functions of nominals, adjectives, and adverbs.
+The attributive use of nominals is similar to the use of adjectives, and could even be thought of as a ``zero-derivation'' of nominals into adjectives.  Interestingly, many adjectives can also be used substantively, i.e., as nominals.  Table~\ref{tab:zeroderiv} shows the various functions that of nominals, adjectives, and adverbs may take.
 
 \begin{table}[htbp]
 	\centering
@@ -164,7 +165,7 @@ The attributive use of nominals is similar to the use of adjectives, and could e
 							Adverbial
 						& hargle\newline 
 							jargal\newline
-							\\
+							бір рет \gloss{once} \\
 			Adjectives & Attributive\newline
 							Substantive\newline
 							Adverbial
@@ -172,17 +173,18 @@ The attributive use of nominals is similar to the use of adjectives, and could e
 						\newline
 						\\
 			Adverbs & Adverbial
-						&
+						& 
 						\\
 		\bottomrule
 	\end{tabular}
 
 \end{table}
 
+Nominals (\tag{n}) default to substantive and adjectives (\tag{adj}) default to attributive.  For the other readings, the transducer provides readings such as \tag{adj}\tag{advl} and \tag{n}\tag{attr}.
 
-Another type of ``zero-derivation'' involves the use of adjectives and nouns.  In Kazakh, adjectives are all attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  The morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive the readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.  Similarly, many nouns may be used attributively, besides the default substantive reading.  Besides the nominative (and indefinite accusative/genitive) reading of \tag{nom}, the transducer provides an attributive reading for most nominals of \tag{attr}.
+%Another type of ``zero-derivation'' involves the use of adjectives and nouns.  In Kazakh, adjectives are all attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  The morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive the readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.  Similarly, many nouns may be used attributively, besides the default substantive reading.  Besides the nominative (and indefinite accusative/genitive) reading of \tag{nom}, the transducer provides an attributive reading for most nominals of \tag{attr}.
 
-Another category that may also be non-overt is the copula.  In the present tense, all but third person copulas have realised forms (e.g., Мен үйде\textbf{мін}. \gloss{I'm at home.}), but the third person copula does not surface (e.g., Ол үйде. \gloss{S/he's at home.}).
+Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, all but third person copulas have realised forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.}), but the third person copula does not surface (e.g., \kazakh{Ол үйде.} \gloss{S/he's at home.}).
 
 
 How each of these issues bears on a dependency analysis will be discussed in section~\ref{sec:annotation}.
@@ -286,18 +288,18 @@ to around 1.7.
 
 Tokenisation of the corpus is performed by our morphological analyser. This analyser
 performs tokenisation on the basis of a left-to-right longest match algorithm described
-in \textcite{garrido02}. Simple tokens such as \emph{толқулар} `riots' are maintained
+in \textcite{garrido02}. Simple tokens such as \kazakh{толқулар} \gloss{riots} are maintained
 as a single token, and their lemma and morphological analysis is returned. Multiword
-units such as \emph{ауа райы} `weather' and \emph{ата-анасының} `of their parents' are combined
-into a single token. Abbreviations and numerals which bear case, such as АҚШ-пен `with the USA'
-and \emph{90\%-ына} `to the 90\%' are analysed as a single token, as are light-verbs such as
-\emph{пайда бол} `to appear' and tense forms written with space like \emph{оқыған жоқ},
-the third-person negative past of \emph{оқы} `to learn'.
+units such as \kazakh{ауа райы} \gloss{weather} and \kazakh{ата-анасының} \gloss{of their parents} are combined
+into a single token. Abbreviations and numerals which bear case, such as \kazakh{АҚШ-пен} \gloss{with the USA}
+and \kazakh{90\%-ына} \gloss{to 90\%} are analysed as a single token, as are light-verbs such as
+\kazakh{пайда бол} \gloss{to appear} and tense forms written with space like \kazakh{оқыған жоқ},
+the third-person negative past of \kazakh{оқы-} \gloss{to study/read}.
 
 In some cases a single token is split into two tokens, as with the aorist copula suffixes,
-\emph{үйдемін} `I am in the house' is tokenised as үй.{\sc loc} + е.{\sc cop.aor.sg1}. Furthermore
-two input tokens may result in three output tokens, \emph{бар ма?} `is there?' would be
-tokenised as бар.{\sc adj} + е.{\sc cop.aor.sg1} + ма.{\sc qst}.
+\kazakh{үйдемін} \gloss{I am in the house} is tokenised as \kazakh{үй.\gmk{loc} + е.\gmk{cop.aor.sg1}}. Furthermore
+two input tokens may result in three output tokens, \kazakh{бар ма?} \gloss{is there?} would be
+tokenised as \kazakh{бар.\gmk{adj} + е.\gmk{cop.aor.sg1} + ма.\gmk{qst}}.
 
 
 % productive suffixes -lı (cite wafflelazor)
