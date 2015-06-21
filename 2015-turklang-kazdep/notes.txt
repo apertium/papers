@@ -171,12 +171,20 @@ being produced and published online.\footnote{\url{http://wiki.apertium.org/wiki
 
 ==Copula==
 
-The copula is a challenging problem for dependency analysis of Kazakh. 
+The copula (both \emph{е} and \emph{бол}) is a challenging problem for dependency 
+analysis of Kazakh. The universal dependency guidelines state that the copula should
+be the dependent of the lexical predicate. However, in many cases the copula in Kazakh
+is found in embedded clauses ...
 
 We have uniformly annotated the copula as a leaf node with the predicate, or adverbial
-as the head of the structure. For certain structures this 
+as the head of the structure. For certain structures this is convenient, such as the 
+bare copula in phrases like \ref{ex:cop1} or \ref{ex:cop2}, but for phrases where
+the copula is part of an embedded clause this is not necessarily the most 
+effective choice. In \ref{ex:cop3}, the copula holds all the morphological information, 
+agreement with the subject and accusative marking for the embedded clause. 
 
-% problems: status of бол as a copula
+Айгүл Азаматтың қайда екенін білмейді.
+
 
 ==Coordination==
 
@@ -187,6 +195,29 @@ Kazakh is a head-final language and morphological marking is only obligatory on 
 last conjunct in a series. Furthermore, experiments in representing coordination
 in other head-final languages have found that the final-conjunct head analysis 
 results in better parser accuracy \parencite{bengoetxea09}. 
+
+
+\begin{figure}[htbp]
+    \centering
+
+        \begin{dependency}[theme = simple, font = \small]
+           \begin{deptext}[column sep=0.08cm]
+%               1         2         3          4              5          6          7        8 
+                Олар \& Финляндия, \& Швеция \& және \& Эстонияидан \& кейін \& Ресейге \& барды. \\
+                \gmk{prn} \& \gmk{nom} \& \gmk{nom} \& \gmk{cc} \& \gmk{abl} \& \gmk{post} \& \gmk{dat} \& \gmk{past} \\ 
+                \gloss{They} \& \gloss{Finland}, \& \gloss{Sweden} \& \gloss{and} \& \gloss{Estonia} \& \gloss{after} \& \gloss{Russia} \& \gloss{visited.} \\
+                \end{deptext}
+                \depedge{5}{3}{\udlabel{conj}}
+                \depedge{5}{4}{\udlabel{cc}}
+                \depedge{5}{2}{\udlabel{conj}}
+                \depedge{5}{6}{\udlabel{case}}
+                \depedge{8}{5}{\udlabel{nmod}}
+                \depedge{8}{7}{\udlabel{nmod}}
+        \end{dependency}
+        \caption{Coordination: All conjucts are attached to the final conjunct, which is the head of the coordinated phrase.}\label{fig:coord}
+
+\end{figure}
+
 
 ==Evaluation==
 

@@ -354,12 +354,10 @@ is found in embedded clauses ...
 
 We have uniformly annotated the copula as a leaf node with the predicate, or adverbial
 as the head of the structure. For certain structures this is convenient, such as the
-bare copula in phrases like \ref{ex:cop1} or \ref{ex:cop2}, but for phrases where
+bare copula in phrases like \ref{fig:cop1} or \ref{fig:cop2}, but for phrases where
 the copula is part of an embedded clause this is not necessarily the most  
-effective choice. In \ref{ex:cop3}, the copula holds all the morphological information,
+effective choice. In \ref{fig:cop3}, the copula holds all the morphological information,
 agreement with the subject and accusative marking for the embedded clause.
-
-
 
 \begin{figure}[htbp]
         \centering
@@ -367,49 +365,51 @@ agreement with the subject and accusative marking for the embedded clause.
         \begin{subfigure}[b]{0.25\textwidth}
                 \centering
                 \begin{dependency}[theme = simple, font = \small]
-                   \begin{deptext}[column sep=0.3cm]
+                   \begin{deptext}[column sep=0.2cm]
                                 Айгүл \& студент \& · \\
-                                \gmk{np} \& \gmk{n} \& \gmk{cop} \\
-                                \tgloss{Aygül} \& \tgloss{student} \& \tgloss{is} \\
+                                \gmk{np} \& \gmk{n} \& \gmk{aor} \\
+                                \gloss{Aygül} \& \gloss{student} \& \gloss{is} \\
                         \end{deptext}
+                        \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
                         \depedge{2}{1}{\udlabel{subj}}
                         \depedge{2}{3}{\udlabel{cop}}
                 \end{dependency}
-                \caption{xxx }\label{fig:compound}
+                \caption{Non-surfaced copula.}\label{fig:cop1}
         \end{subfigure}
         \quad
         \begin{subfigure}[b]{0.25\textwidth}
                 \centering
                 \begin{dependency}[theme = simple, font = \small]
-                   \begin{deptext}[column sep=0.3cm]
+                   \begin{deptext}[column sep=0.2cm]
                                 Айгүл \& студент \& болған \\
                                 \gmk{np} \& \gmk{n} \& \gmk{past} \\
-                                \tgloss{Aygül} \& \tgloss{student} \& \tgloss{was}\\
+                                \gloss{Aygül} \& \gloss{student} \& \gloss{was}\\
                         \end{deptext}
+                        \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
                         \depedge{2}{1}{\udlabel{subj}}
                         \depedge{2}{3}{\udlabel{cop}}
                 \end{dependency}
-                \caption{xxx.}\label{fig:cop2}
+                \caption{Copula in past tense.}\label{fig:cop2}
         \end{subfigure}
         \quad
         \begin{subfigure}[b]{0.40\textwidth}
                 \centering
                 \begin{dependency}[theme = simple, font = \small]
                    \begin{deptext}[column sep=0.2cm]
-                                Айгүл \& Азаматтың \& қайда \& екенін \& білмейді. \\
-                                \gmk{np} \& \gmk{np.gen} \& \gmk{adv} \& \gmk{cop} \& \gmk{neg.aor} \\
-                                \tgloss{Aygül} \& \tgloss{Azamat} \& \tgloss{where} \& \tgloss{being} \& \tgloss{knows not} \\
+                                Айгүл \& оның \& қайда \& екенін \& білмейді. \\
+                                \gmk{np} \& \gmk{gen} \& \gmk{adv} \& \gmk{cop} \& \gmk{neg.aor} \\
+                                \gloss{Aygül} \& \gloss{he} \& \gloss{where} \& \gloss{being} \& \gloss{knows not} \\
                         \end{deptext}
-                        \depedge{5}{1}{\udlabel{subj}}
+                        \deproot[edge unit distance=1.3ex]{5}{\udlabel{root}}
                         \depedge{3}{2}{\udlabel{subj}}
                         \depedge{5}{3}{\udlabel{ccomp}}
                         \depedge{3}{4}{\udlabel{cop}}
                 \end{dependency}
-                \caption{xxx.}\label{fig:cop3}
+                \caption{Copula in an embedded clause.}\label{fig:cop3}
         \end{subfigure}
-
         \caption{Dependency trees of copula constructions.}
 \end{figure}
+
 
 
 
@@ -423,29 +423,28 @@ last conjunct in a series. Furthermore, experiments in representing coordination
 in other head-final languages have found that the final-conjunct head analysis 
 results in better parser accuracy \parencite{bengoetxea09}.
 
-
-
 \begin{figure}[htbp]
     \centering
 
-	\begin{dependency}[theme = simple, font = \small]
-	   \begin{deptext}[column sep=0.08cm]
-%               1         2         3          4              5                6              7                8           9             10
-             Барлық \& адамдар \& тумысынан \& азат      \& және         \& қадір-қасиеті \& мен          \& құқықтары  \& тең       \& болып     \& дүниеге \& келеді \\
-                    \&         \&           \& \gmk{adj} \& \gmk{cnjcoo} \& \gmk{n}       \& \gmk{cnjcoo} \& \gmk{n.pl} \& \gmk{adj} \& \gmk{cop} \& \& \\
-                    \&         \&           \& \tgloss{free} \& \tgloss{and}  \& \tgloss{dignity}  \&  \tgloss{and} \& \tgloss{rights} \&  \tgloss{equal} \& \tgloss{being} \& \& \\
-		\end{deptext}
-		\depedge{9}{4}{\udlabel{conj}}
-		\depedge{9}{5}{\udlabel{cc}}
-		\depedge{8}{6}{\udlabel{conj}}
-		\depedge{8}{7}{\udlabel{cc}}
-		\depedge{9}{8}{\udlabel{subj}}
-		\depedge{10}{9}{\udlabel{cop}}
-		\depedge{12}{10}{\udlabel{advcl}}
-	\end{dependency}
-	\caption{Coordination}\label{fig:coord}
-	
+        \begin{dependency}[theme = simple, font = \small]
+           \begin{deptext}[column sep=0.08cm]
+%               1         2         3          4              5          6          7        8
+                Олар \& Финляндия, \& Швеция \& және \& Эстонияидан \& кейін \& Ресейге \& барды. \\
+                \gmk{prn} \& \gmk{nom} \& \gmk{nom} \& \gmk{cc} \& \gmk{abl} \& \gmk{post} \& \gmk{dat} \& \gmk{past} \\
+                \gloss{They} \& \gloss{Finland}, \& \gloss{Sweden} \& \gloss{and} \& \gloss{Estonia} \& \gloss{after} \& \gloss{Russia} \& \gloss{visited.} \\
+                \end{deptext}
+                \depedge{5}{3}{\udlabel{conj}}
+                \depedge{5}{4}{\udlabel{cc}}
+                \depedge{5}{2}{\udlabel{conj}}
+                \depedge{5}{6}{\udlabel{case}}
+                \depedge{8}{5}{\udlabel{nmod}}
+                \depedge{8}{7}{\udlabel{nmod}}
+        \end{dependency}
+        \caption{Coordination: All conjucts are attached to the final conjunct, which is the head of the coordinated phrase.}\label{fig:coord}
+
 \end{figure}
+
+
 
 \subsection{Complex nominals}
 
