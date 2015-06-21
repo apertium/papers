@@ -646,7 +646,24 @@ As seen in the graphs, the compound relationship of an attributive nominal depen
 		\depedge{7}{6}{\udlabel{ccomp}}
 		\deproot[edge unit distance=1.3ex]{7}{\udlabel{root}}
 	\end{dependency}
-	\caption{Verbal nouns: verbal nouns are the head of everything in their own clause and can be a \udtag{ccomp} dependency of the verb they are the complement of.  Note here that the subject noun phrase is in genitive case.}\label{fig:gpr}
+	\caption{Verbal nouns: verbal nouns are the head of everything in their own clause and can be a \udtag{ccomp} dependency of the verb they are the complement of.  Note here that the subject noun phrase of the subordinate clause is in genitive case.}\label{fig:gpr}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{dependency}[theme = simple, font = \small]
+		\begin{deptext}[column sep=0.08cm]
+			Айгүл \& санап \& біткеннен \& кейін \& айналасына \& қарады. \\
+			\gmk{n.nom} \& \gmk{v.iv.prc} \& \gmk{v.ger.abl} \& \gmk{post} \& \gmk{n.px3sp.dat} \& \gmk{v.tv.ifi} \\
+			\tgloss{Aygül} \& \tgloss{counting} \& \tgloss{having finished} \& \tgloss{after} \& \tgloss{to her surroundings} \& \tgloss{looked} \\
+		\end{deptext}
+		\depedge{5}{2}{\udlabel{advcl}}
+		\depedge{2}{3}{\udlabel{aux}}
+		\depedge{3}{4}{\udlabel{post}}
+		\depedge{6}{5}{\udlabel{obj}}
+		\deproot[edge unit distance=1.3ex]{6}{\udlabel{root}}
+	\end{dependency}
+	\caption{Verbal nouns with case/postpositions: verbal nouns with certain case morphology and/or postpositions are the head of everything in their own clause and can be an \udtag{advcl} dependency of the verb they are the complement of.}\label{fig:gpr}
 \end{figure}
 
 Бразилия өз жерінде чемпионатты екі рет өткізген бесінші ел болды
