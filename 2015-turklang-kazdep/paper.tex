@@ -150,7 +150,7 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 	\end{small}
 \end{table}
 
-As seen in the table, the morphologically unmarked nominative case (e.g., \kazakh{үй} \gloss{the/a house} \gmk{nom}) has a wide variety of uses, including indefinite object and genitival.  Definite objects are marked with the accusative case (e.g., \kazakh{үйді} \gloss{the house} \gmk{acc}), and definite genitivals are marked with the genitive case (e.g., \kazakh{үйдің} \gloss{of the house} \gmk{gen}).  The Kazakh transducer marks all bare nominals both as \tag{nom} and \tag{attr}, but the various functions may be disambiguated syntactically.  Genitival nominals, whether definite or not, must (NO EXCEPTIONS) have a corresponding nominal with possessive morphology that agrees in person and number (e.g., \kazakh{үйдің есіг\textbf{і}} \gloss{the/a door to the house}; \kazakh{үй тапсырма\textbf{сы}} \gloss{homework}), and subject nominals must have a corresponding predicate containing e.g., a verb or a copula that agrees in person and number with the nominative nominal (e.g., \kazakh{үй көшіріле\textbf{ді}} \gloss{the house gets moved}).  When a nominative nominal depends on another nominal that does not have possessive case, the first one must be considered attributive (e.g., \kazakh{үй киім} \gloss{house clothes}).
+As seen in the table, the morphologically unmarked nominative case (e.g., \kazakh{үй} \gloss{the/a house} \gmk{nom}) has a wide variety of uses, including indefinite object and genitival.  Definite objects are marked with the accusative case (e.g., \kazakh{үйді} \gloss{the house} \gmk{acc}), and definite genitivals are marked with the genitive case (e.g., \kazakh{үйдің} \gloss{of the house} \gmk{gen}).  The Kazakh transducer marks all bare nominals both as \tag{nom} and \tag{attr}, but the various functions may be disambiguated syntactically.  Genitival nominals, whether definite or not, must have a corresponding nominal with possessive morphology that agrees in person and number (e.g., \kazakh{үйдің есіг\textbf{і}} \gloss{the/a door to the house}; \kazakh{үй тапсырма\textbf{сы}} \gloss{homework}), and subject nominals must have a corresponding predicate containing e.g., a verb or a copula that agrees in person and number with the nominative nominal (e.g., \kazakh{үй көшіріле\textbf{ді}} \gloss{the house gets moved}).  When a nominative nominal depends on another nominal that does not have possessive case, the first one must be considered attributive (e.g., \kazakh{үй киім} \gloss{house clothes}).
 
 The attributive use of nominals is similar to the use of adjectives, and could even be thought of as a ``zero-derivation'' of nominals into adjectives.  Interestingly, many adjectives can also be used substantively, i.e., as nominals.  Table~\ref{tab:zeroderiv} shows the various functions that of nominals, adjectives, and adverbs may take.
 
@@ -186,7 +186,9 @@ Nominals (\tag{n}) default to substantive and adjectives (\tag{adj}) default to 
 
 %Another type of ``zero-derivation'' involves the use of adjectives and nouns.  In Kazakh, adjectives are all attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  The morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive the readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.  Similarly, many nouns may be used attributively, besides the default substantive reading.  Besides the nominative (and indefinite accusative/genitive) reading of \tag{nom}, the transducer provides an attributive reading for most nominals of \tag{attr}.
 
-Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, the verb itself does not surface, but agreement morphology surfaces (cliticised to the previous word) in all but the third person forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.} versus \kazakh{Ол үйде.} \gloss{S/he's at home.}).  The defective copula verb also surfaces in the recent past tense (e.g., \kazakh{Мен үйде еді\textbf{м}.} \gloss{I was at home.}, \kazakh{Інім үйде еді.} \gloss{My younger brother was at home.}).  Of particular interest are non-finite forms of the copula.  Copula clauses can be attributive, as in \kazakh{үйі үлкен жігіт}
+Non-finite
+
+Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, the verb itself does not surface, but agreement morphology surfaces (cliticised to the previous word) in all but the third person forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.} versus \kazakh{Ол үйде.} \gloss{S/he's at home.}).  The defective copula verb also surfaces in the recent past tense (e.g., \kazakh{Мен үйде еді\textbf{м}.} \gloss{I was at home.}, \kazakh{Інім үйде еді.} \gloss{My younger brother was at home.}).  Of particular interest are non-finite forms of the copula.  Copula clauses can be attributive, as in \kazakh{үйі жақсы дәрігер} \gloss{the doctor who has a nice house}, or literally \gloss{[his/her house is nice] the doctor}.  While this construction never has overt copula marking, copula clauses which are complements of verbs always have an overt copula form, e.g. \kazakh{Дәрігердің үйі жақсы \textbf{екенін} білген жоқпын.} \gloss{I didn't know that the doctor's house was nice.}  Here, \kazakh{екен} is a suppletive gerundive form of the copula and is marked as accusative.
 
 
 How each of these issues bears on a dependency analysis will be discussed in section~\ref{sec:annotation}.
@@ -581,6 +583,18 @@ sized treebanks, for example the Irish treebank of \textcite{Lynn12}, who report
 %crosslingual parsing: Tatar, Kumyk, Kyrgyz, Tuvan
 
 %language-specific dependency relations --- (acl:relcl, ...)
+
+Future work will focus on improving the annotation guidelines and the consistency of
+annotation in the corpus. We will also study the possibility of deepening the annotation
+with Turkic-specific relations. When we have stable annotation guidelines we intend to 
+extend the corpus with more texts.
+We would also like to work on cross-lingual dependency parsing,
+that is, applying a model learnt on the Kazakh treebank to other Turkic languages
+such as Tatar, Kumyk and Tuvan. We have morphological analysers for these languages which have
+compatible tagsets for morphological features and as such it should be possible to learn a
+delexicalised model based on these features. As Turkic syntax is broadly homogenous, this
+presents a promising avenue for future work.
+
 
 \section{Conclusions}\label{sec:conclusions}
 
