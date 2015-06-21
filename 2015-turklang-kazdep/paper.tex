@@ -64,7 +64,14 @@
 
 %250-300-word ``extended abstract in English''
 \abstract{
-This article describes the first steps towards a free/open-source dependency treebank for Kazakh based on universal dependency (UD) annotation standards. The treebank contains 302 sentences and is based on texts from a range of open-source and public domain sources. This ensures its free availability and extensibility. Texts in the treebank are first morphologically analysed and disambiguated and then annotated manually for dependency structure. 
+This article describes the first steps towards a free/open-source dependency treebank for Kazakh based on
+universal dependency (UD) annotation standards. The treebank contains 302 sentences and is based on
+texts from a range of open-source and public domain sources. This ensures
+its free availability and extensibility. Texts in the treebank are first morphologically analysed
+and disambiguated and then annotated manually for dependency structure. In the article we present
+some issues in dependency syntax for Kazakh and how these are analysed in the universal-dependency
+framework. Preliminary results for statistical dependency parsing of Kazakh are reported, along with
+some directions for future research.
 }
 
 
@@ -441,6 +448,7 @@ results in better parser accuracy \parencite{bengoetxea09}.
                 \depedge{5}{6}{\udlabel{case}}
                 \depedge{8}{5}{\udlabel{nmod}}
                 \depedge{8}{7}{\udlabel{nmod}}
+                \deproot[edge unit distance=1.3ex]{8}{\udlabel{root}}
         \end{dependency}
         \caption{Coordination: All conjucts are attached to the final conjunct, which is the head of the coordinated phrase.}\label{fig:coord}
 

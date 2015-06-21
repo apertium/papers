@@ -1,3 +1,15 @@
+==Abstract==
+
+This article describes the first steps towards a free/open-source dependency treebank for Kazakh based on 
+universal dependency (UD) annotation standards. The treebank contains 30
+2 sentences and is based on texts from a range of open-source and public domain sources. This ensures 
+its free availability and extensibility. Texts in the treebank are first morphologically analysed 
+and disambiguated and then annotated manually for dependency structure. In the article we present 
+some issues in dependency syntax for Kazakh and how these are analysed in the universal-dependency 
+framework. Preliminary results for statistical dependency parsing of Kazakh are reported, along with
+some directions for future research.
+
+
 ==Introduction==
 
 This article describes the work towards the development of a dependency treebank for Kazakh, a 
@@ -183,7 +195,58 @@ the copula is part of an embedded clause this is not necessarily the most
 effective choice. In \ref{ex:cop3}, the copula holds all the morphological information, 
 agreement with the subject and accusative marking for the embedded clause. 
 
-Айгүл Азаматтың қайда екенін білмейді.
+\begin{figure}[htbp]
+        \centering
+
+        \begin{subfigure}[b]{0.25\textwidth}
+                \centering
+                \begin{dependency}[theme = simple, font = \small]
+                   \begin{deptext}[column sep=0.2cm]
+                                Айгүл \& студент \& · \\
+                                \gmk{np} \& \gmk{n} \& \gmk{aor} \\
+                                \gloss{Aygül} \& \gloss{student} \& \gloss{is} \\
+                        \end{deptext} 
+                        \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
+                        \depedge{2}{1}{\udlabel{subj}}
+                        \depedge{2}{3}{\udlabel{cop}}
+                \end{dependency}
+                \caption{Non-surfaced copula.}\label{fig:cop1}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[b]{0.25\textwidth}
+                \centering
+                \begin{dependency}[theme = simple, font = \small]
+                   \begin{deptext}[column sep=0.2cm]
+                                Айгүл \& студент \& болған \\
+                                \gmk{np} \& \gmk{n} \& \gmk{past} \\
+                                \gloss{Aygül} \& \gloss{student} \& \gloss{was}\\
+                        \end{deptext} 
+                        \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
+                        \depedge{2}{1}{\udlabel{subj}}
+                        \depedge{2}{3}{\udlabel{cop}}
+                \end{dependency}
+                \caption{Copula in past tense.}\label{fig:cop2}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[b]{0.40\textwidth}
+                \centering
+                \begin{dependency}[theme = simple, font = \small]
+                   \begin{deptext}[column sep=0.2cm]
+                                Айгүл \& оның \& қайда \& екенін \& білмейді. \\
+                                \gmk{np} \& \gmk{gen} \& \gmk{adv} \& \gmk{cop} \& \gmk{neg.aor} \\
+                                \gloss{Aygül} \& \gloss{he} \& \gloss{where} \& \gloss{being} \& \gloss{knows not} \\
+                        \end{deptext}
+                        \deproot[edge unit distance=1.3ex]{5}{\udlabel{root}}
+                        \depedge{3}{2}{\udlabel{subj}}
+                        \depedge{5}{3}{\udlabel{ccomp}}
+                        \depedge{3}{4}{\udlabel{cop}}
+                \end{dependency}
+                \caption{Copula in an embedded clause.}\label{fig:cop3}
+        \end{subfigure}
+        \caption{Dependency trees of copula constructions.}
+\end{figure}
+
+                                                                                                                                                                362,20        65%
 
 
 ==Coordination==
@@ -286,3 +349,25 @@ unlabelled-attachment score (UAS) for each of the models.
 The results we obtain are similar to those obtained with similar 
 sized treebanks, for example the Irish treebank of \cite{Lynn12}, who report an LAS of
 63.3 and a UAS of 73.3 with the best model.
+
+==Future work==
+
+Future work will focus on improving the annotation guidelines and the consistency of 
+annotation in the corpus. We will also study the possibility of deepening the annotation
+with Turkic-specific relations. When we have stable annotation guidelines we intend to 
+extend the corpus with more texts. 
+We would also like to work on cross-lingual dependency parsing,
+that is, applying a model learnt on the Kazakh treebank to other Turkic languages 
+such as Tatar, Kumyk and Tuvan. We have morphological analysers for these languages which have
+compatible tagsets for morphological features and as such it should be possible to learn a 
+delexicalised model based on these features. As Turkic syntax is broadly homogenous, this 
+presents a promising avenue for future work.
+
+==Concluding remarks==
+
+We have presented the first steps towards a free/open-source dependency treebank for 
+Kazakh with annotation based on the universal dependencies. The treebank is small, but 
+provides a base for bootstrapping further. Performance of a state-of-the-art statistical
+parser trained on the treebank is comparable to other treebanks of similar size.
+
+
