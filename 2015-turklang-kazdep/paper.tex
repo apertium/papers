@@ -186,7 +186,7 @@ Nominals (\tag{n}) default to substantive and adjectives (\tag{adj}) default to 
 
 %Another type of ``zero-derivation'' involves the use of adjectives and nouns.  In Kazakh, adjectives are all attributive, but many may also be used either nominally (i.e., as nouns) or adverbially (i.e., as adverbs), or both.  The morphological transducer internally provides a series of classes; depending on class membership, an adjective may receive the readings \tag{adj}\tag{advl} or \tag{adj}\tag{subst}, besides the default attributive reading of \tag{adj}.  If an adjective may be used substantivally, then it will receive a range of substantive morphology as well.  Similarly, many nouns may be used attributively, besides the default substantive reading.  Besides the nominative (and indefinite accusative/genitive) reading of \tag{nom}, the transducer provides an attributive reading for most nominals of \tag{attr}.
 
-Kazakh, like most Turkic languages, makes frequent use of non-finite verb forms by deriving verbal adjectives, verbal nouns, and verbal adverbs from verbs.  Verbal adjective phrases modify nouns, as in \kazakh{мені \textbf{көрген} дәрігер} \gloss{the doctor that saw me}.  Verbal nouns can function as subjects or complements of verbs or copulas, as in \kazakh{Дәрігер сені \textbf{көргенін} білген жоқпын.} \gloss{I didn't know that the doctor had seen you.} and \kazakh{Дәрігер сені \textbf{көргені} жақсы болыпты.} \gloss{It's good that doctor saw you.}
+Kazakh, like most Turkic languages, makes frequent use of non-finite verb forms by deriving verbal adjectives, verbal nouns, and verbal adverbs from verbs.  Verbal adjective phrases modify nouns, as in \kazakh{мені \textbf{көрген} дәрігер} \gloss{the doctor that saw me}.  Verbal nouns can function as subjects or complements of verbs or copulas, as in \kazakh{Дәрігер сені \textbf{көргенін} білген жоқпын.} \gloss{I didn't know that the doctor had seen you.} and \kazakh{Дәрігер сені \textbf{көргені} жақсы болыпты.} \gloss{It's good that doctor saw you.}  
 
 Another category that may also be non-overt is the copula.  The primary strategy for copula constructions in Kazakh is the use of a defective verb \kazakh{е-}.  In the present tense, the verb itself does not surface, but agreement morphology surfaces (cliticised to the previous word) in all but the third person forms (e.g., \kazakh{Мен үйде\textbf{мін}.} \gloss{I'm at home.} versus \kazakh{Ол үйде.} \gloss{S/he's at home.}).  The defective copula verb also surfaces in the recent past tense (e.g., \kazakh{Мен үйде еді\textbf{м}.} \gloss{I was at home.}, \kazakh{Інім үйде еді.} \gloss{My younger brother was at home.}).  Of particular interest are non-finite forms of the copula.  Copula clauses can be attributive, as in \kazakh{үйі жақсы дәрігер} \gloss{the doctor who has a nice house}, or literally \gloss{[his/her house is nice] the doctor}.  While this construction never has overt copula marking, copula clauses which are complements of verbs always have an overt copula form, e.g. \kazakh{Дәрігердің үйі жақсы \textbf{екенін} білген жоқпын.} \gloss{I didn't know that the doctor's house was nice.}  Here, \kazakh{екен} is a suppletive gerundive form of the copula and is marked as accusative.
 
@@ -596,7 +596,12 @@ delexicalised model based on these features. As Turkic syntax is broadly homogen
 presents a promising avenue for future work.
 
 
-\section{Conclusions}\label{sec:conclusions}
+\section{Concluding remarks}\label{sec:conclusions}
+
+We have presented the first steps towards a free/open-source dependency treebank for
+Kazakh with annotation based on the universal dependencies. The treebank is small, but
+provides a base for bootstrapping further. Performance of a state-of-the-art statistical
+parser trained on the treebank is comparable to other treebanks of similar size.
 
 \section*{Acknowledgements}
 
