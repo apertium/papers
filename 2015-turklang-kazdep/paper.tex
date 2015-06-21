@@ -637,7 +637,7 @@ Verbal adverb clauses in Kazakh act as a clausal verbal adjunct, essentially all
 	\caption{Verbal adverbs: verbal adverbs are the head of everything in their own clause and are an \udtag{advcl} dependency of the verb they are subordinate to.}\label{fig:gna}
 \end{figure}
 
-Verbal nouns allow a whole verb phrase to be used as a nominal, and the resulting verbal noun phrase may be used as a subject or object of a verb.  When used as the subject of a verb, verbal noun phrases receive the UD label \udtag{subj} and when the object of a verb \udtag{ccomp}.  An example of a verbal noun phrase used as a \udtag{ccomp} dependency of the main verb is given in table~\ref{fig:gerdat}.
+Verbal nouns allow a whole verb phrase to be used as a nominal, and the resulting verbal noun phrase may be used as a subject or object of a verb.  When used as the subject of a verb, verbal noun phrases receive the UD label \udtag{subj}.  When used as the object of a verb, verbal noun phrases receive the UD label \udtag{ccomp}, unless the subject of the subordinate clause is obligatorily identical to the subject of the main clause, in which case it receives \udtag{xcomp}.  An example of a verbal noun phrase used as a \udtag{ccomp} dependency of the main verb is given in table~\ref{fig:gerdat}.
 
 \begin{figure}[htbp]
 	\centering
@@ -655,6 +655,8 @@ Verbal nouns allow a whole verb phrase to be used as a nominal, and the resultin
 	\end{dependency}
 	\caption{Verbal nouns: verbal nouns are the head of everything in their own clause and can be a \udtag{ccomp} dependency of the verb they are the complement of.  Note here that the subject noun phrase of the subordinate clause is in genitive case.}\label{fig:gerdat}
 \end{figure}
+
+As mentioned earlier, verbal nouns combined with certain case morphology and/or postpositions can function as an adverbial adjunct to a main clause, similar to verbal adverb clauses.  In such instances, they receive the UD label \udtag{advcl}, and example of which is given in figure~\label{fig:gerabl}.
 
 \begin{figure}[htbp]
 	\centering
