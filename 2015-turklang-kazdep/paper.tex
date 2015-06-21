@@ -288,7 +288,7 @@ Tokenisation of the corpus is performed by our morphological analyser. This anal
 performs tokenisation on the basis of a left-to-right longest match algorithm described
 in \textcite{garrido02}. Simple tokens such as \emph{толқулар} `riots' are maintained
 as a single token, and their lemma and morphological analysis is returned. Multiword
-units such as \emph{ауа райы} `weather' and \emph{ата-ананың} `of parents' are combined
+units such as \emph{ауа райы} `weather' and \emph{ата-анасының} `of their parents' are combined
 into a single token. Abbreviations and numerals which bear case, such as АҚШ-пен `with the USA'
 and \emph{90\%-ына} `to the 90\%' are analysed as a single token, as are light-verbs such as
 \emph{пайда бол} `to appear' and tense forms written with space like \emph{оқыған жоқ},
@@ -320,20 +320,20 @@ tokenised as бар.{\sc adj} + е.{\sc cop.aor.sg1} + ма.{\sc qst}.
                 \toprule
                 \textbf{Label} & \textbf{Description} & \textbf{Label} & \textbf{Description} & \textbf{Label} & \textbf{Description} \\
                 \midrule
-\texttt{acl} & clausal modifier of noun & \texttt{csubjpass} & clausal passive subject & texttt{neg} & negation modifier\\
+\texttt{acl} & clausal modifier of noun & \texttt{\sout{csubjpass}} & clausal passive subject & texttt{\sout{neg}} & negation modifier\\
 \texttt{advcl} & adverbial clause modifier & \texttt{dep} & unspecified dependency & \texttt{nmod} & nominal modifier\\
-\texttt{advmod} & adverbial modifier & \texttt{det} & determiner & \texttt{nsubj} & nominal subject\\
-\texttt{amod} & adjectival modifier & \texttt{discourse} & discourse element & \texttt{nsubjpass} & passive nominal subject\\
-\texttt{appos} & appositional modifier & \texttt{dislocated} & dislocated elements & \texttt{nummod} & numeric modifier\\
+\texttt{advmod} & adverbial modifier & \texttt{det} & determiner & \texttt{\sout{nsubj}} & nominal subject\\
+\texttt{amod} & adjectival modifier & \texttt{discourse} & discourse element & \texttt{\sout{nsubjpass}} & passive nominal subject\\
+\texttt{appos} & appositional modifier & \texttt{\sout{dislocated}} & dislocated elements & \texttt{nummod} & numeric modifier\\
 \texttt{aux} & auxiliary & \texttt{dobj} & direct object & \texttt{parataxis} & parataxis\\
-\texttt{\sout{auxpass}} & passive auxiliary & \texttt{expl} & expletive & \texttt{punct} & punctuation\\
+\texttt{\sout{auxpass}} & passive auxiliary & \texttt{\sout{expl}} & expletive & \texttt{punct} & punctuation\\
 \texttt{case} & case marking & \texttt{foreign} & foreign words & \texttt{remnant} & remnant in ellipsis\\
-\texttt{cc} & coordinating conjunction & \texttt{goeswith} & goes with & \texttt{reparandum} & overridden disfluency\\
+\texttt{cc} & coordinating conjunction & \texttt{\sout{goeswith}} & goes with & \texttt{\sout{reparandum}} & overridden disfluency\\
 \texttt{ccomp} & clausal complement & \texttt{iobj} & indirect object & \texttt{root} & root\\
 \texttt{compound} & compound & \texttt{list} & list & \texttt{vocative} & vocative\\
 \texttt{conj} & conjunct & \texttt{mark} & marker & \texttt{xcomp} & open clausal complement\\
-\texttt{cop} & copula & \texttt{mwe} & multi-word expression & \\
-\texttt{csubj} & clausal subject & \texttt{name} & name & \\
+\texttt{cop} & copula & \texttt{\sout{mwe}} & multi-word expression & \\
+\texttt{\sout{csubj}} & clausal subject & \texttt{name} & name & \\
 
                 \bottomrule
         \end{tabular}
