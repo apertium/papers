@@ -1,0 +1,22 @@
+Finite­state morphologies and text corpora as resources for improving morphological descriptions.
+
+This paper describes how finite­state morphological transducers (FSTs) and large text corpora can uncover gaps in morphological descriptions, which could lead to better descriptions. It will present a number of examples of gaps which have been identified during the process of developing FSTs based on traditional reference grammars of different Turkic languages.
+
+An FST is a computational model of the morphology of a language. The model is capable of both analysis and generation. This paper concerns morphological transducers written using the two­level method (Koskenniemi, 1983). In this method, the transducer is composed of two parts: a lexicon which specifies the morphemes (stems and affixes) and a set of phonological constraints which model alternations.  Morphological descriptions describe the _morphotactics_¹ and _morphophonology_² of a language. These are a core part of grammatical descriptions, such as reference grammars and textbooks. Due to restrictions of the medium (such as number of pages), the limitations of introspection and working with native speakers, and the lack of automatic testing, such works are often incomplete.
+
+One example of a description which leads to questions in implementation is morphological descriptions of Tuvan (Исхаков and Пальмбах, 1961; Anderson and Harrison, 1999) describe a process of velar elision whereby /k/ ‹к› elides at the end of a multisyllabic stem intervocalically and /g/ ‹г› elides at the end of any stem intervocalically. Neither of these grammars note that this process also applies to /ŋ/ ‹ң› as well, despite the presence of examples of its occurrence in both descriptions. One reason this may have been missed is that most words which end in /ŋ/ (e.g., ‹түң›, ‹чаң›, ‹бажың›, etc.) do not ever elide /ŋ/. While working on a finite­state morphology for Tuvan, a few forms (of nouns such as ‹соң›) with elided ‹ң› were identified. After extending the morphophonological rules that dealt with ‹к› and ‹г› elision to elide ‹ң› as well, many forms attested in the corpus ceased to be analysed, resulting in this discovery.
+
+Through the use of large text corpora (e.g., Bible translations, Wikipedia, “Web as a Corpus") during the development of an FST, generalisations are automatically testable. Forms which are not analysed or generated immediately inform the authors whether the predictions of their analysis are too general or not general enough. While morphological descriptions are found to be accurate for the most part, even the most thorough descriptions are not without their limitations. In the end, an FST is the ultimate test of the thoroughness of a morphological description. While a morphological transducer is not intended as a readable linguistic description, development of an FST using large text corpora while writing a morphological description could serve as a tool for testing generalisations, which in turn could serve as a quality­control tool.
+
+References
+
+Anderson, G. and Harrison, K. (1999) Tyvan (München: Lincom Europa).
+
+Исхаков, Ф.Г.; Пальмбах, А.А. (1961) Грамматика тувинского языка. (Москва: Издательство восточной литературы)
+
+Koskenniemi, K. (1983) Two­level morphology: a general computational model for word­form recognition and production. (Helsinki: Helsingin yliopisto)
+
+
+¹ Morphotactics refers to the morphemes of a language and how they can be combined.
+
+² Morphophonology refers to the alternation between the various phonological and orthographical forms of a morpheme in a language.
