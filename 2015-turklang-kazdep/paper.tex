@@ -61,9 +61,11 @@
 %\usepackage{natbib}
 %\bibdata{paper}
 %\usepackage[backend=bibtex]{biblatex}
-\usepackage[backend=biber,citestyle=apa,style=authoryear,maxbibnames=99,maxcitenames=2]{biblatex}
+\usepackage[backend=biber,citestyle=apa,style=authoryear-comp,maxbibnames=99,maxcitenames=2]{biblatex}
 \bibliography{paper}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
+
+\DeclareNameAlias{sortname}{last-first}
 
 
 %%%%% Stuff for this paper %%%%%
@@ -600,7 +602,7 @@ There are different ways in which two nominals may occur together to act as a si
 		\centering
 		\begin{dependency}[theme = simple, font = \small]
 		   \begin{deptext}[column sep=0.3cm]
-				Иранның \& экономиясы \\
+				Иранның \& экономикасы \\
 				\gmk{n.gen} \& \gmk{n.px3sg.nom} \\
 				\tgloss{Iran's} \& \tgloss{economy} \\
 			\end{deptext}
