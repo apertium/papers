@@ -1,0 +1,386 @@
+\documentclass[fontscale=0.3,landscape,paperwidth=48in,paperheight=36in]{baposter}  % fontscale=0.285, dvipdfm
+
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage{tikz}
+%\usepackage{pgfbaselayers}
+%\pgfdeclarelayer{background}
+%\pgfdeclarelayer{foreground}
+%\pgfsetlayers{background,main,foreground}
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\selectcolormodel{cmyk}
+
+\definecolor{bordercol}{RGB}{0,0,0}
+%\definecolor{headercolone}{RGB}{6,130,22}
+\definecolor{headercol}{cmyk}{1,0.64,0,0.6}
+\definecolor{headercolone}{cmyk}{1,0.64,0,0.6}
+\definecolor{headercoltwo}{cmyk}{0.44,0,0.15,0.17}
+%\definecolor{boxcolor}{RGB}{176,208,223}
+\definecolor{boxcolor}{cmyk}{0.3,0.08,0.08,0.1}
+\definecolor{headerfontcol}{RGB}{255,255,255}
+\newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
+\newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
+\newcommand{\hilitegrey}[1]{{\addfontfeature{Color=77777799}#1}}
+
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+        \setlength{\itemsep}{1pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\parsep}{0pt}
+}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=australian]{english}
+
+\usepackage{expex}
+
+\usepackage{fontspec}
+\defaultfontfeatures{PunctuationSpace=3,Scale=MatchLowercase,Mapping=tex-text}
+\newfontfeature{IPA}{+mgrk}
+%\setromanfont[IPA]{FreeSerif}
+%\setromanfont[IPA,Scale=0.8]{CMU Serif}
+\setromanfont[IPA]{Liberation Serif}
+\setmonofont[IPA]{DejaVu Sans Mono}
+\usepackage[small,bf]{caption}
+\newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
+\newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
+\newfontfamily\litamono[IPA,Scale=0.5]{DejaVu Sans Mono}
+
+\newcommand{\tilda}{{\qipa ∼}}
+
+\newcommand{\tags}[1]{\hiliteone{#1}}
+\newcommand{\tag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
+\newcommand{\archiphon}[1]{\hilitegrey{\{}\hiliteone{#1}\hilitegrey{\}}}
+
+%\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
+%\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
+%\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
+\newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{CMU Sans Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.52]{CMU Serif}
+\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.55]{DejaVu Serif}
+
+%\newcommand{\htwo}[1]{::: {\htwofont #1} :::}%\hrule} %\hline\\}
+%\newcommand{\htwo}[1]{{\htwofont \textbf{:::#1:::}}}%\hrule} %\hline\\}
+\newcommand{\htwo}[1]{{\htwofont \textbf{\dotfill{}#1\dotfill{}}}}
+
+
+\usepackage{graphicx}  % [dvipdfm]
+
+%\definecolor{MyGray}{rgb}{0.96,0.97,0.98}
+%\newenvironment{codebox}{%
+%   \begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}{\end{minipage}\end{lrbox}%
+%   \colorbox{MyGray}{\usebox{\@tempboxa}}
+%}
+%\newcommand{\codeex}[1]{\begin{codebox}#1\end{codebox}}
+
+%\definecolor{grey}{rgb}{0.96,0.97,0.98}
+\definecolor{grey}{rgb}{0.91,0.91,0.91}
+\newcommand{\codeex}[1]{
+   \fbox{\colorbox{grey}{
+         \begin{minipage}[t]{0.91\textwidth}{\litamono
+            #1
+         }\end{minipage}
+      }
+   }
+}
+
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+
+\usepackage{natbib}
+
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+
+\usepackage{subfigure}
+\usepackage{booktabs}
+
+%%\bibpunct{(}{)}{;}{A}{,}{,}
+%\bibdata{paper}
+
+\newcommand{\citemultileft}[1]{(\citeauthor{#1}, \citeyear{#1}}
+\newcommand{\citemultimid}[1]{\citeauthor{#1}, \citeyear{#1}}
+\newcommand{\citemultiright}[1]{\citeauthor{#1}, \citeyear{#1})}
+\newcommand{\citetwoyears}[2]{\citeauthor{#1} (\citeyear{#1} and \citeyear{#2})}
+
+% for glosses
+\newcommand{\eng}[1]{`{\em #1}'}
+%dammit, sc doesn't seem to be working
+\newcommand{\gmk}[1]{{\qgmk \textsc{#1}}}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep,leftmargin=*}
+\newenvironment{itemise}[1]{
+        \begin{itemize}\setlength{\leftmargin}{-4em}\setlength{\itemsep}{-0.2em}
+        \vspace{-0.5em}
+        #1
+}{
+        \end{itemize}
+        \vspace{-2pt}
+}
+
+%\newcommand{\h2}[1]{{\big
+
+
+
+\begin{document}
+	% To get it to be the same size consistently on all machines..
+	\special{papersize=48in,36in}
+	\setlength{\pdfpageheight}{\paperheight}
+	\setlength{\pdfpagewidth}{\paperwidth}
+
+	%%% Setting Background Image %%%
+	%\background{}
+
+	\begin{poster}{
+		grid=false,
+		%eyecatcher=false,
+		borderColor=bordercol,
+		headerColorOne=headercolone,
+		headerColorTwo=headercoltwo,
+		%headerColorOne=blue,
+		%headerFontColor=white,
+		% Only simple background color used, no shading, so boxColorTwo isn't necessary
+		boxColorOne=boxcolor,
+		headershape=roundedright,
+		headerborder=open,
+		headerheight=0.1\textheight,
+		%headershape=roundedright,
+		%headershade=plain,
+		%headerfont=\Large\textsf, %Sans Serif
+		%headerfont=\Large\sf\bf,
+		textborder=rectangle,
+		%background=plain,
+		%background=user,
+		background=none,
+		headerborder=open,
+		boxshade=plain,
+		textborder=roundedleft,
+		columns=4,
+	}{ %Eye Catcher, empty if option eyecatcher=false - unused
+		\includegraphics[height=6.5em]{uitlogo}
+		\hspace{2cm}\begin{minipage}[t]{9em}
+			\vspace{-2cm}
+			\noindent\includegraphics[height=4.2em]{DCU_logo_2col}\\
+			\vspace{-0.5ex}\hspace{0.105cm}\includegraphics[height=2.15em]{DCU_2010_Name_Mark_289}
+			\end{minipage}
+			\hspace{2cm}\includegraphics[height=6.5em]{iu_tab}
+	}{ %Title (centered top)
+		{\vspace{0pt}\hspace{1cm}
+			{\titlefont \textsc{Finite-state morphologies and text corpora\\as resources for improving morphological descriptions}}}
+	}{ %Authors (centered top, below title)
+		\vspace{-0.5em}
+		\begin{center}
+			\begin{minipage}[t]{9em}
+				\begin{spacing}{0.4}
+				{Francis M.\ Tyers}\\
+				{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
+				\end{spacing}
+			\end{minipage}
+			\begin{minipage}[t]{9.5em}
+				\begin{spacing}{0.4}
+					{Tommi Pirinen\vphantom{y}}\\
+					{\footnotesize Ollscoil Chathair Bhaile Átha Cliath\\\texttt{FIXME Flammie}}
+				\end{spacing}
+			\end{minipage}
+			\begin{minipage}[t]{12em}
+				\begin{spacing}{0.4}
+					{Jonathan North Washington}\\
+					{\footnotesize Indiana University\\\texttt{jonwashi@indiana.edu}}
+				\end{spacing}
+			\end{minipage}
+		\end{center}
+	}{ %More eye catchers, on the right side
+		\includegraphics[angle=90,height=6.5em]{apertium5b}%\hspace{-2em}
+	}
+
+	\headerbox{Random box 1}{name=boxone,column=0,row=0}{
+		\scalebox{0.78}{
+			hargle
+		}
+	}
+	
+	\headerbox{Morphological transducers}{name=morphtrans,below=boxone}{
+		\htwo{Morphological transducers}
+		\begin{itemize}
+			\item Efficient (in speed \& size) models of a language's morphology
+			\item Take a surface form, and produce valid lexical form(s)
+			\item Take a lexical form, and produce valid surface form(s)\vspace{-0.1ex}\\
+		%\end{itemize}
+		\scalebox{0.98}{
+			алдым \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}, \texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
+		}
+		\end{itemize}
+
+		\htwo{Transducers for Turkic languages}
+		\begin{itemize}
+			\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Oflazer, 1994})
+			\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
+			\item Turkmen (\hilitetwo{Tantuğ et al., 2006})
+			\item Kazakh (\hilitetwo{Бекманова \& Махимов, 2013})
+			%\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
+			\item our Kyrgyz, Kazakh, Tatar, Kumyk:\ all \hiliteone{GPL (=free and open)}!
+		\end{itemize}
+
+		\htwo{Framework: HFST}
+		\begin{itemize}
+			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
+			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
+		\end{itemize}
+		\htwo{Approach}
+		\begin{itemize}
+			\item morphotactics implemented in \texttt{lexc}
+			\item morphophonology implemented in \texttt{twol}
+			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
+			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}\vspace{-0.1ex}\\
+			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
+		\end{itemize}
+
+	}
+
+	\headerbox{Categorisation}{name=adjectives,column=2}{
+		\htwo{Adjectives}
+			\begin{itemize}
+				\item morphologically distinct adjective classes
+				\item most sources claim:\ adjectives can be used substantively and adverbially
+				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
+				\item but not all adjectives have all of the following:\\
+				comparative forms, substantive readings, adverbial readings
+				\item Our approach:\ categorisation 
+				\item if properly categorised, only correct forms are analysed and generated
+			\end{itemize}
+
+			\scalebox{0.7}{
+				\begin{tabular}{lllll}
+					\toprule
+					\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
+					\midrule
+					\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
+					\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
+					\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
+					\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
+					\bottomrule
+				\end{tabular}
+			}
+
+		\htwo{Adverbs}
+			\begin{itemize}
+				\item Certain adverbs have special attributive and ablative forms
+				\item Mostly time adverbs
+				%\item Mostly time adverbs, e.g.\\
+				%{\qipa бүгүн} \eng{today}, {\qipa быйыл} \eng{this year}, {\qipa кечээ} \eng{yesterday}, {\qipa жана} \eng{just now}
+				%\item Attributive forms:\\
+				%{\qipa бүгүнкү} \eng{today's}, {\qipa быйылкы} \eng{this year's}, {\qipa кечээги} \eng{yesterday's}, {\qipa жанагы} \eng{just now}
+				%\item Ablative forms:\\
+				%{\qipa бүгүнтөн} \eng{from today}, {\qipa быйылтан} \eng{from this year}, {\qipa кечээтен} \eng{from yesterday}, {\qipa жанатан} \eng{from just now}
+				\item Some also have noun readings:\ regular ablative, other cases:
+				%{\qipa бүгүндөн} \eng{from today}, {\qipa быйылдан} \eng{from this year}
+			\end{itemize}
+			\scalebox{0.83}{
+			\begin{tabular}{lllll}
+				\toprule
+				word & {\qipa бүгүн} & {\qipa быйыл} & {\qipa кечээ} &  {\qipa жана}\\
+				gloss & \eng{today} & \eng{this year} & \eng{yesterday} & \eng{just now} \\
+				\midrule
+				\tag{attr} form & {\qipa бүгүнкү} & {\qipa быйылкы} & {\qipa кечээги} &  {\qipa жанагы}\\
+				\tag{adv}\tag{abl} form & {\qipa бүгүнтөн} & {\qipa быйылтан} & {\qipa кечээтен} &  {\qipa жанатан}\\
+				\tag{n}\tag{abl} form & {\qipa бүгүндөн} & {\qipa быйылдан} & — & — \\
+				\bottomrule
+			\end{tabular}
+			}\vspace{0.2em}
+				\codeex{
+					\begin{spacing}{0.8}
+					\texttt{LEXICON ADV-WITH-KI-ABL\\
+\\
+ADV ;\\
+ADV-KI ;\\
+ADV-ABL ;
+					}
+					\end{spacing}
+					\vspace{0em}
+				}
+	}
+
+	\headerbox{Ongoing and future work}{name=nedostatki,column=3}{
+		\begin{itemize}
+			\item Disambiguation, more stems, clean up transducers
+			\item Machine translation between these languages
+			\item Bring other Kypchak transducers to comparable performance:\\
+			Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
+			\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+		\end{itemize}
+	}
+
+	\headerbox{Further information}{name=getting,column=3,below=nedostatki}{
+		\begin{itemize}
+			\item Part of \textbf{Apertium Turkic} project:\\
+			\url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
+			\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
+			\item \textbf{Source code} available from Apertium's svn repo
+			%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
+				\item Turkic RBMT \textbf{mailing list} (>25 subscribers):\\
+			\texttt{apertium-turkic@lists.sourceforge.net}\\
+			\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
+			\item See our papers in LREC proceedings\\
+			(2012:\ Kyrgyz, 2014:\ Kazakh, Tatar, Kumyk)
+			\item And feel free to contact the authors any time!
+		\end{itemize}
+	}
+
+%	\headerbox{References}{name=references,column=2,below=nedostatki}{
+%		%\begin{thebibliography}{1}\itemsep=-0.01em
+%		\setlength{\baselineskip}{0.4em}
+%	}
+
+
+
+
+		\headerbox{Morphophonology}{name=morphophon,column=1}{
+
+			\htwo{Desonorisation (kaz \& kir)}
+				\begin{itemize}
+					\item {\texttt \{N\}} desonorises to д after a consonant\\
+						алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
+						сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
+					\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
+						сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
+						кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
+				\end{itemize}
+
+				\vspace{-0.5ex}
+				\codeex{
+					\texttt{"L Desonorisation"\\
+						\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
+			
+					\texttt{"N Desonorisation"\\
+						\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
+				}
+			\vspace{0.1em}
+
+			\htwo{Epenthesis}
+				\begin{itemize}
+					\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
+					мур\archiphon{у}н → мурун \eng{nose}\\
+					мур\archiphon{у}н+\archiphon{I}м → мурдум \eng{my nose}\\
+				\end{itemize}
+					\vspace{-0.5ex}
+\codeex{
+			\begin{spacing}{0.9}
+{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
+	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
+  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
+  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
+  \vspace{-0.5ex}\hspace{12ex}         matched ;}}\vspace{-1.5em}
+  			\end{spacing}
+}
+\vspace{0.1em}
+		}
+
+	\end{poster}
+\end{document}
