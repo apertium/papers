@@ -20,7 +20,8 @@
 \definecolor{headercolone}{cmyk}{1,0.64,0,0.6}
 \definecolor{headercoltwo}{cmyk}{0.44,0,0.15,0.17}
 %\definecolor{boxcolor}{RGB}{176,208,223}
-\definecolor{boxcolor}{cmyk}{0.3,0.08,0.08,0.1}
+%\definecolor{boxcolor}{cmyk}{0.3,0.08,0.08,0.1}
+\definecolor{boxcolor}{cmyk}{0.2,0.03,0.03,0.1}
 \definecolor{headerfontcol}{RGB}{255,255,255}
 \newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
 \newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
@@ -41,7 +42,7 @@
 \usepackage{expex}
 
 \usepackage{fontspec}
-\defaultfontfeatures{PunctuationSpace=3,Scale=MatchLowercase,Mapping=tex-text}
+\defaultfontfeatures{PunctuationSpace=2,Scale=MatchLowercase,Mapping=tex-text}
 \newfontfeature{IPA}{+mgrk}
 %\setromanfont[IPA]{FreeSerif}
 %\setromanfont[IPA,Scale=0.8]{CMU Serif}
@@ -63,7 +64,17 @@
 %\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
 \newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{CMU Sans Serif}
 %\newfontfamily\titlefont[IPA,Scale=0.52]{CMU Serif}
-\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Sans Serif Demi Condensed}
+\newfontfamily\titlefont[
+	%SmallCapsFont={Andika},
+	%SmallCapsFont={Alegreya Sans SC},
+	SmallCapsFont={Andada SC},
+	%SmallCapsFont={Carrois Gothic SC},
+	SmallCapsFeatures={Letters=SmallCaps},
+	Scale=0.8,
+]{Andada SC}
+%\newfontfamily\titlefont[IPA,Scale=0.7]{Nimbus Sans L}
 %\newfontfamily\titlefont[IPA,Scale=0.55]{DejaVu Serif}
 
 %\newcommand{\htwo}[1]{::: {\htwofont #1} :::}%\hrule} %\hline\\}
@@ -166,10 +177,10 @@
 	}{ %Eye Catcher, empty if option eyecatcher=false - unused
 		\includegraphics[angle=90,height=6.5em]{apertium5b}%\hspace{-2em}
 	}{ %Title (centered top)
-		{\vspace{0pt}\hspace{1cm}
-			{\titlefont \textsc{Finite-state morphologies and text corpora\\as resources for improving morphological descriptions}}}
+		{%\vspace{0pt}\hspace{1cm} \
+			{\titlefont \scshape{Finite-State Morphologies \& Text Corpora\\\vspace{0.2em}\scalebox{0.8}{as Resources for Improving Morphological Descriptions}}}}
 	}{ %Authors (centered top, below title)
-		\vspace{-0.5em}
+		\vspace{-0.6em}
 		\begin{center}
 			\begin{minipage}[t]{9em}
 				\begin{spacing}{0.4}
@@ -180,10 +191,10 @@
 			\begin{minipage}[t]{9.5em}
 				\begin{spacing}{0.4}
 					{Tommi Pirinen\vphantom{y}}\\
-					{\footnotesize Ollscoil Chathair Bhaile Átha Cliath\\\texttt{FIXME Flammie}}
+					{\footnotesize Ollscoil Chathair Bhaile Átha Cliath\vphantom{y}\\\texttt{FIXME Flammie}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{12em}
+			\begin{minipage}[t]{11.2em}
 				\begin{spacing}{0.4}
 					{Jonathan North Washington}\\
 					{\footnotesize Indiana University\\\texttt{jonwashi@indiana.edu}}
@@ -200,13 +211,20 @@
 			\hspace{2cm}\includegraphics[height=6.5em]{iu_tab}
 	}
 
-	\headerbox{Random box 1}{name=boxone,column=0,row=0}{
+	\headerbox{Morphological Descriptions}{name=morphdesc,column=0,row=0}{
+		Morphological descriptions describe the \_morphotactics\_¹ and \_morphophonology\_² of a language.
+		
+		These are a core part of grammatical descriptions, such as reference grammars and textbooks. Due to restrictions of the medium (such as number of pages), the limitations of introspection and working with native speakers, and the lack of automatic testing, such works are often incomplete.
+
+		¹ Morphotactics refers to the morphemes of a language and how they can be combined.
+
+² Morphophonology refers to the alternation between the various phonological and orthographical forms of a morpheme in a language.
 		\scalebox{0.78}{
 			hargle
 		}
 	}
 	
-	\headerbox{Morphological transducers}{name=morphtrans,below=boxone}{
+	\headerbox{Morphological transducers}{name=morphtrans,below=morphdesc}{
 		\htwo{Morphological transducers}
 		\begin{itemize}
 			\item Efficient (in speed \& size) models of a language's morphology
@@ -228,7 +246,7 @@
 			\item our Kyrgyz, Kazakh, Tatar, Kumyk:\ all \hiliteone{GPL (=free and open)}!
 		\end{itemize}
 
-		\htwo{Framework: HFST}
+		\htwo{Framework:\ HFST}
 		\begin{itemize}
 			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
 			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
@@ -244,7 +262,8 @@
 
 	}
 
-	\headerbox{Categorisation}{name=adjectives,column=2}{
+	\headerbox{Categorisation}{name=adjectives,column=3}{
+	For example, many grammars of Turkic languages (e.g., Somfai Kara, 2002) overgeneralise adjective morphology, stating that all adjectives may act like nouns (and take nominal morphology), or that all adjectives may be used as adverbs with no morphological changes.  We have found that there is a range of “adjective classes” in most Turkic languages, including some which may not be substantivised and some which may not be used adverbially.  This phenomenon is of particular interest because native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
 		\htwo{Adjectives}
 			\begin{itemize}
 				\item morphologically distinct adjective classes
@@ -307,7 +326,7 @@ ADV-ABL ;
 				}
 	}
 
-	\headerbox{Ongoing and future work}{name=nedostatki,column=3}{
+	\headerbox{Ongoing and future work}{name=nedostatki,below=adjectives,column=3}{
 		\begin{itemize}
 			\item Disambiguation, more stems, clean up transducers
 			\item Machine translation between these languages
@@ -340,8 +359,44 @@ ADV-ABL ;
 
 
 
+		\headerbox{Example:\ Tuvan velar elision}{name=tuvanvelars,column=1,span=2}{
+			\begin{multicols}{2}
+				\htwo{Previous descriptions}
+				- Anderson and Harrison, 1999
+				
+				- Исхаков, Ф.Г.; Пальмбах, 1961, p. 117-118
+				\htwo{Initial implementation}
 
-		\headerbox{Morphophonology}{name=morphophon,column=1}{
+				\htwo{Initial frequency list}
+
+			\end{multicols}
+
+			\begin{multicols}{2}
+				\htwo{Examples of correct forms}
+
+				\htwo{More complete characterisation}
+
+				\htwo{Final implementation}
+			
+				\htwo{Final frequency list}
+			\end{multicols}
+
+		}
+
+		\headerbox{Examples:\ ideas for other examples}{name=otherexamples,column=1,span=2,below=tuvanvelars}{
+			\begin{itemize}
+				\item Kyrgyz: conditions where л desonorises to д
+				\item Tuvan: рубль - рубльдиң *рубьдуң
+				\item clitics can go everywhere/anywhere
+				\item underformalised - “particles☹” can go anywhere
+				\item all adjs act like nouns (Somfai-Kara, p. 28)
+				\item all adjectives can be used as adverbs without any morphological changes (Somfai-Kara, p. 29)
+				\item Stuff found doing treebank
+			\end{itemize}
+
+		}
+
+		\headerbox{Morphophonology}{name=morphophon,column=1,below=otherexamples}{
 
 			\htwo{Desonorisation (kaz \& kir)}
 				\begin{itemize}
