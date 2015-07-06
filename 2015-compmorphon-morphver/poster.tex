@@ -30,6 +30,7 @@
 \newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
 \newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
 \newcommand{\hilitegrey}[1]{{\addfontfeature{Color=77777799}#1}}
+\newcommand{\hilitelightgrey}[1]{{\addfontfeature{Color=CCCCCC99}#1}}
 
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,6 +58,7 @@
 \newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
 \newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
 \newfontfamily\litamono[IPA,Scale=0.5]{DejaVu Sans Mono}
+\newfontfamily\ortamono[IPA,Scale=0.625]{DejaVu Sans Mono}
 
 \newcommand{\tilda}{{\qipa ∼}}
 
@@ -108,6 +110,18 @@
       }
    }
 }
+\newcommand{\outputex}[1]{
+   \fbox{\colorbox{iumidnight}{
+         \begin{minipage}[t]{0.91\textwidth}{\ortamono
+				\begin{spacing}{0.2}\vspace{-0.8em}
+	            \hilitelightgrey{#1}
+				\vspace{-2.5em}\end{spacing}
+         }\end{minipage}
+      }
+   }
+}
+
+
 
 \newcommand{\blank}[1]{\underline{\hspace{#1}}}
 
@@ -220,16 +234,24 @@
 	}
 
 	\headerbox{Morphological Descriptions}{name=morphdesc,column=0,row=0}{
-		Morphological descriptions describe the \_morphotactics\_¹ and \_morphophonology\_² of a language.
+		\htwo{What are they?}
+		\begin{itemize}
+			\item core part of grammatical descriptions
+			\item found in reference grammars and textbooks
+		\end{itemize}
+
+		Descriptions of a language's
+		\begin{itemize}
+			\item \textbf{morphotactics} — the morphemes of a language and how they can be combined
+			\item \textbf{morphophonology} — the alternations between the various phonological and orthographical forms of each morpheme in a language
+		\end{itemize}
 		
-		These are a core part of grammatical descriptions, such as reference grammars and textbooks. Due to restrictions of the medium (such as number of pages), the limitations of introspection and working with native speakers, and the lack of automatic testing, such works are often incomplete.
-
-		¹ Morphotactics refers to the morphemes of a language and how they can be combined.
-
-² Morphophonology refers to the alternation between the various phonological and orthographical forms of a morpheme in a language.
-		\scalebox{0.78}{
-			hargle
-		}
+		\htwo{Reasons for being \hilitetwo{incomplete}}
+		\begin{itemize}
+			\item restrictions of the medium (e.g., number of pages)
+			\item limitations of introspection, working w̄ native speakers
+			\item \textbf{lack of automatic testing}
+		\end{itemize}
 	}
 	
 	\headerbox{Morphological transducers}{name=morphtrans,below=morphdesc}{
@@ -383,14 +405,68 @@ ADV-ABL ;
 
 				\htwo{More complete characterisation}
 				\begin{itemize}
-					\item /k/ ‹к› elides at the end of ≥1-{\qipa 𝛔} stems intervocalically;
-					\item /g/ ‹г› elides at the end of any stem intervocalically;
-					\item /ŋ/ ‹ң› elides at the end of \textit{some} stems intervocalically.
+					\item /k/ ‹к› elides at the end of >1-σ stems intervocalically\\
+						инэк+I → инээ, өк+I → өгү
+					\item /g/ ‹г› elides at the end of any stem intervocalically\\
+						өг+I → өө 
+					\item /ŋ/ ‹ң› elides at the end of \textbf{some} stems intervocalically.\\
+						\textbf{соң+I → соо}, чаң+I → чаңы, түң+I → түңү
 				\end{itemize}
-				examples of correct forms in grammars:\\
-				\includegraphics[width=0.2\textwidth]{img/andersonharrison35}
+
+				\htwo{Correct forms in the grammars}
+
+				But not part of the morphophonological description.\\
+				(A. \& H., p.\ 35)\hfill{}\includegraphics[width=0.2\textwidth]{img/andersonharrison35}\\
+				(И.\ \& П., p.\ 447)\hfill{}\includegraphics[width=0.35\textwidth]{img/isxakovpalmbax447}
+
 
 			\columnbreak{}
+				\htwo{Uanalysed forms before implementation}
+					\begin{itemize}
+						\item \hilitetwo{инээ}, \hiliteone{өгү}, \hilitetwo{өө}, \hilitetwo{соо}, \hiliteone{чаңы}
+					\end{itemize}
+					\begin{minipage}[t]{0.5\textwidth}
+					\outputex{
+						\begin{multicols}{4}
+							1590 соонда\vphantom{ү}\\
+							610 те\vphantom{ү}\\
+							153 өөнүң\vphantom{ү}\\
+							48 соондан\vphantom{ү}\\
+							46 өөм\vphantom{ү}\\
+							20 соон\vphantom{ү}\\
+							18 өө\vphantom{ү}\\
+							17 өөнге\vphantom{ү}\\
+							9 соондагы\vphantom{ү}\\
+							8 өөн\vphantom{ү}\columnbreak\\
+							6 инээниң\vphantom{ү}\\
+							6 соонче\vphantom{ү}\\
+							6 соонга\vphantom{ү}\\
+							3 инээм\vphantom{ү}\\
+							3 өөнден\vphantom{ү}\\
+							3 өөнде\vphantom{ү}\\
+							3 өөмнүң\vphantom{ү}\\
+							2 инээн\vphantom{ү}\\
+							2 инээ\vphantom{ү}\\
+							2 өөнче\vphantom{ү}\columnbreak\\
+							2 өөңерге\vphantom{ү}\\
+							2 өөңер\vphantom{ү}\\
+							2 өөмнү\vphantom{ү}\\
+							2 өөвүстен\vphantom{ү}\\
+							2 өөвүске\vphantom{ү}\\
+							2 өөвүс\vphantom{ү}\\
+							1 инээңни\vphantom{ү}\\
+							1 инээмниң\vphantom{ү}\\
+							1 Инээм\vphantom{ү}\\
+							1 инээвистиң\vphantom{ү}\\
+							1 өөңнүң\vphantom{ү}\\
+							1 өөң\vphantom{ү}\\
+							1 өөвүсче\vphantom{ү}\\
+							1 өөвүстүң\vphantom{ү}\\
+							1 өөвүстү\vphantom{ү}\\
+							1 өөвүсте
+						\end{multicols}}
+					\end{minipage}
+
 				\htwo{Initial implementation}
 					\begin{minipage}[t]{0.5\textwidth}
 					\codeex{"Intervocalic voiced velar deletion"\\
@@ -403,9 +479,23 @@ ADV-ABL ;
 					}
 					\end{minipage}
 
-				\htwo{Initial frequency list}
-
-					(FIXME: has forms of соң in it)
+				\htwo{Unanalysed forms after initial implementation}
+					%(has forms of соң in it)
+					\begin{itemize}
+						\item \hiliteone{инээ}, \hiliteone{өгү}, \hiliteone{өө}, \hilitetwo{соо}, \hiliteone{чаңы}
+					\end{itemize}
+					\begin{minipage}[t]{0.5\textwidth}
+					\outputex{
+						\begin{multicols}{3}
+							1590 соонда\vphantom{ң}\\
+							610 те\vphantom{ң}\\
+							48 соондан\vphantom{ң}\\
+							20 соон\vphantom{ң}\\
+							6 соонче\vphantom{ң}\\
+							6 соонга
+						\end{multicols}
+					}
+					\end{minipage}
 
 				\htwo{Second attempt at implementation}
 
@@ -421,9 +511,32 @@ Cx\hilitegrey{:0 <=> :Vow/:0* \_ [ \%>: :Vow ]/:0* ;}\\
 					}
 					\end{minipage}
 
-				\htwo{Resulting frequency list}
+				\htwo{Unanalysed forms after second implementation}
+					\begin{itemize}
+						\item \hiliteone{инээ}, \hiliteone{өгү}, \hiliteone{өө}, \hiliteone{соо}, \hilitetwo{чаңы}
+					\end{itemize}
+					\begin{minipage}[t]{0.5\textwidth}
+					\outputex{
+						\begin{multicols}{3}
+							610 те\vphantom{ү}\\
+							203 бажыңынга\vphantom{ү}\\
+							164 бажыңының\vphantom{ү}\\
+							102 бажыңы\vphantom{ү}\\
+							86 бажыңын\vphantom{ү}\\
+							56 түңү\vphantom{ү}\\
+							47 чаңы\vphantom{ү}\\
+							44 чаңын\vphantom{ү}\\
+							13 түңүн\vphantom{ү}\\
+							12 чаңының\vphantom{ү}\\
+							5 түңүнден\vphantom{ү}\\
+							4 чаңындан\vphantom{ү}\\
+							4 чаңында\vphantom{ү}\\
+							3 түңүнүң\vphantom{ү}\\
+							2 түңүнге
+						\end{multicols}}
+					\end{minipage}
 
-					(FIXME: has forms of бажың, түң, чаң in it)
+					%(has forms of бажың, түң, чаң in it)
 
 				\htwo{Final implementation}
 			
@@ -442,8 +555,16 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 					}}
 					\end{minipage}
 
-				\htwo{Final frequency list}
-
+				\htwo{Unanalysed forms after final implementation}
+					\begin{itemize}
+						\item \hiliteone{инээ}, \hiliteone{өгү}, \hiliteone{өө}, \hiliteone{соо}, \hiliteone{чаңы}
+					\end{itemize}
+					\begin{minipage}[t]{0.5\textwidth}
+					\outputex{
+						\begin{multicols}{3}
+							610 те\\
+						\end{multicols}}
+					\end{minipage}
 			\end{multicols}
 
 			%\htwo{Examples of correct forms}
