@@ -425,7 +425,7 @@ ADV-ABL ;
 				\htwo{Uanalysed forms before implementation}
 					\begin{itemize}
 						\item \hilitetwo{инээ}, \hiliteone{өгү}, \hilitetwo{өө}, \hilitetwo{соо}, \hiliteone{чаңы}
-					\end{itemize}
+					\end{itemize}\vspace{-0.3ex}
 					\begin{minipage}[t]{0.5\textwidth}
 					\outputex{
 						\begin{multicols}{4}
@@ -484,7 +484,7 @@ ADV-ABL ;
 					%(has forms of соң in it)
 					\begin{itemize}
 						\item \hiliteone{инээ}, \hiliteone{өгү}, \hiliteone{өө}, \hilitetwo{соо}, \hiliteone{чаңы}
-					\end{itemize}
+					\end{itemize}\vspace{-0.3ex}
 					\begin{minipage}[t]{0.5\textwidth}
 					\outputex{
 						\begin{multicols}{3}
@@ -515,7 +515,7 @@ Cx\hilitegrey{:0 <=> :Vow/:0* \_ [ \%>: :Vow ]/:0* ;}\\
 				\htwo{Unanalysed forms after second implementation}
 					\begin{itemize}
 						\item \hiliteone{инээ}, \hiliteone{өгү}, \hiliteone{өө}, \hiliteone{соо}, \hilitetwo{чаңы}
-					\end{itemize}
+					\end{itemize}\vspace{-0.3ex}
 					\begin{minipage}[t]{0.5\textwidth}
 					\outputex{
 						\begin{multicols}{3}
@@ -559,7 +559,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\htwo{Unanalysed forms after final implementation}
 					\begin{itemize}
 						\item \hiliteone{инээ}, \hiliteone{өгү}, \hiliteone{өө}, \hiliteone{соо}, \hiliteone{чаңы}
-					\end{itemize}
+					\end{itemize}\vspace{-0.3ex}
 					\begin{minipage}[t]{0.5\textwidth}
 					\outputex{
 						\begin{multicols}{3}
@@ -573,10 +573,37 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
-		\headerbox{Examples:\ ideas for other examples}{name=otherexamples,column=1,span=2,below=tuvanvelars}{
+		\headerbox{Example: Tuvan vowel harmony after consonant clusters in loanwords}{name=otherexamples,column=1,span=2,below=tuvanvelars}{
+			\begin{minipage}{0.5\textwidth}
+				\codeex{"\{I\} harmony"\\
+\%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;\\
+\-~~~~~~~~~where Vx in ( ү и е э ө а о ы у я ё ю )\\
+\-~~~~~~~~~~~~~~ Vy in ( ү и и и ү ы у ы у ы у у )\\
+\-~~~~~~~~~matched ;}
+			\end{minipage}
+
+			\begin{minipage}{0.5\textwidth}
+				\codeex{"\{I\} harmony"\\
+\%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;\\
+\-~~~~~~~~~except\\
+\-~~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь: :Cns* :RealCns ]/:0* \_ ;\\
+\-~~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь:0 ]/:[ :0 - ь: ]* \_ ;\\
+\-~~~~~~~~~where Vx in ( ү и е э ө а о ы у я ё ю )\\
+\-~~~~~~~~~~~~~~ Vy in ( ү и и и ү ы у ы у ы у у )\\
+\-~~~~~~~~~matched ;\\
+\\
+"\{I\} always front when intervening Cль"\\
+\%\{I\%\}:и <=> [ :BackVow :Cns* :Cns л: ь: :Cns* :RealCns ]/:0* \_ ;\\
+\-~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь:0 ]/:[ :0 - ь: ]* \_ ;}
+			\end{minipage}
+
+
+		}
+
+		\headerbox{Examples:\ ideas for other examples}{name=otherexamples,column=0,span=1,below=tuvanvelars}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{
 			\begin{itemize}
 				\item Kyrgyz: conditions where л desonorises to д
-				\item Tuvan: рубль - рубльдиң *рубьдуң
+				\item Tuvan: рубль - рубльдиң *рубльдуң
 				\item clitics can go everywhere/anywhere
 				\item underformalised - “particles☹” can go anywhere
 				\item all adjs act like nouns (Somfai-Kara, p. 28)
@@ -586,7 +613,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
-		\headerbox{Morphophonology}{name=morphophon,column=1,below=otherexamples}{
+		\headerbox{Morphophonology}{name=morphophon,column=0,below=otherexamples}{
 
 			\htwo{Desonorisation (kaz \& kir)}
 				\begin{itemize}
