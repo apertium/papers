@@ -241,10 +241,10 @@
 			\item found in reference grammars and textbooks
 		\end{itemize}
 
-		Descriptions of a language's
+		\htwo{What they describe} %Describe a language's
 		\begin{itemize}
 			\item \textbf{morphotactics} — the morphemes of a language and how they can be combined
-			\item \textbf{morphophonology} — the alternations between the various phonological and orthographical forms of each morpheme in a language
+			\item \textbf{morphophonology} — the alternations between the various phonological and orthographical forms of each morpheme% in a language
 		\end{itemize}
 		
 		\htwo{Reasons for being \hilitetwo{incomplete}}
@@ -285,7 +285,7 @@
 		\htwo{Approach}
 		\begin{itemize}
 			\item morphotactics implemented in \texttt{lexc}
-			\item morphophonology implemented in \texttt{twol}
+			\item morphophonology implemented in \texttt{twol} (SPE-style rules)
 			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
 			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}\vspace{-0.1ex}\\
 			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
@@ -574,28 +574,74 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 		}
 
 		\headerbox{Example: Tuvan vowel harmony after consonant clusters in loanwords}{name=otherexamples,column=1,span=2,below=tuvanvelars}{
-			\begin{minipage}{0.5\textwidth}
-				\codeex{"\{I\} harmony"\\
+			\begin{multicols}{2}
+				\htwo{Tuvan vowel harmony}
+					\begin{itemize}
+						\item High and low vowels harmonise in backness
+						\item High vowels also harmonise in roundness
+					\end{itemize}
+				\htwo{Initial implementation (high-vowels)}
+
+				\begin{minipage}{0.5\textwidth}
+					\codeex{"\{I\} harmony"\\
 \%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;\\
 \-~~~~~~~~~where Vx in ( ү и е э ө а о ы у я ё ю )\\
 \-~~~~~~~~~~~~~~ Vy in ( ү и и и ү ы у ы у ы у у )\\
 \-~~~~~~~~~matched ;}
-			\end{minipage}
+				\end{minipage}
 
-			\begin{minipage}{0.5\textwidth}
-				\codeex{"\{I\} harmony"\\
-\%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;\\
+				\htwo{Unanalysed forms in corpus}
+					\begin{itemize}
+						\item forms of loanwords ансамбль `ensemble' and рубль `rouble':\\\
+						\-\hfill{}the following vowel is always front unround
+					\end{itemize}
+					\begin{minipage}[t]{0.5\textwidth}
+					\outputex{
+						\begin{multicols}{3}
+							%790 рубль\\
+							347 рубльди\\
+							99 рубльге\\
+							83 ансамблиниң\vphantom{у}\\
+							60 ансамбли\vphantom{у}\\
+							54 рубльдиң\\
+							28 рубльден\\
+							17 ансамбльдиң\vphantom{у}\\
+							15 ансамбльдер\vphantom{у}\\
+							14 ансамбль\vphantom{у}\\
+							11 ансамблин\vphantom{у}\\
+							10 ансамблинге\vphantom{у}\\
+							8 ансамбльди\vphantom{у}\\
+							%2 рубльга\\
+							1 рубльдерни\\
+							1 рублин\\
+							1 рубли\\
+						\end{multicols}
+					}
+					\end{minipage}
+
+					\columnbreak
+				\htwo{Revised generalisation}
+					\begin{itemize}
+						\item After cons.\ cluster ending in ль, vowel always front unround
+						\item New discovery?  Appears to be not previously documented
+					\end{itemize}
+
+				\htwo{Revised implementation}
+				\begin{minipage}{0.5\textwidth}
+					\codeex{\hilitegrey{"\{I\} harmony"\\
+\%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;}\\
 \-~~~~~~~~~except\\
 \-~~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь: :Cns* :RealCns ]/:0* \_ ;\\
 \-~~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь:0 ]/:[ :0 - ь: ]* \_ ;\\
-\-~~~~~~~~~where Vx in ( ү и е э ө а о ы у я ё ю )\\
+\-~~~~~~~~~\hilitegrey{where Vx in ( ү и е э ө а о ы у я ё ю )\\
 \-~~~~~~~~~~~~~~ Vy in ( ү и и и ү ы у ы у ы у у )\\
-\-~~~~~~~~~matched ;\\
+\-~~~~~~~~~matched ;}\\
 \\
 "\{I\} always front when intervening Cль"\\
 \%\{I\%\}:и <=> [ :BackVow :Cns* :Cns л: ь: :Cns* :RealCns ]/:0* \_ ;\\
 \-~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь:0 ]/:[ :0 - ь: ]* \_ ;}
-			\end{minipage}
+				\end{minipage}
+			\end{multicols}
 
 
 		}
