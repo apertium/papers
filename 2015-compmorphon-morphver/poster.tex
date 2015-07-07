@@ -31,6 +31,7 @@
 \newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
 \newcommand{\hilitegrey}[1]{{\addfontfeature{Color=77777799}#1}}
 \newcommand{\hilitelightgrey}[1]{{\addfontfeature{Color=CCCCCC99}#1}}
+\newcommand{\hiliteblue}[1]{{\addfontfeature{Color=44697DFF}#1}}
 
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -64,7 +65,7 @@
 \newcommand{\tilda}{{\qipa ∼}}
 
 \newcommand{\tags}[1]{\hiliteone{#1}}
-\newcommand{\tag}[1]{\hilitegrey{<}\hiliteone{#1}\hilitegrey{>}}
+\newcommand{\tag}[1]{{\ortamono \hilitegrey{<}\hiliteblue{#1}\hilitegrey{>}}}
 \newcommand{\archiphon}[1]{\hilitegrey{\{}\hiliteone{#1}\hilitegrey{\}}}
 
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
@@ -298,20 +299,32 @@
 
 	}
 
-	\headerbox{Categorisation}{name=adjectives,column=3}{
-	For example, many grammars of Turkic languages (e.g., Somfai Kara, 2002) overgeneralise adjective morphology, stating that all adjectives may act like nouns (and take nominal morphology), or that all adjectives may be used as adverbs with no morphological changes.  We have found that there is a range of “adjective classes” in most Turkic languages, including some which may not be substantivised and some which may not be used adverbially.  This phenomenon is of particular interest because native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
-		\htwo{Adjectives}
+	\headerbox{Example: Categorisation}{name=adjectives,column=3}{
+		\htwo{Unrestricted 0-derivation}
+		\begin{itemize}
+			\item Common overgeneralisation of adjective morphology:
 			\begin{itemize}
-				\item morphologically distinct adjective classes
-				\item most sources claim:\ adjectives can be used substantively and adverbially
-				\item Other Turkic transducers:\ \texttt{0}-derivation (\hilitetwo{overgenerates})
-				\item but not all adjectives have all of the following:\\
-				comparative forms, substantive readings, adverbial readings
-				\item Our approach:\ categorisation 
+				\item all adjectives may act like nouns (i.e.\ take noun morphology)
+				\item all adjectives may be used as is as adverbs
+			\end{itemize}
+			\item Commonly reported in Turkic language grammars
+		\end{itemize}
+		Somfai Kara (2002, pp. 28-29):\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
+		\-\hfill{}\includegraphics[width=0.8\textwidth]{img/kara29}
+
+		\htwo{Attested system}
+			\begin{itemize}
+				\item Some adjectives may not be substantivised
+				\item Some adjectives may not be used adverbially
+				\item Some adjectives do not have comparative forms
+				\item …a range of “adjective classes” in most Turkic languages
+			\end{itemize}
+		\htwo{Implementation}
+			\begin{itemize}
 				\item if properly categorised, only correct forms are analysed and generated
 			\end{itemize}
-
-			\scalebox{0.7}{
+				
+			\scalebox{0.83}{
 				\begin{tabular}{lllll}
 					\toprule
 					\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
@@ -322,78 +335,9 @@
 					\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
 					\bottomrule
 				\end{tabular}
-			}
-
-		\htwo{Adverbs}
-			\begin{itemize}
-				\item Certain adverbs have special attributive and ablative forms
-				\item Mostly time adverbs
-				%\item Mostly time adverbs, e.g.\\
-				%{\qipa бүгүн} \eng{today}, {\qipa быйыл} \eng{this year}, {\qipa кечээ} \eng{yesterday}, {\qipa жана} \eng{just now}
-				%\item Attributive forms:\\
-				%{\qipa бүгүнкү} \eng{today's}, {\qipa быйылкы} \eng{this year's}, {\qipa кечээги} \eng{yesterday's}, {\qipa жанагы} \eng{just now}
-				%\item Ablative forms:\\
-				%{\qipa бүгүнтөн} \eng{from today}, {\qipa быйылтан} \eng{from this year}, {\qipa кечээтен} \eng{from yesterday}, {\qipa жанатан} \eng{from just now}
-				\item Some also have noun readings:\ regular ablative, other cases:
-				%{\qipa бүгүндөн} \eng{from today}, {\qipa быйылдан} \eng{from this year}
-			\end{itemize}
-			\scalebox{0.83}{
-			\begin{tabular}{lllll}
-				\toprule
-				word & {\qipa бүгүн} & {\qipa быйыл} & {\qipa кечээ} &  {\qipa жана}\\
-				gloss & \eng{today} & \eng{this year} & \eng{yesterday} & \eng{just now} \\
-				\midrule
-				\tag{attr} form & {\qipa бүгүнкү} & {\qipa быйылкы} & {\qipa кечээги} &  {\qipa жанагы}\\
-				\tag{adv}\tag{abl} form & {\qipa бүгүнтөн} & {\qipa быйылтан} & {\qipa кечээтен} &  {\qipa жанатан}\\
-				\tag{n}\tag{abl} form & {\qipa бүгүндөн} & {\qipa быйылдан} & — & — \\
-				\bottomrule
-			\end{tabular}
-			}\vspace{0.2em}
-				\codeex{
-					\begin{spacing}{0.8}
-					\texttt{LEXICON ADV-WITH-KI-ABL\\
-\\
-ADV ;\\
-ADV-KI ;\\
-ADV-ABL ;
-					}
-					\end{spacing}
-					\vspace{0em}
-				}
+			}\\
+			This phenomenon is of particular interest because native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
 	}
-
-	\headerbox{Ongoing and future work}{name=nedostatki,below=adjectives,column=3}{
-		\begin{itemize}
-			\item Disambiguation, more stems, clean up transducers
-			\item Machine translation between these languages
-			\item Bring other Kypchak transducers to comparable performance:\\
-			Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
-			\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
-		\end{itemize}
-	}
-
-	\headerbox{Further information}{name=getting,column=3,below=nedostatki}{
-		\begin{itemize}
-			\item Part of \textbf{Apertium Turkic} project:\\
-			\url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
-			\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
-			\item \textbf{Source code} available from Apertium's svn repo
-			%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
-				\item Turkic RBMT \textbf{mailing list} (>25 subscribers):\\
-			\texttt{apertium-turkic@lists.sourceforge.net}\\
-			\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
-			\item See our papers in LREC proceedings\\
-			(2012:\ Kyrgyz, 2014:\ Kazakh, Tatar, Kumyk)
-			\item And feel free to contact the authors any time!
-		\end{itemize}
-	}
-
-%	\headerbox{References}{name=references,column=2,below=nedostatki}{
-%		%\begin{thebibliography}{1}\itemsep=-0.01em
-%		\setlength{\baselineskip}{0.4em}
-%	}
-
-
 
 		\headerbox{Example:\ Tuvan velar elision}{name=tuvanvelars,column=1,span=2}{
 			\begin{multicols}{2}
@@ -578,29 +522,68 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
-		\headerbox{Example: Tuvan vowel harmony after consonant clusters in loanwords}{name=otherexamples,column=1,span=2,below=tuvanvelars}{
-			\begin{multicols}{2}
+
+	\headerbox{Ongoing and future work}{name=nedostatki,below=tuvanvelars,column=2}{
+		\begin{itemize}
+			\item Disambiguation, more stems, clean up transducers
+			\item Machine translation between these languages
+			\item Bring other Kypchak transducers to comparable performance:\\
+			Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
+			\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+		\end{itemize}
+	}
+
+	\headerbox{Further information}{name=getting,column=2,below=nedostatki}{
+		\begin{itemize}
+			\item Part of \textbf{Apertium Turkic} project:\\
+			\url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
+			\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
+			\item \textbf{Source code} available from Apertium's svn repo
+			%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
+				\item Turkic RBMT \textbf{mailing list} (>25 subscribers):\\
+			\texttt{apertium-turkic@lists.sourceforge.net}\\
+			\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
+			\item See our papers in LREC proceedings\\
+			(2012:\ Kyrgyz, 2014:\ Kazakh, Tatar, Kumyk)
+			\item And feel free to contact the authors any time!
+		\end{itemize}
+	}
+
+%	\headerbox{References}{name=references,column=2,below=nedostatki}{
+%		%\begin{thebibliography}{1}\itemsep=-0.01em
+%		\setlength{\baselineskip}{0.4em}
+%	}
+
+
+
+
+
+		\headerbox{Example: Tuvan vowel harmony}{name=otherexamples,column=3,below=adjectives}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{ % after consonant clusters in loanwords
+			%\begin{multicols}{2}
 				\htwo{Tuvan vowel harmony}
 					\begin{itemize}
-						\item High and low vowels harmonise in backness
-						\item High vowels also harmonise in roundness
+						\item High and low vowels harmonise in backness\\
+						киж\hiliteone{и}\tag{n}\tag{pl}\tag{acc}: киж\hiliteone{и}л\hiliteone{е}рн\hiliteone{и}, н\hilitetwo{о}м\tag{n}\tag{pl}\tag{acc}: н\hilitetwo{о}мн\hilitetwo{а}рн\hilitetwo{ы}
+						\item High vowels also harmonise in roundness\\
+						round: \hiliteone{ө}г\tag{n}\tag{acc}:\ \hiliteone{ө}гн\hiliteone{ү}, \hilitetwo{о}й\tag{n}\tag{acc}:\ \hilitetwo{о}йн\hilitetwo{у}\\
+						unround: ү\hiliteone{е}\tag{n}\tag{acc}:\ ү\hiliteone{е}н\hiliteone{и}, \hilitetwo{а}й\tag{n}\tag{acc}:\ \hilitetwo{а}йн\hilitetwo{ы}
 					\end{itemize}
 				\htwo{Initial implementation (high-vowels)}
 
-				\begin{minipage}{0.5\textwidth}
+				%\begin{minipage}{0.5\textwidth}
 					\codeex{"\{I\} harmony"\\
 \%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;\\
 \-~~~~~~~~~where Vx in ( ү и е э ө а о ы у я ё ю )\\
 \-~~~~~~~~~~~~~~ Vy in ( ү и и и ү ы у ы у ы у у )\\
 \-~~~~~~~~~matched ;}
-				\end{minipage}
+				%\end{minipage}
 
 				\htwo{Unanalysed forms in corpus}
 					\begin{itemize}
 						\item forms of loanwords ансамбль `ensemble' and рубль `rouble':\\\
 						\-\hfill{}the following vowel is always front unround
 					\end{itemize}
-					\begin{minipage}[t]{0.5\textwidth}
+					%\begin{minipage}[t]{0.5\textwidth}
 					\outputex{
 						\begin{multicols}{3}
 							%790 рубль\\
@@ -622,9 +605,9 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 							1 рубли\\
 						\end{multicols}
 					}
-					\end{minipage}
+					%\end{minipage}
 
-					\columnbreak
+					%\columnbreak
 				\htwo{Revised generalisation}
 					\begin{itemize}
 						\item After cons.\ cluster ending in ль, vowel always front unround
@@ -632,7 +615,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 					\end{itemize}
 
 				\htwo{Revised implementation}
-				\begin{minipage}{0.5\textwidth}
+				%\begin{minipage}{0.5\textwidth}
 					\codeex{\hilitegrey{"\{I\} harmony"\\
 \%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;}\\
 \-~~~~~~~~~except\\
@@ -645,8 +628,8 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 "\{I\} always front when intervening Cль"\\
 \%\{I\%\}:и <=> [ :BackVow :Cns* :Cns л: ь: :Cns* :RealCns ]/:0* \_ ;\\
 \-~~~~~~~~~~~~[ :BackVow :Cns* :Cns л: ь:0 ]/:[ :0 - ь: ]* \_ ;}
-				\end{minipage}
-			\end{multicols}
+				%\end{minipage}
+			%\end{multicols}
 
 
 		}
@@ -654,11 +637,11 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 		\headerbox{Examples:\ ideas for other examples}{name=otherexamples,column=0,span=1,below=tuvanvelars}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{
 			\begin{itemize}
 				\item Kyrgyz: conditions where л desonorises to д
-				\item Tuvan: рубль - рубльдиң *рубльдуң
+				%\item Tuvan: рубль - рубльдиң *рубльдуң
 				\item clitics can go everywhere/anywhere
 				\item underformalised - “particles☹” can go anywhere
-				\item all adjs act like nouns (Somfai-Kara, p. 28)
-				\item all adjectives can be used as adverbs without any morphological changes (Somfai-Kara, p. 29)
+				%\item all adjs act like nouns (Somfai-Kara, p. 28)
+				%\item all adjectives can be used as adverbs without any morphological changes (Somfai-Kara, p. 29)
 				\item Stuff found doing treebank
 			\end{itemize}
 
