@@ -747,7 +747,8 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 			\begin{tikzpicture}[xscale=1.92,yscale=2.25]%, auto]	
 
 				\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
-				\node[block] (analyse) at (1,2) {analyse corpus};
+				\node[block] (compile) at (1,2) {compile analyser};
+				\node[block] (analyse) at (1,1.5) {analyse corpus};
 				\node[block] (check) at (1,1) {examine freq.\ list};
 				\node[decision] (missingstem) at (1,0) {missing stem?};
 				\node[block] (addstem) at (0,2) {add stem};
@@ -758,11 +759,12 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\node[decision] (morphbetter) at (4,1) {better?};
 				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
 
-				\path[line] (assumptions) -- (analyse);
+				\path[line] (assumptions) -- (compile);
+				\path[line] (compile) -- (analyse);
 				\path[line] (analyse) -- (check);
 				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
 				\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
-				\path[line] (addstem) -- (analyse);
+				\path[line] (addstem) -- (compile);
 				\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
 				\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
 				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
@@ -772,7 +774,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.5,1) |- (newgeneralisation.east) ;
 				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
 				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
-				\path[line] (newgeneralisation) -- (analyse);
+				\path[line] (newgeneralisation) -- (compile);
 
 			
 			
