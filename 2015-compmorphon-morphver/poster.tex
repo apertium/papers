@@ -127,7 +127,11 @@
 
 \newcommand{\blank}[1]{\underline{\hspace{#1}}}
 
-\usepackage{natbib}
+%\usepackage{natbib}
+\usepackage[backend=biber,citestyle=apa,style=authoryear,maxbibnames=99,maxcitenames=2]{biblatex}
+\bibliography{poster}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+
 
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
 
@@ -137,10 +141,10 @@
 %%\bibpunct{(}{)}{;}{A}{,}{,}
 %\bibdata{paper}
 
-\newcommand{\citemultileft}[1]{(\citeauthor{#1}, \citeyear{#1}}
-\newcommand{\citemultimid}[1]{\citeauthor{#1}, \citeyear{#1}}
-\newcommand{\citemultiright}[1]{\citeauthor{#1}, \citeyear{#1})}
-\newcommand{\citetwoyears}[2]{\citeauthor{#1} (\citeyear{#1} and \citeyear{#2})}
+%\newcommand{\citemultileft}[1]{(\citeauthor{#1}, \citeyear{#1}}
+%\newcommand{\citemultimid}[1]{\citeauthor{#1}, \citeyear{#1}}
+%\newcommand{\citemultiright}[1]{\citeauthor{#1}, \citeyear{#1})}
+%\newcommand{\citetwoyears}[2]{\citeauthor{#1} (\citeyear{#1} and \citeyear{#2})}
 
 % for glosses
 \newcommand{\eng}[1]{`{\em #1}'}
@@ -256,7 +260,7 @@
 		\end{itemize}
 	}
 	
-	\headerbox{Morphological transducers}{name=morphtrans,below=morphdesc}{
+	\headerbox{Morphological Transducers}{name=morphtrans,below=morphdesc}{
 		\htwo{Morphological transducers}
 		\begin{itemize}
 			\item Efficient (in speed \& size) models of a language's morphology
@@ -276,10 +280,10 @@
 			%\item Kazakh (\hilitetwo{Бекманова \& Махимов, 2013})
 			%\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
 			%\item our Kyrgyz, Kazakh, Tatar, Kumyk:\ all \hiliteone{GPL (=free and open)}!
-			\item Kyrgyz (Washington et al., 2012)
-			\item Tatar \& Bashkort (Tyers et al., 2012)
-			\item Kazakh (Salimzyanov et al., 2013)
-			\item Kumyk (Washington et al., 2014)
+			\item Kyrgyz \parencite{jnwmifmt2012lrecpaper}%  (Washington et al., 2012)
+			\item Tatar \& Bashkort \parencite{fmtjnwisrb2012lrecpaper} %(Tyers et al., 2012)
+			\item Kazakh \parencite{isjnwfmt2013mtsummitpaper} %(Salimzyanov et al., 2013)
+			\item Kumyk \parencite{jnwisfmt2014lrecpaper} %(Washington et al., 2014)
 			\item ongoing work on Sakha, Tuvan, Khakas, and more!
 		\end{itemize}
 
@@ -290,6 +294,7 @@
 		\end{itemize}
 		\htwo{Approach}
 		\begin{itemize}
+			\item two-level method \parencite{koskenniemi83}
 			\item morphotactics implemented in \texttt{lexc}
 			\item morphophonology implemented in \texttt{twol} (SPE-style rules)
 			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
@@ -299,57 +304,17 @@
 
 	}
 
-	\headerbox{Example: Categorisation}{name=adjectives,column=3}{
-		\htwo{Unrestricted 0-derivation}
-		\begin{itemize}
-			\item Common overgeneralisation of adjective morphology:
-			\begin{itemize}
-				\item all adjectives may act like nouns (i.e.\ take noun morphology)
-				\item all adjectives may be used as is as adverbs
-			\end{itemize}
-			\item Commonly reported in Turkic language grammars
-		\end{itemize}
-		Somfai Kara (2002, pp. 28-29):\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
-		\-\hfill{}\includegraphics[width=0.8\textwidth]{img/kara29}
-
-		\htwo{Attested system}
-			\begin{itemize}
-				\item Some adjectives may not be substantivised
-				\item Some adjectives may not be used adverbially
-				\item Some adjectives do not have comparative forms
-				\item …a range of “adjective classes” in most Turkic languages
-			\end{itemize}
-		\htwo{Implementation}
-			\begin{itemize}
-				\item if properly categorised, only correct forms are analysed and generated
-			\end{itemize}
-				
-			\scalebox{0.83}{
-				\begin{tabular}{lllll}
-					\toprule
-					\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
-					\midrule
-					\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
-					\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
-					\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
-					\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
-					\bottomrule
-				\end{tabular}
-			}\\
-			This phenomenon is of particular interest because native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
-	}
-
 		\headerbox{Example:\ Tuvan velar elision}{name=tuvanvelars,column=1,span=2}{
 			\begin{multicols}{2}
 				\htwo{Previous descriptions}
 
 					\begin{itemize}
-						\item Anderson and Harrison (1999, pp.\ 9, 22-23)
+						\item \textcite[22-23]{andersonharrison99} %Anderson and Harrison (1999, pp.\ 9, 22-23)
 					\end{itemize}
 					\includegraphics[width=0.49\textwidth]{img/andersonharrison9}\\
 					\includegraphics[width=0.49\textwidth]{img/andersonharrison22-23}
 					\begin{itemize}
-						\item Исхаков, Ф.Г.; Пальмбах (1961, pp.\ 117-118)
+						\item \textcite[117-118]{isxakovpalmbax61} %Исхаков, Ф.Г.; Пальмбах (1961, pp.\ 117-118)
 					\end{itemize}
 					\includegraphics[width=0.49\textwidth]{img/isxakovpalmbax117}
 
@@ -522,8 +487,50 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
+	\headerbox{Example: Categorisation}{name=adjectives,column=1,below=tuvanvelars}{
+		\htwo{Unrestricted 0-derivation}
+		\begin{itemize}
+			\item Common overgeneralisation of adjective morphology:
+			\begin{itemize}
+				\item all adjectives may act like nouns (i.e.\ take noun morphology)
+				\item all adjectives may be used as is as adverbs
+			\end{itemize}
+			\item Commonly reported in Turkic language grammars
+		\end{itemize}
+		%Somfai Kara (2002, pp. 28-29):\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
+		\textcite[28-29]{somfaikara02}:\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
+		\-\hfill{}\includegraphics[width=0.8\textwidth]{img/kara29}
 
-	\headerbox{Ongoing and future work}{name=nedostatki,below=tuvanvelars,column=2}{
+		\htwo{Attested system}
+			\begin{itemize}
+				\item Some adjectives may not be substantivised
+				\item Some adjectives may not be used adverbially
+				\item Some adjectives do not have comparative forms
+				\item …a range of “adjective classes” in most Turkic languages
+			\end{itemize}
+		\htwo{Implementation: proper categorisation}
+			\begin{itemize}
+				\item only correct forms are analysed and generated
+			\end{itemize}
+				
+			\scalebox{0.83}{
+				\begin{tabular}{lllll}
+					\toprule
+					\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
+					\midrule
+					\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
+					\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
+					\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
+					\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
+					\bottomrule
+				\end{tabular}
+			}\\
+			This phenomenon is of particular interest because native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
+	}
+
+
+
+	\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=tuvanvelars}{
 		\begin{itemize}
 			\item Disambiguation, more stems, clean up transducers
 			\item Machine translation between these languages
@@ -558,7 +565,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 
 
-		\headerbox{Example: Tuvan vowel harmony}{name=otherexamples,column=3,below=adjectives}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{ % after consonant clusters in loanwords
+		\headerbox{Example: Tuvan vowel harmony}{name=tuvanvowelharmony,column=3}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{ % after consonant clusters in loanwords
 			%\begin{multicols}{2}
 				\htwo{Tuvan vowel harmony}
 					\begin{itemize}
@@ -647,45 +654,52 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
-		\headerbox{Morphophonology}{name=morphophon,column=0,below=otherexamples}{
+%		\headerbox{Morphophonology}{name=morphophon,column=0,below=otherexamples}{
+%
+%			\htwo{Desonorisation (kaz \& kir)}
+%				\begin{itemize}
+%					\item {\texttt \{N\}} desonorises to д after a consonant\\
+%						алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
+%						сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
+%					\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
+%						сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
+%						кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
+%				\end{itemize}
+%
+%				\vspace{-0.5ex}
+%				\codeex{
+%					\texttt{"L Desonorisation"\\
+%						\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
+%			
+%					\texttt{"N Desonorisation"\\
+%						\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
+%				}
+%			\vspace{0.1em}
+%
+%			\htwo{Epenthesis}
+%				\begin{itemize}
+%					\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
+%					мур\archiphon{у}н → мурун \eng{nose}\\
+%					мур\archiphon{у}н+\archiphon{I}м → мурдум \eng{my nose}\\
+%				\end{itemize}
+%					\vspace{-0.5ex}
+%\codeex{
+%			\begin{spacing}{0.9}
+%{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
+%	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
+%  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
+%  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
+%  \vspace{-0.5ex}\hspace{12ex}         matched ;}}\vspace{-1.5em}
+%  			\end{spacing}
+%}
+%\vspace{0.1em}
+%		}
 
-			\htwo{Desonorisation (kaz \& kir)}
-				\begin{itemize}
-					\item {\texttt \{N\}} desonorises to д after a consonant\\
-						алма-\hiliteone{\{N\}}\{I\} → алма\hiliteone{н}ы \eng{apple--\gmk{ACC}} \\
-						сыр-\hiliteone{\{N\}}\{I\} → сыр\hiliteone{д}ы \eng{secret--\gmk{ACC}}
-					\item {\texttt \{L\}} desonorises to д after cons.\ of sonority ≤ /l/ \\
-						сыр-\hiliteone{\{L\}}\{A\}р → сыр\hiliteone{л}ар \eng{secret--\gmk{PL}} \\
-						кыз-\hiliteone{\{L\}}\{A\}р → кыз\hiliteone{д}ар \eng{girl--\gmk{PL}} \\
-				\end{itemize}
-
-				\vspace{-0.5ex}
-				\codeex{
-					\texttt{"L Desonorisation"\\
-						\%\{L\%\}:д <=> :VoicedLowSonCns \%>:\ \blank{1em} ;}\\
-			
-					\texttt{"N Desonorisation"\\
-						\%\{N\%\}:д <=> :VoicedCns \%>:\ \blank{1em} ;}
-				}
-			\vspace{0.1em}
-
-			\htwo{Epenthesis}
-				\begin{itemize}
-					\item Turn {\texttt \{y\}} into a harmonised high vowel when a vowel doesn't follow the following consonant:\\
-					мур\archiphon{у}н → мурун \eng{nose}\\
-					мур\archiphon{у}н+\archiphon{I}м → мурдум \eng{my nose}\\
-				\end{itemize}
-					\vspace{-0.5ex}
-\codeex{
-			\begin{spacing}{0.9}
-{\small \texttt{\%\{y\%\}:Vy <=> [ :LastVowel :Cns* :Cns ]/[:0] \blank{1em}\\
-	\vspace{-0.5ex}\hspace{1pt}\hfill{} [ :Cns [ .\#.\ | :Cns ] ]/[ :0 | \%>:]\ ;\\
-  \vspace{-0.5ex}\hspace{1ex}where  Vy  in  (  и  ү  и  и  ү  ы  ы  у  у  ы  у  у )\\
-  \vspace{-0.5ex}LastVowel  in  (  и  ү  е  э  ө  я  а  ё  о  ы  ю  у )\\
-  \vspace{-0.5ex}\hspace{12ex}         matched ;}}\vspace{-1.5em}
-  			\end{spacing}
-}
-\vspace{0.1em}
+		\headerbox{References}{name=references,column=3,below=tuvanvowelharmony}{
+			\begin{spacing}{0.85}
+				\printbibliography[heading=none]
+			\end{spacing}
+			\vspace{-1em}
 		}
 
 	\end{poster}
