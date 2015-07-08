@@ -5,6 +5,15 @@
 \usepackage{multirow}
 
 \usepackage{tikz}
+\usetikzlibrary{shapes,arrows} %for flowchart
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
 %\usepackage{pgfbaselayers}
 %\pgfdeclarelayer{background}
 %\pgfdeclarelayer{foreground}
@@ -700,6 +709,28 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\printbibliography[heading=none]
 			\end{spacing}
 			\vspace{-1em}
+		}
+
+		\headerbox{Development cycle}{name=development,below=morphtrans}{
+			%(1) look at frequency list --> check word --> if it's missing stem, add --> (1) ; if it's bad phonology --> fix phonology --> (1)
+			\begin{tikzpicture}[node distance = 2cm, auto]
+				% Place nodes
+				\node [block] (init) {analyse corpus};
+				\node [cloud, left of=init] (addstem) {add stem};
+				\node [cloud, right of=init] (fixphon) {fix phonology};
+				\node [block, below of=init] (freq) {examine frequency list};
+				%\node [block, below of=identify] (evaluate) {evaluate candidate models};
+				%\node [block, left of=evaluate, node distance=3cm] (update) {update model};
+				\node [decision, below of=freq] (decide) {cause for unanalysed forms?};
+				%\node [block, below of=decide, node distance=3cm] (stop) {stop};
+				% Draw edges
+				\path [line] (init) -- (freq);
+				\path [line] (freq) -- (decide);
+				\path [line] (decide) -| node [near start] {missing stem} (addstem);
+				\path [line] (decide.east) -| node [near start] {bad phonology} (fixphon);
+				\path [line,dashed] (addstem) -- (init);
+				\path [line,dashed] (fixphon) -- (init);
+			\end{tikzpicture}
 		}
 
 	\end{poster}
