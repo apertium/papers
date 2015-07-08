@@ -759,7 +759,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\node[decision] (morphbetter) at (4,1) {better?};
 				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
 
-				\path[line] (assumptions) -- (compile);
+				\path[line] (assumptions) -- node [right=0.75ex, align=left, scale=\flowchartscale] {preliminary\\development} (compile);
 				\path[line] (compile) -- (analyse);
 				\path[line] (analyse) -- (check);
 				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
