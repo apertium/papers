@@ -751,7 +751,7 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\node[block] (analyse) at (1,1.5) {analyse corpus};
 				\node[block] (check) at (1,1) {examine freq.\ list};
 				\node[decision] (missingstem) at (1,0) {missing stem?};
-				\node[block] (addstem) at (0,2) {add stem};
+				\node[block] (addstem) at (0.22,2) {add stem};
 				\node[decision] (phonormorph) at (2,0) {type of problem?};
 				\node[block] (updatephon) at (3,0) {update phonol.};
 				\node[block] (updatemorph) at (3,1) {update morphol.};
@@ -770,8 +770,8 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
 				\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (phonbetter) ;
 				\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (morphbetter) ;
-				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.5,0) |- (newgeneralisation.east) ;
-				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.5,1) |- (newgeneralisation.east) ;
+				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,0) |- (newgeneralisation.east) ;
+				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,1) |- (newgeneralisation.east) ;
 				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
 				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
 				\path[line] (newgeneralisation) -- (compile);
