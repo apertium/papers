@@ -7,13 +7,17 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows} %for flowchart
 % Define block styles
+\newcommand{\flowchartscale}{0.65}
 \tikzstyle{decision} = [diamond, draw, fill=iumint, 
-    text width=5em, text badly centered, node distance=3cm, inner sep=0pt]
+    text width=5em, text badly centered, node distance=3cm, inner sep=0pt,
+	 font=\diagsans, scale=\flowchartscale]
 \tikzstyle{block} = [rectangle, draw, fill=iulimestone, 
-    text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=iumidnight, text=grey, node distance=3cm,
-    minimum height=2em]
+    text width=5em, text centered, rounded corners, minimum height=4em,
+	 font=\diagsans, scale=\flowchartscale]
+\tikzstyle{line} = [draw, -latex', thick, font=\diagsans]
+\tikzstyle{cloud} = [draw, ellipse,fill=iumidnight, text=grey, text width=8em,
+	text centered, %node distance=3cm,
+	minimum height=2em, font=\diagsans, scale=\flowchartscale]
 %\usepackage{pgfbaselayers}
 %\pgfdeclarelayer{background}
 %\pgfdeclarelayer{foreground}
@@ -71,6 +75,7 @@
 \newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
 \newfontfamily\litamono[IPA,Scale=0.5]{DejaVu Sans Mono}
 \newfontfamily\ortamono[IPA,Scale=0.625]{DejaVu Sans Mono}
+\newfontfamily\diagsans[IPA,Scale=1]{DejaVu Sans}
 
 \newcommand{\tilda}{{\qipa ∼}}
 
@@ -556,13 +561,11 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 			\item Part of \textbf{Apertium Turkic} project:\\
 			\url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
 			\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
-			\item \textbf{Source code} available from Apertium's svn repo
+			\item \textbf{Source code} available from Apertium's SVN repo
 			%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
 				\item Turkic RBMT \textbf{mailing list} (>25 subscribers):\\
 			\texttt{apertium-turkic@lists.sourceforge.net}\\
 			\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
-			\item See our papers in LREC proceedings\\
-			(2012:\ Kyrgyz, 2014:\ Kazakh, Tatar, Kumyk)
 			\item And feel free to contact the authors any time!
 		\end{itemize}
 	}
@@ -715,32 +718,66 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		\headerbox{Development cycle}{name=development,below=morphtrans}{
 			%(1) look at frequency list --> check word --> if it's missing stem, add --> (1) ; if it's bad phonology --> fix phonology --> (1)
-			\scalebox{0.8}{
-			\begin{tikzpicture}[node distance = 2cm, auto]
-				% Place nodes
-				\node [cloud, above of=fixphon] (assumed) at (5.5,1.5) {assumed phonology} ;
-				\node [block] (init) at (1,3) {analyse corpus} ;
-				\node [block, left of=init] (addstem) at (0,3) {add stem};
-				\node [block, right of=init] (fixphon) at (3.5,3) {fix phonology};
-				\node [block, below of=init] (freq) at (1,2) {examine frequency list};
-				\node [decision, right of=freq] (break) at (1.5,0) {did something break?};
-				%\node [block, below of=identify] (evaluate) {evaluate candidate models};
-				%\node [block, left of=evaluate, node distance=3cm] (update) {update model};
-				\node [decision, below right of=freq] (decide) at (0,-1) {cause for unanalysed forms?};
-				\node [cloud] (revised) at (6.75,-4.5) {revised phonology} ;
-				%\node [block, below of=decide, node distance=3cm] (stop) {stop};
-				% Draw edges
-				\path [line] (init) -- (freq);
-				\path [line] (freq) -- (break);
-				\path [line] (break.south) -| node [near start] {no} (decide.north) ;
-				\path [line] (break.north) -| node [near start] {yes}(fixphon.south) ;
-				\path [line] (decide) -| node [near start] {missing stem} (addstem);
-				\path [line] (decide.east) --(decide-|fixphon.east) node [below, midway] {bad phonology} |-(break.north-|fixphon.south) -- (fixphon.south);
-				\path [line] (addstem) -- (init);
-				\path [line] (fixphon) -- (init);
-				\path [line,dashed] (assumed) -- (fixphon);
-				\path [line,dashed] (fixphon.east) --(fixphon.east-|assumed.east) |-(decide.east-|revised.north) -- (revised.north);
-			\end{tikzpicture}}
+			%\scalebox{0.8}{
+			%\begin{tikzpicture}[node distance = 2cm, auto]
+			%	% Place nodes
+			%	\node [cloud, above of=fixphon] (assumed) at (5.5,1.5) {assumed phonology} ;
+			%	\node [block] (init) at (1,3) {analyse corpus} ;
+			%	\node [block, left of=init] (addstem) at (0,3) {add stem};
+			%	\node [block, right of=init] (fixphon) at (3.5,3) {fix phonology};
+			%	\node [block, below of=init] (freq) at (1,2) {examine frequency list};
+			%	\node [decision, right of=freq] (break) at (1.5,0) {did something break?};
+			%	%\node [block, below of=identify] (evaluate) {evaluate candidate models};
+			%	%\node [block, left of=evaluate, node distance=3cm] (update) {update model};
+			%	\node [decision, below right of=freq] (decide) at (0,-1) {cause for unanalysed forms?};
+			%	\node [cloud] (revised) at (6.75,-4.5) {revised phonology} ;
+			%	%\node [block, below of=decide, node distance=3cm] (stop) {stop};
+			%	% Draw edges
+			%	\path [line] (init) -- (freq);
+			%	\path [line] (freq) -- (break);
+			%	\path [line] (break.south) -| node [near start] {no} (decide.north) ;
+			%	\path [line] (break.north) -| node [near start] {yes}(fixphon.south) ;
+			%	\path [line] (decide) -| node [near start] {missing stem} (addstem);
+			%	\path [line] (decide.east) --(decide-|fixphon.east) node [below, midway] {bad phonology} |-(break.north-|fixphon.south) -- (fixphon.south);
+			%	\path [line] (addstem) -- (init);
+			%	\path [line] (fixphon) -- (init);
+			%	\path [line,dashed] (assumed) -- (fixphon);
+			%	\path [line,dashed] (fixphon.east) --(fixphon.east-|assumed.east) |-(decide.east-|revised.north) -- (revised.north);
+			%\scalebox{0.65}{
+			\begin{tikzpicture}[xscale=1.92,yscale=2.25]%, auto]	
+
+				\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
+				\node[block] (analyse) at (1,2) {analyse corpus};
+				\node[block] (check) at (1,1) {examine freq.\ list};
+				\node[decision] (missingstem) at (1,0) {missing stem?};
+				\node[block] (addstem) at (0,2) {add stem};
+				\node[decision] (phonormorph) at (2,0) {type of problem?};
+				\node[block] (updatephon) at (3,0) {update phonol.};
+				\node[block] (updatemorph) at (3,1) {update morphol.};
+				\node[decision] (phonbetter) at( 4,0) {better?};
+				\node[decision] (morphbetter) at (4,1) {better?};
+				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
+
+				\path[line] (assumptions) -- (analyse);
+				\path[line] (analyse) -- (check);
+				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
+				\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
+				\path[line] (addstem) -- (analyse);
+				\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
+				\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
+				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
+				\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (phonbetter) ;
+				\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (morphbetter) ;
+				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.5,0) |- (newgeneralisation.east) ;
+				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.5,1) |- (newgeneralisation.east) ;
+				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
+				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
+				\path[line] (newgeneralisation) -- (analyse);
+
+			
+			
+			\end{tikzpicture}%}
+
 		}
 
 	\end{poster}
