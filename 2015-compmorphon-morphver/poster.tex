@@ -7,12 +7,12 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows} %for flowchart
 % Define block styles
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+\tikzstyle{decision} = [diamond, draw, fill=iumint, 
+    text width=5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=iulimestone, 
     text width=5em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+\tikzstyle{cloud} = [draw, ellipse,fill=iumidnight, text=grey, node distance=3cm,
     minimum height=2em]
 %\usepackage{pgfbaselayers}
 %\pgfdeclarelayer{background}
@@ -32,6 +32,7 @@
 %\definecolor{headercoltwo}{cmyk}{0.3,0,0.15,0.17}
 \definecolor{iumint}{cmyk}{0.40,0,0.23,0}
 \definecolor{iumidnight}{cmyk}{0.71,0.30,0.13,0.41}
+\definecolor{iulimestone}{cmyk}{0.11,0.13,0.14,0.26}
 %\definecolor{boxcolor}{RGB}{176,208,223}
 %\definecolor{boxcolor}{cmyk}{0.3,0.08,0.08,0.1}
 \definecolor{boxcolor}{cmyk}{0.2,0.03,0.03,0.1}
@@ -140,6 +141,7 @@
 \usepackage[backend=biber,citestyle=apa,style=authoryear,maxbibnames=99,maxcitenames=2]{biblatex}
 \bibliography{poster}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
+\renewcommand*{\bibfont}{\footnotesize}
 
 
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
@@ -705,32 +707,36 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 %		}
 
 		\headerbox{References}{name=references,column=3,below=tuvanvowelharmony}{
-			\begin{spacing}{0.85}
+			\begin{spacing}{0.7}
 				\printbibliography[heading=none]
 			\end{spacing}
-			\vspace{-1em}
+			\vspace{-0.5em}
 		}
 
 		\headerbox{Development cycle}{name=development,below=morphtrans}{
 			%(1) look at frequency list --> check word --> if it's missing stem, add --> (1) ; if it's bad phonology --> fix phonology --> (1)
+			\scalebox{0.8}{
 			\begin{tikzpicture}[node distance = 2cm, auto]
 				% Place nodes
-				\node [block] (init) {analyse corpus};
-				\node [cloud, left of=init] (addstem) {add stem};
-				\node [cloud, right of=init] (fixphon) {fix phonology};
-				\node [block, below of=init] (freq) {examine frequency list};
+				\node [block] (init) at (1,3) {analyse corpus} ;
+				\node [cloud, left of=init] (addstem) at (0,3) {add stem};
+				\node [cloud, right of=init] (fixphon) at (2,3) {fix phonology};
+				\node [block, below of=init] (freq) at (1,2) {examine frequency list};
+				\node [decision, right of=freq] (break) at (1.5,0) {did something break?};
 				%\node [block, below of=identify] (evaluate) {evaluate candidate models};
 				%\node [block, left of=evaluate, node distance=3cm] (update) {update model};
-				\node [decision, below of=freq] (decide) {cause for unanalysed forms?};
+				\node [decision, below right of=freq] (decide) at (0,-1) {cause for unanalysed forms?};
 				%\node [block, below of=decide, node distance=3cm] (stop) {stop};
 				% Draw edges
 				\path [line] (init) -- (freq);
-				\path [line] (freq) -- (decide);
+				\path [line] (freq) -- (break);
+				\path [line] (break.south) -| node [near start] {no} (decide.north) ;
+				\path [line] (break.north) -| node [near start] {yes}(fixphon.south) ;
 				\path [line] (decide) -| node [near start] {missing stem} (addstem);
-				\path [line] (decide.east) -| node [near start] {bad phonology} (fixphon);
+				\path [line] (decide.east) --(decide-|fixphon.east) node [below, midway] {bad phonology} |-(break.north-|fixphon.south) -- (fixphon.south);
 				\path [line,dashed] (addstem) -- (init);
 				\path [line,dashed] (fixphon) -- (init);
-			\end{tikzpicture}
+			\end{tikzpicture}}
 		}
 
 	\end{poster}
