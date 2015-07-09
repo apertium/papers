@@ -23,6 +23,20 @@
 %\pgfdeclarelayer{foreground}
 %\pgfsetlayers{background,main,foreground}
 
+\tikzset{
+  every overlay node/.style={
+    draw=none,fill=none,rounded corners,anchor=north west,
+  },
+}
+% Usage:
+% \tikzoverlay at (-1cm,-5cm) {content};
+% or
+% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
+\def\tikzoverlay{%
+   \tikz[baseline,overlay]\node[every overlay node]
+}%
+
+
 %%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \selectcolormodel{cmyk}
@@ -143,10 +157,11 @@
 \newcommand{\blank}[1]{\underline{\hspace{#1}}}
 
 %\usepackage{natbib}
-\usepackage[backend=biber,citestyle=apa,style=authoryear,maxbibnames=99,maxcitenames=2]{biblatex}
+\usepackage[backend=biber,citestyle=apa,maxcitenames=2,style=authoryear,maxbibnames=99,uniquelist=false,uniquename=false]{biblatex}
 \bibliography{poster}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
 \renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\intitlepunct}{\space}
 
 
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
@@ -283,9 +298,9 @@
 			\item Take a surface form, and produce valid lexical form(s)
 			\item Take a lexical form, and produce valid surface form(s)\vspace{-0.1ex}\\
 		%\end{itemize}
-		\scalebox{0.98}{
-			алдым \hilitetwo{↔} \texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}, \texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
-		}
+		%\scalebox{0.98}{
+			алдым~~~\hilitetwo{↔}~~~\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}},~~\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
+		%}
 		\end{itemize}
 
 		\htwo{Turkic-language transducers we've made}
@@ -320,7 +335,7 @@
 
 	}
 
-		\headerbox{Example:\ Tuvan velar elision}{name=tuvanvelars,column=1,span=2}{
+		\headerbox{Example: Tuvan velar elision}{name=tuvanvelars,column=1,span=2}{
 			\begin{multicols}{2}
 				\htwo{Previous descriptions}
 
@@ -352,7 +367,7 @@
 
 
 			\columnbreak{}
-				\htwo{Uanalysed forms before implementation}
+				\htwo{Unanalysed forms before implementation}
 					\begin{itemize}
 						\item \hilitetwo{инээ}, \hiliteone{өгү}, \hilitetwo{өө}, \hilitetwo{соо}, \hiliteone{чаңы}
 					\end{itemize}\vspace{-0.3ex}
@@ -503,57 +518,16 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
-	\headerbox{Example: Categorisation}{name=adjectives,column=1,below=tuvanvelars}{
-		\htwo{Unrestricted 0-derivation}
-		\begin{itemize}
-			\item Common overgeneralisation of adjective morphology:
-			\begin{itemize}
-				\item all adjectives may act like nouns (i.e.\ take noun morphology)
-				\item all adjectives may be used as is as adverbs
-			\end{itemize}
-			\item Commonly reported in Turkic language grammars
-		\end{itemize}
-		%Somfai Kara (2002, pp. 28-29):\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
-		\textcite[28-29]{somfaikara02}:\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
-		\-\hfill{}\includegraphics[width=0.8\textwidth]{img/kara29}
-
-		\htwo{Attested system}
-			\begin{itemize}
-				\item Some adjectives may not be substantivised
-				\item Some adjectives may not be used adverbially
-				\item Some adjectives do not have comparative forms
-				\item …a range of “adjective classes” in most Turkic languages
-			\end{itemize}
-		\htwo{Implementation: proper categorisation}
-			\begin{itemize}
-				\item only correct forms are analysed and generated
-			\end{itemize}
-				
-			\scalebox{0.83}{
-				\begin{tabular}{lllll}
-					\toprule
-					\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
-					\midrule
-					\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
-					\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
-					\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
-					\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
-					\bottomrule
-				\end{tabular}
-			}\\
-			This phenomenon is of particular interest because native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
-	}
-
 
 
 	\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=tuvanvelars}{
-		\begin{itemize}
-			\item Disambiguation, more stems, clean up transducers
-			\item Machine translation between these languages
-			\item Bring other Kypchak transducers to comparable performance:\\
-			Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
-			\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
-		\end{itemize}
+		%\begin{itemize}
+			%\item Disambiguation, more stems, clean up transducers
+			%\item Machine translation between these languages
+			%\item Bring other Kypchak transducers to comparable performance:\\
+			%Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
+			%\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+		%\end{itemize}
 	}
 
 	\headerbox{Further information}{name=getting,column=2,below=nedostatki}{
@@ -568,15 +542,10 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 			\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
 			\item And feel free to contact the authors any time!
 		\end{itemize}
+		\tikzoverlay[text width=0.8in] at (2.85in, 0.77in) {
+			\includegraphics[height=0.8in]{qrcode}
+		};
 	}
-
-%	\headerbox{References}{name=references,column=2,below=nedostatki}{
-%		%\begin{thebibliography}{1}\itemsep=-0.01em
-%		\setlength{\baselineskip}{0.4em}
-%	}
-
-
-
 
 
 		\headerbox{Example: Tuvan vowel harmony}{name=tuvanvowelharmony,column=3}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{ % after consonant clusters in loanwords
@@ -655,6 +624,51 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		}
 
+	\headerbox{Example: Categorisation}{name=adjectives,column=3,below=tuvanvowelharmony}{
+		\htwo{Unrestricted 0-derivation}
+		\begin{itemize}
+			\item Common overgeneralisation of adjective morphology:
+			\begin{itemize}
+				\item all adjectives may act like nouns (i.e.\ take noun morphology)
+				\item all adjectives may be used as is as adverbs
+			\end{itemize}
+			\item Commonly reported in Turkic language grammars
+		\end{itemize}
+		%Somfai Kara (2002, pp. 28-29):\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
+		\textcite[28-29]{somfaikara02}:\ \includegraphics[width=0.53\textwidth]{img/kara28}\\
+		\-\hfill{}\includegraphics[width=0.8\textwidth]{img/kara29}
+
+		\htwo{Attested system}
+			\begin{itemize}
+				\item Some adjectives may not be substantivised
+				\item Some adjectives may not be used adverbially
+				\item Some adjectives do not have comparative forms
+				\item …a range of “adjective classes” in most Turkic languages
+			\end{itemize}
+		\htwo{Implementation:\ proper categorisation}
+			\begin{itemize}
+				\item only correct forms are analysed and generated
+			\end{itemize}
+				
+			\scalebox{0.83}{
+				\begin{tabular}{lllll}
+					\toprule
+					\textbf{Type} & \textbf{Gloss} & {\small \texttt{\tag{adj}(\tag{comp})}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{subst}}} & {\small \texttt{\tag{adj}(\tag{comp})\tag{advl}}} \\
+					\midrule
+					\textbf{A1} & \eng{good} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} & {\qipa яхшы (яхшырак)} \\
+					\textbf{A2} & \eng{old} & {\qipa иске (искерәк)} & {\qipa иске (искерәк)} & {\qipa — (—)} \\
+					\textbf{A3} & \eng{dead} & {\qipa үле (—)} & {\qipa үле (—)} & {\qipa — (—)} \\
+					\textbf{A4} & \eng{basic} & {\qipa төп (—)} & {\qipa — (—)} & {\qipa — (—)} \\
+					\bottomrule
+				\end{tabular}
+			}\\
+			\begin{itemize}
+				\item Interestingly, native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
+			\end{itemize}
+	}
+
+
+
 		\headerbox{Examples:\ ideas for other examples}{name=otherexamples,column=0,span=1,below=tuvanvelars}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{
 			\begin{itemize}
 				\item Kyrgyz: conditions where л desonorises to д
@@ -709,11 +723,11 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 %\vspace{0.1em}
 %		}
 
-		\headerbox{References}{name=references,column=3,below=tuvanvowelharmony}{
-			\begin{spacing}{0.7}
+		\headerbox{References}{name=references,column=1,below=tuvanvelars}{
+			\begin{spacing}{0.75}
 				\printbibliography[heading=none]
 			\end{spacing}
-			\vspace{-0.5em}
+			\vspace{-0.3em}
 		}
 
 		\headerbox{Development cycle}{name=development,below=morphtrans}{
