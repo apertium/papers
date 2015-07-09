@@ -520,34 +520,6 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 
 
-	\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=tuvanvelars}{
-		%\begin{itemize}
-			%\item Disambiguation, more stems, clean up transducers
-			%\item Machine translation between these languages
-			%\item Bring other Kypchak transducers to comparable performance:\\
-			%Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
-			%\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
-		%\end{itemize}
-	}
-
-	\headerbox{Further information}{name=getting,column=2,below=nedostatki}{
-		\begin{itemize}
-			\item Part of \textbf{Apertium Turkic} project:\\
-			\url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
-			\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
-			\item \textbf{Source code} available from Apertium's SVN repo
-			%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
-				\item Turkic RBMT \textbf{mailing list} (>25 subscribers):\\
-			\texttt{apertium-turkic@lists.sourceforge.net}\\
-			\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
-			\item And feel free to contact the authors any time!
-		\end{itemize}
-		\tikzoverlay[text width=0.8in] at (2.85in, 0.77in) {
-			\includegraphics[height=0.8in]{qrcode}
-		};
-	}
-
-
 		\headerbox{Example: Tuvan vowel harmony}{name=tuvanvowelharmony,column=3}{ %{name=otherexamples,column=1,span=2,below=tuvanvelars}{ % after consonant clusters in loanwords
 			%\begin{multicols}{2}
 				\htwo{Tuvan vowel harmony}
@@ -663,7 +635,8 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 				\end{tabular}
 			}\\
 			\begin{itemize}
-				\item Interestingly, native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
+				%\item Interestingly, native-speaker intuitions on the morphological limitations of a given adjective can often be more restrictive than the range of possible uses found in a large text corpus.
+				\item Native speaker intuitions on morph.\ limitations often more restrictive than range of possible uses found in large text copora.
 			\end{itemize}
 	}
 
@@ -727,8 +700,39 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 			\begin{spacing}{0.75}
 				\printbibliography[heading=none]
 			\end{spacing}
-			\vspace{-0.3em}
+			\vspace{-0.2em}
 		}
+
+		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=tuvanvelars}{
+		\begin{itemize}
+				\item Fixing morphology and disambiguation by developing a dependency treebank for Kazakh
+				%\item Disambiguation, more stems, clean up transducers
+				%\item Machine translation between these languages
+				%\item Bring other Kypchak transducers to comparable performance:\\
+				%Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
+				%\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+			\end{itemize}
+		}
+
+		\headerbox{Further information}{name=getting,column=2,below=adjectives,span=2}{
+			%\vspace{-0.2em}
+			\tikzoverlay[text width=0.8in] at (6.73in, 0.04in) {
+				\includegraphics[height=0.8in]{qrcode}
+			};
+			\begin{itemize}
+				\item Part of \textbf{Apertium Turkic} project:\ \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
+				\item Transducers available \textbf{live} (\href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}), \textbf{source code} under \hiliteone{GPL} from Apertium's SVN repo
+				%\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
+				%\item \textbf{Source code} of transducers available under \hiliteone{GPL} (free!) from Apertium's SVN repo
+				%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
+				\item Multilingual Turkic RBMT \textbf{mailing list} (>25 subscribers):\ \texttt{apertium-turkic@lists.sourceforge.net}%\\
+				%\vspace{-0.5ex}Feel free to post in any language!\\\vspace{-2.5ex}
+				\item And feel free to contact the authors any time!
+			\end{itemize}
+			\vspace{0.3em}
+		}
+
+
 
 		\headerbox{Development cycle}{name=development,below=morphtrans}{
 			%(1) look at frequency list --> check word --> if it's missing stem, add --> (1) ; if it's bad phonology --> fix phonology --> (1)
