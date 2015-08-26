@@ -54,7 +54,7 @@
     %\else
       %\mcnewpage
     %\fi
-  %}%
+  %}%%
 %}
 %\makeatother
 
@@ -72,6 +72,8 @@
 \newcommand{\gmk}[1]{{\rm {\ll \textsc{#1}}}}
 \newcommand{\kazakh}[1]{{\em #1}}
 \newcommand{\gloss}[1]{`#1'}
+\newcommand{\sgloss}[1]{\hspace{0.5em}`#1'}
+%\newcommand{\sgloss}[1]{\hfill{}`#1'}
 \newcommand{\tgloss}[1]{{\em #1}}
 %\newcommand{\tag}[1]{\texttt{‹#1›}}
 \newcommand{\tag}[1]{{\ll \textsc{‹#1›}}}
@@ -158,7 +160,7 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 	\centering
 	\caption{Primary syntactic functions of traditionally defined cases in Kazakh.}\label{tab:cases}
 	\begin{small}
-		\begin{tabular}{l l p{9em} p{27.15em}}
+		\begin{tabular}{l l p{9em} p{28em}}
 			\toprule
 				\textbf{Case} & \textbf{Morph} & \textbf{Functions} & \textbf{Examples} \\
 			\midrule
@@ -166,36 +168,36 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 										attributive\newline
 										indefinite object\newline
 										indefinite genitival 
-									& \kazakh{\textbf{Дәрігер} үйді көреді.} \gloss{\textbf{The doctor} sees the house.} \newline
-										\kazakh{\textbf{қонақ} үй} \gloss{hotel (lit., \textbf{guest} house)} \newline 
-										\kazakh{Дәрігер \textbf{үй} көреді.} \gloss{The doctor sees \textbf{a house}.}\newline
-										\kazakh{\textbf{үй} жануарлары} \gloss{\textbf{house} animals} \\\midrule
+									& \kazakh{\textbf{Дәрігер} үйді көреді.} \sgloss{\textbf{The doctor} sees the house.} \newline
+										\kazakh{\textbf{қонақ} үй} \sgloss{hotel (lit., \textbf{guest} house)} \newline 
+										\kazakh{Дәрігер \textbf{үй} көреді.} \sgloss{The doctor sees \textbf{a house}.}\newline
+										\kazakh{\textbf{үй} жануарлары} \sgloss{\textbf{house} animals} \\\midrule
 				acc. & -/NI/ & definite object %\newline
 										%	embedded subject\newline
 										%	intr.\ causative subj.
-										& \kazakh{Дәрігер \textbf{үйді} көреді.} \gloss{The doctor sees \textbf{the house}.}
+										& \kazakh{Дәрігер \textbf{үйді} көреді.} \sgloss{The doctor sees \textbf{the house}.}
 										%	bar
 										\\\midrule
 				gen. & -/NIң/ & definite genitival\newline
 											embedded subject
-										& \kazakh{\textbf{үйдің} жануарлары} \gloss{the animals \textbf{of the house}} \newline
-											\kazakh{Ол \textbf{Айгүлдің} ойнағанына қарап тұр.} \gloss{She's watching \textbf{Aygül} play.} \\\midrule
+										& \kazakh{\textbf{үйдің} жануарлары} \sgloss{the animals \textbf{of the house}} \newline
+											\kazakh{Ол \textbf{Айгүлдің} ойнағанына қарап тұр.} \sgloss{She's watching \textbf{Aygül} play.} \\\midrule
 				loc. & -/DA/ & adverbial
-										& \kazakh{\textbf{Үйде} ұйықтап жатыр.} \gloss{S/he's sleeping \textbf{in the house}.} \\\midrule
+										& \kazakh{\textbf{Үйде} ұйықтап жатыр.} \sgloss{S/he's sleeping \textbf{in the house}.} \\\midrule
 				abl. & -/DAн/ & adverbial\newline
 											comparator 
-										& \kazakh{Дәрігер \textbf{үйден} шықты.} \gloss{The doctor came out \textbf{of the house}.}\newline
-											\kazakh{\textbf{түйеден} үлкен} \gloss{bigger \textbf{than a camel}}\\\midrule
+										& \kazakh{Дәрігер \textbf{үйден} шықты.} \sgloss{The doctor came out \textbf{of the house}.}\newline
+											\kazakh{\textbf{түйеден} үлкен} \sgloss{bigger \textbf{than a camel}}\\\midrule
 				dat. & -/GA/ & indirect object\newline
 										adverbial\newline
 									%	attributive\newline
 										trans.\ causative subj.%\newline
 									%	nom.\ complement
-									& \kazakh{\textbf{Ініме} кітап бердім.} \gloss{I gave \textbf{my younger brother} a book.} \newline
-										\kazakh{\textbf{Тойға} көп кісі келіпті.} \gloss{A lot of people came \textbf{to the feast.}}\newline
-										\kazakh{\textbf{Балаға} әнді тыңдаттым.} \gloss{I made \textbf{the child} listen to the song.}
+									& \kazakh{\textbf{Ініме} кітап бердім.} \sgloss{I gave \textbf{my younger brother} a book.} \newline
+										\kazakh{\textbf{Тойға} көп кісі келіпті.} \sgloss{A lot of people came \textbf{to the feast.}}\newline
+										\kazakh{\textbf{Балаға} әнді тыңдаттым.} \sgloss{I made \textbf{the child} listen to the song.}
 										\\\midrule
-				inst. & -/Mен/ &  adverbial & \kazakh{Олар \textbf{күшікпен} ойнап тұр.} \gloss{They're playing \textbf{with the dog}.} \\
+				inst. & -/Mен/ &  adverbial & \kazakh{Олар \textbf{күшікпен} ойнап тұр.} \sgloss{They're playing \textbf{with the dog}.} \\
 			\bottomrule
 		\end{tabular}
 	\end{small}
@@ -208,28 +210,30 @@ The attributive use of nominals is similar to the use of adjectives, and could e
 \begin{table}[htbp]
 	\centering
 	\caption{The default (first line of each) and ``zero-derived'' uses of nominals, adjectives, and adverbs}\label{tab:zeroderiv}
-	\begin{tabular}{lp{5em}p{20em}}
+	{\small
+	\begin{tabular}{lp{5em}p{21em}}
 		\toprule
 			\textbf{Category} & \textbf{Function} & \textbf{Example} \\
 		\midrule
 			Nominals & Substantive\newline
 							Attributive\newline
 							Adverbial
-						& \kazakh{\textbf{Қонақтарымыз} бай.} \gloss{\textbf{Our guests} are rich.}\newline 
-							\kazakh{\textbf{қонақ} үй} \gloss{hotel (lit., \textbf{guest} house)}\newline
-							\kazakh{Оны бір \textbf{рет} көрдім.} \gloss{I saw him/her/it one \textbf{time}.} \\\midrule
+						& \kazakh{\textbf{Қонақтарымыз} бай.} \sgloss{\textbf{Our guests} are rich.}\newline 
+							\kazakh{\textbf{қонақ} үй} \sgloss{hotel (lit., \textbf{guest} house)}\newline
+							\kazakh{Оны бір \textbf{рет} көрдім.} \sgloss{I saw him/her/it one \textbf{time}.} \\\midrule
 			Adjectives & Attributive\newline
 							Substantive\newline
 							Adverbial
-						& \kazakh{\textbf{жақсы} үй} \gloss{\textbf{nice} house} \newline
-						\kazakh{ең \textbf{жақсы}лары} \gloss{\textbf{the nice}st \textbf{one}s} \newline
-						\kazakh{Оны \textbf{жақсы} танимын.} \gloss{I know him/her \textbf{well}.}
+						& \kazakh{\textbf{жақсы} үй} \sgloss{\textbf{nice} house} \newline
+						\kazakh{ең \textbf{жақсы}лары} \sgloss{\textbf{the nice}st \textbf{one}s} \newline
+						\kazakh{Оны \textbf{жақсы} танимын.} \sgloss{I know him/her \textbf{well}.}
 						\\\midrule
 			Adverbs & Adverbial
-						& \kazakh{Ол \textbf{кеше} кетті.} \gloss{S/he left \textbf{yesterday}.}
+						& \kazakh{Ол \textbf{кеше} кетті.} \sgloss{S/he left \textbf{yesterday}.}
 						\\
 		\bottomrule
 	\end{tabular}
+	}
 
 \end{table}
 
@@ -303,7 +307,29 @@ a breakdown of the sources.
 		\end{tabular}
 	\end{small}
 \end{table}
-\vspace{-0.5em}
+
+Table~\ref{tab:casefunc} details the various tags (i.e., syntactic functions) associated with the traditionally defined morphological cases of Kazakh.  It should be noted that there are several known uses which are currently unattested (partitive use of \gmk{abl} as \udtag{dobj}, embedded \udtag{subj} marked as \gmk{acc}) or rare (\gmk{dat} as \udtag{iobj}) in the corpus.
+
+\begin{table}[htbp]
+	\centering
+	\caption{The functions associated with each case in Kazakh as currently found in the corpus.}
+	\label{tab:casefunc}
+	\begin{tabular}{lrrrrrrrr}
+		\toprule
+			 & \udtag{iobj} & \udtag{cmpnd} & \udtag{nmod} & \udtag{nmod:poss} & \udtag{dobj} & \udtag{root} & \udtag{subj} & \udtag{voc} \\
+		\midrule
+			\gmk{nom} & — & 1 & 199 & 158 & 72 & 26 & 279 & 1 \\
+			\gmk{acc} & — & — & 1 & — & 101 & — & — & — \\
+			\gmk{gen} & — & — & 120 & 120 & — & — & 12 & — \\
+			\gmk{dat} & 1 & — & 113 & — & 13 & — & — & — \\
+			\gmk{loc} & — & — & 112 & 1 & — & 6 & — & — \\
+			\gmk{abl} & — & — & 64 & — & — & — & — & — \\
+			\gmk{ins} & — & — & 33 & — & — & — & — & — \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\vspace{-0.75em}
+
 
 \subsection{Preprocessing}
 
@@ -523,7 +549,7 @@ agreement with the subject and accusative marking for the embedded clause.
         \end{subfigure}
         \caption{Dependency trees of copula constructions.}
 \end{figure}
-\vspace{-0.5em}
+\vspace{-0.75em}
 
 
 
@@ -683,6 +709,7 @@ Verbal nouns allow a whole verb phrase to be used as a nominal, and the resultin
 \end{figure}
 
 As mentioned earlier, verbal nouns combined with certain case morphology and/or postpositions can function as an adverbial adjunct to a main clause, similar to verbal adverb clauses.  In such instances, they receive the UD label \udtag{advcl}, and example of which is given in figure~\ref{fig:gerabl}.
+\vspace{-0.5em}
 
 \begin{figure}[htbp]
 	\centering
@@ -700,6 +727,7 @@ As mentioned earlier, verbal nouns combined with certain case morphology and/or 
 	\end{dependency}
 	\caption{Verbal nouns with case/postpositions: verbal nouns with certain case morphology and/or postpositions are the head of everything in their own clause and can be an \udtag{advcl} dependency of the verb they are the complement of.}\label{fig:gerabl}
 \end{figure}
+\vspace{-0.5em}
 
 % verbal adjectives → acl
 % verbal nouns (gerunds) → ccomp, no xcomp
