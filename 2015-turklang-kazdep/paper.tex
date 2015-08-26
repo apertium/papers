@@ -95,7 +95,7 @@
 %250-300-word ``extended abstract in English''
 \abstract{
 This article describes the first steps towards a free/open-source dependency treebank for Kazakh based on
-universal dependency (UD) annotation standards. The treebank contains 302 sentences and is based on
+universal dependency (UD) annotation standards. The treebank contains 402 sentences and is based on
 texts from a range of open-source and public domain sources. This ensures
 its free availability and extensibility. Texts in the treebank are first morphologically analysed
 and disambiguated and then annotated manually for dependency structure. In the article we present
@@ -280,28 +280,30 @@ a breakdown of the sources.
 
 \begin{table}[htbp]
   \centering
-  \caption{Composition of the corpus. The corpus covers a range of genres and text types from free and public-domain sources.}
+  \caption{Composition of the corpus. The corpus covers a range of genres and text types from free \& public-domain sources.}
   \label{table:corpcomp}
 	\begin{small}
 		\begin{tabular}{llrrr}
 			\toprule
 				\textbf{Document} & \textbf{Description} & \textbf{Sentences} & \textbf{Tokens} & \textbf{Avg. length}\\
 			\midrule
-				UN Declaration on Human Rights & Legal text on human rights & 25 & 409 & 16.3 \\
-				Phrasebook                     & Phrases from Wikitravel   & 37 & 205 & 5.5 \\
-				Жиырма Бесінші Сөз             & Philosophical text        & 34 & 525 & 15.4 \\ 
-				Қожанасырдың тойға баруы       & Folk tale from Wikisource  & 8 & 140 & 17.5 \\
-				Ер Төстік                      & Folk tale from Wikisource  & 23 & 203 & 8.8 \\
-				Азамат қайда?                  & Story for language learners & 48 & 434 & 9.0 \\
-				Футболдан әлем чемпионаты 2014 & Wikipedia article (2014 World Cup) & 14 & 246 & 17.5 \\
-				Иран & Wikipedia article (Iran)                                & 111 & 1562 & 14.0 \\
-				Радиан & Wikipedia article (Radian)                            & 2 & 17 & 8.5 \\
+				UN Declaration on Human Rights & Legal text on human rights & 26 & 417 & 16.0 \\ %
+				Phrasebook                     & Phrases from Wikitravel    & 38 & 204 & 5.4 \\ %
+				Жиырма Бесінші Сөз             & Philosophical text         & 33 & 467 & 14.2 \\ %
+				Қожанасырдың тойға баруы       & Folk tale from Wikisource  & 9 & 139 & 15.4 \\ %
+				Ер Төстік                      & Folk tale from Wikisource  & 25 & 209 & 8.4 \\ %
+				Азамат қайда?                  & Story for language learners & 49 & 433 & 8.8 \\ %
+				Футболдан әлем чемпионаты 2014 & Wikipedia article (2014 World Cup) & 12 & 191 & 15.9 \\ %
+				Иран & Wikipedia article (Iran)                             & 121 & 1714 & 14.2 \\ %
+				Радиан & Wikipedia article (Radian)                         & 2 & 17 & 8.5 \\ %
+				Шымкент & Wikipedia article (Shymkent)                      & 13 & 160 & 12.3 \\ %
+				Wikipedia misc. & Random sentences from Wikipedia           & 74 & 565 & 7.6 \\ %
 			\midrule
-			\multicolumn{2}{c}{~} & 302 & 3741 & 12.3 \\\cmidrule[\heavyrulewidth]{3-5}
+			\multicolumn{2}{c}{~} & 402 & 4516 & 11.2 \\\cmidrule[\heavyrulewidth]{3-5}
 		\end{tabular}
 	\end{small}
 \end{table}
-
+\vspace{-0.5em}
 
 \subsection{Preprocessing}
 
@@ -521,7 +523,7 @@ agreement with the subject and accusative marking for the embedded clause.
         \end{subfigure}
         \caption{Dependency trees of copula constructions.}
 \end{figure}
-
+\vspace{-0.5em}
 
 
 
@@ -621,6 +623,7 @@ As discussed in section~\ref{sec:kazakh}, Kazakh makes extensive use of non-fini
 
 Verbal adjective clauses modify a head nominal, effectively allowing a whole verb phrase to act as an adjective.  The dependency relation between them is \udtag{acl}, per UD documentation.  An example is provided in figure~\ref{fig:gpr}.
 
+\vspace{-0.5em}
 \begin{figure}[!htbp]
 	\centering
 	\begin{dependency}[theme = simple, font = \small]
