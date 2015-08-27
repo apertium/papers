@@ -164,7 +164,7 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 			\toprule
 				\textbf{Case} & \textbf{Morph} & \textbf{Functions} & \textbf{Examples} \\
 			\midrule
-				nom. & - & subject\newline
+				\gmk{nom} & — & subject\newline
 										attributive\newline
 										indefinite object\newline
 										indefinite genitival 
@@ -172,23 +172,23 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 										\kazakh{\textbf{қонақ} үй} \sgloss{hotel (lit., \textbf{guest} house)} \newline 
 										\kazakh{Дәрігер \textbf{үй} көреді.} \sgloss{The doctor sees \textbf{a house}.}\newline
 										\kazakh{\textbf{үй} жануарлары} \sgloss{\textbf{house} animals} \\\midrule
-				acc. & -/NI/ & definite object %\newline
+				\gmk{acc} & -/NI/ & definite object %\newline
 										%	embedded subject\newline
 										%	intr.\ causative subj.
 										& \kazakh{Дәрігер \textbf{үйді} көреді.} \sgloss{The doctor sees \textbf{the house}.}
 										%	bar
 										\\\midrule
-				gen. & -/NIң/ & definite genitival\newline
+				\gmk{gen} & -/NIң/ & definite genitival\newline
 											embedded subject
 										& \kazakh{\textbf{үйдің} жануарлары} \sgloss{the animals \textbf{of the house}} \newline
 											\kazakh{Ол \textbf{Айгүлдің} ойнағанына қарап тұр.} \sgloss{She's watching \textbf{Aygül} play.} \\\midrule
-				loc. & -/DA/ & adverbial
+				\gmk{loc} & -/DA/ & adverbial
 										& \kazakh{\textbf{Үйде} ұйықтап жатыр.} \sgloss{S/he's sleeping \textbf{in the house}.} \\\midrule
-				abl. & -/DAн/ & adverbial\newline
+				\gmk{abl} & -/DAн/ & adverbial\newline
 											comparator 
 										& \kazakh{Дәрігер \textbf{үйден} шықты.} \sgloss{The doctor came out \textbf{of the house}.}\newline
 											\kazakh{\textbf{түйеден} үлкен} \sgloss{bigger \textbf{than a camel}}\\\midrule
-				dat. & -/GA/ & indirect object\newline
+				\gmk{dat} & -/GA/ & indirect object\newline
 										adverbial\newline
 									%	attributive\newline
 										trans.\ causative subj.%\newline
@@ -197,7 +197,7 @@ In Kazakh, as in most languages with case, there is not a one-to-one relation be
 										\kazakh{\textbf{Тойға} көп кісі келіпті.} \sgloss{A lot of people came \textbf{to the feast.}}\newline
 										\kazakh{\textbf{Балаға} әнді тыңдаттым.} \sgloss{I made \textbf{the child} listen to the song.}
 										\\\midrule
-				inst. & -/Mен/ &  adverbial & \kazakh{Олар \textbf{күшікпен} ойнап тұр.} \sgloss{They're playing \textbf{with the dog}.} \\
+				\gmk{ins} & -/Mен/ &  adverbial & \kazakh{Олар \textbf{күшікпен} ойнап тұр.} \sgloss{They're playing \textbf{with the dog}.} \\
 			\bottomrule
 		\end{tabular}
 	\end{small}
@@ -308,7 +308,7 @@ a breakdown of the sources.
 	\end{small}
 \end{table}
 
-Table~\ref{tab:casefunc} briefly details the various tags (i.e., syntactic functions) associated with the traditionally defined morphological cases of Kazakh as found in the corpus.  Some mappings may be surprising, but will not be discussed in detail in this paper.  It should also be noted that there are several known uses which are currently unattested (partitive use of \gmk{abl} as \udtag{dobj}, embedded \udtag{subj} marked as \gmk{acc}) or rare (\gmk{dat} as \udtag{iobj}) in the corpus.
+Table~\ref{tab:casefunc} briefly details the various tags (i.e., syntactic functions) associated with the traditionally defined morphological cases of Kazakh as found in the corpus.  Some mappings may be surprising, but will not be discussed in detail in this paper.  It should also be noted that there are several known uses which are currently unattested (partitive use of \gmk{abl} as \udtag{dobj}, embedded \udtag{nsubj} marked as \gmk{acc}) or rare (\gmk{dat} as \udtag{iobj}) in the corpus.
 
 \begin{table}[htbp]
 	\centering
@@ -316,7 +316,7 @@ Table~\ref{tab:casefunc} briefly details the various tags (i.e., syntactic funct
 	\label{tab:casefunc}
 	\begin{tabular}{lrrrrrrrr}
 		\toprule
-			 & \udtag{iobj} & \udtag{cmpnd} & \udtag{nmod} & \udtag{nmod:poss} & \udtag{dobj} & \udtag{root} & \udtag{subj} & \udtag{voc} \\
+			 & \udtag{iobj} & \udtag{cmpnd} & \udtag{nmod} & \udtag{nmod:poss} & \udtag{dobj} & \udtag{root} & \udtag{nsubj} & \udtag{voc} \\
 		\midrule
 			\gmk{nom} & — & 1 & 199 & 157 & 72 & 26 & 279 & 1 \\
 			\gmk{acc} & — & — & — & — & 102 & — & — & — \\
@@ -511,7 +511,7 @@ agreement with the subject and accusative marking for the embedded clause.
                                 \tgloss{Aygül} \& \tgloss{student} \& \tgloss{is} \\
                         \end{deptext}
                         \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
-                        \depedge{2}{1}{\udlabel{subj}}
+                        \depedge{2}{1}{\udlabel{nsubj}}
                         \depedge{2}{3}{\udlabel{cop}}
                 \end{dependency}
                 \caption{Non-surfaced copula.}\label{fig:cop1}
@@ -526,7 +526,7 @@ agreement with the subject and accusative marking for the embedded clause.
                                 \tgloss{Aygül} \& \tgloss{student} \& \tgloss{was}\\
                         \end{deptext}
                         \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
-                        \depedge{2}{1}{\udlabel{subj}}
+                        \depedge{2}{1}{\udlabel{nsubj}}
                         \depedge{2}{3}{\udlabel{cop}}
                 \end{dependency}
                 \caption{Copula in past tense.}\label{fig:cop2}
@@ -541,7 +541,7 @@ agreement with the subject and accusative marking for the embedded clause.
                                 \tgloss{Aygül} \& \tgloss{his} \& \tgloss{where} \& \tgloss{being} \& \tgloss{knows not} \\
                         \end{deptext}
                         \deproot[edge unit distance=1.3ex]{5}{\udlabel{root}}
-                        \depedge{3}{2}{\udlabel{subj}}
+                        \depedge{3}{2}{\udlabel{nsubj}}
                         \depedge{5}{3}{\udlabel{ccomp}}
                         \depedge{3}{4}{\udlabel{cop}}
                 \end{dependency}
@@ -689,7 +689,7 @@ Verbal adverb clauses in Kazakh act as a clausal verbal adjunct, essentially all
 	\caption{Verbal adverbs: verbal adverbs are the head of everything in their own clause and are an \udtag{advcl} dependency of the verb they are subordinate to.}\label{fig:gna}
 \end{figure}
 
-Verbal nouns allow a whole verb phrase to be used as a nominal, and the resulting verbal noun phrase may be used as a subject or object of a verb.  When used as the subject of a verb, verbal noun phrases receive the UD label \udtag{subj}.  When used as the object of a verb, verbal noun phrases receive the UD label \udtag{ccomp}, unless the subject of the subordinate clause is obligatorily identical to the subject of the main clause, in which case it receives \udtag{xcomp}.  An example of a verbal noun phrase used as a \udtag{ccomp} dependency of the main verb is given in figure~\ref{fig:gerdat}.
+Verbal nouns allow a whole verb phrase to be used as a nominal, and the resulting verbal noun phrase may be used as a subject or object of a verb.  When used as the subject of a verb, verbal noun phrases receive the UD label \udtag{nsubj}.  When used as the object of a verb, verbal noun phrases receive the UD label \udtag{ccomp}, unless the subject of the subordinate clause is obligatorily identical to the subject of the main clause, in which case it receives \udtag{xcomp}.  An example of a verbal noun phrase used as a \udtag{ccomp} dependency of the main verb is given in figure~\ref{fig:gerdat}.
 
 \begin{figure}[htbp]
 	\centering
@@ -701,7 +701,7 @@ Verbal nouns allow a whole verb phrase to be used as a nominal, and the resultin
 		\end{deptext}
 		\depedge{5}{3}{\udlabel{conj}}
 		\depedge{5}{4}{\udlabel{cc}}
-		\depedge{6}{5}{\udlabel{subj}}
+		\depedge{6}{5}{\udlabel{nsubj}}
 		\depedge{7}{6}{\udlabel{ccomp}}
 		\deproot[edge unit distance=1.3ex]{7}{\udlabel{root}}
 	\end{dependency}
