@@ -1,0 +1,5 @@
+				әлем \& чемпионаты \\
+				\gmk{n.nom} \& \gmk{n.px3sg.nom} \\
+				\tgloss{world} \& \tgloss{championship} \\
+			\end{deptext}
+			\depedge{2}{1}{\udlabel{nmod:poss}}

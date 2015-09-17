@@ -1,0 +1,5 @@
+				көрші \& елдер \\
+				\gmk{n.attr} \& \gmk{n.pl.nom} \\
+				\tgloss{neighbour} \& \tgloss{countries} \\
+			\end{deptext}
+			\depedge{2}{1}{\udlabel{compound}}

@@ -1,0 +1,8 @@
+                                Айгүл \& оның \& қайда \& екенін \& білмейді. \\
+                                \gmk{np} \& \gmk{gen} \& \gmk{adv} \& \gmk{cop} \& \gmk{neg.aor} \\
+                                \tgloss{Aygül} \& \tgloss{his} \& \tgloss{where} \& \tgloss{being} \& \tgloss{knows not} \\
+                        \end{deptext}
+                        \deproot[edge unit distance=1.3ex]{5}{\udlabel{root}}
+                        \depedge{3}{2}{\udlabel{nsubj}}
+                        \depedge{5}{3}{\udlabel{ccomp}}
+                        \depedge{3}{4}{\udlabel{cop}}

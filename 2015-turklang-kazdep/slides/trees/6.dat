@@ -1,0 +1,10 @@
+
+			Ол \& терезеден \& Азамат \& пен \& Айгүлдің \& ойнағанына \& қарап \& тұр. \\
+			\gmk{prn} \& \gmk{n.abl} \& \gmk{np.nom} \& \gmk{cc} \& \gmk{np.gen} \& \gmk{v.iv.ger.px3sp.dat} \& \gmk{v.tv.prc} \& \gmk{vaux.pres} \\
+			\tgloss{she} \& \tgloss{from the window} \& \tgloss{Azamat} \& \tgloss{and} \& \tgloss{Aygül's} \& \tgloss{playing} \& \tgloss{watching} \& \tgloss{is} \\
+		\end{deptext}
+		\depedge{5}{3}{\udlabel{conj}}
+		\depedge{5}{4}{\udlabel{cc}}
+		\depedge{6}{5}{\udlabel{nsubj}}
+		\depedge{7}{6}{\udlabel{ccomp}}
+		\deproot[edge unit distance=1.3ex]{7}{\udlabel{root}}

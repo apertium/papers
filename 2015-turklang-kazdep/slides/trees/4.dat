@@ -1,0 +1,13 @@
+			Бразилия \& өз \& жерінде \& чемпионатты \& екі \& рет \& өткізген \& бесінші \& ел \& болды. \\
+			\gmk{np.nom} \& \gmk{det} \& \gmk{nom.px3sp.loc} \& \gmk{n.acc} \& \gmk{num} \& \gmk{n} \& \gmk{v.tv.gpr} \& \gmk{num.ord} \& \gmk{n.nom} \& \gmk{v.iv.ifi} \\
+			\tgloss{Brazil} \& \tgloss{own} \& \tgloss{in its land} \& \tgloss{championship} \& \tgloss{two} \& \tgloss{times} \& \tgloss{having held} \& \tgloss{fifth} \& \tgloss{country} \& \tgloss{became} \\
+		\end{deptext}
+		\depedge{3}{2}{\udlabel{det}}
+		\depedge{7}{3}{\udlabel{nmod}}
+		\depedge{7}{4}{\udlabel{obj}}
+		\depedge{6}{5}{\udlabel{nummod}}
+		\depedge{7}{6}{\udlabel{nmod}}
+		\depedge{9}{7}{\udlabel{acl}}
+		\depedge{9}{8}{\udlabel{amod}}
+		\depedge{9}{10}{\udlabel{cop}}
+		\deproot[edge unit distance=1.3ex]{9}{\udlabel{root}}

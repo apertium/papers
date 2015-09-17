@@ -1,0 +1,11 @@
+                Олар \& Финляндия, \& Швеция \& және \& Эстонияидан \& кейін \& Ресейге \& барды. \\
+                \gmk{prn} \& \gmk{nom} \& \gmk{nom} \& \gmk{cc} \& \gmk{abl} \& \gmk{post} \& \gmk{dat} \& \gmk{past} \\
+                \tgloss{They} \& \tgloss{Finland}, \& \tgloss{Sweden} \& \tgloss{and} \& \tgloss{Estonia} \& \tgloss{after} \& \tgloss{Russia} \& \tgloss{visited.} \\
+                \end{deptext}
+                \depedge{5}{3}{\udlabel{conj}}
+                \depedge{5}{4}{\udlabel{cc}}
+                \depedge{5}{2}{\udlabel{conj}}
+                \depedge{5}{6}{\udlabel{case}}
+                \depedge{8}{5}{\udlabel{nmod}}
+                \depedge{8}{7}{\udlabel{nmod}}
+                \deproot[edge unit distance=1.3ex]{8}{\udlabel{root}}

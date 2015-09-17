@@ -1,0 +1,8 @@
+			1960 \& жылдан \& бастап \& Батыс \& үлгісінде \& дами \& бастады. \\
+			\gmk{num} \& \gmk{n.abl} \& \gmk{v.tv.gna} \& \gmk{n.nom} \& \gmk{n.px3sp.loc} \& \gmk{v.iv.prc} \& \gmk{vaux.ifi} \\
+			\tgloss{1960} \& \tgloss{from year} \& \tgloss{starting} \& \tgloss{the West} \& \tgloss{on its model} \& \tgloss{developing} \& \tgloss{started} \\
+		\end{deptext}
+		\depedge{2}{1}{\udlabel{amod}}
+		\depedge{3}{2}{\udlabel{nmod}}
+		\depedge{6}{3}{\udlabel{advcl}}
+		\deproot[edge unit distance=1.3ex]{6}{\udlabel{root}}

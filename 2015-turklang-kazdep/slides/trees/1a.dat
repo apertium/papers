@@ -1,0 +1,7 @@
+                                Айгүл \& студент \& \_ \\
+                                \gmk{np} \& \gmk{n} \& \gmk{aor} \\
+                                \tgloss{Aygül} \& \tgloss{student} \& \tgloss{is} \\
+                        \end{deptext}
+                        \deproot[edge unit distance=1.3ex]{2}{\udlabel{root}}
+                        \depedge{2}{1}{\udlabel{nsubj}}
+                        \depedge{2}{3}{\udlabel{cop}}
