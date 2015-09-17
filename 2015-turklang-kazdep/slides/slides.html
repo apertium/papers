@@ -36,6 +36,24 @@
 			.plainimg {
 				border: none !important ;
 			}
+			.mono {
+				font-family: "Lucida Console", Monaco, monospace ;
+			}
+			tag:before {
+				content: "‹";
+				color: grey;
+				font-family: "Lucida Console", Monaco, monospace ;
+			}
+			tag:after {
+				content: "›";
+				color: grey;
+				font-family: "Lucida Console", Monaco, monospace ;
+			}
+			tag {
+				font-size: 85%;
+				color: silver;
+				font-family: "Lucida Console", Monaco, monospace ;
+			}
 		</style>
 	</head>
 
@@ -70,8 +88,9 @@
 							<li>Each word in a sentence is a <b>node</b></li>
 							<li><b>Dependencies</b>: labelled links between nodes</li>
 						</ul>
-						</li><!-- FIXME: Example -->
+						</li>
 					</ul>
+					<img class="plainimg" style="width: 60%" src="trees/russian.png"/>
 				</section>
 				<section data-background="protodependencies.jpg">
 				</section>
@@ -158,9 +177,20 @@
 								<li>A range of sources, but not balanced ☹</li>
 							</ul>
 						</li>
-						<li>Preprocessing</li>
-						<li>Morphological analysis + tokensation</li>
-						<!-- FIXME: Example, etc. : Tokenisation, preprocessing -->
+						<li>Preprocessing:
+						<ul>
+							<li>Morphological analysis &amp; tokensation:
+								<ul style="font-size: 90%">
+									<li>үйдемін / <code>"үй"<tag>n</tag><tag>loc</tag>+"е"<tag>cop</tag><tag>aor</tag><tag>p1</tag><tag>sg</tag></code>
+									<li>пайда болды / <code>"пайда бол"<tag>v</tag><tag>iv</tag><tag>ifi</tag><tag>p3</tag><tag>sg</tag></code>
+								</ul>
+							</li>
+							<li>Disambiguation:
+								<ul>
+									<li>Constraint grammar removes half of all ambiguity</li>
+								</ul>
+							</li>
+						</ul></li>
 					</ul>
 				</section>
 				<section>
@@ -240,6 +270,13 @@
 					<img class="plainimg" src="trees/7.pdf.png"/>
 				</section>
 
+				<section>
+					<h2>Statistics</h2>
+					<ul>
+						<li>№ sents: 402</li>
+						<li>№ words: 4516 (<em>~11.2 words/sent</em>)</li>
+					</ul>
+				</section>
 
 				<section>
 					<h2>Experiment</h2>
@@ -274,14 +311,6 @@
 					</ul>
 				</section>
 
-				<section>
-					<h2>Tyvan</h2>
-					<img src="tyvan1.png"/>
-					<img src="tyvan2.png"/>
-					<img src="tyvan3.png"/>
-					<img src="tyvan4.png"/>
-				</section>
-
 
 				<section>
 					<h2>Conclusions</h2>
@@ -294,8 +323,33 @@
 				<section>
 					<h2>Future work</h2>
 					<ul>
-						<li></li>
+						<li>Increase number of sentences</li>
+						<ul>
+							<li>1500 needed to cover wide range of phenomena</li>
+							<li>e.g., we don't have any <tag>abl</tag> partitive uses</li>
+						</ul>
+						<li>Implement «Interset» features</li>
+						<ul>
+							<li>Verb morphology will be problematic (mood, aspect)</li>
+						</ul>
+						<li>Experiment with learning joint morphosyntactic-disambiguation &amp; parsing models</li>
+						<li>Experiment with pan-Turkic dependency parsing</li>
+						<ul>
+							<li>we have wide-coverage morphologies for 6-7 Turkic languages</li>
+						</ul>
+						<li>Continue collaboration with with Aibek and others</li>
 					</ul>
+				</section>
+
+				<section data-transition="none">
+					<h2>Tyvan</h2>
+					<img src="tyvan3.png"/>
+					<!-- img src="tyvan4.png"/ -->
+				</section>
+				<section data-transition="none">
+					<h2>Tyvan</h2>
+					<img src="tyvan1.png"/>
+					<!-- img src="tyvan2.png"/ -->
 				</section>
 
 				<section>
