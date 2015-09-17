@@ -152,11 +152,19 @@
 					Preprocessing
 				</section>
 				<section>
-					<h2>Annotation process - F J F+J</h2>
+					<h2>Annotation process</h2>
 					<ul>
-						<li></li>
+						<li>Our 3-step process:
+							<ul>
+								<li>Fran made draft annotation</li>
+								<li>Jonathan checked, made suggestions</li>
+								<li>Fran &amp; Jonathan reviewed work together</li>
+							</ul>
+						</li>
+						<li>Kind of inefficient</li>
+						<li>...but made effective use of each's talents and times</li>
+						<li>Some resulting annotation decisions presented on following slides</li>
 					</ul>
-					Following slides: annotation decisions
 				</section>
 
 				<section data-background="annotation.jpg">
@@ -224,7 +232,27 @@
 				<section>
 					<h2>Experiment</h2>
 					<ul>
-						<li></li>
+						<li>Three objectives:
+							<ul>
+								<li>Test the treebank in a "real world" scenario</li>
+								<li>Try out different feature combinations</li>
+								<li>Estimate performance on new sentences / unseen data</li>
+							</ul>
+						</li>
+						<li>Experimental setup
+							<ul>
+								<li><span style="color: cyan">Malt</span><span style="color: red">Parser</span>: transition based dependency parser</li>
+<li>10-fold cross validation (i.e., trained on 9/10 of the corpus at a time, evaluated against remaining 10th)</li>
+<li>Trained on four different configurations:<br />
+	<!-- ul>
+		<li>Surface form only</li>
+		<li>Surface form + Lemma</li>
+		<li>Surface form + Lemma + POS</li>
+		<li>Surface form + Lemma + POS + Morphosyntactic features</li>
+	</ul-->
+		<span style="font-size: 90%"><span style="color: #ccdbb0;">Surface form</span> + <span style="color: #aace91;">Lemma</span> + <span style="color: #81bd75;">POS</span> + <span style="color: #59ac5c;">Morphosyntactic features</span></li></span>
+</li>
+<!-- * Does adding structural features improve parsing performance? -->
 					</ul>
 				</section>
 				<section>
