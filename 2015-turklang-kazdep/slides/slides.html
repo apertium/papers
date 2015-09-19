@@ -54,6 +54,15 @@
 				color: silver;
 				font-family: "Lucida Console", Monaco, monospace ;
 			}
+			.noborder {
+				border-bottom: 0px !important;
+			}
+			.topborder {
+				border-top: 1px solid white !important;
+			}
+			.botborder {
+				border-bottom: 1px solid white !important ;
+			}
 		</style>
 	</head>
 
@@ -75,7 +84,7 @@
 						<li>Dependency grammars, Universal Dependencies, Treebanks</li>
 						<li>Kazakh UD treebank: corpus, development, specific issues</li>
 						<li>Evaluation: experiment, results, Tyvan?</li>
-						<li>Conclusions</li>
+						<!-- li>Conclusions</li -->
 					</ul>
 				</section>
 
@@ -90,7 +99,8 @@
 						</ul>
 						</li>
 					</ul>
-					<img class="plainimg" style="width: 60%" src="trees/russian.png"/>
+					<!-- img class="plainimg" style="width: 60%" src="trees/russian.png"/ -->
+					<img class="plainimg" style="width: 60%" src="trees/tatar.png"/>
 				</section>
 				<section data-background="protodependencies.jpg">
 				</section>
@@ -131,7 +141,7 @@
 				<section>
 					<h2>Treebanks</h2>
 					<ul>
-						<li>Collection of parsed sentences</li>
+						<li>A collection of parsed sentences</li>
 						<li>Consistently adhere to a particular syntactic theory</li>
 						<li>Used for:
 							<ul>
@@ -139,7 +149,7 @@
 								<li>corpus linguistics, e.g.:</li>
 									<ul>
 										<li>extract a valency lexicon for verbs</li>
-										<li>study the frequency of various syntactic phenomena, e.g.:
+										<li>study frequency of syntactic phenomena, e.g.:
 										<ul>
 											<li>word order</li>
 											<li>nominal case usage and syntactic function</li>
@@ -165,7 +175,21 @@
 				<section>
 					<h2>Kazakh</h2>
 					<ul>
-						<li></li>
+						<li>Lots of free text available (Wikipedia, etc.)</li>
+						<li>Very little modern syntactic work</li>
+						<li>Interesting challenges for modern syntactic frameworks:</li>
+						<ul>
+
+							<li>the syntactic functions of the "case" morphemes</li>
+							<li>problems of "zero derivation"</li>
+							<li>non-finite clauses</li>
+							<li>copulas and copula constructions</li>
+						</ul>
+						<li>Existing computational tools:</li>
+						<ul>
+							<li>Morphological transducer (Washington et al., 2014)</li>
+							<li>Constraint grammar (Salimzyanov et al., 2013)</li>
+						</ul>
 					</ul>
 				</section>
 				<section>
@@ -211,7 +235,7 @@
 
 				<section data-background="annotation.jpg">
 				</section>
-				<section>
+				<!-- section>
 					<h2>Syntactic function of cases</h2>
         <p>Primary syntactic function of traditionally defined cases in Kazakh</p>
 					<table style="size:60%">
@@ -230,7 +254,7 @@
             <tr>    <td>adverbial</td></tr>
             <tr>    <td>trans caus subj</td></tr>
         </table>
-				</section>
+				</section -->
 
 
 				<section>
@@ -271,10 +295,14 @@
 				</section>
 
 				<section>
-					<h2>Statistics</h2>
+					<h2>Corpus properties</h2>
 					<ul>
 						<li>№ sents: 402</li>
-						<li>№ words: 4516 (<em>~11.2 words/sent</em>)</li>
+						<li>№ words: 4516</li>
+						<li>average sentence: ~11.2 words</li>
+						<li>longest sentence: 50 words</li>
+						<li>shortest sentence: 3 words</li>
+						<li>genres: legal texts, travel phrases, philosophical text, folk tales, stories, current events, history, geography, mathematics</li>
 					</ul>
 				</section>
 
@@ -306,18 +334,26 @@
 				</section>
 				<section>
 					<h2>Results</h2>
+					<table style="font-size:90%">
+						<tr><th class="topborder">Features</th><th class="topborder">LAS [range]</th><th class="topborder">UAS [range]</th></tr>
+						<tr><td class="noborder"><span style="color: #ccdbb0;">surface</span></td><td class="noborder">42.8 [38.9, 45.9]</td><td class="noborder">58.4 [52.4, 62.9]</td></tr>
+						<tr><td class="noborder"><span style="color: #ccdbb0;">surface</span>+<span style="color: #aace91;">lemma</span></td><td class="noborder">42.8 [38.9, 45.9]</td><td class="noborder">58.4 [52.4, 62.9]</td></tr>
+						<tr><td class="noborder"><span style="color: #ccdbb0;">surface</span>+<span style="color: #aace91;">lemma</span>+<span style="color: #81bd75;">POS</span></td><td class="noborder">64.9 [66.4, 67.1]</td><td class="noborder">77.0 [76.8, 80.0]</td></tr>
+						<tr><td class="botborder"><span style="color: #ccdbb0;">surface</span>+<span style="color: #aace91;">lemma</span>+<span style="color: #81bd75;">POS</span>+<span style="color: #59ac5c;">MSD</span></td><td class="botborder">76.8 [70.9, 80.0]</td><td class="botborder">81.4 [75.7, 85.2]</td></tr>
+					</table>
+					<br />
 					<ul>
-						<li></li>
+						<li><b>Conclusion</b>: adding structural features to the model substantially improves the performance of the parser.</li>
 					</ul>
 				</section>
 
 
-				<section>
+				<!-- section>
 					<h2>Conclusions</h2>
 					<ul>
 						<li></li>
 					</ul>
-				</section>
+				</section -->
 
 
 				<section>
@@ -354,6 +390,14 @@
 
 				<section>
 					<h1>¡Thanks / Рахмет / Рәхмәт!</h1>
+				</section>
+				<section>
+					<h2>Links</h2>
+					<ul style="font-size: 90%">
+						<li>Kazakh morphological analyser and constraint grammar: <a href="http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz/">http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz/</a></li>
+						<li>Our treebank: <a href="http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz/texts/puupankki/">http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz/texts/puupankki/</a></li>
+						<li>Universal Dependencies documentation: <a href="http://universaldependencies.github.io/docs/">http://universaldependencies.github.io/docs/</a></li>
+					</ul>
 				</section>
 
 
