@@ -233,8 +233,11 @@
 		textborder=roundedleft,
 		columns=4,
 	}{ %Eye Catcher, empty if option eyecatcher=false - unused
-		\includegraphics[height=6.4em]{uitlogo}
-		\includegraphics[height=6.2em]{iu_tab-crop}
+		\setlength\fboxsep{0.5em}
+		\setlength\fboxrule{0pt}
+		\includegraphics[height=5.5em]{qrcode}
+		\includegraphics[height=5.8em]{uitlogo}\hspace{1em}
+		\fbox{\includegraphics[height=5.5em]{iu_tab-crop}}
 		%\hspace{2.5cm}\begin{minipage}[t]{7em}
 		%	\vspace{-2cm}
 		%	\noindent\\
@@ -249,19 +252,19 @@
 	}{ %Authors (centered top, below title)
 		\vspace{-0.6em}
 		\begin{center}
-			\begin{minipage}[t]{7em}
+			\begin{minipage}[t]{6em}
 				\begin{spacing}{0.4}
-				{Francis M.\ Tyers}\\
+				{Francis Tyers}\\
 				{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{12em}
+			\begin{minipage}[t]{9.25em}
 				\begin{spacing}{0.4}
-					{Jonathan North Washington}\\
+					{Jonathan Washington}\\
 					{\footnotesize Indiana University\\\texttt{jonwashi@indiana.edu}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{8em}
+			\begin{minipage}[t]{8em} %{7.7em}
 				\begin{spacing}{0.4}
 					{Aziyana Bayyr-ool}\\
 					{\footnotesize Сибирское отделение Российской академии наук\\\texttt{azikoa@mail.ru}}
@@ -275,10 +278,12 @@
 			\end{minipage}
 		\end{center}
 	}{ %More eye catchers, on the right side
-		\includegraphics[height=6.2em]{img/Tuvsu}
-		\includegraphics[height=6.2em]{img/soranif}
+		\setlength\fboxsep{0.5em}
+		\setlength\fboxrule{0pt}
+		\fbox{\includegraphics[height=5.5em]{img/Tuvsu}}
+		\includegraphics[height=5.5em]{img/soranif}
+		\includegraphics[angle=90,height=6.2em]{apertium5b}%\hspace{-2em}
 		%\hspace{2.5cm}
-		\includegraphics[angle=90,height=6.7em]{apertium5b}%\hspace{-2em}
 	}
 
 	\headerbox{Morphological Descriptions}{name=morphdesc,column=0,row=0}{
@@ -745,9 +750,9 @@ Cx:0 <=> :Vow/:0* \_ [ \%>:\ :Vow ]/:0* ;}\\
 
 		\headerbox{Further information}{name=getting,column=1,below=adjectives,span=2}{
 			%\vspace{-0.2em}
-			\tikzoverlay[text width=0.8in] at (6.73in, 0.04in) {
-				\includegraphics[height=0.8in]{qrcode}
-			};
+			%\tikzoverlay[text width=0.8in] at (6.73in, 0.04in) {
+			%	\includegraphics[height=0.8in]{qrcode}
+			%};
 			\begin{itemize}
 				\item Part of \textbf{Apertium Turkic} project:\ \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
 				\item Transducers available \textbf{live} (\href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}), \textbf{source code} under \hiliteone{GPL} from Apertium's SVN repo
