@@ -235,7 +235,7 @@
 	}{ %Eye Catcher, empty if option eyecatcher=false - unused
 		\setlength\fboxsep{0.5em}
 		\setlength\fboxrule{0pt}
-		\includegraphics[height=5.5em]{qrcode}
+		\includegraphics[angle=90,height=6.2em]{apertium5b}%\hspace{-2em}
 		\includegraphics[height=5.8em]{uitlogo}\hspace{1em}
 		\fbox{\includegraphics[height=5.4em]{iu_tab-crop}}
 		%\hspace{2.5cm}\begin{minipage}[t]{7em}
@@ -252,15 +252,15 @@
 	}{ %Authors (centered top, below title)
 		%\vspace{-0.6em}
 		\begin{center}
-			\begin{minipage}[t]{6em}
+			\begin{minipage}[t]{7em}
 				\begin{spacing}{0.4}
-				{Francis Tyers}\\
+				{Francis M.\ Tyers}\\
 				{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{9.25em}
+			\begin{minipage}[t]{12em}
 				\begin{spacing}{0.4}
-					{Jonathan Washington}\\
+					{Jonathan North Washington}\\
 					{\footnotesize Indiana University\\\texttt{jonwashi@indiana.edu}}
 				\end{spacing}
 			\end{minipage}
@@ -282,11 +282,11 @@
 		\setlength\fboxrule{0pt}
 		\fbox{\includegraphics[height=5.5em]{img/Tuvsu}}
 		\includegraphics[height=5.4em]{img/soranif}
-		\includegraphics[angle=90,height=6.2em]{apertium5b}%\hspace{-2em}
 		%\hspace{2.5cm}
 	}
 
 	\headerbox{Tuvan}{name=tyvan,column=0,row=0}{
+		\includegraphics[width=\textwidth]{img/tuvanmap}
 	}
 	
 	\headerbox{Morphological Transducers}{name=morphtrans,below=tyvan}{
@@ -332,15 +332,19 @@
 		\end{itemize}
 
 	}
-		\headerbox{References}{name=references,column=3,below=tuvanvelars}{
-			\vspace{-0.42em}
-			\begin{spacing}{0.3}
-				\printbibliography[heading=none]
-			\end{spacing}
-			\vspace{-0.05em}
-		}
 
-		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=tuvanvelars}{
+
+	\headerbox{Example}{name=example,span=2,column=1,row=0}{
+
+
+	}
+
+	\headerbox{Evaluation}{name=results,column=1,below=example}{
+
+
+	}
+
+		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=example}{
 		\begin{itemize}
 				\item Current annotation of a dependency treebank for Kazakh:\\
 				a similar process that helps identify errors in morphological analyses and automatic disambiguation (constraint grammar)
@@ -364,11 +368,11 @@
 			\end{itemize}
 		}
 
-		\headerbox{Further information}{name=getting,column=1,below=adjectives,span=2}{
-			%\vspace{-0.2em}
-			%\tikzoverlay[text width=0.8in] at (6.73in, 0.04in) {
-			%	\includegraphics[height=0.8in]{qrcode}
-			%};
+		\headerbox{Further information}{name=getting,column=1,below=results,span=2}{
+			\vspace{-0.2em}
+			\tikzoverlay[text width=0.8in] at (6.2in, 0.04in) {
+				\includegraphics[height=0.8in]{qrcode}
+			};
 			\begin{itemize}
 				\item Part of \textbf{Apertium Turkic} project:\ \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
 				\item Transducers available \textbf{live} (\href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}), \textbf{source code} under \hiliteone{GPL} from Apertium's SVN repo
@@ -383,6 +387,13 @@
 		}
 
 
+	\headerbox{References}{name=references,below=nedostatki,column=2}{
+		\vspace{-0.42em}
+		\begin{spacing}{0.3}
+			\printbibliography[heading=none]
+		\end{spacing}
+		\vspace{-0.05em}
+	}
 
 	\end{poster}
 \end{document}
