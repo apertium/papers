@@ -1,0 +1,26 @@
+digraph G {
+rankdir="BT";
+0 [label="ROOT"];
+11 [label=<баксыра>];
+11 -> 0 [label="root"];
+7 [label=<чорут>];
+7 -> 11 [label="advcl"];
+2 [label=<бис>];
+2 -> 7 [label="nsubj"];
+4 [label=<соңгукчу>];
+4 -> 7 [label="nmod"];
+3 [label=<кожуун>];
+3 -> 4 [label="nmod:poss"];
+5 [label=<биле>];
+5 -> 4 [label="case"];
+6 [label=<ажыл>];
+6 -> 7 [label="dobj"];
+8 [label=<бер>];
+8 -> 7 [label="aux"];
+9 [label=<,>];
+9 -> 7 [label="punct"];
+10 [label=<көргүзүг>];
+10 -> 11 [label="nsubj"];
+12 [label=<.>];
+12 -> 11 [label="punct"];
+}
