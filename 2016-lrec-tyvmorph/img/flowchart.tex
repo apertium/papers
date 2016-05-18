@@ -1,0 +1,241 @@
+\documentclass[landscape]{paper}
+
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows} %for flowchart
+% Define block styles
+\newcommand{\flowchartscale}{0.65}
+\tikzstyle{decision} = [diamond, draw, fill=iumint, 
+    text width=5em, text badly centered, node distance=3cm, inner sep=0pt,
+	 font=\diagsans, scale=\flowchartscale]
+\tikzstyle{block} = [rectangle, draw, fill=iulimestone, 
+    text width=5em, text centered, rounded corners, minimum height=4em,
+	 font=\diagsans, scale=\flowchartscale]
+\tikzstyle{line} = [draw, -latex', thick, font=\diagsans]
+\tikzstyle{cloud} = [draw, ellipse,fill=iumidnight, text=grey, text width=8em,
+	text centered, %node distance=3cm,
+	minimum height=2em, font=\diagsans, scale=\flowchartscale]
+%\usepackage{pgfbaselayers}
+%\pgfdeclarelayer{background}
+%\pgfdeclarelayer{foreground}
+%\pgfsetlayers{background,main,foreground}
+
+\tikzset{
+  every overlay node/.style={
+    draw=none,fill=none,rounded corners,anchor=north west,
+  },
+}
+% Usage:
+% \tikzoverlay at (-1cm,-5cm) {content};
+% or
+% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
+\def\tikzoverlay{%
+   \tikz[baseline,overlay]\node[every overlay node]
+}%
+
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\selectcolormodel{cmyk}
+
+\definecolor{bordercol}{RGB}{0,0,0}
+%\definecolor{headercolone}{RGB}{6,130,22}
+\definecolor{headercol}{cmyk}{1,0.64,0,0.6}
+%\definecolor{headercolone}{cmyk}{1,0.64,0,0.6}
+%\definecolor{headercoltwo}{cmyk}{0.44,0,0.15,0.17}
+%\definecolor{headercolone}{cmyk}{0.3,0,0.15,0.17}
+%\definecolor{headercoltwo}{cmyk}{0.3,0,0.15,0.17}
+\definecolor{iumint}{cmyk}{0.40,0,0.23,0}
+\definecolor{iumidnight}{cmyk}{0.71,0.30,0.13,0.41}
+\definecolor{iulimestone}{cmyk}{0.11,0.13,0.14,0.26}
+%\definecolor{boxcolor}{RGB}{176,208,223}
+%\definecolor{boxcolor}{cmyk}{0.3,0.08,0.08,0.1}
+\definecolor{boxcolor}{cmyk}{0.2,0.03,0.03,0.1}
+\definecolor{headerfontcol}{RGB}{255,255,255}
+\newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
+\newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
+\newcommand{\hilitegrey}[1]{{\addfontfeature{Color=77777799}#1}}
+\newcommand{\hilitelightgrey}[1]{{\addfontfeature{Color=CCCCCC99}#1}}
+\newcommand{\hiliteblue}[1]{{\addfontfeature{Color=44697DFF}#1}}
+
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+        \setlength{\itemsep}{1pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\parsep}{0pt}
+}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=australian]{english}
+
+\usepackage{expex}
+
+\usepackage{fontspec}
+\defaultfontfeatures{PunctuationSpace=2,Scale=MatchLowercase,Mapping=tex-text}
+\newfontfeature{IPA}{+mgrk}
+%\setromanfont[IPA]{FreeSerif}
+%\setromanfont[IPA,Scale=0.8]{CMU Serif}
+%\setromanfont[IPA]{Liberation Serif}
+\setromanfont[IPA]{Linux Libertine O}
+%\setromanfont[IPA]{Nimbus Roman No9 L}
+\setmonofont[IPA]{DejaVu Sans Mono}
+\usepackage[small,bf]{caption}
+\newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
+\newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
+\newfontfamily\litamono[IPA,Scale=0.5]{DejaVu Sans Mono}
+\newfontfamily\ortamono[IPA,Scale=0.625]{DejaVu Sans Mono}
+\newfontfamily\diagsans[IPA,Scale=1]{DejaVu Sans}
+
+\newcommand{\tilda}{{\qipa ∼}}
+
+\newcommand{\tags}[1]{\hiliteone{#1}}
+\newcommand{\tag}[1]{{\ortamono \hilitegrey{<}\hiliteblue{#1}\hilitegrey{>}}}
+\newcommand{\archiphon}[1]{\hilitegrey{\{}\hiliteone{#1}\hilitegrey{\}}}
+
+%\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
+%\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
+%\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
+\newfontfamily\htwofont[IPA,Scale=1,Color=111111FF]{CMU Sans Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.52]{CMU Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Serif}
+%\newfontfamily\titlefont[IPA,Scale=0.7]{CMU Sans Serif Demi Condensed}
+\newfontfamily\titlefont[
+	%SmallCapsFont={Andika},
+	%SmallCapsFont={Alegreya Sans SC},
+	SmallCapsFont={Andada SC},
+	%SmallCapsFont={Carrois Gothic SC},
+	SmallCapsFeatures={Letters=SmallCaps},
+	Scale=0.8,
+]{Andada SC}
+%\newfontfamily\titlefont[IPA,Scale=0.7]{Nimbus Sans L}
+%\newfontfamily\titlefont[IPA,Scale=0.55]{DejaVu Serif}
+
+%\newcommand{\htwo}[1]{::: {\htwofont #1} :::}%\hrule} %\hline\\}
+%\newcommand{\htwo}[1]{{\htwofont \textbf{:::#1:::}}}%\hrule} %\hline\\}
+\newcommand{\htwo}[1]{{\htwofont \textbf{\dotfill{}#1\dotfill{}}}}
+
+
+\usepackage{graphicx}  % [dvipdfm]
+
+%\definecolor{MyGray}{rgb}{0.96,0.97,0.98}
+%\newenvironment{codebox}{%
+%   \begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}{\end{minipage}\end{lrbox}%
+%   \colorbox{MyGray}{\usebox{\@tempboxa}}
+%}
+%\newcommand{\codeex}[1]{\begin{codebox}#1\end{codebox}}
+
+%\definecolor{grey}{rgb}{0.96,0.97,0.98}
+\definecolor{grey}{rgb}{0.91,0.91,0.91}
+\newcommand{\codeex}[1]{
+   \fbox{\colorbox{grey}{
+         \begin{minipage}[t]{0.91\textwidth}{\litamono
+				\begin{spacing}{0.4}
+	            #1
+				\vspace{-1em}\end{spacing}
+         }\end{minipage}
+      }
+   }
+}
+\newcommand{\outputex}[1]{
+   \fbox{\colorbox{iumidnight}{
+         \begin{minipage}[t]{0.91\textwidth}{\ortamono
+				\begin{spacing}{0.2}\vspace{-0.8em}
+	            \hilitelightgrey{#1}
+				\vspace{-2.5em}\end{spacing}
+         }\end{minipage}
+      }
+   }
+}
+
+
+
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+
+%\usepackage{natbib}
+\usepackage[backend=biber,citestyle=apa,maxcitenames=2,style=authoryear,maxbibnames=99,uniquelist=false,uniquename=false]{biblatex}
+\bibliography{poster}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\intitlepunct}{\space}
+
+
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+
+\usepackage{subfigure}
+\usepackage{booktabs}
+
+%%\bibpunct{(}{)}{;}{A}{,}{,}
+%\bibdata{paper}
+
+%\newcommand{\citemultileft}[1]{(\citeauthor{#1}, \citeyear{#1}}
+%\newcommand{\citemultimid}[1]{\citeauthor{#1}, \citeyear{#1}}
+%\newcommand{\citemultiright}[1]{\citeauthor{#1}, \citeyear{#1})}
+%\newcommand{\citetwoyears}[2]{\citeauthor{#1} (\citeyear{#1} and \citeyear{#2})}
+
+% for glosses
+\newcommand{\eng}[1]{`{\em #1}'}
+%dammit, sc doesn't seem to be working
+\newcommand{\gmk}[1]{{\qgmk \textsc{#1}}}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep,leftmargin=*}
+\newenvironment{itemise}[1]{
+        \begin{itemize}\setlength{\leftmargin}{-4em}\setlength{\itemsep}{-0.2em}
+        \vspace{-0.5em}
+        #1
+}{
+        \end{itemize}
+        \vspace{-2pt}
+}
+
+%\newcommand{\h2}[1]{{\big
+
+
+\pagestyle{empty}
+
+\begin{document}
+
+			\begin{tikzpicture}[xscale=1.92,yscale=2.65]%, auto]	
+
+				\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
+				\node[block] (compile) at (1,2) {compile analyser};
+				\node[block] (analyse) at (1,1.5) {analyse corpus};
+				\node[block] (check) at (1,1) {examine freq.\ list};
+				\node[decision] (missingstem) at (1,0) {missing stem?};
+				\node[block] (addstem) at (0.22,2) {add stem};
+				\node[decision] (phonormorph) at (2,0) {type of problem?};
+				\node[block] (updatephon) at (3,0) {update phonol.};
+				\node[block] (updatemorph) at (3,1) {update morphol.};
+				\node[decision] (phonbetter) at( 4,0) {better?};
+				\node[decision] (morphbetter) at (4,1) {better?};
+				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
+
+				\path[line] (assumptions) -- node [right=0.75ex, align=left, scale=\flowchartscale] {preliminary\\development} (compile);
+				\path[line] (compile) -- (analyse);
+				\path[line] (analyse) -- (check);
+				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
+				\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
+				\path[line] (addstem) -- (compile);
+				\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
+				\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
+				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
+				\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (phonbetter) ;
+				\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (morphbetter) ;
+				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,0) |- (newgeneralisation.east) ;
+				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,1) |- (newgeneralisation.east) ;
+				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
+				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
+				\path[line] (newgeneralisation) -- (compile);
+
+			
+			
+			\end{tikzpicture}
+
+
+\end{document}
