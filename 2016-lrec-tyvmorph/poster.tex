@@ -170,7 +170,7 @@
 \usepackage[backend=biber,citestyle=apa,maxcitenames=2,style=authoryear,maxbibnames=99,uniquelist=false,uniquename=false]{biblatex}
 \bibliography{poster}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
-\renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\bibfont}{\scriptsize}
 \renewcommand*{\intitlepunct}{\space}
 
 
@@ -345,11 +345,15 @@
 	}
 
 
+	\headerbox{What should we put here}{name=harglebargle,column=0,below=morphtrans}{
+		\vspace{0.5in}
+
+	}
 
 
-		\headerbox{Development cycle}{name=development,below=morphtrans,span=1}{
+		\headerbox{Development cycle}{name=development,below=harglebargle,span=1}{
 		\centering
-		\begin{tikzpicture}[xscale=1.45,yscale=2.2]%, auto]
+		\begin{tikzpicture}[xscale=1.45,yscale=2.6]%, auto]
 
 			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
 			\node[block] (compile) at (1,2) {compile analyser};
@@ -418,7 +422,6 @@
 		}
 
 
-
 	\headerbox{Example}{name=example,span=2,column=1,row=0}{
 	{\centering
 	{\fontsize{12pt}{12pt}\selectfont \em{« Бис кожууннуң соңгукчулары-биле ажылды чорутпастай бээривиске, көргүзүглер баксыраан. »}}\vspace{0.5em}\\
@@ -475,39 +478,89 @@
 	%}
 
 	\headerbox{Evaluation}{name=results,column=2,below=example}{ %lexicon}{
-		\begin{multicols}{2}	
+		%\begin{multicols}{2}	
+		\begin{itemize}
+			\item Naïve coverage calculated on 5-part corpus
+		\end{itemize}
+		\begin{center}
+		\resizebox{0.9\textwidth}{!}{
 		\begin{tabular}{lrr}
 			\toprule
-				& precision & recall \\
+			 \textbf{Domain} & \textbf{Tokens} & \textbf{Coverage} (\%) \\
 			\midrule
-			known & 0.99 & 0.97 \\
-			all & 0.99 & 0.69 \\
+			 News       & 1,539,459 &  95.73  \\
+			 Religion   & 746,124 &  93.84 \\
+			 Literature & 297,830 &  91.96  \\
+			 Encyclopaedic  & 276,547 & 90.86 \\
+			 Folklore & 27,902 & 91.57  \\\cline{2-3}
+			 Average    & -- & 92.79 \\
 			\bottomrule
-		\end{tabular}\\
-		{\qipa ↑} quantitative eval\\
-		\newline
-		\vspace{0.01pt}\hfill{}qualitative eval {\qipa ↗}\\
-		\columnbreak
-		\begin{tabular}{lr}
+		\end{tabular}}
+		\end{center}
+
+		\begin{itemize}
+			\item Good results reflect high accuracy
+		\end{itemize}
+		\begin{center}
+		\resizebox{0.9\textwidth}{!}{
+		\begin{tabular}{llrr}
 			\toprule
-			error type & count \\
+				& \textbf{count} & \textbf{precision} & \textbf{recall} \\
 			\midrule
-			Missing stem & 364 \\
-			Other & 65 \\
-			Morphotactics & 19 \\
-			Phonology & 8 \\
-			Categorisation & 6 \\
+			known tokens & 1024 & 0.99 & 0.97 \\
+			all tokens & 1425 & 0.99 & 0.69 \\
 			\bottomrule
-		\end{tabular}
-		\end{multicols}
+		\end{tabular}}
+		\end{center}
+		%{\qipa ↑} quantitative eval\\
+		%\newline
+		%\vspace{0.01pt}\hfill{}qualitative eval {\qipa ↗}\\
+		%\columnbreak
+		\begin{itemize}
+			\item Qualitative evaluation
+		\end{itemize}
+
+		\begin{center}
+		\resizebox{0.9\textwidth}{!}{
+		\begin{tabular}{lrr}
+			\toprule
+			\textbf{error type} & \textbf{count} & \textbf{percentage} \\
+			\midrule
+			Missing stem &  364 & 78.8 \\
+			Other & 65 & 14.1  \\
+			Bad morphotactics & 19 & 4.1  \\
+			Bad phonology & 8 & 1.7  \\
+			Incorrect categorisation & 6 & 1.3  \\
+			\midrule
+			Total: & 462 & 100 \\
+			\bottomrule
+		\end{tabular}}
+		\end{center}
+
+	%	\begin{tabular}{lr}
+	%		\toprule
+	%		error type & count \\
+	%		\midrule
+	%		Missing stem & 364 \\
+	%		Other & 65 \\
+	%		Bad morphotactics & 19 \\
+	%		Bad phonology & 8 \\
+	%		Incorrect categorisation & 6 \\
+	%		\bottomrule
+	%	\end{tabular}
+		%\end{multicols}
 		%\vspace{0.05em}
 
 	}
 
 
+		\headerbox{Morphotactics}{name=morphotactics,column=1,below=example}{
+			\centering
+			\includegraphics[width=0.9\textwidth]{img/dibuix}
 
+		}
 
-		\headerbox{Ongoing and future work}{name=nedostatki,column=1,below=example}{
+		\headerbox{Ongoing and future work}{name=nedostatki,column=1,below=morphotactics}{
 		\htwo{our other Turkic-language transducers}
 		\begin{itemize}
 			%\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Oflazer, 1994})
