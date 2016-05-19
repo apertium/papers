@@ -170,7 +170,7 @@
 \usepackage[backend=biber,citestyle=apa,maxcitenames=2,style=authoryear,maxbibnames=99,uniquelist=false,uniquename=false]{biblatex}
 \bibliography{poster}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
-\renewcommand*{\bibfont}{\scriptsize}
+\renewcommand*{\bibfont}{\tiny}
 \renewcommand*{\intitlepunct}{\space}
 
 
@@ -476,8 +476,16 @@
 	%	%\resizebox{0.9\textwidth}{!}{
 	%	%}
 	%}
+		\headerbox{Morphotactics}{name=morphotactics,column=2,below=example}{
+			\begin{itemize}
+				\item Introduction of quasi-derivational verbal morphotactics
+				\item Combinatorics not previously documented
+			\end{itemize}
+			\centering
+			\includegraphics[width=0.9\textwidth]{img/dibuix}
 
-	\headerbox{Evaluation}{name=results,column=2,below=example}{ %lexicon}{
+		}
+	\headerbox{Evaluation}{name=results,column=2,below=morphotactics}{ %lexicon}{
 		%\begin{multicols}{2}	
 		\htwo{5-part corpus for naïve coverage}
 		%\begin{itemize}
@@ -558,17 +566,7 @@
 	}
 
 
-		\headerbox{Morphotactics}{name=morphotactics,column=1,below=example}{
-			\begin{itemize}
-				\item Introduction of quasi-derivational verbal morphotactics
-				\item Combinatorics not previously documented
-			\end{itemize}
-			\centering
-			\includegraphics[width=0.9\textwidth]{img/dibuix}
-
-		}
-
-		\headerbox{Ongoing and future work}{name=nedostatki,column=1,below=morphotactics}{
+		\headerbox{Ongoing and future work}{name=nedostatki,column=1,below=example}{
 		\htwo{our other Turkic-language transducers}
 		\begin{itemize}
 			%\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Oflazer, 1994})
@@ -600,7 +598,7 @@
 		\begin{itemize}
 			\item \textbf{Kazakh} \parencite{fmtjnw2015kazdep}
 		\end{itemize}
-		\includegraphics[width=0.63\textwidth]{img/korp}
+		\includegraphics[width=0.63\textwidth]{img/korp-2}
 		\begin{itemize}
 			\item work on \textbf{Tuvan} ongoing
 		\end{itemize}
@@ -634,9 +632,19 @@
 				%\item Bring other Kypchak transducers to comparable performance:\\
 				%Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
 				%\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
+				\includegraphics[width=\textwidth]{img/tyv-spelling}
 		}
 
-		\headerbox{Further information}{name=getting,column=0,below=development,span=3}{
+	\headerbox{References}{name=references,below=results,column=2}{
+		\vspace{-0.42em}
+		\begin{spacing}{0.3}
+			\printbibliography[heading=none]
+		\end{spacing}
+		\vspace{-0.05em}
+	}
+
+
+		\headerbox{Further information}{name=getting,column=0,below=references,span=3}{
 			\tikzoverlay[text height=1in] at (0in, 0.04in) {
 				\includegraphics[angle=90,height=1in]{apertium5b}
 			};
@@ -669,14 +677,6 @@
 			\vspace{1in}
 		}
 
-
-	\headerbox{References}{name=references,below=results,column=2}{
-		\vspace{-0.42em}
-		\begin{spacing}{0.3}
-			\printbibliography[heading=none]
-		\end{spacing}
-		\vspace{-0.05em}
-	}
 
 	\end{poster}
 \end{document}
