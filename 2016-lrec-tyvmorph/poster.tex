@@ -7,7 +7,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows} %for flowchart
 % Define block styles
-\newcommand{\flowchartscale}{0.65}
+\newcommand{\flowchartscale}{0.85}
 \tikzstyle{decision} = [diamond, draw, fill=iumint, 
     text width=5em, text badly centered, node distance=3cm, inner sep=0pt,
 	 font=\diagsans, scale=\flowchartscale]
@@ -347,42 +347,73 @@
 
 
 
-		\headerbox{Development cycle}{name=development,below=morphtrans}{
-			\begin{tikzpicture}[xscale=1.92,yscale=2.65]%, auto]	
+		\headerbox{Development cycle}{name=development,below=morphtrans,span=2}{
+		\centering
+		\begin{tikzpicture}[xscale=3,yscale=2.8]%, auto]
 
-				\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
-				\node[block] (compile) at (1,2) {compile analyser};
-				\node[block] (analyse) at (1,1.5) {analyse corpus};
-				\node[block] (check) at (1,1) {examine freq.\ list};
-				\node[decision] (missingstem) at (1,0) {missing stem?};
-				\node[block] (addstem) at (0.22,2) {add stem};
-				\node[decision] (phonormorph) at (2,0) {type of problem?};
-				\node[block] (updatephon) at (3,0) {update phonol.};
-				\node[block] (updatemorph) at (3,1) {update morphol.};
-				\node[decision] (phonbetter) at( 4,0) {better?};
-				\node[decision] (morphbetter) at (4,1) {better?};
-				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
+			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
+			\node[block] (compile) at (1,2) {compile analyser};
+			\node[block] (analyse) at (1,1.4) {analyse corpus};
+			\node[block] (check) at (1,0.7) {examine freq.\ list};
+			\node[decision] (missingstem) at (1,0) {missing stem?};
+			\node[block] (addstem) at (0,2) {add stem};
+			\node[decision] (phonormorph) at (2.25,0) {type of problem?};
+			\node[block] (updatephon) at (3.5,0) {update phonol.};
+			\node[block] (updatemorph) at (3.5,1) {update morphol.};
+			\node[decision] (phonbetter) at(5,0) {better?};
+			\node[decision] (morphbetter) at (5,1) {better?};
+			\node[cloud] (newgeneralisation) at (3,2) {new\\grammatical\\generalisation};
 
-				\path[line] (assumptions) -- node [right=0.75ex, align=left, scale=\flowchartscale] {preliminary\\development} (compile);
-				\path[line] (compile) -- (analyse);
-				\path[line] (analyse) -- (check);
-				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
-				\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
-				\path[line] (addstem) -- (compile);
-				\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
-				\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
-				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
-				\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (phonbetter) ;
-				\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (morphbetter) ;
-				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,0) |- (newgeneralisation.east) ;
-				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,1) |- (newgeneralisation.east) ;
-				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
-				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
-				\path[line] (newgeneralisation) -- (compile);
+			\path[line] (assumptions) -- node [right=0.75ex, align=left, scale=\flowchartscale] {initial\\development} (compile);
+			\path[line] (compile) -- (analyse);
+			\path[line] (analyse) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (check);
+			\path[line] (check) -- (missingstem);
+			\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
+			\path[line] (addstem) -- (compile);
+			\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
+			\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
+			\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
+			\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq list} (phonbetter) ;
+			\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq list} (morphbetter) ;
+			\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (5.6,0) |- (newgeneralisation.east) ;
+			\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (5.6,1) |- (newgeneralisation.east) ;
+			\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (5,0.5) -| (updatephon.north) ;
+			\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (5,1.5) -| (updatemorph.north) ;
+			\path[line] (newgeneralisation) -- (compile);
 
-			
-			
-			\end{tikzpicture}%}
+		\end{tikzpicture}
+%			\begin{tikzpicture}[xscale=1.92,yscale=2.65]%, auto]	
+%
+%				\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
+%				\node[block] (compile) at (1,2) {compile analyser};
+%				\node[block] (analyse) at (1,1.5) {analyse corpus};
+%				\node[block] (check) at (1,1) {examine freq.\ list};
+%				\node[decision] (missingstem) at (1,0) {missing stem?};
+%				\node[block] (addstem) at (0.22,2) {add stem};
+%				\node[decision] (phonormorph) at (2,0) {type of problem?};
+%				\node[block] (updatephon) at (3,0) {update phonol.};
+%				\node[block] (updatemorph) at (3,1) {update morphol.};
+%				\node[decision] (phonbetter) at( 4,0) {better?};
+%				\node[decision] (morphbetter) at (4,1) {better?};
+%				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
+%
+%				\path[line] (assumptions) -- node [right=0.75ex, align=left, scale=\flowchartscale] {preliminary\\development} (compile);
+%				\path[line] (compile) -- (analyse);
+%				\path[line] (analyse) -- (check);
+%				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
+%				\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
+%				\path[line] (addstem) -- (compile);
+%				\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
+%				\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
+%				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
+%				\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (phonbetter) ;
+%				\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (morphbetter) ;
+%				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,0) |- (newgeneralisation.east) ;
+%				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,1) |- (newgeneralisation.east) ;
+%				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
+%				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
+%				\path[line] (newgeneralisation) -- (compile);
+%			\end{tikzpicture}%}
 
 		}
 
@@ -407,10 +438,34 @@
 
 	}
 
-	\headerbox{Evaluation}{name=results,column=1,below=example}{
+	\headerbox{Lexicon}{name=lexicon,column=1,below=example}{
+		\begin{tabular}{llr}
+			\toprule
+			Part of speech	&	Tag	& Stems \\
+			\midrule
+			Noun & \tag{n} & 4,226 \\
+			Proper noun & \tag{np} & 4,217 \\
+			Adjective & \tag{adj} & 1,603 \\
+			Verb & \tag{v} & 1,064 \\
+			Adverb & \tag{adv} & 136 \\
+			Numeral & \tag{num} & 85 \\
+			Conjunction & \tag{cnj*} & 70 \\
+			Postposition & \tag{post} & 28 \\
+			Pronoun & \tag{prn} & 35 \\
+			Determiner & \tag{det} & 26 \\
+			\midrule
+			Total &  & 11,490 \\
+			\bottomrule
+		\end{tabular}
+	}
+
+	\headerbox{Evaluation}{name=results,column=1,below=lexicon}{
 
 
 	}
+
+
+
 
 		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=example}{
 		\htwo{our other Turkic-language transducers}
@@ -421,13 +476,36 @@
 			%\item Kazakh (\hilitetwo{Бекманова \& Махимов, 2013})
 			%\vspace{1pt}\hfill{} \hiliteone{GPL (=free and open)}!
 			%\item our Kyrgyz, Kazakh, Tatar, Kumyk:\ all \hiliteone{GPL (=free and open)}!
-			\item Kyrgyz \parencite{jnwmifmt2012lrecpaper}%  (Washington et al., 2012)
-			\item Tatar \& Bashkort \parencite{fmtjnwisrb2012lrecpaper} %(Tyers et al., 2012)
-			\item Kazakh \parencite{isjnwfmt2013mtsummitpaper} %(Salimzyanov et al., 2013)
-			\item Kumyk \parencite{jnwisfmt2014lrecpaper} %(Washington et al., 2014)
+			\item \textbf{Kyrgyz} \parencite{jnwmifmt2012lrecpaper}%  (Washington et al., 2012)
+			\item \textbf{Tatar} \& \textbf{Bashkort} \parencite{fmtjnwisrb2012lrecpaper} %(Tyers et al., 2012)
+			\item \textbf{Kazakh} \parencite{isjnwfmt2013mtsummitpaper} %(Salimzyanov et al., 2013)
+			\item \textbf{Kumyk} \parencite{jnwisfmt2014lrecpaper} %(Washington et al., 2014)
 			\item ongoing work on Sakha, Khakas, and more!
 		\end{itemize}
 		\dividerspace{}
+
+		\htwo{Morphological disambiguation}
+		\begin{itemize}
+			\item \textbf{Kazakh} \parencite{zajnwftanasakbada2016ciclingproceedings}
+		\end{itemize}
+		\dividerspace{}
+
+		\htwo{Treebanks}
+		\vspace{-1em}
+		\newline
+			\tikzoverlay[text width=0.9\textwidth] at (0.55in, -0.5in) {
+				\includegraphics[width=0.95\textwidth]{img/dep-graph}
+			};
+		\begin{itemize}
+			\item \textbf{Kazakh} \parencite{fmtjnw2015kazdep}
+		\end{itemize}
+		\includegraphics[width=0.63\textwidth]{img/korp}
+		\begin{itemize}
+			\item work on \textbf{Tuvan} ongoing
+		\end{itemize}
+		\vspace{1.45in}
+		\dividerspace{}
+
 
 		%\begin{itemize}
 
