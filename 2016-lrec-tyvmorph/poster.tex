@@ -262,7 +262,7 @@
 	}{ %Authors (centered top, below title)
 		%\vspace{-0.6em}
 		\begin{center}
-			\begin{minipage}[t]{7em}
+			\begin{minipage}[t]{8.5em} %{7em}
 				\begin{spacing}{0.4}
 				{Francis M.\ Tyers}\\
 				{\footnotesize UiT Norgga Árktalaš Universitehta \\\texttt{francis.tyers@uit.no}}
@@ -274,15 +274,15 @@
 					{\footnotesize Indiana University\\\texttt{jonwashi@indiana.edu}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{8em} %{7.7em}
+			\begin{minipage}[t]{9em} %{7.7em}
 				\begin{spacing}{0.4}
 					{Aziyana Bayyr-ool}\\
-					{\footnotesize Сибирское отделение Российской академии наук\\\texttt{azikoa@mail.ru}}
+					{\footnotesize Сибирское отделение Российской академии наук,~~\texttt{azikoa@mail.ru}}
 				\end{spacing}
 			\end{minipage}
-			\begin{minipage}[t]{6em}
+			\begin{minipage}[t]{8em} %{6em}
 				\begin{spacing}{0.4}
-					{Aelita Salchak}\\
+					{Aelita Salchak\vphantom{y}}\\
 					{\footnotesize Тываның Күрүне Университеди\\\texttt{aelita\_74@mail.ru}}
 				\end{spacing}
 			\end{minipage}
@@ -346,14 +346,14 @@
 
 
 	\headerbox{What should we put here}{name=harglebargle,column=0,below=morphtrans}{
-		\vspace{0.5in}
+		\vspace{0.35in}
 
 	}
 
 
 		\headerbox{Development cycle}{name=development,below=harglebargle,span=1}{
 		\centering
-		\begin{tikzpicture}[xscale=1.45,yscale=2.6]%, auto]
+		\begin{tikzpicture}[xscale=1.45,yscale=2.5]%, auto]
 
 			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
 			\node[block] (compile) at (1,2) {compile analyser};
@@ -479,9 +479,10 @@
 
 	\headerbox{Evaluation}{name=results,column=2,below=example}{ %lexicon}{
 		%\begin{multicols}{2}	
-		\begin{itemize}
-			\item Naïve coverage calculated on 5-part corpus
-		\end{itemize}
+		\htwo{5-part corpus for naïve coverage}
+		%\begin{itemize}
+		%	\item Naïve coverage calculated on 5-part corpus
+		%\end{itemize}
 		\begin{center}
 		\resizebox{0.9\textwidth}{!}{
 		\begin{tabular}{lrr}
@@ -498,9 +499,10 @@
 		\end{tabular}}
 		\end{center}
 
-		\begin{itemize}
-			\item Good results reflect high accuracy
-		\end{itemize}
+		\htwo{Naïve coverage results}
+		%\begin{itemize}
+		%	\item Good results reflect high accuracy
+		%\end{itemize}
 		\begin{center}
 		\resizebox{0.9\textwidth}{!}{
 		\begin{tabular}{llrr}
@@ -516,9 +518,11 @@
 		%\newline
 		%\vspace{0.01pt}\hfill{}qualitative eval {\qipa ↗}\\
 		%\columnbreak
-		\begin{itemize}
-			\item Qualitative evaluation
-		\end{itemize}
+		
+		\htwo{Qualitative evaluation}
+		%\begin{itemize}
+		%	\item Qualitative evaluation
+		%\end{itemize}
 
 		\begin{center}
 		\resizebox{0.9\textwidth}{!}{
@@ -555,6 +559,9 @@
 
 
 		\headerbox{Morphotactics}{name=morphotactics,column=1,below=example}{
+			\begin{itemize}
+				\item Introduction of quasi-derivational verbal morphotactics
+			\end{itemize}
 			\centering
 			\includegraphics[width=0.9\textwidth]{img/dibuix}
 
