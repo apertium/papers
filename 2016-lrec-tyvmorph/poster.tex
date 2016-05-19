@@ -7,7 +7,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows} %for flowchart
 % Define block styles
-\newcommand{\flowchartscale}{0.85}
+\newcommand{\flowchartscale}{0.6}
 \tikzstyle{decision} = [diamond, draw, fill=iumint, 
     text width=5em, text badly centered, node distance=3cm, inner sep=0pt,
 	 font=\diagsans, scale=\flowchartscale]
@@ -347,9 +347,9 @@
 
 
 
-		\headerbox{Development cycle}{name=development,below=morphtrans,span=2}{
+		\headerbox{Development cycle}{name=development,below=morphtrans,span=1}{
 		\centering
-		\begin{tikzpicture}[xscale=3,yscale=2.8]%, auto]
+		\begin{tikzpicture}[xscale=1.45,yscale=2.2]%, auto]
 
 			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
 			\node[block] (compile) at (1,2) {compile analyser};
@@ -420,10 +420,16 @@
 
 
 	\headerbox{Example}{name=example,span=2,column=1,row=0}{
-	« Бис кожууннуң соңгукчулары-биле ажылды чорутпастай бээривиске, көргүзүглер баксыраан. »\\
-
+	{\centering
+	{\fontsize{12pt}{12pt}\selectfont \em{« Бис кожууннуң соңгукчулары-биле ажылды чорутпастай бээривиске, көргүзүглер баксыраан. »}}\vspace{0.5em}\\
+	{\fontsize{12pt}{12pt}\selectfont ``Figures worsened when we stopped conducting business with the district's constituents.''}\\
+	%Когда мы перестали проводить работу с избирателями кожууна, показатели ухудшились
+	}
+	%\vspace{-1em}
+	
 		%\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
-		
+	\begin{multicols}{2}
+	{\fontsize{14pt}{14pt}\selectfont
 		\texttt{\textasciicircum Бис/бис\tag{prn}\tag{pers}\tag{p1}\tag{pl}\tag{nom}\$}\\
 		\texttt{\textasciicircum кожууннуң/кожуун\tag{n}\tag{gen}\$}\\
 		\texttt{\textasciicircum соңгукчулары/соңгукчу\tag{n}\tag{pl}\tag{px3sp}\tag{nom}\$}\\
@@ -434,12 +440,13 @@
 		\texttt{\textasciicircum ,/,\tag{cm}\$}\\
 		\texttt{\textasciicircum көргүзүглер/көргүзүг\tag{n}\tag{pl}\tag{nom}\$}\\
 		\texttt{\textasciicircum баксыраан/баксыра\tag{v}\tag{iv}\tag{past}\tag{p3}\tag{pl}\$}\\
-		\texttt{\textasciicircum ./.\tag{sent}\$}
+		\texttt{\textasciicircum ./.\tag{sent}\$}}\\
+		\tikzoverlay[text width=10em] at (3.3in, 0in) {
+			Lexicon contents {\qipa ↗}
+		};
+		\columnbreak
 
-	}
-
-	\headerbox{Lexicon}{name=lexicon,column=1,below=example}{
-		\begin{tabular}{llr}
+		\hspace*{1in}\begin{tabular}{llr}
 			\toprule
 			Part of speech	&	Tag	& Stems \\
 			\midrule
@@ -456,18 +463,51 @@
 			\midrule
 			Total &  & 11,490 \\
 			\bottomrule
+		\end{tabular}\\
+
+	\end{multicols}
+
+	}
+
+	%\headerbox{Lexicon}{name=lexicon,column=1,below=example}{
+	%	%\resizebox{0.9\textwidth}{!}{
+	%	%}
+	%}
+
+	\headerbox{Evaluation}{name=results,column=2,below=example}{ %lexicon}{
+		\begin{multicols}{2}	
+		\begin{tabular}{lrr}
+			\toprule
+				& precision & recall \\
+			\midrule
+			known & 0.99 & 0.97 \\
+			all & 0.99 & 0.69 \\
+			\bottomrule
+		\end{tabular}\\
+		{\qipa ↑} quantitative eval\\
+		\newline
+		\vspace{0.01pt}\hfill{}qualitative eval {\qipa ↗}\\
+		\columnbreak
+		\begin{tabular}{lr}
+			\toprule
+			error type & count \\
+			\midrule
+			Missing stem & 364 \\
+			Other & 65 \\
+			Morphotactics & 19 \\
+			Phonology & 8 \\
+			Categorisation & 6 \\
+			\bottomrule
 		\end{tabular}
-	}
-
-	\headerbox{Evaluation}{name=results,column=1,below=lexicon}{
-
+		\end{multicols}
+		%\vspace{0.05em}
 
 	}
 
 
 
 
-		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=example}{
+		\headerbox{Ongoing and future work}{name=nedostatki,column=1,below=example}{
 		\htwo{our other Turkic-language transducers}
 		\begin{itemize}
 			%\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Oflazer, 1994})
@@ -564,7 +604,7 @@
 		}
 
 
-	\headerbox{References}{name=references,below=nedostatki,column=2}{
+	\headerbox{References}{name=references,below=results,column=2}{
 		\vspace{-0.42em}
 		\begin{spacing}{0.3}
 			\printbibliography[heading=none]
