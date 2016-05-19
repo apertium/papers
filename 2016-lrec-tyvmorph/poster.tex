@@ -51,16 +51,19 @@
 \definecolor{iumint}{cmyk}{0.40,0,0.23,0}
 \definecolor{iumidnight}{cmyk}{0.71,0.30,0.13,0.41}
 \definecolor{iulimestone}{cmyk}{0.11,0.13,0.14,0.26}
-%\definecolor{boxcolor}{RGB}{176,208,223}
+\definecolor{tuvagold}{cmyk}{0.0,0.2,1.0,0.0}
+\definecolor{tuvablue}{cmyk}{0.57,0.23,0.0,0.1}
+\definecolor{boxcolor}{RGB}{176,208,223}
 %\definecolor{boxcolor}{cmyk}{0.3,0.08,0.08,0.1}
-\definecolor{boxcolor}{cmyk}{0.2,0.03,0.03,0.1}
+%\definecolor{boxcolor}{cmyk}{0.2,0.03,0.03,0.1}
+%\definecolor{boxcolor}{cmyk}{0.57,0.23,0.0,0.1}
 \definecolor{headerfontcol}{RGB}{255,255,255}
 \newcommand{\hilitetwo}[1]{{\addfontfeature{Color=99333399}#1}}
 \newcommand{\hiliteone}[1]{{\addfontfeature{Color=06821699}#1}}
 \newcommand{\hilitegrey}[1]{{\addfontfeature{Color=77777799}#1}}
 \newcommand{\hilitelightgrey}[1]{{\addfontfeature{Color=CCCCCC99}#1}}
 \newcommand{\hiliteblue}[1]{{\addfontfeature{Color=44697DFF}#1}}
-\newcommand{\hilitegold}[1]{{\addfontfeature{Color=yellow}#1}}
+\newcommand{\hilitegold}[1]{{\addfontfeature{Color=tuvagold}#1}}
 
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -82,20 +85,24 @@
 %\setromanfont[IPA]{FreeSerif}
 %\setromanfont[IPA,Scale=0.8]{CMU Serif}
 %\setromanfont[IPA]{Liberation Serif}
-\setromanfont[IPA]{Linux Libertine O}
+%\setromanfont[IPA]{Linux Libertine O}
+%\setromanfont[IPA]{Linux Biolinum O}
+\setromanfont[IPA,Scale=1.01]{PT Sans}
 %\setromanfont[IPA]{Nimbus Roman No9 L}
 \setmonofont[IPA]{DejaVu Sans Mono}
 \usepackage[small,bf]{caption}
-\newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
+%\newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSerif}
+\newfontfamily\qipa[IPA,Scale=MatchLowercase]{FreeSans}
 \newfontfamily\qgmk[IPA,Scale=0.8]{CMU Serif}
 \newfontfamily\litamono[IPA,Scale=0.5]{DejaVu Sans Mono}
 \newfontfamily\ortamono[IPA,Scale=0.625]{DejaVu Sans Mono}
+\newfontfamily\ortaqmono[IPA,Scale=0.75]{DejaVu Sans Mono}
 \newfontfamily\diagsans[IPA,Scale=1]{DejaVu Sans}
 
 \newcommand{\tilda}{{\qipa ∼}}
 
 \newcommand{\tags}[1]{\hiliteone{#1}}
-\newcommand{\tag}[1]{{\ortamono \hilitegrey{<}\hiliteblue{#1}\hilitegrey{>}}}
+\newcommand{\tag}[1]{{\ortaqmono \hilitegrey{<}\hiliteblue{#1}\hilitegrey{>}}}
 \newcommand{\archiphon}[1]{\hilitegrey{\{}\hiliteone{#1}\hilitegrey{\}}}
 
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
@@ -118,7 +125,9 @@
 
 %\newcommand{\htwo}[1]{::: {\htwofont #1} :::}%\hrule} %\hline\\}
 %\newcommand{\htwo}[1]{{\htwofont \textbf{:::#1:::}}}%\hrule} %\hline\\}
-\newcommand{\htwo}[1]{{\htwofont \textbf{\hilitegold{\dotfill{}}#1\hilitegold{\dotfill{}}}}}
+%\newcommand{\htwo}[1]{{\htwofont \textbf{\hilitegold{\dotfill{}}#1\hilitegold{\dotfill{}}}}}
+\newcommand{\htwo}[1]{{\htwofont \textbf{\dotfill{}#1\dotfill{}}}}
+\newcommand{\dividerspace}{\vspace{0.5em}}
 
 
 \usepackage{graphicx}  % [dvipdfm]
@@ -215,7 +224,7 @@
 		headerColorOne=iumidnight,
 		headerColorTwo=iumidnight,
 		%headerColorOne=blue,
-		headerFontColor=yellow,
+		headerFontColor=tuvagold,
 		% Only simple background color used, no shading, so boxColorTwo isn't necessary
 		boxColorOne=boxcolor,
 		headershape=roundedright,
@@ -236,7 +245,7 @@
 	}{ %Eye Catcher, empty if option eyecatcher=false - unused
 		\setlength\fboxsep{0.5em}
 		\setlength\fboxrule{0pt}
-		\includegraphics[angle=90,height=6.2em]{apertium5b}%\hspace{-2em}
+		%\includegraphics[angle=90,height=6.2em]{apertium5b}%\hspace{-2em}
 		\includegraphics[height=5.8em]{uitlogo}\hspace{1em}
 		\fbox{\includegraphics[height=5.4em]{iu_tab-crop}}
 		%\hspace{2.5cm}\begin{minipage}[t]{7em}
@@ -288,6 +297,17 @@
 
 	\headerbox{Tuvan}{name=tyvan,column=0,row=0}{
 		\includegraphics[width=\textwidth]{img/tuvanmap}
+		\tikzoverlay[text width=1in] at (2.5in, -0in) {
+			\includegraphics[width=1in]{img/Flag_of_Tuva}
+		};
+		\vspace{-1.2em}
+		\begin{itemize}
+			\item Sayan Turkic language
+			\item Spoken in the Tuva Republic
+			\item Approximately 300,000 speakers
+			\item Agglutinative morphology
+			\item Very little work on computational tools
+		\end{itemize}
 	}
 	
 	\headerbox{Morphological Transducers}{name=morphtrans,below=tyvan}{
@@ -298,11 +318,102 @@
 			\item Take a lexical form, and produce valid surface form(s)\vspace{-0.1ex}\\
 		%\end{itemize}
 		%\scalebox{0.98}{
-			алдым~~~\hilitetwo{↔}~~~\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}},~~\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
+			алдым\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}},~~\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}\\
+			өөнде\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{өг\tag{n}\tag{px3sp}\tag{loc}}
 		%}
 		\end{itemize}
+		\dividerspace{}
 
-		\htwo{Turkic-language transducers we've made}
+		\htwo{Framework:\ HFST}
+		\begin{itemize}
+			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
+			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
+		\end{itemize}
+		\dividerspace{}
+
+		\htwo{Approach}
+		\begin{itemize}
+			\item two-level method \parencite{koskenniemi83}
+			\item \textbf{morphotactics} implemented in \texttt{lexc}
+			\item \textbf{morphophonology} implemented in \texttt{twol} (SPE-style rules)
+			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
+			алдым\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м}\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}\vspace{-0.1ex}\\
+			алдым\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}\\
+			өөнде\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{өг\hilitegrey{>}\archiphon{z}\archiphon{I}\archiphon{n}\hilitegrey{>}\archiphon{D}\archiphon{A}}\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{өг\tag{n}\tag{px3sp}\tag{loc}}
+		\end{itemize}
+
+	}
+
+
+
+
+		\headerbox{Development cycle}{name=development,below=morphtrans}{
+			\begin{tikzpicture}[xscale=1.92,yscale=2.65]%, auto]	
+
+				\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
+				\node[block] (compile) at (1,2) {compile analyser};
+				\node[block] (analyse) at (1,1.5) {analyse corpus};
+				\node[block] (check) at (1,1) {examine freq.\ list};
+				\node[decision] (missingstem) at (1,0) {missing stem?};
+				\node[block] (addstem) at (0.22,2) {add stem};
+				\node[decision] (phonormorph) at (2,0) {type of problem?};
+				\node[block] (updatephon) at (3,0) {update phonol.};
+				\node[block] (updatemorph) at (3,1) {update morphol.};
+				\node[decision] (phonbetter) at( 4,0) {better?};
+				\node[decision] (morphbetter) at (4,1) {better?};
+				\node[cloud] (newgeneralisation) at (2.5,2) {new\\grammatical\\generalisation};
+
+				\path[line] (assumptions) -- node [right=0.75ex, align=left, scale=\flowchartscale] {preliminary\\development} (compile);
+				\path[line] (compile) -- (analyse);
+				\path[line] (analyse) -- (check);
+				\path[line] (check) -- node [right=0.75ex, scale=\flowchartscale, align=left] {unanalysed\\forms} (missingstem);
+				\path[line] (missingstem) -| node [below=1ex, near start, scale=\flowchartscale] {yes} (addstem);
+				\path[line] (addstem) -- (compile);
+				\path[line] (missingstem) -- node [below=1ex, midway, scale=\flowchartscale] {no} (phonormorph);
+				\path[line] (phonormorph) -- node [below=1ex, near start, scale=\flowchartscale] {phon} (updatephon);
+				\path[line] (phonormorph) |- node [below=1ex, near end, scale=\flowchartscale] {morph} (updatemorph);
+				\path[line] (updatephon) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (phonbetter) ;
+				\path[line] (updatemorph) -- node [above=0.5ex, scale=\flowchartscale, align=center] {diff \\ freq \\ list} (morphbetter) ;
+				\path[line] (phonbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,0) |- (newgeneralisation.east) ;
+				\path[line] (morphbetter.east) -- node [below=1ex, near start, scale=\flowchartscale] {yes} (4.6,1) |- (newgeneralisation.east) ;
+				\path[line] (phonbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,0.5) -| (updatephon.north) ;
+				\path[line] (morphbetter.north) |- node [right=1ex, near start, scale=\flowchartscale] {no} (4,1.5) -| (updatemorph.north) ;
+				\path[line] (newgeneralisation) -- (compile);
+
+			
+			
+			\end{tikzpicture}%}
+
+		}
+
+
+
+	\headerbox{Example}{name=example,span=2,column=1,row=0}{
+	« Бис кожууннуң соңгукчулары-биле ажылды чорутпастай бээривиске, көргүзүглер баксыраан. »\\
+
+		%\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
+		
+		\texttt{\textasciicircum Бис/бис\tag{prn}\tag{pers}\tag{p1}\tag{pl}\tag{nom}\$}\\
+		\texttt{\textasciicircum кожууннуң/кожуун\tag{n}\tag{gen}\$}\\
+		\texttt{\textasciicircum соңгукчулары/соңгукчу\tag{n}\tag{pl}\tag{px3sp}\tag{nom}\$}\\
+		\texttt{\textasciicircum -биле/биле\tag{post}\$}\\
+		\texttt{\textasciicircum ажылды/ажыл\tag{n}\tag{acc}\$}\\
+		\texttt{\textasciicircum чорутпастай/чорут\tag{v}\tag{tv}\tag{cess}\tag{prc\_impf}\$}\\
+		\texttt{\textasciicircum бээривиске/бер\tag{vaux}\tag{ger\_aor}\tag{px1pl}\tag{dat}\$}\\
+		\texttt{\textasciicircum ,/,\tag{cm}\$}\\
+		\texttt{\textasciicircum көргүзүглер/көргүзүг\tag{n}\tag{pl}\tag{nom}\$}\\
+		\texttt{\textasciicircum баксыраан/баксыра\tag{v}\tag{iv}\tag{past}\tag{p3}\tag{pl}\$}\\
+		\texttt{\textasciicircum ./.\tag{sent}\$}
+
+	}
+
+	\headerbox{Evaluation}{name=results,column=1,below=example}{
+
+
+	}
+
+		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=example}{
+		\htwo{our other Turkic-language transducers}
 		\begin{itemize}
 			%\item Turkish (\hiliteone{Çöltekin, 2010 \& 2014}; \hilitetwo{Oflazer, 1994})
 			%\item Crimean Tatar (\hilitetwo{Altıntaş, 2001})
@@ -314,69 +425,54 @@
 			\item Tatar \& Bashkort \parencite{fmtjnwisrb2012lrecpaper} %(Tyers et al., 2012)
 			\item Kazakh \parencite{isjnwfmt2013mtsummitpaper} %(Salimzyanov et al., 2013)
 			\item Kumyk \parencite{jnwisfmt2014lrecpaper} %(Washington et al., 2014)
-			\item ongoing work on Sakha, Tuvan, Khakas, and more!
+			\item ongoing work on Sakha, Khakas, and more!
 		\end{itemize}
+		\dividerspace{}
 
-		\htwo{Framework:\ HFST}
-		\begin{itemize}
-			\item Reimplements Xerox FST formalisms ({\tt lexc} \& {\tt twol})
-			\item Also provides a wrapper around popular free/open-source FST toolkits: SFST, OpenFST, and Foma
-		\end{itemize}
-		\htwo{Approach}
-		\begin{itemize}
-			\item two-level method \parencite{koskenniemi83}
-			\item \textbf{morphotactics} implemented in \texttt{lexc}
-			\item \textbf{morphophonology} implemented in \texttt{twol} (SPE-style rules)
-			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
-			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}\vspace{-0.1ex}\\
-			алдым\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}\hilitetwo{↔}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}
-		\end{itemize}
+		%\begin{itemize}
 
-	}
-
-
-	\headerbox{Example}{name=example,span=2,column=1,row=0}{
-
-
-	}
-
-	\headerbox{Evaluation}{name=results,column=1,below=example}{
-
-
-	}
-
-		\headerbox{Ongoing and future work}{name=nedostatki,column=2,below=example}{
-		\begin{itemize}
-				\item Current annotation of a dependency treebank for Kazakh:\\
-				a similar process that helps identify errors in morphological analyses and automatic disambiguation (constraint grammar)
-				%\item Leading to
+				%\item Current annotation of a dependency treebank for Kazakh:\\
+				%a similar process that helps identify errors in morphological analyses and automatic disambiguation (constraint grammar)
+				%%\item Leading to
+				%\begin{itemize}
+				%	\item Improved rule-based morphological disambiguation% (constraint grammar)
+				%	\item Improved morphological analyser %for Kazakh
+				%	\item A syntactic dependency treebank %for Kazakh
+				%\end{itemize}
+				%%\item Work on rule-based morphological disambiguation with constraint grammar
+			%\end{itemize}
+			\htwo{Future work}
 				\begin{itemize}
-					\item Improved rule-based morphological disambiguation% (constraint grammar)
-					\item Improved morphological analyser %for Kazakh
-					\item A syntactic dependency treebank %for Kazakh
-				\end{itemize}
-				%\item Work on rule-based morphological disambiguation with constraint grammar
-				\item Future work:
-				\begin{itemize}
-					\item Annotate more gold standard text in more Turkic languages
-					\item Research cross-linguistic techniques for analysing Turkic
+					%\item Annotate more gold standard text in more Turkic languages
+					%\item Research cross-linguistic techniques for analysing Turkic
+					\item Dependency parsing (native and crosslingual)
+					\item Increase number of stems
+					\item Make more available to linguists
+					\item Integrate into end-user applications (spellchecking, MT)
 				\end{itemize}
 				%\item Disambiguation, more stems, clean up transducers
 				%\item Machine translation between these languages
 				%\item Bring other Kypchak transducers to comparable performance:\\
 				%Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
 				%\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
-			\end{itemize}
 		}
 
-		\headerbox{Further information}{name=getting,column=1,below=results,span=2}{
-			\vspace{-0.2em}
-			\tikzoverlay[text width=0.8in] at (6.2in, 0.04in) {
-				\includegraphics[height=0.8in]{qrcode}
+		\headerbox{Further information}{name=getting,column=0,below=development,span=3}{
+			\tikzoverlay[text height=1in] at (0in, 0.04in) {
+				\includegraphics[angle=90,height=1in]{apertium5b}
 			};
+			%\tikzoverlay[text width=0.8in] at (6.2in, 0.04in) {
+			\tikzoverlay[text height=1in] at (10in, 0.04in) {
+				\includegraphics[height=1in]{qrcode}
+			};
+			\tikzoverlay[text height=0.5in] at (8in, 0.04in) {
+				{\huge Thanks!}
+			};
+			\tikzoverlay[text width=6in] at (1in, 0.04in) {
 			\begin{itemize}
 				\item Part of \textbf{Apertium Turkic} project:\ \url{http://wiki.apertium.org/wiki/Apertium\_Turkic}
-				\item Transducers available \textbf{live} (\href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}), \textbf{source code} under \hiliteone{GPL} from Apertium's SVN repo
+				\item Transducers available \textbf{live} on our website: {\Large \url{http://turkic.apertium.org/}} %\href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
+				\item \textbf{Source code} under \hiliteone{GPL} from Apertium's SVN repo
 				%\item Transducers available \textbf{live} at \href{http://turkic.apertium.org/}{\texttt{turkic.apertium.org}}
 				%\item \textbf{Source code} of transducers available under \hiliteone{GPL} (free!) from Apertium's SVN repo
 				%info at {\small \url{http://wiki.apertium.org/wiki/apertium-kir}}
@@ -385,6 +481,8 @@
 				\item And feel free to contact the authors any time!
 			\end{itemize}
 			\vspace{0.3em}
+			};
+			\vspace{1in}
 		}
 
 
