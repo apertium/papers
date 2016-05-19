@@ -310,7 +310,7 @@
 		\vspace{-1.2em}
 		\begin{itemize}
 			\item Sayan Turkic language
-			\item Spoken in the Tuva Republic
+			\item Spoken in Tuva Republic and nearby
 			\item Approximately 300,000 speakers
 			\item Agglutinative morphology
 			\item Very little work on computational tools
@@ -320,15 +320,16 @@
 	\headerbox{Morphological Transducers}{name=morphtrans,below=tyvan}{
 		\htwo{Morphological transducers}
 		\begin{itemize}
-			\item Efficient (in speed \& size) models of a language's morphology
+			\item Computational models of a language's morphology
+			\item Efficient in speed \& size
 			\item Take a surface form, and produce valid lexical form(s)
-			\item Take a lexical form, and produce valid surface form(s)\vspace{-0.1ex}\\
-		%\end{itemize}
+			\item Take a lexical form, and produce valid surface form(s)%\vspace{-0.1ex}\\
+		\end{itemize}
 		%\scalebox{0.98}{
 			алдым\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}},~~\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}\\
 			өөнде\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{өг\tag{n}\tag{px3sp}\tag{loc}}
 		%}
-		\end{itemize}
+		%\end{itemize}
 		\dividerspace{}
 
 		\htwo{Framework:\ HFST}
@@ -342,11 +343,15 @@
 		\begin{itemize}
 			\item two-level method \parencite{koskenniemi83}
 			\item \textbf{morphotactics} implemented in \texttt{lexc}
-			\item \textbf{morphophonology} implemented in \texttt{twol} (SPE-style rules)
-			\item compiled separately; compose-intersected to single transducer\vspace{-0.1ex}\\
+			\item \textbf{morphophonology} implemented in \texttt{twol}
+			\item compiled separately; compose-intersected to single transducer%\vspace{-0.1ex}\\
+		\end{itemize}
 			алдым\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{ал\hilitegrey{>}\archiphon{D}\archiphon{I}\hilitegrey{>}м}\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{ал\tag{v}\tag{tv}\tag{ifi}\tag{p1}\tag{sg}}\vspace{-0.1ex}\\
 			алдым\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{алд\hilitegrey{>}\archiphon{I}м}\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{алд\tag{n}\tag{px1sg}\tag{nom}}\\
 			өөнде\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{өг\hilitegrey{>}\archiphon{z}\archiphon{I}\archiphon{n}\hilitegrey{>}\archiphon{D}\archiphon{A}}\hfill{}{\qipa \hilitetwo{↔}}\hfill{}\texttt{өг\tag{n}\tag{px3sp}\tag{loc}}
+		%\end{itemize}
+		\begin{itemize}
+			\item mostly hand-written; some parts automatable
 		\end{itemize}
 
 	}
@@ -382,7 +387,7 @@
 
 		\headerbox{Development cycle}{name=development,below=harglebargle,span=1}{
 		\centering
-		\begin{tikzpicture}[xscale=1.45,yscale=2.212]%, auto]
+		\begin{tikzpicture}[xscale=1.45,yscale=2.19]%, auto]
 
 			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
 			\node[block] (compile) at (1,2) {compile analyser};
