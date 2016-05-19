@@ -346,14 +346,34 @@
 
 
 	\headerbox{What should we put here}{name=harglebargle,column=0,below=morphtrans}{
-		\vspace{0.35in}
-
+		\begin{tabular}{lllll}
+		\toprule
+			stem & V & C & dative & genitive \\
+		\midrule
+			медаль & а & ль & медальга & медальдың \\
+			ансамбль & а & бль & ансамбльге & ансамбльдиң \\
+			руль & у & ль & рульга & рульдуң \\
+			рубль & у & бль & рубльге & рубльдиң \\
+		\bottomrule
+		\end{tabular}
+\codeex{\hilitegrey{"\{I\} harmony"\\
+	\%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;}\\
+	\-~~~~~~~~~except\\
+	\-~~~~~~~~~~~~~[ :BackVow :Cns* :Cns :л ь: :Cns* :RealCns ]/:0* \_ ;\\
+	\-~~~~~~~~~~~~~[ :BackVow :Cns* :Cns :л ь:0 ]/:[ :0 - ь: ]* \_ ;\\
+	\-~~~~~~~~~\hilitegrey{where Vx in ( ү и е э ө а о ы у я ё ю )\\
+	\-~~~~~~~~~~~~~~ Vy in ( ү и и и ү ы у ы у ы у у )\\
+	\-~~~~~~~~~matched ;}\\
+	\\
+	"\{I\} always front when intervening Cль"\\
+	\%\{I\%\}:и <=> [ :BackVow :Cns* :Cns :л ь: :Cns* :RealCns ]/:0* \_ ;\\
+	\-~~~~~~~~~~~~[ :BackVow :Cns* :Cns :л ь:0 ]/:[ :0 - ь: ]* \_ ;}
 	}
 
 
 		\headerbox{Development cycle}{name=development,below=harglebargle,span=1}{
 		\centering
-		\begin{tikzpicture}[xscale=1.45,yscale=2.5]%, auto]
+		\begin{tikzpicture}[xscale=1.45,yscale=2.2]%, auto]
 
 			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
 			\node[block] (compile) at (1,2) {compile analyser};
@@ -644,7 +664,7 @@
 	}
 
 
-		\headerbox{Further information}{name=getting,column=0,below=references,span=3}{
+		\headerbox{Further information}{name=getting,column=0,below=development,span=3}{
 			\tikzoverlay[text height=1in] at (0in, 0.04in) {
 				\includegraphics[angle=90,height=1in]{apertium5b}
 			};
