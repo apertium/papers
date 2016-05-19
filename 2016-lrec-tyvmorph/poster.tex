@@ -170,7 +170,7 @@
 \usepackage[backend=biber,citestyle=apa,maxcitenames=2,style=authoryear,maxbibnames=99,uniquelist=false,uniquename=false]{biblatex}
 \bibliography{poster}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
-\renewcommand*{\bibfont}{\tiny}
+\renewcommand*{\bibfont}{\fontsize{5.75pt}{5.75pt}\selectfont}
 \renewcommand*{\intitlepunct}{\space}
 
 
@@ -345,17 +345,19 @@
 	}
 
 
-	\headerbox{What should we put here}{name=harglebargle,column=0,below=morphtrans}{
+	\headerbox{Finding out new linguistics things}{name=harglebargle,column=0,below=morphtrans}{
+		\begin{center}
 		\begin{tabular}{lllll}
 		\toprule
 			stem & V & C & dative & genitive \\
 		\midrule
-			медаль & а & ль & медальга & медальдың \\
-			ансамбль & а & бль & ансамбльге & ансамбльдиң \\
-			руль & у & ль & рульга & рульдуң \\
-			рубль & у & бль & рубльге & рубльдиң \\
+			медаль & а & ль & медальг\hiliteone{а} & медальд\hiliteone{ы}ң \\
+			ансамбль & а & бль & ансамбльг\hilitetwo{е} & ансамбльд\hilitetwo{и}ң \\\midrule
+			руль & у & ль & рульг\hiliteone{а} & рульд\hiliteone{у}ң \\
+			рубль & у & бль & рубльг\hilitetwo{е} & рубльд\hilitetwo{и}ң \\
 		\bottomrule
 		\end{tabular}
+		\end{center}\vspace{-0.5em}
 \codeex{\hilitegrey{"\{I\} harmony"\\
 	\%\{I\%\}:Vy <=> :Vx [ :Cns* :RealCns ]/[ :0 | \%- ]* \_ ;}\\
 	\-~~~~~~~~~except\\
@@ -508,6 +510,7 @@
 	\headerbox{Evaluation}{name=results,column=2,below=morphotactics}{ %lexicon}{
 		%\begin{multicols}{2}	
 		\htwo{5-part corpus for naïve coverage}
+		\vspace{-0.2em}
 		%\begin{itemize}
 		%	\item Naïve coverage calculated on 5-part corpus
 		%\end{itemize}
@@ -528,6 +531,7 @@
 		\end{center}
 
 		\htwo{Precision and recall}
+		\vspace{-0.2em}
 		%\begin{itemize}
 		%	\item Good results reflect high accuracy
 		%\end{itemize}
@@ -548,6 +552,7 @@
 		%\columnbreak
 		
 		\htwo{Qualitative evaluation}
+		\vspace{-0.2em}
 		%\begin{itemize}
 		%	\item Qualitative evaluation
 		%\end{itemize}
@@ -612,17 +617,17 @@
 		\htwo{Treebanks}
 		\vspace{-1em}
 		\newline
-			\tikzoverlay[text width=0.9\textwidth] at (0.55in, -0.5in) {
+			\tikzoverlay[text width=0.9\textwidth] at (0.55in, -1in) {
 				\includegraphics[width=0.95\textwidth]{img/dep-graph}
 			};
 		\begin{itemize}
 			\item \textbf{Kazakh} \parencite{fmtjnw2015kazdep}
-		\end{itemize}
-		\includegraphics[width=0.63\textwidth]{img/korp-2}
-		\begin{itemize}
 			\item work on \textbf{Tuvan} ongoing
 		\end{itemize}
-		\vspace{1.45in}
+		\includegraphics[width=0.63\textwidth]{img/korp-2}
+		%\begin{itemize}
+		%\end{itemize}
+		\vspace{1.55in}
 		\dividerspace{}
 
 
