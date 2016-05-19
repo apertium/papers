@@ -22,6 +22,7 @@
 %\pgfdeclarelayer{background}
 %\pgfdeclarelayer{foreground}
 %\pgfsetlayers{background,main,foreground}
+\usepackage{tikz-dependency}
 
 \tikzset{
   every overlay node/.style={
@@ -105,6 +106,12 @@
 \newcommand{\tag}[1]{{\ortaqmono \hilitegrey{<}\hiliteblue{#1}\hilitegrey{>}}}
 \newcommand{\archiphon}[1]{\hilitegrey{\{}\hiliteone{#1}\hilitegrey{\}}}
 
+\newcommand{\tyv}[1]{\textit{#1}}
+\newcommand{\tgloss}[1]{\tyv{#1}}
+\newfontfamily\udfont[Scale=1.3,Letters=SmallCaps]{Linux Libertine O}
+\newcommand{\udtag}[1]{{\ll \textsc{#1}}}
+\newcommand{\udlabel}[1]{{\udfont #1}}
+
 %\newfontfamily\htwo[IPA,Scale=1.2]{FreeSans}}
 %\newfontfamily\htwofont[IPA,Scale=1]{CMU Sans Serif}
 %\newfontfamily\htwofont[IPA,Scale=1,Color=333344FF]{CMU Sans Serif}
@@ -170,7 +177,7 @@
 \usepackage[backend=biber,citestyle=apa,maxcitenames=2,style=authoryear,maxbibnames=99,uniquelist=false,uniquename=false]{biblatex}
 \bibliography{poster}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
-\renewcommand*{\bibfont}{\fontsize{5.75pt}{5.75pt}\selectfont}
+\renewcommand*{\bibfont}{\fontsize{5.735pt}{5.735pt}\selectfont}
 \renewcommand*{\intitlepunct}{\space}
 
 
@@ -375,7 +382,7 @@
 
 		\headerbox{Development cycle}{name=development,below=harglebargle,span=1}{
 		\centering
-		\begin{tikzpicture}[xscale=1.45,yscale=2.2]%, auto]
+		\begin{tikzpicture}[xscale=1.45,yscale=2.212]%, auto]
 
 			\node[cloud] (assumptions) at (1,2.75) {assumed generalisations};
 			\node[block] (compile) at (1,2) {compile analyser};
@@ -617,17 +624,42 @@
 		\htwo{Treebanks}
 		\vspace{-1em}
 		\newline
-			\tikzoverlay[text width=0.9\textwidth] at (0.55in, -1in) {
+			\tikzoverlay[text width=0.9\textwidth] at (0.55in, -2.25in) {
 				\includegraphics[width=0.95\textwidth]{img/dep-graph}
 			};
 		\begin{itemize}
 			\item \textbf{Kazakh} \parencite{fmtjnw2015kazdep}
 			\item work on \textbf{Tuvan} ongoing
 		\end{itemize}
-		\includegraphics[width=0.63\textwidth]{img/korp-2}
+		\resizebox{\textwidth}{!}{
+        \begin{dependency}[theme = simple, font = \small]
+           \begin{deptext}[column sep=0.08cm]
+%               1         2         3          4              5          6          7        8
+                %Мен \& тыва \& хүреш \& -биле \& сургуул \& кылбастай \& бээримге \& ачам \& хомудаан \& . \\
+                Бис \& кожууннуң \& соңгукчулары \& -биле \& ажылды \& чорутпастай \& бээривиске, \& көргүзүглер \& баксыраан \& . \\
+%                \gmk{prn} \& \gmk{n.attr} \& \gmk{n.nom} \& \gmk{post} \& \gmk{n} \& \gmk{v.tv.prc} \& \gmk{vaux} \& \gmk{n.px1sg.nom}  \& \gmk{v.iv.past} \&  \\
+                \gmk{prn} \& \gmk{n.gen} \& \gmk{n.pl.px3sp} \& \gmk{post} \& \gmk{n.acc} \& \gmk{v.tv.prc} \& \gmk{vaux} \& \gmk{n.pl.nom}  \& \gmk{v.iv.past} \&  \\
+                \tgloss{We} \& \tgloss{district} \& \tgloss{constituents} \& \tgloss{with} \& \tgloss{business} \& \tgloss{having stopped conducting} \& \tgloss{} \& \tgloss{figures} \& \tgloss{worsened} \& \\
+                \end{deptext}
+                \depedge{6}{1}{\udlabel{nsubj}}
+                \depedge{3}{2}{\udlabel{nmod:poss}}
+                \depedge{3}{4}{\udlabel{case}}
+                \depedge{6}{3}{\udlabel{nmod}}
+                \depedge{6}{5}{\udlabel{dobj}}
+                \depedge{6}{7}{\udlabel{aux}}
+                \depedge{9}{8}{\udlabel{nsubj}}
+                \depedge{9}{6}{\udlabel{advcl}}
+                \depedge{9}{10}{\udlabel{sent}}
+                \deproot[edge unit distance=3ex]{9}{\udlabel{root}}
+        \end{dependency}}\\
+		\setlength\fboxsep{0.5em}
+		\setlength\fboxrule{0pt}
+		\fbox{\includegraphics[width=0.63\textwidth]{img/korp-2}}
 		%\begin{itemize}
 		%\end{itemize}
-		\vspace{1.55in}
+		\vspace{1.8625in}
+
+
 		\dividerspace{}
 
 
@@ -657,7 +689,9 @@
 				%\item Bring other Kypchak transducers to comparable performance:\\
 				%Qaraqalpaq, Bashqort, Nogay, Crimean Tatar
 				%\item Other Turkic lgs:\ Uzbek, Uyghur, Chuvash, Yakut, Tuvan, etc.
-				\includegraphics[width=\textwidth]{img/tyv-spelling}
+				\vspace{0.3em}
+				\includegraphics[width=\textwidth]{img/tyv-spelling-cropped}
+				\vspace{-0.1in}
 		}
 
 	\headerbox{References}{name=references,below=results,column=2}{
