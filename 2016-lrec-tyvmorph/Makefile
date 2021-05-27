@@ -12,7 +12,7 @@ clean:
 	biber `echo $< | sed 's/\.bib//'`
 
 qrcode.png: Makefile
-	qrencode -o qrcode.tmp.png -l M "http://wiki.apertium.org/wiki/Compmorphon_2015"
+	qrencode -o qrcode.tmp.png -l M "https://wiki.apertium.org/wiki/Compmorphon_2015"
 	convert qrcode.tmp.png $@
 
 #bib:

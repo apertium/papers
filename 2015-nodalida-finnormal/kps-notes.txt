@@ -19,7 +19,7 @@
 (17:17:53) francis.tyers: if we do something rule-based/unsupervised
 (17:17:59) Kevin Scannell: some books hand-standardized and digitized
 (17:18:06) Kevin Scannell: (for the dict projects I'm working on)
-(17:18:12) francis.tyers: i wrote something trivial that basically takes a list of regex replacements http://wiki.apertium.org/wiki/User:Francis_Tyers/Finnish
+(17:18:12) francis.tyers: i wrote something trivial that basically takes a list of regex replacements https://wiki.apertium.org/wiki/User:Francis_Tyers/Finnish
 (17:18:24) francis.tyers: and expands the possibilities
 (17:18:35) francis.tyers: and scores them on a TLM of standard finnish
 (17:18:47) francis.tyers: which kind of works, but i was wondering if you had something prepared that could do something similar ? 

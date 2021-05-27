@@ -6,4 +6,4 @@ See [Apertium wiki][3] for more details.
 
 [1]: https://github.com/cfedermann/Appraise/
 [2]: http://eval.apertium.vm.bytemark.co.uk/appraise/
-[3]: http://wiki.apertium.org/wiki/Assimilation_Evaluation_Toolkit
+[3]: https://wiki.apertium.org/wiki/Assimilation_Evaluation_Toolkit

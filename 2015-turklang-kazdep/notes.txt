@@ -179,7 +179,7 @@ sentence was decided on during discussions between the two annotators and in som
 through the universal-dependency issue tracker.\footnote{\url{https://github.com/UniversalDependencies/docs/issues/}}
 
 During the course of annotation, language-specific annotation guidelines for Kazakh are
-being produced and published online.\footnote{\url{http://wiki.apertium.org/wiki/Dependency_parsing_for_Turkic}}
+being produced and published online.\footnote{\url{https://wiki.apertium.org/wiki/Dependency_parsing_for_Turkic}}
 
 ==Copula==
 
